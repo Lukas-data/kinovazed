@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../TCPServer/TCPServer.h
+netinet/in.h
+-
+
+../kinovaArm/KinovaArm.h
+libkindrv/kindrv.h
+-
+
+/home/kinova/Documents/kinovaZED/KinovaMain.cpp
+stdio.h
+-
+KinovaArm.h
+/home/kinova/Documents/kinovaZED/KinovaArm.h
+TCPServer.h
+/home/kinova/Documents/kinovaZED/TCPServer.h
+

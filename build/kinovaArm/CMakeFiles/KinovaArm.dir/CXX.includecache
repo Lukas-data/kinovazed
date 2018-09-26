@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../kinovaArm/../positionHandling/PositionHandling.h
+
+/home/kinova/Documents/kinovaZED/kinovaArm/KinovaArm.cpp
+stdio.h
+-
+KinovaArm.h
+/home/kinova/Documents/kinovaZED/kinovaArm/KinovaArm.h
+PositionHandling.h
+/home/kinova/Documents/kinovaZED/kinovaArm/PositionHandling.h
+
+/home/kinova/Documents/kinovaZED/kinovaArm/KinovaArm.h
+libkindrv/kindrv.h
+-
+

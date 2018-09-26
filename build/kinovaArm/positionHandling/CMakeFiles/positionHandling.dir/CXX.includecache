@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kinova/Documents/kinovaZED/positionHandling/PositionHandling.cpp
+PositionHandling.h
+/home/kinova/Documents/kinovaZED/positionHandling/PositionHandling.h
+stdio.h
+-
+
+/home/kinova/Documents/kinovaZED/positionHandling/PositionHandling.h
+

@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o  -o KinovaZED -rdynamic kinovaArm/libKinovaArm.a TCPServer/libTCPServer.a kinovaArm/positionHandling/libpositionHandling.a /usr/local/lib/libkindrv/liblibkindrv.so -lboost_system -Wl,-rpath,/usr/local/lib/libkindrv 

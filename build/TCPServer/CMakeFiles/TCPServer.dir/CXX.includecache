@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kinova/Documents/kinovaZED/TCPServer/TCPServer.cpp
+TCPServer.h
+/home/kinova/Documents/kinovaZED/TCPServer/TCPServer.h
+stdio.h
+-
+stdexcept
+-
+sys/types.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+netdb.h
+-
+string.h
+-
+stdlib.h
+-
+unistd.h
+-
+errno.h
+-
+
+/home/kinova/Documents/kinovaZED/TCPServer/TCPServer.h
+netinet/in.h
+-
+
