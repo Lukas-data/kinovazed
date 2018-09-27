@@ -17,12 +17,17 @@ class KinovaArm {
                 ESTOP_QUIT = 92,
                 ERROR = 99
               };
+    enum Positions {  POS_ZEDHOME = 0,
+                      POS_NOPOS = 99
+              };
 
     JacoArm *arm;
 
     jaco_retract_mode_t Status;
-    float currentPosition[6];
-    float requestedPosition[6];
+    float currentPositionCord[6];
+    int currentPosition;
+    float requestedPositionCord[6];
+    int requestedPosition;
 
     int currentRobotMode;
     int requestedRobotMode;
@@ -36,6 +41,7 @@ class KinovaArm {
     bool Ready;
     bool MovingToPosition;
     bool SettingMode;
+    bool MovingHome;
 
     bool DoInitialize;
 

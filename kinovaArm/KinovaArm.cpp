@@ -54,7 +54,7 @@ void KinovaArm::JacoMain()
     //printf("currentRobotMode: %d, Ready = %d, SettingMode = %d\n",currentRobotMode, Ready, SettingMode);
     if (currentRobotMode > 0 && currentRobotMode < 5 && Ready == true && SettingMode == false && MovingToPosition == false)
       moveArm();
-    printf("MovingToPosition: %d, Ready = %d\n",MovingToPosition, Ready);
+    //printf("MovingToPosition: %d, Ready = %d\n", MovingToPosition, Ready);
     if ( MovingToPosition == true  && Ready == true)
       moveToPos();
   }
@@ -62,6 +62,9 @@ void KinovaArm::JacoMain()
     printf("E-Stop\n");
     stopArm();
   }
+
+  printf("requestedPosition: %d // ", requestedPosition);
+  printf("currentPosition: %d\n", currentPosition);
   ////TEST
   /*
   PositionHandling::printPos();
@@ -108,7 +111,7 @@ void KinovaArm::setDoInitialize() {
   }
 }
 
-//Initialisierung
+//Initialisation of Jaco Arm
 void KinovaArm::initialize()
 {
   //check if allready initialized
@@ -127,47 +130,61 @@ void KinovaArm::initialize()
       Status = arm->get_status();
       printf("Arm is currently in state: %i \n", Status);
 
+      currentPosition = POS_NOPOS;
+      requestedPosition = POS_NOPOS;
+
       Initializing = true;
       DoInitialize = false;
     }
 
     Status = arm->get_status();
-
+    //Moves Arm to Kinova Home position if not in initialized Position
     if( Status == MODE_NOINIT) {
       printf("Initializing: Status is NOINIT.\n");
       //push the "HOME/RETRACT" button until arm is initialized
       jaco_joystick_button_t buttons = {0};
       buttons[2] = 1;
       arm->push_joystick_button(buttons);
+      MovingHome = true;
     }
-//Initialization moves to Homeposition
-/*
-    else if (Status != MODE_READY_STANDBY ) {
-      printf("Initializing: Arm is not at Home. Moving to Home.\n");
-      //arm->release_joystick();
-      goto_home();
+    //Moves Arm to Own Home position after it moved to initializable Position
+    else if (MovingHome == true) {
+      if ( requestedPosition == POS_NOPOS ) {
+        arm->release_joystick();
+        //Initialization moves to Position 0 (ZEDe-Home)
+        DoMoveToPos(POS_ZEDHOME);
+        printf("Arm is moving to ZEDe-Home Position, state: %i \n", Status);
+      }
+      else if ( currentPosition != POS_ZEDHOME) {
+        moveToPos();
+      }
+      else {
+        Initializing = false;
+        Ready = true;
+        MovingHome == false;
+        writeDataToBuffer(INIT);
+        printf("Arm initialized at ZED-Home, state: %i \n", Status);
+      }
     }
-*/
-    else {
+    else if (MovingHome == false){
       arm->release_joystick();
       //Initialization moves to Own-Homeposition (for Testing Position)
-      DoMoveToPos(0);
+      //DoMoveToPos(0);
       //MovingToPosition = false;
       Initializing = false;
       Ready = true;
-      DoInitialize = false;
       writeDataToBuffer(INIT);
       //DoSetMode(1);
-      printf("Arm is initialized now, state: %i \n", Status);
+      printf("Arm initialized without moving, state: %i \n", Status);
+
     }
-    
   }
   else if (KINOVA_CONNECTED == false) {
     Initializing = false;
     Ready = true;
     DoInitialize = false;
     writeDataToBuffer(INIT);
-    printf("Arm connection ist turned off. Dummy-Initialized.\n");
+    printf("Arm connection is turned off. Dummy-Initialized.\n");
   }
 }
 
@@ -239,6 +256,8 @@ void KinovaArm::setMode() {
 void KinovaArm::DoSetSpeed(int x, int y, int z)
 {
   if (EmergencyStop == false) {
+    requestedPosition = POS_NOPOS;
+    currentPosition = POS_NOPOS;
     currentSpeedX = -x*calcFactor;
     currentSpeedY = -y*calcFactor;
     currentSpeedZ = z*calcFactor;
@@ -303,9 +322,10 @@ void KinovaArm::stopArm() {
 void KinovaArm::DoMoveToPos(int pos) {
   printf("Moving to Position: %d\n", pos);
   float fingers[3];
-  PositionHandling::getCoordinates(requestedPosition, pos);
+  requestedPosition = pos;
+  PositionHandling::getCoordinates(requestedPositionCord, pos);
   MovingToPosition = true;
-  arm->set_target_cart(requestedPosition,fingers);
+  arm->set_target_cart(requestedPositionCord,fingers);
 }
 
 
@@ -316,24 +336,25 @@ void KinovaArm::moveToPos() {
   
   for (int i = 0; i<6; i++) {
     if (i<3) 
-      currentPosition[i] == Position.position[i];
+      currentPositionCord[i] == Position.position[i];
     else
-      currentPosition[i] == Position.rotation[i-3];
+      currentPositionCord[i] == Position.rotation[i-3];
   }
-  //printf("currentPosition Reset.\n");
+  //printf("currentPositionCord Reset.\n");
 
-  //printf("Following Directions are within Range: ");
+  printf("Following Directions are within Range: ");
   for (int i = 0; i<6; i++) {
-    if (currentPosition[i] > requestedPosition[i] * (1+POSITION_RANGE) &&
-        currentPosition[i] < requestedPosition[i] * (1-POSITION_RANGE) ) {
-      //printf("%d, ", i);
+    if (currentPositionCord[i] > requestedPositionCord[i] * (1+POSITION_RANGE) &&
+        currentPositionCord[i] < requestedPositionCord[i] * (1-POSITION_RANGE) ) {
+      printf("%d, ", i);
       PositionReached = false;
     }
-    //printf("\n");
+    printf("\n");
   }
   if (PositionReached == true) {
     MovingToPosition = false;
     arm->release_joystick();
+    currentPosition = requestedPosition;
     DoSetMode(1);
   }
 }
