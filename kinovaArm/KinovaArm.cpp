@@ -161,7 +161,7 @@ void KinovaArm::initialize()
       else {
         Initializing = false;
         Ready = true;
-        MovingHome == false;
+        MovingHome = false;
         writeDataToBuffer(INIT);
         printf("Arm initialized at ZED-Home, state: %i \n", Status);
       }
