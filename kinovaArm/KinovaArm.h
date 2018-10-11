@@ -36,6 +36,8 @@ class KinovaArm {
     int currentKinematicsMode;
     int requestedKinematicsMode;
     jaco_joystick_axis_t axes;
+    
+    int movingSequenceNo;
 
     bool Initializing;
     bool Ready;

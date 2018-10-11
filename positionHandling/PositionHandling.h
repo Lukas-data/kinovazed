@@ -3,13 +3,14 @@
 
 
 
-using namespace std;
+//using namespace std;
 
-#define NUMBER_OF_POINTS 1
+#define NUMBER_OF_POINTS 2
+#define NUMBER_OF_SUBPOINTS 2
 
 enum Points { HOME = 0,
+              BELL = 1
             };
-
 
 typedef struct posCoordinates{ 
   float x;
@@ -18,7 +19,6 @@ typedef struct posCoordinates{
   float pitch;
   float yaw;
   float roll;
-    
 }posCoordinates;
 
 
@@ -29,14 +29,19 @@ class PositionHandling {
     ~PositionHandling();
 
 
-    static posCoordinates Positions[NUMBER_OF_POINTS];
+    static posCoordinates Positions[NUMBER_OF_POINTS][NUMBER_OF_SUBPOINTS];
+    //static posCoordinates homePositions[1];
+    //static posCoordinates bellPositions[2];
+
+
+    //void error(const char *msg);
     
-    void error(const char *msg);
+    
 
 	public:
 	  
     static int printPos();
-    static void getCoordinates(float* coordinates, int pos);
+    static bool getCoordinates(float* coordinates, int pos, int sequence);
     
  
 

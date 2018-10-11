@@ -29,7 +29,6 @@ KinovaArm::KinovaArm()
   }
   calcFactor = 0.0025;
   EmergencyStop = false;
-
 }
 
 
@@ -321,10 +320,21 @@ void KinovaArm::stopArm() {
 
 void KinovaArm::DoMoveToPos(int pos) {
   printf("Moving to Position: %d\n", pos);
+  MovingToPosition = true;
+  movingSequenceNo = 0;
+  bool endOfSequence;
   float fingers[3];
   requestedPosition = pos;
-  PositionHandling::getCoordinates(requestedPositionCord, pos);
-  MovingToPosition = true;
+
+  try
+  {
+    endOfSequence = PositionHandling::getCoordinates(requestedPositionCord, pos, movingSequenceNo);
+   }
+  catch (std::runtime_error& e)
+  {
+    printf("%s\n", e.what());
+  }
+  
   arm->set_target_cart(requestedPositionCord,fingers);
 }
 
@@ -336,9 +346,9 @@ void KinovaArm::moveToPos() {
   
   for (int i = 0; i<6; i++) {
     if (i<3) 
-      currentPositionCord[i] == Position.position[i];
+      currentPositionCord[i] = Position.position[i];
     else
-      currentPositionCord[i] == Position.rotation[i-3];
+      currentPositionCord[i] = Position.rotation[i-3];
   }
   //printf("currentPositionCord Reset.\n");
 
@@ -352,10 +362,29 @@ void KinovaArm::moveToPos() {
     printf("\n");
   }
   if (PositionReached == true) {
-    MovingToPosition = false;
-    arm->release_joystick();
-    currentPosition = requestedPosition;
-    DoSetMode(1);
+    bool endOfSequence;
+    ++movingSequenceNo;
+
+    try
+    {
+      endOfSequence = PositionHandling::getCoordinates(requestedPositionCord, requestedPosition, movingSequenceNo);
+    }
+    catch (std::runtime_error& error)
+    {
+      printf("ERROR: %s\n", error.what());
+    }
+
+    if (endOfSequence == true) {
+      movingSequenceNo = 0;
+      MovingToPosition = false;
+      arm->release_joystick();
+      currentPosition = requestedPosition;
+      DoSetMode(1);
+    }
+    else {
+      float fingers[3];
+      arm->set_target_cart(requestedPositionCord,fingers);
+    }
   }
 }
 
