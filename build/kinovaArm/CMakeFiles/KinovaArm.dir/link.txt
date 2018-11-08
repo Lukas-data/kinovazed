@@ -1,2 +1,0 @@
-/usr/bin/ar qc libKinovaArm.a  CMakeFiles/KinovaArm.dir/KinovaArm.cpp.o
-/usr/bin/ranlib libKinovaArm.a

@@ -1,6 +1,0 @@
-/usr/local/bin/libTCPServer.a
-/usr/local/include/TCPServer.h
-/usr/local/bin/libKinovaArm.a
-/usr/local/include/KinovaArm.h
-/usr/local/bin/libpositionHandling.a
-/usr/local/include/PositionHandling.h
