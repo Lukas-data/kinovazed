@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/State.h
+
+../src/StateMachine.h
+State.h
+../src/State.h
+Transition.h
+../src/Transition.h
+
+../src/Transition.h
+State.h
+../src/State.h
+
+/home/kinova/Documents/kinovaZED/test/KinovaTest.cpp
+stdio.h
+-
+unistd.h
+-
+StateMachine.h
+/home/kinova/Documents/kinovaZED/test/StateMachine.h
+Transition.h
+/home/kinova/Documents/kinovaZED/test/Transition.h
+

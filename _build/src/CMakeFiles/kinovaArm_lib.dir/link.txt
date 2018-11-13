@@ -1,0 +1,2 @@
+/usr/bin/ar qc libkinovaArm_lib.a  CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o CMakeFiles/kinovaArm_lib.dir/TCPServer.cpp.o CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.o CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o CMakeFiles/kinovaArm_lib.dir/State.cpp.o
+/usr/bin/ranlib libkinovaArm_lib.a

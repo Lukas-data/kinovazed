@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kinova/Documents/kinovaZED/src/KinovaArm.h
+../thirdparty/libkindrv/include/kindrv.h
+/home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/kindrv.h
+
+/home/kinova/Documents/kinovaZED/src/KinovaMain.cpp
+stdio.h
+-
+KinovaArm.h
+/home/kinova/Documents/kinovaZED/src/KinovaArm.h
+TCPServer.h
+/home/kinova/Documents/kinovaZED/src/TCPServer.h
+
+/home/kinova/Documents/kinovaZED/src/TCPServer.h
+netinet/in.h
+-
+
+/home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/exception.h
+types.h
+/home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/types.h
+exception
+-
+
+/home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/kindrv.h
+types.h
+/home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/types.h
+exception.h
+/home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/exception.h
+boost/thread/mutex.hpp
+-
+
+/home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/types.h
+
