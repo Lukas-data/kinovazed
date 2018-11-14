@@ -1,20 +1,22 @@
 #ifndef _STATE_H_
 #define _STATE_H_
 
+#include "KinovaArm.h"
 
 //Abstract State-Class. (Id not used, but implemented for debug uses.)
 class State {
   public:
-    State();
     State(int id) :
       Id(id)
       {}
     int getId();
+    void init(KinovaArm* jacoZED);
 	  virtual void entryAction() = 0;
     virtual void exitAction() = 0;
     virtual void tickAction() = 0;
 
   protected:
+    static KinovaArm* JacoZED;
     int Id;
 
 };

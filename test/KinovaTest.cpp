@@ -5,19 +5,21 @@
  *  Created: Fri Jun 15 2018
  ****************************************************************************/
 
-
 #include <stdio.h>
 #include <unistd.h>
-#include "StateMachine.h"
-#include "Transition.h"
+//#include "StateMachine.h"
+//#include "Transition.h"
+#include "CommandHandling.h"
 
-StateMachine *fsm;
+//StateMachine *fsm;
+//CommandHandling *communication;
 
 int main(int argc, char *argv[])
 {
   /************************/
   /* Testing StateMachine */
   /************************/
+  /*
   StateMachine fsm;
   fsm.init();
   int i;
@@ -36,5 +38,15 @@ int main(int argc, char *argv[])
     fsm.process();
     usleep(1000);
   }
+  */
+
+  /***************************/
+  /* Testing CommandHandling */
+  /***************************/
+  CommandHandling communication;
+  communication.init();
+  communication.sendEvent(KinovaFSM::Initialize);
+  //communication.process();
+  
 
 }

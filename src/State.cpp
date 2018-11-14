@@ -2,11 +2,14 @@
 
 #include "State.h"
 
+KinovaArm* State::JacoZED = NULL;
+
 int State::getId() { return  Id; }
+void State::init(KinovaArm* jacoZED) {JacoZED = jacoZED; }
 
 // PowerOff
 void StatePowerOff::entryAction() {
-  printf("Executing StatePowerOff entryAction.\n");
+  printf("Executing StatePowerOff entryAction. JacoZed Points to: %p\n", JacoZED);
 }
 void StatePowerOff::exitAction() {
   printf("Executing StatePowerOff exitAction.\n");

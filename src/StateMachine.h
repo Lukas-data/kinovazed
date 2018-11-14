@@ -3,6 +3,8 @@
 
 #include "State.h"
 #include "Transition.h"
+#include "KinovaArm.h"
+
 
 /*This State Machine runs the entry, exit and tick events from the states in "State.h" according to the events and transitions in "Transition.h". There is no Queue. If an event finds no use, it is dropped.*/
 
@@ -17,7 +19,7 @@ class StateMachine {
     ~StateMachine();
 
     //Initializes the StateMachine.
-    void init();
+    void init(KinovaArm* jacoZED);
     
     //Send Event to the StateMachine.
     void sendEvent(KinovaFSM::Event e);
@@ -32,3 +34,4 @@ class StateMachine {
 
 };
 #endif
+

@@ -12,6 +12,8 @@ class KinovaArm {
   public:
 	  KinovaArm();
     ~KinovaArm(); 
+    void init();
+    void test(int a);
     void JacoMain();
     int goto_retract();
     int goto_home();
@@ -46,6 +48,8 @@ class KinovaArm {
               };
 
     JacoArm *arm;
+
+    int testInt;
 
     jaco_retract_mode_t Status;
     float currentPositionCord[6];

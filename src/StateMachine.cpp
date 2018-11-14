@@ -1,32 +1,33 @@
 #include <stdio.h>
+
 #include "StateMachine.h"
 
 
-using namespace KinovaFSM;
 
 StateMachine::~StateMachine() {}
 
 
 
-void StateMachine::init() {
-  currentState = initState;
+void StateMachine::init(KinovaArm* jacoZED) {
+  currentState = KinovaFSM::initState;
+  currentState->init(jacoZED);
   currentState->entryAction();
 }
 
-void StateMachine::sendEvent(Event e) {
+void StateMachine::sendEvent(KinovaFSM::Event e) {
   inputEvent = e;
 }
 
 
 void StateMachine::process() {
  
-  Event e = inputEvent;
-  inputEvent = NoEvent;
+  KinovaFSM::Event e = inputEvent;
+  inputEvent = KinovaFSM::NoEvent;
   
   for (int i = 0; i<numberOfTransitions; i++) {
-    if ( (currentState == TransitionTable[i].currentState) && (e == TransitionTable[i].event) )  {
-      TransitionTable[i].currentState->exitAction();
-      currentState = TransitionTable[i].nextState;
+    if ( (currentState == KinovaFSM::TransitionTable[i].currentState) && (e == KinovaFSM::TransitionTable[i].event) )  {
+      KinovaFSM::TransitionTable[i].currentState->exitAction();
+      currentState = KinovaFSM::TransitionTable[i].nextState;
       currentState->entryAction();
       break;
     }

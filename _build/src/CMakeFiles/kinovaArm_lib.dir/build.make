@@ -177,13 +177,38 @@ src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o.provides: src/CMakeFiles/kinovaArm_
 src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o.provides.build: src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o
 
 
+src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o: src/CMakeFiles/kinovaArm_lib.dir/flags.make
+src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o: ../src/CommandHandling.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/kinova/Documents/kinovaZED/_build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o"
+	cd /home/kinova/Documents/kinovaZED/_build/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o -c /home/kinova/Documents/kinovaZED/src/CommandHandling.cpp
+
+src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.i"
+	cd /home/kinova/Documents/kinovaZED/_build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/kinova/Documents/kinovaZED/src/CommandHandling.cpp > CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.i
+
+src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.s"
+	cd /home/kinova/Documents/kinovaZED/_build/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/kinova/Documents/kinovaZED/src/CommandHandling.cpp -o CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.s
+
+src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o.requires:
+
+.PHONY : src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o.requires
+
+src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o.provides: src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o.provides.build
+.PHONY : src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o.provides
+
+src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o.provides.build: src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o
+
+
 # Object files for target kinovaArm_lib
 kinovaArm_lib_OBJECTS = \
 "CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o" \
 "CMakeFiles/kinovaArm_lib.dir/TCPServer.cpp.o" \
 "CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.o" \
 "CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o" \
-"CMakeFiles/kinovaArm_lib.dir/State.cpp.o"
+"CMakeFiles/kinovaArm_lib.dir/State.cpp.o" \
+"CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o"
 
 # External object files for target kinovaArm_lib
 kinovaArm_lib_EXTERNAL_OBJECTS =
@@ -193,9 +218,10 @@ src/libkinovaArm_lib.a: src/CMakeFiles/kinovaArm_lib.dir/TCPServer.cpp.o
 src/libkinovaArm_lib.a: src/CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.o
 src/libkinovaArm_lib.a: src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o
 src/libkinovaArm_lib.a: src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o
+src/libkinovaArm_lib.a: src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o
 src/libkinovaArm_lib.a: src/CMakeFiles/kinovaArm_lib.dir/build.make
 src/libkinovaArm_lib.a: src/CMakeFiles/kinovaArm_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kinova/Documents/kinovaZED/_build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libkinovaArm_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kinova/Documents/kinovaZED/_build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libkinovaArm_lib.a"
 	cd /home/kinova/Documents/kinovaZED/_build/src && $(CMAKE_COMMAND) -P CMakeFiles/kinovaArm_lib.dir/cmake_clean_target.cmake
 	cd /home/kinova/Documents/kinovaZED/_build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/kinovaArm_lib.dir/link.txt --verbose=$(VERBOSE)
 
@@ -209,6 +235,7 @@ src/CMakeFiles/kinovaArm_lib.dir/requires: src/CMakeFiles/kinovaArm_lib.dir/TCPS
 src/CMakeFiles/kinovaArm_lib.dir/requires: src/CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.o.requires
 src/CMakeFiles/kinovaArm_lib.dir/requires: src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o.requires
 src/CMakeFiles/kinovaArm_lib.dir/requires: src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o.requires
+src/CMakeFiles/kinovaArm_lib.dir/requires: src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o.requires
 
 .PHONY : src/CMakeFiles/kinovaArm_lib.dir/requires
 

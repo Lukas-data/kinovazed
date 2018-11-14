@@ -2,17 +2,23 @@
 #define _TRANSITION_H_
 
 #include "State.h"
+#include "KinovaArm.h"
 
 /*Handles all Events and Transitions for "StateMachine.h".*/
 
 namespace KinovaFSM {
 
+
 //States
   static StatePowerOff powerOff;
   static StateSteering steering;
 
+  State* const allStates[] = {&powerOff, &steering};
+
+
 //StartUp-State
   State* const initState = &powerOff;
+  
 
 //Events
   enum Event {

@@ -140,6 +140,33 @@ kinovaArm_lib/fast:
 	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/build
 .PHONY : kinovaArm_lib/fast
 
+CommandHandling.o: CommandHandling.cpp.o
+
+.PHONY : CommandHandling.o
+
+# target to build an object file
+CommandHandling.cpp.o:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o
+.PHONY : CommandHandling.cpp.o
+
+CommandHandling.i: CommandHandling.cpp.i
+
+.PHONY : CommandHandling.i
+
+# target to preprocess a source file
+CommandHandling.cpp.i:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.i
+.PHONY : CommandHandling.cpp.i
+
+CommandHandling.s: CommandHandling.cpp.s
+
+.PHONY : CommandHandling.s
+
+# target to generate assembly for a file
+CommandHandling.cpp.s:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.s
+.PHONY : CommandHandling.cpp.s
+
 KinovaArm.o: KinovaArm.cpp.o
 
 .PHONY : KinovaArm.o
@@ -312,6 +339,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... KinovaZED"
 	@echo "... kinovaArm_lib"
+	@echo "... CommandHandling.o"
+	@echo "... CommandHandling.i"
+	@echo "... CommandHandling.s"
 	@echo "... KinovaArm.o"
 	@echo "... KinovaArm.i"
 	@echo "... KinovaArm.s"

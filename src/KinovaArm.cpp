@@ -4,7 +4,7 @@
 
 
   
-#define KINOVA_CONNECTED true
+#define KINOVA_CONNECTED false
 
 
 using namespace KinDrv;
@@ -34,12 +34,24 @@ KinovaArm::KinovaArm()
 
 KinovaArm::~KinovaArm()
 {
+  
   if (KINOVA_CONNECTED == true) {
     // explicitly close libusb context (only needed if explicitly openede before)
     close_usb();
     delete arm;
     printf("Connection to JacoArm closed \n");
   }
+}
+
+
+void KinovaArm::init() {
+  printf("KinovaArm::init()\n");
+}
+
+void KinovaArm::test(int a) {
+  printf("KinovaArm::test: Last Value = %d\n", testInt);
+  testInt = a;
+  
 }
 
 

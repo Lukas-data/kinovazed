@@ -6,6 +6,24 @@
 
 #IncludeRegexTransform: 
 
+/home/kinova/Documents/kinovaZED/src/CommandHandling.cpp
+stdio.h
+-
+stdexcept
+-
+unistd.h
+-
+CommandHandling.h
+/home/kinova/Documents/kinovaZED/src/CommandHandling.h
+
+/home/kinova/Documents/kinovaZED/src/CommandHandling.h
+StateMachine.h
+/home/kinova/Documents/kinovaZED/src/StateMachine.h
+TCPServer.h
+/home/kinova/Documents/kinovaZED/src/TCPServer.h
+KinovaArm.h
+/home/kinova/Documents/kinovaZED/src/KinovaArm.h
+
 /home/kinova/Documents/kinovaZED/src/KinovaArm.cpp
 stdio.h
 -
@@ -35,6 +53,8 @@ State.h
 /home/kinova/Documents/kinovaZED/src/State.h
 
 /home/kinova/Documents/kinovaZED/src/State.h
+KinovaArm.h
+/home/kinova/Documents/kinovaZED/src/KinovaArm.h
 
 /home/kinova/Documents/kinovaZED/src/StateMachine.cpp
 stdio.h
@@ -47,6 +67,8 @@ State.h
 /home/kinova/Documents/kinovaZED/src/State.h
 Transition.h
 /home/kinova/Documents/kinovaZED/src/Transition.h
+KinovaArm.h
+/home/kinova/Documents/kinovaZED/src/KinovaArm.h
 
 /home/kinova/Documents/kinovaZED/src/TCPServer.cpp
 TCPServer.h
@@ -79,6 +101,8 @@ netinet/in.h
 /home/kinova/Documents/kinovaZED/src/Transition.h
 State.h
 /home/kinova/Documents/kinovaZED/src/State.h
+KinovaArm.h
+/home/kinova/Documents/kinovaZED/src/KinovaArm.h
 
 /home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/exception.h
 types.h

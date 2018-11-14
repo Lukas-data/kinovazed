@@ -7,8 +7,9 @@ add_library(kinovaArm_lib STATIC  KinovaArm.cpp KinovaArm.h
                                   TCPServer.cpp TCPServer.h
                                   PositionHandling.cpp PositionHandling.h
                                   StateMachine.cpp StateMachine.h
+                                  Transition.h
                                   State.cpp State.h
-                                  Transition.h)
+                                  CommandHandling.cpp CommandHandling.h)
 
 target_include_directories(kinovaArm_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
