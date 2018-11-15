@@ -9,19 +9,19 @@
 void CommandHandling::init() {
 
   //Communication to Kinova robotic arm
-  bool ArmConnected = false;
-  printf("Connecting to Jaco...\n");
-  while (ArmConnected == false) {
-      ArmConnected = true;
-      try{
-        JacoZED.init();
-      }
-      catch( const std::runtime_error& e ) {
-        printf("Connecting with Jaco failed. Retry...\n");
-        ArmConnected = false;
-      }
-      usleep(1000);
+  printf("Connecting to Jaco arm: ");
+  while (true) {
+    if( JacoZED.connect() ) {
+      printf("Connection established.\n");
+      break;
     }
+    else {
+      
+      printf("Retry...\n");
+    }
+    usleep(1000);
+  }
+  printf("-------------------------\n");
 
   //TCP-Server for Connection to RoboRio.
   bool serverCreated = false;
@@ -37,19 +37,33 @@ void CommandHandling::init() {
     }
     usleep(1000);
   }
-
+  printf("-------------------------\n");
   //Initialize StateMachine.
   KinovaSM.init(&JacoZED);
+  printf("-------------------------\n");
 }
 
 void CommandHandling::process() {
-   printf("CommandHandling::process()\n");
+  KinovaFSM::Event newEvent = KinovaFSM::NoEvent;
+
   //Send Command
+  //JacoZED.
   //sendCommand(commandOut);
-  
+  KinovaSM.process();
+
+  //getEvents
+  if( JacoZED.getError() ) {
+    newEvent = KinovaFSM::Error;
+  }
+  else {
+    newEvent = JacoZED.getEvent();
+  }
+  if (newEvent == KinovaFSM::NoEvent)
+  { 
+    printf("No Hardware Events\n");
+  }
+  KinovaSM.sendEvent(newEvent);
 }
-
-
 
 void CommandHandling::sendCommand(Command::Name command) {
   printf("Command sent to Roborio\n");

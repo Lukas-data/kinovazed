@@ -3,131 +3,58 @@
 #include "PositionHandling.h"
 
 
-#define KINOVA_DUMMY true
+  
+#define KINOVA_CONNECTED false
+
+
+using namespace KinDrv;
+
+
+KinovaArm::KinovaArm()
+{
+  if (KINOVA_CONNECTED == true) {
+
+    // explicitly initialize a libusb context; optional
+    KinDrv::init_usb();
+  
+
+    printf("Try to Connect to JacoArm \n");
+    try {
+      arm = new JacoArm();
+      printf("Successfully connected to JacoArm! \n");
+    } catch( KinDrv::KinDrvException &e ) {
+      printf("error %i: %s \n", e.error(), e.what());
+      throw std::runtime_error("Connection to JacoArm failed\n");
+    }
+  }
+  calcFactor = 0.0025;
+  EmergencyStop = false;
+}
+
 
 KinovaArm::~KinovaArm()
 {
-  if (KINOVA_DUMMY == false) {   
+  
+  if (KINOVA_CONNECTED == true) {
+    // explicitly close libusb context (only needed if explicitly openede before)
+    close_usb();
     delete arm;
     printf("Connection to JacoArm closed \n");
   }
-  Connected = false;
-}
-
-//Tries to connect to KinovaArm
-bool KinovaArm::connect() {
-  if (KINOVA_DUMMY == false && Connected == false) {
-    try {
-      arm = new KinDrv::JacoArm();
-      Connected = true;
-      return true;
-    } catch( KinDrv::KinDrvException &e ) {
-      
-      printf("Error %i, %s\n", e.error(), e.what());
-      return 0;
-    }
-  }
-  else {
-    Connected = true;
-    return 1;
-  }
-}
-
-//Gain API Control
-void KinovaArm::takeControl() {
-  if (KINOVA_DUMMY == false) {
-    printf("Gaining API control over the arm.\n");
-    try {
-      arm->start_api_ctrl();
-      printf("Gained API control over the arm.\n");
-      //armStatus = arm->get_status();
-      //printf("Arm is currently in state: %i \n", armStatus);
-    }
-    catch( KinDrv::KinDrvException &e ) {
-      printf("Error %i, %s\n", e.error(), e.what());
-      Connected = false;
-      Error = true;
-    }
-  }
-}
-
-void KinovaArm::initialize()
-{
-  if (KINOVA_DUMMY == false) {
-    try {
-      KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
-
-      //Moves Arm to Kinova Home position if not in initialized Position
-      if( armStatus == KinDrv::MODE_NOINIT) {
-        printf("Initializing: Status is NOINIT.\n");
-        //push the "HOME/RETRACT" button until arm is initialized
-        KinDrv::jaco_joystick_button_t buttons = {0};
-        buttons[2] = 1;
-        arm->push_joystick_button(buttons);
-      }
-      else {
-        EventOut = KinovaFSM::Initialized;
-      }
-      /*//Moves Arm to Own Home position after it moved to initializable Position
-      else {
-        if ( requestedPosition == POS_NOPOS ) {
-          arm->release_joystick();
-          //Initialization moves to Position 0 (ZEDe-Home)
-          DoMoveToPos(POS_ZEDHOME);
-          printf("Arm is moving to ZEDe-Home Position, state: %i \n", Status);
-        }
-        else if ( currentPosition != POS_ZEDHOME) {
-          moveToPos();
-        }
-        else {
-          Initializing = false;
-          Ready = true;
-          MovingHome = false;
-          writeDataToBuffer(INIT);
-          printf("Arm initialized at ZED-Home, state: %i \n", Status);
-        }
-      }
-      else if (MovingHome == false){
-        arm->release_joystick();
-        //Initialization moves to Own-Homeposition (for Testing Position)
-        //DoMoveToPos(0);
-        //MovingToPosition = false;
-        Initializing = false;
-        Ready = true;
-        writeDataToBuffer(INIT);
-        //DoSetMode(1);
-        printf("Arm initialized without moving, state: %i \n", Status);
-      } 
-      */
-    }
-    catch ( KinDrv::KinDrvException &e ) {
-      printf("Error %i, %s\n", e.error(), e.what());
-      Connected = false;
-      Error = true;
-    }
-  }
-  else {
-    EventOut = KinovaFSM::Initialized;
-    //writeDataToBuffer(INIT);
-    printf("Arm connection is turned off. Dummy-Initialized.\n");
-  }
-
-    
 }
 
 
-
-//Get-Functions
-bool KinovaArm::getError() { return Error; }
-
-KinovaFSM::Event KinovaArm::getEvent() {
-  KinovaFSM::Event e;
-  e = EventOut;
-  EventOut = KinovaFSM::NoEvent;
-  return e;
+void KinovaArm::init() {
+  printf("KinovaArm::init()\n");
 }
 
-/*---------------------
+void KinovaArm::test(int a) {
+  printf("KinovaArm::test: Last Value = %d\n", testInt);
+  testInt = a;
+  
+}
+
+
 void KinovaArm::JacoMain()
 {
   if (EmergencyStop == false) {
@@ -150,7 +77,21 @@ void KinovaArm::JacoMain()
   printf("requestedPosition: %d // ", requestedPosition);
   printf("currentPosition: %d\n", currentPosition);
   ////TEST
+  /*
+  PositionHandling::printPos();
+  Position = arm->get_cart_pos();
+  printf("Pos: ");
+  for (int i = 0; i <3; ++i)
+    printf("%f, ", Position.position[i]);
+  printf("Rot: ");
+  for (int i = 0; i <2; ++i)
+    printf("%f ,", Position.rotation[i]);
+  printf("%f \n", Position.rotation[2]);
   
+
+  float* test = PositionHandling::getCoordinates(0);
+  printf("Home.x: %f\n", test[2]);
+  */
 }
 
 
@@ -511,9 +452,67 @@ void KinovaArm::getArmStatus() {
     
   //}
  // printf("ArmStatus: %d\n", ArmStatus);
+/*
+  jaco_position_t CartPos = arm->get_cart_pos();
+  printf("CartPos.joints: ");
+  for (int i = 0; i<5; ++i) {
+    printf(" %f,", CartPos.joints[i]);
+  }
+  printf(" %f\n", CartPos.joints[5]);
+ */ 
 }
 
 
+/*
+int KinovaArm::goto_retract()
+{
+  // this can only be achieved from HOME position. Otherwise the arm
+  // will move to HOME. You'll probably need to uncomment the gripper movements
+  // in order for this to work. Or even better, implement moving to HOME position,
+  // which could be triggered before going to RETRACT ;)
+  jaco_retract_mode_t mode = arm->get_status();
+  switch( mode ) {
+    case MODE_READY_TO_RETRACT:
+      // is currently on the way to RETRACT. Need 2 button presses,
+      // 1st moves towards HOME, 2nd brings it back to its way to RETRACT
+      arm->push_joystick_button(2);
+      arm->release_joystick();
+      arm->push_joystick_button(2);
+      break;
+
+    case MODE_READY_STANDBY:
+    case MODE_RETRACT_TO_READY:
+      // just 1 button press needed
+      arm->push_joystick_button(2);
+      break;
+
+    case MODE_NORMAL_TO_READY:
+    case MODE_NORMAL:
+    case MODE_NOINIT:
+      printf("cannot go from NORMAL/NOINIT to RETRACT \n");
+      return 0;
+      break;
+
+    case MODE_ERROR:
+      printf("some error?! \n");
+      return 0;
+      break;
+
+    case MODE_RETRACT_STANDBY:
+      printf("nothing to do here \n");
+      return 1;
+      break;
+  }
+
+  while( mode != MODE_RETRACT_STANDBY ) {
+    usleep(1000*10); // 10 ms
+    mode = arm->get_status();
+  }
+  arm->release_joystick();
+
+  return 1;
+}
+*/
 int KinovaArm::goto_home()
 {
   Status = arm->get_status();
@@ -569,9 +568,7 @@ int KinovaArm::goto_home()
       MovingToPosition == false;
     }
   }
-
 }
-*/
 
 
 

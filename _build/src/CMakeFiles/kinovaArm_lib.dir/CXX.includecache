@@ -24,6 +24,8 @@ TCPServer.h
 KinovaArm.h
 /home/kinova/Documents/kinovaZED/src/KinovaArm.h
 
+/home/kinova/Documents/kinovaZED/src/Event.h
+
 /home/kinova/Documents/kinovaZED/src/KinovaArm.cpp
 stdio.h
 -
@@ -35,6 +37,8 @@ PositionHandling.h
 /home/kinova/Documents/kinovaZED/src/KinovaArm.h
 ../thirdparty/libkindrv/include/kindrv.h
 /home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/kindrv.h
+Event.h
+/home/kinova/Documents/kinovaZED/src/Event.h
 
 /home/kinova/Documents/kinovaZED/src/PositionHandling.cpp
 stdio.h
@@ -67,6 +71,8 @@ State.h
 /home/kinova/Documents/kinovaZED/src/State.h
 Transition.h
 /home/kinova/Documents/kinovaZED/src/Transition.h
+Event.h
+/home/kinova/Documents/kinovaZED/src/Event.h
 KinovaArm.h
 /home/kinova/Documents/kinovaZED/src/KinovaArm.h
 
@@ -103,6 +109,8 @@ State.h
 /home/kinova/Documents/kinovaZED/src/State.h
 KinovaArm.h
 /home/kinova/Documents/kinovaZED/src/KinovaArm.h
+Event.h
+/home/kinova/Documents/kinovaZED/src/Event.h
 
 /home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/exception.h
 types.h

@@ -3,6 +3,7 @@
 
 #include "State.h"
 #include "Transition.h"
+#include "Event.h"
 #include "KinovaArm.h"
 
 

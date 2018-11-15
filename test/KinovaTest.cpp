@@ -36,17 +36,23 @@ int main(int argc, char *argv[])
       printf("Sent evShutdown\n");
     }
     fsm.process();
-    usleep(1000);
+    usleep(1000000);
   }
   */
 
   /***************************/
   /* Testing CommandHandling */
   /***************************/
+  
   CommandHandling communication;
   communication.init();
   communication.sendEvent(KinovaFSM::Initialize);
-  //communication.process();
+  while (true) {
+    communication.process();
+    usleep(1000000);
+  }
+  
+    
   
 
 }

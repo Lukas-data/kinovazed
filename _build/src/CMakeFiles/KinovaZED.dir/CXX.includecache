@@ -6,9 +6,13 @@
 
 #IncludeRegexTransform: 
 
+/home/kinova/Documents/kinovaZED/src/Event.h
+
 /home/kinova/Documents/kinovaZED/src/KinovaArm.h
 ../thirdparty/libkindrv/include/kindrv.h
 /home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/kindrv.h
+Event.h
+/home/kinova/Documents/kinovaZED/src/Event.h
 
 /home/kinova/Documents/kinovaZED/src/KinovaMain.cpp
 stdio.h

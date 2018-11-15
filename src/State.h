@@ -35,9 +35,9 @@ class StatePowerOff : public State {
 
 };
 
-class StateSteering : public State {
+class StateInitialize : public State {
   public:
-    StateSteering() :
+    StateInitialize() :
       State(2)
       {}
     void entryAction();
@@ -45,14 +45,48 @@ class StateSteering : public State {
     void tickAction();
 
 };
-/*
+
+class StateSteering : public State {
+  public:
+    StateSteering() :
+      State(3)
+      {}
+    void entryAction();
+    void exitAction();
+    void tickAction();
+
+};
+
+class StateChangeMode : public State {
+  public:
+    StateChangeMode() :
+      State(4)
+      {}
+    void entryAction();
+    void exitAction();
+    void tickAction();
+
+};
+
 class StateMoveToPos : public State {
   public:
+    StateMoveToPos() :
+      State(5)
+      {}
     void entryAction();
     void exitAction();
     void tickAction();
 };
-*/
+
+class StateEStop : public State {
+  public:
+    StateEStop() :
+      State(6)
+      {}
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
 
 
 

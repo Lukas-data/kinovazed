@@ -18,7 +18,7 @@ int command;
 int data[3];
 
 bool responseSent;
-
+/*
 enum Commands { CLOSE_SERVER = -2,
                 CLOSE_CONNECTION = -1,
                 NOTHING = 0,
@@ -93,9 +93,10 @@ void sendAnswer() {
 
 
 
-
+*/
 int main(int argc, char *argv[])
 {
+/*
   bool ArmConnected;
   bool ServerCreated;
 
@@ -158,4 +159,5 @@ int main(int argc, char *argv[])
 
     printf("\n");
   }
+*/
 }

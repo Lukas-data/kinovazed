@@ -14,9 +14,13 @@ TCPServer.h
 KinovaArm.h
 ../src/KinovaArm.h
 
+../src/Event.h
+
 ../src/KinovaArm.h
 ../thirdparty/libkindrv/include/kindrv.h
 ../thirdparty/libkindrv/include/kindrv.h
+Event.h
+../src/Event.h
 
 ../src/State.h
 KinovaArm.h
@@ -27,6 +31,8 @@ State.h
 ../src/State.h
 Transition.h
 ../src/Transition.h
+Event.h
+../src/Event.h
 KinovaArm.h
 ../src/KinovaArm.h
 
@@ -39,6 +45,8 @@ State.h
 ../src/State.h
 KinovaArm.h
 ../src/KinovaArm.h
+Event.h
+../src/Event.h
 
 ../thirdparty/libkindrv/include/exception.h
 types.h

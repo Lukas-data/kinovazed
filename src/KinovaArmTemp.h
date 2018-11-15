@@ -2,48 +2,17 @@
 #define _KINOVAFUNCTION_H_
 
 #include "../thirdparty/libkindrv/include/kindrv.h"
-#include "Event.h"
 
 #define POSITION_RANGE 0.05
 
-//using namespace KinDrv;
+using namespace KinDrv;
 
 class KinovaArm {
+	
   public:
-	  KinovaArm() :
-      Connected(false),
-      Error(false),
-      EventOut(KinovaFSM::NoEvent)
-      {}
-  //calcFactor = 0.0025;
-  //EmergencyStop = false;
+	  KinovaArm();
     ~KinovaArm(); 
-    bool connect();
-    void takeControl();
-    void initialize();
-
-    bool getError();
-    KinovaFSM::Event getEvent();
-
-  private:
-    KinDrv::JacoArm *arm;
-    
-    bool Connected;
-    bool Error;
-    
-    KinovaFSM::Event EventOut;
-    
-    
-
-
-
-
-
-
-
-
-/*---------------------
-
+    void init();
     void test(int a);
     void JacoMain();
     int goto_retract();
@@ -78,11 +47,11 @@ class KinovaArm {
                       POS_NOPOS = 99
               };
 
-    
+    JacoArm *arm;
 
     int testInt;
 
-    
+    jaco_retract_mode_t Status;
     float currentPositionCord[6];
     int currentPosition;
     float requestedPositionCord[6];
@@ -124,7 +93,7 @@ class KinovaArm {
     void clearBuffer();
     void stopArm();
     void moveToPos();
-*/
+
 };
 
 #endif
