@@ -6,6 +6,7 @@ src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o
  /home/kinova/Documents/kinovaZED/src/CommandHandling.h
  /home/kinova/Documents/kinovaZED/src/Event.h
  /home/kinova/Documents/kinovaZED/src/KinovaArm.h
+ /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
  /home/kinova/Documents/kinovaZED/src/State.h
  /home/kinova/Documents/kinovaZED/src/StateMachine.h
  /home/kinova/Documents/kinovaZED/src/TCPServer.h
@@ -17,6 +18,7 @@ src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o
  /home/kinova/Documents/kinovaZED/src/Event.h
  /home/kinova/Documents/kinovaZED/src/KinovaArm.cpp
  /home/kinova/Documents/kinovaZED/src/KinovaArm.h
+ /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
  /home/kinova/Documents/kinovaZED/src/PositionHandling.h
  /home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/exception.h
  /home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/kindrv.h
@@ -27,6 +29,7 @@ src/CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.o
 src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o
  /home/kinova/Documents/kinovaZED/src/Event.h
  /home/kinova/Documents/kinovaZED/src/KinovaArm.h
+ /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
  /home/kinova/Documents/kinovaZED/src/State.cpp
  /home/kinova/Documents/kinovaZED/src/State.h
  /home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/exception.h
@@ -35,6 +38,7 @@ src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o
 src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o
  /home/kinova/Documents/kinovaZED/src/Event.h
  /home/kinova/Documents/kinovaZED/src/KinovaArm.h
+ /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
  /home/kinova/Documents/kinovaZED/src/State.h
  /home/kinova/Documents/kinovaZED/src/StateMachine.cpp
  /home/kinova/Documents/kinovaZED/src/StateMachine.h

@@ -4,6 +4,7 @@
 src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/Event.h
 src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/KinovaArm.h
 src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/KinovaMain.cpp
+src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/KinovaStatus.h
 src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/TCPServer.h
 src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../thirdparty/libkindrv/include/exception.h
 src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../thirdparty/libkindrv/include/kindrv.h

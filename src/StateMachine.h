@@ -14,7 +14,8 @@ class StateMachine {
   public:
     StateMachine() :
       //Calculates the Number Of Transitions in the Transition Table as it is assumed unchanged during runtime.
-      numberOfTransitions(sizeof(KinovaFSM::TransitionTable)/sizeof(KinovaFSM::Transition)) 
+      InputEvent(KinovaFSM::NoEvent),
+      NumberOfTransitions(sizeof(KinovaFSM::TransitionTable)/sizeof(KinovaFSM::Transition)) 
       {}
 
     ~StateMachine();
@@ -29,9 +30,9 @@ class StateMachine {
     void process();
 
   private:
-    KinovaFSM::Event inputEvent;
-    State* currentState;
-    int numberOfTransitions;
+    KinovaFSM::Event InputEvent;
+    State* CurrentState;
+    int NumberOfTransitions;
 
 };
 #endif

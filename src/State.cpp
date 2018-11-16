@@ -1,16 +1,17 @@
 #include <stdio.h>
 
+
 #include "State.h"
+#include "KinovaStatus.h"
 
 KinovaArm* State::JacoZED = NULL;
 
-int State::getId() { return  Id; }
 void State::init(KinovaArm* jacoZED) {JacoZED = jacoZED; }
 
 // PowerOff
 void StatePowerOff::entryAction() {
   printf("Executing StatePowerOff entryAction.\n");
-  
+  JacoZED->releaseControl();  
 }
 void StatePowerOff::exitAction() {
   printf("Executing StatePowerOff exitAction.\n");
@@ -26,11 +27,72 @@ void StateInitialize::entryAction() {
 }
 void StateInitialize::exitAction() {
   printf("Executing StateInitialize exitAction.\n");
-  //Don't Move!
+  JacoZED->changeMode(KinovaStatus::Translation);
 }
 void StateInitialize::tickAction() {
   printf("Executing StateInitialize tickAction.\n");
   JacoZED->initialize();
+}
+
+// Idle
+void StateIdle::entryAction() {
+  printf("Executing StateIdle entryAction.\n");
+  JacoZED->dontMove();
+  
+}
+void StateIdle::exitAction() {
+  printf("Executing StateIdle exitAction.\n");
+}
+void StateIdle::tickAction() {
+  printf("Executing StateIdle tickAction.\n");
+}
+
+// ChangeModeTranslation
+void StateChangeModeTranslation::entryAction() {
+  printf("Executing StateChangeModeTranslation entryAction.\n");
+  JacoZED->changeMode(KinovaStatus::Translation);
+}
+void StateChangeModeTranslation::exitAction() {
+  printf("Executing StateChangeModeTranslation exitAction.\n");
+}
+void StateChangeModeTranslation::tickAction() {
+  printf("Executing StateChangeModeTranslation tickAction.\n");
+}
+
+// ChangeModeRotation
+void StateChangeModeRotation::entryAction() {
+  printf("Executing StateChangeModeRotation entryAction.\n");
+  JacoZED->changeMode(KinovaStatus::Rotation);
+}
+void StateChangeModeRotation::exitAction() {
+  printf("Executing StateChangeModeRotation exitAction.\n");
+}
+void StateChangeModeRotation::tickAction() {
+  printf("Executing StateChangeModeRotation tickAction.\n");
+}
+
+// ChangeModeAxis1
+void StateChangeModeAxis1::entryAction() {
+  printf("Executing StateChangeModeAxis1 entryAction.\n");
+  JacoZED->changeMode(KinovaStatus::Axis1);
+}
+void StateChangeModeAxis1::exitAction() {
+  printf("Executing StateChangeModeAxis1 exitAction.\n");
+}
+void StateChangeModeAxis1::tickAction() {
+  printf("Executing StateChangeModeAxis1 tickAction.\n");
+}
+
+// ChangeModeAxis2
+void StateChangeModeAxis2::entryAction() {
+  printf("Executing StateChangeModeAxis2 entryAction.\n");
+  JacoZED->changeMode(KinovaStatus::Axis2);
+}
+void StateChangeModeAxis2::exitAction() {
+  printf("Executing StateChangeModeAxis2 exitAction.\n");
+}
+void StateChangeModeAxis2::tickAction() {
+  printf("Executing StateChangeModeAxis2 tickAction.\n");
 }
 
 // Steering
@@ -44,26 +106,15 @@ void StateSteering::tickAction() {
   printf("Executing StateSteering tickAction.\n");
 }
 
-// ChangeMode
-void StateChangeMode::entryAction() {
-  printf("Executing StateChangeMode entryAction.\n");
+// MoveTrajectory
+void StateMoveTrajectory::entryAction() {
+  printf("Executing StateMoveTrajectory entryAction.\n");
 }
-void StateChangeMode::exitAction() {
-  printf("Executing StateChangeMode exitAction.\n");
+void StateMoveTrajectory::exitAction() {
+  printf("Executing StateMoveTrajectory exitAction.\n");
 }
-void StateChangeMode::tickAction() {
-  printf("Executing StateChangeMode tickAction.\n");
-}
-
-// MoveToPos
-void StateMoveToPos::entryAction() {
-  printf("Executing StateMoveToPos entryAction.\n");
-}
-void StateMoveToPos::exitAction() {
-  printf("Executing StateMoveToPos exitAction.\n");
-}
-void StateMoveToPos::tickAction() {
-  printf("Executing StateMoveToPos tickAction.\n");
+void StateMoveTrajectory::tickAction() {
+  printf("Executing StateMoveTrajectory tickAction.\n");
 }
 
 // EmergencyStop

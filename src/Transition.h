@@ -13,38 +13,18 @@ namespace KinovaFSM {
 //States
   static StatePowerOff powerOff;
   static StateInitialize initializing;
+  static StateIdle idle;
+  static StateChangeModeTranslation toTranslation;
+  static StateChangeModeRotation toRotation;
+  static StateChangeModeAxis1 toAxis1;
+  static StateChangeModeAxis2 toAxis2;
   static StateSteering steering;
-  static StateChangeMode changeMode;
-  static StateMoveToPos moveToPos;
+  static StateMoveTrajectory moveTrajectory;
   static StateEStop eStop;
 
 //StartUp-State
   State* const initState = &powerOff;
-  
-/*
-//Events
-  enum Event {
-    //System Event
-    NoEvent,
-    Tick,
-    
-    //User Event
-    Initialize,
-    SetMode,
-    MoveJoystick,
-    Shutdown,
-    SelectPosition,
-    E_Stop,
-    QuitEStop,
-    
-    //Hardware Event
-    Initialized,
-    ModeChanged,
-    PositionReached,
-    Error,
 
-  };
-*/
 
 //Transition definition.
   struct Transition {
@@ -55,29 +35,43 @@ namespace KinovaFSM {
 
 //Transition Table. Next State is executed, when Current State and Transition Event match.
   static const Transition TransitionTable[] = {
-    //Current         Transition        Next
-    //State           Event             State
-    { &powerOff,      Initialize,       &initializing   },
-    { &powerOff,      E_Stop,           &eStop          },
+    //Current           Transition          Next
+    //State             Event               State
+    { &powerOff,        Initialize,         &initializing   },
+    { &powerOff,        E_Stop,             &eStop          },
 
-    { &initializing,  Initialized,      &steering       },
-    { &initializing,  E_Stop,           &eStop          },
+    { &initializing,    Initialized,        &idle           },
+    { &initializing,    E_Stop,             &eStop          },
 
-    { &steering,      SelectPosition,   &moveToPos      },
-    { &steering,      SetMode,          &changeMode     },
-    { &steering,      Shutdown,         &powerOff       },
-    { &steering,      E_Stop,           &eStop          },
+    { &idle,            SetModeTranslation, &toTranslation  },
+    { &idle,            SetModeRotation,    &toRotation     },
+    { &idle,            SetModeAxis1,       &toAxis1        },
+    { &idle,            SetModeAxis2,       &toAxis2        },
+    { &idle,            SelectPosition,     &moveTrajectory },
+    { &idle,            Shutdown,           &powerOff       },
+    { &idle,            E_Stop,             &eStop          },
 
-    { &changeMode,    ModeChanged,      &steering       },
-    { &changeMode,    Shutdown,         &powerOff       },
-    { &changeMode,    E_Stop,           &eStop          },
-    
-    { &moveToPos,     PositionReached,  &steering       },
-    { &moveToPos,     MoveJoystick,     &steering       },
-    { &moveToPos,     Shutdown,         &powerOff       },
-    { &moveToPos,     E_Stop,           &eStop          },
+    { &steering,        SelectPosition,     &moveTrajectory },
+    { &steering,        SetModeTranslation, &toTranslation  },
+    { &steering,        SetModeRotation,    &toRotation      },
+    { &steering,        SetModeAxis1,       &toAxis1        },
+    { &steering,        SetModeAxis2,       &toAxis2        },
+    { &steering,        NoMode,             &idle           },
+    { &steering,        Shutdown,           &powerOff       },
+    { &steering,        E_Stop,             &eStop          },
 
-    { &eStop,         QuitEStop,        &powerOff       },
+    {&toTranslation,    ModeChanged,        &steering       },
+    {&toRotation,       ModeChanged,        &steering       },
+    {&toAxis1,          ModeChanged,        &steering       },
+    {&toAxis2,          ModeChanged,        &steering       },
+
+    { &moveTrajectory,  PositionReached,    &steering       },
+    { &moveTrajectory,  MoveJoystick,       &steering       },
+    { &moveTrajectory,  NoMode,             &idle           },
+    { &moveTrajectory,  Shutdown,           &powerOff       },
+    { &moveTrajectory,  E_Stop,             &eStop          },
+
+    { &eStop,           QuitEStop,          &powerOff       },
 
   };
 

@@ -9,6 +9,7 @@ add_library(kinovaArm_lib STATIC  KinovaArm.cpp KinovaArm.h
                                   StateMachine.cpp StateMachine.h
                                   Transition.h
                                   Event.h
+                                  KinovaStatus.h
                                   State.cpp State.h
                                   CommandHandling.cpp CommandHandling.h)
 

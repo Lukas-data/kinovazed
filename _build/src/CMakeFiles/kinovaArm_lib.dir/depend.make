@@ -5,6 +5,7 @@ src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o: ../src/CommandHandling.c
 src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o: ../src/CommandHandling.h
 src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o: ../src/Event.h
 src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o: ../src/KinovaArm.h
+src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o: ../src/KinovaStatus.h
 src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o: ../src/State.h
 src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o: ../src/StateMachine.h
 src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o: ../src/TCPServer.h
@@ -16,6 +17,7 @@ src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o: ../thirdparty/libkindrv/
 src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o: ../src/Event.h
 src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o: ../src/KinovaArm.cpp
 src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o: ../src/KinovaArm.h
+src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o: ../src/KinovaStatus.h
 src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o: ../src/PositionHandling.h
 src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o: ../thirdparty/libkindrv/include/exception.h
 src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o: ../thirdparty/libkindrv/include/kindrv.h
@@ -26,6 +28,7 @@ src/CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.o: ../src/PositionHandling
 
 src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o: ../src/Event.h
 src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o: ../src/KinovaArm.h
+src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o: ../src/KinovaStatus.h
 src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o: ../src/State.cpp
 src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o: ../src/State.h
 src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o: ../thirdparty/libkindrv/include/exception.h
@@ -34,6 +37,7 @@ src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o: ../thirdparty/libkindrv/include/ty
 
 src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o: ../src/Event.h
 src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o: ../src/KinovaArm.h
+src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o: ../src/KinovaStatus.h
 src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o: ../src/State.h
 src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o: ../src/StateMachine.cpp
 src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o: ../src/StateMachine.h

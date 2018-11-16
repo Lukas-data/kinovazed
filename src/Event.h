@@ -13,7 +13,11 @@ namespace KinovaFSM {
     
     //User Event
     Initialize,
-    SetMode,
+    NoMode,
+    SetModeTranslation,
+    SetModeRotation,
+    SetModeAxis1,
+    SetModeAxis2,
     MoveJoystick,
     Shutdown,
     SelectPosition,
@@ -36,7 +40,11 @@ namespace KinovaFSM {
     
     //User Event
     "Initialize",
-    "SetMode",
+    "NoMode",
+    "SetModeTranslation",
+    "SetModeRotation",
+    "SetModeAxis1",
+    "SetModeAxis2",
     "MoveJoystick",
     "Shutdown",
     "SelectPosition",

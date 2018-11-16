@@ -14,6 +14,16 @@
 //StateMachine *fsm;
 //CommandHandling *communication;
 
+  CommandHandling communication;
+
+void wait(int n) {
+  for (int i =0; i<n; i++) {
+    communication.process();
+    usleep(1000000);
+  }
+}
+
+
 int main(int argc, char *argv[])
 {
   /************************/
@@ -44,15 +54,16 @@ int main(int argc, char *argv[])
   /* Testing CommandHandling */
   /***************************/
   
-  CommandHandling communication;
+
   communication.init();
-  communication.sendEvent(KinovaFSM::Initialize);
-  while (true) {
-    communication.process();
-    usleep(1000000);
-  }
-  
-    
-  
+  communication.process();
+  usleep(1000000);
+  communication.debugSendEvent(KinovaFSM::Initialize);
+  wait(6);
+  //communication.debugSendEvent(KinovaFSM::Translation);
+  //wait(3);
+
 
 }
+
+

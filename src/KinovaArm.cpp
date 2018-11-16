@@ -1,17 +1,26 @@
 #include <stdio.h>
+
+
 #include "KinovaArm.h"
 #include "PositionHandling.h"
 
 
-#define KINOVA_DUMMY true
+#define KINOVA_DUMMY false
 
-KinovaArm::~KinovaArm()
-{
+KinovaArm::~KinovaArm() {
   if (KINOVA_DUMMY == false) {   
     delete arm;
     printf("Connection to JacoArm closed \n");
   }
   Connected = false;
+}
+
+void KinovaArm::error(const char* funcName, KinDrv::KinDrvException &e, bool warning) {
+  printf("KinovaArm::%s(): Error %i, %s\n",funcName, e.error(), e.what());
+  if (!warning) {
+    Connected = false; //Simplification!!
+    Error = true;
+  }
 }
 
 //Tries to connect to KinovaArm
@@ -22,8 +31,7 @@ bool KinovaArm::connect() {
       Connected = true;
       return true;
     } catch( KinDrv::KinDrvException &e ) {
-      
-      printf("Error %i, %s\n", e.error(), e.what());
+      error("connect", e, true);
       return 0;
     }
   }
@@ -36,7 +44,6 @@ bool KinovaArm::connect() {
 //Gain API Control
 void KinovaArm::takeControl() {
   if (KINOVA_DUMMY == false) {
-    printf("Gaining API control over the arm.\n");
     try {
       arm->start_api_ctrl();
       printf("Gained API control over the arm.\n");
@@ -44,13 +51,51 @@ void KinovaArm::takeControl() {
       //printf("Arm is currently in state: %i \n", armStatus);
     }
     catch( KinDrv::KinDrvException &e ) {
-      printf("Error %i, %s\n", e.error(), e.what());
+      //printf("KinovaArm::takeControl(): Error %i, %s\n", e.error(), e.what());
+      error("takeControl", e, false);
+    }
+  }
+}
+
+//Release API Control
+void KinovaArm::releaseControl() {
+  if (KINOVA_DUMMY == false) {
+    try {
+      arm->stop_api_ctrl();
+      printf("Released API control over the arm.\n");
+      //armStatus = arm->get_status();
+      //printf("Arm is currently in state: %i \n", armStatus);
+    }
+    catch( KinDrv::KinDrvException &e ) {
+      //printf("KinovaArm::takeControl(): Error %i, %s\n", e.error(), e.what());
+      error("releaseControl", e, false);
+    }
+  }
+}
+
+//Stops arm
+void KinovaArm::dontMove() {
+  if (KINOVA_DUMMY == false) {
+    KinDrv::jaco_joystick_axis_t axes;
+    axes.trans_lr = 0; 
+    axes.trans_fb = 0;
+    axes.trans_rot = 0;
+    axes.wrist_lr = 0;
+    axes.wrist_fb = 0;
+    axes.wrist_rot = 0;
+    try {
+      arm->move_joystick_axis(axes);
+      arm->release_joystick();
+    }
+    catch( KinDrv::KinDrvException &e ) {
+      error("dontMove", e, false);
       Connected = false;
       Error = true;
     }
   }
 }
 
+//Initialize Arm and go to Home position
 void KinovaArm::initialize()
 {
   if (KINOVA_DUMMY == false) {
@@ -111,11 +156,78 @@ void KinovaArm::initialize()
     //writeDataToBuffer(INIT);
     printf("Arm connection is turned off. Dummy-Initialized.\n");
   }
-
-    
 }
 
+//ChangeMode
+/*
+void KinovaArm::DoSetMode() {
+  if (EmergencyStop == false) {
+    if (mode>0 && mode < 5) {
+      if (mode == currentRobotMode) {
+        printf("Mode allready set to %d\n",currentRobotMode);
+        writeDataToBuffer(MODE_SET);
+      }
+      else if (mode != requestedRobotMode) {
+        //SetRequestedKinematicsMode
+        if (mode == 1 || mode == 2)
+          requestedKinematicsMode = 1;
+        if (mode == 3 || mode == 4)
+          requestedKinematicsMode = 2;
+        //SetRequestedJSMode
+        if (mode == 1 || mode == 3)
+          requestedJSMode = 1;
+        if (mode == 2 || mode == 4)
+          requestedJSMode = 2;
 
+        SettingMode = true;  
+        setModeCycleCount = 0;
+        requestedRobotMode = mode;   
+      }
+    }
+    else
+      requestedRobotMode = currentRobotMode;  //Requested Mode unknown
+  //printf("setting Mode...\n"); 
+  }
+}
+*/
+
+//Changes current Mode 
+void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
+  if (Mode != nextMode) {
+    if (KINOVA_DUMMY == false) {
+      try {
+        if( (Mode != KinovaStatus::Axis1 && Mode != KinovaStatus::Axis2)
+         && (nextMode == KinovaStatus::Axis1 || nextMode == KinovaStatus::Axis2) ) {
+          arm->set_control_ang();
+        }
+        if( (Mode != KinovaStatus::Translation && Mode != KinovaStatus::Rotation)
+         && (nextMode == KinovaStatus::Translation || nextMode == KinovaStatus::Rotation) ) {
+          arm->set_control_cart();
+        }
+      }
+      catch( KinDrv::KinDrvException &e ) {
+        error("changeMode", e, false);
+        Connected = false;
+        Error = true;
+      }
+    }
+    Mode = nextMode;
+    printf("Mode set to %d\n", Mode);
+  }
+  else { printf("Mode allready set to %d\n", Mode);  }
+  EventOut = KinovaFSM::ModeChanged;
+}
+/*
+void KinovaArm::setNextMode(KinovaStatus::SteeringMode mode) {
+  NextMode = mode;
+  printf("next Mode is %d.\n",mode);
+}
+
+void KinovaArm::resetNextMode() {
+  NextMode = Mode;
+  printf("next Mode reset to %d.\n",NextMode);
+}
+*/
 
 //Get-Functions
 bool KinovaArm::getError() { return Error; }

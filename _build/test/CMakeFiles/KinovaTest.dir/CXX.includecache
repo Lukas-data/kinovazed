@@ -13,6 +13,8 @@ TCPServer.h
 ../src/TCPServer.h
 KinovaArm.h
 ../src/KinovaArm.h
+KinovaStatus.h
+../src/KinovaStatus.h
 
 ../src/Event.h
 
@@ -21,6 +23,10 @@ KinovaArm.h
 ../thirdparty/libkindrv/include/kindrv.h
 Event.h
 ../src/Event.h
+KinovaStatus.h
+../src/KinovaStatus.h
+
+../src/KinovaStatus.h
 
 ../src/State.h
 KinovaArm.h

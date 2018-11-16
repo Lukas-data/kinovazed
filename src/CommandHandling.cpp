@@ -40,17 +40,14 @@ void CommandHandling::init() {
   printf("-------------------------\n");
   //Initialize StateMachine.
   KinovaSM.init(&JacoZED);
-  printf("-------------------------\n");
 }
 
 void CommandHandling::process() {
   KinovaFSM::Event newEvent = KinovaFSM::NoEvent;
-
   //Send Command
   //JacoZED.
   //sendCommand(commandOut);
   KinovaSM.process();
-
   //getEvents
   if( JacoZED.getError() ) {
     newEvent = KinovaFSM::Error;
@@ -69,7 +66,10 @@ void CommandHandling::sendCommand(Command::Name command) {
   printf("Command sent to Roborio\n");
 }
 
+
+
 //* Debug use only! */
-void CommandHandling::sendEvent(KinovaFSM::Event e) {
+void CommandHandling::debugSendEvent(KinovaFSM::Event e) {
   KinovaSM.sendEvent(e);
 }
+

@@ -6,10 +6,6 @@
 //Abstract State-Class. (Id not used, but implemented for debug uses.)
 class State {
   public:
-    State(int id) :
-      Id(id)
-      {}
-    int getId();
     void init(KinovaArm* jacoZED);
 	  virtual void entryAction() = 0;
     virtual void exitAction() = 0;
@@ -18,7 +14,6 @@ class State {
   protected:
     static KinovaArm* JacoZED;
     int Id;
-
 };
 
 
@@ -26,53 +21,69 @@ class State {
 
 class StatePowerOff : public State {
   public:
-    StatePowerOff() :
-      State(1)
-      {}
     void entryAction();
     void exitAction();
     void tickAction();
-
 };
 
 class StateInitialize : public State {
   public:
-    StateInitialize() :
-      State(2)
-      {}
     void entryAction();
     void exitAction();
     void tickAction();
+};
 
+class StateIdle : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
+class StateChangeModeTranslation : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
+class StateChangeModeRotation : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
+class StateChangeModeAxis1 : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
+class StateChangeModeAxis2 : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
 };
 
 class StateSteering : public State {
   public:
-    StateSteering() :
-      State(3)
-      {}
     void entryAction();
     void exitAction();
     void tickAction();
-
 };
 
 class StateChangeMode : public State {
   public:
-    StateChangeMode() :
-      State(4)
-      {}
     void entryAction();
     void exitAction();
     void tickAction();
-
 };
 
-class StateMoveToPos : public State {
+class StateMoveTrajectory : public State {
   public:
-    StateMoveToPos() :
-      State(5)
-      {}
     void entryAction();
     void exitAction();
     void tickAction();
@@ -80,9 +91,6 @@ class StateMoveToPos : public State {
 
 class StateEStop : public State {
   public:
-    StateEStop() :
-      State(6)
-      {}
     void entryAction();
     void exitAction();
     void tickAction();

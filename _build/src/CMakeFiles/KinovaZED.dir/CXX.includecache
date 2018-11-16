@@ -13,6 +13,8 @@
 /home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/kindrv.h
 Event.h
 /home/kinova/Documents/kinovaZED/src/Event.h
+KinovaStatus.h
+/home/kinova/Documents/kinovaZED/src/KinovaStatus.h
 
 /home/kinova/Documents/kinovaZED/src/KinovaMain.cpp
 stdio.h
@@ -21,6 +23,8 @@ KinovaArm.h
 /home/kinova/Documents/kinovaZED/src/KinovaArm.h
 TCPServer.h
 /home/kinova/Documents/kinovaZED/src/TCPServer.h
+
+/home/kinova/Documents/kinovaZED/src/KinovaStatus.h
 
 /home/kinova/Documents/kinovaZED/src/TCPServer.h
 netinet/in.h

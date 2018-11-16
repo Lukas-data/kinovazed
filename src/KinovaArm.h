@@ -3,33 +3,48 @@
 
 #include "../thirdparty/libkindrv/include/kindrv.h"
 #include "Event.h"
+#include "KinovaStatus.h"
 
 #define POSITION_RANGE 0.05
 
-//using namespace KinDrv;
+namespace KinovaStatus{
+
+}
 
 class KinovaArm {
   public:
 	  KinovaArm() :
       Connected(false),
       Error(false),
-      EventOut(KinovaFSM::NoEvent)
+      EventOut(KinovaFSM::NoEvent),
+      Mode(KinovaStatus::NoMode) 
       {}
   //calcFactor = 0.0025;
   //EmergencyStop = false;
     ~KinovaArm(); 
+    void error(const char* funcName, KinDrv::KinDrvException &e, bool warning);
     bool connect();
     void takeControl();
+    void releaseControl();
+
+    void dontMove();
     void initialize();
+    void changeMode(KinovaStatus::SteeringMode nextMode);
+
+    void setNextMode(KinovaStatus::SteeringMode mode);
+    void resetNextMode();
 
     bool getError();
     KinovaFSM::Event getEvent();
+
+    
 
   private:
     KinDrv::JacoArm *arm;
     
     bool Connected;
     bool Error;
+    KinovaStatus::SteeringMode Mode;
     
     KinovaFSM::Event EventOut;
     

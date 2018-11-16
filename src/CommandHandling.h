@@ -4,6 +4,7 @@
 #include "StateMachine.h"
 #include "TCPServer.h"
 #include "KinovaArm.h"
+#include "KinovaStatus.h"
 
 /**/
 
@@ -29,7 +30,8 @@ class CommandHandling {
     void sendCommand(Command::Name command);
 
     //Debug only:
-    void sendEvent(KinovaFSM::Event e);
+    void debugSendEvent(KinovaFSM::Event e);
+
   private:
     KinovaArm JacoZED;
     TCPServer RoboRio;

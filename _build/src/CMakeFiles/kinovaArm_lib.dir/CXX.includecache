@@ -23,6 +23,8 @@ TCPServer.h
 /home/kinova/Documents/kinovaZED/src/TCPServer.h
 KinovaArm.h
 /home/kinova/Documents/kinovaZED/src/KinovaArm.h
+KinovaStatus.h
+/home/kinova/Documents/kinovaZED/src/KinovaStatus.h
 
 /home/kinova/Documents/kinovaZED/src/Event.h
 
@@ -39,6 +41,10 @@ PositionHandling.h
 /home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include/kindrv.h
 Event.h
 /home/kinova/Documents/kinovaZED/src/Event.h
+KinovaStatus.h
+/home/kinova/Documents/kinovaZED/src/KinovaStatus.h
+
+/home/kinova/Documents/kinovaZED/src/KinovaStatus.h
 
 /home/kinova/Documents/kinovaZED/src/PositionHandling.cpp
 stdio.h
@@ -55,6 +61,8 @@ stdio.h
 -
 State.h
 /home/kinova/Documents/kinovaZED/src/State.h
+KinovaStatus.h
+/home/kinova/Documents/kinovaZED/src/KinovaStatus.h
 
 /home/kinova/Documents/kinovaZED/src/State.h
 KinovaArm.h
