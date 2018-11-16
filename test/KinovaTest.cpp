@@ -60,8 +60,8 @@ int main(int argc, char *argv[])
   usleep(1000000);
   communication.debugSendEvent(KinovaFSM::Initialize);
   wait(6);
-  //communication.debugSendEvent(KinovaFSM::Translation);
-  //wait(3);
+  communication.debugSendEvent(KinovaFSM::SetModeTranslation);
+  wait(3);
 
 
 }

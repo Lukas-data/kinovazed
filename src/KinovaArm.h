@@ -17,7 +17,11 @@ class KinovaArm {
       Connected(false),
       Error(false),
       EventOut(KinovaFSM::NoEvent),
-      Mode(KinovaStatus::NoMode) 
+      Mode(KinovaStatus::NoMode),
+      JoystickX(0),
+      JoystickY(0),
+      JoystickZ(0),
+      JoystickCalcFactor(0.0025) 
       {}
   //calcFactor = 0.0025;
   //EmergencyStop = false;
@@ -30,9 +34,7 @@ class KinovaArm {
     void dontMove();
     void initialize();
     void changeMode(KinovaStatus::SteeringMode nextMode);
-
-    void setNextMode(KinovaStatus::SteeringMode mode);
-    void resetNextMode();
+    void move();
 
     bool getError();
     KinovaFSM::Event getEvent();
@@ -45,6 +47,11 @@ class KinovaArm {
     bool Connected;
     bool Error;
     KinovaStatus::SteeringMode Mode;
+
+    int JoystickX;
+    int JoystickY;
+    int JoystickZ;
+    float JoystickCalcFactor;
     
     KinovaFSM::Event EventOut;
     

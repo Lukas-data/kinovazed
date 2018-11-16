@@ -89,8 +89,6 @@ void KinovaArm::dontMove() {
     }
     catch( KinDrv::KinDrvException &e ) {
       error("dontMove", e, false);
-      Connected = false;
-      Error = true;
     }
   }
 }
@@ -146,9 +144,7 @@ void KinovaArm::initialize()
       */
     }
     catch ( KinDrv::KinDrvException &e ) {
-      printf("Error %i, %s\n", e.error(), e.what());
-      Connected = false;
-      Error = true;
+      error("initialize", e, false);
     }
   }
   else {
@@ -207,8 +203,6 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
       }
       catch( KinDrv::KinDrvException &e ) {
         error("changeMode", e, false);
-        Connected = false;
-        Error = true;
       }
     }
     Mode = nextMode;
@@ -217,17 +211,42 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
   else { printf("Mode allready set to %d\n", Mode);  }
   EventOut = KinovaFSM::ModeChanged;
 }
-/*
-void KinovaArm::setNextMode(KinovaStatus::SteeringMode mode) {
-  NextMode = mode;
-  printf("next Mode is %d.\n",mode);
+
+//Moves arm according to Joystick signal.
+void KinovaArm::move() {
+  if (KINOVA_DUMMY == false) {
+    KinDrv::jaco_joystick_axis_t axes;
+    double currentSpeedX = -JoystickX*JoystickCalcFactor;
+    double currentSpeedY = -JoystickY*JoystickCalcFactor;
+    double currentSpeedZ = JoystickZ*JoystickCalcFactor;
+    
+    axes.trans_lr = 0; 
+    axes.trans_fb = 0;
+    axes.trans_rot = 0;
+    axes.wrist_lr = 0;
+    axes.wrist_fb = 0;
+    axes.wrist_rot = 0;
+    if (Mode == KinovaStatus::Translation || Mode == KinovaStatus::Axis1) {
+      axes.trans_lr = currentSpeedX; 
+      axes.trans_fb = currentSpeedY;
+      axes.trans_rot = currentSpeedZ;
+    }
+    if (Mode == KinovaStatus::Rotation || Mode == KinovaStatus::Axis2) {
+      axes.trans_lr = 0; 
+      axes.trans_fb = 0;
+      axes.trans_rot = 0; 
+    }
+    try {
+      arm->move_joystick_axis(axes);
+    }
+    catch( KinDrv::KinDrvException &e ) {
+      error("move", e, false);
+    }
+  }
+  //printf("MoveArm In Mode: %d with x= %f, y= %f, z= %f\n",Mode, currentSpeedX,currentSpeedY,currentSpeedZ);
 }
 
-void KinovaArm::resetNextMode() {
-  NextMode = Mode;
-  printf("next Mode reset to %d.\n",NextMode);
-}
-*/
+
 
 //Get-Functions
 bool KinovaArm::getError() { return Error; }
