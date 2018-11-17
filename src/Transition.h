@@ -53,17 +53,17 @@ namespace KinovaFSM {
 
     { &steering,        SelectPosition,     &moveTrajectory },
     { &steering,        SetModeTranslation, &toTranslation  },
-    { &steering,        SetModeRotation,    &toRotation      },
+    { &steering,        SetModeRotation,    &toRotation     },
     { &steering,        SetModeAxis1,       &toAxis1        },
     { &steering,        SetModeAxis2,       &toAxis2        },
     { &steering,        NoMode,             &idle           },
     { &steering,        Shutdown,           &powerOff       },
     { &steering,        E_Stop,             &eStop          },
 
-    {&toTranslation,    ModeChanged,        &steering       },
-    {&toRotation,       ModeChanged,        &steering       },
-    {&toAxis1,          ModeChanged,        &steering       },
-    {&toAxis2,          ModeChanged,        &steering       },
+    {&toTranslation,    ModeTranslation,    &steering       },
+    {&toRotation,       ModeRotation,       &steering       },
+    {&toAxis1,          ModeAxis1,          &steering       },
+    {&toAxis2,          ModeAxis2,          &steering       },
 
     { &moveTrajectory,  PositionReached,    &steering       },
     { &moveTrajectory,  MoveJoystick,       &steering       },

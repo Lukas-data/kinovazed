@@ -57,6 +57,7 @@ void StateChangeModeTranslation::exitAction() {
 }
 void StateChangeModeTranslation::tickAction() {
   printf("Executing StateChangeModeTranslation tickAction.\n");
+  JacoZED->modeChangeTimer();
 }
 
 // ChangeModeRotation
@@ -69,6 +70,7 @@ void StateChangeModeRotation::exitAction() {
 }
 void StateChangeModeRotation::tickAction() {
   printf("Executing StateChangeModeRotation tickAction.\n");
+  JacoZED->modeChangeTimer();
 }
 
 // ChangeModeAxis1
@@ -81,6 +83,7 @@ void StateChangeModeAxis1::exitAction() {
 }
 void StateChangeModeAxis1::tickAction() {
   printf("Executing StateChangeModeAxis1 tickAction.\n");
+  JacoZED->modeChangeTimer();
 }
 
 // ChangeModeAxis2
@@ -93,6 +96,7 @@ void StateChangeModeAxis2::exitAction() {
 }
 void StateChangeModeAxis2::tickAction() {
   printf("Executing StateChangeModeAxis2 tickAction.\n");
+  JacoZED->modeChangeTimer();
 }
 
 // Steering

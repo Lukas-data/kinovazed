@@ -6,21 +6,10 @@
 #include "KinovaArm.h"
 #include "KinovaStatus.h"
 
+
 /**/
 
-struct Command {
-  enum Name {
-    Nothing = 0,
-    Init = 1,
-    SetMode = 2,
-    Steer = 3,
-    MoveToPos = 4,
-    PosReached = 5,
-    EStop = 91,
-    EStop_Quit = 92,
-    Error = 99
-  };
-};
+
 
 
 class CommandHandling {

@@ -17,7 +17,7 @@ target_include_directories(kinovaArm_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 #Main Program
 add_executable(KinovaZED KinovaMain.cpp)
-target_link_libraries(KinovaZED PUBLIC libkindrv PRIVATE kinovaArm_lib)
+target_link_libraries(KinovaZED PUBLIC libkindrv PRIVATE kinovaArm_lib rt )
 
 #install (TARGETS KinovaZED DESTINATION bin)
 #install (FILES KinovaArm.h  DESTINATION include)

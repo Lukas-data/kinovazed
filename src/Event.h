@@ -26,7 +26,10 @@ namespace KinovaFSM {
     
     //Hardware Event
     Initialized,
-    ModeChanged,
+    ModeTranslation,
+    ModeRotation,
+    ModeAxis1,
+    ModeAxis2,
     PositionReached,
     Error,
   };
@@ -53,7 +56,10 @@ namespace KinovaFSM {
     
     //Hardware Event
     "Initialized",
-    "ModeChanged",
+    "ModeTranslation",
+    "ModeRotation",
+    "ModeAxis1",
+    "ModeAxis2",
     "PositionReached",
     "Error"
   };

@@ -7,37 +7,30 @@
 
 /*Initiailizes Communication with Jaco-Arm and TCPServer.*/
 void CommandHandling::init() {
-
-  //Communication to Kinova robotic arm
+  //Connect to Kinova robotic arm
   printf("Connecting to Jaco arm: ");
   while (true) {
     if( JacoZED.connect() ) {
       printf("Connection established.\n");
       break;
     }
-    else {
-      
-      printf("Retry...\n");
-    }
+    else { printf("Retry...\n"); }
     usleep(1000);
   }
   printf("-------------------------\n");
 
-  //TCP-Server for Connection to RoboRio.
-  bool serverCreated = false;
-  printf("Connecting to RoboRio...\n");
-  while (serverCreated == false) {
-    serverCreated = true;
-    try {
-      //RoboRio.connect();
+  //Connect to RoboRio (ZED Main Controller)
+  printf("Connecting to RoboRio: ");
+  while (true) {
+    if ( RoboRio.connect() ) {
+      printf("Connection established.\n");
+      break;
     }
-    catch( const std::runtime_error& e ) {
-      printf("Connection Unsuccessfull. Retry...\n");
-      serverCreated = false;
-    }
+    else { printf("Retry...\n"); }
     usleep(1000);
   }
   printf("-------------------------\n");
+
   //Initialize StateMachine.
   KinovaSM.init(&JacoZED);
 }

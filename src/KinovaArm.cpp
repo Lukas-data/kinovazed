@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <ctime> 
 
 #include "KinovaArm.h"
 #include "PositionHandling.h"
@@ -15,6 +15,7 @@ KinovaArm::~KinovaArm() {
   Connected = false;
 }
 
+/*Sets Errorflag and removes Connected flag.*/
 void KinovaArm::error(const char* funcName, KinDrv::KinDrvException &e, bool warning) {
   printf("KinovaArm::%s(): Error %i, %s\n",funcName, e.error(), e.what());
   if (!warning) {
@@ -23,7 +24,8 @@ void KinovaArm::error(const char* funcName, KinDrv::KinDrvException &e, bool war
   }
 }
 
-//Tries to connect to KinovaArm
+
+/*Tries to connect to KinovaArm*/
 bool KinovaArm::connect() {
   if (KINOVA_DUMMY == false && Connected == false) {
     try {
@@ -41,7 +43,8 @@ bool KinovaArm::connect() {
   }
 }
 
-//Gain API Control
+
+/*Gain API Control*/
 void KinovaArm::takeControl() {
   if (KINOVA_DUMMY == false) {
     try {
@@ -57,7 +60,8 @@ void KinovaArm::takeControl() {
   }
 }
 
-//Release API Control
+
+/*Release API Control*/
 void KinovaArm::releaseControl() {
   if (KINOVA_DUMMY == false) {
     try {
@@ -73,7 +77,8 @@ void KinovaArm::releaseControl() {
   }
 }
 
-//Stops arm
+
+/*Stops arm*/
 void KinovaArm::dontMove() {
   if (KINOVA_DUMMY == false) {
     KinDrv::jaco_joystick_axis_t axes;
@@ -93,7 +98,8 @@ void KinovaArm::dontMove() {
   }
 }
 
-//Initialize Arm and go to Home position
+
+/*Initialize Arm and go to Home position*/
 void KinovaArm::initialize()
 {
   if (KINOVA_DUMMY == false) {
@@ -149,45 +155,13 @@ void KinovaArm::initialize()
   }
   else {
     EventOut = KinovaFSM::Initialized;
-    //writeDataToBuffer(INIT);
     printf("Arm connection is turned off. Dummy-Initialized.\n");
   }
 }
 
-//ChangeMode
-/*
-void KinovaArm::DoSetMode() {
-  if (EmergencyStop == false) {
-    if (mode>0 && mode < 5) {
-      if (mode == currentRobotMode) {
-        printf("Mode allready set to %d\n",currentRobotMode);
-        writeDataToBuffer(MODE_SET);
-      }
-      else if (mode != requestedRobotMode) {
-        //SetRequestedKinematicsMode
-        if (mode == 1 || mode == 2)
-          requestedKinematicsMode = 1;
-        if (mode == 3 || mode == 4)
-          requestedKinematicsMode = 2;
-        //SetRequestedJSMode
-        if (mode == 1 || mode == 3)
-          requestedJSMode = 1;
-        if (mode == 2 || mode == 4)
-          requestedJSMode = 2;
 
-        SettingMode = true;  
-        setModeCycleCount = 0;
-        requestedRobotMode = mode;   
-      }
-    }
-    else
-      requestedRobotMode = currentRobotMode;  //Requested Mode unknown
-  //printf("setting Mode...\n"); 
-  }
-}
-*/
-
-//Changes current Mode 
+/*Changes current Mode and sets TimerTime (only necessary if kinematic 
+mode on Jaco needs to be changed.*/
 void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
   if (Mode != nextMode) {
     if (KINOVA_DUMMY == false) {
@@ -195,10 +169,12 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
         if( (Mode != KinovaStatus::Axis1 && Mode != KinovaStatus::Axis2)
          && (nextMode == KinovaStatus::Axis1 || nextMode == KinovaStatus::Axis2) ) {
           arm->set_control_ang();
+          ModeChangeTimer=500;
         }
         if( (Mode != KinovaStatus::Translation && Mode != KinovaStatus::Rotation)
          && (nextMode == KinovaStatus::Translation || nextMode == KinovaStatus::Rotation) ) {
           arm->set_control_cart();
+          ModeChangeTimer=500;
         }
       }
       catch( KinDrv::KinDrvException &e ) {
@@ -209,10 +185,27 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
     printf("Mode set to %d\n", Mode);
   }
   else { printf("Mode allready set to %d\n", Mode);  }
-  EventOut = KinovaFSM::ModeChanged;
+  clock_gettime(CLOCK_REALTIME, &TimerStart);
 }
 
-//Moves arm according to Joystick signal.
+
+/*Runs Timer and sends ModeChange Event when done.*/
+void KinovaArm::modeChangeTimer() {
+  timespec TimerNow;
+  clock_gettime(CLOCK_REALTIME, &TimerNow);
+  double elapsedTime = (TimerNow.tv_sec-TimerStart.tv_sec) * 1000 +
+                    (TimerNow.tv_nsec-TimerStart.tv_nsec) / 1000000;
+  if (elapsedTime > ModeChangeTimer) {
+    if (Mode == KinovaStatus::Translation) { EventOut = KinovaFSM::ModeTranslation; }
+    if (Mode == KinovaStatus::Rotation) { EventOut = KinovaFSM::ModeRotation; }
+    if (Mode == KinovaStatus::Axis1) { EventOut = KinovaFSM::ModeAxis1; }
+    if (Mode == KinovaStatus::Axis2) { EventOut = KinovaFSM::ModeAxis2; }
+    ModeChangeTimer=0;
+  }
+}
+
+
+/*Moves arm according to Joystick signal.*/
 void KinovaArm::move() {
   if (KINOVA_DUMMY == false) {
     KinDrv::jaco_joystick_axis_t axes;
@@ -247,16 +240,20 @@ void KinovaArm::move() {
 }
 
 
-
-//Get-Functions
+/*Get-Functions*/
 bool KinovaArm::getError() { return Error; }
 
 KinovaFSM::Event KinovaArm::getEvent() {
-  KinovaFSM::Event e;
-  e = EventOut;
+  KinovaFSM::Event e = EventOut;
   EventOut = KinovaFSM::NoEvent;
   return e;
 }
+
+
+
+
+
+
 
 /*---------------------
 void KinovaArm::JacoMain()

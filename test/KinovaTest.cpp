@@ -14,18 +14,23 @@
 //StateMachine *fsm;
 //CommandHandling *communication;
 
-  CommandHandling communication;
+CommandHandling communication;
 
 void wait(int n) {
   for (int i =0; i<n; i++) {
     communication.process();
-    usleep(1000000);
+    usleep(200000);
   }
 }
 
 
 int main(int argc, char *argv[])
 {
+
+  printf("-------------------------\n");
+  printf("|      KinovaTest!      |\n");
+  printf("-------------------------\n");
+
   /************************/
   /* Testing StateMachine */
   /************************/
@@ -57,11 +62,15 @@ int main(int argc, char *argv[])
 
   communication.init();
   communication.process();
-  usleep(1000000);
+  usleep(200000);
   communication.debugSendEvent(KinovaFSM::Initialize);
-  wait(6);
-  communication.debugSendEvent(KinovaFSM::SetModeTranslation);
-  wait(3);
+  wait(10);
+  communication.debugSendEvent(KinovaFSM::SetModeAxis1);
+  wait(10);
+  communication.debugSendEvent(KinovaFSM::SetModeAxis2);
+  wait(10);
+  communication.debugSendEvent(KinovaFSM::SetModeRotation);
+  wait(10);
 
 
 }

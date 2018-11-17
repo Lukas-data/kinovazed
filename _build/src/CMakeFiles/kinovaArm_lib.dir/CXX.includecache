@@ -31,6 +31,8 @@ KinovaStatus.h
 /home/kinova/Documents/kinovaZED/src/KinovaArm.cpp
 stdio.h
 -
+ctime
+-
 KinovaArm.h
 /home/kinova/Documents/kinovaZED/src/KinovaArm.h
 PositionHandling.h

@@ -5,13 +5,11 @@
 #include "Event.h"
 #include "KinovaStatus.h"
 
-#define POSITION_RANGE 0.05
+//#define POSITION_RANGE 0.05
 
-namespace KinovaStatus{
-
-}
 
 class KinovaArm {
+
   public:
 	  KinovaArm() :
       Connected(false),
@@ -21,11 +19,10 @@ class KinovaArm {
       JoystickX(0),
       JoystickY(0),
       JoystickZ(0),
-      JoystickCalcFactor(0.0025) 
+      JoystickCalcFactor(0.0025)
       {}
-  //calcFactor = 0.0025;
-  //EmergencyStop = false;
     ~KinovaArm(); 
+
     void error(const char* funcName, KinDrv::KinDrvException &e, bool warning);
     bool connect();
     void takeControl();
@@ -34,12 +31,11 @@ class KinovaArm {
     void dontMove();
     void initialize();
     void changeMode(KinovaStatus::SteeringMode nextMode);
+    void modeChangeTimer();
     void move();
 
     bool getError();
     KinovaFSM::Event getEvent();
-
-    
 
   private:
     KinDrv::JacoArm *arm;
@@ -52,10 +48,15 @@ class KinovaArm {
     int JoystickY;
     int JoystickZ;
     float JoystickCalcFactor;
+
+    timespec TimerStart;
+    int ModeChangeTimer;
     
     KinovaFSM::Event EventOut;
     
-    
+};
+
+#endif    
 
 
 
@@ -147,6 +148,4 @@ class KinovaArm {
     void stopArm();
     void moveToPos();
 */
-};
 
-#endif

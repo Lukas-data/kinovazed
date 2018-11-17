@@ -11,100 +11,108 @@
 #include <unistd.h>
 #include <errno.h>
 
-using namespace std;
+
+#define RIO_DUMMY true
 
 
-
-TCPServer::TCPServer() {
-  portno = 51717;
-  printf("using port #%d\n", portno);
-
-  sockfd = socket(AF_INET, SOCK_STREAM, 0);
-  if (sockfd < 0)
-    error("ERROR opening socket");
-  
-  memset(&serv_addr, 0, sizeof(serv_addr));
-  serv_addr.sin_family = AF_INET;
-  serv_addr.sin_port = htons(portno);
-  serv_addr.sin_addr.s_addr = INADDR_ANY;
-
-  if (bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
-    error("ERROR on binding");
-  listen(sockfd,5);
-  clilen = sizeof(cli_addr);
-  
-  messageLength = COMMAND_LENGTH + (DATA_PACKAGES*DATA_LENGTH);
-  getDataCycleCounter = 20;
-}
-
-TCPServer::~TCPServer() {
-  
-}
-
+//TODO: different Errorhandling!
 void TCPServer::error(const char *msg)
 {
   perror(msg);
-  throw std::runtime_error(msg);
 }
 
-void TCPServer::sendTCP(int command, int data1, int data2, int data3) {  
+/*Opens TCP Server and establishes connection to a client(RoboRio)*/
+bool TCPServer::connect() {
+  if (RIO_DUMMY == false) {
+    if(clilen == 0) {
+      portno = 51717;
+      sockfd = socket(AF_INET, SOCK_STREAM, 0);
+      if (sockfd < 0) {
+        error("ERROR opening socket");
+        return false;
+      }
 
-  int n; 
-  char buffer[COMMAND_LENGTH + (messageLength)];
-  int m=sprintf( buffer, "%4d%6d%6d%6d", command, data1, data2, data3);
-  if (m != messageLength)
-    error("ERROR preparing message");
-  if ( ( n = write( newsockfd, buffer, strlen(buffer) ) ) < 0 )
-    error("Error writing to socket");
-  //printf("Message Size: %d\n", n);
+      memset(&serv_addr, 0, sizeof(serv_addr));
+      serv_addr.sin_family = AF_INET;
+      serv_addr.sin_port = htons(portno);
+      serv_addr.sin_addr.s_addr = INADDR_ANY;
+
+      if (bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) {
+        error("ERROR on binding");
+        return false;
+      }
+      listen(sockfd,5);
+      clilen = sizeof(cli_addr);
+    }
+
+    // Wait for a connection with a client
+    if ( ( newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, (socklen_t*) &clilen)) <0) {
+      error("ERROR on accept");
+      return false;
+    }
+  }
+  return true;
 }
 
-int TCPServer::readTCP() {
-  memset(buffer, '\0', BUFFER_SIZE);
-  
-  char commandString[COMMAND_LENGTH];
-  char dataString[DATA_PACKAGES][DATA_LENGTH];
-
-  int n= read(newsockfd, buffer, messageLength);
-
-  if(n==0 && getDataCycleCounter > 0) {
-    getDataCycleCounter -= getDataCycleCounter;
-    commandRecieved = 0;
-    return 1;  
+/*sends Message to Client (RoboRio). Takes Command and data packages as input*/
+bool TCPServer::sendTCP(int command, int data1, int data2, int data3) {  
+  if (RIO_DUMMY == false) {
+    int n; 
+    char buffer[COMMAND_LENGTH + (MessageLength)];
+    int m=sprintf( buffer, "%4d%6d%6d%6d", command, data1, data2, data3);
+    if (m != MessageLength) {
+      error("ERROR preparing message");
+      return false;
+    }
+    if ( ( n = write( newsockfd, buffer, strlen(buffer) ) ) < 0 ) {
+      error("Error writing to socket");
+      return false;
+    }
   }
-  else if (n==0 && getDataCycleCounter <= 0) {
-    error("ERROR: Connection Lost");
-    getDataCycleCounter = 20;
-    return -1;
-  }
-  else if (n != messageLength) {
-    error("Error reading from socket");
-    getDataCycleCounter = 20;
-    return -1;
-  }
-
-  memcpy(commandString, buffer, COMMAND_LENGTH);
-  commandRecieved = atoi(buffer);
-  for(int i = 0; i < DATA_PACKAGES; i++) {
-    memcpy(dataString[i], buffer + COMMAND_LENGTH + DATA_LENGTH*i, DATA_LENGTH);
-    dataRecieved[i] = atoi(dataString[i]);
-  }
-  getDataCycleCounter = 20;
-  return 1;
+  return true;
 }
 
+/*reads Message from Client (RoboRio). Saves Command to commandRecieved
+and Data to dataRecieved[]*/
+bool TCPServer::readTCP() {
+  if (RIO_DUMMY == false) {
+    memset(buffer, '\0', BUFFER_SIZE);
+    
+    char commandString[COMMAND_LENGTH];
+    char dataString[DATA_PACKAGES][DATA_LENGTH];
 
-void TCPServer::waitForClient() {
-  //--- wait on a connection ---
-  printf ( "waiting for new client...\n");
-  if ( ( newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, (socklen_t*) &clilen)) <0)
-    error("ERROR on accept");
-  printf("opened new communication with client \n");
+    int n= read(newsockfd, buffer, MessageLength);
+
+    if(n==0 && NoDataCycleCount > 0) {
+      --NoDataCycleCount;
+      commandRecieved = 0;
+      return true;  
+    }
+    else if (n==0 && NoDataCycleCount <= 0) {
+      error("ERROR Connection Lost");
+      NoDataCycleCount = NOCONNECTION_COUNT;
+      return false;
+    }
+    else if (n != MessageLength) {
+      error("ERROR reading from socket");
+      NoDataCycleCount = NOCONNECTION_COUNT;
+      return false;
+    }
+
+    memcpy(commandString, buffer, COMMAND_LENGTH);
+    commandRecieved = atoi(buffer);
+    for(int i = 0; i < DATA_PACKAGES; i++) {
+      memcpy(dataString[i], buffer + COMMAND_LENGTH + DATA_LENGTH*i, DATA_LENGTH);
+      dataRecieved[i] = atoi(dataString[i]);
+    }
+    NoDataCycleCount = NOCONNECTION_COUNT;
+  }
+  return true;
 }
 
-
+//??
 int TCPServer::getCommand() {
-  if (readTCP() == 1)
+  if ( readTCP() )
     return commandRecieved;
   else
     return 99;

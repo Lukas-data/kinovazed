@@ -1,1 +1,1 @@
-/usr/bin/c++      CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o  -o KinovaZED libkinovaArm_lib.a /usr/local/lib/libkindrv/liblibkindrv.so /usr/lib/arm-linux-gnueabihf/libboost_system.so -Wl,-rpath,/usr/local/lib/libkindrv 
+/usr/bin/c++      CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o  -o KinovaZED libkinovaArm_lib.a -lrt /usr/local/lib/libkindrv/liblibkindrv.so /usr/lib/arm-linux-gnueabihf/libboost_system.so -Wl,-rpath,/usr/local/lib/libkindrv 
