@@ -56,7 +56,7 @@ void CommandHandling::process() {
 }
 
 void CommandHandling::sendCommand(Command::Name command) {
-  printf("Command sent to Roborio\n");
+  printf("TODO: Command sent to Roborio\n");
 }
 
 
@@ -64,5 +64,10 @@ void CommandHandling::sendCommand(Command::Name command) {
 //* Debug use only! */
 void CommandHandling::debugSendEvent(KinovaFSM::Event e) {
   KinovaSM.sendEvent(e);
+}
+
+void CommandHandling::setJoystick(int x, int y, int z) {
+  //printf("CommandHandling::setJoystick (%d,%d,%d)\n",x,y,z);
+  JacoZED.setJoystick(x,y,z);
 }
 

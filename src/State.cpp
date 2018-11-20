@@ -105,6 +105,7 @@ void StateSteering::entryAction() {
 }
 void StateSteering::exitAction() {
   printf("Executing StateSteering exitAction.\n");
+  JacoZED->dontMove();
 }
 void StateSteering::tickAction() {
   printf("Executing StateSteering tickAction.\n");

@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <poll.h>
 //#include "StateMachine.h"
 //#include "Transition.h"
 #include "CommandHandling.h"
@@ -21,6 +22,17 @@ void wait(int n) {
     communication.process();
     usleep(200000);
   }
+}
+
+void move(int x, int y, int z, int n) {
+  for (int i =0; i<n; i++) {
+    communication.setJoystick(x,y,z);
+    communication.process();
+    usleep(200000);
+  }
+  communication.setJoystick(0,0,0);
+  communication.process();
+  usleep(200000);
 }
 
 
@@ -58,8 +70,7 @@ int main(int argc, char *argv[])
   /***************************/
   /* Testing CommandHandling */
   /***************************/
-  
-
+  /*
   communication.init();
   communication.process();
   usleep(200000);
@@ -71,8 +82,25 @@ int main(int argc, char *argv[])
   wait(10);
   communication.debugSendEvent(KinovaFSM::SetModeRotation);
   wait(10);
+  */
 
-
+  /********************/
+  /* Testing Steering */
+  /********************/
+  struct pollfd mypoll = { STDIN_FILENO, POLLIN|POLLPRI };
+  char button;
+  communication.init();
+  wait(1);
+  communication.debugSendEvent(KinovaFSM::Initialize);
+  wait(5);
+  communication.debugSendEvent(KinovaFSM::SetModeTranslation);
+  wait(5);
+  move(1000,0,0,5);
+  move(-1000,0,0,5);
+  move(0,1000,0,5);
+  move(0,-1000,0,5);
+  move(0,0,1000,5);
+  move(0,0,-1000,5);
 }
 
 

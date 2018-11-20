@@ -207,38 +207,42 @@ void KinovaArm::modeChangeTimer() {
 
 /*Moves arm according to Joystick signal.*/
 void KinovaArm::move() {
+  double currentSpeedX = -JoystickX*JoystickCalcFactor;
+  double currentSpeedY = -JoystickY*JoystickCalcFactor;
+  double currentSpeedZ = JoystickZ*JoystickCalcFactor;
   if (KINOVA_DUMMY == false) {
-    KinDrv::jaco_joystick_axis_t axes;
-    double currentSpeedX = -JoystickX*JoystickCalcFactor;
-    double currentSpeedY = -JoystickY*JoystickCalcFactor;
-    double currentSpeedZ = JoystickZ*JoystickCalcFactor;
-    
-    axes.trans_lr = 0; 
-    axes.trans_fb = 0;
-    axes.trans_rot = 0;
-    axes.wrist_lr = 0;
-    axes.wrist_fb = 0;
-    axes.wrist_rot = 0;
+    KinDrv::jaco_joystick_axis_t axes = {0};
     if (Mode == KinovaStatus::Translation || Mode == KinovaStatus::Axis1) {
       axes.trans_lr = currentSpeedX; 
       axes.trans_fb = currentSpeedY;
       axes.trans_rot = currentSpeedZ;
+      //printf("MoveArm In Mode: 1 -> ");
     }
     if (Mode == KinovaStatus::Rotation || Mode == KinovaStatus::Axis2) {
-      axes.trans_lr = 0; 
-      axes.trans_fb = 0;
-      axes.trans_rot = 0; 
+      axes.wrist_lr = currentSpeedX;
+      axes.wrist_fb = currentSpeedY;
+      axes.wrist_rot = currentSpeedZ;
+      //printf("MoveArm In Mode: 2 -> ");
     }
     try {
       arm->move_joystick_axis(axes);
+      //printf("x= %f, y= %f, z= %f\n", currentSpeedX,currentSpeedY,currentSpeedZ);
     }
     catch( KinDrv::KinDrvException &e ) {
       error("move", e, false);
     }
   }
-  //printf("MoveArm In Mode: %d with x= %f, y= %f, z= %f\n",Mode, currentSpeedX,currentSpeedY,currentSpeedZ);
+  
 }
 
+
+
+void KinovaArm::setJoystick(int x, int y, int z) {
+  //printf("KinovaArm::setJoystick (%d,%d,%d)\n",x,y,z);
+  JoystickX = x;
+  JoystickY = y;
+  JoystickZ = z;
+}
 
 /*Get-Functions*/
 bool KinovaArm::getError() { return Error; }

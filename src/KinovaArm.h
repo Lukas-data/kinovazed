@@ -33,6 +33,7 @@ class KinovaArm {
     void changeMode(KinovaStatus::SteeringMode nextMode);
     void modeChangeTimer();
     void move();
+    void setJoystick(int x, int y, int z);
 
     bool getError();
     KinovaFSM::Event getEvent();

@@ -41,6 +41,7 @@ namespace KinovaFSM {
     { &powerOff,        E_Stop,             &eStop          },
 
     { &initializing,    Initialized,        &idle           },
+    { &initializing,    Error,              &powerOff       },
     { &initializing,    E_Stop,             &eStop          },
 
     { &idle,            SetModeTranslation, &toTranslation  },

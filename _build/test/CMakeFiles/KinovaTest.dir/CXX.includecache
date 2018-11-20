@@ -75,6 +75,8 @@ stdio.h
 -
 unistd.h
 -
+poll.h
+-
 CommandHandling.h
 /home/kinova/Documents/kinovaZED/test/CommandHandling.h
 
