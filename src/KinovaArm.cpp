@@ -2,7 +2,7 @@
 #include <ctime> 
 
 #include "KinovaArm.h"
-#include "PositionHandling.h"
+
 
 
 #define KINOVA_DUMMY false
@@ -82,11 +82,11 @@ void KinovaArm::releaseControl() {
 void KinovaArm::dontMove() {
   if (KINOVA_DUMMY == false) {
     KinDrv::jaco_joystick_axis_t axes;
-    axes.trans_lr = 0; 
-    axes.trans_fb = 0;
+    axes.trans_lr  = 0; 
+    axes.trans_fb  = 0;
     axes.trans_rot = 0;
-    axes.wrist_lr = 0;
-    axes.wrist_fb = 0;
+    axes.wrist_lr  = 0;
+    axes.wrist_fb  = 0;
     axes.wrist_rot = 0;
     try {
       arm->move_joystick_axis(axes);
@@ -211,7 +211,14 @@ void KinovaArm::move() {
   double currentSpeedY = -JoystickY*JoystickCalcFactor;
   double currentSpeedZ = JoystickZ*JoystickCalcFactor;
   if (KINOVA_DUMMY == false) {
-    KinDrv::jaco_joystick_axis_t axes = {0};
+    KinDrv::jaco_joystick_axis_t axes;
+    axes.trans_lr  = 0; 
+    axes.trans_fb  = 0;
+    axes.trans_rot = 0;
+    axes.wrist_lr  = 0;
+    axes.wrist_fb  = 0;
+    axes.wrist_rot = 0;
+
     if (Mode == KinovaStatus::Translation || Mode == KinovaStatus::Axis1) {
       axes.trans_lr = currentSpeedX; 
       axes.trans_fb = currentSpeedY;
@@ -232,8 +239,58 @@ void KinovaArm::move() {
       error("move", e, false);
     }
   }
-  
 }
+
+
+/*Sets the Targetpoint for the movement*/
+void KinovaArm::setTarget(KinovaPts::Points targetPosition) {
+  TargetPosition = targetPosition;
+}
+
+
+/*moves the Arm towards the next Point in the sequenceList.
+If Point is reached, sequence is counted up.
+If end of sequence is reached, PositionReached event is sent.*/
+void KinovaArm::moveToPosition() {
+  float targetCoordinates[6];
+  float currentCoordinates[6];
+
+  getPosition(currentCoordinates);
+
+  //Check if Sequence is still going
+  if ( PositionHandler.getCoordinates(targetCoordinates, TargetPosition) ) {
+    //Check if in range
+    bool PositionReached = true;
+    for (int i = 0; i<6; i++) {
+      if (currentCoordinates[i] > ( targetCoordinates[i] + POSITION_RANGE ) ||
+          currentCoordinates[i] < ( targetCoordinates[i] - POSITION_RANGE ) ) {
+        PositionReached = false;
+      }
+    }
+    
+    if (PositionReached == true) {
+      //Next Position in Sequence.
+      PositionHandler.countSequence();
+    }
+    else {
+      //Move to Position
+      float fingers[3];
+      try {
+       arm->set_target_cart(targetCoordinates,fingers);
+      }
+      catch( KinDrv::KinDrvException &e ) {
+        error("moveToPosition", e, false);
+      }
+    }
+  }
+  else {
+    EventOut = KinovaFSM::PositionReached;
+  }
+}
+
+
+
+
 
 
 
@@ -251,6 +308,26 @@ KinovaFSM::Event KinovaArm::getEvent() {
   KinovaFSM::Event e = EventOut;
   EventOut = KinovaFSM::NoEvent;
   return e;
+}
+
+void KinovaArm::getPosition(float* coordinates) {
+  if (KINOVA_DUMMY == false) {
+    KinDrv::jaco_position_t Position;
+    try {
+      Position = arm->get_cart_pos();
+    }
+    catch( KinDrv::KinDrvException &e ) {
+        error("getPosition", e, false);
+    }
+
+    //transform jaco_position_t to float[]
+    for (int i = 0; i<6; i++) {
+      if (i<3) 
+        coordinates[i] = Position.position[i];
+      else
+        coordinates[i] = Position.rotation[i-3];
+    }
+  }
 }
 
 

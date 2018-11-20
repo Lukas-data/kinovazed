@@ -75,14 +75,14 @@ class StateSteering : public State {
     void tickAction();
 };
 
-class StateChangeMode : public State {
+class StateMovePositionHome : public State {
   public:
     void entryAction();
     void exitAction();
     void tickAction();
 };
 
-class StateMoveTrajectory : public State {
+class StateMovePositionBell : public State {
   public:
     void entryAction();
     void exitAction();

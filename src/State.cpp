@@ -3,6 +3,7 @@
 
 #include "State.h"
 #include "KinovaStatus.h"
+#include "PositionHandling.h"
 
 KinovaArm* State::JacoZED = NULL;
 
@@ -56,7 +57,6 @@ void StateChangeModeTranslation::exitAction() {
   printf("Executing StateChangeModeTranslation exitAction.\n");
 }
 void StateChangeModeTranslation::tickAction() {
-  printf("Executing StateChangeModeTranslation tickAction.\n");
   JacoZED->modeChangeTimer();
 }
 
@@ -69,7 +69,6 @@ void StateChangeModeRotation::exitAction() {
   printf("Executing StateChangeModeRotation exitAction.\n");
 }
 void StateChangeModeRotation::tickAction() {
-  printf("Executing StateChangeModeRotation tickAction.\n");
   JacoZED->modeChangeTimer();
 }
 
@@ -95,7 +94,6 @@ void StateChangeModeAxis2::exitAction() {
   printf("Executing StateChangeModeAxis2 exitAction.\n");
 }
 void StateChangeModeAxis2::tickAction() {
-  printf("Executing StateChangeModeAxis2 tickAction.\n");
   JacoZED->modeChangeTimer();
 }
 
@@ -108,19 +106,32 @@ void StateSteering::exitAction() {
   JacoZED->dontMove();
 }
 void StateSteering::tickAction() {
-  printf("Executing StateSteering tickAction.\n");
   JacoZED->move();
 }
 
-// MoveTrajectory
-void StateMoveTrajectory::entryAction() {
-  printf("Executing StateMoveTrajectory entryAction.\n");
+// MovePositionHome
+void StateMovePositionHome::entryAction() {
+  printf("Executing StateMovePositionHome entryAction.\n");
+  JacoZED->setTarget(KinovaPts::HOME);
+  
 }
-void StateMoveTrajectory::exitAction() {
-  printf("Executing StateMoveTrajectory exitAction.\n");
+void StateMovePositionHome::exitAction() {
+  printf("Executing StateMovePositionHome exitAction.\n");
 }
-void StateMoveTrajectory::tickAction() {
-  printf("Executing StateMoveTrajectory tickAction.\n");
+void StateMovePositionHome::tickAction() {
+  JacoZED->moveToPosition();
+}
+
+// MovePositionBell
+void StateMovePositionBell::entryAction() {
+  printf("Executing StateMovePositionBell entryAction.\n");
+  JacoZED->setTarget(KinovaPts::BELL);
+}
+void StateMovePositionBell::exitAction() {
+  printf("Executing StateMovePositionBell exitAction.\n");
+}
+void StateMovePositionBell::tickAction() {
+  JacoZED->moveToPosition();
 }
 
 // EmergencyStop
@@ -131,7 +142,6 @@ void StateEStop::exitAction() {
   printf("Executing StateEStop exitAction.\n");
 }
 void StateEStop::tickAction() {
-  printf("Executing StateEStop tickAction.\n");
 }
 
 

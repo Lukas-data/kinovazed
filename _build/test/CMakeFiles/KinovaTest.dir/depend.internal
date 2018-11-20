@@ -6,6 +6,7 @@ test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o
  ../src/Event.h
  ../src/KinovaArm.h
  ../src/KinovaStatus.h
+ ../src/PositionHandling.h
  ../src/State.h
  ../src/StateMachine.h
  ../src/TCPServer.h

@@ -35,8 +35,6 @@ ctime
 -
 KinovaArm.h
 /home/kinova/Documents/kinovaZED/src/KinovaArm.h
-PositionHandling.h
-/home/kinova/Documents/kinovaZED/src/PositionHandling.h
 
 /home/kinova/Documents/kinovaZED/src/KinovaArm.h
 ../thirdparty/libkindrv/include/kindrv.h
@@ -45,6 +43,8 @@ Event.h
 /home/kinova/Documents/kinovaZED/src/Event.h
 KinovaStatus.h
 /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
+PositionHandling.h
+/home/kinova/Documents/kinovaZED/src/PositionHandling.h
 
 /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
 
@@ -65,6 +65,8 @@ State.h
 /home/kinova/Documents/kinovaZED/src/State.h
 KinovaStatus.h
 /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
+PositionHandling.h
+/home/kinova/Documents/kinovaZED/src/PositionHandling.h
 
 /home/kinova/Documents/kinovaZED/src/State.h
 KinovaArm.h

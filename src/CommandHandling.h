@@ -20,7 +20,8 @@ class CommandHandling {
 
     //Debug only:
     void debugSendEvent(KinovaFSM::Event e);
-    void setJoystick(int x, int y, int z);
+    void debugSetJoystick(int x, int y, int z);
+    void debugPrintPosition();
 
   private:
     KinovaArm JacoZED;

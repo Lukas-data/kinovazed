@@ -5,6 +5,7 @@ test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o: ../src/CommandHandling.h
 test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o: ../src/Event.h
 test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o: ../src/KinovaArm.h
 test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o: ../src/KinovaStatus.h
+test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o: ../src/PositionHandling.h
 test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o: ../src/State.h
 test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o: ../src/StateMachine.h
 test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o: ../src/TCPServer.h

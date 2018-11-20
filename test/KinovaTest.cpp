@@ -26,11 +26,11 @@ void wait(int n) {
 
 void move(int x, int y, int z, int n) {
   for (int i =0; i<n; i++) {
-    communication.setJoystick(x,y,z);
+    communication.debugSetJoystick(x,y,z);
     communication.process();
     usleep(200000);
   }
-  communication.setJoystick(0,0,0);
+  communication.debugSetJoystick(0,0,0);
   communication.process();
   usleep(200000);
 }
@@ -87,8 +87,7 @@ int main(int argc, char *argv[])
   /********************/
   /* Testing Steering */
   /********************/
-  struct pollfd mypoll = { STDIN_FILENO, POLLIN|POLLPRI };
-  char button;
+  /*
   communication.init();
   wait(1);
   communication.debugSendEvent(KinovaFSM::Initialize);
@@ -101,6 +100,36 @@ int main(int argc, char *argv[])
   move(0,-1000,0,5);
   move(0,0,1000,5);
   move(0,0,-1000,5);
+  */
+  /*********************/
+  /* Testing MoveToPos */
+  /*********************/
+  
+  communication.init();
+  wait(1);
+  communication.debugSendEvent(KinovaFSM::Initialize);
+  wait(20);
+  communication.debugSendEvent(KinovaFSM::SetModeTranslation);
+  wait(5);
+  communication.debugSendEvent(KinovaFSM::GoToPositionHome);
+  wait(20);
+  communication.debugSendEvent(KinovaFSM::GoToPositionBell);
+  wait(20);
+  
+  /***********************/
+  /* Testing getPosition */
+  /***********************/
+  /*
+  communication.init();
+  wait(1);
+  communication.debugSendEvent(KinovaFSM::Initialize);
+  wait(5);
+  communication.debugSendEvent(KinovaFSM::SetModeTranslation);
+  wait(5);
+  communication.debugPrintPosition();
+  wait(5);
+  */
+  
 }
 
 

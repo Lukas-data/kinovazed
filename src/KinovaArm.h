@@ -4,8 +4,9 @@
 #include "../thirdparty/libkindrv/include/kindrv.h"
 #include "Event.h"
 #include "KinovaStatus.h"
+#include "PositionHandling.h"
 
-//#define POSITION_RANGE 0.05
+#define POSITION_RANGE 0.05
 
 
 class KinovaArm {
@@ -21,7 +22,7 @@ class KinovaArm {
       JoystickZ(0),
       JoystickCalcFactor(0.0025)
       {}
-    ~KinovaArm(); 
+    ~KinovaArm();
 
     void error(const char* funcName, KinDrv::KinDrvException &e, bool warning);
     bool connect();
@@ -33,17 +34,24 @@ class KinovaArm {
     void changeMode(KinovaStatus::SteeringMode nextMode);
     void modeChangeTimer();
     void move();
+    void moveToPosition();
+
     void setJoystick(int x, int y, int z);
+
+    void setTarget(KinovaPts::Points targetPosition);
 
     bool getError();
     KinovaFSM::Event getEvent();
+    void getPosition(float* coordinates);
 
   private:
     KinDrv::JacoArm *arm;
+    PositionHandling PositionHandler;
     
     bool Connected;
     bool Error;
     KinovaStatus::SteeringMode Mode;
+    KinovaPts::Points TargetPosition;
 
     int JoystickX;
     int JoystickY;
@@ -52,8 +60,9 @@ class KinovaArm {
 
     timespec TimerStart;
     int ModeChangeTimer;
-    
+
     KinovaFSM::Event EventOut;
+
     
 };
 

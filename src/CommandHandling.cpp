@@ -66,8 +66,19 @@ void CommandHandling::debugSendEvent(KinovaFSM::Event e) {
   KinovaSM.sendEvent(e);
 }
 
-void CommandHandling::setJoystick(int x, int y, int z) {
+void CommandHandling::debugSetJoystick(int x, int y, int z) {
   //printf("CommandHandling::setJoystick (%d,%d,%d)\n",x,y,z);
   JacoZED.setJoystick(x,y,z);
+}
+
+void CommandHandling::debugPrintPosition() {
+  float coordinates[6];
+  JacoZED.getPosition(coordinates);
+  printf("Current Position = (");
+  for (int i = 0; i<6; i++) {
+    printf("%f",coordinates[i]);
+    if( i<5 ) { printf(", "); }
+  }
+  printf(").\n");
 }
 

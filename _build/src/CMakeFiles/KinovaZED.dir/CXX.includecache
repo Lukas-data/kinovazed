@@ -15,6 +15,8 @@ Event.h
 /home/kinova/Documents/kinovaZED/src/Event.h
 KinovaStatus.h
 /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
+PositionHandling.h
+/home/kinova/Documents/kinovaZED/src/PositionHandling.h
 
 /home/kinova/Documents/kinovaZED/src/KinovaMain.cpp
 stdio.h
@@ -25,6 +27,8 @@ TCPServer.h
 /home/kinova/Documents/kinovaZED/src/TCPServer.h
 
 /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
+
+/home/kinova/Documents/kinovaZED/src/PositionHandling.h
 
 /home/kinova/Documents/kinovaZED/src/TCPServer.h
 netinet/in.h
