@@ -10,16 +10,24 @@ class State {
 	  virtual void entryAction() = 0;
     virtual void exitAction() = 0;
     virtual void tickAction() = 0;
+    void setEventVar(int eventVar);
 
   protected:
     static KinovaArm* JacoZED;
-    int Id;
+    int EventVariable;
 };
 
 
 //Derived States of State-Class. 
 
 class StatePowerOff : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
+class StateEStop : public State {
   public:
     void entryAction();
     void exitAction();
@@ -34,6 +42,13 @@ class StateInitialize : public State {
 };
 
 class StateIdle : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
+class StateChangeMode : public State {
   public:
     void entryAction();
     void exitAction();
@@ -75,6 +90,13 @@ class StateSteering : public State {
     void tickAction();
 };
 
+class StateMovePosition : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
 class StateMovePositionHome : public State {
   public:
     void entryAction();
@@ -88,15 +110,26 @@ class StateMovePositionBell : public State {
     void exitAction();
     void tickAction();
 };
-
-class StateEStop : public State {
+/*
+class StateTeach : public State {
   public:
     void entryAction();
     void exitAction();
     void tickAction();
 };
 
+class StateTeachHome : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
 
-
-
+class StateTeachBell : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+*/
 #endif

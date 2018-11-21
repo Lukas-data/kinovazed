@@ -1,10 +1,12 @@
-#include <stdio.h>
+//#include <stdio.h>
 #include <stdexcept>
+#include <iostream>
+#include <fstream>
 #include "PositionHandling.h"
 
 
 //declare Default Positions
-KinovaPts::posCoordinates PositionHandling::Positions[NUMBER_OF_POINTS][NUMBER_OF_SUBPOINTS] = {
+KinovaPts::posCoordinates PositionHandling::Positions[KinovaPts::NumberOfPositions][NUMBER_OF_SUBPOINTS] = {
   { //HOME
   { -0.080854, -0.394615, 0.488780, 1.551021, 0.190894, -0.080310}, //HOME POSITIONS
   //{ 0, 0, 0, 0, 0, 0}
@@ -16,7 +18,7 @@ KinovaPts::posCoordinates PositionHandling::Positions[NUMBER_OF_POINTS][NUMBER_O
 };
 
 PositionHandling::~PositionHandling() {
-  
+  writeToFile();
 }
 
 
@@ -29,7 +31,7 @@ PositionHandling::~PositionHandling() {
 
 //Writes Requestet Coordinates of Position by pos-number and its Subpositions by Sequence-number.
 //Returns 0 if sequence has ended.
-bool PositionHandling::getCoordinates(float* coordinates, KinovaPts::Points targetPoint) {
+bool PositionHandling::getCoordinates(float* coordinates, KinovaPts::Positions targetPoint) {
   
   //Check SequenceNumber
   if (SequenceCounter >= NUMBER_OF_SUBPOINTS) {
@@ -54,4 +56,18 @@ bool PositionHandling::getCoordinates(float* coordinates, KinovaPts::Points targ
 
 void PositionHandling::countSequence() {
   ++SequenceCounter;
+}
+
+
+void PositionHandling::readFromFile() {
+  //ifstream infile;
+  //infile.open("positions.dat")
+ 
+}
+
+void PositionHandling::writeToFile() {
+  FILE* pFile;
+  pFile = fopen("TestPositions.dat","w");
+  fwrite (Positions, sizeof(int), sizeof(Positions), pFile);
+  fclose(pFile);
 }

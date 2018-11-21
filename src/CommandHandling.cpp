@@ -37,6 +37,7 @@ void CommandHandling::init() {
 
 void CommandHandling::process() {
   KinovaFSM::Event newEvent = KinovaFSM::NoEvent;
+  int newVar = 0;
   //Send Command
   //JacoZED.
   //sendCommand(commandOut);
@@ -52,7 +53,7 @@ void CommandHandling::process() {
   { 
     printf("No Hardware Events\n");
   }
-  KinovaSM.sendEvent(newEvent);
+  KinovaSM.sendEvent(newEvent,newVar);
 }
 
 void CommandHandling::sendCommand(Command::Name command) {
@@ -64,6 +65,10 @@ void CommandHandling::sendCommand(Command::Name command) {
 //* Debug use only! */
 void CommandHandling::debugSendEvent(KinovaFSM::Event e) {
   KinovaSM.sendEvent(e);
+}
+
+void CommandHandling::debugSendEvent(KinovaFSM::Event e, int var) {
+  KinovaSM.sendEvent(e, var);
 }
 
 void CommandHandling::debugSetJoystick(int x, int y, int z) {

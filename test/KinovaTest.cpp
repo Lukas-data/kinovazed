@@ -76,11 +76,11 @@ int main(int argc, char *argv[])
   usleep(200000);
   communication.debugSendEvent(KinovaFSM::Initialize);
   wait(10);
-  communication.debugSendEvent(KinovaFSM::SetModeAxis1);
+  communication.debugSendEvent(KinovaFSM::SetMode,3);
   wait(10);
-  communication.debugSendEvent(KinovaFSM::SetModeAxis2);
+  communication.debugSendEvent(KinovaFSM::SetMode,4);
   wait(10);
-  communication.debugSendEvent(KinovaFSM::SetModeRotation);
+  communication.debugSendEvent(KinovaFSM::SetMode,2);
   wait(10);
   */
 
@@ -101,6 +101,7 @@ int main(int argc, char *argv[])
   move(0,0,1000,5);
   move(0,0,-1000,5);
   */
+
   /*********************/
   /* Testing MoveToPos */
   /*********************/
@@ -109,13 +110,14 @@ int main(int argc, char *argv[])
   wait(1);
   communication.debugSendEvent(KinovaFSM::Initialize);
   wait(20);
-  communication.debugSendEvent(KinovaFSM::SetModeTranslation);
+  communication.debugSendEvent(KinovaFSM::SetMode,1);
   wait(5);
-  communication.debugSendEvent(KinovaFSM::GoToPositionHome);
+  communication.debugSendEvent(KinovaFSM::GoToPosition,0);
   wait(20);
-  communication.debugSendEvent(KinovaFSM::GoToPositionBell);
+  communication.debugSendEvent(KinovaFSM::GoToPosition,1);
   wait(20);
   
+
   /***********************/
   /* Testing getPosition */
   /***********************/

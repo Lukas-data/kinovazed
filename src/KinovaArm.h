@@ -38,7 +38,7 @@ class KinovaArm {
 
     void setJoystick(int x, int y, int z);
 
-    void setTarget(KinovaPts::Points targetPosition);
+    void setTarget(KinovaPts::Positions targetPosition);
 
     bool getError();
     KinovaFSM::Event getEvent();
@@ -51,7 +51,7 @@ class KinovaArm {
     bool Connected;
     bool Error;
     KinovaStatus::SteeringMode Mode;
-    KinovaPts::Points TargetPosition;
+    KinovaPts::Positions TargetPosition;
 
     int JoystickX;
     int JoystickY;

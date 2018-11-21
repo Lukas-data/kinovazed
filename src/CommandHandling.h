@@ -20,6 +20,7 @@ class CommandHandling {
 
     //Debug only:
     void debugSendEvent(KinovaFSM::Event e);
+    void debugSendEvent(KinovaFSM::Event e, int var);
     void debugSetJoystick(int x, int y, int z);
     void debugPrintPosition();
 

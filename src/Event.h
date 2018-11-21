@@ -7,37 +7,48 @@ namespace KinovaFSM {
 
 //Events
   enum Event {
-    //System Event
+    //System Events
     NoEvent,
     Tick,
     
-    //User Event
+    //User Events
     Initialize,
     NoMode,
 
-    SetModeTranslation,
-    SetModeRotation,
-    SetModeAxis1,
-    SetModeAxis2,
+    SetMode,
+    //SetModeTranslation,
+    //SetModeRotation,
+    //SetModeAxis1,
+    //SetModeAxis2,
 
     MoveJoystick,
 
-    GoToPositionHome,
-    GoToPositionBell,
+    GoToPosition,
+    //GoToPositionHome,
+    //GoToPositionBell,
+
+    //TeachHome,
+    //TeachBell,
+    //TeachMove,
+    //TeachSave,
 
     Shutdown,
     E_Stop,
     QuitEStop,
     
-    //Hardware Event
+    //Hardware Events
     Initialized,
 
-    ModeTranslation,
-    ModeRotation,
-    ModeAxis1,
-    ModeAxis2,
+    //ModeTranslation,
+    //ModeRotation,
+    //ModeAxis1,
+    //ModeAxis2,
+    ModeSet,
   
     PositionReached,
+
+    //TeachPointReached,
+    //TeachPointSaved,
 
     Error,
   };
@@ -45,35 +56,47 @@ namespace KinovaFSM {
   //ForDebugUse
   static const char *EventName[] =
   {
-    //System Event
+    //System Events
     "NoEvent",
     "Tick",
     
-    //User Event
+    //User Events
     "Initialize",
     "NoMode",
-    "SetModeTranslation",
-    "SetModeRotation",
-    "SetModeAxis1",
-    "SetModeAxis2",
+
+    "SetMode",
+    //"SetModeTranslation",
+    //"SetModeRotation",
+    //"SetModeAxis1",
+    //"SetModeAxis2",
 
     "MoveJoystick",
 
-    "GoToPositionHome",
-    "GoToPositionBell",
+    "GoToPosition",
+    //"GoToPositionHome",
+    //"GoToPositionBell",
+
+    //"TeachHome",
+    //"TeachBell",
+    //"TeachMove",
+    //"TeachSave",
 
     "Shutdown",
     "E_Stop",
     "QuitEStop",
     
-    //Hardware Event
+    //Hardware Events
     "Initialized",
-    "ModeTranslation",
-    "ModeRotation",
-    "ModeAxis1",
-    "ModeAxis2",
+    //"ModeTranslation",
+    //"ModeRotation",
+    //"ModeAxis1",
+    //"ModeAxis2",
+    "ModeSet",
 
     "PositionReached",
+
+    //"TeachPointReached",
+    //"TeachPointSaved",
 
     "Error"
   };

@@ -49,9 +49,11 @@ PositionHandling.h
 /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
 
 /home/kinova/Documents/kinovaZED/src/PositionHandling.cpp
-stdio.h
--
 stdexcept
+-
+iostream
+-
+fstream
 -
 PositionHandling.h
 /home/kinova/Documents/kinovaZED/src/PositionHandling.h

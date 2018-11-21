@@ -181,10 +181,14 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
         error("changeMode", e, false);
       }
     }
-    Mode = nextMode;
-    printf("Mode set to %d\n", Mode);
+    if (nextMode >= 0 && nextMode <= 4) {
+      Mode = nextMode;
+    }
+    else {
+      printf("KinovaArm: Requested Mode invalid.\n");
+    } 
   }
-  else { printf("Mode allready set to %d\n", Mode);  }
+  else { printf("KinovaArm: Mode allready set to %d\n", Mode);  }
   clock_gettime(CLOCK_REALTIME, &TimerStart);
 }
 
@@ -196,10 +200,12 @@ void KinovaArm::modeChangeTimer() {
   double elapsedTime = (TimerNow.tv_sec-TimerStart.tv_sec) * 1000 +
                     (TimerNow.tv_nsec-TimerStart.tv_nsec) / 1000000;
   if (elapsedTime > ModeChangeTimer) {
-    if (Mode == KinovaStatus::Translation) { EventOut = KinovaFSM::ModeTranslation; }
-    if (Mode == KinovaStatus::Rotation) { EventOut = KinovaFSM::ModeRotation; }
-    if (Mode == KinovaStatus::Axis1) { EventOut = KinovaFSM::ModeAxis1; }
-    if (Mode == KinovaStatus::Axis2) { EventOut = KinovaFSM::ModeAxis2; }
+    EventOut = KinovaFSM::ModeSet;
+    printf("KinovaArm: Mode set to %d\n", Mode);
+    //if (Mode == KinovaStatus::Translation) { EventOut = KinovaFSM::ModeTranslation; }
+    //if (Mode == KinovaStatus::Rotation) { EventOut = KinovaFSM::ModeRotation; }
+    //if (Mode == KinovaStatus::Axis1) { EventOut = KinovaFSM::ModeAxis1; }
+    //if (Mode == KinovaStatus::Axis2) { EventOut = KinovaFSM::ModeAxis2; }
     ModeChangeTimer=0;
   }
 }
@@ -243,8 +249,14 @@ void KinovaArm::move() {
 
 
 /*Sets the Targetpoint for the movement*/
-void KinovaArm::setTarget(KinovaPts::Points targetPosition) {
-  TargetPosition = targetPosition;
+void KinovaArm::setTarget(KinovaPts::Positions targetPosition) {
+  if (targetPosition >= 0 && targetPosition < KinovaPts::NumberOfPositions) {
+    TargetPosition = targetPosition;
+  }
+  else {
+    printf("KinovaArm: invalid targetPosition.");
+    EventOut = KinovaFSM::PositionReached;
+  }
 }
 
 

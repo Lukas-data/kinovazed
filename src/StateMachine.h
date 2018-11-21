@@ -25,12 +25,15 @@ class StateMachine {
     
     //Send Event to the StateMachine.
     void sendEvent(KinovaFSM::Event e);
+    void sendEvent(KinovaFSM::Event e, int eventVar);
+
 
     //Run the StateMachine.
     void process();
 
   private:
     KinovaFSM::Event InputEvent;
+    int InputVariable;
     State* CurrentState;
     int NumberOfTransitions;
 

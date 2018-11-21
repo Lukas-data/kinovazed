@@ -8,6 +8,7 @@
 KinovaArm* State::JacoZED = NULL;
 
 void State::init(KinovaArm* jacoZED) {JacoZED = jacoZED; }
+void State::setEventVar(int eventVar) { EventVariable = eventVar; }
 
 // PowerOff
 void StatePowerOff::entryAction() {
@@ -19,6 +20,16 @@ void StatePowerOff::exitAction() {
 }
 void StatePowerOff::tickAction() {
   printf("Executing StatePowerOff tickAction.\n");
+}
+
+// EmergencyStop
+void StateEStop::entryAction() {
+  printf("Executing StateEStop entryAction.\n");
+}
+void StateEStop::exitAction() {
+  printf("Executing StateEStop exitAction.\n");
+}
+void StateEStop::tickAction() {
 }
 
 // Initialize
@@ -46,6 +57,18 @@ void StateIdle::exitAction() {
 }
 void StateIdle::tickAction() {
   printf("Executing StateIdle tickAction.\n");
+}
+
+// ChangeMode
+void StateChangeMode::entryAction() {
+  printf("Executing StateChangeMode entryAction.\n");
+  JacoZED->changeMode(static_cast<KinovaStatus::SteeringMode>(EventVariable));
+}
+void StateChangeMode::exitAction() {
+  printf("Executing StateChangeMode exitAction.\n");
+}
+void StateChangeMode::tickAction() {
+  JacoZED->modeChangeTimer();
 }
 
 // ChangeModeTranslation
@@ -109,6 +132,20 @@ void StateSteering::tickAction() {
   JacoZED->move();
 }
 
+
+// MovePosition
+void StateMovePosition::entryAction() {
+  printf("Executing StateMovePosition entryAction.\n");
+  JacoZED->setTarget(static_cast<KinovaPts::Positions>(EventVariable));
+  
+}
+void StateMovePosition::exitAction() {
+  printf("Executing StateMovePosition exitAction.\n");
+}
+void StateMovePosition::tickAction() {
+  JacoZED->moveToPosition();
+}
+
 // MovePositionHome
 void StateMovePositionHome::entryAction() {
   printf("Executing StateMovePositionHome entryAction.\n");
@@ -133,17 +170,18 @@ void StateMovePositionBell::exitAction() {
 void StateMovePositionBell::tickAction() {
   JacoZED->moveToPosition();
 }
-
-// EmergencyStop
-void StateEStop::entryAction() {
-  printf("Executing StateEStop entryAction.\n");
+/*
+//Teach
+void StateTeach::entryAction() {
+  printf("Executing StateTeach entryAction.\n");
+  JacoZED->setTarget(KinovaPts::BELL);
 }
-void StateEStop::exitAction() {
-  printf("Executing StateEStop exitAction.\n");
+void StateTeach::exitAction() {
+  printf("Executing StateTeach exitAction.\n");
 }
-void StateEStop::tickAction() {
+void StateTeach::tickAction() {
 }
-
+*/
 
 
 
