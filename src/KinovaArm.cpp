@@ -161,7 +161,7 @@ void KinovaArm::initialize()
 
 
 /*Changes current Mode and sets TimerTime (only necessary if kinematic 
-mode on Jaco needs to be changed.*/
+mode on Jaco needs to be changed.). Default nextMode = NoMode is Translation!*/
 void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
   if (Mode != nextMode) {
     if (KINOVA_DUMMY == false) {
@@ -172,7 +172,8 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
           ModeChangeTimer=500;
         }
         if( (Mode != KinovaStatus::Translation && Mode != KinovaStatus::Rotation)
-         && (nextMode == KinovaStatus::Translation || nextMode == KinovaStatus::Rotation) ) {
+         && (nextMode == KinovaStatus::Translation || nextMode == KinovaStatus::Rotation
+          || nextMode == KinovaStatus::NoMode) ) {
           arm->set_control_cart();
           ModeChangeTimer=500;
         }
@@ -181,8 +182,11 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
         error("changeMode", e, false);
       }
     }
-    if (nextMode >= 0 && nextMode <= 4) {
+    if (nextMode >= 1 && nextMode <= 4) {
       Mode = nextMode;
+    }
+    else if(nextMode == 0) {
+      Mode = KinovaStatus::Translation;
     }
     else {
       printf("KinovaArm: Requested Mode invalid.\n");
@@ -250,11 +254,12 @@ void KinovaArm::move() {
 
 /*Sets the Targetpoint for the movement*/
 void KinovaArm::setTarget(KinovaPts::Positions targetPosition) {
-  if (targetPosition >= 0 && targetPosition < KinovaPts::NumberOfPositions) {
+  if (targetPosition > 0 && targetPosition <= KinovaPts::NumberOfPositions) {
     TargetPosition = targetPosition;
+    PositionHandler.resetSequence();
   }
   else {
-    printf("KinovaArm: invalid targetPosition.");
+    printf("KinovaArm: invalid targetPosition.\n");
     EventOut = KinovaFSM::PositionReached;
   }
 }
@@ -272,23 +277,23 @@ void KinovaArm::moveToPosition() {
   //Check if Sequence is still going
   if ( PositionHandler.getCoordinates(targetCoordinates, TargetPosition) ) {
     //Check if in range
-    bool PositionReached = true;
+    bool PointReached = true;
     for (int i = 0; i<6; i++) {
       if (currentCoordinates[i] > ( targetCoordinates[i] + POSITION_RANGE ) ||
           currentCoordinates[i] < ( targetCoordinates[i] - POSITION_RANGE ) ) {
-        PositionReached = false;
+        PointReached = false;
       }
     }
     
-    if (PositionReached == true) {
-      //Next Position in Sequence.
+    if (PointReached == true) {
+      //Next Point in Sequence.
       PositionHandler.countSequence();
     }
     else {
       //Move to Position
       float fingers[3];
       try {
-       arm->set_target_cart(targetCoordinates,fingers);
+        arm->set_target_cart(targetCoordinates,fingers);
       }
       catch( KinDrv::KinDrvException &e ) {
         error("moveToPosition", e, false);
@@ -296,14 +301,73 @@ void KinovaArm::moveToPosition() {
     }
   }
   else {
+    PositionHandler.resetSequence();
     EventOut = KinovaFSM::PositionReached;
   }
 }
 
+void KinovaArm::teachPosition(KinovaPts::Positions position) {
+  if (position != 0) {
+    if (position > 0 && position <= KinovaPts::NumberOfPositions) {
+      TeachTarget = position;
+      PositionHandler.resetSequence();
+    }
+    else {
+      printf("KinovaArm: invalid teach Position.\n");
+    }
+  }
+  printf("TeachMode: Teaching at Point %d:%d\n", TeachTarget, PositionHandler.getSequence());
+}
 
+void KinovaArm::moveToPoint() {
+  float targetCoordinates[6];
+  float currentCoordinates[6];
 
+  getPosition(currentCoordinates);
 
+  //Check if Sequence is still going
+  if ( PositionHandler.getCoordinates(targetCoordinates, TeachTarget) ) {
+    //Check if in range
+    bool PointReached = true;
+    for (int i = 0; i<6; i++) {
+      if (currentCoordinates[i] > ( targetCoordinates[i] + POSITION_RANGE ) ||
+          currentCoordinates[i] < ( targetCoordinates[i] - POSITION_RANGE ) ) {
+        PointReached = false;
+      }
+    }
+    
+    if (PointReached == true) {
+      EventOut = KinovaFSM::PositionReached;
+    }
+    else {
+      //Move to Point
+      float fingers[3];
+      try {
+       arm->set_target_cart(targetCoordinates,fingers);
+      }
+      catch( KinDrv::KinDrvException &e ) {
+        error("moveToPoint", e, false);
+      }
+    }
+  }
+  else {
+    printf("No further Points in Sequence.\n");
+  }
+}
 
+/**/
+void KinovaArm::savePoint() {
+  float currentCoordinates[6];
+  getPosition(currentCoordinates);
+
+  PositionHandler.savePoint(currentCoordinates, TeachTarget);
+  EventOut = KinovaFSM::PointSaved;
+}
+
+void KinovaArm::nextPoint() {
+  PositionHandler.countSequence();
+  EventOut = KinovaFSM::NextPointSet;
+}
 
 
 void KinovaArm::setJoystick(int x, int y, int z) {

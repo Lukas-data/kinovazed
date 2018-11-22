@@ -36,6 +36,11 @@ class KinovaArm {
     void move();
     void moveToPosition();
 
+    void teachPosition(KinovaPts::Positions position);
+    void moveToPoint();
+    void savePoint();
+    void nextPoint(); 
+
     void setJoystick(int x, int y, int z);
 
     void setTarget(KinovaPts::Positions targetPosition);
@@ -52,6 +57,8 @@ class KinovaArm {
     bool Error;
     KinovaStatus::SteeringMode Mode;
     KinovaPts::Positions TargetPosition;
+
+    KinovaPts::Positions TeachTarget;
 
     int JoystickX;
     int JoystickY;

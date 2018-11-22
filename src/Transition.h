@@ -23,6 +23,11 @@ namespace KinovaFSM {
   static StateMovePosition movePosition;
   //static StateMovePositionHome toHome;
   //static StateMovePositionBell toBell;
+  static StateTeach teach;
+  static StateChangeMode changeModeTeach;
+  static StateTeachMovePoint teachMovePoint;
+  static StateTeachSavePoint teachSavePoint;
+  static StateTeachNext teachNext;
   static StateEStop eStop;
 
 //StartUp-State
@@ -40,47 +45,59 @@ namespace KinovaFSM {
   static const Transition TransitionTable[] = {
     //Current           Transition          Next
     //State             Event               State
-    { &powerOff,        Initialize,         &initializing   },
-    { &powerOff,        E_Stop,             &eStop          },
+    { &powerOff,        Initialize,         &initializing     },
+    { &powerOff,        E_Stop,             &eStop            },
 
-    { &initializing,    Initialized,        &idle           },
-    { &initializing,    Error,              &powerOff       },
-    { &initializing,    E_Stop,             &eStop          },
+    { &initializing,    Initialized,        &idle             },
+    { &initializing,    Error,              &powerOff         },
+    { &initializing,    E_Stop,             &eStop            },
 
-    { &idle,            SetMode,            &changeMode     },
+    { &idle,            SetMode,            &changeMode       },
 //    { &idle,            SetModeTranslation, &toTranslation  },
 //    { &idle,            SetModeRotation,    &toRotation     },
 //    { &idle,            SetModeAxis1,       &toAxis1        },
 //    { &idle,            SetModeAxis2,       &toAxis2        },
-    { &idle,            GoToPosition,       &movePosition   },
+    { &idle,            GoToPosition,       &movePosition     },
 //    { &idle,            GoToPositionHome,   &toHome         },
 //    { &idle,            GoToPositionBell,   &toBell         },
-    { &idle,            Shutdown,           &powerOff       },
-    { &idle,            E_Stop,             &eStop          },
+    { &idle,            Shutdown,           &powerOff         },
+    { &idle,            E_Stop,             &eStop            },
 
-    { &steering,        SetMode,            &changeMode     },
+    { &steering,        SetMode,            &changeMode       },
 //    { &steering,        SetModeTranslation, &toTranslation  },
 //    { &steering,        SetModeRotation,    &toRotation     },
 //    { &steering,        SetModeAxis1,       &toAxis1        },
 //    { &steering,        SetModeAxis2,       &toAxis2        },
-    { &steering,        GoToPosition,       &movePosition   },
+    { &steering,        GoToPosition,       &movePosition     },
 //    { &steering,        GoToPositionHome,   &toHome         },
 //    { &steering,        GoToPositionBell,   &toBell         },
-    { &steering,        NoMode,             &idle           },
-    { &steering,        Shutdown,           &powerOff       },
-    { &steering,        E_Stop,             &eStop          },
+    { &steering,        NoMode,             &idle             },
+    { &steering,        Teach,              &teach            },
+    { &steering,        Shutdown,           &powerOff         },
+    { &steering,        E_Stop,             &eStop            },
 
-    {&changeMode,       ModeSet,            &steering       },
+    { &changeMode,      ModeSet,            &steering         },
 //    {&toTranslation,    ModeTranslation,    &steering       },
 //    {&toRotation,       ModeRotation,       &steering       },
 //    {&toAxis1,          ModeAxis1,          &steering       },
 //    {&toAxis2,          ModeAxis2,          &steering       },
 
-    {&movePosition,     PositionReached,    &changeMode     },
-    {&movePosition,     MoveJoystick,       &steering       },
-    {&movePosition,     NoMode,             &idle           },
-    {&movePosition,     Shutdown,           &powerOff       },
-    {&movePosition,     E_Stop,             &eStop          },
+    { &teach,           SetMode,            &changeModeTeach  }, 
+    { &teach,           GoToPosition,       &teachMovePoint   },
+    { &teach,           SavePoint,          &teachSavePoint   },  
+    { &teach,           Next,               &teachNext        },
+    { &teach,           Exit,               &steering         },
+
+    { &changeModeTeach, ModeSet,            &teach            },
+    { &teachMovePoint,  PositionReached,    &teach            },
+    { &teachSavePoint,  PointSaved,         &teach            },
+    { &teachNext,       NextPointSet,       &teach            },
+
+    { &movePosition,    PositionReached,    &changeMode       },
+    { &movePosition,    MoveJoystick,       &steering         },
+    { &movePosition,    NoMode,             &idle             },
+    { &movePosition,    Shutdown,           &powerOff         },
+    { &movePosition,    E_Stop,             &eStop            },
 
 /*
 //    {&toHome,           PositionReached,    &toTranslation  },

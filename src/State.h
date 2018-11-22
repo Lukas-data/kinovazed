@@ -54,7 +54,7 @@ class StateChangeMode : public State {
     void exitAction();
     void tickAction();
 };
-
+/*
 class StateChangeModeTranslation : public State {
   public:
     void entryAction();
@@ -82,7 +82,7 @@ class StateChangeModeAxis2 : public State {
     void exitAction();
     void tickAction();
 };
-
+*/
 class StateSteering : public State {
   public:
     void entryAction();
@@ -96,7 +96,7 @@ class StateMovePosition : public State {
     void exitAction();
     void tickAction();
 };
-
+/*
 class StateMovePositionHome : public State {
   public:
     void entryAction();
@@ -110,7 +110,7 @@ class StateMovePositionBell : public State {
     void exitAction();
     void tickAction();
 };
-/*
+*/
 class StateTeach : public State {
   public:
     void entryAction();
@@ -118,6 +118,35 @@ class StateTeach : public State {
     void tickAction();
 };
 
+class StateChangeModeTeach : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
+class StateTeachMovePoint : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
+class StateTeachSavePoint : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
+class StateTeachNext : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
+/*
 class StateTeachHome : public State {
   public:
     void entryAction();

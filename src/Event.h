@@ -27,11 +27,12 @@ namespace KinovaFSM {
     //GoToPositionHome,
     //GoToPositionBell,
 
-    //TeachHome,
-    //TeachBell,
+    Teach,
+    SavePoint,
+    Next,
     //TeachMove,
     //TeachSave,
-
+    Exit,
     Shutdown,
     E_Stop,
     QuitEStop,
@@ -46,7 +47,9 @@ namespace KinovaFSM {
     ModeSet,
   
     PositionReached,
-
+    
+    PointSaved,
+    NextPointSet,
     //TeachPointReached,
     //TeachPointSaved,
 
@@ -76,11 +79,12 @@ namespace KinovaFSM {
     //"GoToPositionHome",
     //"GoToPositionBell",
 
-    //"TeachHome",
-    //"TeachBell",
+    "Teach",
+    "SavePoint",
+    "Next",
     //"TeachMove",
     //"TeachSave",
-
+    "Exit",
     "Shutdown",
     "E_Stop",
     "QuitEStop",
@@ -94,6 +98,9 @@ namespace KinovaFSM {
     "ModeSet",
 
     "PositionReached",
+
+    "PointSaved",
+    "NextPointSet",
 
     //"TeachPointReached",
     //"TeachPointSaved",

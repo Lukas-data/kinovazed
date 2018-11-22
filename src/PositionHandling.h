@@ -1,14 +1,14 @@
 #ifndef _POSHANDLING_H_
 #define _POSHANDLING_H_
 
-#define NUMBER_OF_POINTS 2      //Corresponds with the number of Points in KinovaPts::Points
-#define NUMBER_OF_SUBPOINTS 2   //Corresponds with the maximum length of a Sequence.
+#define NUMBER_OF_SUBPOINTS 10   //Corresponds with the maximum length of a Sequence.
 
 namespace KinovaPts {
   
-  static const int NumberOfPositions = 2;
-  enum Positions { HOME,
-                   BELL
+  static const int NumberOfPositions = 2; //excl. NoPosition
+  enum Positions { NoPosition,
+                   Home,
+                   Bell
                  };
 
   typedef struct posCoordinates{ 
@@ -19,7 +19,6 @@ namespace KinovaPts {
     float yaw;
     float roll;
   }posCoordinates;
-
 }
 
 class PositionHandling {
@@ -30,16 +29,17 @@ class PositionHandling {
       {}
     ~PositionHandling();
     static int printPos();
-    bool getCoordinates(float* coordinates, KinovaPts::Positions targetPoint);
+    bool getCoordinates(float* coordinates, KinovaPts::Positions targetPosition);
     void countSequence();
+    void resetSequence();
+    void savePoint(float coordinates[6], KinovaPts::Positions object);
     void readFromFile();
     void writeToFile();
+    int getSequence();
 
   private:
     static KinovaPts::posCoordinates Positions[KinovaPts::NumberOfPositions][NUMBER_OF_SUBPOINTS];
     int SequenceCounter;
-    
- 
 
 };
 

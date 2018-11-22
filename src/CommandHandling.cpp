@@ -51,7 +51,7 @@ void CommandHandling::process() {
   }
   if (newEvent == KinovaFSM::NoEvent)
   { 
-    printf("No Hardware Events\n");
+    //printf("No Hardware Events\n");
   }
   KinovaSM.sendEvent(newEvent,newVar);
 }

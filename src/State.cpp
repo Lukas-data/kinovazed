@@ -19,7 +19,6 @@ void StatePowerOff::exitAction() {
   printf("Executing StatePowerOff exitAction.\n");
 }
 void StatePowerOff::tickAction() {
-  printf("Executing StatePowerOff tickAction.\n");
 }
 
 // EmergencyStop
@@ -42,7 +41,6 @@ void StateInitialize::exitAction() {
   JacoZED->changeMode(KinovaStatus::Translation);
 }
 void StateInitialize::tickAction() {
-  printf("Executing StateInitialize tickAction.\n");
   JacoZED->initialize();
 }
 
@@ -56,7 +54,6 @@ void StateIdle::exitAction() {
   printf("Executing StateIdle exitAction.\n");
 }
 void StateIdle::tickAction() {
-  printf("Executing StateIdle tickAction.\n");
 }
 
 // ChangeMode
@@ -70,7 +67,7 @@ void StateChangeMode::exitAction() {
 void StateChangeMode::tickAction() {
   JacoZED->modeChangeTimer();
 }
-
+/*
 // ChangeModeTranslation
 void StateChangeModeTranslation::entryAction() {
   printf("Executing StateChangeModeTranslation entryAction.\n");
@@ -119,7 +116,7 @@ void StateChangeModeAxis2::exitAction() {
 void StateChangeModeAxis2::tickAction() {
   JacoZED->modeChangeTimer();
 }
-
+*/
 // Steering
 void StateSteering::entryAction() {
   printf("Executing StateSteering entryAction.\n");
@@ -146,6 +143,7 @@ void StateMovePosition::tickAction() {
   JacoZED->moveToPosition();
 }
 
+/*
 // MovePositionHome
 void StateMovePositionHome::entryAction() {
   printf("Executing StateMovePositionHome entryAction.\n");
@@ -170,23 +168,64 @@ void StateMovePositionBell::exitAction() {
 void StateMovePositionBell::tickAction() {
   JacoZED->moveToPosition();
 }
-/*
+*/
 //Teach
 void StateTeach::entryAction() {
   printf("Executing StateTeach entryAction.\n");
-  JacoZED->setTarget(KinovaPts::BELL);
+  JacoZED->teachPosition(static_cast<KinovaPts::Positions>(EventVariable));
 }
 void StateTeach::exitAction() {
   printf("Executing StateTeach exitAction.\n");
+  JacoZED->dontMove();
 }
 void StateTeach::tickAction() {
+  JacoZED->move();
 }
-*/
 
+// ChangeModeTeach
+void StateChangeModeTeach::entryAction() {
+  printf("Executing StateChangeModeTeach entryAction.\n");
+  JacoZED->changeMode(static_cast<KinovaStatus::SteeringMode>(EventVariable));
+}
+void StateChangeModeTeach::exitAction() {
+  printf("Executing StateChangeModeTeach exitAction.\n");
+}
+void StateChangeModeTeach::tickAction() {
+  JacoZED->modeChangeTimer();
+}
 
+// TeachMovePoint
+void StateTeachMovePoint::entryAction() {
+  printf("Executing StateTeachMovePoint entryAction.\n");
+  JacoZED->setTarget(static_cast<KinovaPts::Positions>(EventVariable));
+  
+}
+void StateTeachMovePoint::exitAction() {
+  printf("Executing StateTeachMovePoint exitAction.\n");
+}
+void StateTeachMovePoint::tickAction() {
+  JacoZED->moveToPoint();
+}
 
+// TeachSavePoint
+void StateTeachSavePoint::entryAction() {
+  printf("Executing StateTeachSavePoint entryAction.\n");
+  JacoZED->savePoint(); 
+}
+void StateTeachSavePoint::exitAction() {
+  printf("Executing StateTeachSavePoint exitAction.\n");
+}
+void StateTeachSavePoint::tickAction() {
+}
 
-
-
-
+// TeachNext
+void StateTeachNext::entryAction() {
+  printf("Executing StateTeachNext entryAction.\n");
+  JacoZED->nextPoint(); 
+}
+void StateTeachNext::exitAction() {
+  printf("Executing StateTeachNext exitAction.\n");
+}
+void StateTeachNext::tickAction() {
+}
 

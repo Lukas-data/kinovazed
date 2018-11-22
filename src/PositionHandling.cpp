@@ -31,25 +31,21 @@ PositionHandling::~PositionHandling() {
 
 //Writes Requestet Coordinates of Position by pos-number and its Subpositions by Sequence-number.
 //Returns 0 if sequence has ended.
-bool PositionHandling::getCoordinates(float* coordinates, KinovaPts::Positions targetPoint) {
+bool PositionHandling::getCoordinates(float* coordinates, KinovaPts::Positions targetPosition) {
   
   //Check SequenceNumber
-  if (SequenceCounter >= NUMBER_OF_SUBPOINTS) {
-  SequenceCounter = 0;
-  return 0;
-  }
+  if (SequenceCounter >= NUMBER_OF_SUBPOINTS) { return 0;}
  
   //static float coordinates[6];
-  coordinates[0] = Positions[targetPoint][SequenceCounter].x;
-  coordinates[1] = Positions[targetPoint][SequenceCounter].y;
-  coordinates[2] = Positions[targetPoint][SequenceCounter].z;
-  coordinates[3] = Positions[targetPoint][SequenceCounter].pitch;
-  coordinates[4] = Positions[targetPoint][SequenceCounter].yaw;
-  coordinates[5] = Positions[targetPoint][SequenceCounter].roll;
+  coordinates[0] = Positions[targetPosition-1][SequenceCounter].x;
+  coordinates[1] = Positions[targetPosition-1][SequenceCounter].y;
+  coordinates[2] = Positions[targetPosition-1][SequenceCounter].z;
+  coordinates[3] = Positions[targetPosition-1][SequenceCounter].pitch;
+  coordinates[4] = Positions[targetPosition-1][SequenceCounter].yaw;
+  coordinates[5] = Positions[targetPosition-1][SequenceCounter].roll;
 
   if (coordinates[0] == 0 && coordinates[1] == 0 && coordinates[2] == 0 &&
       coordinates[3] == 0 && coordinates[4] == 0 && coordinates[5] == 0) {
-    SequenceCounter = 0;
     return 0;
   }
 }
@@ -57,7 +53,19 @@ bool PositionHandling::getCoordinates(float* coordinates, KinovaPts::Positions t
 void PositionHandling::countSequence() {
   ++SequenceCounter;
 }
+void PositionHandling::resetSequence() {
+  SequenceCounter = 0;
+}
 
+/*Saves coordinates to current Sequence Point in object.*/
+void PositionHandling::savePoint(float coordinates[6], KinovaPts::Positions object) {
+  Positions[object-1][SequenceCounter].x = coordinates[0];
+  Positions[object-1][SequenceCounter].y = coordinates[1];
+  Positions[object-1][SequenceCounter].z = coordinates[2];
+  Positions[object-1][SequenceCounter].pitch = coordinates[3];
+  Positions[object-1][SequenceCounter].yaw = coordinates[4];
+  Positions[object-1][SequenceCounter].roll = coordinates[5];
+}
 
 void PositionHandling::readFromFile() {
   //ifstream infile;
@@ -70,4 +78,8 @@ void PositionHandling::writeToFile() {
   pFile = fopen("TestPositions.dat","w");
   fwrite (Positions, sizeof(int), sizeof(Positions), pFile);
   fclose(pFile);
+}
+
+int PositionHandling::getSequence() {
+  return SequenceCounter;
 }
