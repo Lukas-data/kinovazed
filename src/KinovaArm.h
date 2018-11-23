@@ -30,6 +30,7 @@ class KinovaArm {
     void releaseControl();
 
     void dontMove();
+    void checkInitialize();
     void initialize();
     void changeMode(KinovaStatus::SteeringMode nextMode);
     void modeChangeTimer();
@@ -56,9 +57,10 @@ class KinovaArm {
     bool Connected;
     bool Error;
     KinovaStatus::SteeringMode Mode;
-    KinovaPts::Positions TargetPosition;
 
+    KinovaPts::Positions TargetPosition;
     KinovaPts::Positions TeachTarget;
+    bool NeedsInit;
 
     int JoystickX;
     int JoystickY;

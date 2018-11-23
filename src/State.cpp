@@ -34,11 +34,11 @@ void StateEStop::tickAction() {
 // Initialize
 void StateInitialize::entryAction() {
   printf("Executing StateInitialize entryAction.\n");
-  JacoZED->takeControl();   
+  JacoZED->takeControl();
+  JacoZED->checkInitialize();
 }
 void StateInitialize::exitAction() {
   printf("Executing StateInitialize exitAction.\n");
-  JacoZED->changeMode(KinovaStatus::Translation);
 }
 void StateInitialize::tickAction() {
   JacoZED->initialize();
@@ -67,56 +67,7 @@ void StateChangeMode::exitAction() {
 void StateChangeMode::tickAction() {
   JacoZED->modeChangeTimer();
 }
-/*
-// ChangeModeTranslation
-void StateChangeModeTranslation::entryAction() {
-  printf("Executing StateChangeModeTranslation entryAction.\n");
-  JacoZED->changeMode(KinovaStatus::Translation);
-}
-void StateChangeModeTranslation::exitAction() {
-  printf("Executing StateChangeModeTranslation exitAction.\n");
-}
-void StateChangeModeTranslation::tickAction() {
-  JacoZED->modeChangeTimer();
-}
 
-// ChangeModeRotation
-void StateChangeModeRotation::entryAction() {
-  printf("Executing StateChangeModeRotation entryAction.\n");
-  JacoZED->changeMode(KinovaStatus::Rotation);
-}
-void StateChangeModeRotation::exitAction() {
-  printf("Executing StateChangeModeRotation exitAction.\n");
-}
-void StateChangeModeRotation::tickAction() {
-  JacoZED->modeChangeTimer();
-}
-
-// ChangeModeAxis1
-void StateChangeModeAxis1::entryAction() {
-  printf("Executing StateChangeModeAxis1 entryAction.\n");
-  JacoZED->changeMode(KinovaStatus::Axis1);
-}
-void StateChangeModeAxis1::exitAction() {
-  printf("Executing StateChangeModeAxis1 exitAction.\n");
-}
-void StateChangeModeAxis1::tickAction() {
-  printf("Executing StateChangeModeAxis1 tickAction.\n");
-  JacoZED->modeChangeTimer();
-}
-
-// ChangeModeAxis2
-void StateChangeModeAxis2::entryAction() {
-  printf("Executing StateChangeModeAxis2 entryAction.\n");
-  JacoZED->changeMode(KinovaStatus::Axis2);
-}
-void StateChangeModeAxis2::exitAction() {
-  printf("Executing StateChangeModeAxis2 exitAction.\n");
-}
-void StateChangeModeAxis2::tickAction() {
-  JacoZED->modeChangeTimer();
-}
-*/
 // Steering
 void StateSteering::entryAction() {
   printf("Executing StateSteering entryAction.\n");
@@ -129,12 +80,10 @@ void StateSteering::tickAction() {
   JacoZED->move();
 }
 
-
 // MovePosition
 void StateMovePosition::entryAction() {
   printf("Executing StateMovePosition entryAction.\n");
   JacoZED->setTarget(static_cast<KinovaPts::Positions>(EventVariable));
-  
 }
 void StateMovePosition::exitAction() {
   printf("Executing StateMovePosition exitAction.\n");
@@ -143,32 +92,6 @@ void StateMovePosition::tickAction() {
   JacoZED->moveToPosition();
 }
 
-/*
-// MovePositionHome
-void StateMovePositionHome::entryAction() {
-  printf("Executing StateMovePositionHome entryAction.\n");
-  JacoZED->setTarget(KinovaPts::HOME);
-  
-}
-void StateMovePositionHome::exitAction() {
-  printf("Executing StateMovePositionHome exitAction.\n");
-}
-void StateMovePositionHome::tickAction() {
-  JacoZED->moveToPosition();
-}
-
-// MovePositionBell
-void StateMovePositionBell::entryAction() {
-  printf("Executing StateMovePositionBell entryAction.\n");
-  JacoZED->setTarget(KinovaPts::BELL);
-}
-void StateMovePositionBell::exitAction() {
-  printf("Executing StateMovePositionBell exitAction.\n");
-}
-void StateMovePositionBell::tickAction() {
-  JacoZED->moveToPosition();
-}
-*/
 //Teach
 void StateTeach::entryAction() {
   printf("Executing StateTeach entryAction.\n");

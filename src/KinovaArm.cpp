@@ -98,6 +98,29 @@ void KinovaArm::dontMove() {
   }
 }
 
+void KinovaArm::checkInitialize() {
+  if (KINOVA_DUMMY == false) {
+    try {
+      KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
+
+      //Moves Arm to Kinova Home position if not in initialized Position
+      if( armStatus == KinDrv::MODE_NOINIT) {
+        setTarget(KinovaPts::Home);
+      }
+      else {
+        EventOut = KinovaFSM::Initialized;
+      }
+    }
+    catch ( KinDrv::KinDrvException &e ) {
+      error("initialize", e, false);
+    }
+  }
+  else {
+    EventOut = KinovaFSM::Initialized;
+    printf("Arm connection is turned off. Dummy-Initialized.\n");
+  }
+}
+
 
 /*Initialize Arm and go to Home position*/
 void KinovaArm::initialize()
@@ -115,39 +138,10 @@ void KinovaArm::initialize()
         arm->push_joystick_button(buttons);
       }
       else {
-        EventOut = KinovaFSM::Initialized;
-      }
-      /*//Moves Arm to Own Home position after it moved to initializable Position
-      else {
-        if ( requestedPosition == POS_NOPOS ) {
-          arm->release_joystick();
-          //Initialization moves to Position 0 (ZEDe-Home)
-          DoMoveToPos(POS_ZEDHOME);
-          printf("Arm is moving to ZEDe-Home Position, state: %i \n", Status);
-        }
-        else if ( currentPosition != POS_ZEDHOME) {
-          moveToPos();
-        }
-        else {
-          Initializing = false;
-          Ready = true;
-          MovingHome = false;
-          writeDataToBuffer(INIT);
-          printf("Arm initialized at ZED-Home, state: %i \n", Status);
-        }
-      }
-      else if (MovingHome == false){
+        printf("Initializing: Statuts is %d.\n",armStatus);
         arm->release_joystick();
-        //Initialization moves to Own-Homeposition (for Testing Position)
-        //DoMoveToPos(0);
-        //MovingToPosition = false;
-        Initializing = false;
-        Ready = true;
-        writeDataToBuffer(INIT);
-        //DoSetMode(1);
-        printf("Arm initialized without moving, state: %i \n", Status);
-      } 
-      */
+        moveToPosition();
+      }
     }
     catch ( KinDrv::KinDrvException &e ) {
       error("initialize", e, false);
@@ -182,11 +176,8 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
         error("changeMode", e, false);
       }
     }
-    if (nextMode >= 1 && nextMode <= 4) {
+    if (nextMode >= 0 && nextMode <= 4) {
       Mode = nextMode;
-    }
-    else if(nextMode == 0) {
-      Mode = KinovaStatus::Translation;
     }
     else {
       printf("KinovaArm: Requested Mode invalid.\n");
@@ -206,10 +197,6 @@ void KinovaArm::modeChangeTimer() {
   if (elapsedTime > ModeChangeTimer) {
     EventOut = KinovaFSM::ModeSet;
     printf("KinovaArm: Mode set to %d\n", Mode);
-    //if (Mode == KinovaStatus::Translation) { EventOut = KinovaFSM::ModeTranslation; }
-    //if (Mode == KinovaStatus::Rotation) { EventOut = KinovaFSM::ModeRotation; }
-    //if (Mode == KinovaStatus::Axis1) { EventOut = KinovaFSM::ModeAxis1; }
-    //if (Mode == KinovaStatus::Axis2) { EventOut = KinovaFSM::ModeAxis2; }
     ModeChangeTimer=0;
   }
 }
@@ -273,7 +260,6 @@ void KinovaArm::moveToPosition() {
   float currentCoordinates[6];
 
   getPosition(currentCoordinates);
-
   //Check if Sequence is still going
   if ( PositionHandler.getCoordinates(targetCoordinates, TargetPosition) ) {
     //Check if in range

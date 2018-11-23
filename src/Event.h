@@ -14,45 +14,24 @@ namespace KinovaFSM {
     //User Events
     Initialize,
     NoMode,
-
     SetMode,
-    //SetModeTranslation,
-    //SetModeRotation,
-    //SetModeAxis1,
-    //SetModeAxis2,
-
     MoveJoystick,
-
     GoToPosition,
-    //GoToPositionHome,
-    //GoToPositionBell,
-
     Teach,
     SavePoint,
     Next,
-    //TeachMove,
-    //TeachSave,
     Exit,
     Shutdown,
     E_Stop,
     QuitEStop,
     
     //Hardware Events
+    NeedsInit,
     Initialized,
-
-    //ModeTranslation,
-    //ModeRotation,
-    //ModeAxis1,
-    //ModeAxis2,
     ModeSet,
-  
     PositionReached,
-    
     PointSaved,
     NextPointSet,
-    //TeachPointReached,
-    //TeachPointSaved,
-
     Error,
   };
 
@@ -66,45 +45,24 @@ namespace KinovaFSM {
     //User Events
     "Initialize",
     "NoMode",
-
     "SetMode",
-    //"SetModeTranslation",
-    //"SetModeRotation",
-    //"SetModeAxis1",
-    //"SetModeAxis2",
-
     "MoveJoystick",
-
     "GoToPosition",
-    //"GoToPositionHome",
-    //"GoToPositionBell",
-
     "Teach",
     "SavePoint",
     "Next",
-    //"TeachMove",
-    //"TeachSave",
     "Exit",
     "Shutdown",
     "E_Stop",
     "QuitEStop",
     
     //Hardware Events
+    "NeedsInit",
     "Initialized",
-    //"ModeTranslation",
-    //"ModeRotation",
-    //"ModeAxis1",
-    //"ModeAxis2",
     "ModeSet",
-
     "PositionReached",
-
     "PointSaved",
     "NextPointSet",
-
-    //"TeachPointReached",
-    //"TeachPointSaved",
-
     "Error"
   };
 

@@ -126,12 +126,24 @@ int main(int argc, char *argv[])
   communication.init();
   wait(1);
   communication.debugSendEvent(KinovaFSM::Initialize);
-  wait(5);
-  communication.debugSendEvent(KinovaFSM::SetModeTranslation);
+  wait(40);
+  communication.debugSendEvent(KinovaFSM::SetMode,1);
   wait(5);
   communication.debugPrintPosition();
   wait(5);
   */
+
+  /****************/
+  /* Testing Init */
+  /****************/
+  
+  communication.init();
+  wait(1);
+  communication.debugSendEvent(KinovaFSM::Initialize);
+  wait(30);
+  communication.debugSendEvent(KinovaFSM::GoToPosition,1);
+  wait(30);
+  
 
   /*******************************/
   /* Testing TeachState Movement */
@@ -160,7 +172,7 @@ int main(int argc, char *argv[])
   /**********************/
   /* Testing TeachState */
   /**********************/
-  
+  /*
   communication.init();
   wait(1);
   communication.debugSendEvent(KinovaFSM::Initialize);
@@ -193,7 +205,7 @@ int main(int argc, char *argv[])
   wait(20);
   communication.debugSendEvent(KinovaFSM::GoToPosition,2); //Go to Bell
   wait(20);
-  
+  */
 }
 
 

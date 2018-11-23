@@ -15,14 +15,8 @@ namespace KinovaFSM {
   static StateInitialize initializing;
   static StateIdle idle;
   static StateChangeMode changeMode;
-  //static StateChangeModeTranslation toTranslation;
-  //static StateChangeModeRotation toRotation;
-  //static StateChangeModeAxis1 toAxis1;
-  //static StateChangeModeAxis2 toAxis2;
   static StateSteering steering;
   static StateMovePosition movePosition;
-  //static StateMovePositionHome toHome;
-  //static StateMovePositionBell toBell;
   static StateTeach teach;
   static StateChangeMode changeModeTeach;
   static StateTeachMovePoint teachMovePoint;
@@ -49,49 +43,44 @@ namespace KinovaFSM {
     { &powerOff,        E_Stop,             &eStop            },
 
     { &initializing,    Initialized,        &idle             },
+    { &initializing,    PositionReached,    &changeMode       },
     { &initializing,    Error,              &powerOff         },
     { &initializing,    E_Stop,             &eStop            },
 
     { &idle,            SetMode,            &changeMode       },
-//    { &idle,            SetModeTranslation, &toTranslation  },
-//    { &idle,            SetModeRotation,    &toRotation     },
-//    { &idle,            SetModeAxis1,       &toAxis1        },
-//    { &idle,            SetModeAxis2,       &toAxis2        },
     { &idle,            GoToPosition,       &movePosition     },
-//    { &idle,            GoToPositionHome,   &toHome         },
-//    { &idle,            GoToPositionBell,   &toBell         },
     { &idle,            Shutdown,           &powerOff         },
     { &idle,            E_Stop,             &eStop            },
 
     { &steering,        SetMode,            &changeMode       },
-//    { &steering,        SetModeTranslation, &toTranslation  },
-//    { &steering,        SetModeRotation,    &toRotation     },
-//    { &steering,        SetModeAxis1,       &toAxis1        },
-//    { &steering,        SetModeAxis2,       &toAxis2        },
     { &steering,        GoToPosition,       &movePosition     },
-//    { &steering,        GoToPositionHome,   &toHome         },
-//    { &steering,        GoToPositionBell,   &toBell         },
     { &steering,        NoMode,             &idle             },
     { &steering,        Teach,              &teach            },
     { &steering,        Shutdown,           &powerOff         },
     { &steering,        E_Stop,             &eStop            },
 
     { &changeMode,      ModeSet,            &steering         },
-//    {&toTranslation,    ModeTranslation,    &steering       },
-//    {&toRotation,       ModeRotation,       &steering       },
-//    {&toAxis1,          ModeAxis1,          &steering       },
-//    {&toAxis2,          ModeAxis2,          &steering       },
+    { &changeMode,      E_Stop,             &eStop            },
 
     { &teach,           SetMode,            &changeModeTeach  }, 
     { &teach,           GoToPosition,       &teachMovePoint   },
     { &teach,           SavePoint,          &teachSavePoint   },  
     { &teach,           Next,               &teachNext        },
     { &teach,           Exit,               &steering         },
+    { &teach,           Shutdown,           &powerOff         },
+    { &teach,           E_Stop,             &eStop            },    
 
     { &changeModeTeach, ModeSet,            &teach            },
+    { &changeModeTeach, E_Stop,             &eStop            },
+
     { &teachMovePoint,  PositionReached,    &teach            },
+    { &teachMovePoint,  E_Stop,             &eStop            },
+
     { &teachSavePoint,  PointSaved,         &teach            },
+    { &teachSavePoint,  E_Stop,             &eStop            },
+
     { &teachNext,       NextPointSet,       &teach            },
+    { &teachNext,       E_Stop,             &eStop            },
 
     { &movePosition,    PositionReached,    &changeMode       },
     { &movePosition,    MoveJoystick,       &steering         },
@@ -99,23 +88,7 @@ namespace KinovaFSM {
     { &movePosition,    Shutdown,           &powerOff         },
     { &movePosition,    E_Stop,             &eStop            },
 
-/*
-//    {&toHome,           PositionReached,    &toTranslation  },
-    {&toHome,           PositionReached,    &changeMode     },
-    {&toHome,           MoveJoystick,       &steering       },
-    {&toHome,           NoMode,             &idle           },
-    {&toHome,           Shutdown,           &powerOff       },
-    {&toHome,           E_Stop,             &eStop          },
-
-//    {&toBell,           PositionReached,    &toTranslation  },
-    {&toBell,           PositionReached,    &changeMode     },
-    {&toBell,           MoveJoystick,       &steering       },
-    {&toBell,           NoMode,             &idle           },
-    {&toBell,           Shutdown,           &powerOff       },
-    {&toBell,           E_Stop,             &eStop          },
-*/
-
-    { &eStop,           QuitEStop,          &powerOff       },
+    { &eStop,           QuitEStop,          &powerOff         },
 
   };
 
