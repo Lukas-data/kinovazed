@@ -11,7 +11,8 @@ add_library(kinovaArm_lib STATIC  KinovaArm.cpp KinovaArm.h
                                   Event.h
                                   KinovaStatus.h
                                   State.cpp State.h
-                                  CommandHandling.cpp CommandHandling.h)
+                                  CommandHandling.cpp CommandHandling.h
+                                  )
 
 target_include_directories(kinovaArm_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

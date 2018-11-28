@@ -31,6 +31,8 @@ PositionHandling.h
 ../src/KinovaStatus.h
 
 ../src/PositionHandling.h
+vector
+-
 
 ../src/State.h
 KinovaArm.h

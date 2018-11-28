@@ -55,10 +55,16 @@ iostream
 -
 fstream
 -
+sstream
+-
+string
+-
 PositionHandling.h
 /home/kinova/Documents/kinovaZED/src/PositionHandling.h
 
 /home/kinova/Documents/kinovaZED/src/PositionHandling.h
+vector
+-
 
 /home/kinova/Documents/kinovaZED/src/State.cpp
 stdio.h
