@@ -29,25 +29,39 @@ class PositionHandling {
     PositionHandling() :
       SequenceCounter(0),
       Location(KinovaPts::NumberOfObjectives, std::vector<float>(6)),
-      Points(KinovaPts::NumberOfObjectives, cord_vec_t(1,std::vector<float>(6)))
+      Points(KinovaPts::NumberOfObjectives, f2d_vec_t(1,std::vector<float>(6))),
+      TransMat(KinovaPts::NumberOfObjectives, f2d_vec_t(4,std::vector<float>(4))),
+      InvTransMat(KinovaPts::NumberOfObjectives, f2d_vec_t(4,std::vector<float>(4)))
       {}
     ~PositionHandling();
+    
+    void init();
     static int printPos();
     bool getCoordinates(float* coordinates, KinovaPts::Objective targetObjective);
     void countSequence();
     void resetSequence();
     void savePoint(float coordinates[6], KinovaPts::Objective targetObjective);
+    int  getSequence();
     void readFromFile();
     void writeToFile();
-    int getSequence();
 
   private:
-    typedef std::vector< std::vector<float> > cord_vec_t;
-    typedef std::vector<cord_vec_t> seq_vec_t;
+    typedef std::vector< std::vector<float> > f2d_vec_t;
+    typedef std::vector<f2d_vec_t> f3d_vec_t;
     static KinovaPts::posCoordinates Locations[KinovaPts::NumberOfObjectives][NUMBER_OF_SUBPOINTS];
-    cord_vec_t Location;
-    seq_vec_t Points;
+    f2d_vec_t Location;
+    f3d_vec_t Points;
     int SequenceCounter;
+    f3d_vec_t TransMat;
+    f3d_vec_t InvTransMat;
+
+    void coordTransform(float* coordinates,KinovaPts::Objective targetObjective);
+    void coordBackTransform(float* coordinates,KinovaPts::Objective targetObjective);
+    f2d_vec_t rotMatrix(float angle[3]);
+    f2d_vec_t matMultiply(f2d_vec_t &mat1, f2d_vec_t &mat2);
+    std::vector<float> getEulerAngles(f2d_vec_t rotMat);
+    void calcTransMat();
+    
 
 };
 

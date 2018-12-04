@@ -31,7 +31,7 @@ bool KinovaArm::connect() {
     try {
       arm = new KinDrv::JacoArm();
       Connected = true;
-      return true;
+      return 1;
     } catch( KinDrv::KinDrvException &e ) {
       error("connect", e, true);
       return 0;
@@ -99,7 +99,7 @@ void KinovaArm::dontMove() {
 }
 
 void KinovaArm::checkInitialize() {
-  PositionHandler.readFromFile();
+  PositionHandler.init();
   if (KINOVA_DUMMY == false) {
     try {
       KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
@@ -158,7 +158,7 @@ void KinovaArm::initialize()
 /*Changes current Mode and sets TimerTime (only necessary if kinematic 
 mode on Jaco needs to be changed.). Default nextMode = NoMode is Translation!*/
 void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
-  if (Mode != nextMode) {
+  if (Mode != nextMode || Mode == KinovaStatus::NoMode) {
     if (KINOVA_DUMMY == false) {
       try {
         if( (Mode != KinovaStatus::Axis1 && Mode != KinovaStatus::Axis2)
@@ -297,6 +297,7 @@ void KinovaArm::moveToPosition() {
 void KinovaArm::teachPosition(KinovaPts::Objective targetObjective) {
   if (targetObjective != 0) {
     if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives) {
+      printf("new teachTarget, sequence reset.\n");
       TeachTarget = targetObjective;
       PositionHandler.resetSequence();
     }
@@ -393,6 +394,7 @@ void KinovaArm::getPosition(float* coordinates) {
         coordinates[i] = Position.rotation[i-3];
     }
   }
+  printf("currentCoordinates: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
 }
 
 

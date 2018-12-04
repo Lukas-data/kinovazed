@@ -87,6 +87,7 @@ void StateMovePosition::entryAction() {
 }
 void StateMovePosition::exitAction() {
   printf("Executing StateMovePosition exitAction.\n");
+  JacoZED->dontMove();
 }
 void StateMovePosition::tickAction() {
   JacoZED->moveToPosition();
@@ -120,11 +121,11 @@ void StateChangeModeTeach::tickAction() {
 // TeachMovePoint
 void StateTeachMovePoint::entryAction() {
   printf("Executing StateTeachMovePoint entryAction.\n");
-  JacoZED->setTarget(static_cast<KinovaPts::Objective>(EventVariable));
   
 }
 void StateTeachMovePoint::exitAction() {
   printf("Executing StateTeachMovePoint exitAction.\n");
+  JacoZED->dontMove();
 }
 void StateTeachMovePoint::tickAction() {
   JacoZED->moveToPoint();
