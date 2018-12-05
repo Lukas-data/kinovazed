@@ -10,6 +10,8 @@
 #include "PositionHandling.h"
 
 
+#define FILEPATH "/home/kinova/Documents/kinovaZED/CybathlonObjectives.dat"
+
 //declare Default Positions
 KinovaPts::posCoordinates PositionHandling::Locations[KinovaPts::NumberOfObjectives][NUMBER_OF_SUBPOINTS] = {
   { //HOME
@@ -58,11 +60,10 @@ bool PositionHandling::getCoordinates(float* coordinates, KinovaPts::Objective t
   bool isZero = true;
   for (int i = 0; i < 6; i++) {
     if (Points[targetObjective-1][SequenceCounter][i] != 0) {
-      std::cout << "Points[" << targetObjective-1 << "][" << SequenceCounter << "][" << i << "] != 0\n";
+      //std::cout << "Points[" << targetObjective-1 << "][" << SequenceCounter << "][" << i << "] != 0\n";
       isZero = false;
     }
   }
-  
   if (isZero) {
     for (int i = 0; i < 6; i++) {
       coordinates[i] = Location[targetObjective-1][i];
@@ -72,12 +73,9 @@ bool PositionHandling::getCoordinates(float* coordinates, KinovaPts::Objective t
     for (int i = 0; i < 6; i++) {
       coordinates[i] = Points[targetObjective-1][SequenceCounter][i];     
     }
-    //printf("CoordinatesBeforeTransform: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
-    coordTransform(coordinates, targetObjective);
-    //printf("CoordinatesAfterTransform: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
+    coordTransform(coordinates, TransMat[targetObjective-1]);
   }
-  //printf("Coordinates: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
-
+  printf("Coordinates: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
 }
 
 void PositionHandling::countSequence() {
@@ -89,7 +87,7 @@ void PositionHandling::resetSequence() {
 
 /*Saves coordinates to current Sequence Point in object.*/
 void PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targetObjective) {
-  coordBackTransform(coordinates, targetObjective);
+  coordTransform(coordinates, InvTransMat[targetObjective-1]);
   for (int i = 0; i < 6; i++) {
     Points[targetObjective-1][SequenceCounter][i] = coordinates[i];
   }
@@ -99,7 +97,7 @@ void PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targ
 /*Reads Location and Points Vectors from SaveFile*/
 void PositionHandling::readFromFile() {
   std::string line;
-  std::ifstream infile ("testPosition.dat");
+  std::ifstream infile (FILEPATH);
   
   //Reads Objectives from Files
   for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
@@ -112,7 +110,7 @@ void PositionHandling::readFromFile() {
         vec_int.push_back(n);
       }
       if (vec_int.size() == 0) {
-        std::cout << "No Location. ERROR: File-Missmatch.";
+        std::cout << "ReadFromFile: No Location. ERROR: File-Missmatch.";
         break;
       }
       for (int j = 0; j < 6; j++) {
@@ -151,15 +149,12 @@ void PositionHandling::readFromFile() {
         vec_float[i] = (float)vec_int[i]/1000;
       }
       if (isZero) {
-        std::cout << "isZero: " << isZero << "\n";
         PrePoint = false;
       }
       else if (PrePoint) {
-        std::cout << "insert\n";
         Points[location].insert(it+sequence, vec_float);
       }
       else {
-        std::cout << "PushBack\n";
         Points[location].push_back(vec_float);
       }
       sequence++;
@@ -171,8 +166,7 @@ void PositionHandling::readFromFile() {
 
 /*Writes Location and Points Vectors to SaveFile*/
 void PositionHandling::writeToFile() {
-  std::cout << "Save File\n";
-  std::ofstream saveFile ("Positions.dat");
+  std::ofstream saveFile (FILEPATH);
   if ( saveFile.is_open() ) {
     //Write Locations
     for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
@@ -194,6 +188,8 @@ void PositionHandling::writeToFile() {
     }
   }
   else std::cout << "Unable to open file\n";
+
+  std::cout << "File Saved\n";
 }
 
 int PositionHandling::getSequence() {
@@ -201,10 +197,8 @@ int PositionHandling::getSequence() {
 }
 
 
-//TODO: combine coordTransform and coordBackTransform (use f2d_vec_t &transMat as input value. call with TransMat[targetObjective-1])
-
 /*Transforms coordinates Objective coordinate system to Basis coordinate system*/
-void PositionHandling::coordTransform(float* coordinates,KinovaPts::Objective targetObjective) {
+void PositionHandling::coordTransform(float* coordinates, const f2d_vec_t &transMat) {
   //define point Vector ([x;y;z;1]) and angle Vector ([alpha, beta, gamma])
   f2d_vec_t cord(4, std::vector<float>(1,0));
   float ang[3];
@@ -214,13 +208,13 @@ void PositionHandling::coordTransform(float* coordinates,KinovaPts::Objective ta
   }
   cord[3][0] = 1;
   //Multiply Point Vector with TransformationMatrix
-  cord = matMultiply(TransMat[targetObjective-1], cord);
+  cord = matMultiply(transMat, cord);
 
   //Get rotational Matrix from Objective in Base Coordinate System. (extracted from inverse transformation Matrix
   f2d_vec_t R1(3, std::vector<float>(3,0));
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j <3; j++) {
-      R1[i][j] = TransMat[targetObjective-1][i][j];
+      R1[i][j] = transMat[i][j];
     }
   }
   //Get rotational Matrix from Point angles in Objective coordinate system.
@@ -238,40 +232,6 @@ void PositionHandling::coordTransform(float* coordinates,KinovaPts::Objective ta
   }
 }
 
-
-/*Transforms coordinates from Basis coordinate system to Objective coordinate system*/
-void PositionHandling::coordBackTransform(float* coordinates,KinovaPts::Objective targetObjective) {
-  //define point Vector ([x;y;z;1]) and angle Vector ([alpha, beta, gamma])
-  f2d_vec_t cord(4, std::vector<float>(1,0));
-  float ang[3];
-  for (int i = 0; i<3; i++) {
-    cord[i][0] = coordinates[i];
-    ang[i] = coordinates[i+3];
-  }
-  cord[3][0] = 1;
-  //Multiply Point Vector with inverseTransformationMatrix
-  cord = matMultiply(InvTransMat[targetObjective-1], cord);
-  //Get inverse rotational Matrix from Objective in Base Coordinate System. (extracted from inverse transformation Matrix
-  f2d_vec_t R1_inv(3, std::vector<float>(3,0));
-  for (int i = 0; i < 3; i++) {
-    for (int j = 0; j <3; j++) {
-      R1_inv[i][j] = InvTransMat[targetObjective-1][i][j];
-    }
-  }
-  //Get rotational Matrix from Point angles in Base Coordinate System.
-  f2d_vec_t R2(3, std::vector<float>(3,0));
-  R2 = rotMatrix(ang);
-  //Calculate rotational Matrix from Point in Objective Coordinate System
-  f2d_vec_t R3(3, std::vector<float>(3,0));
-  R3 =  matMultiply(R1_inv,R2);
-  std::vector<float> angles(3);
-  angles = getEulerAngles(R3);
-  //write coordinates
-  for (int i = 0; i<3; i++) {
-    coordinates[i] = cord[i][0];
-    coordinates[i+3] = angles[i];
-  }
-}
 
 /*takes Array of 3 Angles alpha, beta, gamma and returns RotationMatrix of Euler XYZ*/
 PositionHandling::f2d_vec_t PositionHandling::rotMatrix(float angle[3]) {
@@ -295,8 +255,9 @@ PositionHandling::f2d_vec_t PositionHandling::rotMatrix(float angle[3]) {
   return mat;
 }
 
+
 /*Multiplies two matrices and returns resulting matrix.*/
-PositionHandling::f2d_vec_t PositionHandling::matMultiply(f2d_vec_t &mat1, f2d_vec_t &mat2) {
+PositionHandling::f2d_vec_t PositionHandling::matMultiply(const f2d_vec_t &mat1, const f2d_vec_t &mat2) {
   int d1 = mat1.size();
   int d2 = mat1[0].size();
   int d3 = mat2[0].size();
@@ -312,7 +273,9 @@ PositionHandling::f2d_vec_t PositionHandling::matMultiply(f2d_vec_t &mat1, f2d_v
   return ans;
 }
 
-std::vector<float> PositionHandling::getEulerAngles(f2d_vec_t rotMat) {
+
+/*returns Euler Angles of Euler XYZ rotational matrix.*/
+std::vector<float> PositionHandling::getEulerAngles(const f2d_vec_t rotMat) {
   std::vector<float> res(3);
   if (rotMat[1][3] < 1) {
     if(rotMat[1][3] > -1) {
@@ -333,6 +296,7 @@ std::vector<float> PositionHandling::getEulerAngles(f2d_vec_t rotMat) {
   }
   return res;
 }
+
 
 /*Calculate Transformation-Matrices for every Objectives coordinate system*/
 void PositionHandling::calcTransMat() {

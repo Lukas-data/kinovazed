@@ -55,11 +55,11 @@ class PositionHandling {
     f3d_vec_t TransMat;
     f3d_vec_t InvTransMat;
 
-    void coordTransform(float* coordinates,KinovaPts::Objective targetObjective);
+    void coordTransform(float* coordinates, const f2d_vec_t &transMat);
     void coordBackTransform(float* coordinates,KinovaPts::Objective targetObjective);
     f2d_vec_t rotMatrix(float angle[3]);
-    f2d_vec_t matMultiply(f2d_vec_t &mat1, f2d_vec_t &mat2);
-    std::vector<float> getEulerAngles(f2d_vec_t rotMat);
+    f2d_vec_t matMultiply(const f2d_vec_t &mat1, const f2d_vec_t &mat2);
+    std::vector<float> getEulerAngles(const f2d_vec_t rotMat);
     void calcTransMat();
     
 

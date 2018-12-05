@@ -394,7 +394,7 @@ void KinovaArm::getPosition(float* coordinates) {
         coordinates[i] = Position.rotation[i-3];
     }
   }
-  printf("currentCoordinates: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
+  //printf("currentCoordinates: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
 }
 
 
