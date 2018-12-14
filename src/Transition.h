@@ -27,7 +27,6 @@ namespace KinovaFSM {
 //StartUp-State
   State* const initState = &powerOff;
 
-
 //Transition definition.
   struct Transition {
     State* currentState;
@@ -43,7 +42,7 @@ namespace KinovaFSM {
     { &powerOff,        E_Stop,             &eStop            },
 
     { &initializing,    Initialized,        &idle             },
-    { &initializing,    PositionReached,    &changeMode       },
+    { &initializing,    SequenceDone,       &initializing     },
     { &initializing,    Error,              &powerOff         },
     { &initializing,    E_Stop,             &eStop            },
 
@@ -60,29 +59,37 @@ namespace KinovaFSM {
     { &steering,        E_Stop,             &eStop            },
 
     { &changeMode,      ModeSet,            &steering         },
+    { &changeMode,      NoMode,             &idle             },
     { &changeMode,      E_Stop,             &eStop            },
 
     { &teach,           SetMode,            &changeModeTeach  }, 
     { &teach,           GoToPosition,       &teachMovePoint   },
+    { &teach,           NoMode,             &idle             },
     { &teach,           SavePoint,          &teachSavePoint   },  
     { &teach,           Next,               &teachNext        },
-    { &teach,           Exit,               &steering         },
+    { &teach,           Exit,               &changeMode       },
     { &teach,           Shutdown,           &powerOff         },
     { &teach,           E_Stop,             &eStop            },    
 
     { &changeModeTeach, ModeSet,            &teach            },
+    { &changeModeTeach, NoMode,             &idle             },
     { &changeModeTeach, E_Stop,             &eStop            },
 
-    { &teachMovePoint,  PositionReached,    &teach            },
+    { &teachMovePoint,  PointReached,       &changeModeTeach  },
+    { &teachMovePoint,  NoMode,             &idle             },
     { &teachMovePoint,  E_Stop,             &eStop            },
 
-    { &teachSavePoint,  PointSaved,         &teach            },
+    { &teachSavePoint,  PointSaved,         &changeModeTeach  },
+    { &teachSavePoint,  PointNotSaved,      &changeModeTeach  },
+    { &teachSavePoint,  NoMode,             &idle             },
     { &teachSavePoint,  E_Stop,             &eStop            },
 
-    { &teachNext,       NextPointSet,       &teach            },
+    { &teachNext,       NextPointSet,       &changeModeTeach  },
+    { &teachNext,       NextPointNotSet,    &changeModeTeach  },
+    { &teachNext,       NoMode,             &idle             },
     { &teachNext,       E_Stop,             &eStop            },
 
-    { &movePosition,    PositionReached,    &changeMode       },
+    { &movePosition,    SequenceDone,       &changeMode       },
     { &movePosition,    MoveJoystick,       &steering         },
     { &movePosition,    NoMode,             &idle             },
     { &movePosition,    Shutdown,           &powerOff         },

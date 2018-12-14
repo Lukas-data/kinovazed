@@ -28,8 +28,11 @@ class StateMachine {
     void sendEvent(KinovaFSM::Event e, int eventVar);
 
 
-    //Run the StateMachine.
-    void process();
+    //Run the StateMachine. Return True if StateChange is performed.
+    bool process();
+    
+    //returns current Event of StateMachine
+    //int getCurrentState();
 
   private:
     KinovaFSM::Event InputEvent;

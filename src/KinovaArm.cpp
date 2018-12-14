@@ -75,6 +75,7 @@ void KinovaArm::releaseControl() {
       error("releaseControl", e, false);
     }
   }
+  Initialized = false;
 }
 
 
@@ -126,10 +127,10 @@ void KinovaArm::checkInitialize() {
 /*Initialize Arm and go to Home position*/
 void KinovaArm::initialize()
 {
+  currentPosition = 0;
   if (KINOVA_DUMMY == false) {
     try {
       KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
-
       //Moves Arm to Kinova Home position if not in initialized Position
       if( armStatus == KinDrv::MODE_NOINIT) {
         //printf("Initializing: Status is NOINIT.\n");
@@ -149,6 +150,7 @@ void KinovaArm::initialize()
     }
   }
   else {
+    Initialized = true;
     EventOut = KinovaFSM::Initialized;
     printf("Arm connection is turned off. Dummy-Initialized.\n");
   }
@@ -209,6 +211,7 @@ void KinovaArm::move() {
   double currentSpeedX = -JoystickX*JoystickCalcFactor;
   double currentSpeedY = -JoystickY*JoystickCalcFactor;
   double currentSpeedZ = JoystickZ*JoystickCalcFactor;
+  currentPosition = -1;
   if (KINOVA_DUMMY == false) {
     KinDrv::jaco_joystick_axis_t axes;
     axes.trans_lr  = 0; 
@@ -249,7 +252,7 @@ void KinovaArm::setTarget(KinovaPts::Objective targetObjective) {
   }
   else {
     printf("KinovaArm: invalid targetPosition.\n");
-    EventOut = KinovaFSM::PositionReached;
+    EventOut = KinovaFSM::SequenceDone;
   }
 }
 
@@ -260,6 +263,7 @@ If end of sequence is reached, PositionReached event is sent.*/
 void KinovaArm::moveToPosition() {
   float targetCoordinates[6];
   float currentCoordinates[6];
+  currentPosition = 0;
 
   getPosition(currentCoordinates);
   //Check if Sequence is still going
@@ -290,11 +294,13 @@ void KinovaArm::moveToPosition() {
   }
   else {
     PositionHandler.resetSequence();
-    EventOut = KinovaFSM::PositionReached;
+    currentPosition = TargetObjective;
+    EventOut = KinovaFSM::SequenceDone;
   }
 }
 
 void KinovaArm::teachPosition(KinovaPts::Objective targetObjective) {
+  //EventOut = KinovaFSM::ModeSet;
   if (targetObjective != 0) {
     if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives) {
       printf("new teachTarget, sequence reset.\n");
@@ -311,6 +317,7 @@ void KinovaArm::teachPosition(KinovaPts::Objective targetObjective) {
 void KinovaArm::moveToPoint() {
   float targetCoordinates[6];
   float currentCoordinates[6];
+  currentPosition=0;
 
   getPosition(currentCoordinates);
 
@@ -326,7 +333,8 @@ void KinovaArm::moveToPoint() {
     }
     
     if (PointReached == true) {
-      EventOut = KinovaFSM::PositionReached;
+      currentPosition = getCurrentPoint();
+      EventOut = KinovaFSM::PointReached;
     }
     else {
       //Move to Point
@@ -345,18 +353,31 @@ void KinovaArm::moveToPoint() {
 }
 
 /**/
-void KinovaArm::savePoint() {
+void KinovaArm::savePoint(int EventVariable) {
   float currentCoordinates[6];
-  getPosition(currentCoordinates);
 
-  PositionHandler.savePoint(currentCoordinates, TeachTarget);
-  PositionHandler.writeToFile();
+  if (EventVariable == PositionHandler.getSequence()) {
+    getPosition(currentCoordinates);
+
+    PositionHandler.savePoint(currentCoordinates, TeachTarget);
+    PositionHandler.writeToFile();
+    EventOut = KinovaFSM::PointSaved;
+  }
   EventOut = KinovaFSM::PointSaved;
 }
 
-void KinovaArm::nextPoint() {
-  PositionHandler.countSequence();
-  EventOut = KinovaFSM::NextPointSet;
+void KinovaArm::nextPoint(int EventVariable) {
+  int currentSequence = PositionHandler.getSequence();
+  if (EventVariable == currentSequence+1) {
+    PositionHandler.countSequence();
+    EventOut = KinovaFSM::NextPointSet;
+  }
+  else if(EventVariable == currentSequence) {
+    EventOut = KinovaFSM::NextPointSet;
+  }
+  else {
+    EventOut = KinovaFSM::NextPointNotSet;
+  }
 }
 
 
@@ -369,6 +390,11 @@ void KinovaArm::setJoystick(int x, int y, int z) {
 
 /*Get-Functions*/
 bool KinovaArm::getError() { return Error; }
+bool KinovaArm::getInitialize() { return Initialized; }
+bool KinovaArm::getActive() { return Active; }
+int  KinovaArm::getMode() { return Mode; }
+int  KinovaArm::getCurrentPosition() { return currentPosition; }
+int  KinovaArm::getCurrentPoint() { return PositionHandler.getSequence(); }
 
 KinovaFSM::Event KinovaArm::getEvent() {
   KinovaFSM::Event e = EventOut;
@@ -397,7 +423,8 @@ void KinovaArm::getPosition(float* coordinates) {
   //printf("currentCoordinates: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
 }
 
-
+void  KinovaArm::setActive() { Active = true; }
+void  KinovaArm::setInactive() { Active = false; }
 
 
 

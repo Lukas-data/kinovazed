@@ -168,15 +168,15 @@ int main(int argc, char *argv[])
   /**********************/
   /* Testing TeachState */
   /**********************/
-  
+  /*
   communication.init();
   wait(1);
   communication.debugSendEvent(KinovaFSM::Initialize);
   wait(30);
-  //communication.debugSendEvent(KinovaFSM::SetMode,1);     
+  communication.debugSendEvent(KinovaFSM::SetMode,1);     
   //wait(20);
-  communication.debugSendEvent(KinovaFSM::GoToPosition,2); //Go to Bell
-  wait(40);
+  //communication.debugSendEvent(KinovaFSM::GoToPosition,2); //Go to Bell
+  //wait(40);
   //communication.debugSendEvent(KinovaFSM::GoToPosition,1); //Go to Home
   //wait(20);
   communication.debugSendEvent(KinovaFSM::Teach,2);        //change to Teach Mode Bell:0
@@ -198,21 +198,30 @@ int main(int argc, char *argv[])
   communication.debugSendEvent(KinovaFSM::SavePoint);      //Save current Position to Bell:3
   wait(5);
   communication.debugSendEvent(KinovaFSM::Exit);
-  wait(5);/*
+  wait(5);
   communication.debugSendEvent(KinovaFSM::GoToPosition,1); //Go to Home
   wait(20);
   communication.debugSendEvent(KinovaFSM::GoToPosition,2); //Go to Bell
-  wait(20);*/
+  wait(20);
+  */
 
   /***********************/
   /* Testing Save Points */
   /***********************/
-  /*
+  
   communication.init();
   wait(1);
   communication.debugSendEvent(KinovaFSM::Initialize);
   wait(30);
-  */
+  communication.debugSendEvent(KinovaFSM::SetMode,1);     
+  wait(20);
+  communication.debugSendEvent(KinovaFSM::Teach,1);        //change to Teach Mode Home:0
+  wait(5);
+  communication.debugSendEvent(KinovaFSM::SavePoint,0);    //Save Point
+  wait(5);
+  communication.debugSendEvent(KinovaFSM::Exit);           //Exit Teach Mode (Saves Data to File)
+  wait(5);
+  
 }
 
 

@@ -25,8 +25,9 @@ void StateMachine::sendEvent(KinovaFSM::Event e, int eventVar) {
   InputVariable = eventVar;  
 }
 
-  
-void StateMachine::process() {
+
+/*Processes InputEvent and InputVariable in Statemachine. Returns true if state Change is peformed.*/
+bool StateMachine::process() {
   bool StateChange = false;
   KinovaFSM::Event e = InputEvent;
   InputEvent = KinovaFSM::NoEvent;
@@ -35,9 +36,6 @@ void StateMachine::process() {
   InputVariable = 0;
 
   //Print handled Event and reset InputEvent.
-  if(e != KinovaFSM::NoEvent && e != KinovaFSM::Tick) {
-    printf("StateMachine: Processing Event '%s'\n", KinovaFSM::EventName[e]);
-  }
   for (int i = 0; i<NumberOfTransitions; i++) {
     if ( (CurrentState == KinovaFSM::TransitionTable[i].currentState) && (e == KinovaFSM::TransitionTable[i].event) )  {
       KinovaFSM::TransitionTable[i].currentState->exitAction();
@@ -45,14 +43,13 @@ void StateMachine::process() {
       CurrentState->setEventVar(var);
       CurrentState->entryAction();
       StateChange = true;
-      break;
+      return true;
+      printf("StateMachine: Processing Event '%s'\n", KinovaFSM::EventName[e]);
     }
   }
-  if(!StateChange)  {
-    CurrentState->tickAction();
-  }
+  CurrentState->tickAction(); 
+  return false;
 }
-
 
 
 

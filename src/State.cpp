@@ -13,7 +13,8 @@ void State::setEventVar(int eventVar) { EventVariable = eventVar; }
 // PowerOff
 void StatePowerOff::entryAction() {
   printf("Executing StatePowerOff entryAction.\n");
-  JacoZED->releaseControl();  
+  JacoZED->releaseControl();
+  JacoZED->setInactive();
 }
 void StatePowerOff::exitAction() {
   printf("Executing StatePowerOff exitAction.\n");
@@ -24,6 +25,7 @@ void StatePowerOff::tickAction() {
 // EmergencyStop
 void StateEStop::entryAction() {
   printf("Executing StateEStop entryAction.\n");
+  JacoZED->setInactive();
 }
 void StateEStop::exitAction() {
   printf("Executing StateEStop exitAction.\n");
@@ -39,6 +41,7 @@ void StateInitialize::entryAction() {
 }
 void StateInitialize::exitAction() {
   printf("Executing StateInitialize exitAction.\n");
+  JacoZED->setActive();
 }
 void StateInitialize::tickAction() {
   JacoZED->initialize();
@@ -48,10 +51,12 @@ void StateInitialize::tickAction() {
 void StateIdle::entryAction() {
   printf("Executing StateIdle entryAction.\n");
   JacoZED->dontMove();
+  JacoZED->setInactive();
   
 }
 void StateIdle::exitAction() {
   printf("Executing StateIdle exitAction.\n");
+  JacoZED->setActive();
 }
 void StateIdle::tickAction() {
 }
@@ -134,7 +139,7 @@ void StateTeachMovePoint::tickAction() {
 // TeachSavePoint
 void StateTeachSavePoint::entryAction() {
   printf("Executing StateTeachSavePoint entryAction.\n");
-  JacoZED->savePoint(); 
+  JacoZED->savePoint(EventVariable); 
 }
 void StateTeachSavePoint::exitAction() {
   printf("Executing StateTeachSavePoint exitAction.\n");
@@ -145,7 +150,7 @@ void StateTeachSavePoint::tickAction() {
 // TeachNext
 void StateTeachNext::entryAction() {
   printf("Executing StateTeachNext entryAction.\n");
-  JacoZED->nextPoint(); 
+  JacoZED->nextPoint(EventVariable); 
 }
 void StateTeachNext::exitAction() {
   printf("Executing StateTeachNext exitAction.\n");

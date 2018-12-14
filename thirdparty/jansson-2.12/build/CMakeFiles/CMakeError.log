@@ -1,0 +1,399 @@
+Determining size of __int64 failed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_978df/fast"
+/usr/bin/make -f CMakeFiles/cmTC_978df.dir/build.make CMakeFiles/cmTC_978df.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_978df.dir/__INT64.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_978df.dir/__INT64.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__INT64.c
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__INT64.c:17:22: error: ‘__int64’ undeclared here (not in a function)
+ #define SIZE (sizeof(__int64))
+                      ^
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__INT64.c:19:12: note: in expansion of macro ‘SIZE’
+   ('0' + ((SIZE / 10000)%10)),
+            ^
+CMakeFiles/cmTC_978df.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_978df.dir/__INT64.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_978df.dir/__INT64.c.o] Error 1
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_978df/fast' failed
+make: *** [cmTC_978df/fast] Error 2
+
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__INT64.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#endif
+
+#define SIZE (sizeof(__int64))
+char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of __int32 failed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_05928/fast"
+/usr/bin/make -f CMakeFiles/cmTC_05928.dir/build.make CMakeFiles/cmTC_05928.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_05928.dir/__INT32.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_05928.dir/__INT32.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__INT32.c
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__INT32.c:17:22: error: ‘__int32’ undeclared here (not in a function)
+ #define SIZE (sizeof(__int32))
+                      ^
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__INT32.c:19:12: note: in expansion of macro ‘SIZE’
+   ('0' + ((SIZE / 10000)%10)),
+            ^
+CMakeFiles/cmTC_05928.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_05928.dir/__INT32.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_05928.dir/__INT32.c.o] Error 1
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_05928/fast' failed
+make: *** [cmTC_05928/fast] Error 2
+
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__INT32.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#endif
+
+#define SIZE (sizeof(__int32))
+char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of __uint32 failed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_50782/fast"
+/usr/bin/make -f CMakeFiles/cmTC_50782.dir/build.make CMakeFiles/cmTC_50782.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_50782.dir/__UINT32.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_50782.dir/__UINT32.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__UINT32.c
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__UINT32.c:17:22: error: ‘__uint32’ undeclared here (not in a function)
+ #define SIZE (sizeof(__uint32))
+                      ^
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__UINT32.c:19:12: note: in expansion of macro ‘SIZE’
+   ('0' + ((SIZE / 10000)%10)),
+            ^
+CMakeFiles/cmTC_50782.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_50782.dir/__UINT32.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_50782.dir/__UINT32.c.o] Error 1
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_50782/fast' failed
+make: *** [cmTC_50782/fast] Error 2
+
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__UINT32.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#endif
+
+#define SIZE (sizeof(__uint32))
+char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of __uint16 failed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_82e5b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_82e5b.dir/build.make CMakeFiles/cmTC_82e5b.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_82e5b.dir/__UINT16.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_82e5b.dir/__UINT16.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__UINT16.c
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__UINT16.c:17:22: error: ‘__uint16’ undeclared here (not in a function)
+ #define SIZE (sizeof(__uint16))
+                      ^
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__UINT16.c:19:12: note: in expansion of macro ‘SIZE’
+   ('0' + ((SIZE / 10000)%10)),
+            ^
+CMakeFiles/cmTC_82e5b.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_82e5b.dir/__UINT16.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_82e5b.dir/__UINT16.c.o] Error 1
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_82e5b/fast' failed
+make: *** [cmTC_82e5b/fast] Error 2
+
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__UINT16.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#endif
+
+#define SIZE (sizeof(__uint16))
+char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of __uint8 failed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ee835/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ee835.dir/build.make CMakeFiles/cmTC_ee835.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ee835.dir/__UINT8.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_ee835.dir/__UINT8.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__UINT8.c
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__UINT8.c:17:22: error: ‘__uint8’ undeclared here (not in a function)
+ #define SIZE (sizeof(__uint8))
+                      ^
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__UINT8.c:19:12: note: in expansion of macro ‘SIZE’
+   ('0' + ((SIZE / 10000)%10)),
+            ^
+CMakeFiles/cmTC_ee835.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_ee835.dir/__UINT8.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_ee835.dir/__UINT8.c.o] Error 1
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_ee835/fast' failed
+make: *** [cmTC_ee835/fast] Error 2
+
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/__UINT8.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#endif
+
+#define SIZE (sizeof(__uint8))
+char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining size of SSIZE_T failed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_843f2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_843f2.dir/build.make CMakeFiles/cmTC_843f2.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_843f2.dir/UPPERCASE_SSIZE_T.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_843f2.dir/UPPERCASE_SSIZE_T.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/UPPERCASE_SSIZE_T.c
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/UPPERCASE_SSIZE_T.c:17:22: error: ‘SSIZE_T’ undeclared here (not in a function)
+ #define SIZE (sizeof(SSIZE_T))
+                      ^
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/UPPERCASE_SSIZE_T.c:19:12: note: in expansion of macro ‘SIZE’
+   ('0' + ((SIZE / 10000)%10)),
+            ^
+CMakeFiles/cmTC_843f2.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_843f2.dir/UPPERCASE_SSIZE_T.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_843f2.dir/UPPERCASE_SSIZE_T.c.o] Error 1
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_843f2/fast' failed
+make: *** [cmTC_843f2/fast] Error 2
+
+/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/UPPERCASE_SSIZE_T.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#endif
+
+#define SIZE (sizeof(SSIZE_T))
+char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+
+Determining if the function _strtoi64 exists failed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_23fb0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_23fb0.dir/build.make CMakeFiles/cmTC_23fb0.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_23fb0.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=_strtoi64   -o CMakeFiles/cmTC_23fb0.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_23fb0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_23fb0.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=_strtoi64    CMakeFiles/cmTC_23fb0.dir/CheckFunctionExists.c.o  -o cmTC_23fb0 -rdynamic 
+CMakeFiles/cmTC_23fb0.dir/CheckFunctionExists.c.o: In function `main':
+CheckFunctionExists.c:(.text+0xa): undefined reference to `_strtoi64'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_23fb0.dir/build.make:97: recipe for target 'cmTC_23fb0' failed
+make[1]: *** [cmTC_23fb0] Error 1
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_23fb0/fast' failed
+make: *** [cmTC_23fb0/fast] Error 2
+
+

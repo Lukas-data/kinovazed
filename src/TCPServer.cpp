@@ -12,7 +12,7 @@
 #include <errno.h>
 
 
-#define RIO_DUMMY true
+#define RIO_DUMMY false
 
 
 //TODO: different Errorhandling!
@@ -55,11 +55,11 @@ bool TCPServer::connect() {
 }
 
 /*sends Message to Client (RoboRio). Takes Command and data packages as input*/
-bool TCPServer::sendTCP(int command, int data1, int data2, int data3) {  
+bool TCPServer::sendTCP(int command, int eventVar, int data1, int data2, int data3) {  
   if (RIO_DUMMY == false) {
     int n; 
     char buffer[COMMAND_LENGTH + (MessageLength)];
-    int m=sprintf( buffer, "%4d%6d%6d%6d", command, data1, data2, data3);
+    int m=sprintf( buffer, "%6d%6d%6d%6d%6d", command, eventVar, data1, data2, data3);
     if (m != MessageLength) {
       error("ERROR preparing message");
       return false;
@@ -86,7 +86,7 @@ bool TCPServer::readTCP() {
     if(n==0 && NoDataCycleCount > 0) {
       --NoDataCycleCount;
       commandRecieved = 0;
-      return true;  
+      return true;
     }
     else if (n==0 && NoDataCycleCount <= 0) {
       error("ERROR Connection Lost");
@@ -120,8 +120,8 @@ int TCPServer::getCommand() {
 
 
 int TCPServer::getData(int dataPackage) {
-  if (dataPackage<0 || dataPackage > 2) {
-    printf("no data[%d] in communication protocol",dataPackage);
+  if (dataPackage<0 || dataPackage > DATA_PACKAGES-1) {
+    printf("no data[%d] in communication protocol\n",dataPackage);
     return 0;
   }
   return dataRecieved[dataPackage];

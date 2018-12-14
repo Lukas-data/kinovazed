@@ -15,7 +15,10 @@ class KinovaArm {
 	  KinovaArm() :
       Connected(false),
       Error(false),
+      Initialized(false),
+      Active(false),
       EventOut(KinovaFSM::NoEvent),
+      currentPosition(-1),
       Mode(KinovaStatus::NoMode),
       JoystickX(0),
       JoystickY(0),
@@ -39,16 +42,25 @@ class KinovaArm {
 
     void teachPosition(KinovaPts::Objective targetObjective);
     void moveToPoint();
-    void savePoint();
-    void nextPoint(); 
+    void savePoint(int EventVariable);
+    void nextPoint(int EventVariable); 
 
     void setJoystick(int x, int y, int z);
 
     void setTarget(KinovaPts::Objective targetObjective);
 
     bool getError();
+    bool getInitialize();
+    bool getActive();
+    int  getMode();
+    int  getCurrentPosition();
+    int  getCurrentPoint();
+
     KinovaFSM::Event getEvent();
     void getPosition(float* coordinates);
+
+    void setActive();
+    void setInactive();
 
   private:
     KinDrv::JacoArm *arm;
@@ -56,7 +68,10 @@ class KinovaArm {
     
     bool Connected;
     bool Error;
+    bool Initialized;
+    bool Active;
     KinovaStatus::SteeringMode Mode;
+    int currentPosition;
 
     KinovaPts::Objective TargetObjective;
     KinovaPts::Objective TeachTarget;
@@ -71,6 +86,8 @@ class KinovaArm {
     int ModeChangeTimer;
 
     KinovaFSM::Event EventOut;
+
+
 
     
 };

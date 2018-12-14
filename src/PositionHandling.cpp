@@ -12,20 +12,6 @@
 
 #define FILEPATH "/home/kinova/Documents/kinovaZED/CybathlonObjectives.dat"
 
-//declare Default Positions
-KinovaPts::posCoordinates PositionHandling::Locations[KinovaPts::NumberOfObjectives][NUMBER_OF_SUBPOINTS] = {
-  { //HOME
-  { -0.080854, -0.394615, 0.488780, 1.551021, 0.190894, -0.080310}, //HOME POSITIONS
-  //{ 0, 0, 0, 0, 0, 0}
-  },
-  { //BELL (TODO: REAL VALUES)
-  { 0.200632, -0.425328, 0.459094, 1.565757, 0.825559, -0.063724}, //BELL OFFSET POSITION
-  { 0.200761, -0.518639, 0.456269, 1.568696, 0.751777, -0.059473}  //BELL POSITION  
-  }
-};
-
-//-80 -394 488 1551 190 -80 
-
 
 PositionHandling::~PositionHandling() {
   writeToFile();
@@ -85,11 +71,26 @@ void PositionHandling::resetSequence() {
   SequenceCounter = 0;
 }
 
-/*Saves coordinates to current Sequence Point in object.*/
+
+/*Saves coordinates to current Sequence Point or as Location in object.*/
 void PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targetObjective) {
-  coordTransform(coordinates, InvTransMat[targetObjective-1]);
+  bool isZero = true;
   for (int i = 0; i < 6; i++) {
-    Points[targetObjective-1][SequenceCounter][i] = coordinates[i];
+    if (Points[targetObjective-1][SequenceCounter][i] != 0) {
+      isZero = false;
+    }
+  }
+  if (isZero) {
+    for (int i = 0; i < 6; i++) {
+      Location[targetObjective-1][i] = coordinates[i];
+    }
+    calcTransMat();
+  }
+  else {
+    coordTransform(coordinates, InvTransMat[targetObjective-1]);
+    for (int i = 0; i < 6; i++) {
+      Points[targetObjective-1][SequenceCounter][i] = coordinates[i];
+    }
   }
 }
 
@@ -98,7 +99,6 @@ void PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targ
 void PositionHandling::readFromFile() {
   std::string line;
   std::ifstream infile (FILEPATH);
-  
   //Reads Objectives from Files
   for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
     if (std::getline(infile,line)) {     
@@ -125,7 +125,9 @@ void PositionHandling::readFromFile() {
   int sequence = 0;
   bool PrePoint = true;
   f2d_vec_t::iterator it = Points[location].begin();
+  
   while (std::getline(infile,line) && location < KinovaPts::NumberOfObjectives) { 
+    std::cout << "location: " << location << ", Sequence: " << sequence;
     std::istringstream iss(line);
     int n;
     std::vector<int> vec_int;
@@ -138,6 +140,7 @@ void PositionHandling::readFromFile() {
       sequence = 0;
       it = Points[location].begin();
       PrePoint = true;
+      std::cout << ": Empty line. Next Location\n";
     }
     else {
       std::vector<float> vec_float(6);
@@ -150,12 +153,15 @@ void PositionHandling::readFromFile() {
       }
       if (isZero) {
         PrePoint = false;
+        std::cout << ": Zero-Point\n";
       }
       else if (PrePoint) {
         Points[location].insert(it+sequence, vec_float);
+        std::cout << ": Pre-Zero\n";
       }
       else {
         Points[location].push_back(vec_float);
+        std::cout << ": Post-Zero\n";
       }
       sequence++;
     }

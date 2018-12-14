@@ -16,8 +16,7 @@ class CommandHandling {
   public:
     void init();
     void process();
-    void sendCommand(Command::Name command);
-
+    
     //Debug only:
     void debugSendEvent(KinovaFSM::Event e);
     void debugSendEvent(KinovaFSM::Event e, int var);
@@ -29,11 +28,16 @@ class CommandHandling {
     TCPServer RoboRio;
     StateMachine KinovaSM;
 
-    Command::Name commandOut;
-    Command::Name commandIn;
-    int dataOut[3];
-    int dataIn[3];
-    int modeOut;
-    int modeIn;
+    KinovaFSM::Event CommandOut;
+    KinovaFSM::Event CommandIn;
+    int CommandVarOut;
+    int CommandVarIn;
+    int DataOut[3];
+    int DataIn[3];
+
+    void getInputs();
+    void sendOutputs(int event, int eventVar);
+    void checkInputEvent(KinovaFSM::Event &event, int &eventVar);
+    bool checkOutputEvent(KinovaFSM::Event &event, int &eventVar);
 };
 #endif

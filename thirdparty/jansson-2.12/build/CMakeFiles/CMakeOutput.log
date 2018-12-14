@@ -1,0 +1,737 @@
+The system is: Linux - 4.4.38-v7+ - armv7l
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/3.5.1/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_08e37/fast"
+/usr/bin/make -f CMakeFiles/cmTC_08e37.dir/build.make CMakeFiles/cmTC_08e37.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_08e37.dir/testCCompiler.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_08e37.dir/testCCompiler.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_08e37
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_08e37.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_08e37.dir/testCCompiler.c.o  -o cmTC_08e37 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_045e7/fast"
+/usr/bin/make -f CMakeFiles/cmTC_045e7.dir/build.make CMakeFiles/cmTC_045e7.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_045e7.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_045e7.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_045e7
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_045e7.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTC_045e7.dir/CMakeCCompilerABI.c.o  -o cmTC_045e7 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/5/lto-wrapper
+Target: arm-linux-gnueabihf
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.10' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libitm --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-armhf/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-armhf --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-armhf --with-arch-directory=arm --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --enable-multilib --disable-sjlj-exceptions --with-arch=armv7-a --with-fpu=vfpv3-d16 --with-float=hard --with-mode=thumb --disable-werror --enable-multilib --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf
+Thread model: posix
+gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.10) 
+COMPILER_PATH=/usr/lib/gcc/arm-linux-gnueabihf/5/:/usr/lib/gcc/arm-linux-gnueabihf/5/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/5/:/usr/lib/gcc/arm-linux-gnueabihf/
+LIBRARY_PATH=/usr/lib/gcc/arm-linux-gnueabihf/5/:/usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/5/../../../../lib/:/lib/arm-linux-gnueabihf/:/lib/../lib/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/../lib/:/usr/lib/gcc/arm-linux-gnueabihf/5/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_045e7' '-rdynamic' '-march=armv7-a' '-mfloat-abi=hard' '-mfpu=vfpv3-d16' '-mthumb' '-mtls-dialect=gnu'
+ /usr/lib/gcc/arm-linux-gnueabihf/5/collect2 -plugin /usr/lib/gcc/arm-linux-gnueabihf/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccnrY3Ig.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X --hash-style=gnu --as-needed -m armelf_linux_eabi -z relro -o cmTC_045e7 /usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf/crt1.o /usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf/crti.o /usr/lib/gcc/arm-linux-gnueabihf/5/crtbegin.o -L/usr/lib/gcc/arm-linux-gnueabihf/5 -L/usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf -L/usr/lib/gcc/arm-linux-gnueabihf/5/../../../../lib -L/lib/arm-linux-gnueabihf -L/lib/../lib -L/usr/lib/arm-linux-gnueabihf -L/usr/lib/../lib -L/usr/lib/gcc/arm-linux-gnueabihf/5/../../.. CMakeFiles/cmTC_045e7.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/arm-linux-gnueabihf/5/crtend.o /usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf/crtn.o
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_045e7/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_045e7.dir/build.make CMakeFiles/cmTC_045e7.dir/build]
+  ignore line: [make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_045e7.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_045e7.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_045e7]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_045e7.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_045e7.dir/CMakeCCompilerABI.c.o  -o cmTC_045e7 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/arm-linux-gnueabihf/5/lto-wrapper]
+  ignore line: [Target: arm-linux-gnueabihf]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.10' --with-bugurl=file:///usr/share/doc/gcc-5/README.Bugs --enable-languages=c,ada,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-5 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libitm --disable-libquadmath --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-5-armhf/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-5-armhf --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-5-armhf --with-arch-directory=arm --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --enable-multilib --disable-sjlj-exceptions --with-arch=armv7-a --with-fpu=vfpv3-d16 --with-float=hard --with-mode=thumb --disable-werror --enable-multilib --enable-checking=release --build=arm-linux-gnueabihf --host=arm-linux-gnueabihf --target=arm-linux-gnueabihf]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 5.4.0 20160609 (Ubuntu/Linaro 5.4.0-6ubuntu1~16.04.10) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/arm-linux-gnueabihf/5/:/usr/lib/gcc/arm-linux-gnueabihf/5/:/usr/lib/gcc/arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/5/:/usr/lib/gcc/arm-linux-gnueabihf/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/arm-linux-gnueabihf/5/:/usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf/:/usr/lib/gcc/arm-linux-gnueabihf/5/../../../../lib/:/lib/arm-linux-gnueabihf/:/lib/../lib/:/usr/lib/arm-linux-gnueabihf/:/usr/lib/../lib/:/usr/lib/gcc/arm-linux-gnueabihf/5/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_045e7' '-rdynamic' '-march=armv7-a' '-mfloat-abi=hard' '-mfpu=vfpv3-d16' '-mthumb' '-mtls-dialect=gnu']
+  link line: [ /usr/lib/gcc/arm-linux-gnueabihf/5/collect2 -plugin /usr/lib/gcc/arm-linux-gnueabihf/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccnrY3Ig.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X --hash-style=gnu --as-needed -m armelf_linux_eabi -z relro -o cmTC_045e7 /usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf/crt1.o /usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf/crti.o /usr/lib/gcc/arm-linux-gnueabihf/5/crtbegin.o -L/usr/lib/gcc/arm-linux-gnueabihf/5 -L/usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf -L/usr/lib/gcc/arm-linux-gnueabihf/5/../../../../lib -L/lib/arm-linux-gnueabihf -L/lib/../lib -L/usr/lib/arm-linux-gnueabihf -L/usr/lib/../lib -L/usr/lib/gcc/arm-linux-gnueabihf/5/../../.. CMakeFiles/cmTC_045e7.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/arm-linux-gnueabihf/5/crtend.o /usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf/crtn.o]
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/5/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/5/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/arm-linux-gnueabihf/5/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccnrY3Ig.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--sysroot=/] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux-armhf.so.3] ==> ignore
+    arg [-X] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_045e7] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf/crti.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/5/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/5] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/5]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/5/../../../../lib] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/5/../../../../lib]
+    arg [-L/lib/arm-linux-gnueabihf] ==> dir [/lib/arm-linux-gnueabihf]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/arm-linux-gnueabihf] ==> dir [/usr/lib/arm-linux-gnueabihf]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/arm-linux-gnueabihf/5/../../..] ==> dir [/usr/lib/gcc/arm-linux-gnueabihf/5/../../..]
+    arg [CMakeFiles/cmTC_045e7.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/5/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf/crtn.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/5] ==> [/usr/lib/gcc/arm-linux-gnueabihf/5]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/5/../../../arm-linux-gnueabihf] ==> [/usr/lib/arm-linux-gnueabihf]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/5/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/arm-linux-gnueabihf] ==> [/lib/arm-linux-gnueabihf]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/arm-linux-gnueabihf] ==> [/usr/lib/arm-linux-gnueabihf]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/arm-linux-gnueabihf/5/../../..] ==> [/usr/lib]
+  implicit libs: [c]
+  implicit dirs: [/usr/lib/gcc/arm-linux-gnueabihf/5;/usr/lib/arm-linux-gnueabihf;/usr/lib;/lib/arm-linux-gnueabihf;/lib]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b06de/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b06de.dir/build.make CMakeFiles/cmTC_b06de.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b06de.dir/feature_tests.c.o
+/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_b06de.dir/feature_tests.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_b06de
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b06de.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_b06de.dir/feature_tests.c.o  -o cmTC_b06de -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9764f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9764f.dir/build.make CMakeFiles/cmTC_9764f.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9764f.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_9764f.dir/feature_tests.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_9764f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9764f.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_9764f.dir/feature_tests.c.o  -o cmTC_9764f -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e2015/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e2015.dir/build.make CMakeFiles/cmTC_e2015.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e2015.dir/feature_tests.c.o
+/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_e2015.dir/feature_tests.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_e2015
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e2015.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_e2015.dir/feature_tests.c.o  -o cmTC_e2015 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Determining if files endian.h exist passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_aeadc/fast"
+/usr/bin/make -f CMakeFiles/cmTC_aeadc.dir/build.make CMakeFiles/cmTC_aeadc.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_aeadc.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_aeadc.dir/CheckIncludeFiles.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_aeadc
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_aeadc.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_aeadc.dir/CheckIncludeFiles.c.o  -o cmTC_aeadc -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if files fcntl.h exist passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_833a6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_833a6.dir/build.make CMakeFiles/cmTC_833a6.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_833a6.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_833a6.dir/CheckIncludeFiles.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_833a6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_833a6.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_833a6.dir/CheckIncludeFiles.c.o  -o cmTC_833a6 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if files sched.h exist passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_112c6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_112c6.dir/build.make CMakeFiles/cmTC_112c6.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_112c6.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_112c6.dir/CheckIncludeFiles.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_112c6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_112c6.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_112c6.dir/CheckIncludeFiles.c.o  -o cmTC_112c6 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if files unistd.h exist passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d5f4e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d5f4e.dir/build.make CMakeFiles/cmTC_d5f4e.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d5f4e.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_d5f4e.dir/CheckIncludeFiles.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_d5f4e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5f4e.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_d5f4e.dir/CheckIncludeFiles.c.o  -o cmTC_d5f4e -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if files sys/param.h exist passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_0e7a6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0e7a6.dir/build.make CMakeFiles/cmTC_0e7a6.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0e7a6.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_0e7a6.dir/CheckIncludeFiles.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_0e7a6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0e7a6.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_0e7a6.dir/CheckIncludeFiles.c.o  -o cmTC_0e7a6 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if files sys/stat.h exist passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f52d9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f52d9.dir/build.make CMakeFiles/cmTC_f52d9.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f52d9.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_f52d9.dir/CheckIncludeFiles.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_f52d9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f52d9.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_f52d9.dir/CheckIncludeFiles.c.o  -o cmTC_f52d9 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if files sys/time.h exist passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_79124/fast"
+/usr/bin/make -f CMakeFiles/cmTC_79124.dir/build.make CMakeFiles/cmTC_79124.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_79124.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_79124.dir/CheckIncludeFiles.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_79124
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_79124.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_79124.dir/CheckIncludeFiles.c.o  -o cmTC_79124 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if files sys/types.h exist passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_15921/fast"
+/usr/bin/make -f CMakeFiles/cmTC_15921.dir/build.make CMakeFiles/cmTC_15921.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_15921.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_15921.dir/CheckIncludeFiles.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_15921
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_15921.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_15921.dir/CheckIncludeFiles.c.o  -o cmTC_15921 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function close exists passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_0a569/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0a569.dir/build.make CMakeFiles/cmTC_0a569.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0a569.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=close   -o CMakeFiles/cmTC_0a569.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_0a569
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0a569.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=close    CMakeFiles/cmTC_0a569.dir/CheckFunctionExists.c.o  -o cmTC_0a569 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function getpid exists passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_16a74/fast"
+/usr/bin/make -f CMakeFiles/cmTC_16a74.dir/build.make CMakeFiles/cmTC_16a74.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_16a74.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=getpid   -o CMakeFiles/cmTC_16a74.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_16a74
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_16a74.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=getpid    CMakeFiles/cmTC_16a74.dir/CheckFunctionExists.c.o  -o cmTC_16a74 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function gettimeofday exists passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b3e7d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b3e7d.dir/build.make CMakeFiles/cmTC_b3e7d.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b3e7d.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=gettimeofday   -o CMakeFiles/cmTC_b3e7d.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b3e7d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b3e7d.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gettimeofday    CMakeFiles/cmTC_b3e7d.dir/CheckFunctionExists.c.o  -o cmTC_b3e7d -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function open exists passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_92158/fast"
+/usr/bin/make -f CMakeFiles/cmTC_92158.dir/build.make CMakeFiles/cmTC_92158.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_92158.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=open   -o CMakeFiles/cmTC_92158.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_92158
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92158.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=open    CMakeFiles/cmTC_92158.dir/CheckFunctionExists.c.o  -o cmTC_92158 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function read exists passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4112c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4112c.dir/build.make CMakeFiles/cmTC_4112c.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4112c.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=read   -o CMakeFiles/cmTC_4112c.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_4112c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4112c.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=read    CMakeFiles/cmTC_4112c.dir/CheckFunctionExists.c.o  -o cmTC_4112c -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function sched_yield exists passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f0ede/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f0ede.dir/build.make CMakeFiles/cmTC_f0ede.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f0ede.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=sched_yield   -o CMakeFiles/cmTC_f0ede.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f0ede
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f0ede.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sched_yield    CMakeFiles/cmTC_f0ede.dir/CheckFunctionExists.c.o  -o cmTC_f0ede -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if files stdint.h exist passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_15c9d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_15c9d.dir/build.make CMakeFiles/cmTC_15c9d.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_15c9d.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_15c9d.dir/CheckIncludeFiles.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_15c9d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_15c9d.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_15c9d.dir/CheckIncludeFiles.c.o  -o cmTC_15c9d -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d5be3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d5be3.dir/build.make CMakeFiles/cmTC_d5be3.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d5be3.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_d5be3.dir/CheckIncludeFile.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_d5be3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5be3.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_d5be3.dir/CheckIncludeFile.c.o  -o cmTC_d5be3 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of int64_t passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_c1f11/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c1f11.dir/build.make CMakeFiles/cmTC_c1f11.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c1f11.dir/INT64_T.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_c1f11.dir/INT64_T.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/INT64_T.c
+Linking C executable cmTC_c1f11
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c1f11.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_c1f11.dir/INT64_T.c.o  -o cmTC_c1f11 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of long long passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_bd6d6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_bd6d6.dir/build.make CMakeFiles/cmTC_bd6d6.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bd6d6.dir/LONG_LONG_INT.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_bd6d6.dir/LONG_LONG_INT.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/LONG_LONG_INT.c
+Linking C executable cmTC_bd6d6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bd6d6.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_bd6d6.dir/LONG_LONG_INT.c.o  -o cmTC_bd6d6 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of int32_t passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_22dd3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_22dd3.dir/build.make CMakeFiles/cmTC_22dd3.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_22dd3.dir/INT32_T.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_22dd3.dir/INT32_T.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/INT32_T.c
+Linking C executable cmTC_22dd3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_22dd3.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_22dd3.dir/INT32_T.c.o  -o cmTC_22dd3 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of long passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ee18b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ee18b.dir/build.make CMakeFiles/cmTC_ee18b.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ee18b.dir/LONG_INT.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_ee18b.dir/LONG_INT.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/LONG_INT.c
+Linking C executable cmTC_ee18b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ee18b.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_ee18b.dir/LONG_INT.c.o  -o cmTC_ee18b -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of int passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_b12e1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b12e1.dir/build.make CMakeFiles/cmTC_b12e1.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b12e1.dir/INT.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_b12e1.dir/INT.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/INT.c
+Linking C executable cmTC_b12e1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b12e1.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_b12e1.dir/INT.c.o  -o cmTC_b12e1 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of unsigned long passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_baec9/fast"
+/usr/bin/make -f CMakeFiles/cmTC_baec9.dir/build.make CMakeFiles/cmTC_baec9.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_baec9.dir/UNSIGNED_LONG_INT.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_baec9.dir/UNSIGNED_LONG_INT.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/UNSIGNED_LONG_INT.c
+Linking C executable cmTC_baec9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_baec9.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_baec9.dir/UNSIGNED_LONG_INT.c.o  -o cmTC_baec9 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of unsigned int passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_0aa87/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0aa87.dir/build.make CMakeFiles/cmTC_0aa87.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0aa87.dir/UNSIGNED_INT.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_0aa87.dir/UNSIGNED_INT.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/UNSIGNED_INT.c
+Linking C executable cmTC_0aa87
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0aa87.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_0aa87.dir/UNSIGNED_INT.c.o  -o cmTC_0aa87 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of unsigned short passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_0a6f3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_0a6f3.dir/build.make CMakeFiles/cmTC_0a6f3.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_0a6f3.dir/UNSIGNED_SHORT.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_0a6f3.dir/UNSIGNED_SHORT.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/UNSIGNED_SHORT.c
+Linking C executable cmTC_0a6f3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0a6f3.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_0a6f3.dir/UNSIGNED_SHORT.c.o  -o cmTC_0a6f3 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of uint32_t passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ee2be/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ee2be.dir/build.make CMakeFiles/cmTC_ee2be.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ee2be.dir/UINT32_T.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_ee2be.dir/UINT32_T.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/UINT32_T.c
+Linking C executable cmTC_ee2be
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ee2be.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_ee2be.dir/UINT32_T.c.o  -o cmTC_ee2be -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of uint16_t passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_813f8/fast"
+/usr/bin/make -f CMakeFiles/cmTC_813f8.dir/build.make CMakeFiles/cmTC_813f8.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_813f8.dir/UINT16_T.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_813f8.dir/UINT16_T.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/UINT16_T.c
+Linking C executable cmTC_813f8
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_813f8.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_813f8.dir/UINT16_T.c.o  -o cmTC_813f8 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of uint8_t passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_fe180/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fe180.dir/build.make CMakeFiles/cmTC_fe180.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_fe180.dir/UINT8_T.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_fe180.dir/UINT8_T.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/UINT8_T.c
+Linking C executable cmTC_fe180
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fe180.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_fe180.dir/UINT8_T.c.o  -o cmTC_fe180 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining size of ssize_t passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_af1a1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_af1a1.dir/build.make CMakeFiles/cmTC_af1a1.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_af1a1.dir/SSIZE_T.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_af1a1.dir/SSIZE_T.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CheckTypeSize/SSIZE_T.c
+Linking C executable cmTC_af1a1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_af1a1.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_af1a1.dir/SSIZE_T.c.o  -o cmTC_af1a1 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strtoll exists passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_7fb19/fast"
+/usr/bin/make -f CMakeFiles/cmTC_7fb19.dir/build.make CMakeFiles/cmTC_7fb19.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7fb19.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=strtoll   -o CMakeFiles/cmTC_7fb19.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_7fb19
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7fb19.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtoll    CMakeFiles/cmTC_7fb19.dir/CheckFunctionExists.c.o  -o cmTC_7fb19 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strtoq exists passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_88f39/fast"
+/usr/bin/make -f CMakeFiles/cmTC_88f39.dir/build.make CMakeFiles/cmTC_88f39.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_88f39.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=strtoq   -o CMakeFiles/cmTC_88f39.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_88f39
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_88f39.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=strtoq    CMakeFiles/cmTC_88f39.dir/CheckFunctionExists.c.o  -o cmTC_88f39 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if files locale.h exist passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5550d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5550d.dir/build.make CMakeFiles/cmTC_5550d.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5550d.dir/CheckIncludeFiles.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_5550d.dir/CheckIncludeFiles.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/CheckIncludeFiles.c
+Linking C executable cmTC_5550d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5550d.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_5550d.dir/CheckIncludeFiles.c.o  -o cmTC_5550d -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function localeconv exists passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4b40a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4b40a.dir/build.make CMakeFiles/cmTC_4b40a.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4b40a.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=localeconv   -o CMakeFiles/cmTC_4b40a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_4b40a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b40a.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=localeconv    CMakeFiles/cmTC_4b40a.dir/CheckFunctionExists.c.o  -o cmTC_4b40a -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function setlocale exists passed with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8a9cb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_8a9cb.dir/build.make CMakeFiles/cmTC_8a9cb.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8a9cb.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=setlocale   -o CMakeFiles/cmTC_8a9cb.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8a9cb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a9cb.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=setlocale    CMakeFiles/cmTC_8a9cb.dir/CheckFunctionExists.c.o  -o cmTC_8a9cb -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test HAVE_INLINE succeeded with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f05d5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f05d5.dir/build.make CMakeFiles/cmTC_f05d5.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f05d5.dir/src.c.o
+/usr/bin/cc    -DHAVE_INLINE   -o CMakeFiles/cmTC_f05d5.dir/src.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_f05d5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f05d5.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE_INLINE    CMakeFiles/cmTC_f05d5.dir/src.c.o  -o cmTC_f05d5 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+inline void func(); void func() { } int main() { func(); return 0; }
+Performing C SOURCE FILE Test HAVE___INLINE succeeded with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9d742/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9d742.dir/build.make CMakeFiles/cmTC_9d742.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9d742.dir/src.c.o
+/usr/bin/cc    -DHAVE___INLINE   -o CMakeFiles/cmTC_9d742.dir/src.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_9d742
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9d742.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE___INLINE    CMakeFiles/cmTC_9d742.dir/src.c.o  -o cmTC_9d742 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+__inline void func(); void func() { } int main() { func(); return 0; }
+Performing C SOURCE FILE Test HAVE___INLINE__ succeeded with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f684b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f684b.dir/build.make CMakeFiles/cmTC_f684b.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f684b.dir/src.c.o
+/usr/bin/cc    -DHAVE___INLINE__   -o CMakeFiles/cmTC_f684b.dir/src.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_f684b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f684b.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE___INLINE__    CMakeFiles/cmTC_f684b.dir/src.c.o  -o cmTC_f684b -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+__inline__ void func(); void func() { } int main() { func(); return 0; }
+Performing C SOURCE FILE Test HAVE_SYNC_BUILTINS succeeded with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_426af/fast"
+/usr/bin/make -f CMakeFiles/cmTC_426af.dir/build.make CMakeFiles/cmTC_426af.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_426af.dir/src.c.o
+/usr/bin/cc    -DHAVE_SYNC_BUILTINS   -o CMakeFiles/cmTC_426af.dir/src.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_426af
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_426af.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE_SYNC_BUILTINS    CMakeFiles/cmTC_426af.dir/src.c.o  -o cmTC_426af -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { unsigned long val; __sync_bool_compare_and_swap(&val, 0, 1); __sync_add_and_fetch(&val, 1); __sync_sub_and_fetch(&val, 1); return 0; } 
+Performing C SOURCE FILE Test HAVE_ATOMIC_BUILTINS succeeded with the following output:
+Change Dir: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1f479/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1f479.dir/build.make CMakeFiles/cmTC_1f479.dir/build
+make[1]: Entering directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1f479.dir/src.c.o
+/usr/bin/cc    -DHAVE_ATOMIC_BUILTINS   -o CMakeFiles/cmTC_1f479.dir/src.c.o   -c /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_1f479
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1f479.dir/link.txt --verbose=1
+/usr/bin/cc   -DHAVE_ATOMIC_BUILTINS    CMakeFiles/cmTC_1f479.dir/src.c.o  -o cmTC_1f479 -rdynamic 
+make[1]: Leaving directory '/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { char l; unsigned long v; __atomic_test_and_set(&l, __ATOMIC_RELAXED); __atomic_store_n(&v, 1, __ATOMIC_RELEASE); __atomic_load_n(&v, __ATOMIC_ACQUIRE); __atomic_add_fetch(&v, 1, __ATOMIC_ACQUIRE); __atomic_sub_fetch(&v, 1, __ATOMIC_RELEASE); return 0; }

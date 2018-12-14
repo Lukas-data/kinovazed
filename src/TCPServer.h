@@ -5,25 +5,10 @@
 
 
 #define BUFFER_SIZE 256
-#define COMMAND_LENGTH 4
+#define COMMAND_LENGTH 6
 #define DATA_LENGTH 6
-#define DATA_PACKAGES 3
+#define DATA_PACKAGES 4
 #define NOCONNECTION_COUNT 20
-
-
-struct Command {
-  enum Name {
-    Nothing = 0,
-    Init = 1,
-    SetMode = 2,
-    Steer = 3,
-    MoveToPos = 4,
-    PosReached = 5,
-    EStop = 91,
-    EStop_Quit = 92,
-    Error = 99
-  };
-};
 
 
 class TCPServer {
@@ -40,8 +25,8 @@ class TCPServer {
     int  getCommand();
     int  getData(int dataPackage); //dataPackage = number of the requested Package (0-DATA_PACKAGES-1).
     int  closeOnCommand(int command);
-    bool  readTCP();
-    bool sendTCP(int command, int data1, int data2, int data3);
+    bool readTCP();
+    bool sendTCP(int command, int eventVar, int data1, int data2, int data3);
 
   private:
 

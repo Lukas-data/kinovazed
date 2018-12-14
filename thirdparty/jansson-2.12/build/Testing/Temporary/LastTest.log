@@ -1,0 +1,3003 @@
+Start testing: Nov 27 14:38 CET
+----------------------------------------------------------
+1/200 Testing: test_array
+1/200 Test: test_array
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_array" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_array" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_array" end time: Nov 27 14:38 CET
+"test_array" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/200 Testing: test_copy
+2/200 Test: test_copy
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_copy" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_copy" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_copy" end time: Nov 27 14:38 CET
+"test_copy" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/200 Testing: test_chaos
+3/200 Test: test_chaos
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_chaos" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_chaos" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_chaos" end time: Nov 27 14:38 CET
+"test_chaos" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/200 Testing: test_dump
+4/200 Test: test_dump
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_dump" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_dump" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_dump" end time: Nov 27 14:38 CET
+"test_dump" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/200 Testing: test_dump_callback
+5/200 Test: test_dump_callback
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_dump_callback" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_dump_callback" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_dump_callback" end time: Nov 27 14:38 CET
+"test_dump_callback" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/200 Testing: test_equal
+6/200 Test: test_equal
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_equal" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_equal" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_equal" end time: Nov 27 14:38 CET
+"test_equal" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/200 Testing: test_load
+7/200 Test: test_load
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_load" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_load" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_load" end time: Nov 27 14:38 CET
+"test_load" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/200 Testing: test_loadb
+8/200 Test: test_loadb
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_loadb" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_loadb" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_loadb" end time: Nov 27 14:38 CET
+"test_loadb" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/200 Testing: test_load_callback
+9/200 Test: test_load_callback
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_load_callback" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_load_callback" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_load_callback" end time: Nov 27 14:38 CET
+"test_load_callback" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/200 Testing: test_number
+10/200 Test: test_number
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_number" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_number" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_number" end time: Nov 27 14:38 CET
+"test_number" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/200 Testing: test_object
+11/200 Test: test_object
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_object" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_object" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_object" end time: Nov 27 14:38 CET
+"test_object" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/200 Testing: test_pack
+12/200 Test: test_pack
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_pack" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_pack" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_pack" end time: Nov 27 14:38 CET
+"test_pack" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/200 Testing: test_simple
+13/200 Test: test_simple
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_simple" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_simple" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_simple" end time: Nov 27 14:38 CET
+"test_simple" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/200 Testing: test_sprintf
+14/200 Test: test_sprintf
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_sprintf" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_sprintf" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_sprintf" end time: Nov 27 14:38 CET
+"test_sprintf" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/200 Testing: test_unpack
+15/200 Test: test_unpack
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_unpack" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_unpack" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test_unpack" end time: Nov 27 14:38 CET
+"test_unpack" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/200 Testing: test_memory_funcs
+16/200 Test: test_memory_funcs
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/test_memory_funcs" "WORKING_DIRECTORY" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/tmp"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"test_memory_funcs" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"test_memory_funcs" end time: Nov 27 14:38 CET
+"test_memory_funcs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/200 Testing: valid__empty-array
+17/200 Test: valid__empty-array
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/empty-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__empty-array" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__empty-array" end time: Nov 27 14:38 CET
+"valid__empty-array" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/200 Testing: valid__empty-array__strip
+18/200 Test: valid__empty-array__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/empty-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__empty-array__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__empty-array__strip" end time: Nov 27 14:38 CET
+"valid__empty-array__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/200 Testing: valid__real-negative-exponent
+19/200 Test: valid__real-negative-exponent
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-negative-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-negative-exponent" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-negative-exponent" end time: Nov 27 14:38 CET
+"valid__real-negative-exponent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/200 Testing: valid__real-negative-exponent__strip
+20/200 Test: valid__real-negative-exponent__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-negative-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-negative-exponent__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-negative-exponent__strip" end time: Nov 27 14:38 CET
+"valid__real-negative-exponent__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/200 Testing: valid__utf-8-string
+21/200 Test: valid__utf-8-string
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/utf-8-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__utf-8-string" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__utf-8-string" end time: Nov 27 14:38 CET
+"valid__utf-8-string" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/200 Testing: valid__utf-8-string__strip
+22/200 Test: valid__utf-8-string__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/utf-8-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__utf-8-string__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__utf-8-string__strip" end time: Nov 27 14:38 CET
+"valid__utf-8-string__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+23/200 Testing: valid__negative-zero
+23/200 Test: valid__negative-zero
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/negative-zero"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__negative-zero" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__negative-zero" end time: Nov 27 14:38 CET
+"valid__negative-zero" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/200 Testing: valid__negative-zero__strip
+24/200 Test: valid__negative-zero__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/negative-zero"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__negative-zero__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__negative-zero__strip" end time: Nov 27 14:38 CET
+"valid__negative-zero__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/200 Testing: valid__complex-array
+25/200 Test: valid__complex-array
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/complex-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__complex-array" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__complex-array" end time: Nov 27 14:38 CET
+"valid__complex-array" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/200 Testing: valid__complex-array__strip
+26/200 Test: valid__complex-array__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/complex-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__complex-array__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__complex-array__strip" end time: Nov 27 14:38 CET
+"valid__complex-array__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+27/200 Testing: valid__true
+27/200 Test: valid__true
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/true"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__true" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__true" end time: Nov 27 14:38 CET
+"valid__true" time elapsed: 00:00:00
+----------------------------------------------------------
+
+28/200 Testing: valid__true__strip
+28/200 Test: valid__true__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/true"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__true__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__true__strip" end time: Nov 27 14:38 CET
+"valid__true__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+29/200 Testing: valid__simple-real
+29/200 Test: valid__simple-real
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/simple-real"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__simple-real" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__simple-real" end time: Nov 27 14:38 CET
+"valid__simple-real" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/200 Testing: valid__simple-real__strip
+30/200 Test: valid__simple-real__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/simple-real"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__simple-real__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__simple-real__strip" end time: Nov 27 14:38 CET
+"valid__simple-real__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/200 Testing: valid__real-underflow
+31/200 Test: valid__real-underflow
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-underflow"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-underflow" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-underflow" end time: Nov 27 14:38 CET
+"valid__real-underflow" time elapsed: 00:00:00
+----------------------------------------------------------
+
+32/200 Testing: valid__real-underflow__strip
+32/200 Test: valid__real-underflow__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-underflow"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-underflow__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-underflow__strip" end time: Nov 27 14:38 CET
+"valid__real-underflow__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+33/200 Testing: valid__two-byte-utf-8
+33/200 Test: valid__two-byte-utf-8
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/two-byte-utf-8"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__two-byte-utf-8" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__two-byte-utf-8" end time: Nov 27 14:38 CET
+"valid__two-byte-utf-8" time elapsed: 00:00:00
+----------------------------------------------------------
+
+34/200 Testing: valid__two-byte-utf-8__strip
+34/200 Test: valid__two-byte-utf-8__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/two-byte-utf-8"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__two-byte-utf-8__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__two-byte-utf-8__strip" end time: Nov 27 14:38 CET
+"valid__two-byte-utf-8__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+35/200 Testing: valid__real-capital-e-negative-exponent
+35/200 Test: valid__real-capital-e-negative-exponent
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-capital-e-negative-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-capital-e-negative-exponent" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-capital-e-negative-exponent" end time: Nov 27 14:38 CET
+"valid__real-capital-e-negative-exponent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+36/200 Testing: valid__real-capital-e-negative-exponent__strip
+36/200 Test: valid__real-capital-e-negative-exponent__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-capital-e-negative-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-capital-e-negative-exponent__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-capital-e-negative-exponent__strip" end time: Nov 27 14:38 CET
+"valid__real-capital-e-negative-exponent__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+37/200 Testing: valid__simple-int-0
+37/200 Test: valid__simple-int-0
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/simple-int-0"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__simple-int-0" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__simple-int-0" end time: Nov 27 14:38 CET
+"valid__simple-int-0" time elapsed: 00:00:00
+----------------------------------------------------------
+
+38/200 Testing: valid__simple-int-0__strip
+38/200 Test: valid__simple-int-0__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/simple-int-0"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__simple-int-0__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__simple-int-0__strip" end time: Nov 27 14:38 CET
+"valid__simple-int-0__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+39/200 Testing: valid__simple-ascii-string
+39/200 Test: valid__simple-ascii-string
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/simple-ascii-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__simple-ascii-string" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__simple-ascii-string" end time: Nov 27 14:38 CET
+"valid__simple-ascii-string" time elapsed: 00:00:00
+----------------------------------------------------------
+
+40/200 Testing: valid__simple-ascii-string__strip
+40/200 Test: valid__simple-ascii-string__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/simple-ascii-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__simple-ascii-string__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__simple-ascii-string__strip" end time: Nov 27 14:38 CET
+"valid__simple-ascii-string__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+41/200 Testing: valid__simple-int-1
+41/200 Test: valid__simple-int-1
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/simple-int-1"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__simple-int-1" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__simple-int-1" end time: Nov 27 14:38 CET
+"valid__simple-int-1" time elapsed: 00:00:00
+----------------------------------------------------------
+
+42/200 Testing: valid__simple-int-1__strip
+42/200 Test: valid__simple-int-1__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/simple-int-1"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__simple-int-1__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__simple-int-1__strip" end time: Nov 27 14:38 CET
+"valid__simple-int-1__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+43/200 Testing: valid__false
+43/200 Test: valid__false
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/false"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__false" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__false" end time: Nov 27 14:38 CET
+"valid__false" time elapsed: 00:00:00
+----------------------------------------------------------
+
+44/200 Testing: valid__false__strip
+44/200 Test: valid__false__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/false"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__false__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__false__strip" end time: Nov 27 14:38 CET
+"valid__false__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+45/200 Testing: valid__short-string
+45/200 Test: valid__short-string
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/short-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__short-string" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__short-string" end time: Nov 27 14:38 CET
+"valid__short-string" time elapsed: 00:00:00
+----------------------------------------------------------
+
+46/200 Testing: valid__short-string__strip
+46/200 Test: valid__short-string__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/short-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__short-string__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"valid__short-string__strip" end time: Nov 27 14:38 CET
+"valid__short-string__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+47/200 Testing: valid__negative-int
+47/200 Test: valid__negative-int
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/negative-int"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__negative-int" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__negative-int" end time: Nov 27 14:38 CET
+"valid__negative-int" time elapsed: 00:00:00
+----------------------------------------------------------
+
+48/200 Testing: valid__negative-int__strip
+48/200 Test: valid__negative-int__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/negative-int"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__negative-int__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__negative-int__strip" end time: Nov 27 14:38 CET
+"valid__negative-int__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+49/200 Testing: valid__null
+49/200 Test: valid__null
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/null"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__null" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__null" end time: Nov 27 14:38 CET
+"valid__null" time elapsed: 00:00:00
+----------------------------------------------------------
+
+50/200 Testing: valid__null__strip
+50/200 Test: valid__null__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/null"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__null__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__null__strip" end time: Nov 27 14:38 CET
+"valid__null__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+51/200 Testing: valid__empty-object
+51/200 Test: valid__empty-object
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/empty-object"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__empty-object" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__empty-object" end time: Nov 27 14:38 CET
+"valid__empty-object" time elapsed: 00:00:00
+----------------------------------------------------------
+
+52/200 Testing: valid__empty-object__strip
+52/200 Test: valid__empty-object__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/empty-object"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__empty-object__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__empty-object__strip" end time: Nov 27 14:38 CET
+"valid__empty-object__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+53/200 Testing: valid__string-escapes
+53/200 Test: valid__string-escapes
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/string-escapes"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__string-escapes" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__string-escapes" end time: Nov 27 14:38 CET
+"valid__string-escapes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+54/200 Testing: valid__string-escapes__strip
+54/200 Test: valid__string-escapes__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/string-escapes"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__string-escapes__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__string-escapes__strip" end time: Nov 27 14:38 CET
+"valid__string-escapes__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+55/200 Testing: valid__utf-surrogate-four-byte-encoding
+55/200 Test: valid__utf-surrogate-four-byte-encoding
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/utf-surrogate-four-byte-encoding"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__utf-surrogate-four-byte-encoding" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__utf-surrogate-four-byte-encoding" end time: Nov 27 14:38 CET
+"valid__utf-surrogate-four-byte-encoding" time elapsed: 00:00:00
+----------------------------------------------------------
+
+56/200 Testing: valid__utf-surrogate-four-byte-encoding__strip
+56/200 Test: valid__utf-surrogate-four-byte-encoding__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/utf-surrogate-four-byte-encoding"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__utf-surrogate-four-byte-encoding__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__utf-surrogate-four-byte-encoding__strip" end time: Nov 27 14:38 CET
+"valid__utf-surrogate-four-byte-encoding__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+57/200 Testing: valid__real-subnormal-number
+57/200 Test: valid__real-subnormal-number
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-subnormal-number"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-subnormal-number" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-subnormal-number" end time: Nov 27 14:38 CET
+"valid__real-subnormal-number" time elapsed: 00:00:00
+----------------------------------------------------------
+
+58/200 Testing: valid__real-subnormal-number__strip
+58/200 Test: valid__real-subnormal-number__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-subnormal-number"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-subnormal-number__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-subnormal-number__strip" end time: Nov 27 14:38 CET
+"valid__real-subnormal-number__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+59/200 Testing: valid__three-byte-utf-8
+59/200 Test: valid__three-byte-utf-8
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/three-byte-utf-8"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__three-byte-utf-8" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__three-byte-utf-8" end time: Nov 27 14:38 CET
+"valid__three-byte-utf-8" time elapsed: 00:00:00
+----------------------------------------------------------
+
+60/200 Testing: valid__three-byte-utf-8__strip
+60/200 Test: valid__three-byte-utf-8__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/three-byte-utf-8"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__three-byte-utf-8__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__three-byte-utf-8__strip" end time: Nov 27 14:38 CET
+"valid__three-byte-utf-8__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+61/200 Testing: valid__escaped-utf-control-char
+61/200 Test: valid__escaped-utf-control-char
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/escaped-utf-control-char"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__escaped-utf-control-char" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__escaped-utf-control-char" end time: Nov 27 14:38 CET
+"valid__escaped-utf-control-char" time elapsed: 00:00:00
+----------------------------------------------------------
+
+62/200 Testing: valid__escaped-utf-control-char__strip
+62/200 Test: valid__escaped-utf-control-char__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/escaped-utf-control-char"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__escaped-utf-control-char__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__escaped-utf-control-char__strip" end time: Nov 27 14:38 CET
+"valid__escaped-utf-control-char__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+63/200 Testing: valid__simple-object
+63/200 Test: valid__simple-object
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/simple-object"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__simple-object" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__simple-object" end time: Nov 27 14:38 CET
+"valid__simple-object" time elapsed: 00:00:00
+----------------------------------------------------------
+
+64/200 Testing: valid__simple-object__strip
+64/200 Test: valid__simple-object__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/simple-object"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__simple-object__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__simple-object__strip" end time: Nov 27 14:38 CET
+"valid__simple-object__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+65/200 Testing: valid__one-byte-utf-8
+65/200 Test: valid__one-byte-utf-8
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/one-byte-utf-8"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__one-byte-utf-8" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__one-byte-utf-8" end time: Nov 27 14:38 CET
+"valid__one-byte-utf-8" time elapsed: 00:00:00
+----------------------------------------------------------
+
+66/200 Testing: valid__one-byte-utf-8__strip
+66/200 Test: valid__one-byte-utf-8__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/one-byte-utf-8"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__one-byte-utf-8__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__one-byte-utf-8__strip" end time: Nov 27 14:38 CET
+"valid__one-byte-utf-8__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+67/200 Testing: valid__simple-int-123
+67/200 Test: valid__simple-int-123
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/simple-int-123"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__simple-int-123" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__simple-int-123" end time: Nov 27 14:38 CET
+"valid__simple-int-123" time elapsed: 00:00:00
+----------------------------------------------------------
+
+68/200 Testing: valid__simple-int-123__strip
+68/200 Test: valid__simple-int-123__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/simple-int-123"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__simple-int-123__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__simple-int-123__strip" end time: Nov 27 14:38 CET
+"valid__simple-int-123__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+69/200 Testing: valid__empty-object-in-array
+69/200 Test: valid__empty-object-in-array
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/empty-object-in-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__empty-object-in-array" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__empty-object-in-array" end time: Nov 27 14:38 CET
+"valid__empty-object-in-array" time elapsed: 00:00:00
+----------------------------------------------------------
+
+70/200 Testing: valid__empty-object-in-array__strip
+70/200 Test: valid__empty-object-in-array__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/empty-object-in-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__empty-object-in-array__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__empty-object-in-array__strip" end time: Nov 27 14:38 CET
+"valid__empty-object-in-array__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+71/200 Testing: valid__real-capital-e
+71/200 Test: valid__real-capital-e
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-capital-e"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-capital-e" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-capital-e" end time: Nov 27 14:38 CET
+"valid__real-capital-e" time elapsed: 00:00:00
+----------------------------------------------------------
+
+72/200 Testing: valid__real-capital-e__strip
+72/200 Test: valid__real-capital-e__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-capital-e"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-capital-e__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-capital-e__strip" end time: Nov 27 14:38 CET
+"valid__real-capital-e__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+73/200 Testing: valid__negative-one
+73/200 Test: valid__negative-one
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/negative-one"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__negative-one" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__negative-one" end time: Nov 27 14:38 CET
+"valid__negative-one" time elapsed: 00:00:00
+----------------------------------------------------------
+
+74/200 Testing: valid__negative-one__strip
+74/200 Test: valid__negative-one__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/negative-one"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__negative-one__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__negative-one__strip" end time: Nov 27 14:38 CET
+"valid__negative-one__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+75/200 Testing: valid__real-exponent
+75/200 Test: valid__real-exponent
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-exponent" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-exponent" end time: Nov 27 14:38 CET
+"valid__real-exponent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+76/200 Testing: valid__real-exponent__strip
+76/200 Test: valid__real-exponent__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-exponent__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-exponent__strip" end time: Nov 27 14:38 CET
+"valid__real-exponent__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+77/200 Testing: valid__empty-string
+77/200 Test: valid__empty-string
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/empty-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__empty-string" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__empty-string" end time: Nov 27 14:38 CET
+"valid__empty-string" time elapsed: 00:00:00
+----------------------------------------------------------
+
+78/200 Testing: valid__empty-string__strip
+78/200 Test: valid__empty-string__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/empty-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__empty-string__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__empty-string__strip" end time: Nov 27 14:38 CET
+"valid__empty-string__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+79/200 Testing: valid__real-fraction-exponent
+79/200 Test: valid__real-fraction-exponent
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-fraction-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-fraction-exponent" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-fraction-exponent" end time: Nov 27 14:38 CET
+"valid__real-fraction-exponent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+80/200 Testing: valid__real-fraction-exponent__strip
+80/200 Test: valid__real-fraction-exponent__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-fraction-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-fraction-exponent__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-fraction-exponent__strip" end time: Nov 27 14:38 CET
+"valid__real-fraction-exponent__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+81/200 Testing: valid__real-positive-exponent
+81/200 Test: valid__real-positive-exponent
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-positive-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-positive-exponent" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-positive-exponent" end time: Nov 27 14:38 CET
+"valid__real-positive-exponent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+82/200 Testing: valid__real-positive-exponent__strip
+82/200 Test: valid__real-positive-exponent__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-positive-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-positive-exponent__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-positive-exponent__strip" end time: Nov 27 14:38 CET
+"valid__real-positive-exponent__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+83/200 Testing: valid__real-capital-e-positive-exponent
+83/200 Test: valid__real-capital-e-positive-exponent
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-capital-e-positive-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-capital-e-positive-exponent" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-capital-e-positive-exponent" end time: Nov 27 14:38 CET
+"valid__real-capital-e-positive-exponent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+84/200 Testing: valid__real-capital-e-positive-exponent__strip
+84/200 Test: valid__real-capital-e-positive-exponent__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/valid/real-capital-e-positive-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"valid__real-capital-e-positive-exponent__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"valid__real-capital-e-positive-exponent__strip" end time: Nov 27 14:38 CET
+"valid__real-capital-e-positive-exponent__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+85/200 Testing: invalid__tab-character-in-string
+85/200 Test: invalid__tab-character-in-string
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/tab-character-in-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__tab-character-in-string" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__tab-character-in-string" end time: Nov 27 14:38 CET
+"invalid__tab-character-in-string" time elapsed: 00:00:00
+----------------------------------------------------------
+
+86/200 Testing: invalid__tab-character-in-string__strip
+86/200 Test: invalid__tab-character-in-string__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/tab-character-in-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__tab-character-in-string__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__tab-character-in-string__strip" end time: Nov 27 14:38 CET
+"invalid__tab-character-in-string__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+87/200 Testing: invalid__invalid-escape
+87/200 Test: invalid__invalid-escape
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/invalid-escape"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__invalid-escape" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__invalid-escape" end time: Nov 27 14:38 CET
+"invalid__invalid-escape" time elapsed: 00:00:00
+----------------------------------------------------------
+
+88/200 Testing: invalid__invalid-escape__strip
+88/200 Test: invalid__invalid-escape__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/invalid-escape"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__invalid-escape__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__invalid-escape__strip" end time: Nov 27 14:38 CET
+"invalid__invalid-escape__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+89/200 Testing: invalid__apostrophe
+89/200 Test: invalid__apostrophe
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/apostrophe"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__apostrophe" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__apostrophe" end time: Nov 27 14:38 CET
+"invalid__apostrophe" time elapsed: 00:00:00
+----------------------------------------------------------
+
+90/200 Testing: invalid__apostrophe__strip
+90/200 Test: invalid__apostrophe__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/apostrophe"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__apostrophe__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__apostrophe__strip" end time: Nov 27 14:38 CET
+"invalid__apostrophe__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+91/200 Testing: invalid__extra-comma-in-array
+91/200 Test: invalid__extra-comma-in-array
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/extra-comma-in-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__extra-comma-in-array" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__extra-comma-in-array" end time: Nov 27 14:38 CET
+"invalid__extra-comma-in-array" time elapsed: 00:00:00
+----------------------------------------------------------
+
+92/200 Testing: invalid__extra-comma-in-array__strip
+92/200 Test: invalid__extra-comma-in-array__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/extra-comma-in-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__extra-comma-in-array__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__extra-comma-in-array__strip" end time: Nov 27 14:38 CET
+"invalid__extra-comma-in-array__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+93/200 Testing: invalid__object-apostrophes
+93/200 Test: invalid__object-apostrophes
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/object-apostrophes"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__object-apostrophes" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__object-apostrophes" end time: Nov 27 14:38 CET
+"invalid__object-apostrophes" time elapsed: 00:00:00
+----------------------------------------------------------
+
+94/200 Testing: invalid__object-apostrophes__strip
+94/200 Test: invalid__object-apostrophes__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/object-apostrophes"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__object-apostrophes__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__object-apostrophes__strip" end time: Nov 27 14:38 CET
+"invalid__object-apostrophes__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+95/200 Testing: invalid__real-positive-overflow
+95/200 Test: invalid__real-positive-overflow
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/real-positive-overflow"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__real-positive-overflow" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__real-positive-overflow" end time: Nov 27 14:38 CET
+"invalid__real-positive-overflow" time elapsed: 00:00:00
+----------------------------------------------------------
+
+96/200 Testing: invalid__real-positive-overflow__strip
+96/200 Test: invalid__real-positive-overflow__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/real-positive-overflow"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__real-positive-overflow__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__real-positive-overflow__strip" end time: Nov 27 14:38 CET
+"invalid__real-positive-overflow__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+97/200 Testing: invalid__too-big-positive-integer
+97/200 Test: invalid__too-big-positive-integer
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/too-big-positive-integer"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__too-big-positive-integer" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__too-big-positive-integer" end time: Nov 27 14:38 CET
+"invalid__too-big-positive-integer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+98/200 Testing: invalid__too-big-positive-integer__strip
+98/200 Test: invalid__too-big-positive-integer__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/too-big-positive-integer"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__too-big-positive-integer__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__too-big-positive-integer__strip" end time: Nov 27 14:38 CET
+"invalid__too-big-positive-integer__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+99/200 Testing: invalid__brace-comma
+99/200 Test: invalid__brace-comma
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/brace-comma"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__brace-comma" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__brace-comma" end time: Nov 27 14:38 CET
+"invalid__brace-comma" time elapsed: 00:00:00
+----------------------------------------------------------
+
+100/200 Testing: invalid__brace-comma__strip
+100/200 Test: invalid__brace-comma__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/brace-comma"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__brace-comma__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__brace-comma__strip" end time: Nov 27 14:38 CET
+"invalid__brace-comma__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+101/200 Testing: invalid__object-garbage-at-end
+101/200 Test: invalid__object-garbage-at-end
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/object-garbage-at-end"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__object-garbage-at-end" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__object-garbage-at-end" end time: Nov 27 14:38 CET
+"invalid__object-garbage-at-end" time elapsed: 00:00:00
+----------------------------------------------------------
+
+102/200 Testing: invalid__object-garbage-at-end__strip
+102/200 Test: invalid__object-garbage-at-end__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/object-garbage-at-end"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__object-garbage-at-end__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__object-garbage-at-end__strip" end time: Nov 27 14:38 CET
+"invalid__object-garbage-at-end__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+103/200 Testing: invalid__real-truncated-at-e
+103/200 Test: invalid__real-truncated-at-e
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/real-truncated-at-e"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__real-truncated-at-e" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__real-truncated-at-e" end time: Nov 27 14:38 CET
+"invalid__real-truncated-at-e" time elapsed: 00:00:00
+----------------------------------------------------------
+
+104/200 Testing: invalid__real-truncated-at-e__strip
+104/200 Test: invalid__real-truncated-at-e__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/real-truncated-at-e"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__real-truncated-at-e__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__real-truncated-at-e__strip" end time: Nov 27 14:38 CET
+"invalid__real-truncated-at-e__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+105/200 Testing: invalid__null-byte-outside-string
+105/200 Test: invalid__null-byte-outside-string
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/null-byte-outside-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__null-byte-outside-string" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__null-byte-outside-string" end time: Nov 27 14:38 CET
+"invalid__null-byte-outside-string" time elapsed: 00:00:00
+----------------------------------------------------------
+
+106/200 Testing: invalid__minus-sign-without-number
+106/200 Test: invalid__minus-sign-without-number
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/minus-sign-without-number"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__minus-sign-without-number" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__minus-sign-without-number" end time: Nov 27 14:38 CET
+"invalid__minus-sign-without-number" time elapsed: 00:00:00
+----------------------------------------------------------
+
+107/200 Testing: invalid__minus-sign-without-number__strip
+107/200 Test: invalid__minus-sign-without-number__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/minus-sign-without-number"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__minus-sign-without-number__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__minus-sign-without-number__strip" end time: Nov 27 14:38 CET
+"invalid__minus-sign-without-number__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+108/200 Testing: invalid__truncated-unicode-surrogate
+108/200 Test: invalid__truncated-unicode-surrogate
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/truncated-unicode-surrogate"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__truncated-unicode-surrogate" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__truncated-unicode-surrogate" end time: Nov 27 14:38 CET
+"invalid__truncated-unicode-surrogate" time elapsed: 00:00:00
+----------------------------------------------------------
+
+109/200 Testing: invalid__truncated-unicode-surrogate__strip
+109/200 Test: invalid__truncated-unicode-surrogate__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/truncated-unicode-surrogate"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__truncated-unicode-surrogate__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__truncated-unicode-surrogate__strip" end time: Nov 27 14:38 CET
+"invalid__truncated-unicode-surrogate__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+110/200 Testing: invalid__bracket-one-comma
+110/200 Test: invalid__bracket-one-comma
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/bracket-one-comma"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__bracket-one-comma" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__bracket-one-comma" end time: Nov 27 14:38 CET
+"invalid__bracket-one-comma" time elapsed: 00:00:00
+----------------------------------------------------------
+
+111/200 Testing: invalid__bracket-one-comma__strip
+111/200 Test: invalid__bracket-one-comma__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/bracket-one-comma"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__bracket-one-comma__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__bracket-one-comma__strip" end time: Nov 27 14:38 CET
+"invalid__bracket-one-comma__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+112/200 Testing: invalid__null-byte-in-object-key
+112/200 Test: invalid__null-byte-in-object-key
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/null-byte-in-object-key"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__null-byte-in-object-key" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__null-byte-in-object-key" end time: Nov 27 14:38 CET
+"invalid__null-byte-in-object-key" time elapsed: 00:00:00
+----------------------------------------------------------
+
+113/200 Testing: invalid__null-byte-in-object-key__strip
+113/200 Test: invalid__null-byte-in-object-key__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/null-byte-in-object-key"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__null-byte-in-object-key__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__null-byte-in-object-key__strip" end time: Nov 27 14:38 CET
+"invalid__null-byte-in-object-key__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+114/200 Testing: invalid__invalid-negative-real
+114/200 Test: invalid__invalid-negative-real
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/invalid-negative-real"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__invalid-negative-real" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__invalid-negative-real" end time: Nov 27 14:38 CET
+"invalid__invalid-negative-real" time elapsed: 00:00:00
+----------------------------------------------------------
+
+115/200 Testing: invalid__invalid-negative-real__strip
+115/200 Test: invalid__invalid-negative-real__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/invalid-negative-real"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__invalid-negative-real__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__invalid-negative-real__strip" end time: Nov 27 14:38 CET
+"invalid__invalid-negative-real__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+116/200 Testing: invalid__ascii-unicode-identifier
+116/200 Test: invalid__ascii-unicode-identifier
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/ascii-unicode-identifier"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__ascii-unicode-identifier" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__ascii-unicode-identifier" end time: Nov 27 14:38 CET
+"invalid__ascii-unicode-identifier" time elapsed: 00:00:00
+----------------------------------------------------------
+
+117/200 Testing: invalid__ascii-unicode-identifier__strip
+117/200 Test: invalid__ascii-unicode-identifier__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/ascii-unicode-identifier"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__ascii-unicode-identifier__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__ascii-unicode-identifier__strip" end time: Nov 27 14:38 CET
+"invalid__ascii-unicode-identifier__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+118/200 Testing: invalid__lone-second-surrogate
+118/200 Test: invalid__lone-second-surrogate
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/lone-second-surrogate"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__lone-second-surrogate" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__lone-second-surrogate" end time: Nov 27 14:38 CET
+"invalid__lone-second-surrogate" time elapsed: 00:00:00
+----------------------------------------------------------
+
+119/200 Testing: invalid__lone-second-surrogate__strip
+119/200 Test: invalid__lone-second-surrogate__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/lone-second-surrogate"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__lone-second-surrogate__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__lone-second-surrogate__strip" end time: Nov 27 14:38 CET
+"invalid__lone-second-surrogate__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+120/200 Testing: invalid__null-byte-in-string
+120/200 Test: invalid__null-byte-in-string
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/null-byte-in-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__null-byte-in-string" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__null-byte-in-string" end time: Nov 27 14:38 CET
+"invalid__null-byte-in-string" time elapsed: 00:00:00
+----------------------------------------------------------
+
+121/200 Testing: invalid__unterminated-key
+121/200 Test: invalid__unterminated-key
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unterminated-key"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unterminated-key" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unterminated-key" end time: Nov 27 14:38 CET
+"invalid__unterminated-key" time elapsed: 00:00:00
+----------------------------------------------------------
+
+122/200 Testing: invalid__unterminated-key__strip
+122/200 Test: invalid__unterminated-key__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unterminated-key"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unterminated-key__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unterminated-key__strip" end time: Nov 27 14:38 CET
+"invalid__unterminated-key__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+123/200 Testing: invalid__unterminated-array-and-object
+123/200 Test: invalid__unterminated-array-and-object
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unterminated-array-and-object"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unterminated-array-and-object" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unterminated-array-and-object" end time: Nov 27 14:38 CET
+"invalid__unterminated-array-and-object" time elapsed: 00:00:00
+----------------------------------------------------------
+
+124/200 Testing: invalid__unterminated-array-and-object__strip
+124/200 Test: invalid__unterminated-array-and-object__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unterminated-array-and-object"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unterminated-array-and-object__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unterminated-array-and-object__strip" end time: Nov 27 14:38 CET
+"invalid__unterminated-array-and-object__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+125/200 Testing: invalid__unterminated-object-and-array
+125/200 Test: invalid__unterminated-object-and-array
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unterminated-object-and-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unterminated-object-and-array" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unterminated-object-and-array" end time: Nov 27 14:38 CET
+"invalid__unterminated-object-and-array" time elapsed: 00:00:00
+----------------------------------------------------------
+
+126/200 Testing: invalid__unterminated-object-and-array__strip
+126/200 Test: invalid__unterminated-object-and-array__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unterminated-object-and-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unterminated-object-and-array__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unterminated-object-and-array__strip" end time: Nov 27 14:38 CET
+"invalid__unterminated-object-and-array__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+127/200 Testing: invalid__object-no-value
+127/200 Test: invalid__object-no-value
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/object-no-value"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__object-no-value" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__object-no-value" end time: Nov 27 14:38 CET
+"invalid__object-no-value" time elapsed: 00:00:00
+----------------------------------------------------------
+
+128/200 Testing: invalid__object-no-value__strip
+128/200 Test: invalid__object-no-value__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/object-no-value"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__object-no-value__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__object-no-value__strip" end time: Nov 27 14:38 CET
+"invalid__object-no-value__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+129/200 Testing: invalid__integer-starting-with-zero
+129/200 Test: invalid__integer-starting-with-zero
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/integer-starting-with-zero"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__integer-starting-with-zero" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__integer-starting-with-zero" end time: Nov 27 14:38 CET
+"invalid__integer-starting-with-zero" time elapsed: 00:00:00
+----------------------------------------------------------
+
+130/200 Testing: invalid__integer-starting-with-zero__strip
+130/200 Test: invalid__integer-starting-with-zero__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/integer-starting-with-zero"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__integer-starting-with-zero__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__integer-starting-with-zero__strip" end time: Nov 27 14:38 CET
+"invalid__integer-starting-with-zero__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+131/200 Testing: invalid__empty
+131/200 Test: invalid__empty
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/empty"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__empty" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__empty" end time: Nov 27 14:38 CET
+"invalid__empty" time elapsed: 00:00:00
+----------------------------------------------------------
+
+132/200 Testing: invalid__empty__strip
+132/200 Test: invalid__empty__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/empty"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__empty__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__empty__strip" end time: Nov 27 14:38 CET
+"invalid__empty__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+133/200 Testing: invalid__lone-open-bracket
+133/200 Test: invalid__lone-open-bracket
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/lone-open-bracket"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__lone-open-bracket" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__lone-open-bracket" end time: Nov 27 14:38 CET
+"invalid__lone-open-bracket" time elapsed: 00:00:00
+----------------------------------------------------------
+
+134/200 Testing: invalid__lone-open-bracket__strip
+134/200 Test: invalid__lone-open-bracket__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/lone-open-bracket"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__lone-open-bracket__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__lone-open-bracket__strip" end time: Nov 27 14:38 CET
+"invalid__lone-open-bracket__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+135/200 Testing: invalid__recursion-depth
+135/200 Test: invalid__recursion-depth
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/recursion-depth"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__recursion-depth" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__recursion-depth" end time: Nov 27 14:38 CET
+"invalid__recursion-depth" time elapsed: 00:00:00
+----------------------------------------------------------
+
+136/200 Testing: invalid__recursion-depth__strip
+136/200 Test: invalid__recursion-depth__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/recursion-depth"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__recursion-depth__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__recursion-depth__strip" end time: Nov 27 14:38 CET
+"invalid__recursion-depth__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+137/200 Testing: invalid__null-escape-in-string
+137/200 Test: invalid__null-escape-in-string
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/null-escape-in-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__null-escape-in-string" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__null-escape-in-string" end time: Nov 27 14:38 CET
+"invalid__null-escape-in-string" time elapsed: 00:00:00
+----------------------------------------------------------
+
+138/200 Testing: invalid__null-escape-in-string__strip
+138/200 Test: invalid__null-escape-in-string__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/null-escape-in-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__null-escape-in-string__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__null-escape-in-string__strip" end time: Nov 27 14:38 CET
+"invalid__null-escape-in-string__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+139/200 Testing: invalid__garbage-after-newline
+139/200 Test: invalid__garbage-after-newline
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/garbage-after-newline"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__garbage-after-newline" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__garbage-after-newline" end time: Nov 27 14:38 CET
+"invalid__garbage-after-newline" time elapsed: 00:00:00
+----------------------------------------------------------
+
+140/200 Testing: invalid__garbage-after-newline__strip
+140/200 Test: invalid__garbage-after-newline__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/garbage-after-newline"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__garbage-after-newline__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__garbage-after-newline__strip" end time: Nov 27 14:38 CET
+"invalid__garbage-after-newline__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+141/200 Testing: invalid__extra-comma-in-multiline-array
+141/200 Test: invalid__extra-comma-in-multiline-array
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/extra-comma-in-multiline-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__extra-comma-in-multiline-array" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__extra-comma-in-multiline-array" end time: Nov 27 14:38 CET
+"invalid__extra-comma-in-multiline-array" time elapsed: 00:00:00
+----------------------------------------------------------
+
+142/200 Testing: invalid__extra-comma-in-multiline-array__strip
+142/200 Test: invalid__extra-comma-in-multiline-array__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/extra-comma-in-multiline-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__extra-comma-in-multiline-array__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__extra-comma-in-multiline-array__strip" end time: Nov 27 14:38 CET
+"invalid__extra-comma-in-multiline-array__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+143/200 Testing: invalid__object-unterminated-value
+143/200 Test: invalid__object-unterminated-value
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/object-unterminated-value"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__object-unterminated-value" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__object-unterminated-value" end time: Nov 27 14:38 CET
+"invalid__object-unterminated-value" time elapsed: 00:00:00
+----------------------------------------------------------
+
+144/200 Testing: invalid__object-unterminated-value__strip
+144/200 Test: invalid__object-unterminated-value__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/object-unterminated-value"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__object-unterminated-value__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__object-unterminated-value__strip" end time: Nov 27 14:38 CET
+"invalid__object-unterminated-value__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+145/200 Testing: invalid__invalid-second-surrogate
+145/200 Test: invalid__invalid-second-surrogate
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/invalid-second-surrogate"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__invalid-second-surrogate" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__invalid-second-surrogate" end time: Nov 27 14:38 CET
+"invalid__invalid-second-surrogate" time elapsed: 00:00:00
+----------------------------------------------------------
+
+146/200 Testing: invalid__invalid-second-surrogate__strip
+146/200 Test: invalid__invalid-second-surrogate__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/invalid-second-surrogate"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__invalid-second-surrogate__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__invalid-second-surrogate__strip" end time: Nov 27 14:38 CET
+"invalid__invalid-second-surrogate__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+147/200 Testing: invalid__real-truncated-at-point
+147/200 Test: invalid__real-truncated-at-point
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/real-truncated-at-point"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__real-truncated-at-point" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__real-truncated-at-point" end time: Nov 27 14:38 CET
+"invalid__real-truncated-at-point" time elapsed: 00:00:00
+----------------------------------------------------------
+
+148/200 Testing: invalid__real-truncated-at-point__strip
+148/200 Test: invalid__real-truncated-at-point__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/real-truncated-at-point"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__real-truncated-at-point__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__real-truncated-at-point__strip" end time: Nov 27 14:38 CET
+"invalid__real-truncated-at-point__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+149/200 Testing: invalid__negative-integer-starting-with-zero
+149/200 Test: invalid__negative-integer-starting-with-zero
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/negative-integer-starting-with-zero"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__negative-integer-starting-with-zero" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__negative-integer-starting-with-zero" end time: Nov 27 14:38 CET
+"invalid__negative-integer-starting-with-zero" time elapsed: 00:00:00
+----------------------------------------------------------
+
+150/200 Testing: invalid__negative-integer-starting-with-zero__strip
+150/200 Test: invalid__negative-integer-starting-with-zero__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/negative-integer-starting-with-zero"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__negative-integer-starting-with-zero__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__negative-integer-starting-with-zero__strip" end time: Nov 27 14:38 CET
+"invalid__negative-integer-starting-with-zero__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+151/200 Testing: invalid__null
+151/200 Test: invalid__null
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/null"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__null" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__null" end time: Nov 27 14:38 CET
+"invalid__null" time elapsed: 00:00:00
+----------------------------------------------------------
+
+152/200 Testing: invalid__null__strip
+152/200 Test: invalid__null__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/null"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__null__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__null__strip" end time: Nov 27 14:38 CET
+"invalid__null__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+153/200 Testing: invalid__lone-open-brace
+153/200 Test: invalid__lone-open-brace
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/lone-open-brace"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__lone-open-brace" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__lone-open-brace" end time: Nov 27 14:38 CET
+"invalid__lone-open-brace" time elapsed: 00:00:00
+----------------------------------------------------------
+
+154/200 Testing: invalid__lone-open-brace__strip
+154/200 Test: invalid__lone-open-brace__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/lone-open-brace"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__lone-open-brace__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__lone-open-brace__strip" end time: Nov 27 14:38 CET
+"invalid__lone-open-brace__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+155/200 Testing: invalid__invalid-negative-integer
+155/200 Test: invalid__invalid-negative-integer
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/invalid-negative-integer"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__invalid-negative-integer" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__invalid-negative-integer" end time: Nov 27 14:38 CET
+"invalid__invalid-negative-integer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+156/200 Testing: invalid__invalid-negative-integer__strip
+156/200 Test: invalid__invalid-negative-integer__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/invalid-negative-integer"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__invalid-negative-integer__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__invalid-negative-integer__strip" end time: Nov 27 14:38 CET
+"invalid__invalid-negative-integer__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+157/200 Testing: invalid__object-no-colon
+157/200 Test: invalid__object-no-colon
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/object-no-colon"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__object-no-colon" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__object-no-colon" end time: Nov 27 14:38 CET
+"invalid__object-no-colon" time elapsed: 00:00:00
+----------------------------------------------------------
+
+158/200 Testing: invalid__object-no-colon__strip
+158/200 Test: invalid__object-no-colon__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/object-no-colon"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__object-no-colon__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__object-no-colon__strip" end time: Nov 27 14:38 CET
+"invalid__object-no-colon__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+159/200 Testing: invalid__too-big-negative-integer
+159/200 Test: invalid__too-big-negative-integer
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/too-big-negative-integer"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__too-big-negative-integer" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__too-big-negative-integer" end time: Nov 27 14:38 CET
+"invalid__too-big-negative-integer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+160/200 Testing: invalid__too-big-negative-integer__strip
+160/200 Test: invalid__too-big-negative-integer__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/too-big-negative-integer"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__too-big-negative-integer__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__too-big-negative-integer__strip" end time: Nov 27 14:38 CET
+"invalid__too-big-negative-integer__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+161/200 Testing: invalid__unicode-identifier
+161/200 Test: invalid__unicode-identifier
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unicode-identifier"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unicode-identifier" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unicode-identifier" end time: Nov 27 14:38 CET
+"invalid__unicode-identifier" time elapsed: 00:00:00
+----------------------------------------------------------
+
+162/200 Testing: invalid__unicode-identifier__strip
+162/200 Test: invalid__unicode-identifier__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unicode-identifier"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unicode-identifier__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unicode-identifier__strip" end time: Nov 27 14:38 CET
+"invalid__unicode-identifier__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+163/200 Testing: invalid__garbage-at-the-end
+163/200 Test: invalid__garbage-at-the-end
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/garbage-at-the-end"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__garbage-at-the-end" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__garbage-at-the-end" end time: Nov 27 14:38 CET
+"invalid__garbage-at-the-end" time elapsed: 00:00:00
+----------------------------------------------------------
+
+164/200 Testing: invalid__garbage-at-the-end__strip
+164/200 Test: invalid__garbage-at-the-end__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/garbage-at-the-end"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__garbage-at-the-end__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__garbage-at-the-end__strip" end time: Nov 27 14:38 CET
+"invalid__garbage-at-the-end__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+165/200 Testing: invalid__invalid-unicode-escape
+165/200 Test: invalid__invalid-unicode-escape
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/invalid-unicode-escape"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__invalid-unicode-escape" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__invalid-unicode-escape" end time: Nov 27 14:38 CET
+"invalid__invalid-unicode-escape" time elapsed: 00:00:00
+----------------------------------------------------------
+
+166/200 Testing: invalid__invalid-unicode-escape__strip
+166/200 Test: invalid__invalid-unicode-escape__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/invalid-unicode-escape"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__invalid-unicode-escape__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__invalid-unicode-escape__strip" end time: Nov 27 14:38 CET
+"invalid__invalid-unicode-escape__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+167/200 Testing: invalid__real-garbage-after-e
+167/200 Test: invalid__real-garbage-after-e
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/real-garbage-after-e"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__real-garbage-after-e" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__real-garbage-after-e" end time: Nov 27 14:38 CET
+"invalid__real-garbage-after-e" time elapsed: 00:00:00
+----------------------------------------------------------
+
+168/200 Testing: invalid__real-garbage-after-e__strip
+168/200 Test: invalid__real-garbage-after-e__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/real-garbage-after-e"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__real-garbage-after-e__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__real-garbage-after-e__strip" end time: Nov 27 14:38 CET
+"invalid__real-garbage-after-e__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+169/200 Testing: invalid__object-in-unterminated-array
+169/200 Test: invalid__object-in-unterminated-array
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/object-in-unterminated-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__object-in-unterminated-array" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__object-in-unterminated-array" end time: Nov 27 14:38 CET
+"invalid__object-in-unterminated-array" time elapsed: 00:00:00
+----------------------------------------------------------
+
+170/200 Testing: invalid__object-in-unterminated-array__strip
+170/200 Test: invalid__object-in-unterminated-array__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/object-in-unterminated-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__object-in-unterminated-array__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__object-in-unterminated-array__strip" end time: Nov 27 14:38 CET
+"invalid__object-in-unterminated-array__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+171/200 Testing: invalid__unterminated-empty-key
+171/200 Test: invalid__unterminated-empty-key
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unterminated-empty-key"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unterminated-empty-key" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unterminated-empty-key" end time: Nov 27 14:38 CET
+"invalid__unterminated-empty-key" time elapsed: 00:00:00
+----------------------------------------------------------
+
+172/200 Testing: invalid__unterminated-empty-key__strip
+172/200 Test: invalid__unterminated-empty-key__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unterminated-empty-key"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unterminated-empty-key__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unterminated-empty-key__strip" end time: Nov 27 14:38 CET
+"invalid__unterminated-empty-key__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+173/200 Testing: invalid__bracket-comma
+173/200 Test: invalid__bracket-comma
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/bracket-comma"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__bracket-comma" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__bracket-comma" end time: Nov 27 14:38 CET
+"invalid__bracket-comma" time elapsed: 00:00:00
+----------------------------------------------------------
+
+174/200 Testing: invalid__bracket-comma__strip
+174/200 Test: invalid__bracket-comma__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/bracket-comma"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__bracket-comma__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__bracket-comma__strip" end time: Nov 27 14:38 CET
+"invalid__bracket-comma__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+175/200 Testing: invalid__invalid-identifier
+175/200 Test: invalid__invalid-identifier
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/invalid-identifier"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__invalid-identifier" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__invalid-identifier" end time: Nov 27 14:38 CET
+"invalid__invalid-identifier" time elapsed: 00:00:00
+----------------------------------------------------------
+
+176/200 Testing: invalid__invalid-identifier__strip
+176/200 Test: invalid__invalid-identifier__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/invalid-identifier"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__invalid-identifier__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__invalid-identifier__strip" end time: Nov 27 14:38 CET
+"invalid__invalid-identifier__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+177/200 Testing: invalid__unterminated-string
+177/200 Test: invalid__unterminated-string
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unterminated-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unterminated-string" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unterminated-string" end time: Nov 27 14:38 CET
+"invalid__unterminated-string" time elapsed: 00:00:00
+----------------------------------------------------------
+
+178/200 Testing: invalid__unterminated-string__strip
+178/200 Test: invalid__unterminated-string__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unterminated-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unterminated-string__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unterminated-string__strip" end time: Nov 27 14:38 CET
+"invalid__unterminated-string__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+179/200 Testing: invalid__real-negative-overflow
+179/200 Test: invalid__real-negative-overflow
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/real-negative-overflow"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__real-negative-overflow" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__real-negative-overflow" end time: Nov 27 14:38 CET
+"invalid__real-negative-overflow" time elapsed: 00:00:00
+----------------------------------------------------------
+
+180/200 Testing: invalid__real-negative-overflow__strip
+180/200 Test: invalid__real-negative-overflow__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/real-negative-overflow"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__real-negative-overflow__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__real-negative-overflow__strip" end time: Nov 27 14:38 CET
+"invalid__real-negative-overflow__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+181/200 Testing: invalid__unterminated-array
+181/200 Test: invalid__unterminated-array
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unterminated-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unterminated-array" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unterminated-array" end time: Nov 27 14:38 CET
+"invalid__unterminated-array" time elapsed: 00:00:00
+----------------------------------------------------------
+
+182/200 Testing: invalid__unterminated-array__strip
+182/200 Test: invalid__unterminated-array__strip
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "--strip" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid/unterminated-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid__unterminated-array__strip" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid__unterminated-array__strip" end time: Nov 27 14:38 CET
+"invalid__unterminated-array__strip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+183/200 Testing: invalid-unicode__invalid-utf-8-in-string
+183/200 Test: invalid-unicode__invalid-utf-8-in-string
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/invalid-utf-8-in-string"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__invalid-utf-8-in-string" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__invalid-utf-8-in-string" end time: Nov 27 14:38 CET
+"invalid-unicode__invalid-utf-8-in-string" time elapsed: 00:00:00
+----------------------------------------------------------
+
+184/200 Testing: invalid-unicode__invalid-utf-8-in-int
+184/200 Test: invalid-unicode__invalid-utf-8-in-int
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/invalid-utf-8-in-int"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__invalid-utf-8-in-int" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__invalid-utf-8-in-int" end time: Nov 27 14:38 CET
+"invalid-unicode__invalid-utf-8-in-int" time elapsed: 00:00:00
+----------------------------------------------------------
+
+185/200 Testing: invalid-unicode__invalid-utf-8-in-bigger-int
+185/200 Test: invalid-unicode__invalid-utf-8-in-bigger-int
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/invalid-utf-8-in-bigger-int"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__invalid-utf-8-in-bigger-int" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__invalid-utf-8-in-bigger-int" end time: Nov 27 14:38 CET
+"invalid-unicode__invalid-utf-8-in-bigger-int" time elapsed: 00:00:00
+----------------------------------------------------------
+
+186/200 Testing: invalid-unicode__truncated-utf-8
+186/200 Test: invalid-unicode__truncated-utf-8
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/truncated-utf-8"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__truncated-utf-8" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__truncated-utf-8" end time: Nov 27 14:38 CET
+"invalid-unicode__truncated-utf-8" time elapsed: 00:00:00
+----------------------------------------------------------
+
+187/200 Testing: invalid-unicode__lone-invalid-utf-8
+187/200 Test: invalid-unicode__lone-invalid-utf-8
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/lone-invalid-utf-8"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__lone-invalid-utf-8" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__lone-invalid-utf-8" end time: Nov 27 14:38 CET
+"invalid-unicode__lone-invalid-utf-8" time elapsed: 00:00:00
+----------------------------------------------------------
+
+188/200 Testing: invalid-unicode__encoded-surrogate-half
+188/200 Test: invalid-unicode__encoded-surrogate-half
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/encoded-surrogate-half"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__encoded-surrogate-half" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__encoded-surrogate-half" end time: Nov 27 14:38 CET
+"invalid-unicode__encoded-surrogate-half" time elapsed: 00:00:00
+----------------------------------------------------------
+
+189/200 Testing: invalid-unicode__invalid-utf-8-in-exponent
+189/200 Test: invalid-unicode__invalid-utf-8-in-exponent
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/invalid-utf-8-in-exponent"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__invalid-utf-8-in-exponent" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__invalid-utf-8-in-exponent" end time: Nov 27 14:38 CET
+"invalid-unicode__invalid-utf-8-in-exponent" time elapsed: 00:00:00
+----------------------------------------------------------
+
+190/200 Testing: invalid-unicode__invalid-utf-8-in-real-after-e
+190/200 Test: invalid-unicode__invalid-utf-8-in-real-after-e
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/invalid-utf-8-in-real-after-e"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__invalid-utf-8-in-real-after-e" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__invalid-utf-8-in-real-after-e" end time: Nov 27 14:38 CET
+"invalid-unicode__invalid-utf-8-in-real-after-e" time elapsed: 00:00:00
+----------------------------------------------------------
+
+191/200 Testing: invalid-unicode__overlong-3-byte-encoding
+191/200 Test: invalid-unicode__overlong-3-byte-encoding
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/overlong-3-byte-encoding"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__overlong-3-byte-encoding" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__overlong-3-byte-encoding" end time: Nov 27 14:38 CET
+"invalid-unicode__overlong-3-byte-encoding" time elapsed: 00:00:00
+----------------------------------------------------------
+
+192/200 Testing: invalid-unicode__not-in-unicode-range
+192/200 Test: invalid-unicode__not-in-unicode-range
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/not-in-unicode-range"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__not-in-unicode-range" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__not-in-unicode-range" end time: Nov 27 14:38 CET
+"invalid-unicode__not-in-unicode-range" time elapsed: 00:00:00
+----------------------------------------------------------
+
+193/200 Testing: invalid-unicode__invalid-utf-8-after-backslash
+193/200 Test: invalid-unicode__invalid-utf-8-after-backslash
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/invalid-utf-8-after-backslash"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__invalid-utf-8-after-backslash" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__invalid-utf-8-after-backslash" end time: Nov 27 14:38 CET
+"invalid-unicode__invalid-utf-8-after-backslash" time elapsed: 00:00:00
+----------------------------------------------------------
+
+194/200 Testing: invalid-unicode__overlong-ascii-encoding
+194/200 Test: invalid-unicode__overlong-ascii-encoding
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/overlong-ascii-encoding"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__overlong-ascii-encoding" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__overlong-ascii-encoding" end time: Nov 27 14:38 CET
+"invalid-unicode__overlong-ascii-encoding" time elapsed: 00:00:00
+----------------------------------------------------------
+
+195/200 Testing: invalid-unicode__restricted-utf-8
+195/200 Test: invalid-unicode__restricted-utf-8
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/restricted-utf-8"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__restricted-utf-8" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__restricted-utf-8" end time: Nov 27 14:38 CET
+"invalid-unicode__restricted-utf-8" time elapsed: 00:00:00
+----------------------------------------------------------
+
+196/200 Testing: invalid-unicode__invalid-utf-8-in-identifier
+196/200 Test: invalid-unicode__invalid-utf-8-in-identifier
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/invalid-utf-8-in-identifier"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__invalid-utf-8-in-identifier" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__invalid-utf-8-in-identifier" end time: Nov 27 14:38 CET
+"invalid-unicode__invalid-utf-8-in-identifier" time elapsed: 00:00:00
+----------------------------------------------------------
+
+197/200 Testing: invalid-unicode__overlong-4-byte-encoding
+197/200 Test: invalid-unicode__overlong-4-byte-encoding
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/overlong-4-byte-encoding"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__overlong-4-byte-encoding" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__overlong-4-byte-encoding" end time: Nov 27 14:38 CET
+"invalid-unicode__overlong-4-byte-encoding" time elapsed: 00:00:00
+----------------------------------------------------------
+
+198/200 Testing: invalid-unicode__invalid-utf-8-in-array
+198/200 Test: invalid-unicode__invalid-utf-8-in-array
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/invalid-utf-8-in-array"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__invalid-utf-8-in-array" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__invalid-utf-8-in-array" end time: Nov 27 14:38 CET
+"invalid-unicode__invalid-utf-8-in-array" time elapsed: 00:00:00
+----------------------------------------------------------
+
+199/200 Testing: invalid-unicode__invalid-utf-8-in-escape
+199/200 Test: invalid-unicode__invalid-utf-8-in-escape
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/invalid-utf-8-in-escape"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__invalid-utf-8-in-escape" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__invalid-utf-8-in-escape" end time: Nov 27 14:38 CET
+"invalid-unicode__invalid-utf-8-in-escape" time elapsed: 00:00:00
+----------------------------------------------------------
+
+200/200 Testing: invalid-unicode__lone-utf-8-continuation-byte
+200/200 Test: invalid-unicode__lone-utf-8-continuation-byte
+Command: "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build/bin/json_process" "/home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/test/suites/invalid-unicode/lone-utf-8-continuation-byte"
+Directory: /home/kinova/Documents/kinovaZED/thirdparty/jansson-2.12/build
+"invalid-unicode__lone-utf-8-continuation-byte" start time: Nov 27 14:38 CET
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"invalid-unicode__lone-utf-8-continuation-byte" end time: Nov 27 14:38 CET
+"invalid-unicode__lone-utf-8-continuation-byte" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 27 14:38 CET

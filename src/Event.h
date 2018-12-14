@@ -25,13 +25,19 @@ namespace KinovaFSM {
     E_Stop,
     QuitEStop,
     
-    //Hardware Events
-    NeedsInit,
+    //Hardware Events Communicated To RoboRio
     Initialized,
     ModeSet,
-    PositionReached,
+    SequenceDone,
+    PointReached,
     PointSaved,
+    PointNotSaved,
     NextPointSet,
+    NextPointNotSet,
+
+    //Hardware Events Uncommunicated
+    NeedsInit,
+
     Error,
   };
 
@@ -56,13 +62,21 @@ namespace KinovaFSM {
     "E_Stop",
     "QuitEStop",
     
-    //Hardware Events
-    "NeedsInit",
+    //Hardware Events Communicated
     "Initialized",
     "ModeSet",
-    "PositionReached",
+    "SequenceDone",
+    "PointReached",
     "PointSaved",
+    "PointNotSaved",
     "NextPointSet",
+    "NextPointNotSet",
+
+    //Hardware Events Uncommunicated
+    "NeedsInit",
+
+
+
     "Error"
   };
 
