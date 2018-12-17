@@ -244,7 +244,7 @@ void KinovaArm::move() {
 }
 
 
-/*Sets the Targetpoint for the movement*/
+/*Sets the Targetpoint for the Movement*/
 void KinovaArm::setTarget(KinovaPts::Objective targetObjective) {
   if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives) {
     TargetObjective = targetObjective;
@@ -257,7 +257,7 @@ void KinovaArm::setTarget(KinovaPts::Objective targetObjective) {
 }
 
 
-/*moves the Arm towards the next Point in the sequenceList.
+/*Moves the Arm towards the next Point in the sequenceList.
 If Point is reached, sequence is counted up.
 If end of sequence is reached, PositionReached event is sent.*/
 void KinovaArm::moveToPosition() {
@@ -299,6 +299,8 @@ void KinovaArm::moveToPosition() {
   }
 }
 
+
+/*sets the TeachingTarget (Objective at whitch will be teached). Keeps old objective and Sequence when called with Zero.*/
 void KinovaArm::teachPosition(KinovaPts::Objective targetObjective) {
   //EventOut = KinovaFSM::ModeSet;
   if (targetObjective != 0) {

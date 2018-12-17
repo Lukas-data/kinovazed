@@ -19,14 +19,19 @@ PositionHandling::~PositionHandling() {
 
 
 void PositionHandling::init() {
+  for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
+    std::cout << "Size at Location " << i << ": " << Points[i].size() << "\n";
+  }
   readFromFile();
   calcTransMat();
+  
+/*
   for (int i = 0; i<4; i++) {
     for (int j = 0; j <4; j++) {
       std::cout << InvTransMat[1][i][j] << ",";
     }
     std::cout << "\n";
-  }
+  }*/
 }
 
 /*void PositionHandling::error(const char *msg)
@@ -99,6 +104,7 @@ void PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targ
 void PositionHandling::readFromFile() {
   std::string line;
   std::ifstream infile (FILEPATH);
+  
   //Reads Objectives from Files
   for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
     if (std::getline(infile,line)) {     
@@ -118,8 +124,17 @@ void PositionHandling::readFromFile() {
       } 
     }
   }
-  std::getline(infile,line);
 
+  //Empty Line
+  std::getline(infile,line);
+  
+  //reset Point-Vector
+  for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
+    f2d_vec_t(1,std::vector<float>(6)).swap(Points[i]);
+    
+    std::cout << "Reset: Size at Location " << i << ": " << Points[i].size() << "\n";
+  }
+  
   //Reads Points from Files
   int location = 0;
   int sequence = 0;
@@ -163,6 +178,7 @@ void PositionHandling::readFromFile() {
         Points[location].push_back(vec_float);
         std::cout << ": Post-Zero\n";
       }
+      std::cout << "Size at Location " << location << ": " << Points[location].size() << "\n";
       sequence++;
     }
   }
