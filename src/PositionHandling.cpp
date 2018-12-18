@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <algorithm>
 #include <math.h>
 //#include <jansson.h>
 //#include "../thirdparty/jansson-2.12/src/jansson.h"
@@ -41,14 +42,34 @@ void PositionHandling::init() {
 }*/
 
 
-//Writes Requestet Coordinates of Position by pos-number and its Subpositions by Sequence-number.
+//Writes Requestet targetCoordinates[6] of Objective by pos-number and its Subpositions by Sequence-number. Takes currentPosition[6] if Objective is 0.
 //Returns 0 if sequence has ended.
-bool PositionHandling::getCoordinates(float* coordinates, KinovaPts::Objective targetObjective) {
-  //Check SequenceNumber
-  if (SequenceCounter >= Points[targetObjective-1].size()) { return 0;}
+bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objective targetObjective, float* currentCoordinates) {
+  
+  //Check if Objective is Zero. Inserts currentCoordinates and recalcs TransMat
+  bool isZero = true;
+  for (int i = 0; i < 6; i++) {
+    if(Location[targetObjective-1][i] != 0) { isZero = false; }
+  }
+  if (isZero) {
+    for (int i = 0; i < 6; i++) {
+      Location[targetObjective-1][i] = currentCoordinates[i];
+    }
+    calcTransMat();
+  }
+
+  //Check SequenceNumber. Returns 0 and resets ZeroObjective if Sequence is over.
+  if (SequenceCounter >= Points[targetObjective-1].size()) {
+    if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() ) {
+      for (int i = 0; i < 6; i++) {
+      Location[targetObjective-1][i] = 0;
+      }
+    }
+    return 0;
+  }
  
   //Check if current Position
-  bool isZero = true;
+  isZero = true;
   for (int i = 0; i < 6; i++) {
     if (Points[targetObjective-1][SequenceCounter][i] != 0) {
       //std::cout << "Points[" << targetObjective-1 << "][" << SequenceCounter << "][" << i << "] != 0\n";
@@ -57,16 +78,16 @@ bool PositionHandling::getCoordinates(float* coordinates, KinovaPts::Objective t
   }
   if (isZero) {
     for (int i = 0; i < 6; i++) {
-      coordinates[i] = Location[targetObjective-1][i];
+        targetCoordinates[i] = Location[targetObjective-1][i];
     }
   }
   else {
     for (int i = 0; i < 6; i++) {
-      coordinates[i] = Points[targetObjective-1][SequenceCounter][i];     
+      targetCoordinates[i] = Points[targetObjective-1][SequenceCounter][i];     
     }
-    coordTransform(coordinates, TransMat[targetObjective-1]);
+    coordTransform(targetCoordinates, TransMat[targetObjective-1]);
   }
-  printf("Coordinates: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
+  //printf("Coordinates: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
 }
 
 void PositionHandling::countSequence() {
@@ -102,6 +123,7 @@ void PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targ
 
 /*Reads Location and Points Vectors from SaveFile*/
 void PositionHandling::readFromFile() {
+  std::vector<int>().swap(ZeroObjectives);
   std::string line;
   std::ifstream infile (FILEPATH);
   
@@ -119,9 +141,15 @@ void PositionHandling::readFromFile() {
         std::cout << "ReadFromFile: No Location. ERROR: File-Missmatch.";
         break;
       }
+      bool isZero = true;
       for (int j = 0; j < 6; j++) {
+        if (vec_int[j] != 0) { isZero = false; }
         Location[i][j] = (float)vec_int[j]/1000;
-      } 
+      }
+      if (isZero) {
+        ZeroObjectives.push_back(i);
+        std::cout << "Objective " << i << " is Zero!\n";
+      }
     }
   }
 
@@ -192,8 +220,17 @@ void PositionHandling::writeToFile() {
   if ( saveFile.is_open() ) {
     //Write Locations
     for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
-      for (int j = 0; j < 6; j++) {
-        saveFile << (int)(Location[i][j]*1000) << " ";
+      if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), i) != ZeroObjectives.end() ) {
+        //Objecitve is a ZeroObjective. 
+        for (int j = 0; j < 6; j++) {
+          saveFile << 0 << " ";
+        }
+      }
+      else {
+        //Normal Objective
+        for (int j = 0; j < 6; j++) {
+          saveFile << (int)(Location[i][j]*1000) << " ";
+        }
       }
       saveFile << "\n";
     }
@@ -212,6 +249,7 @@ void PositionHandling::writeToFile() {
   else std::cout << "Unable to open file\n";
   saveFile.close();
   std::cout << "File Saved\n";
+  readFromFile();
 }
 
 int PositionHandling::getSequence() {

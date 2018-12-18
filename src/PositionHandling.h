@@ -7,10 +7,12 @@
 
 namespace KinovaPts {
   
-  static const int NumberOfObjectives = 2; //excl. NoObjective
+  static const int NumberOfObjectives = 4; //excl. NoObjective
   enum Objective { NoObjective,
                     Home,
-                    Bell
+                    Bell,
+                    Handle,
+                    OpenDoor
                  };
 
   typedef struct posCoordinates{ 
@@ -37,7 +39,7 @@ class PositionHandling {
     
     void init();
     static int printPos();
-    bool getCoordinates(float* coordinates, KinovaPts::Objective targetObjective);
+    bool getCoordinates(float* coordinates, KinovaPts::Objective targetObjective, float* currentCoordinates);
     void countSequence();
     void resetSequence();
     void savePoint(float coordinates[6], KinovaPts::Objective targetObjective);
@@ -48,12 +50,13 @@ class PositionHandling {
   private:
     typedef std::vector< std::vector<float> > f2d_vec_t;
     typedef std::vector<f2d_vec_t> f3d_vec_t;
-    static KinovaPts::posCoordinates Locations[KinovaPts::NumberOfObjectives][NUMBER_OF_SUBPOINTS];
+    //static KinovaPts::posCoordinates Locations[KinovaPts::NumberOfObjectives][NUMBER_OF_SUBPOINTS];
     f2d_vec_t Location;
     f3d_vec_t Points;
     int SequenceCounter;
     f3d_vec_t TransMat;
     f3d_vec_t InvTransMat;
+    std::vector<int> ZeroObjectives;
 
     void coordTransform(float* coordinates, const f2d_vec_t &transMat);
     void coordBackTransform(float* coordinates,KinovaPts::Objective targetObjective);

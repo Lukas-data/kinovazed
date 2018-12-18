@@ -273,7 +273,7 @@ void KinovaArm::moveToPosition(bool init) {
 
   getPosition(currentCoordinates);
   //Check if Sequence is still going
-  if ( PositionHandler.getCoordinates(targetCoordinates, TargetObjective) ) {
+  if ( PositionHandler.getCoordinates(targetCoordinates, TargetObjective, currentCoordinates) ) {
     //Check if in range
     bool PointReached = true;
     for (int i = 0; i<6; i++) {
@@ -333,7 +333,7 @@ void KinovaArm::moveToPoint() {
   getPosition(currentCoordinates);
 
   //Check if Sequence is still going
-  if ( PositionHandler.getCoordinates(targetCoordinates, TeachTarget) ) {
+  if ( PositionHandler.getCoordinates(targetCoordinates, TeachTarget, currentCoordinates) ) {
     //Check if in range
     bool PointReached = true;
     for (int i = 0; i<6; i++) {

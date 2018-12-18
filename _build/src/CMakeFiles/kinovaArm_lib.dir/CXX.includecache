@@ -59,6 +59,8 @@ sstream
 -
 string
 -
+algorithm
+-
 math.h
 -
 PositionHandling.h
