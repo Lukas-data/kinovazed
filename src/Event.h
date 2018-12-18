@@ -5,7 +5,8 @@
 
 namespace KinovaFSM {
 
-//Events
+  static const int numberOfNonHWEvents = 13; //Not including NoEvent.
+//Events !Hardware Events at the End!
   enum Event {
     //System Events
     NoEvent,
@@ -25,7 +26,7 @@ namespace KinovaFSM {
     E_Stop,
     QuitEStop,
     
-    //Hardware Events Communicated To RoboRio
+    //Hardware Events Communicated To RoboRio (external)
     Initialized,
     ModeSet,
     SequenceDone,
@@ -35,9 +36,8 @@ namespace KinovaFSM {
     NextPointSet,
     NextPointNotSet,
 
-    //Hardware Events Uncommunicated
-    NeedsInit,
-
+    //Hardware Events Uncommunicated (internal)
+    InitHomeReached,
     Error,
   };
 
@@ -73,10 +73,7 @@ namespace KinovaFSM {
     "NextPointNotSet",
 
     //Hardware Events Uncommunicated
-    "NeedsInit",
-
-
-
+    "InitHomeReached",
     "Error"
   };
 

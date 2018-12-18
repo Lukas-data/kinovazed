@@ -17,7 +17,8 @@ class KinovaArm {
       Error(false),
       Initialized(false),
       Active(false),
-      EventOut(KinovaFSM::NoEvent),
+      ExternalEvent(KinovaFSM::NoEvent),
+      InternalEvent(KinovaFSM::NoEvent),
       currentPosition(-1),
       Mode(KinovaStatus::NoMode),
       JoystickX(0),
@@ -38,7 +39,8 @@ class KinovaArm {
     void changeMode(KinovaStatus::SteeringMode nextMode);
     void modeChangeTimer();
     void move();
-    void moveToPosition();
+    void moveToPosition(bool init);
+    void sequenceDone();
 
     void teachPosition(KinovaPts::Objective targetObjective);
     void moveToPoint();
@@ -56,7 +58,8 @@ class KinovaArm {
     int  getCurrentPosition();
     int  getCurrentPoint();
 
-    KinovaFSM::Event getEvent();
+    KinovaFSM::Event getExternalEvent();
+    KinovaFSM::Event getInternalEvent();
     void getPosition(float* coordinates);
 
     void setActive();
@@ -85,7 +88,8 @@ class KinovaArm {
     timespec TimerStart;
     int ModeChangeTimer;
 
-    KinovaFSM::Event EventOut;
+    KinovaFSM::Event ExternalEvent;
+    KinovaFSM::Event InternalEvent;
 
 
 

@@ -132,7 +132,7 @@ void PositionHandling::readFromFile() {
   for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
     f2d_vec_t(1,std::vector<float>(6)).swap(Points[i]);
     
-    std::cout << "Reset: Size at Location " << i << ": " << Points[i].size() << "\n";
+    //std::cout << "Reset: Size at Location " << i << ": " << Points[i].size() << "\n";
   }
   
   //Reads Points from Files
@@ -142,7 +142,7 @@ void PositionHandling::readFromFile() {
   f2d_vec_t::iterator it = Points[location].begin();
   
   while (std::getline(infile,line) && location < KinovaPts::NumberOfObjectives) { 
-    std::cout << "location: " << location << ", Sequence: " << sequence;
+    //std::cout << "location: " << location << ", Sequence: " << sequence;
     std::istringstream iss(line);
     int n;
     std::vector<int> vec_int;
@@ -155,7 +155,7 @@ void PositionHandling::readFromFile() {
       sequence = 0;
       it = Points[location].begin();
       PrePoint = true;
-      std::cout << ": Empty line. Next Location\n";
+      //std::cout << ": Empty line. Next Location\n";
     }
     else {
       std::vector<float> vec_float(6);
@@ -168,17 +168,17 @@ void PositionHandling::readFromFile() {
       }
       if (isZero) {
         PrePoint = false;
-        std::cout << ": Zero-Point\n";
+        //std::cout << ": Zero-Point\n";
       }
       else if (PrePoint) {
         Points[location].insert(it+sequence, vec_float);
-        std::cout << ": Pre-Zero\n";
+        //std::cout << ": Pre-Zero\n";
       }
       else {
         Points[location].push_back(vec_float);
-        std::cout << ": Post-Zero\n";
+        //std::cout << ": Post-Zero\n";
       }
-      std::cout << "Size at Location " << location << ": " << Points[location].size() << "\n";
+      //std::cout << "Size at Location " << location << ": " << Points[location].size() << "\n";
       sequence++;
     }
   }
@@ -210,7 +210,7 @@ void PositionHandling::writeToFile() {
     }
   }
   else std::cout << "Unable to open file\n";
-
+  saveFile.close();
   std::cout << "File Saved\n";
 }
 

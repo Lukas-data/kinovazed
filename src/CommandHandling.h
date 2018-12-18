@@ -38,6 +38,6 @@ class CommandHandling {
     void getInputs();
     void sendOutputs(int event, int eventVar);
     void checkInputEvent(KinovaFSM::Event &event, int &eventVar);
-    bool checkOutputEvent(KinovaFSM::Event &event, int &eventVar);
+    bool getHWEventVar(KinovaFSM::Event &event, int &eventVar);
 };
 #endif

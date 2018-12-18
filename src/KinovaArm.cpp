@@ -69,6 +69,7 @@ void KinovaArm::releaseControl() {
       printf("Released API control over the arm.\n");
       //armStatus = arm->get_status();
       //printf("Arm is currently in state: %i \n", armStatus);
+      Error = false;
     }
     catch( KinDrv::KinDrvException &e ) {
       //printf("KinovaArm::takeControl(): Error %i, %s\n", e.error(), e.what());
@@ -76,6 +77,7 @@ void KinovaArm::releaseControl() {
     }
   }
   Initialized = false;
+  
 }
 
 
@@ -100,6 +102,7 @@ void KinovaArm::dontMove() {
 }
 
 void KinovaArm::checkInitialize() {
+  Initialized = false;
   PositionHandler.init();
   if (KINOVA_DUMMY == false) {
     try {
@@ -110,7 +113,8 @@ void KinovaArm::checkInitialize() {
         setTarget(KinovaPts::Home);
       }
       else {
-        EventOut = KinovaFSM::Initialized;
+        ExternalEvent = KinovaFSM::Initialized;
+        Initialized = true;
       }
     }
     catch ( KinDrv::KinDrvException &e ) {
@@ -118,7 +122,7 @@ void KinovaArm::checkInitialize() {
     }
   }
   else {
-    EventOut = KinovaFSM::Initialized;
+    ExternalEvent = KinovaFSM::Initialized;
     printf("Arm connection is turned off. Dummy-Initialized.\n");
   }
 }
@@ -129,29 +133,31 @@ void KinovaArm::initialize()
 {
   currentPosition = 0;
   if (KINOVA_DUMMY == false) {
-    try {
-      KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
-      //Moves Arm to Kinova Home position if not in initialized Position
-      if( armStatus == KinDrv::MODE_NOINIT) {
-        //printf("Initializing: Status is NOINIT.\n");
-        //push the "HOME/RETRACT" button until arm is initialized
-        KinDrv::jaco_joystick_button_t buttons = {0};
-        buttons[2] = 1;
-        arm->push_joystick_button(buttons);
+    if (!Initialized) {
+      try {
+        KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
+        //Moves Arm to Kinova Home position if not in initialized Position
+        if( armStatus == KinDrv::MODE_NOINIT) {
+          //printf("Initializing: Status is NOINIT.\n");
+          //push the "HOME/RETRACT" button until arm is initialized
+          KinDrv::jaco_joystick_button_t buttons = {0};
+          buttons[2] = 1;
+          arm->push_joystick_button(buttons);
+        }
+        else {
+          //printf("Initializing: Statuts is %d.\n",armStatus);
+          arm->release_joystick();
+          moveToPosition(true);
+        }
       }
-      else {
-        //printf("Initializing: Statuts is %d.\n",armStatus);
-        arm->release_joystick();
-        moveToPosition();
+      catch ( KinDrv::KinDrvException &e ) {
+        error("initialize", e, false);
       }
-    }
-    catch ( KinDrv::KinDrvException &e ) {
-      error("initialize", e, false);
     }
   }
   else {
     Initialized = true;
-    EventOut = KinovaFSM::Initialized;
+    ExternalEvent = KinovaFSM::Initialized;
     printf("Arm connection is turned off. Dummy-Initialized.\n");
   }
 }
@@ -200,7 +206,7 @@ void KinovaArm::modeChangeTimer() {
   double elapsedTime = (TimerNow.tv_sec-TimerStart.tv_sec) * 1000 +
                     (TimerNow.tv_nsec-TimerStart.tv_nsec) / 1000000;
   if (elapsedTime > ModeChangeTimer) {
-    EventOut = KinovaFSM::ModeSet;
+    ExternalEvent = KinovaFSM::ModeSet;
     ModeChangeTimer=0;
   }
 }
@@ -252,7 +258,7 @@ void KinovaArm::setTarget(KinovaPts::Objective targetObjective) {
   }
   else {
     printf("KinovaArm: invalid targetPosition.\n");
-    EventOut = KinovaFSM::SequenceDone;
+    ExternalEvent = KinovaFSM::SequenceDone;
   }
 }
 
@@ -260,7 +266,7 @@ void KinovaArm::setTarget(KinovaPts::Objective targetObjective) {
 /*Moves the Arm towards the next Point in the sequenceList.
 If Point is reached, sequence is counted up.
 If end of sequence is reached, PositionReached event is sent.*/
-void KinovaArm::moveToPosition() {
+void KinovaArm::moveToPosition(bool init) {
   float targetCoordinates[6];
   float currentCoordinates[6];
   currentPosition = 0;
@@ -293,16 +299,19 @@ void KinovaArm::moveToPosition() {
     }
   }
   else {
-    PositionHandler.resetSequence();
     currentPosition = TargetObjective;
-    EventOut = KinovaFSM::SequenceDone;
+    if (init) { InternalEvent = KinovaFSM::InitHomeReached; }
+    else { ExternalEvent = KinovaFSM::SequenceDone; }
   }
 }
 
+void KinovaArm::sequenceDone() {
+  PositionHandler.resetSequence();
+}
 
 /*sets the TeachingTarget (Objective at whitch will be teached). Keeps old objective and Sequence when called with Zero.*/
 void KinovaArm::teachPosition(KinovaPts::Objective targetObjective) {
-  //EventOut = KinovaFSM::ModeSet;
+  //ExternalEvent = KinovaFSM::ModeSet;
   if (targetObjective != 0) {
     if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives) {
       printf("new teachTarget, sequence reset.\n");
@@ -336,7 +345,7 @@ void KinovaArm::moveToPoint() {
     
     if (PointReached == true) {
       currentPosition = getCurrentPoint();
-      EventOut = KinovaFSM::PointReached;
+      ExternalEvent = KinovaFSM::PointReached;
     }
     else {
       //Move to Point
@@ -363,22 +372,22 @@ void KinovaArm::savePoint(int EventVariable) {
 
     PositionHandler.savePoint(currentCoordinates, TeachTarget);
     PositionHandler.writeToFile();
-    EventOut = KinovaFSM::PointSaved;
+    ExternalEvent = KinovaFSM::PointSaved;
   }
-  EventOut = KinovaFSM::PointSaved;
+  ExternalEvent = KinovaFSM::PointSaved;
 }
 
 void KinovaArm::nextPoint(int EventVariable) {
   int currentSequence = PositionHandler.getSequence();
   if (EventVariable == currentSequence+1) {
     PositionHandler.countSequence();
-    EventOut = KinovaFSM::NextPointSet;
+    ExternalEvent = KinovaFSM::NextPointSet;
   }
   else if(EventVariable == currentSequence) {
-    EventOut = KinovaFSM::NextPointSet;
+    ExternalEvent = KinovaFSM::NextPointSet;
   }
   else {
-    EventOut = KinovaFSM::NextPointNotSet;
+    ExternalEvent = KinovaFSM::NextPointNotSet;
   }
 }
 
@@ -398,9 +407,15 @@ int  KinovaArm::getMode() { return Mode; }
 int  KinovaArm::getCurrentPosition() { return currentPosition; }
 int  KinovaArm::getCurrentPoint() { return PositionHandler.getSequence(); }
 
-KinovaFSM::Event KinovaArm::getEvent() {
-  KinovaFSM::Event e = EventOut;
-  EventOut = KinovaFSM::NoEvent;
+KinovaFSM::Event KinovaArm::getExternalEvent() {
+  KinovaFSM::Event e = ExternalEvent;
+  ExternalEvent = KinovaFSM::NoEvent;
+  return e;
+}
+
+KinovaFSM::Event KinovaArm::getInternalEvent() {
+  KinovaFSM::Event e = InternalEvent;
+  InternalEvent = KinovaFSM::NoEvent;
   return e;
 }
 

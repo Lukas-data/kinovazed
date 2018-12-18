@@ -13,7 +13,6 @@ void State::setEventVar(int eventVar) { EventVariable = eventVar; }
 // PowerOff
 void StatePowerOff::entryAction() {
   printf("Executing StatePowerOff entryAction.\n");
-  JacoZED->releaseControl();
   JacoZED->setInactive();
 }
 void StatePowerOff::exitAction() {
@@ -25,6 +24,7 @@ void StatePowerOff::tickAction() {
 // EmergencyStop
 void StateEStop::entryAction() {
   printf("Executing StateEStop entryAction.\n");
+  JacoZED->releaseControl();
   JacoZED->setInactive();
 }
 void StateEStop::exitAction() {
@@ -92,10 +92,11 @@ void StateMovePosition::entryAction() {
 }
 void StateMovePosition::exitAction() {
   printf("Executing StateMovePosition exitAction.\n");
+  JacoZED->sequenceDone();
   JacoZED->dontMove();
 }
 void StateMovePosition::tickAction() {
-  JacoZED->moveToPosition();
+  JacoZED->moveToPosition(false);
 }
 
 //Teach

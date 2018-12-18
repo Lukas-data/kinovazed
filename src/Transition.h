@@ -42,7 +42,7 @@ namespace KinovaFSM {
     { &powerOff,        E_Stop,             &eStop            },
 
     { &initializing,    Initialized,        &idle             },
-    { &initializing,    SequenceDone,       &initializing     },
+    { &initializing,    InitHomeReached,    &initializing     },
     { &initializing,    Error,              &powerOff         },
     { &initializing,    E_Stop,             &eStop            },
 
