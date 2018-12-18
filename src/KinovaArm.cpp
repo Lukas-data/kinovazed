@@ -315,8 +315,10 @@ void KinovaArm::teachPosition(KinovaPts::Objective targetObjective) {
   if (targetObjective != 0) {
     if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives) {
       printf("new teachTarget, sequence reset.\n");
+      float currentCoordinates[6];
+      getPosition(currentCoordinates);
+      PositionHandler.newTeachObjective(targetObjective, currentCoordinates);
       TeachTarget = targetObjective;
-      PositionHandler.resetSequence();
     }
     else {
       printf("KinovaArm: invalid teach Position.\n");

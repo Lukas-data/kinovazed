@@ -98,6 +98,17 @@ void PositionHandling::resetSequence() {
 }
 
 
+/*Prepares new Sequence. Takes currentPosition of Arm as Objective, if */
+void PositionHandling::newTeachObjective(KinovaPts::Objective targetObjective, float* currentCoordinates) {
+  if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() ) {
+      for (int i = 0; i < 6; i++) {
+      Location[targetObjective-1][i] = currentCoordinates[i];
+      }
+  }
+  resetSequence();
+}
+
+
 /*Saves coordinates to current Sequence Point or as Location in object.*/
 void PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targetObjective) {
   bool isZero = true;
