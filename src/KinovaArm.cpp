@@ -447,7 +447,7 @@ bool KinovaArm::checkIfReached(float* targetCoordinates, float* currentCoordinat
         currentCoordinates[i] < ( targetCoordinates[i] - POSITION_RANGE ) ) {
       PointReached = false; 
     }
-    if (DebugPrint) { printf("%d, ", abs(currentCoordinates-targetCoordinates)); }
+    if (DebugPrint) { printf("%d, ", abs(currentCoordinates[i]-targetCoordinates[i])); }
   }
   if (DebugPrint) { printf(")\n"); }
   
