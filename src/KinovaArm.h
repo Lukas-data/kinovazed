@@ -91,6 +91,8 @@ class KinovaArm {
     KinovaFSM::Event ExternalEvent;
     KinovaFSM::Event InternalEvent;
 
+    bool checkIfReached(float* targetCoordinates, float* currentCoordinates);
+
 
 
     

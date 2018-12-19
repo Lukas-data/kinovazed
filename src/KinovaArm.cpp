@@ -275,13 +275,7 @@ void KinovaArm::moveToPosition(bool init) {
   //Check if Sequence is still going
   if ( PositionHandler.getCoordinates(targetCoordinates, TargetObjective, currentCoordinates) ) {
     //Check if in range
-    bool PointReached = true;
-    for (int i = 0; i<6; i++) {
-      if (currentCoordinates[i] > ( targetCoordinates[i] + POSITION_RANGE ) ||
-          currentCoordinates[i] < ( targetCoordinates[i] - POSITION_RANGE ) ) {
-        PointReached = false;
-      }
-    }
+    bool PointReached = checkIfReached(targetCoordinates, currentCoordinates);
     
     if (PointReached == true) {
       //Next Point in Sequence.
@@ -327,6 +321,8 @@ void KinovaArm::teachPosition(KinovaPts::Objective targetObjective) {
   printf("TeachMode: Teaching at Point %d:%d\n", TeachTarget, PositionHandler.getSequence());
 }
 
+
+/**/
 void KinovaArm::moveToPoint() {
   float targetCoordinates[6];
   float currentCoordinates[6];
@@ -337,13 +333,7 @@ void KinovaArm::moveToPoint() {
   //Check if Sequence is still going
   if ( PositionHandler.getCoordinates(targetCoordinates, TeachTarget, currentCoordinates) ) {
     //Check if in range
-    bool PointReached = true;
-    for (int i = 0; i<6; i++) {
-      if (currentCoordinates[i] > ( targetCoordinates[i] + POSITION_RANGE ) ||
-          currentCoordinates[i] < ( targetCoordinates[i] - POSITION_RANGE ) ) {
-        PointReached = false;
-      }
-    }
+    bool PointReached = checkIfReached(targetCoordinates, currentCoordinates);
     
     if (PointReached == true) {
       currentPosition = getCurrentPoint();
@@ -364,6 +354,7 @@ void KinovaArm::moveToPoint() {
     printf("No further Points in Sequence.\n");
   }
 }
+
 
 /**/
 void KinovaArm::savePoint(int EventVariable) {
@@ -446,6 +437,21 @@ void  KinovaArm::setActive() { Active = true; }
 void  KinovaArm::setInactive() { Active = false; }
 
 
+/*Returns true if currentCoordinates are within Range. ot targetCoordinates*/
+bool KinovaArm::checkIfReached(float* targetCoordinates, float* currentCoordinates) {
+  bool DebugPrint = true;
+  bool PointReached = true;
+  if (DebugPrint) {printf("DistanceToTarget: ("); }
+  for (int i = 0; i<6; i++) {
+    if (currentCoordinates[i] > ( targetCoordinates[i] + POSITION_RANGE ) ||
+        currentCoordinates[i] < ( targetCoordinates[i] - POSITION_RANGE ) ) {
+      PointReached = false; 
+    }
+    if (DebugPrint) { printf("%d, ", abs(currentCoordinates-targetCoordinates)); }
+  }
+  if (DebugPrint) { printf(")\n"); }
+  
+}
 
 
 
