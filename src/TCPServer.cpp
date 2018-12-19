@@ -69,6 +69,7 @@ bool TCPServer::sendTCP(int command, int eventVar, int data1, int data2, int dat
       return false;
     }
   }
+  //printf("TCPServer: Sent TCP (%d,%d,%d,%d,%d)\n", command, eventVar, data1, data2, data3);
   return true;
 }
 

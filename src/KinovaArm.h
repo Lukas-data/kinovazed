@@ -7,7 +7,8 @@
 #include "PositionHandling.h"
 
 #define POSITION_RANGE 0.05
-
+#define ROTATION_RANGE 0.25
+#define VELOCITY_RANGE 0.000005
 
 class KinovaArm {
 
@@ -91,8 +92,10 @@ class KinovaArm {
     KinovaFSM::Event ExternalEvent;
     KinovaFSM::Event InternalEvent;
 
-    bool checkIfReached(float* targetCoordinates, float* currentCoordinates);
+    float LastCoordinates[6];
 
+    bool checkIfReached(float* targetCoordinates, float* currentCoordinates);
+    bool getForces();
 
 
     

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctime> 
+//#include <cmath>
 
 #include "KinovaArm.h"
 
@@ -441,17 +442,32 @@ void  KinovaArm::setInactive() { Active = false; }
 bool KinovaArm::checkIfReached(float* targetCoordinates, float* currentCoordinates) {
   bool DebugPrint = true;
   bool PointReached = true;
-  if (DebugPrint) {printf("DistanceToTarget: ("); }
+  if (DebugPrint) { printf("DistanceToTarget: ("); }
+  float range = POSITION_RANGE;
   for (int i = 0; i<6; i++) {
-    if (currentCoordinates[i] > ( targetCoordinates[i] + POSITION_RANGE ) ||
-        currentCoordinates[i] < ( targetCoordinates[i] - POSITION_RANGE ) ) {
+    if (i == 3) { range = ROTATION_RANGE; }
+    float dPos = fabs( currentCoordinates[i] - targetCoordinates[i] );
+    float dVel = fabs( currentCoordinates[i] - LastCoordinates[i] );
+    if (  dPos > range || dVel > VELOCITY_RANGE ) {
+      if (DebugPrint) { printf("!"); }
       PointReached = false; 
     }
-    if (DebugPrint) { printf("%d, ", abs(currentCoordinates[i]-targetCoordinates[i])); }
+    if (DebugPrint) { printf("%f/%f, ", dPos, dVel); }
+    LastCoordinates[i] = currentCoordinates[i];
   }
   if (DebugPrint) { printf(")\n"); }
-  
+  return PointReached;
 }
 
 
 
+bool KinovaArm::getForces() {
+  bool DebugPrint = true;
+  KinDrv::jaco_position_t force = arm->get_ang_force();
+  if (DebugPrint) { printf("forces: ("); }
+  for (int i = 0; i<6; i++) {
+    if (DebugPrint && i<3) { printf("%f, ", force.position[i] ); }
+    if (DebugPrint && i>2) { printf("%f, ", force.rotation[i-3] ); }
+  }  
+  if (DebugPrint) { printf(")\n"); }
+}
