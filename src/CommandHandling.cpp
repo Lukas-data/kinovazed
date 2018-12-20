@@ -114,7 +114,6 @@ void CommandHandling::getInputs() {
     DataIn[n] = RoboRio.getData(n+1);
     if (DataIn[n] != 0) {
       JSisZero = false;
-      printf("JSData[%d] = %d\n",n,DataIn[n]);
     }
   }
   JacoZED.setJoystick(DataIn[0],DataIn[1],DataIn[2]);

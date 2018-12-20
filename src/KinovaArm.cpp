@@ -460,8 +460,8 @@ bool KinovaArm::checkIfReached(float* targetCoordinates, float* currentCoordinat
 }
 
 
-
-bool KinovaArm::getForces() {
+/*PrintForces. TODO: return Forces */
+void KinovaArm::getForces() {
   bool DebugPrint = true;
   KinDrv::jaco_position_t force = arm->get_ang_force();
   if (DebugPrint) { printf("forces: ("); }
@@ -471,3 +471,4 @@ bool KinovaArm::getForces() {
   }  
   if (DebugPrint) { printf(")\n"); }
 }
+

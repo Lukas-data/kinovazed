@@ -20,9 +20,6 @@ PositionHandling::~PositionHandling() {
 
 
 void PositionHandling::init() {
-  for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
-    std::cout << "Size at Location " << i << ": " << Points[i].size() << "\n";
-  }
   readFromFile();
   calcTransMat();
   
@@ -46,16 +43,14 @@ void PositionHandling::init() {
 //Returns 0 if sequence has ended.
 bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objective targetObjective, float* currentCoordinates) {
   
-  //Check if Objective is Zero. Inserts currentCoordinates and recalcs TransMat
-  bool isZero = true;
-  for (int i = 0; i < 6; i++) {
-    if(Location[targetObjective-1][i] != 0) { isZero = false; }
-  }
-  if (isZero) {
-    for (int i = 0; i < 6; i++) {
-      Location[targetObjective-1][i] = currentCoordinates[i];
+  //Check if ZeroObjective.  Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.
+  if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() && SequenceCounter == 0) {
+    if (isZero) {
+      for (int i = 0; i < 6; i++) {
+        Location[targetObjective-1][i] = currentCoordinates[i];
+      }
+      calcTransMat();
     }
-    calcTransMat();
   }
 
   //Check SequenceNumber. Returns 0 and resets ZeroObjective if Sequence is over.
@@ -101,9 +96,11 @@ void PositionHandling::resetSequence() {
 /*Prepares new Sequence. Takes currentPosition of Arm as Objective, if */
 void PositionHandling::newTeachObjective(KinovaPts::Objective targetObjective, float* currentCoordinates) {
   if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() ) {
-      for (int i = 0; i < 6; i++) {
-      Location[targetObjective-1][i] = currentCoordinates[i];
-      }
+    std::cout << "newTeachObject is ZeroObjective!\n";
+    for (int i = 0; i < 6; i++) {
+    Location[targetObjective-1][i] = currentCoordinates[i];
+    }
+    calcTransMat();
   }
   resetSequence();
 }
@@ -260,7 +257,6 @@ void PositionHandling::writeToFile() {
   else std::cout << "Unable to open file\n";
   saveFile.close();
   std::cout << "File Saved\n";
-  readFromFile();
 }
 
 int PositionHandling::getSequence() {
