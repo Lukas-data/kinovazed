@@ -1,4 +1,3 @@
-//#include <stdio.h>
 #include <stdexcept>
 #include <iostream>
 #include <fstream>
@@ -6,8 +5,6 @@
 #include <string>
 #include <algorithm>
 #include <math.h>
-//#include <jansson.h>
-//#include "../thirdparty/jansson-2.12/src/jansson.h"
 #include "PositionHandling.h"
 
 
@@ -22,21 +19,7 @@ PositionHandling::~PositionHandling() {
 void PositionHandling::init() {
   readFromFile();
   calcTransMat();
-  
-/*
-  for (int i = 0; i<4; i++) {
-    for (int j = 0; j <4; j++) {
-      std::cout << InvTransMat[1][i][j] << ",";
-    }
-    std::cout << "\n";
-  }*/
 }
-
-/*void PositionHandling::error(const char *msg)
-{
-  //perror(msg);
-  //throw std::runtime_error(msg);
-}*/
 
 
 //Writes Requestet targetCoordinates[6] of Objective by pos-number and its Subpositions by Sequence-number. Takes currentPosition[6] if Objective is 0.
@@ -106,7 +89,7 @@ void PositionHandling::newTeachObjective(KinovaPts::Objective targetObjective, f
 
 /*Saves coordinates to current Sequence Point or as Location in object.*/
 void PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targetObjective) {
-  bool isZero = true;
+/*  bool isZero = true;
   for (int i = 0; i < 6; i++) {
     if (Points[targetObjective-1][SequenceCounter][i] != 0) {
       isZero = false;
@@ -118,12 +101,21 @@ void PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targ
     }
     calcTransMat();
   }
-  else {
+  else {*/
     coordTransform(coordinates, InvTransMat[targetObjective-1]);
     for (int i = 0; i < 6; i++) {
       Points[targetObjective-1][SequenceCounter][i] = coordinates[i];
     }
+  //}
+}
+
+
+/*Saves coordinates as origin of objectiv.*/
+void PositionHandling::saveOrigin(float coordinates[6], KinovaPts::Objective targetObjective) {
+  for (int i = 0; i < 6; i++) {
+    Location[targetObjective-1][i] = coordinates[i];
   }
+  calcTransMat();
 }
 
 
@@ -164,15 +156,13 @@ void PositionHandling::readFromFile() {
   
   //reset Point-Vector
   for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
-    f2d_vec_t(1,std::vector<float>(6)).swap(Points[i]);
-    
-    //std::cout << "Reset: Size at Location " << i << ": " << Points[i].size() << "\n";
+    f2d_vec_t(0,std::vector<float>(6)).swap(Points[i]); 
   }
   
   //Reads Points from Files
   int location = 0;
   int sequence = 0;
-  bool PrePoint = true;
+  //bool PrePoint = true;
   f2d_vec_t::iterator it = Points[location].begin();
   
   while (std::getline(infile,line) && location < KinovaPts::NumberOfObjectives) { 
@@ -185,22 +175,24 @@ void PositionHandling::readFromFile() {
       vec_int.push_back(n);
     }
     if (vec_int.size() == 0) {
+      //start new Objective.
       location++;
       sequence = 0;
       it = Points[location].begin();
-      PrePoint = true;
+      //PrePoint = true;
       //std::cout << ": Empty line. Next Location\n";
     }
     else {
+      //save Point
       std::vector<float> vec_float(6);
-      bool isZero = true;
+      //bool isZero = true;
       for (int i = 0; i < 6; i++) {
-        if (vec_int[i] != 0) {
+        /*if (vec_int[i] != 0) {
           isZero = false;
-        }
+        }*/
         vec_float[i] = (float)vec_int[i]/1000;
       }
-      if (isZero) {
+      /*if (isZero) {
         PrePoint = false;
         //std::cout << ": Zero-Point\n";
       }
@@ -208,10 +200,10 @@ void PositionHandling::readFromFile() {
         Points[location].insert(it+sequence, vec_float);
         //std::cout << ": Pre-Zero\n";
       }
-      else {
+      else {*/
         Points[location].push_back(vec_float);
         //std::cout << ": Post-Zero\n";
-      }
+      //}
       //std::cout << "Size at Location " << location << ": " << Points[location].size() << "\n";
       sequence++;
     }

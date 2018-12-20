@@ -148,6 +148,17 @@ void StateTeachSavePoint::exitAction() {
 void StateTeachSavePoint::tickAction() {
 }
 
+// TeachSaveOrigin
+void StateTeachSaveOrigin::entryAction() {
+  printf("Executing StateTeachSaveOrigin entryAction.\n");
+  JacoZED->saveOrigin(); 
+}
+void StateTeachSaveOrigin::exitAction() {
+  printf("Executing StateTeachSaveOrigin exitAction.\n");
+}
+void StateTeachSaveOrigin::tickAction() {
+}
+
 // TeachNext
 void StateTeachNext::entryAction() {
   printf("Executing StateTeachNext entryAction.\n");

@@ -97,6 +97,13 @@ class StateTeachSavePoint : public State {
     void tickAction();
 };
 
+class StateTeachSaveOrigin : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
 class StateTeachNext : public State {
   public:
     void entryAction();

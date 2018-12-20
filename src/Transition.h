@@ -21,6 +21,7 @@ namespace KinovaFSM {
   static StateChangeMode changeModeTeach;
   static StateTeachMovePoint teachMovePoint;
   static StateTeachSavePoint teachSavePoint;
+  static StateTeachSaveOrigin teachSaveOrigin;
   static StateTeachNext teachNext;
   static StateEStop eStop;
 
@@ -65,7 +66,8 @@ namespace KinovaFSM {
     { &teach,           SetMode,            &changeModeTeach  }, 
     { &teach,           GoToPosition,       &teachMovePoint   },
     { &teach,           NoMode,             &idle             },
-    { &teach,           SavePoint,          &teachSavePoint   },  
+    { &teach,           SavePoint,          &teachSavePoint   },
+    { &teach,           SaveOrigin,         &teachSaveOrigin  },  
     { &teach,           Next,               &teachNext        },
     { &teach,           Exit,               &changeMode       },
     { &teach,           Shutdown,           &powerOff         },
@@ -83,6 +85,11 @@ namespace KinovaFSM {
     { &teachSavePoint,  PointNotSaved,      &changeModeTeach  },
     { &teachSavePoint,  NoMode,             &idle             },
     { &teachSavePoint,  E_Stop,             &eStop            },
+
+    { &teachSaveOrigin, OriginSaved,        &changeModeTeach  },
+    { &teachSaveOrigin, OriginNotSaved,     &changeModeTeach  },
+    { &teachSaveOrigin, NoMode,             &idle             },
+    { &teachSaveOrigin, E_Stop,             &eStop            },
 
     { &teachNext,       NextPointSet,       &changeModeTeach  },
     { &teachNext,       NextPointNotSet,    &changeModeTeach  },

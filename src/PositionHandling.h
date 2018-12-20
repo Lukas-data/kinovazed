@@ -31,7 +31,7 @@ class PositionHandling {
     PositionHandling() :
       SequenceCounter(0),
       Location(KinovaPts::NumberOfObjectives, std::vector<float>(6)),
-      Points(KinovaPts::NumberOfObjectives, f2d_vec_t(1,std::vector<float>(6))),
+      Points(KinovaPts::NumberOfObjectives, f2d_vec_t(0,std::vector<float>(6))),
       TransMat(KinovaPts::NumberOfObjectives, f2d_vec_t(4,std::vector<float>(4))),
       InvTransMat(KinovaPts::NumberOfObjectives, f2d_vec_t(4,std::vector<float>(4)))
       {}
@@ -44,6 +44,7 @@ class PositionHandling {
     void resetSequence();
     void newTeachObjective(KinovaPts::Objective targetObjective, float* currentCoordinates);
     void savePoint(float coordinates[6], KinovaPts::Objective targetObjective);
+    void saveOrigin(float coordinates[6], KinovaPts::Objective targetObjective);
     int  getSequence();
     void readFromFile();
     void writeToFile();

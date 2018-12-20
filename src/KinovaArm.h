@@ -46,6 +46,7 @@ class KinovaArm {
     void teachPosition(KinovaPts::Objective targetObjective);
     void moveToPoint();
     void savePoint(int EventVariable);
+    void saveOrigin();
     void nextPoint(int EventVariable); 
 
     void setJoystick(int x, int y, int z);

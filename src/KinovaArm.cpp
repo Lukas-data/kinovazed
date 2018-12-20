@@ -371,6 +371,18 @@ void KinovaArm::savePoint(int EventVariable) {
   ExternalEvent = KinovaFSM::PointSaved;
 }
 
+void KinovaArm::saveOrigin() {
+  float currentCoordinates[6];
+
+  getPosition(currentCoordinates);
+
+  PositionHandler.saveOrigin(currentCoordinates, TeachTarget);
+  PositionHandler.writeToFile();
+  ExternalEvent = KinovaFSM::OriginSaved;
+
+}
+
+
 void KinovaArm::nextPoint(int EventVariable) {
   int currentSequence = PositionHandler.getSequence();
   if (EventVariable == currentSequence+1) {
