@@ -45,12 +45,10 @@ bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
   
   //Check if ZeroObjective.  Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.
   if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() && SequenceCounter == 0) {
-    if (isZero) {
-      for (int i = 0; i < 6; i++) {
-        Location[targetObjective-1][i] = currentCoordinates[i];
-      }
-      calcTransMat();
+    for (int i = 0; i < 6; i++) {
+      Location[targetObjective-1][i] = currentCoordinates[i];
     }
+    calcTransMat();
   }
 
   //Check SequenceNumber. Returns 0 and resets ZeroObjective if Sequence is over.
@@ -64,7 +62,7 @@ bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
   }
  
   //Check if current Position
-  isZero = true;
+  bool isZero = true;
   for (int i = 0; i < 6; i++) {
     if (Points[targetObjective-1][SequenceCounter][i] != 0) {
       //std::cout << "Points[" << targetObjective-1 << "][" << SequenceCounter << "][" << i << "] != 0\n";
