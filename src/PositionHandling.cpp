@@ -66,8 +66,11 @@ bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
   //printf("Coordinates: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
 }
 
-void PositionHandling::countSequence() {
+void PositionHandling::incrementSequence() {
   ++SequenceCounter;
+}
+void PositionHandling::decrementSequence() {
+  --SequenceCounter;
 }
 void PositionHandling::resetSequence() {
   SequenceCounter = 0;

@@ -40,7 +40,8 @@ class PositionHandling {
     void init();
     static int printPos();
     bool getCoordinates(float* coordinates, KinovaPts::Objective targetObjective, float* currentCoordinates);
-    void countSequence();
+    void incrementSequence();
+    void decrementSequence();
     void resetSequence();
     void newTeachObjective(KinovaPts::Objective targetObjective, float* currentCoordinates);
     void savePoint(float coordinates[6], KinovaPts::Objective targetObjective);

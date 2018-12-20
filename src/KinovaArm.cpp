@@ -280,7 +280,7 @@ void KinovaArm::moveToPosition(bool init) {
     
     if (PointReached == true) {
       //Next Point in Sequence.
-      PositionHandler.countSequence();
+      PositionHandler.incrementSequence();
     }
     else {
       //Move to Position
@@ -383,10 +383,25 @@ void KinovaArm::saveOrigin() {
 }
 
 
+void KinovaArm::previousPoint(int EventVariable) {
+  int currentSequence = PositionHandler.getSequence();
+  if (EventVariable == currentSequence-1) {
+    PositionHandler.decrementSequence();
+    ExternalEvent = KinovaFSM::NextPointSet;
+  }
+  else if(EventVariable == currentSequence) {
+    ExternalEvent = KinovaFSM::NextPointSet;
+  }
+  else {
+    ExternalEvent = KinovaFSM::NextPointNotSet;
+  }
+}
+
+
 void KinovaArm::nextPoint(int EventVariable) {
   int currentSequence = PositionHandler.getSequence();
   if (EventVariable == currentSequence+1) {
-    PositionHandler.countSequence();
+    PositionHandler.incrementSequence();
     ExternalEvent = KinovaFSM::NextPointSet;
   }
   else if(EventVariable == currentSequence) {

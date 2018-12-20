@@ -38,6 +38,8 @@ namespace KinovaFSM {
     PointNotSaved,
     OriginSaved,
     OriginNotSaved,
+    PreviousPointSet,
+    PreviousPointNotSet,
     NextPointSet,
     NextPointNotSet,
 
@@ -79,6 +81,8 @@ namespace KinovaFSM {
     "PointNotSaved",
     "OriginSaved",
     "OriginNotSaved",
+    "PreviousPointSet",
+    "PreviousPointNotSet",
     "NextPointSet",
     "NextPointNotSet",
 

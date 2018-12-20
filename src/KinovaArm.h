@@ -47,6 +47,7 @@ class KinovaArm {
     void moveToPoint();
     void savePoint(int EventVariable);
     void saveOrigin();
+    void previousPoint(int EventVariable); 
     void nextPoint(int EventVariable); 
 
     void setJoystick(int x, int y, int z);

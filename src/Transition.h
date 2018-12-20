@@ -22,6 +22,7 @@ namespace KinovaFSM {
   static StateTeachMovePoint teachMovePoint;
   static StateTeachSavePoint teachSavePoint;
   static StateTeachSaveOrigin teachSaveOrigin;
+  static StateTeachNext teachPrevious;
   static StateTeachNext teachNext;
   static StateEStop eStop;
 
@@ -63,11 +64,18 @@ namespace KinovaFSM {
     { &changeMode,      NoMode,             &idle             },
     { &changeMode,      E_Stop,             &eStop            },
 
+    { &movePosition,    SequenceDone,       &changeMode       },
+    { &movePosition,    MoveJoystick,       &steering         },
+    { &movePosition,    NoMode,             &idle             },
+    { &movePosition,    Shutdown,           &powerOff         },
+    { &movePosition,    E_Stop,             &eStop            },
+
     { &teach,           SetMode,            &changeModeTeach  }, 
     { &teach,           GoToPosition,       &teachMovePoint   },
     { &teach,           NoMode,             &idle             },
     { &teach,           SavePoint,          &teachSavePoint   },
-    { &teach,           SaveOrigin,         &teachSaveOrigin  },  
+    { &teach,           SaveOrigin,         &teachSaveOrigin  },
+    { &teach,           Previous,           &teachPrevious    },  
     { &teach,           Next,               &teachNext        },
     { &teach,           Exit,               &changeMode       },
     { &teach,           Shutdown,           &powerOff         },
@@ -91,16 +99,15 @@ namespace KinovaFSM {
     { &teachSaveOrigin, NoMode,             &idle             },
     { &teachSaveOrigin, E_Stop,             &eStop            },
 
+    { &teachPrevious,   PreviousPointSet,   &changeModeTeach  },
+    { &teachPrevious,   PreviousPointNotSet,&changeModeTeach  },
+    { &teachPrevious,   NoMode,             &idle             },
+    { &teachPrevious,   E_Stop,             &eStop            },
+
     { &teachNext,       NextPointSet,       &changeModeTeach  },
     { &teachNext,       NextPointNotSet,    &changeModeTeach  },
     { &teachNext,       NoMode,             &idle             },
     { &teachNext,       E_Stop,             &eStop            },
-
-    { &movePosition,    SequenceDone,       &changeMode       },
-    { &movePosition,    MoveJoystick,       &steering         },
-    { &movePosition,    NoMode,             &idle             },
-    { &movePosition,    Shutdown,           &powerOff         },
-    { &movePosition,    E_Stop,             &eStop            },
 
     { &eStop,           QuitEStop,          &powerOff         },
 
