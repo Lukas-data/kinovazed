@@ -106,26 +106,38 @@ void PositionHandling::newTeachObjective(KinovaPts::Objective targetObjective, f
 }
 
 
-/*Saves coordinates to current Sequence Point or as Location in object.*/
-void PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targetObjective) {
-/*  bool isZero = true;
-  for (int i = 0; i < 6; i++) {
-    if (Points[targetObjective-1][SequenceCounter][i] != 0) {
-      isZero = false;
-    }
-  }
-  if (isZero) {
-    for (int i = 0; i < 6; i++) {
-      Location[targetObjective-1][i] = coordinates[i];
-    }
-    calcTransMat();
-  }
-  else {*/
+/*Saves coordinates to current Sequence Point or as Location in object. Returns true if successfull.*/
+bool PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targetObjective) {
+  //check targetObjective
+  if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives ) {
     coordTransform(coordinates, InvTransMat[targetObjective-1]);
-    for (int i = 0; i < 6; i++) {
-      Points[targetObjective-1][SequenceCounter][i] = coordinates[i];
+    std::vector<float> vec_coord(coordinates, coordinates + 6);
+    std::cout << "SavePoint: sizeof vec_coord = " << vec_coord.size() << "\n";
+    //check SequenceCounter
+    if ( SequenceCounter == Points[targetObjective-1].size() ) {
+      Points[targetObjective-1].push_back(vec_coord);
+      return true;
     }
-  //}
+    else if ( SequenceCounter == -1 ) {
+      Points[targetObjective-1].insert( Points[targetObjective-1].begin(), vec_coord );
+      SequenceCounter = 0;
+      return true;
+    }
+    else if ( SequenceCounter >= 0 && SequenceCounter < Points[targetObjective-1].size() ) {
+      for (int i = 0; i < 6; i++) {
+        Points[targetObjective-1][SequenceCounter][i] = coordinates[i];
+      }
+      return true;
+    }
+    else {
+      std::cout << "SavePoint: Point is out of bound!\n";
+      return false;
+    }
+  }
+  else {
+    std::cout << "SavePoint: targetObjective is out of bound!\n";
+    return false;
+  }
 }
 
 

@@ -85,6 +85,14 @@ void KinovaArm::releaseControl() {
 /*Stops arm*/
 void KinovaArm::dontMove() {
   if (KINOVA_DUMMY == false) {
+    //reset Movement-Target
+    try {
+      arm->erase_trajectories();
+    }
+    catch( KinDrv::KinDrvException &e ) {
+      error("dontMove: stopping Movement", e, false);
+    }
+    //reset Joystick-input
     KinDrv::jaco_joystick_axis_t axes;
     axes.trans_lr  = 0; 
     axes.trans_fb  = 0;
@@ -97,7 +105,7 @@ void KinovaArm::dontMove() {
       arm->release_joystick();
     }
     catch( KinDrv::KinDrvException &e ) {
-      error("dontMove", e, false);
+      error("dontMove: releasing Joystick", e, false);
     }
   }
 }
@@ -498,7 +506,10 @@ void KinovaArm::getPosition(float* coordinates) {
 }
 
 void  KinovaArm::setActive() { Active = true; }
-void  KinovaArm::setInactive() { Active = false; }
+void  KinovaArm::setInactive() {
+  Active = false;
+  Mode = KinovaStatus::NoMode;
+}
 
 
 /*Returns true if currentCoordinates are within Range. ot targetCoordinates*/

@@ -8,7 +8,7 @@
 namespace KinovaPts {
   
   static const int NumberOfObjectives = 4; //excl. NoObjective
-  enum Objective { NoObjective,
+  enum Objective {  NoObjective,
                     Home,
                     Bell,
                     Handle,
@@ -45,7 +45,7 @@ class PositionHandling {
     void decrementSequence();
     void resetSequence();
     void newTeachObjective(KinovaPts::Objective targetObjective, float* currentCoordinates);
-    void savePoint(float coordinates[6], KinovaPts::Objective targetObjective);
+    bool savePoint(float coordinates[6], KinovaPts::Objective targetObjective);
     void saveOrigin(float coordinates[6], KinovaPts::Objective targetObjective);
     int  getSequence();
     void readFromFile();
