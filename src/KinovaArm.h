@@ -45,6 +45,7 @@ class KinovaArm {
 
     void teachPosition(KinovaPts::Objective targetObjective);
     void moveToPoint();
+    void moveToOrigin();
     void savePoint(int EventVariable);
     void saveOrigin();
     void previousPoint(int EventVariable); 

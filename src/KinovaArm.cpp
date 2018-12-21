@@ -353,6 +353,42 @@ void KinovaArm::moveToPoint() {
   }
   else {
     printf("No further Points in Sequence.\n");
+    ExternalEvent = KinovaFSM::PointNotReached;
+  }
+}
+
+
+/**/
+void KinovaArm::moveToOrigin() {
+  float targetCoordinates[6];
+  float currentCoordinates[6];
+  currentPosition=0;
+
+  getPosition(currentCoordinates);
+
+  //Check if Origin is defined
+  if ( PositionHandler.getOrigin(targetCoordinates, TeachTarget, currentCoordinates) ) {
+    //Check if in range
+    bool PointReached = checkIfReached(targetCoordinates, currentCoordinates);
+    
+    if (PointReached == true) {
+      currentPosition = -1;
+      ExternalEvent = KinovaFSM::PointReached;
+    }
+    else {
+      //Move to Point
+      float fingers[3];
+      try {
+       arm->set_target_cart(targetCoordinates,fingers);
+      }
+      catch( KinDrv::KinDrvException &e ) {
+        error("moveToPoint", e, false);
+      }
+    }
+  }
+  else {
+    printf("No Origin defined.\n");
+    ExternalEvent = KinovaFSM::PointNotReached;
   }
 }
 
@@ -387,13 +423,13 @@ void KinovaArm::previousPoint(int EventVariable) {
   int currentSequence = PositionHandler.getSequence();
   if (EventVariable == currentSequence-1) {
     PositionHandler.decrementSequence();
-    ExternalEvent = KinovaFSM::NextPointSet;
+    ExternalEvent = KinovaFSM::PreviousPointSet;
   }
   else if(EventVariable == currentSequence) {
-    ExternalEvent = KinovaFSM::NextPointSet;
+    ExternalEvent = KinovaFSM::PreviousPointSet;
   }
   else {
-    ExternalEvent = KinovaFSM::NextPointNotSet;
+    ExternalEvent = KinovaFSM::PreviousPointNotSet;
   }
 }
 

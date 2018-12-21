@@ -137,6 +137,19 @@ void StateTeachMovePoint::tickAction() {
   JacoZED->moveToPoint();
 }
 
+// TeachMoveOrigin
+void StateTeachMoveOrigin::entryAction() {
+  printf("Executing StateTeachMoveOrigin entryAction.\n");
+  
+}
+void StateTeachMoveOrigin::exitAction() {
+  printf("Executing StateTeachMoveOrigin exitAction.\n");
+  JacoZED->dontMove();
+}
+void StateTeachMoveOrigin::tickAction() {
+  JacoZED->moveToOrigin();
+}
+
 // TeachSavePoint
 void StateTeachSavePoint::entryAction() {
   printf("Executing StateTeachSavePoint entryAction.\n");

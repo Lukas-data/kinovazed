@@ -161,16 +161,18 @@ void CommandHandling::checkInputEvent(KinovaFSM::Event &event, int &eventVar) {
 bool CommandHandling::getHWEventVar(KinovaFSM::Event &event, int &eventVar) {
   //Hardware Events
   switch (event) {
-    case KinovaFSM::ModeSet         : eventVar = JacoZED.getMode();
-                                      return true;
-    case KinovaFSM::SequenceDone    : eventVar = JacoZED.getCurrentPosition();
-                                      return true;
-    case KinovaFSM::PointReached    :
-    case KinovaFSM::PointSaved      : 
-    case KinovaFSM::PointNotSaved   :
-    case KinovaFSM::NextPointNotSet : 
-    case KinovaFSM::NextPointSet    : eventVar = JacoZED.getCurrentPoint();
-                                      return true;
+    case KinovaFSM::ModeSet             : eventVar = JacoZED.getMode();
+                                          return true;
+    case KinovaFSM::SequenceDone        : eventVar = JacoZED.getCurrentPosition();
+                                          return true;
+    case KinovaFSM::PointReached        :
+    case KinovaFSM::PointSaved          : 
+    case KinovaFSM::PointNotSaved       :
+    case KinovaFSM::PreviousPointNotSet : 
+    case KinovaFSM::PreviousPointSet    :
+    case KinovaFSM::NextPointNotSet     : 
+    case KinovaFSM::NextPointSet        : eventVar = JacoZED.getCurrentPoint();
+                                          return true;
   }
   return false;
   

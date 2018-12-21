@@ -90,6 +90,13 @@ class StateTeachMovePoint : public State {
     void tickAction();
 };
 
+class StateTeachMoveOrigin : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
 class StateTeachSavePoint : public State {
   public:
     void entryAction();

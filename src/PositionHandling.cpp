@@ -66,6 +66,22 @@ bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
   //printf("Coordinates: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
 }
 
+bool PositionHandling::getOrigin(float* targetCoordinates, KinovaPts::Objective targetObjective, float* currentCoordinates) {
+  
+  //Check if ZeroObjective.  Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.
+  bool isZero = true;
+  for (int i = 0; i < 6; i++) {
+    if ( Location[targetObjective-1][i] != 0 ) { isZero = false; }
+  }
+  if (isZero) { return false; }
+  else {
+    for (int i = 0; i < 6; i++) {
+        targetCoordinates[i] = Location[targetObjective-1][i];
+    }
+  return true;
+  }
+}
+
 void PositionHandling::incrementSequence() {
   ++SequenceCounter;
 }
@@ -77,7 +93,7 @@ void PositionHandling::resetSequence() {
 }
 
 
-/*Prepares new Sequence. Takes currentPosition of Arm as Objective, if */
+/*Prepares new Sequence. Takes currentPosition of Arm as Objective */
 void PositionHandling::newTeachObjective(KinovaPts::Objective targetObjective, float* currentCoordinates) {
   if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() ) {
     std::cout << "newTeachObject is ZeroObjective!\n";
