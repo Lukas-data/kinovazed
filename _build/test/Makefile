@@ -111,6 +111,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+test/CMakeFiles/LogTest.dir/rule:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/LogTest.dir/rule
+.PHONY : test/CMakeFiles/LogTest.dir/rule
+
+# Convenience name for target.
+LogTest: test/CMakeFiles/LogTest.dir/rule
+
+.PHONY : LogTest
+
+# fast build rule for target.
+LogTest/fast:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/build
+.PHONY : LogTest/fast
+
+# Convenience name for target.
 test/CMakeFiles/KinovaTest.dir/rule:
 	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/KinovaTest.dir/rule
 .PHONY : test/CMakeFiles/KinovaTest.dir/rule
@@ -152,6 +167,33 @@ KinovaTest.cpp.s:
 	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.s
 .PHONY : KinovaTest.cpp.s
 
+LogTest.o: LogTest.cpp.o
+
+.PHONY : LogTest.o
+
+# target to build an object file
+LogTest.cpp.o:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/LogTest.cpp.o
+.PHONY : LogTest.cpp.o
+
+LogTest.i: LogTest.cpp.i
+
+.PHONY : LogTest.i
+
+# target to preprocess a source file
+LogTest.cpp.i:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/LogTest.cpp.i
+.PHONY : LogTest.cpp.i
+
+LogTest.s: LogTest.cpp.s
+
+.PHONY : LogTest.s
+
+# target to generate assembly for a file
+LogTest.cpp.s:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/LogTest.cpp.s
+.PHONY : LogTest.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -160,10 +202,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... LogTest"
 	@echo "... KinovaTest"
 	@echo "... KinovaTest.o"
 	@echo "... KinovaTest.i"
 	@echo "... KinovaTest.s"
+	@echo "... LogTest.o"
+	@echo "... LogTest.i"
+	@echo "... LogTest.s"
 .PHONY : help
 
 

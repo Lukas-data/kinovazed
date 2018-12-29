@@ -8,4 +8,5 @@
 /home/kinova/Documents/kinovaZED/_build/src/CMakeFiles/kinovaArm_lib.dir
 /home/kinova/Documents/kinovaZED/_build/test/CMakeFiles/edit_cache.dir
 /home/kinova/Documents/kinovaZED/_build/test/CMakeFiles/rebuild_cache.dir
+/home/kinova/Documents/kinovaZED/_build/test/CMakeFiles/LogTest.dir
 /home/kinova/Documents/kinovaZED/_build/test/CMakeFiles/KinovaTest.dir

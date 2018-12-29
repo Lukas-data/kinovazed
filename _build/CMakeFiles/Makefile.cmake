@@ -50,5 +50,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "src/CMakeFiles/KinovaZED.dir/DependInfo.cmake"
   "src/CMakeFiles/kinovaArm_lib.dir/DependInfo.cmake"
+  "test/CMakeFiles/LogTest.dir/DependInfo.cmake"
   "test/CMakeFiles/KinovaTest.dir/DependInfo.cmake"
   )

@@ -141,7 +141,7 @@ clean: src/CMakeFiles/KinovaZED.dir/clean
 src/CMakeFiles/kinovaArm_lib.dir/all:
 	$(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/depend
 	$(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovaZED/_build/CMakeFiles --progress-num=5,6,7,8,9,10,11 "Built target kinovaArm_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovaZED/_build/CMakeFiles --progress-num=7,8,9,10,11,12,13 "Built target kinovaArm_lib"
 .PHONY : src/CMakeFiles/kinovaArm_lib.dir/all
 
 # Include target in all.
@@ -175,11 +175,13 @@ clean: src/CMakeFiles/kinovaArm_lib.dir/clean
 # Directory level rules for directory test
 
 # Convenience name for "all" pass in the directory.
+test/all: test/CMakeFiles/LogTest.dir/all
 test/all: test/CMakeFiles/KinovaTest.dir/all
 
 .PHONY : test/all
 
 # Convenience name for "clean" pass in the directory.
+test/clean: test/CMakeFiles/LogTest.dir/clean
 test/clean: test/CMakeFiles/KinovaTest.dir/clean
 
 .PHONY : test/clean
@@ -188,6 +190,43 @@ test/clean: test/CMakeFiles/KinovaTest.dir/clean
 test/preinstall:
 
 .PHONY : test/preinstall
+
+#=============================================================================
+# Target rules for target test/CMakeFiles/LogTest.dir
+
+# All Build rule for target.
+test/CMakeFiles/LogTest.dir/all: src/CMakeFiles/kinovaArm_lib.dir/all
+	$(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/depend
+	$(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovaZED/_build/CMakeFiles --progress-num=5,6 "Built target LogTest"
+.PHONY : test/CMakeFiles/LogTest.dir/all
+
+# Include target in all.
+all: test/CMakeFiles/LogTest.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+test/CMakeFiles/LogTest.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/_build/CMakeFiles 9
+	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/LogTest.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/_build/CMakeFiles 0
+.PHONY : test/CMakeFiles/LogTest.dir/rule
+
+# Convenience name for target.
+LogTest: test/CMakeFiles/LogTest.dir/rule
+
+.PHONY : LogTest
+
+# clean rule for target.
+test/CMakeFiles/LogTest.dir/clean:
+	$(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/clean
+.PHONY : test/CMakeFiles/LogTest.dir/clean
+
+# clean rule for target.
+clean: test/CMakeFiles/LogTest.dir/clean
+
+.PHONY : clean
 
 #=============================================================================
 # Target rules for target test/CMakeFiles/KinovaTest.dir

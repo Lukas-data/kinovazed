@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/Log.h
+sstream
+-
+string
+-
+stdio.h
+-
+
+/home/kinova/Documents/kinovaZED/test/LogTest.cpp
+stdio.h
+-
+Log.h
+/home/kinova/Documents/kinovaZED/test/Log.h
+
