@@ -8,5 +8,6 @@ add_executable(KinovaTest KinovaTest.cpp)
 target_link_libraries(KinovaTest PUBLIC libkindrv PRIVATE kinovaArm_lib)
 
 #Log Test
+add_library(logtest_lib STATIC LogTestSubClass.cpp LogTestSubClass.h Log.h)
 add_executable(LogTest LogTest.cpp)
-target_link_libraries(LogTest PRIVATE kinovaArm_lib)
+target_link_libraries(LogTest PUBLIC kinovaArm_lib PRIVATE logtest_lib )

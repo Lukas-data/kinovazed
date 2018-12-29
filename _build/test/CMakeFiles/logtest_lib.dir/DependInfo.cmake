@@ -4,19 +4,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/kinova/Documents/kinovaZED/test/LogTest.cpp" "/home/kinova/Documents/kinovaZED/_build/test/CMakeFiles/LogTest.dir/LogTest.cpp.o"
+  "/home/kinova/Documents/kinovaZED/test/LogTestSubClass.cpp" "/home/kinova/Documents/kinovaZED/_build/test/CMakeFiles/logtest_lib.dir/LogTestSubClass.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../src"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/kinova/Documents/kinovaZED/_build/src/CMakeFiles/kinovaArm_lib.dir/DependInfo.cmake"
-  "/home/kinova/Documents/kinovaZED/_build/test/CMakeFiles/logtest_lib.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

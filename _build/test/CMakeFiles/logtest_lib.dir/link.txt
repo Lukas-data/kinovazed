@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblogtest_lib.a  CMakeFiles/logtest_lib.dir/LogTestSubClass.cpp.o
+/usr/bin/ranlib liblogtest_lib.a

@@ -111,21 +111,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-test/CMakeFiles/LogTest.dir/rule:
-	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/LogTest.dir/rule
-.PHONY : test/CMakeFiles/LogTest.dir/rule
-
-# Convenience name for target.
-LogTest: test/CMakeFiles/LogTest.dir/rule
-
-.PHONY : LogTest
-
-# fast build rule for target.
-LogTest/fast:
-	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/build
-.PHONY : LogTest/fast
-
-# Convenience name for target.
 test/CMakeFiles/KinovaTest.dir/rule:
 	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/KinovaTest.dir/rule
 .PHONY : test/CMakeFiles/KinovaTest.dir/rule
@@ -139,6 +124,36 @@ KinovaTest: test/CMakeFiles/KinovaTest.dir/rule
 KinovaTest/fast:
 	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/build
 .PHONY : KinovaTest/fast
+
+# Convenience name for target.
+test/CMakeFiles/logtest_lib.dir/rule:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/logtest_lib.dir/rule
+.PHONY : test/CMakeFiles/logtest_lib.dir/rule
+
+# Convenience name for target.
+logtest_lib: test/CMakeFiles/logtest_lib.dir/rule
+
+.PHONY : logtest_lib
+
+# fast build rule for target.
+logtest_lib/fast:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/build
+.PHONY : logtest_lib/fast
+
+# Convenience name for target.
+test/CMakeFiles/LogTest.dir/rule:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/LogTest.dir/rule
+.PHONY : test/CMakeFiles/LogTest.dir/rule
+
+# Convenience name for target.
+LogTest: test/CMakeFiles/LogTest.dir/rule
+
+.PHONY : LogTest
+
+# fast build rule for target.
+LogTest/fast:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/build
+.PHONY : LogTest/fast
 
 KinovaTest.o: KinovaTest.cpp.o
 
@@ -194,6 +209,33 @@ LogTest.cpp.s:
 	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/LogTest.cpp.s
 .PHONY : LogTest.cpp.s
 
+LogTestSubClass.o: LogTestSubClass.cpp.o
+
+.PHONY : LogTestSubClass.o
+
+# target to build an object file
+LogTestSubClass.cpp.o:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/LogTestSubClass.cpp.o
+.PHONY : LogTestSubClass.cpp.o
+
+LogTestSubClass.i: LogTestSubClass.cpp.i
+
+.PHONY : LogTestSubClass.i
+
+# target to preprocess a source file
+LogTestSubClass.cpp.i:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/LogTestSubClass.cpp.i
+.PHONY : LogTestSubClass.cpp.i
+
+LogTestSubClass.s: LogTestSubClass.cpp.s
+
+.PHONY : LogTestSubClass.s
+
+# target to generate assembly for a file
+LogTestSubClass.cpp.s:
+	cd /home/kinova/Documents/kinovaZED/_build && $(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/LogTestSubClass.cpp.s
+.PHONY : LogTestSubClass.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -201,15 +243,19 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... KinovaTest"
+	@echo "... logtest_lib"
 	@echo "... rebuild_cache"
 	@echo "... LogTest"
-	@echo "... KinovaTest"
 	@echo "... KinovaTest.o"
 	@echo "... KinovaTest.i"
 	@echo "... KinovaTest.s"
 	@echo "... LogTest.o"
 	@echo "... LogTest.i"
 	@echo "... LogTest.s"
+	@echo "... LogTestSubClass.o"
+	@echo "... LogTestSubClass.i"
+	@echo "... LogTestSubClass.s"
 .PHONY : help
 
 

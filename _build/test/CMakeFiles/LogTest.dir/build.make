@@ -91,6 +91,7 @@ LogTest_EXTERNAL_OBJECTS =
 test/LogTest: test/CMakeFiles/LogTest.dir/LogTest.cpp.o
 test/LogTest: test/CMakeFiles/LogTest.dir/build.make
 test/LogTest: src/libkinovaArm_lib.a
+test/LogTest: test/liblogtest_lib.a
 test/LogTest: test/CMakeFiles/LogTest.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/kinova/Documents/kinovaZED/_build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable LogTest"
 	cd /home/kinova/Documents/kinovaZED/_build/test && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LogTest.dir/link.txt --verbose=$(VERBOSE)

@@ -1,0 +1,96 @@
+LogERROR: Oooppss
+AllLogERROR: SubClass
+  LogWARNING: A loop with 3 iterations
+    LogINFO: the counter i = 0
+    LogINFO: the counter i = 1
+    LogINFO: the counter i = 2
+      Debug
+      AllLogDebug0: SubClass
+      Debug1
+      AllLogDebug1: SubClass
+      Debug2
+      AllLogDebug2: SubClass
+LogERROR: Oooppss
+AllLogERROR: SubClass
+  LogWARNING: A loop with 3 iterations
+    LogINFO: the counter i = 0
+    LogINFO: the counter i = 1
+    LogINFO: the counter i = 2
+      Debug
+      AllLogDebug0: SubClass
+      Debug1
+      AllLogDebug1: SubClass
+      Debug2
+      AllLogDebug2: SubClass
+LogERROR: Oooppss
+AllLogERROR: SubClass
+  LogWARNING: A loop with 3 iterations
+    LogINFO: the counter i = 0
+    LogINFO: the counter i = 1
+    LogINFO: the counter i = 2
+      Debug
+      AllLogDebug0: SubClass
+      Debug1
+      AllLogDebug1: SubClass
+      Debug2
+      AllLogDebug2: SubClass
+LogERROR: Oooppss
+AllLogERROR: SubClass
+  LogWARNING: A loop with 3 iterations
+    LogINFO: the counter i = 0
+    LogINFO: the counter i = 1
+    LogINFO: the counter i = 2
+      Debug
+      AllLogDebug0: SubClass
+      Debug1
+      AllLogDebug1: SubClass
+      Debug2
+      AllLogDebug2: SubClass
+LogERROR: Oooppss
+AllLogERROR: SubClass
+  LogWARNING: A loop with 3 iterations
+    LogINFO: the counter i = 0
+    LogINFO: the counter i = 1
+    LogINFO: the counter i = 2
+      Debug
+      AllLogDebug0: SubClass
+      Debug1
+      AllLogDebug1: SubClass
+      Debug2
+      AllLogDebug2: SubClass
+LogERROR: Oooppss
+AllLogERROR: SubClass
+  LogWARNING: A loop with 3 iterations
+    LogINFO: the counter i = 0
+    LogINFO: the counter i = 1
+    LogINFO: the counter i = 2
+      Debug
+      AllLogDebug0: SubClass
+      Debug1
+      AllLogDebug1: SubClass
+      Debug2
+      AllLogDebug2: SubClass
+LogERROR: Oooppss
+AllLogERROR: SubClass
+  LogWARNING: A loop with 3 iterations
+    LogINFO: the counter i = 0
+    LogINFO: the counter i = 1
+    LogINFO: the counter i = 2
+      Debug
+      AllLogDebug0: SubClass
+      Debug1
+      AllLogDebug1: SubClass
+      Debug2
+      AllLogDebug2: SubClass
+LogERROR: Oooppss
+AllLogERROR: SubClass
+  LogWARNING: A loop with 3 iterations
+    LogINFO: the counter i = 0
+    LogINFO: the counter i = 1
+    LogINFO: the counter i = 2
+      Debug
+      AllLogDebug0: SubClass
+      Debug1
+      AllLogDebug1: SubClass
+      Debug2
+      AllLogDebug2: SubClass

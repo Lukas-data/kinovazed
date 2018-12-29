@@ -137,19 +137,6 @@ kinovaArm_lib/fast:
 .PHONY : kinovaArm_lib/fast
 
 #=============================================================================
-# Target rules for targets named LogTest
-
-# Build rule for target.
-LogTest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 LogTest
-.PHONY : LogTest
-
-# fast build rule for target.
-LogTest/fast:
-	$(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/build
-.PHONY : LogTest/fast
-
-#=============================================================================
 # Target rules for targets named KinovaTest
 
 # Build rule for target.
@@ -162,6 +149,32 @@ KinovaTest/fast:
 	$(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/build
 .PHONY : KinovaTest/fast
 
+#=============================================================================
+# Target rules for targets named logtest_lib
+
+# Build rule for target.
+logtest_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 logtest_lib
+.PHONY : logtest_lib
+
+# fast build rule for target.
+logtest_lib/fast:
+	$(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/build
+.PHONY : logtest_lib/fast
+
+#=============================================================================
+# Target rules for targets named LogTest
+
+# Build rule for target.
+LogTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 LogTest
+.PHONY : LogTest
+
+# fast build rule for target.
+LogTest/fast:
+	$(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/build
+.PHONY : LogTest/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -172,8 +185,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... KinovaZED"
 	@echo "... kinovaArm_lib"
-	@echo "... LogTest"
 	@echo "... KinovaTest"
+	@echo "... logtest_lib"
+	@echo "... LogTest"
 .PHONY : help
 
 
