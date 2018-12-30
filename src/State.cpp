@@ -4,6 +4,7 @@
 #include "State.h"
 #include "KinovaStatus.h"
 #include "PositionHandling.h"
+#include "Log.h"
 
 KinovaArm* State::JacoZED = NULL;
 
@@ -12,35 +13,35 @@ void State::setEventVar(int eventVar) { EventVariable = eventVar; }
 
 // PowerOff
 void StatePowerOff::entryAction() {
-  printf("Executing StatePowerOff entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State PowerOff";
   JacoZED->setInactive();
 }
 void StatePowerOff::exitAction() {
-  printf("Executing StatePowerOff exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State PowerOff";
 }
 void StatePowerOff::tickAction() {
 }
 
 // EmergencyStop
 void StateEStop::entryAction() {
-  printf("Executing StateEStop entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State EStop";
   JacoZED->releaseControl();
   JacoZED->setInactive();
 }
 void StateEStop::exitAction() {
-  printf("Executing StateEStop exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State EStop";
 }
 void StateEStop::tickAction() {
 }
 
 // Initialize
 void StateInitialize::entryAction() {
-  printf("Executing StateInitialize entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State Initialize";
   JacoZED->takeControl();
   JacoZED->checkInitialize();
 }
 void StateInitialize::exitAction() {
-  printf("Executing StateInitialize exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State Initialize ";
   JacoZED->setActive();
 }
 void StateInitialize::tickAction() {
@@ -49,13 +50,13 @@ void StateInitialize::tickAction() {
 
 // Idle
 void StateIdle::entryAction() {
-  printf("Executing StateIdle entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State Idle";
   JacoZED->dontMove();
   JacoZED->setInactive();
   
 }
 void StateIdle::exitAction() {
-  printf("Executing StateIdle exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State Idle";
   JacoZED->setActive();
 }
 void StateIdle::tickAction() {
@@ -63,11 +64,11 @@ void StateIdle::tickAction() {
 
 // ChangeMode
 void StateChangeMode::entryAction() {
-  printf("Executing StateChangeMode entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State ChangeMode";
   JacoZED->changeMode(static_cast<KinovaStatus::SteeringMode>(EventVariable));
 }
 void StateChangeMode::exitAction() {
-  printf("Executing StateChangeMode exitAction.\n");
+ ALL_LOG(logINFO) << "Exiting State ChangeMode";
 }
 void StateChangeMode::tickAction() {
   JacoZED->modeChangeTimer();
@@ -75,10 +76,10 @@ void StateChangeMode::tickAction() {
 
 // Steering
 void StateSteering::entryAction() {
-  printf("Executing StateSteering entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State Steering";
 }
 void StateSteering::exitAction() {
-  printf("Executing StateSteering exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State Steering";
   JacoZED->dontMove();
 }
 void StateSteering::tickAction() {
@@ -87,11 +88,11 @@ void StateSteering::tickAction() {
 
 // MovePosition
 void StateMovePosition::entryAction() {
-  printf("Executing StateMovePosition entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State MovePosition";
   JacoZED->setTarget(static_cast<KinovaPts::Objective>(EventVariable));
 }
 void StateMovePosition::exitAction() {
-  printf("Executing StateMovePosition exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State MovePosition";
   JacoZED->sequenceDone();
   JacoZED->dontMove();
 }
@@ -101,11 +102,11 @@ void StateMovePosition::tickAction() {
 
 //Teach
 void StateTeach::entryAction() {
-  printf("Executing StateTeach entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State Teach";
   JacoZED->teachPosition(static_cast<KinovaPts::Objective>(EventVariable));
 }
 void StateTeach::exitAction() {
-  printf("Executing StateTeach exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State Teach";
   JacoZED->dontMove();
 }
 void StateTeach::tickAction() {
@@ -114,11 +115,11 @@ void StateTeach::tickAction() {
 
 // ChangeModeTeach
 void StateChangeModeTeach::entryAction() {
-  printf("Executing StateChangeModeTeach entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State ChangeModeTeach";
   JacoZED->changeMode(static_cast<KinovaStatus::SteeringMode>(EventVariable));
 }
 void StateChangeModeTeach::exitAction() {
-  printf("Executing StateChangeModeTeach exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State ChangeModeTeach";
 }
 void StateChangeModeTeach::tickAction() {
   JacoZED->modeChangeTimer();
@@ -126,11 +127,11 @@ void StateChangeModeTeach::tickAction() {
 
 // TeachMovePoint
 void StateTeachMovePoint::entryAction() {
-  printf("Executing StateTeachMovePoint entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State TeachMovePoint";
   
 }
 void StateTeachMovePoint::exitAction() {
-  printf("Executing StateTeachMovePoint exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State TeachMovePoint";
   JacoZED->dontMove();
 }
 void StateTeachMovePoint::tickAction() {
@@ -139,11 +140,11 @@ void StateTeachMovePoint::tickAction() {
 
 // TeachMoveOrigin
 void StateTeachMoveOrigin::entryAction() {
-  printf("Executing StateTeachMoveOrigin entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State TeachMoveOrigin";
   
 }
 void StateTeachMoveOrigin::exitAction() {
-  printf("Executing StateTeachMoveOrigin exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State TeachMoveOrigin";
   JacoZED->dontMove();
 }
 void StateTeachMoveOrigin::tickAction() {
@@ -152,33 +153,33 @@ void StateTeachMoveOrigin::tickAction() {
 
 // TeachSavePoint
 void StateTeachSavePoint::entryAction() {
-  printf("Executing StateTeachSavePoint entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State TeachSavePoint";
   JacoZED->savePoint(EventVariable); 
 }
 void StateTeachSavePoint::exitAction() {
-  printf("Executing StateTeachSavePoint exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State TeachSavePoint";
 }
 void StateTeachSavePoint::tickAction() {
 }
 
 // TeachSaveOrigin
 void StateTeachSaveOrigin::entryAction() {
-  printf("Executing StateTeachSaveOrigin entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State TeachSaveOrigin";
   JacoZED->saveOrigin(); 
 }
 void StateTeachSaveOrigin::exitAction() {
-  printf("Executing StateTeachSaveOrigin exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State TeachSaveOrigin";
 }
 void StateTeachSaveOrigin::tickAction() {
 }
 
 // TeachPrevious
 void StateTeachPrevious::entryAction() {
-  printf("Executing StateTeachPrevious entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State TeachPrevious";
   JacoZED->previousPoint(EventVariable); 
 }
 void StateTeachPrevious::exitAction() {
-  printf("Executing StateTeachPrevious exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State TeachPrevious";
 }
 void StateTeachPrevious::tickAction() {
 }
@@ -186,11 +187,11 @@ void StateTeachPrevious::tickAction() {
 
 // TeachNext
 void StateTeachNext::entryAction() {
-  printf("Executing StateTeachNext entryAction.\n");
+  ALL_LOG(logINFO) << "Entering State TeachNext";
   JacoZED->nextPoint(EventVariable); 
 }
 void StateTeachNext::exitAction() {
-  printf("Executing StateTeachNext exitAction.\n");
+  ALL_LOG(logINFO) << "Exiting State TeachNext";
 }
 void StateTeachNext::tickAction() {
 }

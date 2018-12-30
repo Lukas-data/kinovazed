@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "StateMachine.h"
+#include "Log.h"
 
 
 
@@ -38,13 +39,13 @@ bool StateMachine::process() {
   //Print handled Event and reset InputEvent.
   for (int i = 0; i<NumberOfTransitions; i++) {
     if ( (CurrentState == KinovaFSM::TransitionTable[i].currentState) && (e == KinovaFSM::TransitionTable[i].event) )  {
+      ALL_LOG(logINFO) << "StateMachine: Processing Event '" << KinovaFSM::EventName[e] << "'";
       KinovaFSM::TransitionTable[i].currentState->exitAction();
       CurrentState = KinovaFSM::TransitionTable[i].nextState;
       CurrentState->setEventVar(var);
       CurrentState->entryAction();
       StateChange = true;
       return true;
-      printf("StateMachine: Processing Event '%s'\n", KinovaFSM::EventName[e]);
     }
   }
   CurrentState->tickAction(); 

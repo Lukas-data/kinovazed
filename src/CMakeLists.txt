@@ -12,6 +12,7 @@ add_library(kinovaArm_lib STATIC  KinovaArm.cpp KinovaArm.h
                                   KinovaStatus.h
                                   State.cpp State.h
                                   CommandHandling.cpp CommandHandling.h
+                                  LogFile.h
                                   Log.h
                                   )
 

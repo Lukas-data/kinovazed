@@ -1,0 +1,67 @@
+    KinovaMain - Startup!
+    Connection to JacoArm established.
+    Connection to RoboRio established.
+    StateMachine: Processing Event 'E_Stop'
+    Exiting State PowerOff
+    Entering State EStop
+    Released API control over the arm.
+    StateMachine: Processing Event 'QuitEStop'
+    Exiting State EStop
+    Entering State PowerOff
+    StateMachine: Processing Event 'Initialize'
+    Exiting State PowerOff
+    Entering State Initialize
+    Gained API control over the arm.
+    Points successfully loaded from File.
+    StateMachine: Processing Event 'InitHomeReached'
+    Exiting State Initialize 
+    Entering State Initialize
+    Gained API control over the arm.
+    Points successfully loaded from File.
+    StateMachine: Processing Event 'Initialized'
+    Exiting State Initialize 
+    Entering State Idle
+    StateMachine: Processing Event 'SetMode'
+    Exiting State Idle
+    Entering State ChangeMode
+    StateMachine: Processing Event 'ModeSet'
+    Exiting State ChangeMode
+    Entering State Steering
+    StateMachine: Processing Event 'SetMode'
+    Exiting State Steering
+    Entering State ChangeMode
+    StateMachine: Processing Event 'ModeSet'
+    Exiting State ChangeMode
+    Entering State Steering
+    StateMachine: Processing Event 'SetMode'
+    Exiting State Steering
+    Entering State ChangeMode
+    StateMachine: Processing Event 'ModeSet'
+    Exiting State ChangeMode
+    Entering State Steering
+    StateMachine: Processing Event 'GoToPosition'
+    Exiting State Steering
+    Entering State MovePosition
+    StateMachine: Processing Event 'SequenceDone'
+    Exiting State MovePosition
+    Entering State ChangeMode
+    StateMachine: Processing Event 'ModeSet'
+    Exiting State ChangeMode
+    Entering State Steering
+    StateMachine: Processing Event 'GoToPosition'
+    Exiting State Steering
+    Entering State MovePosition
+    StateMachine: Processing Event 'SequenceDone'
+    Exiting State MovePosition
+    Entering State ChangeMode
+    StateMachine: Processing Event 'ModeSet'
+    Exiting State ChangeMode
+    Entering State Steering
+    StateMachine: Processing Event 'NoMode'
+    Exiting State Steering
+    Entering State Idle
+    StateMachine: Processing Event 'E_Stop'
+    Exiting State Idle
+    Entering State EStop
+    Released API control over the arm.
+TCPServer::readTCP(): Error reading from socket

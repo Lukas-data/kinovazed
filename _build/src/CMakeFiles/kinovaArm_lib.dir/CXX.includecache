@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+../src/Log.h
+sstream
+-
+string
+-
+stdio.h
+-
+
 /home/kinova/Documents/kinovaZED/src/CommandHandling.cpp
 stdio.h
 -
@@ -13,6 +21,8 @@ stdexcept
 -
 unistd.h
 -
+Log.h
+/home/kinova/Documents/kinovaZED/src/Log.h
 CommandHandling.h
 /home/kinova/Documents/kinovaZED/src/CommandHandling.h
 
@@ -33,6 +43,8 @@ stdio.h
 -
 ctime
 -
+Log.h
+-
 KinovaArm.h
 /home/kinova/Documents/kinovaZED/src/KinovaArm.h
 
@@ -47,6 +59,14 @@ PositionHandling.h
 /home/kinova/Documents/kinovaZED/src/PositionHandling.h
 
 /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
+
+/home/kinova/Documents/kinovaZED/src/Log.h
+sstream
+-
+string
+-
+stdio.h
+-
 
 /home/kinova/Documents/kinovaZED/src/PositionHandling.cpp
 stdexcept
@@ -63,6 +83,8 @@ algorithm
 -
 math.h
 -
+Log.h
+/home/kinova/Documents/kinovaZED/src/Log.h
 PositionHandling.h
 /home/kinova/Documents/kinovaZED/src/PositionHandling.h
 
@@ -79,6 +101,8 @@ KinovaStatus.h
 /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
 PositionHandling.h
 /home/kinova/Documents/kinovaZED/src/PositionHandling.h
+Log.h
+/home/kinova/Documents/kinovaZED/src/Log.h
 
 /home/kinova/Documents/kinovaZED/src/State.h
 KinovaArm.h
@@ -89,6 +113,8 @@ stdio.h
 -
 StateMachine.h
 /home/kinova/Documents/kinovaZED/src/StateMachine.h
+Log.h
+/home/kinova/Documents/kinovaZED/src/Log.h
 
 /home/kinova/Documents/kinovaZED/src/StateMachine.h
 State.h
@@ -123,6 +149,8 @@ unistd.h
 -
 errno.h
 -
+Log.h
+/home/kinova/Documents/kinovaZED/src/Log.h
 
 /home/kinova/Documents/kinovaZED/src/TCPServer.h
 netinet/in.h

@@ -3,5 +3,6 @@
 
 test/CMakeFiles/LogTest.dir/LogTest.cpp.o
  /home/kinova/Documents/kinovaZED/test/Log.h
+ /home/kinova/Documents/kinovaZED/test/LogFile.h
  /home/kinova/Documents/kinovaZED/test/LogTest.cpp
  /home/kinova/Documents/kinovaZED/test/LogTestSubClass.h

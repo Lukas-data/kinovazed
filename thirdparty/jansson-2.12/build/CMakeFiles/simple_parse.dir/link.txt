@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/simple_parse.dir/examples/simple_parse.c.o  -o bin/simple_parse -rdynamic lib/libjansson.a 

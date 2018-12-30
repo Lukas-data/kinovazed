@@ -30,7 +30,7 @@ class TCPServer {
 
   private:
 
-    void error(const char *msg);
+    void error(const char *funcName, const char *msg);
 
     int  sockfd, newsockfd, portno, clilen;
     char buffer[BUFFER_SIZE];

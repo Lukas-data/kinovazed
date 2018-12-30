@@ -7,6 +7,8 @@ src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o
  /home/kinova/Documents/kinovaZED/src/KinovaArm.h
  /home/kinova/Documents/kinovaZED/src/KinovaMain.cpp
  /home/kinova/Documents/kinovaZED/src/KinovaStatus.h
+ /home/kinova/Documents/kinovaZED/src/Log.h
+ /home/kinova/Documents/kinovaZED/src/LogFile.h
  /home/kinova/Documents/kinovaZED/src/PositionHandling.h
  /home/kinova/Documents/kinovaZED/src/State.h
  /home/kinova/Documents/kinovaZED/src/StateMachine.h

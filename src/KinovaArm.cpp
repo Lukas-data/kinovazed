@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <ctime> 
-//#include <cmath>
+#include <Log.h>
 
 #include "KinovaArm.h"
 
@@ -11,17 +11,22 @@
 KinovaArm::~KinovaArm() {
   if (KINOVA_DUMMY == false) {   
     delete arm;
-    printf("Connection to JacoArm closed \n");
+    ALL_LOG(logINFO) << "Connection to JacoArm closed " ;
   }
   Connected = false;
 }
 
 /*Sets Errorflag and removes Connected flag.*/
 void KinovaArm::error(const char* funcName, KinDrv::KinDrvException &e, bool warning) {
-  printf("KinovaArm::%s(): Error %i, %s\n",funcName, e.error(), e.what());
   if (!warning) {
+    ALL_LOG(logERROR) << "KinovaArm::" << funcName << "(): "
+                      << e.error() << ", " << e.what() ;
     Connected = false; //Simplification!!
     Error = true;
+  }
+  else {
+  ALL_LOG(logWARNING) << "KinovaArm::" << funcName << "(): "
+                      << e.error() << ", " << e.what() ;
   }
 }
 
@@ -50,12 +55,9 @@ void KinovaArm::takeControl() {
   if (KINOVA_DUMMY == false) {
     try {
       arm->start_api_ctrl();
-      printf("Gained API control over the arm.\n");
-      //armStatus = arm->get_status();
-      //printf("Arm is currently in state: %i \n", armStatus);
+      ALL_LOG(logINFO) << "Gained API control over the arm." ;
     }
     catch( KinDrv::KinDrvException &e ) {
-      //printf("KinovaArm::takeControl(): Error %i, %s\n", e.error(), e.what());
       error("takeControl", e, false);
     }
   }
@@ -67,18 +69,14 @@ void KinovaArm::releaseControl() {
   if (KINOVA_DUMMY == false) {
     try {
       arm->stop_api_ctrl();
-      printf("Released API control over the arm.\n");
-      //armStatus = arm->get_status();
-      //printf("Arm is currently in state: %i \n", armStatus);
+      ALL_LOG(logINFO) << "Released API control over the arm.";
       Error = false;
     }
     catch( KinDrv::KinDrvException &e ) {
-      //printf("KinovaArm::takeControl(): Error %i, %s\n", e.error(), e.what());
       error("releaseControl", e, false);
     }
   }
   Initialized = false;
-  
 }
 
 
@@ -132,7 +130,7 @@ void KinovaArm::checkInitialize() {
   }
   else {
     ExternalEvent = KinovaFSM::Initialized;
-    printf("Arm connection is turned off. Dummy-Initialized.\n");
+    ALL_LOG(logINFO) << "Arm connection is turned off. Dummy-Initialized." ;
   }
 }
 
@@ -147,14 +145,14 @@ void KinovaArm::initialize()
         KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
         //Moves Arm to Kinova Home position if not in initialized Position
         if( armStatus == KinDrv::MODE_NOINIT) {
-          //printf("Initializing: Status is NOINIT.\n");
+          ALL_LOG(logDEBUG3) << "Initializing: Status is NOINIT.";
           //push the "HOME/RETRACT" button until arm is initialized
           KinDrv::jaco_joystick_button_t buttons = {0};
           buttons[2] = 1;
           arm->push_joystick_button(buttons);
         }
         else {
-          //printf("Initializing: Statuts is %d.\n",armStatus);
+          ALL_LOG(logDEBUG3) << "Initializing: Statuts is " << armStatus << ".";
           arm->release_joystick();
           moveToPosition(true);
         }
@@ -167,7 +165,7 @@ void KinovaArm::initialize()
   else {
     Initialized = true;
     ExternalEvent = KinovaFSM::Initialized;
-    printf("Arm connection is turned off. Dummy-Initialized.\n");
+    ALL_LOG(logINFO) << "Arm connection is turned off. Dummy-Initialized.";
   }
 }
 
@@ -201,7 +199,7 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
       Mode = KinovaStatus::Translation;
     }
     else {
-      printf("KinovaArm: Requested Mode invalid.\n");
+      ALL_LOG(logWARNING) << "KinovaArm: Requested Mode invalid.";
     } 
   }
   clock_gettime(CLOCK_REALTIME, &TimerStart);
@@ -240,17 +238,20 @@ void KinovaArm::move() {
       axes.trans_lr = currentSpeedX; 
       axes.trans_fb = currentSpeedY;
       axes.trans_rot = currentSpeedZ;
-      //printf("MoveArm In Mode: 1 -> ");
+      ALL_LOG(logDEBUG3) << "MoveArm In Mode: 1";
     }
     if (Mode == KinovaStatus::Rotation || Mode == KinovaStatus::Axis2) {
       axes.wrist_lr = currentSpeedX;
       axes.wrist_fb = currentSpeedY;
       axes.wrist_rot = currentSpeedZ;
-      //printf("MoveArm In Mode: 2 -> ");
+      ALL_LOG(logDEBUG3) << "MoveArm In Mode: 2";
     }
     try {
       arm->move_joystick_axis(axes);
-      //printf("x= %f, y= %f, z= %f\n", currentSpeedX,currentSpeedY,currentSpeedZ);
+      ALL_LOG(logDEBUG4) << "currentSpeed: "
+                         << "x= " << currentSpeedX
+                         << ", y= " << currentSpeedY
+                         << ", z= " << currentSpeedZ ;
     }
     catch( KinDrv::KinDrvException &e ) {
       error("move", e, false);
@@ -266,7 +267,7 @@ void KinovaArm::setTarget(KinovaPts::Objective targetObjective) {
     PositionHandler.resetSequence();
   }
   else {
-    printf("KinovaArm: invalid targetPosition.\n");
+    ALL_LOG(logWARNING) << "KinovaArm: invalid targetPosition.";
     ExternalEvent = KinovaFSM::SequenceDone;
   }
 }
@@ -314,24 +315,24 @@ void KinovaArm::sequenceDone() {
 
 /*sets the TeachingTarget (Objective at whitch will be teached). Keeps old objective and Sequence when called with Zero.*/
 void KinovaArm::teachPosition(KinovaPts::Objective targetObjective) {
-  //ExternalEvent = KinovaFSM::ModeSet;
   if (targetObjective != 0) {
     if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives) {
-      printf("new teachTarget, sequence reset.\n");
+      ALL_LOG(logDEBUG) << "new teachTarget, sequence reset.";
       float currentCoordinates[6];
       getPosition(currentCoordinates);
       PositionHandler.newTeachObjective(targetObjective, currentCoordinates);
       TeachTarget = targetObjective;
     }
     else {
-      printf("KinovaArm: invalid teach Position.\n");
+      ALL_LOG(logWARNING) << "KinovaArm: invalid teach Position.";
     }
   }
-  printf("TeachMode: Teaching at Point %d:%d\n", TeachTarget, PositionHandler.getSequence());
+  ALL_LOG(logDEBUG) << "TeachMode: Teaching at Point " << TeachTarget << ":"
+                   << PositionHandler.getSequence();
 }
 
 
-/**/
+/*moves Arm to the current point in the sequence at the current TeachTarget*/
 void KinovaArm::moveToPoint() {
   float targetCoordinates[6];
   float currentCoordinates[6];
@@ -360,13 +361,13 @@ void KinovaArm::moveToPoint() {
     }
   }
   else {
-    printf("No further Points in Sequence.\n");
+    ALL_LOG(logWARNING) << "moveToPoint: No such Point in Sequence.";
     ExternalEvent = KinovaFSM::PointNotReached;
   }
 }
 
 
-/**/
+/*moves Arm to origin of current TeachTarget*/
 void KinovaArm::moveToOrigin() {
   float targetCoordinates[6];
   float currentCoordinates[6];
@@ -395,13 +396,13 @@ void KinovaArm::moveToOrigin() {
     }
   }
   else {
-    printf("No Origin defined.\n");
+    ALL_LOG(logWARNING) << "moveToOrigin: No Origin defined.";
     ExternalEvent = KinovaFSM::PointNotReached;
   }
 }
 
 
-/**/
+/*Saves current Arm-Position to current SequencePoint of teachTarget*/
 void KinovaArm::savePoint(int EventVariable) {
   float currentCoordinates[6];
 
@@ -415,6 +416,8 @@ void KinovaArm::savePoint(int EventVariable) {
   ExternalEvent = KinovaFSM::PointSaved;
 }
 
+
+/*save current Arm-Position as new origin of Coordinate System*/
 void KinovaArm::saveOrigin() {
   float currentCoordinates[6];
 
@@ -427,6 +430,7 @@ void KinovaArm::saveOrigin() {
 }
 
 
+/*decrements Sequence if EventVariable is the expected point after decrement.*/
 void KinovaArm::previousPoint(int EventVariable) {
   int currentSequence = PositionHandler.getSequence();
   if (EventVariable == currentSequence-1) {
@@ -442,6 +446,7 @@ void KinovaArm::previousPoint(int EventVariable) {
 }
 
 
+/*increments Sequence if EventVariable is the expected point after increment.*/
 void KinovaArm::nextPoint(int EventVariable) {
   int currentSequence = PositionHandler.getSequence();
   if (EventVariable == currentSequence+1) {
@@ -457,8 +462,11 @@ void KinovaArm::nextPoint(int EventVariable) {
 }
 
 
+/*Set-Functinons*/
 void KinovaArm::setJoystick(int x, int y, int z) {
-  //printf("KinovaArm::setJoystick (%d,%d,%d)\n",x,y,z);
+  ALL_LOG(logDEBUG4) << "KinovaArm::setJoystick (" << x << ", "
+                                                   << y << ", "
+                                                   << z << ")";
   JoystickX = x;
   JoystickY = y;
   JoystickZ = z;
@@ -502,7 +510,13 @@ void KinovaArm::getPosition(float* coordinates) {
         coordinates[i] = Position.rotation[i-3];
     }
   }
-  //printf("currentCoordinates: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
+  ALL_LOG(logDEBUG4) << "getPosition: currentCoordinates: ("
+                     << coordinates[0] << ", "
+                     << coordinates[1] << ", "
+                     << coordinates[2] << ", "
+                     << coordinates[3] << ", "
+                     << coordinates[4] << ", "
+                     << coordinates[5] << ")" ;
 }
 
 void  KinovaArm::setActive() { Active = true; }
@@ -514,35 +528,36 @@ void  KinovaArm::setInactive() {
 
 /*Returns true if currentCoordinates are within Range. ot targetCoordinates*/
 bool KinovaArm::checkIfReached(float* targetCoordinates, float* currentCoordinates) {
-  bool DebugPrint = true;
   bool PointReached = true;
-  if (DebugPrint) { printf("DistanceToTarget: ("); }
+  ALL_LOG(logDEBUG2) << "RangeCheck: following Axis do not pass:";
   float range = POSITION_RANGE;
   for (int i = 0; i<6; i++) {
     if (i == 3) { range = ROTATION_RANGE; }
     float dPos = fabs( currentCoordinates[i] - targetCoordinates[i] );
     float dVel = fabs( currentCoordinates[i] - LastCoordinates[i] );
     if (  dPos > range || dVel > VELOCITY_RANGE ) {
-      if (DebugPrint) { printf("!"); }
+      ALL_LOG(logDEBUG2) << "[" << i << "]: dPos: " << dPos << ", dVel: " << dVel;
       PointReached = false; 
     }
-    if (DebugPrint) { printf("%f/%f, ", dPos, dVel); }
     LastCoordinates[i] = currentCoordinates[i];
   }
-  if (DebugPrint) { printf(")\n"); }
   return PointReached;
 }
 
 
 /*PrintForces. TODO: return Forces */
 void KinovaArm::getForces() {
-  bool DebugPrint = true;
   KinDrv::jaco_position_t force = arm->get_ang_force();
-  if (DebugPrint) { printf("forces: ("); }
+  float forces[6];
+  ALL_LOG(logDEBUG2) << "getForces: currentForces: ";
   for (int i = 0; i<6; i++) {
-    if (DebugPrint && i<3) { printf("%f, ", force.position[i] ); }
-    if (DebugPrint && i>2) { printf("%f, ", force.rotation[i-3] ); }
+    if (i<3) { forces[i] = force.position[i]; }
+    if (i>2) { forces[i] = force.rotation[i-3] ; }
   }  
-  if (DebugPrint) { printf(")\n"); }
+  ALL_LOG(logDEBUG2) << "(" << forces[0] << ", "
+                            << forces[1] << ", "
+                            << forces[2] << ", "
+                            << forces[3] << ", "
+                            << forces[4] << ", "
+                            << forces[5] << ")";
 }
-

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdexcept>
 #include <unistd.h>
+#include "Log.h"
 
 
 #include "CommandHandling.h"
@@ -8,28 +9,28 @@
 /*Initiailizes Communication with Jaco-Arm and TCPServer.*/
 void CommandHandling::init() {
   //Connect to Kinova robotic arm
-  printf("Connecting to Jaco arm: ");
+  ALL_LOG(logDEBUG1) << "Trying to connect to JacoArm.";
   while (true) {
     if( JacoZED.connect() ) {
-      printf("Connection established.\n");
+      ALL_LOG(logINFO) << "Connection to JacoArm established.";
       break;
     }
-    else { printf("Retry...\n"); }
-    usleep(1000);
+    else { ALL_LOG(logDEBUG1) << "Connection to JacoArm unsuccessfull. Retry."; }
+    usleep(1000000);
   }
-  printf("-------------------------\n");
+  ALL_LOG(logDEBUG1) << "-------------------------";
 
   //Connect to RoboRio (ZED Main Controller)
-  printf("Connecting to RoboRio: ");
+  ALL_LOG(logDEBUG1) << "Trying to connect to RoboRio";
   while (true) {
     if ( RoboRio.connect() ) {
-      printf("Connection established.\n");
+      ALL_LOG(logINFO) << "Connection to RoboRio established.";
       break;
     }
-    else { printf("Retry...\n"); }
-    usleep(1000);
+    else { ALL_LOG(logDEBUG1) << "Connection to RoboRio unsuccessfull. Retry."; }
+    usleep(1000000);
   }
-  printf("-------------------------\n");
+  ALL_LOG(logDEBUG1) << "-------------------------";
 
   //Initialize StateMachine.
   KinovaSM.init(&JacoZED);
@@ -44,7 +45,9 @@ void CommandHandling::process() {
   getInputs();
 
   if (CommandIn != oldCommand || CommandVarIn != oldCommandVar) {
-    printf("CommandHandling: Recieved Event '%s:%d'\n", KinovaFSM::EventName[CommandIn], CommandVarIn);
+    ALL_LOG(logDEBUG) << "CommandHandling: Recieved Event '"
+                      << KinovaFSM::EventName[CommandIn] 
+                      << ":" << CommandVarIn << "'" ;
   }
   //Check for E_Stop
   if ( CommandIn == KinovaFSM::E_Stop )
@@ -100,7 +103,9 @@ void CommandHandling::process() {
   }
   sendOutputs(CommandOut, CommandVarOut);
   if (CommandOut != oldCommand || CommandVarOut != oldCommandVar) {
-    printf("CommandHandling: Sent Event '%s:%d'\n", KinovaFSM::EventName[CommandOut], CommandVarOut);
+    ALL_LOG(logDEBUG) << "CommandHandling: Sent Event '" 
+                      << KinovaFSM::EventName[CommandOut] 
+                      << ":" << CommandVarOut << "'" ;
   }
 }
 

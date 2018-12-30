@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/test_sprintf.dir/test/suites/api/test_sprintf.c.o  -o bin/test_sprintf -rdynamic lib/libjansson.a 

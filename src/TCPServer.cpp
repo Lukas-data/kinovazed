@@ -10,15 +10,16 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
+#include "Log.h"
 
 
 #define RIO_DUMMY false
 
 
 //TODO: different Errorhandling!
-void TCPServer::error(const char *msg)
+void TCPServer::error(const char *funcName, const char *msg)
 {
-  perror(msg);
+  ALL_LOG(logERROR) << "TCPServer::" << funcName << "(): " << msg;
 }
 
 /*Opens TCP Server and establishes connection to a client(RoboRio)*/
@@ -28,7 +29,7 @@ bool TCPServer::connect() {
       portno = 51717;
       sockfd = socket(AF_INET, SOCK_STREAM, 0);
       if (sockfd < 0) {
-        error("ERROR opening socket");
+        error("connect","Error opening socket");
         return false;
       }
 
@@ -38,7 +39,7 @@ bool TCPServer::connect() {
       serv_addr.sin_addr.s_addr = INADDR_ANY;
 
       if (bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) {
-        error("ERROR on binding");
+        error("connect","Error on binding");
         return false;
       }
       listen(sockfd,5);
@@ -47,7 +48,7 @@ bool TCPServer::connect() {
 
     // Wait for a connection with a client
     if ( ( newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, (socklen_t*) &clilen)) <0) {
-      error("ERROR on accept");
+      error("connect","Error on accept");
       return false;
     }
   }
@@ -61,15 +62,19 @@ bool TCPServer::sendTCP(int command, int eventVar, int data1, int data2, int dat
     char buffer[COMMAND_LENGTH + (MessageLength)];
     int m=sprintf( buffer, "%6d%6d%6d%6d%6d", command, eventVar, data1, data2, data3);
     if (m != MessageLength) {
-      error("ERROR preparing message");
+      error("sendTCP","Error preparing message");
       return false;
     }
     if ( ( n = write( newsockfd, buffer, strlen(buffer) ) ) < 0 ) {
-      error("Error writing to socket");
+      error("sendTCP","Error writing to socket");
       return false;
     }
   }
-  //printf("TCPServer: Sent TCP (%d,%d,%d,%d,%d)\n", command, eventVar, data1, data2, data3);
+  ALL_LOG(logDEBUG4) << "TCPServer::sendTCP(" << command << ", "
+                                              << eventVar << ", "
+                                              << data1 << ", "
+                                              << data2 << ", "
+                                              << data3 << ")" ;
   return true;
 }
 
@@ -90,12 +95,12 @@ bool TCPServer::readTCP() {
       return true;
     }
     else if (n==0 && NoDataCycleCount <= 0) {
-      error("ERROR Connection Lost");
+      error("readTCP","Connection Lost");
       NoDataCycleCount = NOCONNECTION_COUNT;
       return false;
     }
     else if (n != MessageLength) {
-      error("ERROR reading from socket");
+      error("readTCP","Error reading from socket");
       NoDataCycleCount = NOCONNECTION_COUNT;
       return false;
     }
@@ -111,7 +116,7 @@ bool TCPServer::readTCP() {
   return true;
 }
 
-//??
+
 int TCPServer::getCommand() {
   if ( readTCP() )
     return commandRecieved;
@@ -122,7 +127,7 @@ int TCPServer::getCommand() {
 
 int TCPServer::getData(int dataPackage) {
   if (dataPackage<0 || dataPackage > DATA_PACKAGES-1) {
-    printf("no data[%d] in communication protocol\n",dataPackage);
+    ALL_LOG(logDEBUG4) << "no data[" << dataPackage << "] in communication protocol.";
     return 0;
   }
   return dataRecieved[dataPackage];

@@ -5,6 +5,8 @@
 #include <string>
 #include <algorithm>
 #include <math.h>
+#include "Log.h"
+
 #include "PositionHandling.h"
 
 
@@ -48,7 +50,10 @@ bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
   bool isZero = true;
   for (int i = 0; i < 6; i++) {
     if (Points[targetObjective-1][SequenceCounter][i] != 0) {
-      //std::cout << "Points[" << targetObjective-1 << "][" << SequenceCounter << "][" << i << "] != 0\n";
+      ALL_LOG(logDEBUG3) << "PositionHandling::getCoordinates: " 
+                         << "Points[" << targetObjective-1 << "]["
+                                      << SequenceCounter << "]["
+                                      << i << "] != 0" ;
       isZero = false;
     }
   }
@@ -63,7 +68,13 @@ bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
     }
     coordTransform(targetCoordinates, TransMat[targetObjective-1]);
   }
-  //printf("Coordinates: (%f,%f,%f,%f,%f,%f)\n", coordinates[0],coordinates[1],coordinates[2],coordinates[3],coordinates[4],coordinates[5]);
+  ALL_LOG(logDEBUG4) << "PositionHandling::getCoordinates: " 
+                     << "TargetCoordinates: (" << targetCoordinates[0] << ", "
+                                               << targetCoordinates[1] << ", "
+                                               << targetCoordinates[2] << ", "
+                                               << targetCoordinates[3] << ", "
+                                               << targetCoordinates[4] << ", "
+                                               << targetCoordinates[5] << ")" ;
 }
 
 bool PositionHandling::getOrigin(float* targetCoordinates, KinovaPts::Objective targetObjective, float* currentCoordinates) {
@@ -96,7 +107,8 @@ void PositionHandling::resetSequence() {
 /*Prepares new Sequence. Takes currentPosition of Arm as Objective */
 void PositionHandling::newTeachObjective(KinovaPts::Objective targetObjective, float* currentCoordinates) {
   if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() ) {
-    std::cout << "newTeachObject is ZeroObjective!\n";
+    ALL_LOG(logDEBUG3) << "PositionHandling::newTeachObjective: " 
+                       << "newTeachObject is ZeroObjective!";
     for (int i = 0; i < 6; i++) {
     Location[targetObjective-1][i] = currentCoordinates[i];
     }
@@ -112,9 +124,8 @@ bool PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targ
   if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives ) {
     coordTransform(coordinates, InvTransMat[targetObjective-1]);
     std::vector<float> vec_coord(coordinates, coordinates + 6);
-    std::cout << "SavePoint: sizeof vec_coord = " << vec_coord.size() << "\n";
     //check SequenceCounter
-    if ( SequenceCounter == Points[targetObjective-1].size() ) {
+    if ( SequenceCounter ==  Points[targetObjective-1].size()) {
       Points[targetObjective-1].push_back(vec_coord);
       return true;
     }
@@ -130,12 +141,15 @@ bool PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targ
       return true;
     }
     else {
-      std::cout << "SavePoint: Point is out of bound!\n";
+      ALL_LOG(logWARNING) << "PositionHandling::SavePoint: SequenceCounter is out of bound: "
+                          << SequenceCounter << " at SequenceSize off "
+                          << Points[targetObjective-1].size() ;
       return false;
     }
   }
   else {
-    std::cout << "SavePoint: targetObjective is out of bound!\n";
+    ALL_LOG(logERROR) << "PositionHandling::SavePoint: targetObjective is out of bound: "
+                        << targetObjective;
     return false;
   }
 }
@@ -167,7 +181,8 @@ void PositionHandling::readFromFile() {
         vec_int.push_back(n);
       }
       if (vec_int.size() == 0) {
-        std::cout << "ReadFromFile: No Location. ERROR: File-Missmatch.";
+        ALL_LOG(logERROR) << "PositionHandling::ReadFromFile: "
+                          << "File-Missmatch: No Objectives found";
         break;
       }
       bool isZero = true;
@@ -177,7 +192,8 @@ void PositionHandling::readFromFile() {
       }
       if (isZero) {
         ZeroObjectives.push_back(i);
-        std::cout << "Objective " << i << " is Zero!\n";
+        ALL_LOG(logDEBUG2) << "PositionHandling::ReadFromFile: "
+                           << "Objective " << i << " is Zero";
       }
     }
   }
@@ -197,7 +213,8 @@ void PositionHandling::readFromFile() {
   f2d_vec_t::iterator it = Points[location].begin();
   
   while (std::getline(infile,line) && location < KinovaPts::NumberOfObjectives) { 
-    //std::cout << "location: " << location << ", Sequence: " << sequence;
+    ALL_LOG(logDEBUG4) << "PositionHandling::ReadFromFile: "
+                       << "Objective: " << location << ", Point: " << sequence;
     std::istringstream iss(line);
     int n;
     std::vector<int> vec_int;
@@ -210,36 +227,20 @@ void PositionHandling::readFromFile() {
       location++;
       sequence = 0;
       it = Points[location].begin();
-      //PrePoint = true;
-      //std::cout << ": Empty line. Next Location\n";
+      ALL_LOG(logDEBUG4) << "PositionHandling::ReadFromFile: "
+                         << "Empty line. Next Objective.";
     }
     else {
       //save Point
       std::vector<float> vec_float(6);
-      //bool isZero = true;
       for (int i = 0; i < 6; i++) {
-        /*if (vec_int[i] != 0) {
-          isZero = false;
-        }*/
         vec_float[i] = (float)vec_int[i]/1000;
       }
-      /*if (isZero) {
-        PrePoint = false;
-        //std::cout << ": Zero-Point\n";
-      }
-      else if (PrePoint) {
-        Points[location].insert(it+sequence, vec_float);
-        //std::cout << ": Pre-Zero\n";
-      }
-      else {*/
-        Points[location].push_back(vec_float);
-        //std::cout << ": Post-Zero\n";
-      //}
-      //std::cout << "Size at Location " << location << ": " << Points[location].size() << "\n";
+      Points[location].push_back(vec_float);
       sequence++;
     }
   }
-  std::cout << "File Loaded\n";
+  ALL_LOG(logINFO) << "Points successfully loaded from File.";
 }
 
 
@@ -275,9 +276,9 @@ void PositionHandling::writeToFile() {
       saveFile << "\n";
     }
   }
-  else std::cout << "Unable to open file\n";
+  else  { ALL_LOG(logERROR) << "PosiionHandling::writeToFile: Unable to open file."; }
   saveFile.close();
-  std::cout << "File Saved\n";
+  ALL_LOG(logINFO) << "Point successfully saved to File.";
 }
 
 int PositionHandling::getSequence() {
@@ -329,7 +330,7 @@ PositionHandling::f2d_vec_t PositionHandling::rotMatrix(float angle[3]) {
     c[i] = cos( angle[i] );
     s[i] = sin( angle[i] );
   }
-  /*Hardcoded RotationMatrix of Euler XYZ*/
+  //Hardcoded RotationMatrix of Euler XYZ
   mat[0][0] =  c[1]*c[2];
   mat[0][1] = -c[1]*s[2];
   mat[0][2] =  s[1];
@@ -434,5 +435,5 @@ void PositionHandling::calcTransMat() {
     InvTransMat[i][3][2] =  0;
     InvTransMat[i][3][3] =  1;
   }
-  std::cout << "calculated Transformation Matrices\n";
+  ALL_LOG(logDEBUG) << "Transformation matrices calculated";
 }

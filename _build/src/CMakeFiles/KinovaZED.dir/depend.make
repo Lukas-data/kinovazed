@@ -6,6 +6,8 @@ src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/Event.h
 src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/KinovaArm.h
 src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/KinovaMain.cpp
 src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/KinovaStatus.h
+src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/Log.h
+src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/LogFile.h
 src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/PositionHandling.h
 src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/State.h
 src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o: ../src/StateMachine.h

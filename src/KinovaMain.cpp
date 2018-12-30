@@ -7,6 +7,8 @@
 
 
 #include <stdio.h>
+#include "LogFile.h"
+#include "Log.h"
 #include "CommandHandling.h"
 
 
@@ -15,22 +17,21 @@ CommandHandling commandHandler;
 
 int main(int argc, char *argv[])
 {
+  if ( LogFile::create() ) {
+    ALL_LOG(logINFO) << "KinovaMain - Startup!";
 
-  printf("\n");
-  printf("/-----------------\\\n");
-  printf("| KinovaRaspiMain | \n");
-  printf("\\-----------------/\n\n");
-
-  commandHandler.init();     
-  while (1) {
-    try {
-      commandHandler.process();
+    commandHandler.init();     
+    while (1) {
+      try {
+        commandHandler.process();
+      }
+      catch ( const std::runtime_error& e) {
+        ALL_LOG(logERROR) << "RuntimeError: " << e.what();
+        return -1;
+      }
+      usleep(10000);
     }
-    catch ( const std::runtime_error& e) {
-      printf("RuntimeError: %s\n", e.what());
-      printf("restarting...\n");
-      return -1;
-    }
-    usleep(10000);
   }
+  usleep(10000000);
+  return -1;
 }
