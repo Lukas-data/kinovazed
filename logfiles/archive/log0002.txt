@@ -1,3 +1,0 @@
-    KinovaMain - Startup!
-  KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-  KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!

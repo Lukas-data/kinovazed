@@ -12,6 +12,8 @@
 
 enum TLogLevel {logERROR, logWARNING, logINFO, logDEBUG, logDEBUG1, logDEBUG2, logDEBUG3, logDEBUG4};
 
+static const char *TLogLevelName[] = {"ERROR", "WARNING", "INFO", "DEBUG0", "DEBUG1", "DEBUG2", "DEBUG3", "DEBUG4" };
+
 template <typename OutputPolicy>
 class Log {
 
@@ -41,8 +43,8 @@ Log<OutputPolicy>::~Log() {
 
 template <typename OutputPolicy>
 std::ostringstream& Log<OutputPolicy>::Get(TLogLevel level) {
-  oss << std::string((level < logDEBUG ? level : logDEBUG)*2, ' ');
-  //oss << ToString(level) << ": ";
+  oss << std::string((level < logDEBUG ? level : logDEBUG)*2, '_');
+  oss << TLogLevelName[level] << ": ";
   messageLevel = level;
   return oss;  
 }
