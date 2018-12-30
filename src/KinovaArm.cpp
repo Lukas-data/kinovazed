@@ -288,6 +288,7 @@ void KinovaArm::moveToPosition(bool init) {
     bool PointReached = checkIfReached(targetCoordinates, currentCoordinates);
     
     if (PointReached == true) {
+      arm->erase_trajectories();
       //Next Point in Sequence.
       PositionHandler.incrementSequence();
     }
