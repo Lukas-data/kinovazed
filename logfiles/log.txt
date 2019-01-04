@@ -1,2 +1,1613 @@
     INFO: KinovaMain - Startup!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
     INFO: Connection to JacoArm established.
+    INFO: Connection to RoboRio established.
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State PowerOff
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+    INFO: Points successfully loaded from File.
+    INFO: StateMachine: Processing Event 'InitHomeReached'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+    INFO: Points successfully loaded from File.
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Idle
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Idle
+    INFO: Entering State EStop
+ERROR: KinovaArm::releaseControl(): 1, Could not stop API control! libusb error.
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+    INFO: Connection to JacoArm established.
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+    INFO: Points successfully loaded from File.
+    INFO: StateMachine: Processing Event 'InitHomeReached'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+    INFO: Points successfully loaded from File.
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Idle
+    INFO: StateMachine: Processing Event 'SetMode'
+    INFO: Exiting State Idle
+    INFO: Entering State ChangeMode
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+    INFO: StateMachine: Processing Event 'GoToPosition'
+    INFO: Exiting State Steering
+    INFO: Entering State MovePosition
+    INFO: StateMachine: Processing Event 'SequenceDone'
+    INFO: Exiting State MovePosition
+    INFO: Entering State ChangeMode
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+    INFO: StateMachine: Processing Event 'NoMode'
+    INFO: Exiting State Steering
+    INFO: Entering State Idle
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Idle
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+    INFO: Points successfully loaded from File.
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Idle
+    INFO: StateMachine: Processing Event 'GoToPosition'
+    INFO: Exiting State Idle
+    INFO: Entering State MovePosition
+    INFO: StateMachine: Processing Event 'SequenceDone'
+    INFO: Exiting State MovePosition
+    INFO: Entering State ChangeMode
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+    INFO: StateMachine: Processing Event 'SetMode'
+    INFO: Exiting State Steering
+    INFO: Entering State ChangeMode
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+    INFO: StateMachine: Processing Event 'SetMode'
+    INFO: Exiting State Steering
+    INFO: Entering State ChangeMode
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+    INFO: StateMachine: Processing Event 'GoToPosition'
+    INFO: Exiting State Steering
+    INFO: Entering State MovePosition
+    INFO: StateMachine: Processing Event 'SequenceDone'
+    INFO: Exiting State MovePosition
+    INFO: Entering State ChangeMode
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+    INFO: StateMachine: Processing Event 'GoToPosition'
+    INFO: Exiting State Steering
+    INFO: Entering State MovePosition
+    INFO: StateMachine: Processing Event 'SequenceDone'
+    INFO: Exiting State MovePosition
+    INFO: Entering State ChangeMode
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+    INFO: StateMachine: Processing Event 'NoMode'
+    INFO: Exiting State Steering
+    INFO: Entering State Idle
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Idle
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+    INFO: Points successfully loaded from File.
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Idle
+    INFO: StateMachine: Processing Event 'SetMode'
+    INFO: Exiting State Idle
+    INFO: Entering State ChangeMode
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+    INFO: StateMachine: Processing Event 'GoToPosition'
+    INFO: Exiting State Steering
+    INFO: Entering State MovePosition
+    INFO: StateMachine: Processing Event 'SequenceDone'
+    INFO: Exiting State MovePosition
+    INFO: Entering State ChangeMode
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+    INFO: StateMachine: Processing Event 'SetMode'
+    INFO: Exiting State Steering
+    INFO: Entering State ChangeMode
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+    INFO: StateMachine: Processing Event 'SetMode'
+    INFO: Exiting State Steering
+    INFO: Entering State ChangeMode
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+    INFO: StateMachine: Processing Event 'GoToPosition'
+    INFO: Exiting State Steering
+    INFO: Entering State MovePosition
+    INFO: StateMachine: Processing Event 'SequenceDone'
+    INFO: Exiting State MovePosition
+    INFO: Entering State ChangeMode
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Steering
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+    INFO: Points successfully loaded from File.
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Idle
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Idle
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+ERROR: KinovaArm::takeControl(): 1, Could not start API control! libusb error.
+    INFO: Points successfully loaded from File.
+ERROR: KinovaArm::initialize(): 201, Could not get arm status! libusb error.
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Initialize 
+    INFO: Entering State EStop
+ERROR: KinovaArm::releaseControl(): 1, Could not stop API control! libusb error.
+    INFO: Connection to JacoArm established.
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+    INFO: Points successfully loaded from File.
+    INFO: StateMachine: Processing Event 'InitHomeReached'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+    INFO: Points successfully loaded from File.
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Idle
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Idle
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+    INFO: Points successfully loaded from File.
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Idle
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Idle
+    INFO: Entering State EStop
+ERROR: KinovaArm::releaseControl(): 1, Could not stop API control! libusb error.
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+    INFO: Connection to JacoArm established.
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+    INFO: Points successfully loaded from File.
+    INFO: StateMachine: Processing Event 'InitHomeReached'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+    INFO: Points successfully loaded from File.
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Idle
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Idle
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.

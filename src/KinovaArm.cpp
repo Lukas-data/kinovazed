@@ -9,11 +9,7 @@
 #define KINOVA_DUMMY false
 
 KinovaArm::~KinovaArm() {
-  if (KINOVA_DUMMY == false) {   
-    delete arm;
-    ALL_LOG(logINFO) << "Connection to JacoArm closed " ;
-  }
-  Connected = false;
+  disconnect();
 }
 
 /*Sets Errorflag and removes Connected flag.*/
@@ -37,6 +33,7 @@ bool KinovaArm::connect() {
     try {
       arm = new KinDrv::JacoArm();
       Connected = true;
+      ALL_LOG(logINFO) << "Connection to JacoArm established.";
       return 1;
     } catch( KinDrv::KinDrvException &e ) {
       error("connect", e, true);
@@ -49,6 +46,23 @@ bool KinovaArm::connect() {
   }
 }
 
+void KinovaArm::disconnect() {
+  if (KINOVA_DUMMY == false) {
+    if( arm != NULL ) {
+      delete arm;
+    }
+    ALL_LOG(logINFO) << "Connection to JacoArm closed. " ;
+  }
+  Connected = false;
+}
+
+
+void KinovaArm::reconnectOnError() {
+  if ( Error ) {
+    if ( Connected ) { disconnect(); }
+    Error = !connect();
+  }
+}
 
 /*Gain API Control*/
 void KinovaArm::takeControl() {

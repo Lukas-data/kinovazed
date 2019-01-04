@@ -31,6 +31,8 @@ class KinovaArm {
 
     void error(const char* funcName, KinDrv::KinDrvException &e, bool warning);
     bool connect();
+    void disconnect();
+    void reconnectOnError();
     void takeControl();
     void releaseControl();
 

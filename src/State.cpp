@@ -32,6 +32,7 @@ void StateEStop::exitAction() {
   ALL_LOG(logINFO) << "Exiting State EStop";
 }
 void StateEStop::tickAction() {
+  JacoZED->reconnectOnError();
 }
 
 // Initialize

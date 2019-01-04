@@ -9,19 +9,17 @@
 /*Initiailizes Communication with Jaco-Arm and TCPServer.*/
 void CommandHandling::init() {
   //Connect to Kinova robotic arm
-  ALL_LOG(logDEBUG1) << "Trying to connect to JacoArm.";
+  ALL_LOG(logDEBUG3) << "Trying to connect to JacoArm.";
   while (true) {
     if( JacoZED.connect() ) {
-      ALL_LOG(logINFO) << "Connection to JacoArm established.";
       break;
     }
     else { ALL_LOG(logDEBUG1) << "Connection to JacoArm unsuccessfull. Retry."; }
     usleep(1000000);
   }
-  ALL_LOG(logDEBUG1) << "-------------------------";
 
   //Connect to RoboRio (ZED Main Controller)
-  ALL_LOG(logDEBUG1) << "Trying to connect to RoboRio";
+  ALL_LOG(logDEBUG3) << "Trying to connect to RoboRio";
   while (true) {
     if ( RoboRio.connect() ) {
       ALL_LOG(logINFO) << "Connection to RoboRio established.";
@@ -30,7 +28,6 @@ void CommandHandling::init() {
     else { ALL_LOG(logDEBUG1) << "Connection to RoboRio unsuccessfull. Retry."; }
     usleep(1000000);
   }
-  ALL_LOG(logDEBUG1) << "-------------------------";
 
   //Initialize StateMachine.
   KinovaSM.init(&JacoZED);
