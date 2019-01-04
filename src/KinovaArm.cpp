@@ -202,7 +202,7 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
       ALL_LOG(logWARNING) << "KinovaArm: Requested Mode invalid.";
     } 
   }
-  clock_gettime(CLOCK_REALTIME, &TimerStart);
+  clock_gettime(CLOCK_REALTIME, &ModeChangeTimerStart);
 }
 
 
@@ -210,8 +210,8 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
 void KinovaArm::modeChangeTimer() {
   timespec TimerNow;
   clock_gettime(CLOCK_REALTIME, &TimerNow);
-  double elapsedTime = (TimerNow.tv_sec-TimerStart.tv_sec) * 1000 +
-                    (TimerNow.tv_nsec-TimerStart.tv_nsec) / 1000000;
+  double elapsedTime = (TimerNow.tv_sec-ModeChangeTimerStart.tv_sec) * 1000 +
+                    (TimerNow.tv_nsec-ModeChangeTimerStart.tv_nsec) / 1000000;
   if (elapsedTime > ModeChangeTimer) {
     ExternalEvent = KinovaFSM::ModeSet;
     ModeChangeTimer=0;
@@ -463,6 +463,7 @@ void KinovaArm::nextPoint(int EventVariable) {
 }
 
 
+
 /*Set-Functinons*/
 void KinovaArm::setJoystick(int x, int y, int z) {
   ALL_LOG(logDEBUG4) << "KinovaArm::setJoystick (" << x << ", "
@@ -527,22 +528,34 @@ void  KinovaArm::setInactive() {
 }
 
 
-/*Returns true if currentCoordinates are within Range. ot targetCoordinates*/
+/*Returns true if arm isn't moving anymore. Starts after initial timer of 200ms to wait for arm to start moving.*/
 bool KinovaArm::checkIfReached(float* targetCoordinates, float* currentCoordinates) {
-  bool PointReached = true;
-  ALL_LOG(logDEBUG2) << "RangeCheck: following Axis do not pass:";
-  float range = POSITION_RANGE;
-  for (int i = 0; i<6; i++) {
-    if (i == 3) { range = ROTATION_RANGE; }
-    float dPos = fabs( currentCoordinates[i] - targetCoordinates[i] );
-    float dVel = fabs( currentCoordinates[i] - LastCoordinates[i] );
-    if (  dPos > range || dVel > VELOCITY_RANGE ) {
-      ALL_LOG(logDEBUG2) << "[" << i << "]: dPos: " << dPos << ", dVel: " << dVel;
-      PointReached = false; 
-    }
-    LastCoordinates[i] = currentCoordinates[i];
+  if (MoveTimerStart.tv_sec == 0 && MoveTimerStart.tv_nsec == 0 ) {
+    clock_gettime(CLOCK_REALTIME, &MoveTimerStart);
   }
-  return PointReached;
+  timespec TimerNow;
+  clock_gettime(CLOCK_REALTIME, &TimerNow);
+  double elapsedTime = (TimerNow.tv_sec-MoveTimerStart.tv_sec) * 1000 +
+                       (TimerNow.tv_nsec-MoveTimerStart.tv_nsec) / 1000000;
+
+  if (elapsedTime > 200) {
+    bool PointReached = true;
+    ALL_LOG(logDEBUG4) << "RangeCheck: following Axis do not pass:";
+    for (int i = 0; i<6; i++) {
+      float dVel = fabs( currentCoordinates[i] - LastCoordinates[i] );
+      if ( dVel > VELOCITY_RANGE ) {
+        ALL_LOG(logDEBUG4) << "[" << i << "]: dVel: " << dVel;
+        PointReached = false; 
+      }
+      LastCoordinates[i] = currentCoordinates[i];
+    }
+    if (PointReached) {
+      MoveTimerStart.tv_sec = 0;
+      MoveTimerStart.tv_nsec = 0;
+    }
+    return PointReached;
+  }
+  return false;
 }
 
 

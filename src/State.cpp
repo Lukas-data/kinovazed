@@ -141,7 +141,6 @@ void StateTeachMovePoint::tickAction() {
 // TeachMoveOrigin
 void StateTeachMoveOrigin::entryAction() {
   ALL_LOG(logINFO) << "Entering State TeachMoveOrigin";
-  
 }
 void StateTeachMoveOrigin::exitAction() {
   ALL_LOG(logINFO) << "Exiting State TeachMoveOrigin";

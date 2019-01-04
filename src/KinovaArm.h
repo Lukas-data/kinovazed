@@ -8,7 +8,7 @@
 
 #define POSITION_RANGE 0.05
 #define ROTATION_RANGE 0.25
-#define VELOCITY_RANGE 0.000005
+#define VELOCITY_RANGE 0.000002
 
 class KinovaArm {
 
@@ -89,8 +89,10 @@ class KinovaArm {
     int JoystickZ;
     float JoystickCalcFactor;
 
-    timespec TimerStart;
+    timespec ModeChangeTimerStart;
     int ModeChangeTimer;
+
+    timespec MoveTimerStart;
 
     KinovaFSM::Event ExternalEvent;
     KinovaFSM::Event InternalEvent;
