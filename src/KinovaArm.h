@@ -103,7 +103,7 @@ class KinovaArm {
 
     bool checkIfReached(float* targetCoordinates, float* currentCoordinates);
     void getForces();
-
+    void getCurrents();
 
     
 };

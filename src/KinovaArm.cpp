@@ -270,6 +270,7 @@ void KinovaArm::move() {
     catch( KinDrv::KinDrvException &e ) {
       error("move", e, false);
     }
+  getCurrents();
   }
 }
 
@@ -315,6 +316,7 @@ void KinovaArm::moveToPosition(bool init) {
       catch( KinDrv::KinDrvException &e ) {
         error("moveToPosition", e, false);
       }
+      getCurrents();
     }
   }
   else {
@@ -373,6 +375,7 @@ void KinovaArm::moveToPoint() {
       catch( KinDrv::KinDrvException &e ) {
         error("moveToPoint", e, false);
       }
+      getCurrents();
     }
   }
   else {
@@ -408,6 +411,7 @@ void KinovaArm::moveToOrigin() {
       catch( KinDrv::KinDrvException &e ) {
         error("moveToPoint", e, false);
       }
+      getCurrents();
     }
   }
   else {
@@ -575,17 +579,38 @@ bool KinovaArm::checkIfReached(float* targetCoordinates, float* currentCoordinat
 
 /*PrintForces. TODO: return Forces */
 void KinovaArm::getForces() {
-  KinDrv::jaco_position_t force = arm->get_ang_force();
-  float forces[6];
-  ALL_LOG(logDEBUG2) << "getForces: currentForces: ";
-  for (int i = 0; i<6; i++) {
-    if (i<3) { forces[i] = force.position[i]; }
-    if (i>2) { forces[i] = force.rotation[i-3] ; }
-  }  
-  ALL_LOG(logDEBUG2) << "(" << forces[0] << ", "
-                            << forces[1] << ", "
-                            << forces[2] << ", "
-                            << forces[3] << ", "
-                            << forces[4] << ", "
-                            << forces[5] << ")";
+  try {
+    KinDrv::jaco_position_t force = arm->get_ang_force();
+    ALL_LOG(logDEBUG2) << "getForces:" << "(" << force.joints[0] << ", "
+                                              << force.joints[1] << ", "
+                                              << force.joints[2] << ", "
+                                              << force.joints[3] << ", "
+                                              << force.joints[4] << ", "
+                                              << force.joints[5] << ")";
+  }
+  catch( KinDrv::KinDrvException &e ) {
+    error("getForces", e, false);
+  }
+}
+
+/*PrintCurrents if greater than 4. TODO: return Currents*/
+void KinovaArm::getCurrents() {
+  try {
+    KinDrv::jaco_position_t current = arm->get_ang_current();
+    float sumCurrent = 0;
+    for (int i = 0; i < 6; i++) {
+      sumCurrent += current.joints[i];
+    }
+    if (sumCurrent > 4) {
+      ALL_LOG(logDEBUG2) << "getCurrents: " << "(" << current.joints[0] << ", "
+                                                   << current.joints[1] << ", "
+                                                   << current.joints[2] << ", "
+                                                   << current.joints[3] << ", "
+                                                   << current.joints[4] << ", "
+                                                   << current.joints[5] << ")";
+    }
+  }
+  catch( KinDrv::KinDrvException &e ) {
+    error("getCurrents", e, false);
+  }
 }

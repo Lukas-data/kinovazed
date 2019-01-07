@@ -37,6 +37,7 @@ void CommandHandling::process() {
   KinovaFSM::Event newEvent = KinovaFSM::NoEvent;
   int newVar = 0;
 
+  //INPUTS
   KinovaFSM::Event oldCommand = CommandIn;
   int oldCommandVar = CommandVarIn;
   getInputs();
@@ -71,6 +72,7 @@ void CommandHandling::process() {
   KinovaSM.sendEvent(newEvent,newVar);
   bool processed = KinovaSM.process();
 
+  //OUTPUTS
   oldCommand = CommandOut;
   oldCommandVar = CommandVarOut;
 
@@ -153,13 +155,9 @@ void CommandHandling::checkInputEvent(KinovaFSM::Event &event, int &eventVar) {
     event = KinovaFSM::NoEvent;
     eventVar = 0;
   }
-
-
-
-  
 }
 
-/*retrieves EventVariable for differen HW-Events.*/
+/*retrieves EventVariable for different HW-Events.*/
 bool CommandHandling::getHWEventVar(KinovaFSM::Event &event, int &eventVar) {
   //Hardware Events
   switch (event) {
@@ -177,7 +175,6 @@ bool CommandHandling::getHWEventVar(KinovaFSM::Event &event, int &eventVar) {
                                           return true;
   }
   return false;
-  
 }
 
 
