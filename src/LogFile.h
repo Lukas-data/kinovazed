@@ -6,8 +6,8 @@
 #include <fstream>
 #include "Log.h"
 
-#define REP_LEVEL_FILE    logINFO
-#define REP_LEVEL_CONSOLE logDEBUG2
+#define REP_LEVEL_FILE    logDEBUG2
+#define REP_LEVEL_CONSOLE logDEBUG3
 
 #define LOG_FILEPATH "/home/kinova/Documents/kinovaZED/logfiles/"
 #define LOGARCHIVE_FILEPATH "/home/kinova/Documents/kinovaZED/logfiles/archive/"

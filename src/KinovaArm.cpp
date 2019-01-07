@@ -252,13 +252,13 @@ void KinovaArm::move() {
       axes.trans_lr = currentSpeedX; 
       axes.trans_fb = currentSpeedY;
       axes.trans_rot = currentSpeedZ;
-      ALL_LOG(logDEBUG3) << "MoveArm In Mode: 1";
+      ALL_LOG(logDEBUG4) << "MoveArm In Mode: 1";
     }
     if (Mode == KinovaStatus::Rotation || Mode == KinovaStatus::Axis2) {
       axes.wrist_lr = currentSpeedX;
       axes.wrist_fb = currentSpeedY;
       axes.wrist_rot = currentSpeedZ;
-      ALL_LOG(logDEBUG3) << "MoveArm In Mode: 2";
+      ALL_LOG(logDEBUG4) << "MoveArm In Mode: 2";
     }
     try {
       arm->move_joystick_axis(axes);
@@ -303,6 +303,7 @@ void KinovaArm::moveToPosition(bool init) {
     bool PointReached = checkIfReached(targetCoordinates, currentCoordinates);
     
     if (PointReached == true) {
+      ALL_LOG(logDEBUG) << "Sequence-Point " << PositionHandler.getSequence() << " reached.";
       arm->erase_trajectories();
       //Next Point in Sequence.
       PositionHandler.incrementSequence();
@@ -322,7 +323,10 @@ void KinovaArm::moveToPosition(bool init) {
   else {
     currentPosition = TargetObjective;
     if (init) { InternalEvent = KinovaFSM::InitHomeReached; }
-    else { ExternalEvent = KinovaFSM::SequenceDone; }
+    else {
+      ALL_LOG(logDEBUG) << "Sequence " << TargetObjective << " done." ;
+      ExternalEvent = KinovaFSM::SequenceDone;
+    }
   }
 }
 
@@ -365,6 +369,8 @@ void KinovaArm::moveToPoint() {
     if (PointReached == true) {
       currentPosition = getCurrentPoint();
       ExternalEvent = KinovaFSM::PointReached;
+      ALL_LOG(logDEBUG) << "Point " << currentPosition
+                        << " of Target: " << TeachTarget << " is reached.";
     }
     else {
       //Move to Point
@@ -401,6 +407,7 @@ void KinovaArm::moveToOrigin() {
     if (PointReached == true) {
       currentPosition = -1;
       ExternalEvent = KinovaFSM::PointReached;
+      ALL_LOG(logDEBUG) << "Origin of " << TeachTarget << " reached.";
     }
     else {
       //Move to Point
@@ -558,11 +565,11 @@ bool KinovaArm::checkIfReached(float* targetCoordinates, float* currentCoordinat
 
   if (elapsedTime > 200) {
     bool PointReached = true;
-    ALL_LOG(logDEBUG4) << "RangeCheck: following Axis do not pass:";
+    ALL_LOG(logDEBUG3) << "RangeCheck: following Axis do not pass:";
     for (int i = 0; i<6; i++) {
       float dVel = fabs( currentCoordinates[i] - LastCoordinates[i] );
       if ( dVel > VELOCITY_RANGE ) {
-        ALL_LOG(logDEBUG4) << "[" << i << "]: dVel: " << dVel;
+        ALL_LOG(logDEBUG3) << "[" << i << "]: dVel: " << dVel;
         PointReached = false; 
       }
       LastCoordinates[i] = currentCoordinates[i];
@@ -570,8 +577,8 @@ bool KinovaArm::checkIfReached(float* targetCoordinates, float* currentCoordinat
     if (PointReached) {
       MoveTimerStart.tv_sec = 0;
       MoveTimerStart.tv_nsec = 0;
+      return PointReached;
     }
-    return PointReached;
   }
   return false;
 }
@@ -601,7 +608,7 @@ void KinovaArm::getCurrents() {
     for (int i = 0; i < 6; i++) {
       sumCurrent += current.joints[i];
     }
-    if (sumCurrent > 4) {
+    if (sumCurrent > 2) {
       ALL_LOG(logDEBUG2) << "getCurrents: " << "(" << current.joints[0] << ", "
                                                    << current.joints[1] << ", "
                                                    << current.joints[2] << ", "
