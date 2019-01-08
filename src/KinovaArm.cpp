@@ -12,7 +12,7 @@ KinovaArm::~KinovaArm() {
   disconnect();
 }
 
-/*Sets Errorflag and removes Connected flag.*/
+/*Prints Error/Warning-Message.Sets Errorflag and removes Connected flag on Error.*/
 void KinovaArm::error(const char* funcName, KinDrv::KinDrvException &e, bool warning) {
   if (!warning) {
     ALL_LOG(logERROR) << "KinovaArm::" << funcName << "(): "
@@ -46,6 +46,8 @@ bool KinovaArm::connect() {
   }
 }
 
+
+/*Disconnects to KinovaArm*/
 void KinovaArm::disconnect() {
   if (KINOVA_DUMMY == false) {
     if( arm != NULL ) {
@@ -94,7 +96,7 @@ void KinovaArm::releaseControl() {
 }
 
 
-/*Stops arm*/
+/*Stops arm and erases all trajectories.*/
 void KinovaArm::dontMove() {
   if (KINOVA_DUMMY == false) {
     //reset Movement-Target
@@ -122,6 +124,8 @@ void KinovaArm::dontMove() {
   }
 }
 
+
+/*Checks if Arm is allready initialized and sets Home as targetPosition if not.*/
 void KinovaArm::checkInitialize() {
   Initialized = false;
   PositionHandler.init();
@@ -270,7 +274,7 @@ void KinovaArm::move() {
     catch( KinDrv::KinDrvException &e ) {
       error("move", e, false);
     }
-  getCurrents();
+    checkCurrents();
   }
 }
 
@@ -301,8 +305,8 @@ void KinovaArm::moveToPosition(bool init) {
   if ( PositionHandler.getCoordinates(targetCoordinates, TargetObjective, currentCoordinates) ) {
     //Check if in range
     bool PointReached = checkIfReached(targetCoordinates, currentCoordinates);
-    
-    if (PointReached == true) {
+    bool currentLimit = checkCurrents();
+    if (PointReached || currentLimit) {
       ALL_LOG(logDEBUG) << "Sequence-Point " << PositionHandler.getSequence() << " reached.";
       arm->erase_trajectories();
       //Next Point in Sequence.
@@ -317,7 +321,6 @@ void KinovaArm::moveToPosition(bool init) {
       catch( KinDrv::KinDrvException &e ) {
         error("moveToPosition", e, false);
       }
-      getCurrents();
     }
   }
   else {
@@ -360,13 +363,13 @@ void KinovaArm::moveToPoint() {
   currentPosition=0;
 
   getPosition(currentCoordinates);
-
+  
   //Check if Sequence is still going
   if ( PositionHandler.getCoordinates(targetCoordinates, TeachTarget, currentCoordinates) ) {
     //Check if in range
     bool PointReached = checkIfReached(targetCoordinates, currentCoordinates);
-    
-    if (PointReached == true) {
+    checkCurrents();
+    if (PointReached) {
       currentPosition = getCurrentPoint();
       ExternalEvent = KinovaFSM::PointReached;
       ALL_LOG(logDEBUG) << "Point " << currentPosition
@@ -381,7 +384,6 @@ void KinovaArm::moveToPoint() {
       catch( KinDrv::KinDrvException &e ) {
         error("moveToPoint", e, false);
       }
-      getCurrents();
     }
   }
   else {
@@ -403,8 +405,8 @@ void KinovaArm::moveToOrigin() {
   if ( PositionHandler.getOrigin(targetCoordinates, TeachTarget, currentCoordinates) ) {
     //Check if in range
     bool PointReached = checkIfReached(targetCoordinates, currentCoordinates);
-    
-    if (PointReached == true) {
+    checkCurrents();
+    if (PointReached) {
       currentPosition = -1;
       ExternalEvent = KinovaFSM::PointReached;
       ALL_LOG(logDEBUG) << "Origin of " << TeachTarget << " reached.";
@@ -418,7 +420,6 @@ void KinovaArm::moveToOrigin() {
       catch( KinDrv::KinDrvException &e ) {
         error("moveToPoint", e, false);
       }
-      getCurrents();
     }
   }
   else {
@@ -487,6 +488,37 @@ void KinovaArm::nextPoint(int EventVariable) {
   }
 }
 
+
+/*PrintCurrents if greater than 2. returns True if Currents greater than 3.5, sends Error if Current is greater than 4.5 (fuse at 5 A)*/
+bool KinovaArm::checkCurrents() {
+  try {
+    KinDrv::jaco_position_t current = arm->get_ang_current();
+    float sumCurrent = 0;
+    for (int i = 0; i < 6; i++) {
+      sumCurrent += current.joints[i];
+    }
+    if (sumCurrent > 2) {
+      ALL_LOG(logDEBUG2) << "getCurrents: " << "(" << current.joints[0] << ", "
+                                                   << current.joints[1] << ", "
+                                                   << current.joints[2] << ", "
+                                                   << current.joints[3] << ", "
+                                                   << current.joints[4] << ", "
+                                                   << current.joints[5] << ")";
+    }
+    if (sumCurrent > 4.5) {
+      ALL_LOG(logERROR) << "KinovaArm::checkCurrents(): Overcurrent";
+      Connected = false;
+      Error = true;
+    }
+    if (sumCurrent > 3.5) {
+      return true;
+    }
+    return false;
+  }
+  catch( KinDrv::KinDrvException &e ) {
+    error("checkCurrents", e, false);
+  }
+}
 
 
 /*Set-Functinons*/
@@ -597,27 +629,5 @@ void KinovaArm::getForces() {
   }
   catch( KinDrv::KinDrvException &e ) {
     error("getForces", e, false);
-  }
-}
-
-/*PrintCurrents if greater than 4. TODO: return Currents*/
-void KinovaArm::getCurrents() {
-  try {
-    KinDrv::jaco_position_t current = arm->get_ang_current();
-    float sumCurrent = 0;
-    for (int i = 0; i < 6; i++) {
-      sumCurrent += current.joints[i];
-    }
-    if (sumCurrent > 2) {
-      ALL_LOG(logDEBUG2) << "getCurrents: " << "(" << current.joints[0] << ", "
-                                                   << current.joints[1] << ", "
-                                                   << current.joints[2] << ", "
-                                                   << current.joints[3] << ", "
-                                                   << current.joints[4] << ", "
-                                                   << current.joints[5] << ")";
-    }
-  }
-  catch( KinDrv::KinDrvException &e ) {
-    error("getCurrents", e, false);
   }
 }
