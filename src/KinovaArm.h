@@ -29,7 +29,6 @@ class KinovaArm {
       {}
     ~KinovaArm();
 
-    void error(const char* funcName, KinDrv::KinDrvException &e, bool warning);
     bool connect();
     void disconnect();
     void reconnectOnError();
@@ -101,6 +100,8 @@ class KinovaArm {
 
     float LastCoordinates[6];
 
+    void error(const char* funcName, KinDrv::KinDrvException &e, bool warning);
+    void error(const char* funcName, const char* errorMsg);
     bool checkIfReached(float* targetCoordinates, float* currentCoordinates);
     bool checkCurrents();
     void getForces();

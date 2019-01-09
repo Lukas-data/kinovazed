@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctime> 
 #include <Log.h>
+#include <string>
 
 #include "KinovaArm.h"
 
@@ -15,16 +16,22 @@ KinovaArm::~KinovaArm() {
 /*Prints Error/Warning-Message.Sets Errorflag and removes Connected flag on Error.*/
 void KinovaArm::error(const char* funcName, KinDrv::KinDrvException &e, bool warning) {
   if (!warning) {
-    ALL_LOG(logERROR) << "KinovaArm::" << funcName << "(): "
-                      << e.error() << ", " << e.what() ;
+    ALL_LOG(logERROR) << "KinovaArm::" << funcName << "(): " << e.error()
+                                                   << ", " << e.what();
     Connected = false; //Simplification!!
     Error = true;
   }
   else {
-  ALL_LOG(logWARNING) << "KinovaArm::" << funcName << "(): "
-                      << e.error() << ", " << e.what() ;
+    ALL_LOG(logWARNING) << "KinovaArm::" << funcName << "(): " << e.error()
+                                                     << ", " << e.what();
   }
 }
+void KinovaArm::error(const char* funcName, const char* errorMsg) {
+  ALL_LOG(logERROR) << "KinovaArm::" << funcName << "(): " << errorMsg;
+  Connected = false; //Simplification!!
+  Error = true;
+}
+
 
 
 /*Tries to connect to KinovaArm*/
@@ -506,7 +513,7 @@ bool KinovaArm::checkCurrents() {
                                                    << current.joints[5] << ")";
     }
     if (sumCurrent > 4.5) {
-      ALL_LOG(logERROR) << "KinovaArm::checkCurrents(): Overcurrent";
+      error("checkCurrents", "Overcurrent");
       Connected = false;
       Error = true;
     }
