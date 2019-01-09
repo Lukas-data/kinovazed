@@ -605,21 +605,29 @@ bool KinovaArm::checkIfReached(float* targetCoordinates, float* currentCoordinat
   double elapsedTime = (TimerNow.tv_sec-MoveTimerStart.tv_sec) * 1000 +
                        (TimerNow.tv_nsec-MoveTimerStart.tv_nsec) / 1000000;
 
-  if (elapsedTime > 200) {
-    bool PointReached = true;
-    ALL_LOG(logDEBUG3) << "RangeCheck: following Axis do not pass:";
+  if (elapsedTime > 500) {
+    bool pointReached = true;
+    ALL_LOG(logDEBUG2) << "KinovaArm::RangeCheck: following Axis do not pass:";
     for (int i = 0; i<6; i++) {
       float dVel = fabs( currentCoordinates[i] - LastCoordinates[i] );
       if ( dVel > VELOCITY_RANGE ) {
-        ALL_LOG(logDEBUG3) << "[" << i << "]: dVel: " << dVel;
-        PointReached = false; 
+        ALL_LOG(logDEBUG2) << "[" << i << "]: dVel: " << dVel;
+        pointReached = false; 
       }
       LastCoordinates[i] = currentCoordinates[i];
     }
-    if (PointReached) {
+    //Returns PointReached if PointReachedCount is higher than 3, to prevent errors.
+    if (pointReached) {
+      ++PointReachedCount;
+    }
+    else {
+      PointReachedCount = 0;
+    }
+    if (PointReachedCount>3) {
+      PointReachedCount = 0;
       MoveTimerStart.tv_sec = 0;
       MoveTimerStart.tv_nsec = 0;
-      return PointReached;
+      return pointReached;
     }
   }
   return false;

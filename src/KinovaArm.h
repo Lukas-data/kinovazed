@@ -100,13 +100,13 @@ class KinovaArm {
 
     float LastCoordinates[6];
 
+    int PointReachedCount;
+
     void error(const char* funcName, KinDrv::KinDrvException &e, bool warning);
     void error(const char* funcName, const char* errorMsg);
     bool checkIfReached(float* targetCoordinates, float* currentCoordinates);
     bool checkCurrents();
     void getForces();
-
-    
 };
 
 #endif
