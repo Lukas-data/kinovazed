@@ -24,17 +24,9 @@ void PositionHandling::init() {
 }
 
 
-//Writes Requestet targetCoordinates[6] of Objective by pos-number and its Subpositions by Sequence-number. Takes currentPosition[6] if Objective is 0.
+//Writes Requested targetCoordinates[6] of Objective by pos-number and its Subpositions by Sequence-number. Takes currentPosition[6] if Objective is 0.
 //Returns 0 if sequence has ended.
 bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objective targetObjective, float* currentCoordinates) {
-  
-  //Check if ZeroObjective.  Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.
-  if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() && SequenceCounter == 0) {
-    for (int i = 0; i < 6; i++) {
-      Location[targetObjective-1][i] = currentCoordinates[i];
-    }
-    calcTransMat();
-  }
 
   //Check SequenceNumber. Returns 0 and resets ZeroObjective if Sequence is over.
   if (SequenceCounter >= Points[targetObjective-1].size()) {
@@ -77,9 +69,19 @@ bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
                                                << targetCoordinates[5] << ")" ;
 }
 
+/*Check if targetObjective is known ZeroObjective. Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.*/
+void PositionHandling::setZeroObjective(KinovaPts::Objective targetObjective, float* currentCoordinates) {
+  if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() && SequenceCounter == 0) {
+    for (int i = 0; i < 6; i++) {
+      Location[targetObjective-1][i] = currentCoordinates[i];
+    }
+  calcTransMat();
+  }
+}
+
 bool PositionHandling::getOrigin(float* targetCoordinates, KinovaPts::Objective targetObjective, float* currentCoordinates) {
   
-  //Check if ZeroObjective.  Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.
+  //Check if Zero.  Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.
   bool isZero = true;
   for (int i = 0; i < 6; i++) {
     if ( Location[targetObjective-1][i] != 0 ) { isZero = false; }
@@ -101,20 +103,6 @@ void PositionHandling::decrementSequence() {
 }
 void PositionHandling::resetSequence() {
   SequenceCounter = 0;
-}
-
-
-/*Prepares new Sequence. Takes currentPosition of Arm as Objective */
-void PositionHandling::newTeachObjective(KinovaPts::Objective targetObjective, float* currentCoordinates) {
-  if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() ) {
-    ALL_LOG(logDEBUG3) << "PositionHandling::newTeachObjective: " 
-                       << "newTeachObject is ZeroObjective!";
-    for (int i = 0; i < 6; i++) {
-    Location[targetObjective-1][i] = currentCoordinates[i];
-    }
-    calcTransMat();
-  }
-  resetSequence();
 }
 
 

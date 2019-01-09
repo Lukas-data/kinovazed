@@ -291,6 +291,9 @@ void KinovaArm::setTarget(KinovaPts::Objective targetObjective) {
   if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives) {
     TargetObjective = targetObjective;
     PositionHandler.resetSequence();
+    float currentCoordinates[6];
+    getPosition(currentCoordinates);
+    PositionHandler.setZeroObjective(targetObjective, currentCoordinates);
   }
   else {
     ALL_LOG(logWARNING) << "KinovaArm: invalid targetPosition.";
@@ -306,7 +309,6 @@ void KinovaArm::moveToPosition(bool init) {
   float targetCoordinates[6];
   float currentCoordinates[6];
   currentPosition = 0;
-
   getPosition(currentCoordinates);
   //Check if Sequence is still going
   if ( PositionHandler.getCoordinates(targetCoordinates, TargetObjective, currentCoordinates) ) {
@@ -351,11 +353,12 @@ void KinovaArm::teachPosition(KinovaPts::Objective targetObjective) {
       ALL_LOG(logDEBUG) << "new teachTarget, sequence reset.";
       float currentCoordinates[6];
       getPosition(currentCoordinates);
-      PositionHandler.newTeachObjective(targetObjective, currentCoordinates);
+      PositionHandler.resetSequence();
+      PositionHandler.setZeroObjective(targetObjective, currentCoordinates);
       TeachTarget = targetObjective;
     }
     else {
-      ALL_LOG(logWARNING) << "KinovaArm: invalid teach Position.";
+      ALL_LOG(logWARNING) << "KinovaArm: invalid teach Objective.";
     }
   }
   ALL_LOG(logDEBUG) << "TeachMode: Teaching at Point " << TeachTarget << ":"

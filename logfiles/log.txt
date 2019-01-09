@@ -1,63 +1,29 @@
     INFO: KinovaMain - Startup!
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
-  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
-      DEBUG1: Connection to JacoArm unsuccessfull. Retry.
+    INFO: Connection to RoboRio established.
+      DEBUG0: CommandHandling: Recieved Event 'E_Stop:0'
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State PowerOff
+    INFO: Entering State EStop
+      DEBUG0: CommandHandling: Sent Event 'E_Stop:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'QuitEStop:0'
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+      DEBUG0: CommandHandling: Sent Event 'QuitEStop:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialize:0'
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+      DEBUG2: PositionHandling::ReadFromFile: Objective 3 is Zero
+      DEBUG2: PositionHandling::ReadFromFile: Objective 4 is Zero
+    INFO: Points successfully loaded from File.
+      DEBUG0: Transformation matrices calculated
+    INFO: Arm connection is turned off. Dummy-Initialized.
+      DEBUG0: CommandHandling: Sent Event 'Initialized:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialized:0'
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Idle
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'

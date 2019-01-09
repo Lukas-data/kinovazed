@@ -45,7 +45,7 @@ class PositionHandling {
     void incrementSequence();
     void decrementSequence();
     void resetSequence();
-    void newTeachObjective(KinovaPts::Objective targetObjective, float* currentCoordinates);
+    void setZeroObjective(KinovaPts::Objective targetObjective, float* currentCoordinates);
     bool savePoint(float coordinates[6], KinovaPts::Objective targetObjective);
     void saveOrigin(float coordinates[6], KinovaPts::Objective targetObjective);
     int  getSequence();
