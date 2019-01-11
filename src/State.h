@@ -111,6 +111,13 @@ class StateTeachSaveOrigin : public State {
     void tickAction();
 };
 
+class StateTeachDeletePoint : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
 class StateTeachPrevious : public State {
   public:
     void entryAction();

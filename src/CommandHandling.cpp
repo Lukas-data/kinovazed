@@ -167,6 +167,8 @@ bool CommandHandling::getHWEventVar(KinovaFSM::Event &event, int &eventVar) {
     case KinovaFSM::PointReached        :
     case KinovaFSM::PointSaved          : 
     case KinovaFSM::PointNotSaved       :
+    case KinovaFSM::PointDeleted        : 
+    case KinovaFSM::PointNotDeleted     :
     case KinovaFSM::PreviousPointNotSet : 
     case KinovaFSM::PreviousPointSet    :
     case KinovaFSM::NextPointNotSet     : 

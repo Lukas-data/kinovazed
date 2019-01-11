@@ -48,6 +48,7 @@ class PositionHandling {
     void setZeroObjective(KinovaPts::Objective targetObjective, float* currentCoordinates);
     bool savePoint(float coordinates[6], KinovaPts::Objective targetObjective);
     void saveOrigin(float coordinates[6], KinovaPts::Objective targetObjective);
+    void deletePoint(KinovaPts::Objective targetObjective);
     int  getSequence();
     void readFromFile();
     void writeToFile();

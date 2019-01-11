@@ -152,6 +152,16 @@ void PositionHandling::saveOrigin(float coordinates[6], KinovaPts::Objective tar
 }
 
 
+void PositionHandling::deletePoint(KinovaPts::Objective targetObjective) {
+  //check targetObjective and SequenceCounter
+  if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives &&
+      SequenceCounter >= 0 && SequenceCounter < Points[targetObjective-1].size() ) {
+    //Delete Element
+    Points[targetObjective-1].erase(Points[targetObjective-1].begin() + SequenceCounter);
+  }
+}
+
+
 /*Reads Location and Points Vectors from SaveFile*/
 void PositionHandling::readFromFile() {
   std::vector<int>().swap(ZeroObjectives);

@@ -5,7 +5,7 @@
 
 namespace KinovaFSM {
 
-  static const int numberOfNonHWEvents = 16; //Not including NoEvent.
+  static const int numberOfNonHWEvents = 17; //Not including NoEvent.
 //Events !Hardware Events at the End!
   enum Event {
     //System Events
@@ -21,6 +21,7 @@ namespace KinovaFSM {
     Teach,
     SavePoint,
     SaveOrigin,
+    DeletePoint,
     Previous,
     Next,
     MoveOrigin,
@@ -39,6 +40,8 @@ namespace KinovaFSM {
     PointNotSaved,
     OriginSaved,
     OriginNotSaved,
+    PointDeleted,
+    PointNotDeleted,
     PreviousPointSet,
     PreviousPointNotSet,
     NextPointSet,
@@ -65,6 +68,7 @@ namespace KinovaFSM {
     "Teach",
     "SavePoint",
     "SaveOrigin",
+    "DeletePoint",
     "Previous",
     "Next",
     "MoveOrigin",
@@ -83,6 +87,8 @@ namespace KinovaFSM {
     "PointNotSaved",
     "OriginSaved",
     "OriginNotSaved",
+    "PointDeleted",
+    "PointNotDeleted",
     "PreviousPointSet",
     "PreviousPointNotSet",
     "NextPointSet",

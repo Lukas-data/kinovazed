@@ -49,6 +49,7 @@ class KinovaArm {
     void moveToOrigin();
     void savePoint(int EventVariable);
     void saveOrigin();
+    void deletePoint();
     void previousPoint(int EventVariable); 
     void nextPoint(int EventVariable); 
 

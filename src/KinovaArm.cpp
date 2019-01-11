@@ -466,6 +466,12 @@ void KinovaArm::saveOrigin() {
 
 }
 
+void KinovaArm::deletePoint() {
+  PositionHandler.deletePoint(TeachTarget);
+  PositionHandler.writeToFile();  
+  ExternalEvent = KinovaFSM::PointDeleted;
+}
+
 
 /*decrements Sequence if EventVariable is the expected point after decrement.*/
 void KinovaArm::previousPoint(int EventVariable) {

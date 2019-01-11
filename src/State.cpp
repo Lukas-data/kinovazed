@@ -173,6 +173,17 @@ void StateTeachSaveOrigin::exitAction() {
 void StateTeachSaveOrigin::tickAction() {
 }
 
+// TeachDeletePoint
+void StateTeachDeletePoint::entryAction() {
+  ALL_LOG(logINFO) << "Entering State TeachDeletePoint";
+  JacoZED->deletePoint(); 
+}
+void StateTeachDeletePoint::exitAction() {
+  ALL_LOG(logINFO) << "Exiting State TeachDeletePoint";
+}
+void StateTeachDeletePoint::tickAction() {
+}
+
 // TeachPrevious
 void StateTeachPrevious::entryAction() {
   ALL_LOG(logINFO) << "Entering State TeachPrevious";
