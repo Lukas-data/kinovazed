@@ -41,6 +41,20 @@ class StateInitialize : public State {
     void tickAction();
 };
 
+class StateRetract : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
+class StateUnfold : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
 class StateIdle : public State {
   public:
     void entryAction();

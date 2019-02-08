@@ -195,6 +195,69 @@ void KinovaArm::initialize()
 }
 
 
+/*brings arm to retracted position*/
+void KinovaArm::retract() {
+  if(!KINOVA_DUMMY) {
+    try {
+      KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
+      switch (armStatus) {
+        case MODE_READY_STANDBY:          
+        case MODE_RETRACT_TO_READY:
+          arm->push_joystick_button(2);
+          break;
+        case MODE_NORMAL_TO_READY:
+        case MODE_NORMAL:
+        case MODE_NOINIT:
+          std::string msg = "Can't retract from current Mode: " & std::to_string(armStatus);
+          error("retract", msg);
+          break;
+        case MODE_ERROR:
+          error("retract", "Arm has an Error!");
+          break;
+        case MODE_RETRACT_STANDBY:
+          arm->release_joystick();
+          break;
+      }
+    }
+    catch ( KinDrv::KinDrvException &e ) {
+      error("retract", e, false);
+    }
+  }
+}
+
+
+/*Moves Arm out of retracted Position to own home position.*/
+void KinovaArm::unfold() {
+  if(!KINOVA_DUMMY) {
+    try {
+      KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
+      switch (armStatus) {
+        case MODE_READY_STANDBY:          
+        case MODE_READY_TO_RETRACT:
+          arm->release_joystick();
+          arm->push_joystick_button(2);
+          break;
+        case MODE_NORMAL_TO_READY:
+        case MODE_NORMAL:
+        case MODE_NOINIT:
+          std::string msg = "Can't retract from current Mode: " & std::to_string(armStatus);
+          error("retract", msg);
+          break;
+        case MODE_ERROR:
+          error("retract", "Arm has an Error!");
+          break;
+        case MODE_RETRACT_STANDBY:
+          arm->release_joystick();
+          break;
+      }
+    }
+    catch ( KinDrv::KinDrvException &e ) {
+      error("retract", e, false);
+    }
+  }
+}
+
+
 /*Changes current Mode and sets TimerTime (only necessary if kinematic 
 mode on Jaco needs to be changed.). Default nextMode = NoMode is Translation!*/
 void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {

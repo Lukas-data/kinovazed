@@ -49,6 +49,29 @@ void StateInitialize::tickAction() {
   JacoZED->initialize();
 }
 
+// Retracted
+void StateRetract::entryAction() {
+  ALL_LOG(logINFO) << "Entering State Retracted";
+  //JacoZED->retract();
+}
+void StateRetract::exitAction() {
+  ALL_LOG(logINFO) << "Exiting State Retracted ";
+}
+void StateRetract::tickAction() {
+}
+
+// Unfolding
+void StateUnfold::entryAction() {
+  ALL_LOG(logINFO) << "Entering State Unfolding";
+}
+void StateUnfold::exitAction() {
+  ALL_LOG(logINFO) << "Exiting State Unfolding ";
+  JacoZED->dontMove();
+}
+void StateUnfold::tickAction() {
+  //JacoZED->unfold();
+}
+
 // Idle
 void StateIdle::entryAction() {
   ALL_LOG(logINFO) << "Entering State Idle";

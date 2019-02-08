@@ -5,7 +5,7 @@
 
 namespace KinovaFSM {
 
-  static const int numberOfNonHWEvents = 17; //Not including NoEvent.
+  static const int numberOfNonHWEvents = 18; //Not including NoEvent.
 //Events !Hardware Events at the End!
   enum Event {
     //System Events
@@ -15,6 +15,7 @@ namespace KinovaFSM {
     //User Events
     Initialize,
     NoMode,
+    Unfold,
     SetMode,
     MoveJoystick,
     GoToPosition,

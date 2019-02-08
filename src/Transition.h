@@ -13,6 +13,8 @@ namespace KinovaFSM {
 //States
   static StatePowerOff powerOff;
   static StateInitialize initializing;
+  static StateRetract retract;
+  static StateUnfold unfolding;
   static StateIdle idle;
   static StateChangeMode changeMode;
   static StateSteering steering;
@@ -45,10 +47,18 @@ namespace KinovaFSM {
     { &powerOff,        Initialize,         &initializing     },
     { &powerOff,        E_Stop,             &eStop            },
 
-    { &initializing,    Initialized,        &idle             },
+    { &initializing,    Initialized,        &retract          },
     { &initializing,    InitHomeReached,    &initializing     },
     { &initializing,    Error,              &powerOff         },
     { &initializing,    E_Stop,             &eStop            },
+
+    { &retract,         Unfold,             &unfolding        },
+    { &retract,         E_Stop,             &eStop            },
+    { &retract,         Shutdown,           &powerOff         },
+
+    { &unfolding,       InitHomeReached,    &idle             },
+    { &unfolding,       E_Stop,             &eStop            },
+    { &unfolding,       Shutdown,           &powerOff         },
 
     { &idle,            SetMode,            &changeMode       },
     { &idle,            GoToPosition,       &movePosition     },
