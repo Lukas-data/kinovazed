@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/kinova/Documents/kinovaZED/test/Log.h
+sstream
+-
+string
+-
+stdio.h
+-
+
+/home/kinova/Documents/kinovaZED/test/LogTestSubClass.cpp
+LogTestSubClass.h
+/home/kinova/Documents/kinovaZED/test/LogTestSubClass.h
+Log.h
+/home/kinova/Documents/kinovaZED/test/Log.h
+
+/home/kinova/Documents/kinovaZED/test/LogTestSubClass.h
+

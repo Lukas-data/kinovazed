@@ -1,0 +1,52 @@
+[
+{
+  "directory": "/home/kinova/Documents/kinovaZED/build/src",
+  "command": "/usr/bin/arm-linux-gnueabihf-g++-5    -I/home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include -I/home/kinova/Documents/kinovaZED/src  -g   -o CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o -c /home/kinova/Documents/kinovaZED/src/KinovaMain.cpp",
+  "file": "/home/kinova/Documents/kinovaZED/src/KinovaMain.cpp"
+},
+{
+  "directory": "/home/kinova/Documents/kinovaZED/build/src",
+  "command": "/usr/bin/arm-linux-gnueabihf-g++-5    -I/home/kinova/Documents/kinovaZED/src  -g   -o CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o -c /home/kinova/Documents/kinovaZED/src/KinovaArm.cpp",
+  "file": "/home/kinova/Documents/kinovaZED/src/KinovaArm.cpp"
+},
+{
+  "directory": "/home/kinova/Documents/kinovaZED/build/src",
+  "command": "/usr/bin/arm-linux-gnueabihf-g++-5    -I/home/kinova/Documents/kinovaZED/src  -g   -o CMakeFiles/kinovaArm_lib.dir/TCPServer.cpp.o -c /home/kinova/Documents/kinovaZED/src/TCPServer.cpp",
+  "file": "/home/kinova/Documents/kinovaZED/src/TCPServer.cpp"
+},
+{
+  "directory": "/home/kinova/Documents/kinovaZED/build/src",
+  "command": "/usr/bin/arm-linux-gnueabihf-g++-5    -I/home/kinova/Documents/kinovaZED/src  -g   -o CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.o -c /home/kinova/Documents/kinovaZED/src/PositionHandling.cpp",
+  "file": "/home/kinova/Documents/kinovaZED/src/PositionHandling.cpp"
+},
+{
+  "directory": "/home/kinova/Documents/kinovaZED/build/src",
+  "command": "/usr/bin/arm-linux-gnueabihf-g++-5    -I/home/kinova/Documents/kinovaZED/src  -g   -o CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o -c /home/kinova/Documents/kinovaZED/src/StateMachine.cpp",
+  "file": "/home/kinova/Documents/kinovaZED/src/StateMachine.cpp"
+},
+{
+  "directory": "/home/kinova/Documents/kinovaZED/build/src",
+  "command": "/usr/bin/arm-linux-gnueabihf-g++-5    -I/home/kinova/Documents/kinovaZED/src  -g   -o CMakeFiles/kinovaArm_lib.dir/State.cpp.o -c /home/kinova/Documents/kinovaZED/src/State.cpp",
+  "file": "/home/kinova/Documents/kinovaZED/src/State.cpp"
+},
+{
+  "directory": "/home/kinova/Documents/kinovaZED/build/src",
+  "command": "/usr/bin/arm-linux-gnueabihf-g++-5    -I/home/kinova/Documents/kinovaZED/src  -g   -o CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o -c /home/kinova/Documents/kinovaZED/src/CommandHandling.cpp",
+  "file": "/home/kinova/Documents/kinovaZED/src/CommandHandling.cpp"
+},
+{
+  "directory": "/home/kinova/Documents/kinovaZED/build/test",
+  "command": "/usr/bin/arm-linux-gnueabihf-g++-5    -I/home/kinova/Documents/kinovaZED/thirdparty/libkindrv/include -I/home/kinova/Documents/kinovaZED/src  -g   -o CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o -c /home/kinova/Documents/kinovaZED/test/KinovaTest.cpp",
+  "file": "/home/kinova/Documents/kinovaZED/test/KinovaTest.cpp"
+},
+{
+  "directory": "/home/kinova/Documents/kinovaZED/build/test",
+  "command": "/usr/bin/arm-linux-gnueabihf-g++-5     -g   -o CMakeFiles/logtest_lib.dir/LogTestSubClass.cpp.o -c /home/kinova/Documents/kinovaZED/test/LogTestSubClass.cpp",
+  "file": "/home/kinova/Documents/kinovaZED/test/LogTestSubClass.cpp"
+},
+{
+  "directory": "/home/kinova/Documents/kinovaZED/build/test",
+  "command": "/usr/bin/arm-linux-gnueabihf-g++-5    -I/home/kinova/Documents/kinovaZED/src  -g   -o CMakeFiles/LogTest.dir/LogTest.cpp.o -c /home/kinova/Documents/kinovaZED/test/LogTest.cpp",
+  "file": "/home/kinova/Documents/kinovaZED/test/LogTest.cpp"
+}
+]

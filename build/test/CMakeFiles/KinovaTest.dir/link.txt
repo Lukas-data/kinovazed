@@ -1,0 +1,1 @@
+/usr/bin/arm-linux-gnueabihf-g++-5   -g   CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o  -o KinovaTest ../src/libkinovaArm_lib.a /usr/local/lib/libkindrv/liblibkindrv.so /usr/lib/arm-linux-gnueabihf/libboost_system.so -Wl,-rpath,/usr/local/lib/libkindrv 
