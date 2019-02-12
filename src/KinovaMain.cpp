@@ -29,7 +29,6 @@ int main(int argc, char *argv[])
         ALL_LOG(logERROR) << "RuntimeError: " << e.what();
         return -1;
       }
-      usleep(10000);
     }
   }
   usleep(10000000);

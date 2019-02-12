@@ -44,8 +44,6 @@ class TCPServer {
 
     int  MessageLength;
     int  NoDataCycleCount;
-
-
-
+    
 };
 #endif
