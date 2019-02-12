@@ -1,1 +1,3035 @@
     INFO: KinovaMain - Startup!
+    INFO: Connection to RoboRio established.
+    INFO: Connection to JacoArm established.
+      DEBUG0: CommandHandling: Recieved Event 'E_Stop:0'
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State PowerOff
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+      DEBUG0: CommandHandling: Sent Event 'E_Stop:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'QuitEStop:0'
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+      DEBUG0: CommandHandling: Sent Event 'QuitEStop:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialize:0'
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+      DEBUG2: PositionHandling::ReadFromFile: Objective 3 is Zero
+      DEBUG2: PositionHandling::ReadFromFile: Objective 4 is Zero
+    INFO: Points successfully loaded from File.
+      DEBUG0: Transformation matrices calculated
+      DEBUG0: CommandHandling: Sent Event 'Initialized:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialized:0'
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Retracted
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'Retract:0'
+      DEBUG0: CommandHandling: Recieved Event 'Unfold:0'
+    INFO: StateMachine: Processing Event 'Unfold'
+    INFO: Exiting State Retracted 
+    INFO: Entering State Unfolding
+      DEBUG0: CommandHandling: Sent Event 'Unfold:0'
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 2
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 1
+      DEBUG2: unfolding from Mode: 1
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.167827
+      DEBUG2: [1]: dVel: 0.299701
+      DEBUG2: [2]: dVel: 0.492172
+      DEBUG2: [3]: dVel: 1.53325
+      DEBUG2: [4]: dVel: 0.906437
+      DEBUG2: [5]: dVel: 0.0541838
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00508228
+      DEBUG2: [1]: dVel: 0.00283912
+      DEBUG2: [2]: dVel: 0.000525028
+      DEBUG2: [3]: dVel: 0.000184536
+      DEBUG2: [4]: dVel: 0.0152764
+      DEBUG2: [5]: dVel: 0.0034134
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00698461
+      DEBUG2: [1]: dVel: 0.00423011
+      DEBUG2: [2]: dVel: 0.000648916
+      DEBUG2: [3]: dVel: 6.61612e-05
+      DEBUG2: [4]: dVel: 0.0205078
+      DEBUG2: [5]: dVel: 0.00149091
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00562094
+      DEBUG2: [1]: dVel: 0.00327143
+      DEBUG2: [2]: dVel: 0.00105503
+      DEBUG2: [3]: dVel: 0.000975966
+      DEBUG2: [4]: dVel: 0.0173931
+      DEBUG2: [5]: dVel: 0.00299114
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00431608
+      DEBUG2: [1]: dVel: 0.00237918
+      DEBUG2: [2]: dVel: 0.000118256
+      DEBUG2: [3]: dVel: 0.000556946
+      DEBUG2: [4]: dVel: 0.0118083
+      DEBUG2: [5]: dVel: 0.00227402
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00735778
+      DEBUG2: [1]: dVel: 0.00430083
+      DEBUG2: [2]: dVel: 0.000308841
+      DEBUG2: [3]: dVel: 0.00400984
+      DEBUG2: [4]: dVel: 0.0217116
+      DEBUG2: [5]: dVel: 0.00267542
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00473242
+      DEBUG2: [1]: dVel: 0.00254256
+      DEBUG2: [2]: dVel: 0.00012055
+      DEBUG2: [3]: dVel: 0.000498891
+      DEBUG2: [4]: dVel: 0.0139557
+      DEBUG2: [5]: dVel: 0.000686683
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00683457
+      DEBUG2: [1]: dVel: 0.00451079
+      DEBUG2: [2]: dVel: 0.000360161
+      DEBUG2: [3]: dVel: 0.000626683
+      DEBUG2: [4]: dVel: 0.0195888
+      DEBUG2: [5]: dVel: 0.00064794
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00674375
+      DEBUG2: [1]: dVel: 0.00414822
+      DEBUG2: [2]: dVel: 0.000214964
+      DEBUG2: [3]: dVel: 0.00275528
+      DEBUG2: [4]: dVel: 0.0207582
+      DEBUG2: [5]: dVel: 0.0027648
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00533254
+      DEBUG2: [1]: dVel: 0.00299412
+      DEBUG2: [2]: dVel: 0.000123322
+      DEBUG2: [3]: dVel: 0.000461221
+      DEBUG2: [4]: dVel: 0.0186461
+      DEBUG2: [5]: dVel: 0.00130366
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00753699
+      DEBUG2: [1]: dVel: 0.00495011
+      DEBUG2: [2]: dVel: 0.000222325
+      DEBUG2: [3]: dVel: 0.00351405
+      DEBUG2: [4]: dVel: 0.025481
+      DEBUG2: [5]: dVel: 0.00224367
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00483108
+      DEBUG2: [1]: dVel: 0.00305465
+      DEBUG2: [2]: dVel: 0.000335753
+      DEBUG2: [3]: dVel: 0.00127971
+      DEBUG2: [4]: dVel: 0.0173214
+      DEBUG2: [5]: dVel: 0.00139847
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.006969
+      DEBUG2: [1]: dVel: 0.00417489
+      DEBUG2: [2]: dVel: 0.000158995
+      DEBUG2: [3]: dVel: 0.00264823
+      DEBUG2: [4]: dVel: 0.023721
+      DEBUG2: [5]: dVel: 0.00318506
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00704946
+      DEBUG2: [1]: dVel: 0.0036937
+      DEBUG2: [2]: dVel: 2.94745e-05
+      DEBUG2: [3]: dVel: 0.000914216
+      DEBUG2: [4]: dVel: 0.0272174
+      DEBUG2: [5]: dVel: 0.000735
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00523224
+      DEBUG2: [1]: dVel: 0.00384927
+      DEBUG2: [2]: dVel: 0.000648916
+      DEBUG2: [3]: dVel: 0.000101447
+      DEBUG2: [4]: dVel: 0.0202122
+      DEBUG2: [5]: dVel: 0.000899512
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00869738
+      DEBUG2: [1]: dVel: 0.0049018
+      DEBUG2: [2]: dVel: 0.000599146
+      DEBUG2: [3]: dVel: 0.00449347
+      DEBUG2: [4]: dVel: 0.0348436
+      DEBUG2: [5]: dVel: 0.00396967
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00578546
+      DEBUG2: [1]: dVel: 0.00350598
+      DEBUG2: [2]: dVel: 0.00041312
+      DEBUG2: [3]: dVel: 0.000797033
+      DEBUG2: [4]: dVel: 0.0244736
+      DEBUG2: [5]: dVel: 0.00166566
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00742693
+      DEBUG2: [1]: dVel: 0.00437015
+      DEBUG2: [2]: dVel: 0.000842392
+      DEBUG2: [3]: dVel: 0.0037806
+      DEBUG2: [4]: dVel: 0.0330247
+      DEBUG2: [5]: dVel: 0.000695962
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00570079
+      DEBUG2: [1]: dVel: 0.00335452
+      DEBUG2: [2]: dVel: 0.00024274
+      DEBUG2: [3]: dVel: 0.00159383
+      DEBUG2: [4]: dVel: 0.024815
+      DEBUG2: [5]: dVel: 0.00306959
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00593048
+      DEBUG2: [1]: dVel: 0.00317636
+      DEBUG2: [2]: dVel: 6.50883e-05
+      DEBUG2: [3]: dVel: 0.00271988
+      DEBUG2: [4]: dVel: 0.0294276
+      DEBUG2: [5]: dVel: 0.00426286
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00491611
+      DEBUG2: [1]: dVel: 0.00309476
+      DEBUG2: [2]: dVel: 3.23951e-05
+      DEBUG2: [3]: dVel: 0.00131989
+      DEBUG2: [4]: dVel: 0.0246685
+      DEBUG2: [5]: dVel: 0.00124444
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00401972
+      DEBUG2: [1]: dVel: 0.00194979
+      DEBUG2: [2]: dVel: 0.000658542
+      DEBUG2: [3]: dVel: 0.0035243
+      DEBUG2: [4]: dVel: 0.0212096
+      DEBUG2: [5]: dVel: 0.00222714
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.006019
+      DEBUG2: [1]: dVel: 0.00308195
+      DEBUG2: [2]: dVel: 8.69632e-05
+      DEBUG2: [3]: dVel: 0.00226533
+      DEBUG2: [4]: dVel: 0.0308895
+      DEBUG2: [5]: dVel: 0.00365608
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00359499
+      DEBUG2: [1]: dVel: 0.00189218
+      DEBUG2: [2]: dVel: 0.000321537
+      DEBUG2: [3]: dVel: 0.00220239
+      DEBUG2: [4]: dVel: 0.0206113
+      DEBUG2: [5]: dVel: 0.00284509
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0050323
+      DEBUG2: [1]: dVel: 0.00243807
+      DEBUG2: [2]: dVel: 0.000487357
+      DEBUG2: [3]: dVel: 0.000861406
+      DEBUG2: [4]: dVel: 0.0269192
+      DEBUG2: [5]: dVel: 0.00261061
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00479892
+      DEBUG2: [1]: dVel: 0.00243828
+      DEBUG2: [2]: dVel: 0.000430316
+      DEBUG2: [3]: dVel: 0.00323915
+      DEBUG2: [4]: dVel: 0.0283211
+      DEBUG2: [5]: dVel: 0.00604101
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0026521
+      DEBUG2: [1]: dVel: 0.00190204
+      DEBUG2: [2]: dVel: 0.000337839
+      DEBUG2: [3]: dVel: 8.79765e-05
+      DEBUG2: [4]: dVel: 0.0193623
+      DEBUG2: [5]: dVel: 0.00112241
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00474106
+      DEBUG2: [1]: dVel: 0.00234261
+      DEBUG2: [2]: dVel: 0.000584066
+      DEBUG2: [3]: dVel: 0.00298178
+      DEBUG2: [4]: dVel: 0.0308237
+      DEBUG2: [5]: dVel: 0.00237948
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0030115
+      DEBUG2: [1]: dVel: 0.00205094
+      DEBUG2: [2]: dVel: 0.000983238
+      DEBUG2: [3]: dVel: 0.00215447
+      DEBUG2: [4]: dVel: 0.0216008
+      DEBUG2: [5]: dVel: 0.00252691
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00313295
+      DEBUG2: [1]: dVel: 0.00202781
+      DEBUG2: [2]: dVel: 0.000421971
+      DEBUG2: [3]: dVel: 0.00275409
+      DEBUG2: [4]: dVel: 0.0260796
+      DEBUG2: [5]: dVel: 0.00435543
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0021425
+      DEBUG2: [1]: dVel: 0.00150508
+      DEBUG2: [2]: dVel: 2.18749e-05
+      DEBUG2: [3]: dVel: 0.000825882
+      DEBUG2: [4]: dVel: 0.0194948
+      DEBUG2: [5]: dVel: 0.000806034
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00276149
+      DEBUG2: [1]: dVel: 0.00188148
+      DEBUG2: [2]: dVel: 0.00101849
+      DEBUG2: [3]: dVel: 0.000963092
+      DEBUG2: [4]: dVel: 0.0275701
+      DEBUG2: [5]: dVel: 0.0016863
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0015671
+      DEBUG2: [1]: dVel: 0.000775158
+      DEBUG2: [2]: dVel: 0.00118425
+      DEBUG2: [3]: dVel: 0.00309932
+      DEBUG2: [4]: dVel: 0.0183318
+      DEBUG2: [5]: dVel: 0.00193504
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00281098
+      DEBUG2: [1]: dVel: 0.00161245
+      DEBUG2: [2]: dVel: 2.61664e-05
+      DEBUG2: [3]: dVel: 0.00125158
+      DEBUG2: [4]: dVel: 0.0260222
+      DEBUG2: [5]: dVel: 0.00215946
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00115908
+      DEBUG2: [1]: dVel: 0.000866085
+      DEBUG2: [2]: dVel: 0.000407487
+      DEBUG2: [3]: dVel: 0.000590205
+      DEBUG2: [4]: dVel: 0.021405
+      DEBUG2: [5]: dVel: 0.0010675
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 6.09737e-05
+      DEBUG2: [1]: dVel: 0.000155896
+      DEBUG2: [2]: dVel: 0.000330508
+      DEBUG2: [3]: dVel: 0.00127935
+      DEBUG2: [4]: dVel: 0.0134147
+      DEBUG2: [5]: dVel: 0.00711729
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00043942
+      DEBUG2: [1]: dVel: 0.000562787
+      DEBUG2: [2]: dVel: 0.000712603
+      DEBUG2: [3]: dVel: 0.00223672
+      DEBUG2: [4]: dVel: 0.0145421
+      DEBUG2: [5]: dVel: 0.00832647
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000277415
+      DEBUG2: [1]: dVel: 4.81904e-05
+      DEBUG2: [2]: dVel: 0.00052309
+      DEBUG2: [3]: dVel: 0.000738621
+      DEBUG2: [4]: dVel: 0.018351
+      DEBUG2: [5]: dVel: 0.00154346
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000306858
+      DEBUG2: [1]: dVel: 0.000168532
+      DEBUG2: [2]: dVel: 0.000277609
+      DEBUG2: [3]: dVel: 0.000460267
+      DEBUG2: [4]: dVel: 0.0136935
+      DEBUG2: [5]: dVel: 0.0011165
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000353035
+      DEBUG2: [1]: dVel: 0.000196666
+      DEBUG2: [2]: dVel: 0.000104934
+      DEBUG2: [3]: dVel: 0.000576258
+      DEBUG2: [4]: dVel: 0.0158015
+      DEBUG2: [5]: dVel: 0.0104674
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000378674
+      DEBUG2: [1]: dVel: 9.00328e-05
+      DEBUG2: [2]: dVel: 0.000782609
+      DEBUG2: [3]: dVel: 0.00183809
+      DEBUG2: [4]: dVel: 0.0131378
+      DEBUG2: [5]: dVel: 0.00901417
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00177764
+      DEBUG2: [1]: dVel: 0.000113666
+      DEBUG2: [2]: dVel: 0.000745505
+      DEBUG2: [3]: dVel: 0.0014863
+      DEBUG2: [4]: dVel: 0.00265046
+      DEBUG2: [5]: dVel: 0.00107456
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000346113
+      DEBUG2: [1]: dVel: 5.91576e-05
+      DEBUG2: [2]: dVel: 0.000837147
+      DEBUG2: [3]: dVel: 0.00199997
+      DEBUG2: [4]: dVel: 0.0136767
+      DEBUG2: [5]: dVel: 0.00215426
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00100322
+      DEBUG2: [1]: dVel: 0.000335544
+      DEBUG2: [2]: dVel: 8.73208e-05
+      DEBUG2: [3]: dVel: 0.000552297
+      DEBUG2: [4]: dVel: 0.0171573
+      DEBUG2: [5]: dVel: 0.00138673
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000379683
+      DEBUG2: [1]: dVel: 0.000332445
+      DEBUG2: [2]: dVel: 0.000603586
+      DEBUG2: [3]: dVel: 0.00150383
+      DEBUG2: [4]: dVel: 0.00958413
+      DEBUG2: [5]: dVel: 0.00128364
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000705354
+      DEBUG2: [1]: dVel: 0.000123352
+      DEBUG2: [2]: dVel: 0.000559509
+      DEBUG2: [3]: dVel: 0.00147581
+      DEBUG2: [4]: dVel: 0.0082417
+      DEBUG2: [5]: dVel: 0.000114291
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000913763
+      DEBUG2: [1]: dVel: 0.000411868
+      DEBUG2: [2]: dVel: 0.000564158
+      DEBUG2: [3]: dVel: 0.00156915
+      DEBUG2: [4]: dVel: 0.0182396
+      DEBUG2: [5]: dVel: 0.00351761
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000105793
+      DEBUG2: [1]: dVel: 0.000116348
+      DEBUG2: [2]: dVel: 0.000275493
+      DEBUG2: [3]: dVel: 0.000848174
+      DEBUG2: [4]: dVel: 0.00761162
+      DEBUG2: [5]: dVel: 0.00142653
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00106342
+      DEBUG2: [1]: dVel: 9.84967e-05
+      DEBUG2: [2]: dVel: 0.000395387
+      DEBUG2: [3]: dVel: 0.0011307
+      DEBUG2: [4]: dVel: 0.000528865
+      DEBUG2: [5]: dVel: 0.000878951
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000938891
+      DEBUG2: [1]: dVel: 0.000219166
+      DEBUG2: [2]: dVel: 0.000821054
+      DEBUG2: [3]: dVel: 0.0026325
+      DEBUG2: [4]: dVel: 0.000697579
+      DEBUG2: [5]: dVel: 0.00158072
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000575036
+      DEBUG2: [1]: dVel: 0.000197411
+      DEBUG2: [2]: dVel: 0.000572264
+      DEBUG2: [3]: dVel: 0.00137138
+      DEBUG2: [4]: dVel: 0.00288653
+      DEBUG2: [5]: dVel: 0.00114425
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00286867
+      DEBUG2: [1]: dVel: 0.000908166
+      DEBUG2: [2]: dVel: 0.00237989
+      DEBUG2: [3]: dVel: 0.00520313
+      DEBUG2: [4]: dVel: 0.0168378
+      DEBUG2: [5]: dVel: 0.0031847
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00166243
+      DEBUG2: [1]: dVel: 0.000660062
+      DEBUG2: [2]: dVel: 0.00190982
+      DEBUG2: [3]: dVel: 0.00502682
+      DEBUG2: [4]: dVel: 0.0110227
+      DEBUG2: [5]: dVel: 0.00707415
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000132335
+      DEBUG2: [1]: dVel: 0.000238776
+      DEBUG2: [2]: dVel: 0.000571996
+      DEBUG2: [3]: dVel: 0.00129914
+      DEBUG2: [4]: dVel: 0.00744443
+      DEBUG2: [5]: dVel: 0.00343301
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000289707
+      DEBUG2: [1]: dVel: 1.27256e-05
+      DEBUG2: [2]: dVel: 0.000164717
+      DEBUG2: [3]: dVel: 0.000823617
+      DEBUG2: [4]: dVel: 0.00391311
+      DEBUG2: [5]: dVel: 0.00480268
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000720378
+      DEBUG2: [1]: dVel: 1.75238e-05
+      DEBUG2: [2]: dVel: 0.000170767
+      DEBUG2: [3]: dVel: 0.000774384
+      DEBUG2: [4]: dVel: 0.000687776
+      DEBUG2: [5]: dVel: 0.00111285
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000138357
+      DEBUG2: [1]: dVel: 0.000196308
+      DEBUG2: [2]: dVel: 0.000440419
+      DEBUG2: [3]: dVel: 0.000816226
+      DEBUG2: [4]: dVel: 0.00137681
+      DEBUG2: [5]: dVel: 8.95038e-05
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000241945
+      DEBUG2: [1]: dVel: 0.000209957
+      DEBUG2: [2]: dVel: 0.000763237
+      DEBUG2: [3]: dVel: 0.00234771
+      DEBUG2: [4]: dVel: 0.00112759
+      DEBUG2: [5]: dVel: 0.00154758
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG0: Sequence-Point 0 reached.
+      DEBUG2: unfolding from Mode: 5
+      DEBUG0: CommandHandling: Sent Event 'Unfolded:0'
+      DEBUG0: CommandHandling: Recieved Event 'Unfolded:0'
+    INFO: StateMachine: Processing Event 'Unfolded'
+    INFO: Exiting State Unfolding 
+    INFO: Entering State Idle
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'SetMode:1'
+    INFO: StateMachine: Processing Event 'SetMode'
+    INFO: Exiting State Idle
+    INFO: Entering State ChangeMode
+      DEBUG0: CommandHandling: Sent Event 'SetMode:1'
+      DEBUG0: CommandHandling: Sent Event 'ModeSet:1'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'ModeSet:0'
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'MoveJoystick:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'GoToPosition:1'
+    INFO: StateMachine: Processing Event 'GoToPosition'
+    INFO: Exiting State Steering
+    INFO: Entering State MovePosition
+      DEBUG0: CommandHandling: Sent Event 'GoToPosition:1'
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0121237
+      DEBUG2: [1]: dVel: 0.169936
+      DEBUG2: [2]: dVel: 0.00500277
+      DEBUG2: [3]: dVel: 0.00128925
+      DEBUG2: [4]: dVel: 0.0815824
+      DEBUG2: [5]: dVel: 0.00445728
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00027442
+      DEBUG2: [1]: dVel: 0.0061754
+      DEBUG2: [2]: dVel: 0.000230223
+      DEBUG2: [3]: dVel: 0.000976562
+      DEBUG2: [4]: dVel: 0.00219005
+      DEBUG2: [5]: dVel: 0.000677595
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000703685
+      DEBUG2: [1]: dVel: 0.0042882
+      DEBUG2: [2]: dVel: 0.00101444
+      DEBUG2: [3]: dVel: 0.00331712
+      DEBUG2: [4]: dVel: 0.00213206
+      DEBUG2: [5]: dVel: 0.000119851
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000296354
+      DEBUG2: [1]: dVel: 0.00591469
+      DEBUG2: [2]: dVel: 0.00158548
+      DEBUG2: [3]: dVel: 0.00407934
+      DEBUG2: [4]: dVel: 0.000445552
+      DEBUG2: [5]: dVel: 0.00243041
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00100348
+      DEBUG2: [1]: dVel: 0.00271392
+      DEBUG2: [2]: dVel: 0.0027189
+      DEBUG2: [3]: dVel: 0.00503075
+      DEBUG2: [4]: dVel: 0.00217544
+      DEBUG2: [5]: dVel: 0.00208121
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000278175
+      DEBUG2: [1]: dVel: 0.00730938
+      DEBUG2: [2]: dVel: 0.00221622
+      DEBUG2: [3]: dVel: 0.00494456
+      DEBUG2: [4]: dVel: 0.00117527
+      DEBUG2: [5]: dVel: 0.00103561
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00120214
+      DEBUG2: [1]: dVel: 0.00164551
+      DEBUG2: [2]: dVel: 9.59039e-05
+      DEBUG2: [3]: dVel: 2.20537e-05
+      DEBUG2: [4]: dVel: 0.00214242
+      DEBUG2: [5]: dVel: 0.000877797
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000388682
+      DEBUG2: [1]: dVel: 0.00855303
+      DEBUG2: [2]: dVel: 0.000117213
+      DEBUG2: [3]: dVel: 0.000621319
+      DEBUG2: [4]: dVel: 0.000254788
+      DEBUG2: [5]: dVel: 0.0022634
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000742599
+      DEBUG2: [1]: dVel: 0.00436854
+      DEBUG2: [2]: dVel: 6.11544e-05
+      DEBUG2: [3]: dVel: 0.00165439
+      DEBUG2: [4]: dVel: 0.00347816
+      DEBUG2: [5]: dVel: 0.000516234
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000513207
+      DEBUG2: [1]: dVel: 0.00539404
+      DEBUG2: [2]: dVel: 0.000443488
+      DEBUG2: [3]: dVel: 0.00170553
+      DEBUG2: [4]: dVel: 0.00116836
+      DEBUG2: [5]: dVel: 0.0020868
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000381539
+      DEBUG2: [1]: dVel: 0.00439179
+      DEBUG2: [2]: dVel: 0.000318319
+      DEBUG2: [3]: dVel: 1.69277e-05
+      DEBUG2: [4]: dVel: 0.00212736
+      DEBUG2: [5]: dVel: 0.000858555
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000593839
+      DEBUG2: [1]: dVel: 0.00575393
+      DEBUG2: [2]: dVel: 0.000840485
+      DEBUG2: [3]: dVel: 0.0016861
+      DEBUG2: [4]: dVel: 0.00251588
+      DEBUG2: [5]: dVel: 0.00302951
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00119084
+      DEBUG2: [1]: dVel: 0.00450593
+      DEBUG2: [2]: dVel: 0.00041908
+      DEBUG2: [3]: dVel: 0.00233769
+      DEBUG2: [4]: dVel: 0.00376263
+      DEBUG2: [5]: dVel: 0.00151987
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000471134
+      DEBUG2: [1]: dVel: 0.00576389
+      DEBUG2: [2]: dVel: 0.000701398
+      DEBUG2: [3]: dVel: 0.00167644
+      DEBUG2: [4]: dVel: 0.00250337
+      DEBUG2: [5]: dVel: 0.0030296
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 2.23843e-05
+      DEBUG2: [1]: dVel: 0.00421217
+      DEBUG2: [2]: dVel: 0.000574887
+      DEBUG2: [3]: dVel: 0.000963926
+      DEBUG2: [4]: dVel: 0.000657257
+      DEBUG2: [5]: dVel: 0.000796581
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000927552
+      DEBUG2: [1]: dVel: 0.00478712
+      DEBUG2: [2]: dVel: 0.00246
+      DEBUG2: [3]: dVel: 0.00496292
+      DEBUG2: [4]: dVel: 0.00388559
+      DEBUG2: [5]: dVel: 0.000361247
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00111722
+      DEBUG2: [1]: dVel: 0.00312033
+      DEBUG2: [2]: dVel: 0.00197738
+      DEBUG2: [3]: dVel: 0.00400054
+      DEBUG2: [4]: dVel: 0.00235905
+      DEBUG2: [5]: dVel: 0.000690539
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000644776
+      DEBUG2: [1]: dVel: 0.00807336
+      DEBUG2: [2]: dVel: 0.000305176
+      DEBUG2: [3]: dVel: 0.0014205
+      DEBUG2: [4]: dVel: 0.000894595
+      DEBUG2: [5]: dVel: 0.00289616
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00160919
+      DEBUG2: [1]: dVel: 0.00214174
+      DEBUG2: [2]: dVel: 0.000131905
+      DEBUG2: [3]: dVel: 0.000710964
+      DEBUG2: [4]: dVel: 0.00375949
+      DEBUG2: [5]: dVel: 0.000668329
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000259343
+      DEBUG2: [1]: dVel: 0.00821254
+      DEBUG2: [2]: dVel: 0.000733763
+      DEBUG2: [3]: dVel: 0.00110924
+      DEBUG2: [4]: dVel: 0.00117876
+      DEBUG2: [5]: dVel: 0.000137453
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000115321
+      DEBUG2: [1]: dVel: 0.00400156
+      DEBUG2: [2]: dVel: 0.000350714
+      DEBUG2: [3]: dVel: 0.000174999
+      DEBUG2: [4]: dVel: 0.000559531
+      DEBUG2: [5]: dVel: 0.000651357
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000631111
+      DEBUG2: [1]: dVel: 0.00566703
+      DEBUG2: [2]: dVel: 6.30021e-05
+      DEBUG2: [3]: dVel: 0.000139952
+      DEBUG2: [4]: dVel: 0.00262916
+      DEBUG2: [5]: dVel: 0.00278699
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 6.85384e-05
+      DEBUG2: [1]: dVel: 0.00459418
+      DEBUG2: [2]: dVel: 0.000398904
+      DEBUG2: [3]: dVel: 0.000261426
+      DEBUG2: [4]: dVel: 0.000606172
+      DEBUG2: [5]: dVel: 0.00399515
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000396461
+      DEBUG2: [1]: dVel: 0.0061287
+      DEBUG2: [2]: dVel: 0.000118226
+      DEBUG2: [3]: dVel: 0.000656009
+      DEBUG2: [4]: dVel: 0.00260997
+      DEBUG2: [5]: dVel: 0.00649962
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00157508
+      DEBUG2: [1]: dVel: 0.00383228
+      DEBUG2: [2]: dVel: 0.000409931
+      DEBUG2: [3]: dVel: 0.000865221
+      DEBUG2: [4]: dVel: 0.00553594
+      DEBUG2: [5]: dVel: 0.00015148
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000460919
+      DEBUG2: [1]: dVel: 0.00616479
+      DEBUG2: [2]: dVel: 0.000461102
+      DEBUG2: [3]: dVel: 0.00143909
+      DEBUG2: [4]: dVel: 0.00169887
+      DEBUG2: [5]: dVel: 0.000271872
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00083973
+      DEBUG2: [1]: dVel: 0.00512704
+      DEBUG2: [2]: dVel: 0.00149336
+      DEBUG2: [3]: dVel: 0.00254381
+      DEBUG2: [4]: dVel: 0.00418195
+      DEBUG2: [5]: dVel: 0.000920191
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000279975
+      DEBUG2: [1]: dVel: 0.00451031
+      DEBUG2: [2]: dVel: 0.00144148
+      DEBUG2: [3]: dVel: 0.00322664
+      DEBUG2: [4]: dVel: 0.000495296
+      DEBUG2: [5]: dVel: 0.0028995
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00110649
+      DEBUG2: [1]: dVel: 0.00246772
+      DEBUG2: [2]: dVel: 0.000267059
+      DEBUG2: [3]: dVel: 0.000806451
+      DEBUG2: [4]: dVel: 0.00382061
+      DEBUG2: [5]: dVel: 0.00269405
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000393018
+      DEBUG2: [1]: dVel: 0.00655583
+      DEBUG2: [2]: dVel: 0.00116852
+      DEBUG2: [3]: dVel: 0.00316727
+      DEBUG2: [4]: dVel: 0.00134379
+      DEBUG2: [5]: dVel: 0.00531532
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00129215
+      DEBUG2: [1]: dVel: 0.00179127
+      DEBUG2: [2]: dVel: 0.000251859
+      DEBUG2: [3]: dVel: 0.000782013
+      DEBUG2: [4]: dVel: 0.00383099
+      DEBUG2: [5]: dVel: 0.00265783
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000833915
+      DEBUG2: [1]: dVel: 0.00558418
+      DEBUG2: [2]: dVel: 6.38068e-05
+      DEBUG2: [3]: dVel: 3.24249e-05
+      DEBUG2: [4]: dVel: 0.00220548
+      DEBUG2: [5]: dVel: 0.00122958
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000505963
+      DEBUG2: [1]: dVel: 0.00237283
+      DEBUG2: [2]: dVel: 0.00185603
+      DEBUG2: [3]: dVel: 0.00483537
+      DEBUG2: [4]: dVel: 0.003524
+      DEBUG2: [5]: dVel: 0.00185412
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000179129
+      DEBUG2: [1]: dVel: 0.00341308
+      DEBUG2: [2]: dVel: 0.0010443
+      DEBUG2: [3]: dVel: 0.0023526
+      DEBUG2: [4]: dVel: 0.00360749
+      DEBUG2: [5]: dVel: 0.00209401
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000504626
+      DEBUG2: [1]: dVel: 0.00131673
+      DEBUG2: [2]: dVel: 0.000491619
+      DEBUG2: [3]: dVel: 0.00151145
+      DEBUG2: [4]: dVel: 0.00326639
+      DEBUG2: [5]: dVel: 0.00151249
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000505757
+      DEBUG2: [1]: dVel: 0.00248572
+      DEBUG2: [2]: dVel: 0.00147167
+      DEBUG2: [3]: dVel: 0.00399363
+      DEBUG2: [4]: dVel: 0.000380559
+      DEBUG2: [5]: dVel: 0.00398087
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00076128
+      DEBUG2: [1]: dVel: 0.000655919
+      DEBUG2: [2]: dVel: 0.000412166
+      DEBUG2: [3]: dVel: 0.00150764
+      DEBUG2: [4]: dVel: 0.00327009
+      DEBUG2: [5]: dVel: 0.00151361
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000409022
+      DEBUG2: [1]: dVel: 0.00100961
+      DEBUG2: [2]: dVel: 0.000555128
+      DEBUG2: [3]: dVel: 0.00161219
+      DEBUG2: [4]: dVel: 1.02166e-05
+      DEBUG2: [5]: dVel: 0.000655346
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000436174
+      DEBUG2: [1]: dVel: 0.000653505
+      DEBUG2: [2]: dVel: 9.83775e-05
+      DEBUG2: [4]: dVel: 0.00174504
+      DEBUG2: [5]: dVel: 2.58978e-05
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000143686
+      DEBUG2: [1]: dVel: 0.000352979
+      DEBUG2: [2]: dVel: 0.000649214
+      DEBUG2: [3]: dVel: 0.00161219
+      DEBUG2: [4]: dVel: 9.29553e-06
+      DEBUG2: [5]: dVel: 0.000658103
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000701673
+      DEBUG2: [1]: dVel: 2.44379e-06
+      DEBUG2: [4]: dVel: 0.00174505
+      DEBUG2: [5]: dVel: 2.31413e-05
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000124045
+      DEBUG2: [1]: dVel: 0.000303179
+      DEBUG2: [2]: dVel: 0.000748843
+      DEBUG2: [3]: dVel: 0.00161219
+      DEBUG2: [4]: dVel: 9.26387e-06
+      DEBUG2: [5]: dVel: 0.000660916
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG0: Sequence-Point 0 reached.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: CommandHandling: Sent Event 'SequenceDone:1'
+      DEBUG0: Sequence 0 done.
+      DEBUG0: CommandHandling: Sent Event 'SequenceDone:0'
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: CommandHandling: Recieved Event 'SequenceDone:0'
+    INFO: StateMachine: Processing Event 'SequenceDone'
+    INFO: Exiting State MovePosition
+    INFO: Entering State ChangeMode
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Sent Event 'ModeSet:1'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'ModeSet:0'
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'MoveJoystick:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'MoveJoystick:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'MoveJoystick:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'MoveJoystick:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'MoveJoystick:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoMode:0'
+    INFO: StateMachine: Processing Event 'NoMode'
+    INFO: Exiting State Steering
+    INFO: Entering State Idle
+      DEBUG0: CommandHandling: Sent Event 'NoMode:0'
+      DEBUG0: CommandHandling: Recieved Event 'SetMode:1'
+    INFO: StateMachine: Processing Event 'SetMode'
+    INFO: Exiting State Idle
+    INFO: Entering State ChangeMode
+      DEBUG0: CommandHandling: Sent Event 'SetMode:1'
+      DEBUG0: CommandHandling: Sent Event 'ModeSet:1'
+      DEBUG0: CommandHandling: Recieved Event 'MoveJoystick:1'
+      DEBUG0: CommandHandling: Recieved Event 'MoveJoystick:0'
+      DEBUG0: CommandHandling: Recieved Event 'ModeSet:0'
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'MoveJoystick:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'Retract:0'
+    INFO: StateMachine: Processing Event 'Retract'
+    INFO: Exiting State Steering
+    INFO: Entering State Retracted
+      DEBUG0: CommandHandling: Sent Event 'Retract:0'
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG0: CommandHandling: Recieved Event 'Unfold:0'
+    INFO: StateMachine: Processing Event 'Unfold'
+    INFO: Exiting State Retracted 
+    INFO: Entering State Unfolding
+      DEBUG0: CommandHandling: Sent Event 'Unfold:0'
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 1
+      DEBUG2: unfolding from Mode: 1
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.161574
+      DEBUG2: [1]: dVel: 0.0992219
+      DEBUG2: [2]: dVel: 0.000717998
+      DEBUG2: [3]: dVel: 0.0526006
+      DEBUG2: [4]: dVel: 0.886142
+      DEBUG2: [5]: dVel: 0.0493249
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00698461
+      DEBUG2: [1]: dVel: 0.00423011
+      DEBUG2: [2]: dVel: 0.000648916
+      DEBUG2: [3]: dVel: 6.61612e-05
+      DEBUG2: [4]: dVel: 0.0205078
+      DEBUG2: [5]: dVel: 0.00374525
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00507993
+      DEBUG2: [1]: dVel: 0.00300887
+      DEBUG2: [2]: dVel: 0.00105503
+      DEBUG2: [3]: dVel: 0.00105345
+      DEBUG2: [4]: dVel: 0.0156486
+      DEBUG2: [5]: dVel: 0.000270549
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00515839
+      DEBUG2: [1]: dVel: 0.00297815
+      DEBUG2: [2]: dVel: 0.000124395
+      DEBUG2: [3]: dVel: 0.000681996
+      DEBUG2: [4]: dVel: 0.0156973
+      DEBUG2: [5]: dVel: 0.000910398
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00705647
+      DEBUG2: [1]: dVel: 0.00396442
+      DEBUG2: [2]: dVel: 0.000314981
+      DEBUG2: [3]: dVel: 0.00396228
+      DEBUG2: [4]: dVel: 0.0195671
+      DEBUG2: [5]: dVel: 0.0041418
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00502898
+      DEBUG2: [1]: dVel: 0.00318283
+      DEBUG2: [2]: dVel: 0.000239938
+      DEBUG2: [3]: dVel: 0.000498891
+      DEBUG2: [4]: dVel: 0.0139557
+      DEBUG2: [5]: dVel: 0.000686683
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00499696
+      DEBUG2: [1]: dVel: 0.00317702
+      DEBUG2: [2]: dVel: 0.000658274
+      DEBUG2: [3]: dVel: 0.000326395
+      DEBUG2: [4]: dVel: 0.0164745
+      DEBUG2: [5]: dVel: 0.00130001
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00635615
+      DEBUG2: [1]: dVel: 0.00318432
+      DEBUG2: [2]: dVel: 0.000851154
+      DEBUG2: [3]: dVel: 0.0043782
+      DEBUG2: [4]: dVel: 0.0182627
+      DEBUG2: [5]: dVel: 0.00366259
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00520048
+      DEBUG2: [1]: dVel: 0.00373688
+      DEBUG2: [2]: dVel: 0.000769317
+      DEBUG2: [3]: dVel: 0.000396609
+      DEBUG2: [4]: dVel: 0.0168773
+      DEBUG2: [5]: dVel: 0.00290857
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00537232
+      DEBUG2: [1]: dVel: 0.00294062
+      DEBUG2: [2]: dVel: 0.000117719
+      DEBUG2: [3]: dVel: 0.000472665
+      DEBUG2: [4]: dVel: 0.0186453
+      DEBUG2: [5]: dVel: 0.00131807
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00759567
+      DEBUG2: [1]: dVel: 0.0048762
+      DEBUG2: [2]: dVel: 0.00023362
+      DEBUG2: [3]: dVel: 0.0035131
+      DEBUG2: [4]: dVel: 0.0254818
+      DEBUG2: [5]: dVel: 0.000395328
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0050262
+      DEBUG2: [1]: dVel: 0.00329006
+      DEBUG2: [2]: dVel: 0.000195563
+      DEBUG2: [3]: dVel: 0.000483036
+      DEBUG2: [4]: dVel: 0.0172997
+      DEBUG2: [5]: dVel: 0.00233008
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00740776
+      DEBUG2: [1]: dVel: 0.00409788
+      DEBUG2: [2]: dVel: 0.000956923
+      DEBUG2: [3]: dVel: 0.00449836
+      DEBUG2: [4]: dVel: 0.0280471
+      DEBUG2: [5]: dVel: 0.000696484
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00508655
+      DEBUG2: [1]: dVel: 0.00316688
+      DEBUG2: [2]: dVel: 0.000570297
+      DEBUG2: [3]: dVel: 4.06504e-05
+      DEBUG2: [4]: dVel: 0.0198175
+      DEBUG2: [5]: dVel: 0.000549037
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00691308
+      DEBUG2: [1]: dVel: 0.0040701
+      DEBUG2: [2]: dVel: 0.000507504
+      DEBUG2: [3]: dVel: 0.00391817
+      DEBUG2: [4]: dVel: 0.0266789
+      DEBUG2: [5]: dVel: 0.00290362
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00534803
+      DEBUG2: [1]: dVel: 0.00335109
+      DEBUG2: [2]: dVel: 0.00047192
+      DEBUG2: [3]: dVel: 0.00046432
+      DEBUG2: [4]: dVel: 0.0223449
+      DEBUG2: [5]: dVel: 0.000386324
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00654962
+      DEBUG2: [1]: dVel: 0.00398296
+      DEBUG2: [2]: dVel: 0.000343829
+      DEBUG2: [3]: dVel: 0.00122559
+      DEBUG2: [4]: dVel: 0.0287474
+      DEBUG2: [5]: dVel: 0.00412634
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00762014
+      DEBUG2: [1]: dVel: 0.00460956
+      DEBUG2: [2]: dVel: 0.000291109
+      DEBUG2: [3]: dVel: 0.0029664
+      DEBUG2: [4]: dVel: 0.033003
+      DEBUG2: [5]: dVel: 0.000417281
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00398028
+      DEBUG2: [1]: dVel: 0.00216201
+      DEBUG2: [2]: dVel: 0.000167936
+      DEBUG2: [3]: dVel: 0.00154555
+      DEBUG2: [4]: dVel: 0.0162904
+      DEBUG2: [5]: dVel: 0.00227334
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00691919
+      DEBUG2: [1]: dVel: 0.00393191
+      DEBUG2: [2]: dVel: 0.000668913
+      DEBUG2: [3]: dVel: 0.00428212
+      DEBUG2: [4]: dVel: 0.0336943
+      DEBUG2: [5]: dVel: 0.000487598
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00415733
+      DEBUG2: [1]: dVel: 0.002323
+      DEBUG2: [2]: dVel: 9.71556e-06
+      DEBUG2: [3]: dVel: 0.00219464
+      DEBUG2: [4]: dVel: 0.0212501
+      DEBUG2: [5]: dVel: 0.00580768
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00418019
+      DEBUG2: [1]: dVel: 0.00218832
+      DEBUG2: [2]: dVel: 0.000142813
+      DEBUG2: [3]: dVel: 0.00135136
+      DEBUG2: [4]: dVel: 0.0224938
+      DEBUG2: [5]: dVel: 6.78077e-05
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00785402
+      DEBUG2: [1]: dVel: 0.00410539
+      DEBUG2: [2]: dVel: 0.000763178
+      DEBUG2: [3]: dVel: 0.00500512
+      DEBUG2: [4]: dVel: 0.039331
+      DEBUG2: [5]: dVel: 0.00515114
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00253797
+      DEBUG2: [1]: dVel: 0.00158048
+      DEBUG2: [2]: dVel: 0.000402898
+      DEBUG2: [3]: dVel: 0.00098753
+      DEBUG2: [4]: dVel: 0.0155434
+      DEBUG2: [5]: dVel: 0.0030794
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00403065
+      DEBUG2: [1]: dVel: 0.00194481
+      DEBUG2: [2]: dVel: 0.000515163
+      DEBUG2: [3]: dVel: 0.0031507
+      DEBUG2: [4]: dVel: 0.0226274
+      DEBUG2: [5]: dVel: 0.00420957
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00454987
+      DEBUG2: [1]: dVel: 0.00250599
+      DEBUG2: [2]: dVel: 0.000145316
+      DEBUG2: [3]: dVel: 0.000848293
+      DEBUG2: [4]: dVel: 0.0274901
+      DEBUG2: [5]: dVel: 0.00269006
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00632349
+      DEBUG2: [1]: dVel: 0.00335819
+      DEBUG2: [2]: dVel: 0.000331938
+      DEBUG2: [3]: dVel: 0.000985622
+      DEBUG2: [4]: dVel: 0.0384593
+      DEBUG2: [5]: dVel: 0.000122606
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00316482
+      DEBUG2: [1]: dVel: 0.00147623
+      DEBUG2: [2]: dVel: 0.000518858
+      DEBUG2: [3]: dVel: 0.0021193
+      DEBUG2: [4]: dVel: 0.0209031
+      DEBUG2: [5]: dVel: 0.00322675
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00256377
+      DEBUG2: [1]: dVel: 0.00192103
+      DEBUG2: [2]: dVel: 0.000345439
+      DEBUG2: [3]: dVel: 0.000432372
+      DEBUG2: [4]: dVel: 0.0205938
+      DEBUG2: [5]: dVel: 0.00178559
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00379909
+      DEBUG2: [1]: dVel: 0.00184795
+      DEBUG2: [2]: dVel: 0.000548273
+      DEBUG2: [3]: dVel: 0.000102639
+      DEBUG2: [4]: dVel: 0.0290102
+      DEBUG2: [5]: dVel: 0.00320906
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000714386
+      DEBUG2: [1]: dVel: 0.00102776
+      DEBUG2: [2]: dVel: 2.12789e-05
+      DEBUG2: [3]: dVel: 0.00028348
+      DEBUG2: [4]: dVel: 0.0121503
+      DEBUG2: [5]: dVel: 5.46034e-06
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00253564
+      DEBUG2: [1]: dVel: 0.00212628
+      DEBUG2: [2]: dVel: 0.000576913
+      DEBUG2: [3]: dVel: 0.00037837
+      DEBUG2: [4]: dVel: 0.0255572
+      DEBUG2: [5]: dVel: 0.000464503
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0022894
+      DEBUG2: [1]: dVel: 0.000965685
+      DEBUG2: [2]: dVel: 0.000313997
+      DEBUG2: [3]: dVel: 0.00156963
+      DEBUG2: [4]: dVel: 0.0249982
+      DEBUG2: [5]: dVel: 0.00254784
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000705084
+      DEBUG2: [1]: dVel: 0.000657678
+      DEBUG2: [2]: dVel: 0.000708193
+      DEBUG2: [3]: dVel: 0.00227201
+      DEBUG2: [4]: dVel: 0.0129538
+      DEBUG2: [5]: dVel: 0.000344314
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000261348
+      DEBUG2: [1]: dVel: 0.000747114
+      DEBUG2: [2]: dVel: 6.04689e-05
+      DEBUG2: [3]: dVel: 0.000468493
+      DEBUG2: [4]: dVel: 0.018425
+      DEBUG2: [5]: dVel: 0.000535568
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00275198
+      DEBUG2: [1]: dVel: 0.000891179
+      DEBUG2: [2]: dVel: 0.00059092
+      DEBUG2: [3]: dVel: 0.000811815
+      DEBUG2: [4]: dVel: 0.0259566
+      DEBUG2: [5]: dVel: 0.00109702
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00092528
+      DEBUG2: [1]: dVel: 0.000308692
+      DEBUG2: [2]: dVel: 0.000403255
+      DEBUG2: [3]: dVel: 0.000179768
+      DEBUG2: [4]: dVel: 0.00772398
+      DEBUG2: [5]: dVel: 0.00378843
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000171294
+      DEBUG2: [1]: dVel: 0.00032708
+      DEBUG2: [2]: dVel: 9.31323e-05
+      DEBUG2: [3]: dVel: 0.00145435
+      DEBUG2: [4]: dVel: 0.0158074
+      DEBUG2: [5]: dVel: 0.00566155
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00132365
+      DEBUG2: [1]: dVel: 0.000180066
+      DEBUG2: [2]: dVel: 0.00059998
+      DEBUG2: [3]: dVel: 0.00101829
+      DEBUG2: [4]: dVel: 0.0199123
+      DEBUG2: [5]: dVel: 0.0028253
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000366196
+      DEBUG2: [1]: dVel: 0.000228047
+      DEBUG2: [2]: dVel: 0.000405371
+      DEBUG2: [3]: dVel: 0.00113773
+      DEBUG2: [4]: dVel: 0.011868
+      DEBUG2: [5]: dVel: 0.00151594
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00125892
+      DEBUG2: [1]: dVel: 3.09944e-06
+      DEBUG2: [2]: dVel: 0.000481009
+      DEBUG2: [3]: dVel: 0.00105536
+      DEBUG2: [4]: dVel: 0.00834298
+      DEBUG2: [5]: dVel: 0.00327034
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000507722
+      DEBUG2: [1]: dVel: 0.000165492
+      DEBUG2: [2]: dVel: 4.372e-05
+      DEBUG2: [3]: dVel: 0.00013566
+      DEBUG2: [4]: dVel: 0.017073
+      DEBUG2: [5]: dVel: 3.10964e-05
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000395507
+      DEBUG2: [1]: dVel: 8.24928e-05
+      DEBUG2: [2]: dVel: 0.000590175
+      DEBUG2: [3]: dVel: 0.00139523
+      DEBUG2: [4]: dVel: 0.0154021
+      DEBUG2: [5]: dVel: 0.000717802
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000259623
+      DEBUG2: [1]: dVel: 2.79546e-05
+      DEBUG2: [2]: dVel: 0.00103864
+      DEBUG2: [3]: dVel: 0.00217974
+      DEBUG2: [4]: dVel: 0.0111095
+      DEBUG2: [5]: dVel: 0.000532218
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 6.24042e-05
+      DEBUG2: [1]: dVel: 8.52644e-05
+      DEBUG2: [2]: dVel: 0.000466824
+      DEBUG2: [3]: dVel: 0.000980735
+      DEBUG2: [4]: dVel: 0.00993943
+      DEBUG2: [5]: dVel: 6.82501e-05
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 1.23791e-05
+      DEBUG2: [1]: dVel: 0.000291884
+      DEBUG2: [2]: dVel: 0.000326067
+      DEBUG2: [3]: dVel: 7.27177e-05
+      DEBUG2: [4]: dVel: 0.0135975
+      DEBUG2: [5]: dVel: 0.00171319
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00138382
+      DEBUG2: [1]: dVel: 0.00051865
+      DEBUG2: [2]: dVel: 0.000495702
+      DEBUG2: [3]: dVel: 0.00207925
+      DEBUG2: [4]: dVel: 0.00292694
+      DEBUG2: [5]: dVel: 0.00279373
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000360521
+      DEBUG2: [1]: dVel: 2.65241e-06
+      DEBUG2: [2]: dVel: 5.93662e-05
+      DEBUG2: [3]: dVel: 9.14335e-05
+      DEBUG2: [4]: dVel: 0.00901989
+      DEBUG2: [5]: dVel: 0.000861975
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000286695
+      DEBUG2: [1]: dVel: 2.37823e-05
+      DEBUG2: [2]: dVel: 6.22869e-06
+      DEBUG2: [3]: dVel: 0.000250578
+      DEBUG2: [4]: dVel: 0.00734017
+      DEBUG2: [5]: dVel: 0.000814906
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00122353
+      DEBUG2: [1]: dVel: 0.000202596
+      DEBUG2: [2]: dVel: 0.000470817
+      DEBUG2: [3]: dVel: 0.000967026
+      DEBUG2: [4]: dVel: 0.00205043
+      DEBUG2: [5]: dVel: 0.00260923
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00114998
+      DEBUG2: [1]: dVel: 0.00039804
+      DEBUG2: [2]: dVel: 0.00114879
+      DEBUG2: [3]: dVel: 0.00276577
+      DEBUG2: [4]: dVel: 0.00578053
+      DEBUG2: [5]: dVel: 0.00229542
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000724567
+      DEBUG2: [1]: dVel: 0.000508726
+      DEBUG2: [2]: dVel: 0.00144711
+      DEBUG2: [3]: dVel: 0.00352335
+      DEBUG2: [4]: dVel: 0.00544752
+      DEBUG2: [5]: dVel: 0.00288123
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00142178
+      DEBUG2: [1]: dVel: 0.000531137
+      DEBUG2: [2]: dVel: 0.00158897
+      DEBUG2: [3]: dVel: 0.00414634
+      DEBUG2: [4]: dVel: 0.00967337
+      DEBUG2: [5]: dVel: 0.00393559
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00167064
+      DEBUG2: [1]: dVel: 0.00056389
+      DEBUG2: [2]: dVel: 0.00144187
+      DEBUG2: [3]: dVel: 0.00342846
+      DEBUG2: [4]: dVel: 0.0134823
+      DEBUG2: [5]: dVel: 0.000836198
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000276582
+      DEBUG2: [1]: dVel: 3.19183e-05
+      DEBUG2: [2]: dVel: 7.24196e-06
+      DEBUG2: [3]: dVel: 0.000121593
+      DEBUG2: [4]: dVel: 0.00636795
+      DEBUG2: [5]: dVel: 0.000644874
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000289042
+      DEBUG2: [1]: dVel: 9.01222e-05
+      DEBUG2: [2]: dVel: 0.000136167
+      DEBUG2: [3]: dVel: 2.8491e-05
+      DEBUG2: [4]: dVel: 0.00103635
+      DEBUG2: [5]: dVel: 0.000513572
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 3.1583e-05
+      DEBUG2: [1]: dVel: 2.71499e-05
+      DEBUG2: [2]: dVel: 0.000174671
+      DEBUG2: [3]: dVel: 0.000796199
+      DEBUG2: [4]: dVel: 0.00242097
+      DEBUG2: [5]: dVel: 0.00106184
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000379415
+      DEBUG2: [1]: dVel: 1.51992e-05
+      DEBUG2: [2]: dVel: 0.000323683
+      DEBUG2: [3]: dVel: 0.00153768
+      DEBUG2: [4]: dVel: 0.000249489
+      DEBUG2: [5]: dVel: 0.00145303
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000137255
+      DEBUG2: [1]: dVel: 0.000194907
+      DEBUG2: [2]: dVel: 0.000438213
+      DEBUG2: [3]: dVel: 0.00080359
+      DEBUG2: [4]: dVel: 0.00137758
+      DEBUG2: [5]: dVel: 0.00270976
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000694849
+      DEBUG2: [1]: dVel: 6.97374e-06
+      DEBUG2: [4]: dVel: 0.00174522
+      DEBUG2: [5]: dVel: 0.00266011
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG0: Sequence-Point 0 reached.
+      DEBUG2: unfolding from Mode: 5
+      DEBUG0: CommandHandling: Sent Event 'Unfolded:0'
+      DEBUG0: CommandHandling: Recieved Event 'Unfolded:0'
+    INFO: StateMachine: Processing Event 'Unfolded'
+    INFO: Exiting State Unfolding 
+    INFO: Entering State Idle
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'GoToPosition:1'
+    INFO: StateMachine: Processing Event 'GoToPosition'
+    INFO: Exiting State Idle
+    INFO: Entering State MovePosition
+      DEBUG0: CommandHandling: Sent Event 'GoToPosition:1'
+      DEBUG0: CommandHandling: Recieved Event 'Unfolded:0'
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00151975
+      DEBUG2: [1]: dVel: 0.000861079
+      DEBUG2: [2]: dVel: 0.000542045
+      DEBUG2: [3]: dVel: 0.000798821
+      DEBUG2: [4]: dVel: 0.00211414
+      DEBUG2: [5]: dVel: 1.26855e-05
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG0: Sequence-Point 0 reached.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: CommandHandling: Sent Event 'SequenceDone:1'
+      DEBUG0: Sequence 0 done.
+      DEBUG0: CommandHandling: Sent Event 'SequenceDone:0'
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: CommandHandling: Recieved Event 'GoToPosition:1'
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: Sequence 0 done.
+      DEBUG0: CommandHandling: Recieved Event 'SequenceDone:0'
+    INFO: StateMachine: Processing Event 'SequenceDone'
+    INFO: Exiting State MovePosition
+    INFO: Entering State ChangeMode
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Sent Event 'ModeSet:1'
+      DEBUG0: CommandHandling: Recieved Event 'E_Stop:0'
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+      DEBUG0: CommandHandling: Sent Event 'E_Stop:0'
+ERROR: TCPServer::readTCP(): Error reading from socket

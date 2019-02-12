@@ -197,24 +197,31 @@ void KinovaArm::initialize()
 
 /*brings arm to retracted position*/
 void KinovaArm::retract() {
+  currentPosition = 0;
   if(!KINOVA_DUMMY) {
     try {
       KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
+      if (armStatus != 3) {
+        ALL_LOG(logDEBUG2) << "retracting from Mode: " << armStatus;
+      }
       switch (armStatus) {
-        case MODE_READY_STANDBY:          
-        case MODE_RETRACT_TO_READY:
+        case KinDrv::MODE_READY_TO_RETRACT:
           arm->push_joystick_button(2);
           break;
-        case MODE_NORMAL_TO_READY:
-        case MODE_NORMAL:
-        case MODE_NOINIT:
-          std::string msg = "Can't retract from current Mode: " & std::to_string(armStatus);
-          error("retract", msg);
+        case KinDrv::MODE_READY_STANDBY:  
+          arm->release_joystick();      
+        case KinDrv::MODE_RETRACT_TO_READY:
+          arm->push_joystick_button(2);
           break;
-        case MODE_ERROR:
+        case KinDrv::MODE_NORMAL_TO_READY:
+        case KinDrv::MODE_NORMAL:
+        case KinDrv::MODE_NOINIT:
+          arm->push_joystick_button(2);
+          break;
+        case KinDrv::MODE_ERROR:
           error("retract", "Arm has an Error!");
           break;
-        case MODE_RETRACT_STANDBY:
+        case KinDrv::MODE_RETRACT_STANDBY:
           arm->release_joystick();
           break;
       }
@@ -229,31 +236,50 @@ void KinovaArm::retract() {
 /*Moves Arm out of retracted Position to own home position.*/
 void KinovaArm::unfold() {
   if(!KINOVA_DUMMY) {
-    try {
-      KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
-      switch (armStatus) {
-        case MODE_READY_STANDBY:          
-        case MODE_READY_TO_RETRACT:
-          arm->release_joystick();
-          arm->push_joystick_button(2);
-          break;
-        case MODE_NORMAL_TO_READY:
-        case MODE_NORMAL:
-        case MODE_NOINIT:
-          std::string msg = "Can't retract from current Mode: " & std::to_string(armStatus);
-          error("retract", msg);
-          break;
-        case MODE_ERROR:
-          error("retract", "Arm has an Error!");
-          break;
-        case MODE_RETRACT_STANDBY:
-          arm->release_joystick();
-          break;
+    if (currentPosition != KinovaPts::Home) {
+      if (TargetObjective != KinovaPts::Home) {
+        setTarget(KinovaPts::Home);
+      }
+      try {
+        KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
+        //if (armStatus != 3) {
+        ALL_LOG(logDEBUG2) << "unfolding from Mode: " << armStatus;
+        //}
+        switch (armStatus) {    
+          case KinDrv::MODE_RETRACT_TO_READY:
+            arm->push_joystick_button(2);
+            break;
+          case KinDrv::MODE_READY_TO_RETRACT:
+            arm->push_joystick_button(2);
+          case KinDrv::MODE_RETRACT_STANDBY:
+            arm->release_joystick();
+            arm->push_joystick_button(2);
+            break;
+          case KinDrv::MODE_NORMAL_TO_READY:
+          case KinDrv::MODE_NOINIT:
+            arm->push_joystick_button(2);
+            break;
+          case KinDrv::MODE_ERROR:
+            error("unfold", "Arm has an Error!");
+            break;
+          case KinDrv::MODE_NORMAL:
+          case KinDrv::MODE_READY_STANDBY:
+            arm->release_joystick();
+            moveToPosition(true);
+            break;
+        }
+      }
+      catch ( KinDrv::KinDrvException &e ) {
+        error("unfold", e, false);
       }
     }
-    catch ( KinDrv::KinDrvException &e ) {
-      error("retract", e, false);
+    else {
+      ExternalEvent = KinovaFSM::Unfolded;
+      
     }
+  }
+  else {
+    ExternalEvent = KinovaFSM::Unfolded;
   }
 }
 
@@ -397,6 +423,7 @@ void KinovaArm::moveToPosition(bool init) {
   }
   else {
     currentPosition = TargetObjective;
+    TargetObjective = KinovaPts::NoObjective;
     if (init) { InternalEvent = KinovaFSM::InitHomeReached; }
     else {
       ALL_LOG(logDEBUG) << "Sequence " << TargetObjective << " done." ;

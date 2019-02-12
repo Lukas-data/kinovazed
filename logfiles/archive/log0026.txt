@@ -1,0 +1,2498 @@
+    INFO: KinovaMain - Startup!
+    INFO: Connection to RoboRio established.
+    INFO: Connection to JacoArm established.
+      DEBUG0: CommandHandling: Recieved Event 'E_Stop:0'
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State PowerOff
+    INFO: Entering State EStop
+ERROR: KinovaArm::releaseControl(): 1, Could not stop API control! libusb error.
+      DEBUG0: CommandHandling: Sent Event 'E_Stop:0'
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Could not claim usb interface 0!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+  WARNING: KinovaArm::connect(): 1, Failed getting usb-device-handle for JacoArm!
+    INFO: Connection to JacoArm established.
+      DEBUG0: CommandHandling: Recieved Event 'QuitEStop:0'
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+      DEBUG0: CommandHandling: Sent Event 'QuitEStop:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialize:0'
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+      DEBUG2: PositionHandling::ReadFromFile: Objective 3 is Zero
+      DEBUG2: PositionHandling::ReadFromFile: Objective 4 is Zero
+    INFO: Points successfully loaded from File.
+      DEBUG0: Transformation matrices calculated
+      DEBUG0: CommandHandling: Sent Event 'Initialize:0'
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.163808
+      DEBUG2: [1]: dVel: 0.302398
+      DEBUG2: [2]: dVel: 0.492679
+      DEBUG2: [3]: dVel: 1.53214
+      DEBUG2: [4]: dVel: 0.892948
+      DEBUG2: [5]: dVel: 0.0538551
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00537406
+      DEBUG2: [1]: dVel: 0.00343022
+      DEBUG2: [2]: dVel: 0.000650495
+      DEBUG2: [3]: dVel: 0.000170112
+      DEBUG2: [4]: dVel: 0.0152742
+      DEBUG2: [5]: dVel: 0.00179177
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00617528
+      DEBUG2: [1]: dVel: 0.00290319
+      DEBUG2: [2]: dVel: 3.51369e-05
+      DEBUG2: [3]: dVel: 0.00323761
+      DEBUG2: [4]: dVel: 0.0173868
+      DEBUG2: [5]: dVel: 0.00683899
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00689934
+      DEBUG2: [1]: dVel: 0.00406915
+      DEBUG2: [2]: dVel: 0.000651062
+      DEBUG2: [3]: dVel: 1.45435e-05
+      DEBUG2: [4]: dVel: 0.0209083
+      DEBUG2: [5]: dVel: 0.00213065
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00549999
+      DEBUG2: [1]: dVel: 0.00353533
+      DEBUG2: [2]: dVel: 0.000243872
+      DEBUG2: [3]: dVel: 0.000607967
+      DEBUG2: [4]: dVel: 0.0156991
+      DEBUG2: [5]: dVel: 0.000822701
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00653167
+      DEBUG2: [1]: dVel: 0.00355995
+      DEBUG2: [2]: dVel: 0.000647843
+      DEBUG2: [3]: dVel: 0.000116587
+      DEBUG2: [4]: dVel: 0.0191628
+      DEBUG2: [5]: dVel: 0.00202646
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00473744
+      DEBUG2: [1]: dVel: 0.00290057
+      DEBUG2: [2]: dVel: 0.000317156
+      DEBUG2: [3]: dVel: 0.00348985
+      DEBUG2: [4]: dVel: 0.0130002
+      DEBUG2: [5]: dVel: 0.00199395
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00522248
+      DEBUG2: [1]: dVel: 0.00344673
+      DEBUG2: [2]: dVel: 0.000241727
+      DEBUG2: [3]: dVel: 0.000447392
+      DEBUG2: [4]: dVel: 0.0165006
+      DEBUG2: [5]: dVel: 0.00241589
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0070816
+      DEBUG2: [1]: dVel: 0.00370401
+      DEBUG2: [2]: dVel: 0.000852525
+      DEBUG2: [3]: dVel: 0.00434446
+      DEBUG2: [4]: dVel: 0.0225545
+      DEBUG2: [5]: dVel: 0.000569407
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00594696
+      DEBUG2: [1]: dVel: 0.00425401
+      DEBUG2: [2]: dVel: 0.000757575
+      DEBUG2: [3]: dVel: 0.000301123
+      DEBUG2: [4]: dVel: 0.0211676
+      DEBUG2: [5]: dVel: 0.000626639
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00693855
+      DEBUG2: [1]: dVel: 0.00393718
+      DEBUG2: [2]: dVel: 0.000350326
+      DEBUG2: [3]: dVel: 0.00343418
+      DEBUG2: [4]: dVel: 0.0233406
+      DEBUG2: [5]: dVel: 0.00364881
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00433913
+      DEBUG2: [1]: dVel: 0.00237629
+      DEBUG2: [2]: dVel: 9.15527e-05
+      DEBUG2: [3]: dVel: 0.000393033
+      DEBUG2: [4]: dVel: 0.015156
+      DEBUG2: [5]: dVel: 0.00114087
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00815929
+      DEBUG2: [1]: dVel: 0.00567356
+      DEBUG2: [2]: dVel: 0.00021717
+      DEBUG2: [3]: dVel: 0.0011611
+      DEBUG2: [4]: dVel: 0.0319022
+      DEBUG2: [5]: dVel: 0.00363255
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00770821
+      DEBUG2: [1]: dVel: 0.00418949
+      DEBUG2: [2]: dVel: 0.000470161
+      DEBUG2: [3]: dVel: 0.00380206
+      DEBUG2: [4]: dVel: 0.0280257
+      DEBUG2: [5]: dVel: 0.00704548
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00838858
+      DEBUG2: [1]: dVel: 0.00531814
+      DEBUG2: [2]: dVel: 0.000491828
+      DEBUG2: [3]: dVel: 0.00109279
+      DEBUG2: [4]: dVel: 0.0343995
+      DEBUG2: [5]: dVel: 4.00096e-05
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00626206
+      DEBUG2: [1]: dVel: 0.00336742
+      DEBUG2: [2]: dVel: 0.000131667
+      DEBUG2: [3]: dVel: 0.00329053
+      DEBUG2: [4]: dVel: 0.0249066
+      DEBUG2: [5]: dVel: 0.00663874
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00505622
+      DEBUG2: [1]: dVel: 0.00299865
+      DEBUG2: [2]: dVel: 0.000209242
+      DEBUG2: [3]: dVel: 0.0018959
+      DEBUG2: [4]: dVel: 0.0227266
+      DEBUG2: [5]: dVel: 0.00199409
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00743252
+      DEBUG2: [1]: dVel: 0.00462568
+      DEBUG2: [2]: dVel: 0.000397116
+      DEBUG2: [3]: dVel: 0.00342751
+      DEBUG2: [4]: dVel: 0.0333704
+      DEBUG2: [5]: dVel: 0.00693149
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00668141
+      DEBUG2: [1]: dVel: 0.00396445
+      DEBUG2: [2]: dVel: 0.000105679
+      DEBUG2: [3]: dVel: 0.00177789
+      DEBUG2: [4]: dVel: 0.0328549
+      DEBUG2: [5]: dVel: 0.010801
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00641012
+      DEBUG2: [1]: dVel: 0.00319394
+      DEBUG2: [2]: dVel: 0.00025323
+      DEBUG2: [3]: dVel: 0.00360847
+      DEBUG2: [4]: dVel: 0.0314798
+      DEBUG2: [5]: dVel: 0.0109052
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00337731
+      DEBUG2: [1]: dVel: 0.0018436
+      DEBUG2: [2]: dVel: 0.000686884
+      DEBUG2: [3]: dVel: 0.00362456
+      DEBUG2: [4]: dVel: 0.0194486
+      DEBUG2: [5]: dVel: 0.00224409
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00480635
+      DEBUG2: [1]: dVel: 0.00251311
+      DEBUG2: [2]: dVel: 0.000288069
+      DEBUG2: [3]: dVel: 0.00117469
+      DEBUG2: [4]: dVel: 0.0245314
+      DEBUG2: [5]: dVel: 0.00245589
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00483458
+      DEBUG2: [1]: dVel: 0.00233066
+      DEBUG2: [2]: dVel: 7.86781e-05
+      DEBUG2: [3]: dVel: 0.000668287
+      DEBUG2: [4]: dVel: 0.0257232
+      DEBUG2: [5]: dVel: 0.00202641
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00502909
+      DEBUG2: [1]: dVel: 0.00245783
+      DEBUG2: [2]: dVel: 0.000222206
+      DEBUG2: [3]: dVel: 0.00218356
+      DEBUG2: [4]: dVel: 0.0280781
+      DEBUG2: [5]: dVel: 0.00207121
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00239561
+      DEBUG2: [1]: dVel: 0.00114885
+      DEBUG2: [2]: dVel: 0.000374705
+      DEBUG2: [3]: dVel: 0.000875711
+      DEBUG2: [4]: dVel: 0.0154178
+      DEBUG2: [5]: dVel: 0.00133391
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00573507
+      DEBUG2: [1]: dVel: 0.00306842
+      DEBUG2: [2]: dVel: 2.22325e-05
+      DEBUG2: [3]: dVel: 0.00198197
+      DEBUG2: [4]: dVel: 0.0351776
+      DEBUG2: [5]: dVel: 0.00325423
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00158562
+      DEBUG2: [1]: dVel: 0.00160122
+      DEBUG2: [2]: dVel: 0.00102532
+      DEBUG2: [3]: dVel: 0.00294507
+      DEBUG2: [4]: dVel: 0.01429
+      DEBUG2: [5]: dVel: 0.00436926
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00491381
+      DEBUG2: [1]: dVel: 0.00245523
+      DEBUG2: [2]: dVel: 0.000123322
+      DEBUG2: [3]: dVel: 0.00274181
+      DEBUG2: [4]: dVel: 0.0306207
+      DEBUG2: [5]: dVel: 0.00336342
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00170363
+      DEBUG2: [1]: dVel: 0.00153628
+      DEBUG2: [2]: dVel: 0.000434458
+      DEBUG2: [3]: dVel: 0.00226188
+      DEBUG2: [4]: dVel: 0.0187153
+      DEBUG2: [5]: dVel: 0.00254341
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00374971
+      DEBUG2: [1]: dVel: 0.00215396
+      DEBUG2: [2]: dVel: 0.00040254
+      DEBUG2: [3]: dVel: 0.000169396
+      DEBUG2: [4]: dVel: 0.028077
+      DEBUG2: [5]: dVel: 0.00887745
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00181378
+      DEBUG2: [1]: dVel: 0.00156054
+      DEBUG2: [2]: dVel: 0.00168976
+      DEBUG2: [3]: dVel: 0.00420046
+      DEBUG2: [4]: dVel: 0.0213674
+      DEBUG2: [5]: dVel: 0.00705286
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00122249
+      DEBUG2: [1]: dVel: 0.00110656
+      DEBUG2: [2]: dVel: 0.000783265
+      DEBUG2: [3]: dVel: 0.0040251
+      DEBUG2: [4]: dVel: 0.0160761
+      DEBUG2: [5]: dVel: 0.00378666
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00155305
+      DEBUG2: [1]: dVel: 0.0013009
+      DEBUG2: [2]: dVel: 0.000477374
+      DEBUG2: [3]: dVel: 0.00143266
+      DEBUG2: [4]: dVel: 0.0223908
+      DEBUG2: [5]: dVel: 0.000992958
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000803774
+      DEBUG2: [1]: dVel: 0.000105232
+      DEBUG2: [2]: dVel: 0.00141552
+      DEBUG2: [3]: dVel: 0.00384736
+      DEBUG2: [4]: dVel: 0.0160221
+      DEBUG2: [5]: dVel: 0.000649809
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00101608
+      DEBUG2: [1]: dVel: 0.000847161
+      DEBUG2: [2]: dVel: 0.00103742
+      DEBUG2: [3]: dVel: 0.00217879
+      DEBUG2: [4]: dVel: 0.017978
+      DEBUG2: [5]: dVel: 0.00138562
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00093578
+      DEBUG2: [1]: dVel: 0.000971049
+      DEBUG2: [2]: dVel: 0.000339687
+      DEBUG2: [3]: dVel: 0.00161016
+      DEBUG2: [4]: dVel: 0.019169
+      DEBUG2: [5]: dVel: 0.0010912
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000221496
+      DEBUG2: [1]: dVel: 8.46982e-05
+      DEBUG2: [2]: dVel: 0.00105906
+      DEBUG2: [3]: dVel: 0.00330293
+      DEBUG2: [4]: dVel: 0.0165554
+      DEBUG2: [5]: dVel: 0.00611547
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00070625
+      DEBUG2: [1]: dVel: 6.95288e-05
+      DEBUG2: [2]: dVel: 0.00126094
+      DEBUG2: [3]: dVel: 0.00439835
+      DEBUG2: [4]: dVel: 0.0199968
+      DEBUG2: [5]: dVel: 0.00900526
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0013305
+      DEBUG2: [1]: dVel: 0.000282049
+      DEBUG2: [2]: dVel: 0.000107169
+      DEBUG2: [3]: dVel: 0.000296593
+      DEBUG2: [4]: dVel: 0.00443381
+      DEBUG2: [5]: dVel: 0.00039962
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00048908
+      DEBUG2: [1]: dVel: 2.05338e-05
+      DEBUG2: [2]: dVel: 0.000239223
+      DEBUG2: [3]: dVel: 7.66516e-05
+      DEBUG2: [4]: dVel: 0.013567
+      DEBUG2: [5]: dVel: 0.000804117
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000346707
+      DEBUG2: [1]: dVel: 0.000440359
+      DEBUG2: [2]: dVel: 0.000748366
+      DEBUG2: [3]: dVel: 0.00151992
+      DEBUG2: [4]: dVel: 0.0153172
+      DEBUG2: [5]: dVel: 0.000698968
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000703765
+      DEBUG2: [1]: dVel: 0.000176787
+      DEBUG2: [2]: dVel: 0.00129089
+      DEBUG2: [3]: dVel: 0.0028249
+      DEBUG2: [4]: dVel: 0.00837453
+      DEBUG2: [5]: dVel: 0.00275602
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000404155
+      DEBUG2: [1]: dVel: 0.000495046
+      DEBUG2: [2]: dVel: 0.000466168
+      DEBUG2: [3]: dVel: 0.00102723
+      DEBUG2: [4]: dVel: 0.0167691
+      DEBUG2: [5]: dVel: 0.00129851
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0014129
+      DEBUG2: [1]: dVel: 0.000664085
+      DEBUG2: [2]: dVel: 0.00124931
+      DEBUG2: [3]: dVel: 0.00261557
+      DEBUG2: [4]: dVel: 0.0170259
+      DEBUG2: [5]: dVel: 0.00108795
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000444327
+      DEBUG2: [2]: dVel: 9.95696e-05
+      DEBUG2: [3]: dVel: 5.48363e-06
+      DEBUG2: [4]: dVel: 0.0121323
+      DEBUG2: [5]: dVel: 0.00177563
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00132298
+      DEBUG2: [1]: dVel: 0.000177532
+      DEBUG2: [2]: dVel: 0.000690401
+      DEBUG2: [3]: dVel: 0.0021708
+      DEBUG2: [4]: dVel: 0.00656809
+      DEBUG2: [5]: dVel: 0.000188048
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000823127
+      DEBUG2: [1]: dVel: 0.000115514
+      DEBUG2: [2]: dVel: 0.000150084
+      DEBUG2: [3]: dVel: 0.000322223
+      DEBUG2: [4]: dVel: 0.0118866
+      DEBUG2: [5]: dVel: 0.000335198
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000893183
+      DEBUG2: [1]: dVel: 0.00010848
+      DEBUG2: [2]: dVel: 7.81417e-05
+      DEBUG2: [3]: dVel: 0.000146389
+      DEBUG2: [4]: dVel: 0.00196869
+      DEBUG2: [5]: dVel: 0.000916713
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000698762
+      DEBUG2: [1]: dVel: 2.05636e-06
+      DEBUG2: [4]: dVel: 0.00174544
+      DEBUG2: [5]: dVel: 0.00264339
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000577345
+      DEBUG2: [1]: dVel: 0.000198394
+      DEBUG2: [2]: dVel: 0.000571668
+      DEBUG2: [3]: dVel: 0.00137079
+      DEBUG2: [4]: dVel: 0.00289409
+      DEBUG2: [5]: dVel: 0.00376759
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00202699
+      DEBUG2: [1]: dVel: 0.000715703
+      DEBUG2: [2]: dVel: 0.00213549
+      DEBUG2: [3]: dVel: 0.00538373
+      DEBUG2: [4]: dVel: 0.0126259
+      DEBUG2: [5]: dVel: 0.00249333
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00170382
+      DEBUG2: [1]: dVel: 0.000529796
+      DEBUG2: [2]: dVel: 0.00125989
+      DEBUG2: [3]: dVel: 0.00259507
+      DEBUG2: [4]: dVel: 0.0110594
+      DEBUG2: [5]: dVel: 0.00238937
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000665877
+      DEBUG2: [1]: dVel: 0.000564784
+      DEBUG2: [2]: dVel: 0.00163791
+      DEBUG2: [3]: dVel: 0.00442529
+      DEBUG2: [4]: dVel: 0.00781617
+      DEBUG2: [5]: dVel: 0.00131829
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000804989
+      DEBUG2: [1]: dVel: 0.000263304
+      DEBUG2: [2]: dVel: 0.000598758
+      DEBUG2: [3]: dVel: 0.00144553
+      DEBUG2: [4]: dVel: 0.0091671
+      DEBUG2: [5]: dVel: 0.000858426
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000416931
+      DEBUG2: [1]: dVel: 0.000403672
+      DEBUG2: [2]: dVel: 0.000881493
+      DEBUG2: [3]: dVel: 0.00164366
+      DEBUG2: [4]: dVel: 0.00101048
+      DEBUG2: [5]: dVel: 0.000125121
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00011952
+      DEBUG2: [1]: dVel: 0.000100434
+      DEBUG2: [2]: dVel: 1.70469e-05
+      DEBUG2: [3]: dVel: 0.000734329
+      DEBUG2: [4]: dVel: 0.00114006
+      DEBUG2: [5]: dVel: 0.00172201
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000558186
+      DEBUG2: [1]: dVel: 0.000203282
+      DEBUG2: [2]: dVel: 0.000438243
+      DEBUG2: [3]: dVel: 0.000807166
+      DEBUG2: [4]: dVel: 0.000367741
+      DEBUG2: [5]: dVel: 4.36315e-05
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000695715
+      DEBUG2: [1]: dVel: 6.07967e-06
+      DEBUG2: [4]: dVel: 0.0017451
+      DEBUG2: [5]: dVel: 4.65196e-05
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000261158
+      DEBUG2: [1]: dVel: 0.000116229
+      DEBUG2: [2]: dVel: 0.00030908
+      DEBUG2: [3]: dVel: 0.000815749
+      DEBUG2: [4]: dVel: 0.00139255
+      DEBUG2: [5]: dVel: 0.00206245
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG0: Sequence-Point 0 reached.
+    INFO: StateMachine: Processing Event 'InitHomeReached'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+      DEBUG2: PositionHandling::ReadFromFile: Objective 3 is Zero
+      DEBUG2: PositionHandling::ReadFromFile: Objective 4 is Zero
+    INFO: Points successfully loaded from File.
+      DEBUG0: Transformation matrices calculated
+      DEBUG0: CommandHandling: Sent Event 'Initialized:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialized:0'
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Retracted
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG0: CommandHandling: Recieved Event 'NoMode:0'
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG0: CommandHandling: Recieved Event 'Unfold:0'
+    INFO: StateMachine: Processing Event 'Unfold'
+    INFO: Exiting State Retracted 
+    INFO: Entering State Unfolding
+      DEBUG0: CommandHandling: Sent Event 'Unfold:0'
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 1
+      DEBUG0: Sequence 1 done.
+      DEBUG0: CommandHandling: Sent Event 'SequenceDone:1'
+      DEBUG0: CommandHandling: Sent Event 'Unfolded:0'
+      DEBUG0: CommandHandling: Recieved Event 'SequenceDone:0'
+      DEBUG0: CommandHandling: Recieved Event 'Unfolded:0'
+    INFO: StateMachine: Processing Event 'Unfolded'
+    INFO: Exiting State Unfolding 
+    INFO: Entering State Idle
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'GoToPosition:1'
+    INFO: StateMachine: Processing Event 'GoToPosition'
+    INFO: Exiting State Idle
+    INFO: Entering State MovePosition
+      DEBUG0: CommandHandling: Sent Event 'GoToPosition:1'
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.156856
+      DEBUG2: [1]: dVel: 0.0940828
+      DEBUG2: [2]: dVel: 0.00490645
+      DEBUG2: [3]: dVel: 0.0665367
+      DEBUG2: [4]: dVel: 0.880714
+      DEBUG2: [5]: dVel: 0.0445795
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0030209
+      DEBUG2: [1]: dVel: 0.00161847
+      DEBUG2: [2]: dVel: 0.000523955
+      DEBUG2: [3]: dVel: 0.000476956
+      DEBUG2: [4]: dVel: 0.00829649
+      DEBUG2: [5]: dVel: 0.000426907
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00499652
+      DEBUG2: [1]: dVel: 0.00277978
+      DEBUG2: [2]: dVel: 0.00043416
+      DEBUG2: [3]: dVel: 0.00396144
+      DEBUG2: [4]: dVel: 0.0143225
+      DEBUG2: [5]: dVel: 0.00411371
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00390676
+      DEBUG2: [1]: dVel: 0.00213689
+      DEBUG2: [2]: dVel: 0.000527322
+      DEBUG2: [3]: dVel: 0.000365496
+      DEBUG2: [4]: dVel: 0.0121868
+      DEBUG2: [5]: dVel: 0.00166121
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00475958
+      DEBUG2: [1]: dVel: 0.00298622
+      DEBUG2: [2]: dVel: 0.000651628
+      DEBUG2: [3]: dVel: 0.000290751
+      DEBUG2: [4]: dVel: 0.0139297
+      DEBUG2: [5]: dVel: 0.00176866
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00344871
+      DEBUG2: [1]: dVel: 0.00183603
+      DEBUG2: [2]: dVel: 0.000405341
+      DEBUG2: [3]: dVel: 0.00124967
+      DEBUG2: [4]: dVel: 0.0104909
+      DEBUG2: [5]: dVel: 0.000476506
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00500835
+      DEBUG2: [1]: dVel: 0.00320891
+      DEBUG2: [2]: dVel: 0.000241339
+      DEBUG2: [3]: dVel: 0.000516534
+      DEBUG2: [4]: dVel: 0.0139553
+      DEBUG2: [5]: dVel: 0.000708241
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00308724
+      DEBUG2: [1]: dVel: 0.00180632
+      DEBUG2: [2]: dVel: 0.000118822
+      DEBUG2: [3]: dVel: 0.000311613
+      DEBUG2: [4]: dVel: 0.00872189
+      DEBUG2: [5]: dVel: 0.000431985
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00546914
+      DEBUG2: [1]: dVel: 0.00307873
+      DEBUG2: [2]: dVel: 9.73344e-05
+      DEBUG2: [3]: dVel: 0.00274193
+      DEBUG2: [4]: dVel: 0.0168638
+      DEBUG2: [5]: dVel: 0.00163455
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00378085
+      DEBUG2: [1]: dVel: 0.00267348
+      DEBUG2: [2]: dVel: 0.000236243
+      DEBUG2: [3]: dVel: 0.000303745
+      DEBUG2: [4]: dVel: 0.0108675
+      DEBUG2: [5]: dVel: 0.00109422
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0046126
+      DEBUG2: [1]: dVel: 0.00253561
+      DEBUG2: [2]: dVel: 0.000433981
+      DEBUG2: [3]: dVel: 0.00335193
+      DEBUG2: [4]: dVel: 0.0155531
+      DEBUG2: [5]: dVel: 0.00138949
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0041905
+      DEBUG2: [1]: dVel: 0.00288659
+      DEBUG2: [2]: dVel: 0.000228047
+      DEBUG2: [3]: dVel: 0.000309944
+      DEBUG2: [4]: dVel: 0.0130122
+      DEBUG2: [5]: dVel: 2.18302e-06
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00516058
+      DEBUG2: [1]: dVel: 0.00300434
+      DEBUG2: [2]: dVel: 0.000109851
+      DEBUG2: [3]: dVel: 0.000471592
+      DEBUG2: [4]: dVel: 0.0190459
+      DEBUG2: [5]: dVel: 0.000242814
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00301808
+      DEBUG2: [1]: dVel: 0.00167042
+      DEBUG2: [2]: dVel: 0.00010708
+      DEBUG2: [3]: dVel: 0.000227451
+      DEBUG2: [4]: dVel: 0.00912315
+      DEBUG2: [5]: dVel: 0.00121047
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00556667
+      DEBUG2: [1]: dVel: 0.00361183
+      DEBUG2: [2]: dVel: 0.000364721
+      DEBUG2: [3]: dVel: 0.00338864
+      DEBUG2: [4]: dVel: 0.0202495
+      DEBUG2: [5]: dVel: 0.00199395
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00342257
+      DEBUG2: [1]: dVel: 0.0018816
+      DEBUG2: [2]: dVel: 9.18508e-05
+      DEBUG2: [3]: dVel: 0.000299096
+      DEBUG2: [4]: dVel: 0.0112672
+      DEBUG2: [5]: dVel: 0.00254814
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0054341
+      DEBUG2: [1]: dVel: 0.00358135
+      DEBUG2: [2]: dVel: 0.000411719
+      DEBUG2: [3]: dVel: 0.00347412
+      DEBUG2: [4]: dVel: 0.0206531
+      DEBUG2: [5]: dVel: 0.00216623
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00340611
+      DEBUG2: [1]: dVel: 0.00185674
+      DEBUG2: [2]: dVel: 0.000496745
+      DEBUG2: [3]: dVel: 0.000320315
+      DEBUG2: [4]: dVel: 0.0137892
+      DEBUG2: [5]: dVel: 0.00334727
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00479282
+      DEBUG2: [1]: dVel: 0.00289121
+      DEBUG2: [2]: dVel: 0.000429869
+      DEBUG2: [3]: dVel: 0.00157809
+      DEBUG2: [4]: dVel: 0.0177084
+      DEBUG2: [5]: dVel: 0.000210021
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00493404
+      DEBUG2: [1]: dVel: 0.00315744
+      DEBUG2: [2]: dVel: 0.000513792
+      DEBUG2: [3]: dVel: 0.000226974
+      DEBUG2: [4]: dVel: 0.0202077
+      DEBUG2: [5]: dVel: 0.00176854
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00504946
+      DEBUG2: [1]: dVel: 0.00278121
+      DEBUG2: [2]: dVel: 0.000642389
+      DEBUG2: [3]: dVel: 0.00389409
+      DEBUG2: [4]: dVel: 0.0210409
+      DEBUG2: [5]: dVel: 0.00166558
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00404043
+      DEBUG2: [1]: dVel: 0.00262669
+      DEBUG2: [2]: dVel: 0.000488758
+      DEBUG2: [3]: dVel: 0.000246406
+      DEBUG2: [4]: dVel: 0.0163121
+      DEBUG2: [5]: dVel: 0.00321531
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00568292
+      DEBUG2: [1]: dVel: 0.00311887
+      DEBUG2: [2]: dVel: 0.000209242
+      DEBUG2: [3]: dVel: 0.00191176
+      DEBUG2: [4]: dVel: 0.0244721
+      DEBUG2: [5]: dVel: 0.000653069
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00370153
+      DEBUG2: [1]: dVel: 0.00233978
+      DEBUG2: [2]: dVel: 0.000181168
+      DEBUG2: [3]: dVel: 0.00163972
+      DEBUG2: [4]: dVel: 0.0166922
+      DEBUG2: [5]: dVel: 0.000823511
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00490356
+      DEBUG2: [1]: dVel: 0.00294957
+      DEBUG2: [2]: dVel: 0.000358552
+      DEBUG2: [3]: dVel: 0.00259519
+      DEBUG2: [4]: dVel: 0.0230736
+      DEBUG2: [5]: dVel: 0.002
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00356741
+      DEBUG2: [1]: dVel: 0.00188735
+      DEBUG2: [2]: dVel: 0.000235587
+      DEBUG2: [3]: dVel: 0.00100911
+      DEBUG2: [4]: dVel: 0.0166495
+      DEBUG2: [5]: dVel: 0.00325668
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00497498
+      DEBUG2: [1]: dVel: 0.00273299
+      DEBUG2: [2]: dVel: 0.000550032
+      DEBUG2: [3]: dVel: 0.00188434
+      DEBUG2: [4]: dVel: 0.0243091
+      DEBUG2: [5]: dVel: 0.00415436
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00297509
+      DEBUG2: [1]: dVel: 0.00167814
+      DEBUG2: [2]: dVel: 0.000163168
+      DEBUG2: [3]: dVel: 0.00133848
+      DEBUG2: [4]: dVel: 0.014859
+      DEBUG2: [5]: dVel: 0.00466368
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00377879
+      DEBUG2: [1]: dVel: 0.00203985
+      DEBUG2: [2]: dVel: 0.000751913
+      DEBUG2: [3]: dVel: 0.00397158
+      DEBUG2: [4]: dVel: 0.0215703
+      DEBUG2: [5]: dVel: 0.00089482
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00195771
+      DEBUG2: [1]: dVel: 0.00125286
+      DEBUG2: [2]: dVel: 0.000826925
+      DEBUG2: [3]: dVel: 0.00162256
+      DEBUG2: [4]: dVel: 0.00973892
+      DEBUG2: [5]: dVel: 0.00136376
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00546581
+      DEBUG2: [1]: dVel: 0.00252798
+      DEBUG2: [2]: dVel: 0.000528157
+      DEBUG2: [3]: dVel: 0.00327861
+      DEBUG2: [4]: dVel: 0.0287181
+      DEBUG2: [5]: dVel: 0.00404377
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0018066
+      DEBUG2: [1]: dVel: 0.000896871
+      DEBUG2: [2]: dVel: 0.000155449
+      DEBUG2: [3]: dVel: 0.000259519
+      DEBUG2: [4]: dVel: 0.009693
+      DEBUG2: [5]: dVel: 0.0022087
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0054399
+      DEBUG2: [1]: dVel: 0.00262389
+      DEBUG2: [2]: dVel: 0.000309676
+      DEBUG2: [3]: dVel: 0.00263
+      DEBUG2: [4]: dVel: 0.0301826
+      DEBUG2: [5]: dVel: 0.00335468
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000981743
+      DEBUG2: [1]: dVel: 0.000494093
+      DEBUG2: [2]: dVel: 0.000550032
+      DEBUG2: [3]: dVel: 0.0012325
+      DEBUG2: [4]: dVel: 0.00788388
+      DEBUG2: [5]: dVel: 0.000510575
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00523851
+      DEBUG2: [1]: dVel: 0.00244614
+      DEBUG2: [2]: dVel: 5.40614e-05
+      DEBUG2: [3]: dVel: 0.00128961
+      DEBUG2: [4]: dVel: 0.0291506
+      DEBUG2: [5]: dVel: 0.00272273
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00232662
+      DEBUG2: [1]: dVel: 0.00140655
+      DEBUG2: [2]: dVel: 2.5481e-05
+      DEBUG2: [3]: dVel: 0.00091815
+      DEBUG2: [4]: dVel: 0.0156321
+      DEBUG2: [5]: dVel: 0.00161914
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00283398
+      DEBUG2: [1]: dVel: 0.001959
+      DEBUG2: [2]: dVel: 0.000638545
+      DEBUG2: [3]: dVel: 0.00104225
+      DEBUG2: [4]: dVel: 0.0204589
+      DEBUG2: [5]: dVel: 0.000492348
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00283326
+      DEBUG2: [1]: dVel: 0.00185779
+      DEBUG2: [2]: dVel: 0.000518411
+      DEBUG2: [3]: dVel: 0.00041306
+      DEBUG2: [4]: dVel: 0.0203361
+      DEBUG2: [5]: dVel: 0.00214271
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00173612
+      DEBUG2: [1]: dVel: 0.000809819
+      DEBUG2: [2]: dVel: 0.000742227
+      DEBUG2: [3]: dVel: 0.00268924
+      DEBUG2: [4]: dVel: 0.0133115
+      DEBUG2: [5]: dVel: 0.00142802
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00139485
+      DEBUG2: [1]: dVel: 0.00121897
+      DEBUG2: [2]: dVel: 0.000319809
+      DEBUG2: [3]: dVel: 5.11408e-05
+      DEBUG2: [4]: dVel: 0.0127643
+      DEBUG2: [5]: dVel: 0.00491819
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00342789
+      DEBUG2: [1]: dVel: 0.00177944
+      DEBUG2: [2]: dVel: 0.000253558
+      DEBUG2: [3]: dVel: 1.8239e-05
+      DEBUG2: [4]: dVel: 0.0245067
+      DEBUG2: [5]: dVel: 0.0036649
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000649029
+      DEBUG2: [1]: dVel: 0.000254691
+      DEBUG2: [2]: dVel: 0.000976413
+      DEBUG2: [3]: dVel: 0.00207937
+      DEBUG2: [4]: dVel: 0.00330859
+      DEBUG2: [5]: dVel: 0.0033189
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00287298
+      DEBUG2: [1]: dVel: 0.00162807
+      DEBUG2: [2]: dVel: 0.000609934
+      DEBUG2: [3]: dVel: 0.00283289
+      DEBUG2: [4]: dVel: 0.0259478
+      DEBUG2: [5]: dVel: 0.000661862
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00116188
+      DEBUG2: [1]: dVel: 0.000956029
+      DEBUG2: [2]: dVel: 0.000307739
+      DEBUG2: [3]: dVel: 0.000671625
+      DEBUG2: [4]: dVel: 0.0128957
+      DEBUG2: [5]: dVel: 0.00860662
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000502452
+      DEBUG2: [1]: dVel: 0.000779897
+      DEBUG2: [2]: dVel: 6.55949e-05
+      DEBUG2: [3]: dVel: 0.000251532
+      DEBUG2: [4]: dVel: 0.0123474
+      DEBUG2: [5]: dVel: 0.00683817
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00161913
+      DEBUG2: [1]: dVel: 0.000342548
+      DEBUG2: [2]: dVel: 0.000361711
+      DEBUG2: [3]: dVel: 0.00216043
+      DEBUG2: [4]: dVel: 0.0165717
+      DEBUG2: [5]: dVel: 0.00433943
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000404894
+      DEBUG2: [1]: dVel: 0.000512004
+      DEBUG2: [2]: dVel: 0.000669748
+      DEBUG2: [3]: dVel: 0.00214326
+      DEBUG2: [4]: dVel: 0.00910476
+      DEBUG2: [5]: dVel: 0.00161155
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00160574
+      DEBUG2: [1]: dVel: 0.000464171
+      DEBUG2: [2]: dVel: 0.000422478
+      DEBUG2: [3]: dVel: 0.000379562
+      DEBUG2: [4]: dVel: 0.0169497
+      DEBUG2: [5]: dVel: 0.00152775
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000436358
+      DEBUG2: [1]: dVel: 0.00058639
+      DEBUG2: [2]: dVel: 0.000668466
+      DEBUG2: [3]: dVel: 0.00200403
+      DEBUG2: [4]: dVel: 0.0145789
+      DEBUG2: [5]: dVel: 0.000488321
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000803953
+      DEBUG2: [1]: dVel: 2.3514e-05
+      DEBUG2: [2]: dVel: 0.000951678
+      DEBUG2: [3]: dVel: 0.00261581
+      DEBUG2: [4]: dVel: 0.0036333
+      DEBUG2: [5]: dVel: 0.000413306
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00163465
+      DEBUG2: [1]: dVel: 0.000135988
+      DEBUG2: [2]: dVel: 0.000489891
+      DEBUG2: [3]: dVel: 0.00199533
+      DEBUG2: [4]: dVel: 0.0205258
+      DEBUG2: [5]: dVel: 0.000139039
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00184671
+      DEBUG2: [1]: dVel: 0.000452816
+      DEBUG2: [2]: dVel: 0.000229657
+      DEBUG2: [3]: dVel: 0.000493646
+      DEBUG2: [4]: dVel: 0.000510067
+      DEBUG2: [5]: dVel: 0.000845679
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00166394
+      DEBUG2: [1]: dVel: 0.000857592
+      DEBUG2: [2]: dVel: 0.000572324
+      DEBUG2: [3]: dVel: 0.00123858
+      DEBUG2: [4]: dVel: 0.0193713
+      DEBUG2: [5]: dVel: 0.00139706
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00113227
+      DEBUG2: [1]: dVel: 0.000498712
+      DEBUG2: [2]: dVel: 0.000306219
+      DEBUG2: [3]: dVel: 0.000890255
+      DEBUG2: [4]: dVel: 0.00219584
+      DEBUG2: [5]: dVel: 0.000795248
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00105974
+      DEBUG2: [1]: dVel: 7.34627e-05
+      DEBUG2: [2]: dVel: 0.000491709
+      DEBUG2: [3]: dVel: 0.00117075
+      DEBUG2: [4]: dVel: 0.0175306
+      DEBUG2: [5]: dVel: 0.00014161
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000343766
+      DEBUG2: [1]: dVel: 0.000306517
+      DEBUG2: [2]: dVel: 5.32568e-05
+      DEBUG2: [3]: dVel: 0.000272632
+      DEBUG2: [4]: dVel: 0.00916869
+      DEBUG2: [5]: dVel: 0.0017535
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000974473
+      DEBUG2: [1]: dVel: 0.000419259
+      DEBUG2: [2]: dVel: 0.000190347
+      DEBUG2: [3]: dVel: 0.000316858
+      DEBUG2: [4]: dVel: 0.0083525
+      DEBUG2: [5]: dVel: 0.00132493
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 4.60092e-05
+      DEBUG2: [1]: dVel: 0.000241727
+      DEBUG2: [2]: dVel: 0.00021708
+      DEBUG2: [3]: dVel: 0.000422835
+      DEBUG2: [4]: dVel: 0.00751469
+      DEBUG2: [5]: dVel: 0.000302461
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00103986
+      DEBUG2: [1]: dVel: 0.000728935
+      DEBUG2: [2]: dVel: 0.000683248
+      DEBUG2: [3]: dVel: 0.00145102
+      DEBUG2: [4]: dVel: 0.00576422
+      DEBUG2: [5]: dVel: 0.00164933
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000871612
+      DEBUG2: [1]: dVel: 0.000527889
+      DEBUG2: [2]: dVel: 0.00106245
+      DEBUG2: [3]: dVel: 0.0024097
+      DEBUG2: [4]: dVel: 0.0116874
+      DEBUG2: [5]: dVel: 0.00140938
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000699518
+      DEBUG2: [1]: dVel: 0.00013411
+      DEBUG2: [2]: dVel: 0.000702679
+      DEBUG2: [3]: dVel: 0.00210345
+      DEBUG2: [4]: dVel: 0.00577862
+      DEBUG2: [5]: dVel: 0.000956404
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000796484
+      DEBUG2: [1]: dVel: 0.00027138
+      DEBUG2: [2]: dVel: 0.00078997
+      DEBUG2: [3]: dVel: 0.00230384
+      DEBUG2: [4]: dVel: 0.0116921
+      DEBUG2: [5]: dVel: 0.000234707
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 6.63102e-05
+      DEBUG2: [1]: dVel: 0.00053975
+      DEBUG2: [2]: dVel: 3.96073e-05
+      DEBUG2: [3]: dVel: 0.000529408
+      DEBUG2: [4]: dVel: 0.0100675
+      DEBUG2: [5]: dVel: 0.00183281
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000650421
+      DEBUG2: [1]: dVel: 1.09971e-05
+      DEBUG2: [2]: dVel: 0.000255823
+      DEBUG2: [3]: dVel: 0.00108409
+      DEBUG2: [4]: dVel: 0.00333212
+      DEBUG2: [5]: dVel: 0.00223301
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000164509
+      DEBUG2: [1]: dVel: 0.000223428
+      DEBUG2: [2]: dVel: 0.000584602
+      DEBUG2: [3]: dVel: 0.00165439
+      DEBUG2: [4]: dVel: 0.00619362
+      DEBUG2: [5]: dVel: 0.00063051
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000937197
+      DEBUG2: [1]: dVel: 0.000103027
+      DEBUG2: [2]: dVel: 0.000183165
+      DEBUG2: [3]: dVel: 0.000274181
+      DEBUG2: [4]: dVel: 0.000608567
+      DEBUG2: [5]: dVel: 0.000572086
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000409134
+      DEBUG2: [1]: dVel: 9.97782e-05
+      DEBUG2: [2]: dVel: 0.000285923
+      DEBUG2: [3]: dVel: 0.000685811
+      DEBUG2: [4]: dVel: 0.000298176
+      DEBUG2: [5]: dVel: 0.00201859
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000288859
+      DEBUG2: [1]: dVel: 9.84073e-05
+      DEBUG2: [2]: dVel: 0.000285923
+      DEBUG2: [3]: dVel: 0.000684857
+      DEBUG2: [4]: dVel: 0.00144735
+      DEBUG2: [5]: dVel: 0.00204242
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00171784
+      DEBUG2: [1]: dVel: 0.000603974
+      DEBUG2: [2]: dVel: 0.00172609
+      DEBUG2: [3]: dVel: 0.00417042
+      DEBUG2: [4]: dVel: 0.00865423
+      DEBUG2: [5]: dVel: 0.00343425
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 3.42727e-05
+      DEBUG2: [2]: dVel: 0.000115663
+      DEBUG2: [3]: dVel: 0.000477195
+      DEBUG2: [4]: dVel: 0.00255051
+      DEBUG2: [5]: dVel: 0.00111459
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00254065
+      DEBUG2: [1]: dVel: 0.000845253
+      DEBUG2: [2]: dVel: 0.00214225
+      DEBUG2: [3]: dVel: 0.00478351
+      DEBUG2: [4]: dVel: 0.0153419
+      DEBUG2: [5]: dVel: 0.00146465
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000546539
+      DEBUG2: [1]: dVel: 0.000235111
+      DEBUG2: [2]: dVel: 0.000742406
+      DEBUG2: [3]: dVel: 0.00214922
+      DEBUG2: [4]: dVel: 0.0053181
+      DEBUG2: [5]: dVel: 0.00220969
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000792867
+      DEBUG2: [1]: dVel: 0.000358671
+      DEBUG2: [2]: dVel: 0.00105983
+      DEBUG2: [3]: dVel: 0.00301206
+      DEBUG2: [4]: dVel: 0.00667736
+      DEBUG2: [5]: dVel: 0.00249242
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000241896
+      DEBUG2: [1]: dVel: 0.00021708
+      DEBUG2: [2]: dVel: 0.000773877
+      DEBUG2: [3]: dVel: 0.00240505
+      DEBUG2: [4]: dVel: 0.00110746
+      DEBUG2: [5]: dVel: 0.00369767
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000718124
+      DEBUG2: [1]: dVel: 1.61231e-05
+      DEBUG2: [2]: dVel: 0.000167847
+      DEBUG2: [3]: dVel: 0.00075841
+      DEBUG2: [4]: dVel: 0.000693721
+      DEBUG2: [5]: dVel: 0.00111566
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000401996
+      DEBUG2: [1]: dVel: 8.12113e-05
+      DEBUG2: [2]: dVel: 0.000134408
+      DEBUG2: [3]: dVel: 1.83582e-05
+      DEBUG2: [4]: dVel: 0.00277356
+      DEBUG2: [5]: dVel: 0.00215352
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000118922
+      DEBUG2: [1]: dVel: 0.000100195
+      DEBUG2: [2]: dVel: 1.65105e-05
+      DEBUG2: [3]: dVel: 0.000732422
+      DEBUG2: [4]: dVel: 0.0011404
+      DEBUG2: [5]: dVel: 0.00171917
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000818823
+      DEBUG2: [1]: dVel: 0.000318378
+      DEBUG2: [2]: dVel: 0.000747472
+      DEBUG2: [3]: dVel: 0.00162017
+      DEBUG2: [4]: dVel: 0.00176087
+      DEBUG2: [5]: dVel: 0.000602062
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000261545
+      DEBUG2: [1]: dVel: 0.000115573
+      DEBUG2: [2]: dVel: 0.00030902
+      DEBUG2: [3]: dVel: 0.000813842
+      DEBUG2: [4]: dVel: 0.00139366
+      DEBUG2: [5]: dVel: 0.00206274
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [5]: dVel: 0.00261831
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000695117
+      DEBUG2: [1]: dVel: 6.34789e-06
+      DEBUG2: [4]: dVel: 0.00174518
+      DEBUG2: [5]: dVel: 4.36939e-05
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG0: Sequence-Point 0 reached.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: CommandHandling: Sent Event 'SequenceDone:1'
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: Sequence 1 done.
+      DEBUG0: CommandHandling: Recieved Event 'NoMode:0'
+    INFO: StateMachine: Processing Event 'NoMode'
+    INFO: Exiting State MovePosition
+    INFO: Entering State Retracted
+      DEBUG0: CommandHandling: Sent Event 'NoMode:0'
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG0: CommandHandling: Recieved Event 'SequenceDone:0'
+      DEBUG2: retracting from Mode: 2
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG0: CommandHandling: Recieved Event 'NoMode:0'
+      DEBUG0: CommandHandling: Recieved Event 'Unfold:0'
+    INFO: StateMachine: Processing Event 'Unfold'
+    INFO: Exiting State Retracted 
+    INFO: Entering State Unfolding
+      DEBUG0: CommandHandling: Sent Event 'Unfold:0'
+      DEBUG0: CommandHandling: Sent Event 'Unfolded:0'
+      DEBUG0: CommandHandling: Recieved Event 'Unfolded:0'
+    INFO: StateMachine: Processing Event 'Unfolded'
+    INFO: Exiting State Unfolding 
+    INFO: Entering State Idle
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'SetMode:1'
+    INFO: StateMachine: Processing Event 'SetMode'
+    INFO: Exiting State Idle
+    INFO: Entering State ChangeMode
+      DEBUG0: CommandHandling: Sent Event 'SetMode:1'
+      DEBUG0: CommandHandling: Sent Event 'ModeSet:1'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'ModeSet:0'
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoMode:0'
+    INFO: StateMachine: Processing Event 'NoMode'
+    INFO: Exiting State Steering
+    INFO: Entering State Retracted
+      DEBUG0: CommandHandling: Sent Event 'NoMode:0'
+      DEBUG0: CommandHandling: Recieved Event 'E_Stop:0'
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Retracted 
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+      DEBUG0: CommandHandling: Sent Event 'E_Stop:0'

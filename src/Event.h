@@ -5,7 +5,7 @@
 
 namespace KinovaFSM {
 
-  static const int numberOfNonHWEvents = 18; //Not including NoEvent.
+  static const int numberOfNonHWEvents = 19; //Not including NoEvent.
 //Events !Hardware Events at the End!
   enum Event {
     //System Events
@@ -15,6 +15,7 @@ namespace KinovaFSM {
     //User Events
     Initialize,
     NoMode,
+    Retract,
     Unfold,
     SetMode,
     MoveJoystick,
@@ -33,6 +34,7 @@ namespace KinovaFSM {
     
     //Hardware Events Communicated To RoboRio (external)
     Initialized,
+    Unfolded,
     ModeSet,
     SequenceDone,
     PointReached,
@@ -63,6 +65,8 @@ namespace KinovaFSM {
     //User Events
     "Initialize",
     "NoMode",
+    "Retract",
+    "Unfold",
     "SetMode",
     "MoveJoystick",
     "GoToPosition",
@@ -80,6 +84,7 @@ namespace KinovaFSM {
     
     //Hardware Events Communicated
     "Initialized",
+    "Unfolded",
     "ModeSet",
     "SequenceDone",
     "PointReached",

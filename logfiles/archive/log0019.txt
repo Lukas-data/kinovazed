@@ -1,0 +1,659 @@
+    INFO: KinovaMain - Startup!
+    INFO: Connection to RoboRio established.
+    INFO: Connection to JacoArm established.
+      DEBUG0: CommandHandling: Recieved Event 'E_Stop:0'
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State PowerOff
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+      DEBUG0: CommandHandling: Sent Event 'E_Stop:0'
+      DEBUG0: CommandHandling: Recieved Event 'Unfold:0'
+      DEBUG0: CommandHandling: Recieved Event 'QuitEStop:0'
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+      DEBUG0: CommandHandling: Sent Event 'QuitEStop:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialize:0'
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+      DEBUG2: PositionHandling::ReadFromFile: Objective 3 is Zero
+      DEBUG2: PositionHandling::ReadFromFile: Objective 4 is Zero
+    INFO: Points successfully loaded from File.
+      DEBUG0: Transformation matrices calculated
+      DEBUG0: CommandHandling: Sent Event 'Initialize:0'
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.169393
+      DEBUG2: [1]: dVel: 0.298974
+      DEBUG2: [2]: dVel: 0.492289
+      DEBUG2: [3]: dVel: 1.53299
+      DEBUG2: [4]: dVel: 0.910871
+      DEBUG2: [5]: dVel: 0.0532897
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00559652
+      DEBUG2: [1]: dVel: 0.00315198
+      DEBUG2: [2]: dVel: 0.000526041
+      DEBUG2: [3]: dVel: 0.000101447
+      DEBUG2: [4]: dVel: 0.0170205
+      DEBUG2: [5]: dVel: 0.000900716
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00685701
+      DEBUG2: [1]: dVel: 0.00395122
+      DEBUG2: [2]: dVel: 0.000122726
+      DEBUG2: [3]: dVel: 0.0009588
+      DEBUG2: [4]: dVel: 0.0205306
+      DEBUG2: [5]: dVel: 0.000163704
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00665519
+      DEBUG2: [1]: dVel: 0.00413388
+      DEBUG2: [2]: dVel: 0.0011746
+      DEBUG2: [3]: dVel: 0.000903487
+      DEBUG2: [4]: dVel: 0.0187392
+      DEBUG2: [5]: dVel: 0.00200285
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00516585
+      DEBUG2: [1]: dVel: 0.00297171
+      DEBUG2: [2]: dVel: 0.000123143
+      DEBUG2: [3]: dVel: 0.00066638
+      DEBUG2: [4]: dVel: 0.0156978
+      DEBUG2: [5]: dVel: 0.000889257
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00496897
+      DEBUG2: [1]: dVel: 0.00223362
+      DEBUG2: [2]: dVel: 3.23355e-05
+      DEBUG2: [3]: dVel: 0.00291765
+      DEBUG2: [4]: dVel: 0.0143099
+      DEBUG2: [5]: dVel: 0.00489326
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00672698
+      DEBUG2: [1]: dVel: 0.00464457
+      DEBUG2: [2]: dVel: 0.000368357
+      DEBUG2: [3]: dVel: 0.000662684
+      DEBUG2: [4]: dVel: 0.0195883
+      DEBUG2: [5]: dVel: 0.000613585
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00524464
+      DEBUG2: [1]: dVel: 0.00308007
+      DEBUG2: [2]: dVel: 0.000653058
+      DEBUG2: [3]: dVel: 0.000302315
+      DEBUG2: [4]: dVel: 0.0160754
+      DEBUG2: [5]: dVel: 0.00287846
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00611269
+      DEBUG2: [1]: dVel: 0.00328112
+      DEBUG2: [2]: dVel: 0.000846207
+      DEBUG2: [3]: dVel: 0.00435567
+      DEBUG2: [4]: dVel: 0.0186633
+      DEBUG2: [5]: dVel: 0.00051197
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00577815
+      DEBUG2: [1]: dVel: 0.00393975
+      DEBUG2: [2]: dVel: 0.000769436
+      DEBUG2: [3]: dVel: 0.000345588
+      DEBUG2: [4]: dVel: 0.0186222
+      DEBUG2: [5]: dVel: 0.00021806
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00647785
+      DEBUG2: [1]: dVel: 0.00376326
+      DEBUG2: [2]: dVel: 0.000307053
+      DEBUG2: [3]: dVel: 0.00138438
+      DEBUG2: [4]: dVel: 0.0225576
+      DEBUG2: [5]: dVel: 0.00117576
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00591818
+      DEBUG2: [1]: dVel: 0.00384849
+      DEBUG2: [2]: dVel: 0.000189513
+      DEBUG2: [3]: dVel: 0.00256383
+      DEBUG2: [4]: dVel: 0.0198256
+      DEBUG2: [5]: dVel: 0.00203667
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00640931
+      DEBUG2: [1]: dVel: 0.00363567
+      DEBUG2: [2]: dVel: 0.000353783
+      DEBUG2: [3]: dVel: 0.00146794
+      DEBUG2: [4]: dVel: 0.0229541
+      DEBUG2: [5]: dVel: 0.000103839
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0065469
+      DEBUG2: [1]: dVel: 0.00431061
+      DEBUG2: [2]: dVel: 0.000124723
+      DEBUG2: [3]: dVel: 0.00280023
+      DEBUG2: [4]: dVel: 0.0245181
+      DEBUG2: [5]: dVel: 0.00280726
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00650831
+      DEBUG2: [1]: dVel: 0.00378448
+      DEBUG2: [2]: dVel: 0.000119567
+      DEBUG2: [3]: dVel: 0.000876069
+      DEBUG2: [4]: dVel: 0.0233257
+      DEBUG2: [5]: dVel: 0.000448711
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00785507
+      DEBUG2: [1]: dVel: 0.00447735
+      DEBUG2: [2]: dVel: 0.000124454
+      DEBUG2: [3]: dVel: 0.00353527
+      DEBUG2: [4]: dVel: 0.0330846
+      DEBUG2: [5]: dVel: 0.0049955
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00483144
+      DEBUG2: [1]: dVel: 0.003124
+      DEBUG2: [2]: dVel: 4.41968e-05
+      DEBUG2: [3]: dVel: 0.00107563
+      DEBUG2: [4]: dVel: 0.0180752
+      DEBUG2: [5]: dVel: 0.000479516
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00616299
+      DEBUG2: [1]: dVel: 0.00377926
+      DEBUG2: [2]: dVel: 0.000281662
+      DEBUG2: [3]: dVel: 0.00241613
+      DEBUG2: [4]: dVel: 0.029147
+      DEBUG2: [5]: dVel: 0.00357716
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00745209
+      DEBUG2: [1]: dVel: 0.00422657
+      DEBUG2: [2]: dVel: 0.000156999
+      DEBUG2: [3]: dVel: 0.00217628
+      DEBUG2: [4]: dVel: 0.0329788
+      DEBUG2: [5]: dVel: 0.00938624
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00492308
+      DEBUG2: [1]: dVel: 0.00291079
+      DEBUG2: [2]: dVel: 0.000378907
+      DEBUG2: [3]: dVel: 0.00270939
+      DEBUG2: [4]: dVel: 0.0230613
+      DEBUG2: [5]: dVel: 0.00203796
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0053704
+      DEBUG2: [1]: dVel: 0.00301301
+      DEBUG2: [2]: dVel: 0.000505984
+      DEBUG2: [3]: dVel: 0.00331676
+      DEBUG2: [4]: dVel: 0.0251538
+      DEBUG2: [5]: dVel: 0.000760309
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00613964
+      DEBUG2: [1]: dVel: 0.00363174
+      DEBUG2: [2]: dVel: 0.000277519
+      DEBUG2: [3]: dVel: 0.00258076
+      DEBUG2: [4]: dVel: 0.0310055
+      DEBUG2: [5]: dVel: 0.00249191
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00404279
+      DEBUG2: [1]: dVel: 0.00188112
+      DEBUG2: [2]: dVel: 0.000714749
+      DEBUG2: [3]: dVel: 0.0037545
+      DEBUG2: [4]: dVel: 0.0211735
+      DEBUG2: [5]: dVel: 0.00296122
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00621457
+      DEBUG2: [1]: dVel: 0.00320646
+      DEBUG2: [2]: dVel: 0.000506699
+      DEBUG2: [3]: dVel: 0.000582576
+      DEBUG2: [4]: dVel: 0.0320998
+      DEBUG2: [5]: dVel: 0.00683671
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00237667
+      DEBUG2: [1]: dVel: 0.00133377
+      DEBUG2: [2]: dVel: 0.000115067
+      DEBUG2: [3]: dVel: 0.0011245
+      DEBUG2: [4]: dVel: 0.0142541
+      DEBUG2: [5]: dVel: 0.0016559
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00544782
+      DEBUG2: [1]: dVel: 0.0025779
+      DEBUG2: [2]: dVel: 0.000353009
+      DEBUG2: [3]: dVel: 0.00283611
+      DEBUG2: [4]: dVel: 0.0301429
+      DEBUG2: [5]: dVel: 0.00338063
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00314362
+      DEBUG2: [1]: dVel: 0.00172114
+      DEBUG2: [2]: dVel: 0.000246048
+      DEBUG2: [3]: dVel: 0.000755072
+      DEBUG2: [4]: dVel: 0.0211635
+      DEBUG2: [5]: dVel: 0.00211937
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00633161
+      DEBUG2: [1]: dVel: 0.00328746
+      DEBUG2: [2]: dVel: 0.000255853
+      DEBUG2: [3]: dVel: 0.00135362
+      DEBUG2: [4]: dVel: 0.0383869
+      DEBUG2: [5]: dVel: 0.00252514
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000812593
+      DEBUG2: [1]: dVel: 0.00104281
+      DEBUG2: [2]: dVel: 0.000165462
+      DEBUG2: [3]: dVel: 0.000246644
+      DEBUG2: [4]: dVel: 0.00964344
+      DEBUG2: [5]: dVel: 0.0036886
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00389566
+      DEBUG2: [1]: dVel: 0.00271365
+      DEBUG2: [2]: dVel: 0.000689507
+      DEBUG2: [3]: dVel: 0.000176549
+      DEBUG2: [4]: dVel: 0.0295278
+      DEBUG2: [5]: dVel: 0.000708069
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00248291
+      DEBUG2: [1]: dVel: 0.00112107
+      DEBUG2: [2]: dVel: 0.00105098
+      DEBUG2: [3]: dVel: 0.00326526
+      DEBUG2: [4]: dVel: 0.0200691
+      DEBUG2: [5]: dVel: 0.000324848
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00437887
+      DEBUG2: [1]: dVel: 0.0025706
+      DEBUG2: [2]: dVel: 0.00149965
+      DEBUG2: [3]: dVel: 0.00225544
+      DEBUG2: [4]: dVel: 0.03623
+      DEBUG2: [5]: dVel: 0.00150749
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000124075
+      DEBUG2: [1]: dVel: 0.000543833
+      DEBUG2: [2]: dVel: 0.000736117
+      DEBUG2: [3]: dVel: 0.0018003
+      DEBUG2: [4]: dVel: 0.00995289
+      DEBUG2: [5]: dVel: 0.000449622
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00282352
+      DEBUG2: [1]: dVel: 0.00170717
+      DEBUG2: [2]: dVel: 0.000115871
+      DEBUG2: [3]: dVel: 0.000525117
+      DEBUG2: [4]: dVel: 0.026201
+      DEBUG2: [5]: dVel: 0.000517774
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00176356
+      DEBUG2: [1]: dVel: 0.000899225
+      DEBUG2: [2]: dVel: 0.000273228
+      DEBUG2: [3]: dVel: 0.00204623
+      DEBUG2: [4]: dVel: 0.0241028
+      DEBUG2: [5]: dVel: 0.000436419
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000262877
+      DEBUG2: [1]: dVel: 0.000354648
+      DEBUG2: [2]: dVel: 0.000145167
+      DEBUG2: [3]: dVel: 0.000447631
+      DEBUG2: [4]: dVel: 0.0147871
+      DEBUG2: [5]: dVel: 0.00126031
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000786448
+      DEBUG2: [1]: dVel: 0.00016588
+      DEBUG2: [2]: dVel: 0.00110731
+      DEBUG2: [3]: dVel: 0.00304949
+      DEBUG2: [4]: dVel: 0.0115969
+      DEBUG2: [5]: dVel: 0.00258029
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00199085
+      DEBUG2: [1]: dVel: 0.000639617
+      DEBUG2: [2]: dVel: 0.000728309
+      DEBUG2: [3]: dVel: 0.00132036
+      DEBUG2: [4]: dVel: 0.0219598
+      DEBUG2: [5]: dVel: 0.00156393
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00142322
+      DEBUG2: [1]: dVel: 8.40425e-05
+      DEBUG2: [2]: dVel: 0.000446588
+      DEBUG2: [3]: dVel: 0.00123143
+      DEBUG2: [4]: dVel: 0.0103164
+      DEBUG2: [5]: dVel: 0.00279413
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00164776
+      DEBUG2: [1]: dVel: 0.000399411
+      DEBUG2: [2]: dVel: 0.000580788
+      DEBUG2: [3]: dVel: 0.000407934
+      DEBUG2: [4]: dVel: 0.0198147
+      DEBUG2: [5]: dVel: 0.00278348
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00131732
+      DEBUG2: [1]: dVel: 0.000451893
+      DEBUG2: [2]: dVel: 0.000610054
+      DEBUG2: [3]: dVel: 0.000835299
+      DEBUG2: [4]: dVel: 0.00966774
+      DEBUG2: [5]: dVel: 0.000224133
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000396738
+      DEBUG2: [1]: dVel: 0.000250489
+      DEBUG2: [2]: dVel: 0.00113669
+      DEBUG2: [3]: dVel: 0.00217414
+      DEBUG2: [4]: dVel: 0.0100746
+      DEBUG2: [5]: dVel: 0.00134965
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000452997
+      DEBUG2: [1]: dVel: 0.000159651
+      DEBUG2: [2]: dVel: 9.0301e-05
+      DEBUG2: [3]: dVel: 0.000452995
+      DEBUG2: [4]: dVel: 0.0193735
+      DEBUG2: [5]: dVel: 0.00686527
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000637619
+      DEBUG2: [1]: dVel: 0.000234187
+      DEBUG2: [2]: dVel: 0.000193924
+      DEBUG2: [3]: dVel: 0.000296116
+      DEBUG2: [4]: dVel: 0.00578403
+      DEBUG2: [5]: dVel: 0.007578
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000214634
+      DEBUG2: [1]: dVel: 0.000563413
+      DEBUG2: [2]: dVel: 0.000616729
+      DEBUG2: [3]: dVel: 0.00183439
+      DEBUG2: [4]: dVel: 0.0150514
+      DEBUG2: [5]: dVel: 0.00133309
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000225306
+      DEBUG2: [1]: dVel: 0.000487238
+      DEBUG2: [2]: dVel: 0.000966132
+      DEBUG2: [3]: dVel: 0.00189316
+      DEBUG2: [4]: dVel: 0.00997641
+      DEBUG2: [5]: dVel: 0.00119342
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00129787
+      DEBUG2: [1]: dVel: 6.24657e-05
+      DEBUG2: [2]: dVel: 0.000251263
+      DEBUG2: [3]: dVel: 0.000885963
+      DEBUG2: [4]: dVel: 0.0196035
+      DEBUG2: [5]: dVel: 0.000804639
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00117351
+      DEBUG2: [1]: dVel: 0.000303447
+      DEBUG2: [2]: dVel: 0.000844538
+      DEBUG2: [3]: dVel: 0.00220227
+      DEBUG2: [4]: dVel: 0.00298179
+      DEBUG2: [5]: dVel: 0.0026749
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000861358
+      DEBUG2: [1]: dVel: 0.000108272
+      DEBUG2: [2]: dVel: 4.47929e-05
+      DEBUG2: [3]: dVel: 0.000661373
+      DEBUG2: [4]: dVel: 0.00452226
+      DEBUG2: [5]: dVel: 0.000192058
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000124618
+      DEBUG2: [1]: dVel: 8.31485e-05
+      DEBUG2: [2]: dVel: 6.38366e-05
+      DEBUG2: [3]: dVel: 0.000977159
+      DEBUG2: [4]: dVel: 0.00105618
+      DEBUG2: [5]: dVel: 0.00097307
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000575647
+      DEBUG2: [1]: dVel: 0.000197589
+      DEBUG2: [2]: dVel: 0.000572026
+      DEBUG2: [3]: dVel: 0.00137174
+      DEBUG2: [4]: dVel: 0.0028881
+      DEBUG2: [5]: dVel: 0.00114704
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00199986
+      DEBUG2: [1]: dVel: 0.000592589
+      DEBUG2: [2]: dVel: 0.00138274
+      DEBUG2: [3]: dVel: 0.00254297
+      DEBUG2: [4]: dVel: 0.0100103
+      DEBUG2: [5]: dVel: 0.00186714
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00171616
+      DEBUG2: [1]: dVel: 0.000647694
+      DEBUG2: [2]: dVel: 0.00201511
+      DEBUG2: [3]: dVel: 0.00544405
+      DEBUG2: [4]: dVel: 0.0136215
+      DEBUG2: [5]: dVel: 0.00298697
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00123418
+      DEBUG2: [1]: dVel: 0.000664711
+      DEBUG2: [2]: dVel: 0.00160807
+      DEBUG2: [3]: dVel: 0.00362384
+      DEBUG2: [4]: dVel: 0.0106521
+      DEBUG2: [5]: dVel: 0.00296584
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000272298
+      DEBUG2: [1]: dVel: 3.49581e-05
+      DEBUG2: [2]: dVel: 2.41399e-06
+      DEBUG2: [3]: dVel: 9.65595e-05
+      DEBUG2: [4]: dVel: 0.0063662
+      DEBUG2: [5]: dVel: 0.000648601
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 2.8912e-05
+      DEBUG2: [1]: dVel: 2.68817e-05
+      DEBUG2: [2]: dVel: 0.000172555
+      DEBUG2: [3]: dVel: 0.000784636
+      DEBUG2: [4]: dVel: 0.00242904
+      DEBUG2: [5]: dVel: 0.00154954
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0005574
+      DEBUG2: [1]: dVel: 0.000204116
+      DEBUG2: [2]: dVel: 0.000439137
+      DEBUG2: [3]: dVel: 0.000811577
+      DEBUG2: [4]: dVel: 0.000368998
+      DEBUG2: [5]: dVel: 0.00257567
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000695102
+      DEBUG2: [1]: dVel: 6.61612e-06
+      DEBUG2: [4]: dVel: 0.00174501
+      DEBUG2: [5]: dVel: 4.76735e-05
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000124708
+      DEBUG2: [1]: dVel: 0.000311613
+      DEBUG2: [2]: dVel: 0.000747323
+      DEBUG2: [3]: dVel: 0.00162017
+      DEBUG2: [4]: dVel: 1.7181e-05
+      DEBUG2: [5]: dVel: 0.000648282
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000576578
+      DEBUG2: [1]: dVel: 0.000108123
+      DEBUG2: [2]: dVel: 1.39773e-05
+      DEBUG2: [3]: dVel: 0.000720024
+      DEBUG2: [4]: dVel: 0.00289034
+      DEBUG2: [5]: dVel: 0.00356184
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00101101
+      DEBUG2: [2]: dVel: 0.000322759
+      DEBUG2: [3]: dVel: 0.00153327
+      DEBUG2: [4]: dVel: 0.0032439
+      DEBUG2: [5]: dVel: 0.00154414
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000315711
+      DEBUG2: [1]: dVel: 8.10623e-06
+      DEBUG2: [2]: dVel: 0.000322759
+      DEBUG2: [3]: dVel: 0.00153327
+      DEBUG2: [4]: dVel: 0.0014992
+      DEBUG2: [5]: dVel: 0.00150056
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [5]: dVel: 0.00261831
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000315711
+      DEBUG2: [1]: dVel: 8.10623e-06
+      DEBUG2: [2]: dVel: 0.000322759
+      DEBUG2: [3]: dVel: 0.00153327
+      DEBUG2: [4]: dVel: 0.0014992
+      DEBUG2: [5]: dVel: 0.00150055
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000315711
+      DEBUG2: [1]: dVel: 8.10623e-06
+      DEBUG2: [2]: dVel: 0.000322759
+      DEBUG2: [3]: dVel: 0.00153327
+      DEBUG2: [4]: dVel: 0.0014992
+      DEBUG2: [5]: dVel: 0.00150055
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG0: Sequence-Point 0 reached.
+    INFO: StateMachine: Processing Event 'InitHomeReached'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+      DEBUG2: PositionHandling::ReadFromFile: Objective 3 is Zero
+      DEBUG2: PositionHandling::ReadFromFile: Objective 4 is Zero
+    INFO: Points successfully loaded from File.
+      DEBUG0: Transformation matrices calculated
+      DEBUG0: CommandHandling: Sent Event 'Initialized:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialized:0'
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Retracted
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG0: CommandHandling: Recieved Event 'Unfold:0'
+    INFO: StateMachine: Processing Event 'Unfold'
+    INFO: Exiting State Retracted 
+    INFO: Entering State Unfolding
+      DEBUG0: CommandHandling: Sent Event 'Unfold:0'
+      DEBUG0: CommandHandling: Recieved Event 'E_Stop:0'
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Unfolding 
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+      DEBUG0: CommandHandling: Sent Event 'E_Stop:0'
+      DEBUG0: CommandHandling: Recieved Event 'Unfold:0'
+      DEBUG0: CommandHandling: Recieved Event 'QuitEStop:0'
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+      DEBUG0: CommandHandling: Sent Event 'QuitEStop:0'
+      DEBUG0: CommandHandling: Recieved Event 'E_Stop:0'
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State PowerOff
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+      DEBUG0: CommandHandling: Sent Event 'E_Stop:0'
+      DEBUG0: CommandHandling: Recieved Event 'Unfold:0'
+      DEBUG0: CommandHandling: Recieved Event 'QuitEStop:0'
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+      DEBUG0: CommandHandling: Sent Event 'QuitEStop:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialize:0'
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+      DEBUG2: PositionHandling::ReadFromFile: Objective 3 is Zero
+      DEBUG2: PositionHandling::ReadFromFile: Objective 4 is Zero
+    INFO: Points successfully loaded from File.
+      DEBUG0: Transformation matrices calculated
+      DEBUG0: CommandHandling: Sent Event 'Initialized:0'
+      DEBUG0: CommandHandling: Recieved Event 'QuitEStop:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialize:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialized:0'
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Retracted
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'Unfold:0'
+    INFO: StateMachine: Processing Event 'Unfold'
+    INFO: Exiting State Retracted 
+    INFO: Entering State Unfolding
+      DEBUG0: CommandHandling: Sent Event 'Unfold:0'
+      DEBUG0: CommandHandling: Recieved Event 'E_Stop:0'
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Unfolding 
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+      DEBUG0: CommandHandling: Sent Event 'E_Stop:0'
