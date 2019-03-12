@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kinova/Documents/kinovaZED
+CMAKE_SOURCE_DIR = /home/kinova/Documents/kinovazed
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kinova/Documents/kinovaZED/build
+CMAKE_BINARY_DIR = /home/kinova/Documents/kinovazed/build
 
 #=============================================================================
 # Directory level rules for directory thirdparty/libkindrv
@@ -104,7 +104,7 @@ src/preinstall:
 src/CMakeFiles/KinovaZED.dir/all: src/CMakeFiles/kinovaArm_lib.dir/all
 	$(MAKE) -f src/CMakeFiles/KinovaZED.dir/build.make src/CMakeFiles/KinovaZED.dir/depend
 	$(MAKE) -f src/CMakeFiles/KinovaZED.dir/build.make src/CMakeFiles/KinovaZED.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovaZED/build/CMakeFiles --progress-num=3,4 "Built target KinovaZED"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovazed/build/CMakeFiles --progress-num=3,4 "Built target KinovaZED"
 .PHONY : src/CMakeFiles/KinovaZED.dir/all
 
 # Include target in all.
@@ -114,9 +114,9 @@ all: src/CMakeFiles/KinovaZED.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/KinovaZED.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles 9
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/KinovaZED.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/KinovaZED.dir/rule
 
 # Convenience name for target.
@@ -141,7 +141,7 @@ clean: src/CMakeFiles/KinovaZED.dir/clean
 src/CMakeFiles/kinovaArm_lib.dir/all:
 	$(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/depend
 	$(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovaZED/build/CMakeFiles --progress-num=7,8,9,10,11,12,13 "Built target kinovaArm_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovazed/build/CMakeFiles --progress-num=7,8,9,10,11,12,13 "Built target kinovaArm_lib"
 .PHONY : src/CMakeFiles/kinovaArm_lib.dir/all
 
 # Include target in all.
@@ -151,9 +151,9 @@ all: src/CMakeFiles/kinovaArm_lib.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/kinovaArm_lib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/kinovaArm_lib.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles 0
 .PHONY : src/CMakeFiles/kinovaArm_lib.dir/rule
 
 # Convenience name for target.
@@ -200,7 +200,7 @@ test/preinstall:
 test/CMakeFiles/KinovaTest.dir/all: src/CMakeFiles/kinovaArm_lib.dir/all
 	$(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/depend
 	$(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovaZED/build/CMakeFiles --progress-num=1,2 "Built target KinovaTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovazed/build/CMakeFiles --progress-num=1,2 "Built target KinovaTest"
 .PHONY : test/CMakeFiles/KinovaTest.dir/all
 
 # Include target in all.
@@ -210,9 +210,9 @@ all: test/CMakeFiles/KinovaTest.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/KinovaTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles 9
 	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/KinovaTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/KinovaTest.dir/rule
 
 # Convenience name for target.
@@ -237,7 +237,7 @@ clean: test/CMakeFiles/KinovaTest.dir/clean
 test/CMakeFiles/logtest_lib.dir/all:
 	$(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/depend
 	$(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovaZED/build/CMakeFiles --progress-num=14,15 "Built target logtest_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovazed/build/CMakeFiles --progress-num=14,15 "Built target logtest_lib"
 .PHONY : test/CMakeFiles/logtest_lib.dir/all
 
 # Include target in all.
@@ -247,9 +247,9 @@ all: test/CMakeFiles/logtest_lib.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/logtest_lib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/logtest_lib.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/logtest_lib.dir/rule
 
 # Convenience name for target.
@@ -275,7 +275,7 @@ test/CMakeFiles/LogTest.dir/all: src/CMakeFiles/kinovaArm_lib.dir/all
 test/CMakeFiles/LogTest.dir/all: test/CMakeFiles/logtest_lib.dir/all
 	$(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/depend
 	$(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovaZED/build/CMakeFiles --progress-num=5,6 "Built target LogTest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kinova/Documents/kinovazed/build/CMakeFiles --progress-num=5,6 "Built target LogTest"
 .PHONY : test/CMakeFiles/LogTest.dir/all
 
 # Include target in all.
@@ -285,9 +285,9 @@ all: test/CMakeFiles/LogTest.dir/all
 
 # Build rule for subdir invocation for target.
 test/CMakeFiles/LogTest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles 11
 	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/LogTest.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles 0
 .PHONY : test/CMakeFiles/LogTest.dir/rule
 
 # Convenience name for target.

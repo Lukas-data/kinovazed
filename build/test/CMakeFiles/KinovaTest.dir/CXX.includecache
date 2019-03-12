@@ -76,7 +76,7 @@ boost/thread/mutex.hpp
 
 ../thirdparty/libkindrv/include/types.h
 
-/home/kinova/Documents/kinovaZED/test/KinovaTest.cpp
+/home/kinova/Documents/kinovazed/test/KinovaTest.cpp
 stdio.h
 -
 unistd.h
@@ -84,5 +84,5 @@ unistd.h
 poll.h
 -
 CommandHandling.h
-/home/kinova/Documents/kinovaZED/test/CommandHandling.h
+/home/kinova/Documents/kinovazed/test/CommandHandling.h
 

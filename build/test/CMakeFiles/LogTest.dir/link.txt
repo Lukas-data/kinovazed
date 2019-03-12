@@ -1,1 +1,1 @@
-/usr/bin/arm-linux-gnueabihf-g++-5   -g   CMakeFiles/LogTest.dir/LogTest.cpp.o  -o LogTest ../src/libkinovaArm_lib.a liblogtest_lib.a 
+/usr/bin/c++      CMakeFiles/LogTest.dir/LogTest.cpp.o  -o LogTest ../src/libkinovaArm_lib.a liblogtest_lib.a 

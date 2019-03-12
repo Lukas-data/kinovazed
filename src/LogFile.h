@@ -9,8 +9,8 @@
 #define REP_LEVEL_FILE    logDEBUG2
 #define REP_LEVEL_CONSOLE logDEBUG3
 
-#define LOG_FILEPATH "/home/kinova/Documents/kinovaZED/logfiles/"
-#define LOGARCHIVE_FILEPATH "/home/kinova/Documents/kinovaZED/logfiles/archive/"
+#define LOG_FILEPATH "/home/kinova/Documents/kinovazed/logfiles/"
+#define LOGARCHIVE_FILEPATH "/home/kinova/Documents/kinovazed/logfiles/archive/"
 #define LOG_NAME "log"
 #define LOG_SUFFIX ".txt"
 

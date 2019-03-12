@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kinova/Documents/kinovaZED
+CMAKE_SOURCE_DIR = /home/kinova/Documents/kinovazed
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kinova/Documents/kinovaZED/build
+CMAKE_BINARY_DIR = /home/kinova/Documents/kinovazed/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kinova/Documents/kinovaZED/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles /home/kinova/Documents/kinovaZED/build/src/CMakeFiles/progress.marks
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles 0
+	cd /home/kinova/Documents/kinovazed/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles /home/kinova/Documents/kinovazed/build/src/CMakeFiles/progress.marks
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kinova/Documents/kinovaZED/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/kinova/Documents/kinovazed/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/KinovaZED.dir/rule:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/KinovaZED.dir/rule
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/KinovaZED.dir/rule
 .PHONY : src/CMakeFiles/KinovaZED.dir/rule
 
 # Convenience name for target.
@@ -122,12 +122,12 @@ KinovaZED: src/CMakeFiles/KinovaZED.dir/rule
 
 # fast build rule for target.
 KinovaZED/fast:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/KinovaZED.dir/build.make src/CMakeFiles/KinovaZED.dir/build
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/KinovaZED.dir/build.make src/CMakeFiles/KinovaZED.dir/build
 .PHONY : KinovaZED/fast
 
 # Convenience name for target.
 src/CMakeFiles/kinovaArm_lib.dir/rule:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/kinovaArm_lib.dir/rule
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/kinovaArm_lib.dir/rule
 .PHONY : src/CMakeFiles/kinovaArm_lib.dir/rule
 
 # Convenience name for target.
@@ -137,7 +137,7 @@ kinovaArm_lib: src/CMakeFiles/kinovaArm_lib.dir/rule
 
 # fast build rule for target.
 kinovaArm_lib/fast:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/build
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/build
 .PHONY : kinovaArm_lib/fast
 
 CommandHandling.o: CommandHandling.cpp.o
@@ -146,7 +146,7 @@ CommandHandling.o: CommandHandling.cpp.o
 
 # target to build an object file
 CommandHandling.cpp.o:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o
 .PHONY : CommandHandling.cpp.o
 
 CommandHandling.i: CommandHandling.cpp.i
@@ -155,7 +155,7 @@ CommandHandling.i: CommandHandling.cpp.i
 
 # target to preprocess a source file
 CommandHandling.cpp.i:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.i
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.i
 .PHONY : CommandHandling.cpp.i
 
 CommandHandling.s: CommandHandling.cpp.s
@@ -164,7 +164,7 @@ CommandHandling.s: CommandHandling.cpp.s
 
 # target to generate assembly for a file
 CommandHandling.cpp.s:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.s
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.s
 .PHONY : CommandHandling.cpp.s
 
 KinovaArm.o: KinovaArm.cpp.o
@@ -173,7 +173,7 @@ KinovaArm.o: KinovaArm.cpp.o
 
 # target to build an object file
 KinovaArm.cpp.o:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o
 .PHONY : KinovaArm.cpp.o
 
 KinovaArm.i: KinovaArm.cpp.i
@@ -182,7 +182,7 @@ KinovaArm.i: KinovaArm.cpp.i
 
 # target to preprocess a source file
 KinovaArm.cpp.i:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.i
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.i
 .PHONY : KinovaArm.cpp.i
 
 KinovaArm.s: KinovaArm.cpp.s
@@ -191,7 +191,7 @@ KinovaArm.s: KinovaArm.cpp.s
 
 # target to generate assembly for a file
 KinovaArm.cpp.s:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.s
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.s
 .PHONY : KinovaArm.cpp.s
 
 KinovaMain.o: KinovaMain.cpp.o
@@ -200,7 +200,7 @@ KinovaMain.o: KinovaMain.cpp.o
 
 # target to build an object file
 KinovaMain.cpp.o:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/KinovaZED.dir/build.make src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/KinovaZED.dir/build.make src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.o
 .PHONY : KinovaMain.cpp.o
 
 KinovaMain.i: KinovaMain.cpp.i
@@ -209,7 +209,7 @@ KinovaMain.i: KinovaMain.cpp.i
 
 # target to preprocess a source file
 KinovaMain.cpp.i:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/KinovaZED.dir/build.make src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.i
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/KinovaZED.dir/build.make src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.i
 .PHONY : KinovaMain.cpp.i
 
 KinovaMain.s: KinovaMain.cpp.s
@@ -218,7 +218,7 @@ KinovaMain.s: KinovaMain.cpp.s
 
 # target to generate assembly for a file
 KinovaMain.cpp.s:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/KinovaZED.dir/build.make src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.s
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/KinovaZED.dir/build.make src/CMakeFiles/KinovaZED.dir/KinovaMain.cpp.s
 .PHONY : KinovaMain.cpp.s
 
 PositionHandling.o: PositionHandling.cpp.o
@@ -227,7 +227,7 @@ PositionHandling.o: PositionHandling.cpp.o
 
 # target to build an object file
 PositionHandling.cpp.o:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.o
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.o
 .PHONY : PositionHandling.cpp.o
 
 PositionHandling.i: PositionHandling.cpp.i
@@ -236,7 +236,7 @@ PositionHandling.i: PositionHandling.cpp.i
 
 # target to preprocess a source file
 PositionHandling.cpp.i:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.i
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.i
 .PHONY : PositionHandling.cpp.i
 
 PositionHandling.s: PositionHandling.cpp.s
@@ -245,7 +245,7 @@ PositionHandling.s: PositionHandling.cpp.s
 
 # target to generate assembly for a file
 PositionHandling.cpp.s:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.s
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.s
 .PHONY : PositionHandling.cpp.s
 
 State.o: State.cpp.o
@@ -254,7 +254,7 @@ State.o: State.cpp.o
 
 # target to build an object file
 State.cpp.o:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o
 .PHONY : State.cpp.o
 
 State.i: State.cpp.i
@@ -263,7 +263,7 @@ State.i: State.cpp.i
 
 # target to preprocess a source file
 State.cpp.i:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/State.cpp.i
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/State.cpp.i
 .PHONY : State.cpp.i
 
 State.s: State.cpp.s
@@ -272,7 +272,7 @@ State.s: State.cpp.s
 
 # target to generate assembly for a file
 State.cpp.s:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/State.cpp.s
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/State.cpp.s
 .PHONY : State.cpp.s
 
 StateMachine.o: StateMachine.cpp.o
@@ -281,7 +281,7 @@ StateMachine.o: StateMachine.cpp.o
 
 # target to build an object file
 StateMachine.cpp.o:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o
 .PHONY : StateMachine.cpp.o
 
 StateMachine.i: StateMachine.cpp.i
@@ -290,7 +290,7 @@ StateMachine.i: StateMachine.cpp.i
 
 # target to preprocess a source file
 StateMachine.cpp.i:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.i
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.i
 .PHONY : StateMachine.cpp.i
 
 StateMachine.s: StateMachine.cpp.s
@@ -299,7 +299,7 @@ StateMachine.s: StateMachine.cpp.s
 
 # target to generate assembly for a file
 StateMachine.cpp.s:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.s
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.s
 .PHONY : StateMachine.cpp.s
 
 TCPServer.o: TCPServer.cpp.o
@@ -308,7 +308,7 @@ TCPServer.o: TCPServer.cpp.o
 
 # target to build an object file
 TCPServer.cpp.o:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/TCPServer.cpp.o
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/TCPServer.cpp.o
 .PHONY : TCPServer.cpp.o
 
 TCPServer.i: TCPServer.cpp.i
@@ -317,7 +317,7 @@ TCPServer.i: TCPServer.cpp.i
 
 # target to preprocess a source file
 TCPServer.cpp.i:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/TCPServer.cpp.i
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/TCPServer.cpp.i
 .PHONY : TCPServer.cpp.i
 
 TCPServer.s: TCPServer.cpp.s
@@ -326,7 +326,7 @@ TCPServer.s: TCPServer.cpp.s
 
 # target to generate assembly for a file
 TCPServer.cpp.s:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/TCPServer.cpp.s
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f src/CMakeFiles/kinovaArm_lib.dir/build.make src/CMakeFiles/kinovaArm_lib.dir/TCPServer.cpp.s
 .PHONY : TCPServer.cpp.s
 
 # Help Target
@@ -371,6 +371,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kinova/Documents/kinovaZED/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/kinova/Documents/kinovazed/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

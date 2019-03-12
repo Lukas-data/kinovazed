@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kinova/Documents/kinovaZED
+CMAKE_SOURCE_DIR = /home/kinova/Documents/kinovazed
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kinova/Documents/kinovaZED/build
+CMAKE_BINARY_DIR = /home/kinova/Documents/kinovazed/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/kinova/Documents/kinovaZED/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles /home/kinova/Documents/kinovaZED/build/test/CMakeFiles/progress.marks
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 test/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovaZED/build/CMakeFiles 0
+	cd /home/kinova/Documents/kinovazed/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles /home/kinova/Documents/kinovazed/build/test/CMakeFiles/progress.marks
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 test/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kinova/Documents/kinovazed/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 test/clean
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 test/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 test/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/kinova/Documents/kinovaZED/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/kinova/Documents/kinovazed/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 test/CMakeFiles/KinovaTest.dir/rule:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/KinovaTest.dir/rule
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/KinovaTest.dir/rule
 .PHONY : test/CMakeFiles/KinovaTest.dir/rule
 
 # Convenience name for target.
@@ -122,12 +122,12 @@ KinovaTest: test/CMakeFiles/KinovaTest.dir/rule
 
 # fast build rule for target.
 KinovaTest/fast:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/build
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/build
 .PHONY : KinovaTest/fast
 
 # Convenience name for target.
 test/CMakeFiles/logtest_lib.dir/rule:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/logtest_lib.dir/rule
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/logtest_lib.dir/rule
 .PHONY : test/CMakeFiles/logtest_lib.dir/rule
 
 # Convenience name for target.
@@ -137,12 +137,12 @@ logtest_lib: test/CMakeFiles/logtest_lib.dir/rule
 
 # fast build rule for target.
 logtest_lib/fast:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/build
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/build
 .PHONY : logtest_lib/fast
 
 # Convenience name for target.
 test/CMakeFiles/LogTest.dir/rule:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/LogTest.dir/rule
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/LogTest.dir/rule
 .PHONY : test/CMakeFiles/LogTest.dir/rule
 
 # Convenience name for target.
@@ -152,7 +152,7 @@ LogTest: test/CMakeFiles/LogTest.dir/rule
 
 # fast build rule for target.
 LogTest/fast:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/build
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/build
 .PHONY : LogTest/fast
 
 KinovaTest.o: KinovaTest.cpp.o
@@ -161,7 +161,7 @@ KinovaTest.o: KinovaTest.cpp.o
 
 # target to build an object file
 KinovaTest.cpp.o:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.o
 .PHONY : KinovaTest.cpp.o
 
 KinovaTest.i: KinovaTest.cpp.i
@@ -170,7 +170,7 @@ KinovaTest.i: KinovaTest.cpp.i
 
 # target to preprocess a source file
 KinovaTest.cpp.i:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.i
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.i
 .PHONY : KinovaTest.cpp.i
 
 KinovaTest.s: KinovaTest.cpp.s
@@ -179,7 +179,7 @@ KinovaTest.s: KinovaTest.cpp.s
 
 # target to generate assembly for a file
 KinovaTest.cpp.s:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.s
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f test/CMakeFiles/KinovaTest.dir/build.make test/CMakeFiles/KinovaTest.dir/KinovaTest.cpp.s
 .PHONY : KinovaTest.cpp.s
 
 LogTest.o: LogTest.cpp.o
@@ -188,7 +188,7 @@ LogTest.o: LogTest.cpp.o
 
 # target to build an object file
 LogTest.cpp.o:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/LogTest.cpp.o
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/LogTest.cpp.o
 .PHONY : LogTest.cpp.o
 
 LogTest.i: LogTest.cpp.i
@@ -197,7 +197,7 @@ LogTest.i: LogTest.cpp.i
 
 # target to preprocess a source file
 LogTest.cpp.i:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/LogTest.cpp.i
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/LogTest.cpp.i
 .PHONY : LogTest.cpp.i
 
 LogTest.s: LogTest.cpp.s
@@ -206,7 +206,7 @@ LogTest.s: LogTest.cpp.s
 
 # target to generate assembly for a file
 LogTest.cpp.s:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/LogTest.cpp.s
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f test/CMakeFiles/LogTest.dir/build.make test/CMakeFiles/LogTest.dir/LogTest.cpp.s
 .PHONY : LogTest.cpp.s
 
 LogTestSubClass.o: LogTestSubClass.cpp.o
@@ -215,7 +215,7 @@ LogTestSubClass.o: LogTestSubClass.cpp.o
 
 # target to build an object file
 LogTestSubClass.cpp.o:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/LogTestSubClass.cpp.o
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/LogTestSubClass.cpp.o
 .PHONY : LogTestSubClass.cpp.o
 
 LogTestSubClass.i: LogTestSubClass.cpp.i
@@ -224,7 +224,7 @@ LogTestSubClass.i: LogTestSubClass.cpp.i
 
 # target to preprocess a source file
 LogTestSubClass.cpp.i:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/LogTestSubClass.cpp.i
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/LogTestSubClass.cpp.i
 .PHONY : LogTestSubClass.cpp.i
 
 LogTestSubClass.s: LogTestSubClass.cpp.s
@@ -233,7 +233,7 @@ LogTestSubClass.s: LogTestSubClass.cpp.s
 
 # target to generate assembly for a file
 LogTestSubClass.cpp.s:
-	cd /home/kinova/Documents/kinovaZED/build && $(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/LogTestSubClass.cpp.s
+	cd /home/kinova/Documents/kinovazed/build && $(MAKE) -f test/CMakeFiles/logtest_lib.dir/build.make test/CMakeFiles/logtest_lib.dir/LogTestSubClass.cpp.s
 .PHONY : LogTestSubClass.cpp.s
 
 # Help Target
@@ -267,6 +267,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/kinova/Documents/kinovaZED/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/kinova/Documents/kinovazed/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

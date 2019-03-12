@@ -423,10 +423,9 @@ void KinovaArm::moveToPosition(bool init) {
   }
   else {
     currentPosition = TargetObjective;
-    TargetObjective = KinovaPts::NoObjective;
     if (init) { InternalEvent = KinovaFSM::InitHomeReached; }
     else {
-      ALL_LOG(logDEBUG) << "Sequence " << TargetObjective << " done." ;
+      ALL_LOG(logDEBUG) << "Sequence " << currentPosition << " done." ;
       ExternalEvent = KinovaFSM::SequenceDone;
     }
   }
@@ -434,6 +433,7 @@ void KinovaArm::moveToPosition(bool init) {
 
 void KinovaArm::sequenceDone() {
   PositionHandler.resetSequence();
+  TargetObjective = KinovaPts::NoObjective;
 }
 
 /*sets the TeachingTarget (Objective at whitch will be teached). Keeps old objective and Sequence when called with Zero.*/
@@ -675,7 +675,7 @@ void KinovaArm::getPosition(float* coordinates) {
         coordinates[i] = Position.rotation[i-3];
     }
   }
-  ALL_LOG(logDEBUG4) << "getPosition: currentCoordinates: ("
+  ALL_LOG(logDEBUG4) << "KinovaArm::getPosition: currentCoordinates: ("
                      << coordinates[0] << ", "
                      << coordinates[1] << ", "
                      << coordinates[2] << ", "

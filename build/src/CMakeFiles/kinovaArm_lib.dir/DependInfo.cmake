@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/kinova/Documents/kinovaZED/src/CommandHandling.cpp" "/home/kinova/Documents/kinovaZED/build/src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o"
-  "/home/kinova/Documents/kinovaZED/src/KinovaArm.cpp" "/home/kinova/Documents/kinovaZED/build/src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o"
-  "/home/kinova/Documents/kinovaZED/src/PositionHandling.cpp" "/home/kinova/Documents/kinovaZED/build/src/CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.o"
-  "/home/kinova/Documents/kinovaZED/src/State.cpp" "/home/kinova/Documents/kinovaZED/build/src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o"
-  "/home/kinova/Documents/kinovaZED/src/StateMachine.cpp" "/home/kinova/Documents/kinovaZED/build/src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o"
-  "/home/kinova/Documents/kinovaZED/src/TCPServer.cpp" "/home/kinova/Documents/kinovaZED/build/src/CMakeFiles/kinovaArm_lib.dir/TCPServer.cpp.o"
+  "/home/kinova/Documents/kinovazed/src/CommandHandling.cpp" "/home/kinova/Documents/kinovazed/build/src/CMakeFiles/kinovaArm_lib.dir/CommandHandling.cpp.o"
+  "/home/kinova/Documents/kinovazed/src/KinovaArm.cpp" "/home/kinova/Documents/kinovazed/build/src/CMakeFiles/kinovaArm_lib.dir/KinovaArm.cpp.o"
+  "/home/kinova/Documents/kinovazed/src/PositionHandling.cpp" "/home/kinova/Documents/kinovazed/build/src/CMakeFiles/kinovaArm_lib.dir/PositionHandling.cpp.o"
+  "/home/kinova/Documents/kinovazed/src/State.cpp" "/home/kinova/Documents/kinovazed/build/src/CMakeFiles/kinovaArm_lib.dir/State.cpp.o"
+  "/home/kinova/Documents/kinovazed/src/StateMachine.cpp" "/home/kinova/Documents/kinovazed/build/src/CMakeFiles/kinovaArm_lib.dir/StateMachine.cpp.o"
+  "/home/kinova/Documents/kinovazed/src/TCPServer.cpp" "/home/kinova/Documents/kinovazed/build/src/CMakeFiles/kinovaArm_lib.dir/TCPServer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

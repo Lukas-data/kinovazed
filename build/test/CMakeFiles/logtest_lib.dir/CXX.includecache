@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/kinova/Documents/kinovaZED/test/Log.h
+/home/kinova/Documents/kinovazed/test/Log.h
 sstream
 -
 string
@@ -14,11 +14,11 @@ string
 stdio.h
 -
 
-/home/kinova/Documents/kinovaZED/test/LogTestSubClass.cpp
+/home/kinova/Documents/kinovazed/test/LogTestSubClass.cpp
 LogTestSubClass.h
-/home/kinova/Documents/kinovaZED/test/LogTestSubClass.h
+/home/kinova/Documents/kinovazed/test/LogTestSubClass.h
 Log.h
-/home/kinova/Documents/kinovaZED/test/Log.h
+/home/kinova/Documents/kinovazed/test/Log.h
 
-/home/kinova/Documents/kinovaZED/test/LogTestSubClass.h
+/home/kinova/Documents/kinovazed/test/LogTestSubClass.h
 
