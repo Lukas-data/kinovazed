@@ -7,7 +7,7 @@
 
 namespace KinovaPts {
   
-  static const int NumberOfObjectives = 7; //excl. NoObjective
+  static const int NumberOfObjectives = 8; //excl. NoObjective
   enum Objective {  NoObjective,
                     Home,
                     Bell,
@@ -15,7 +15,8 @@ namespace KinovaPts {
                     OpenDoor,
                     PullDoor,
                     PlaceCup,
-                    Antenna
+                    Antenna,
+                    AntennaPull
                  };
 
   typedef struct posCoordinates{ 
