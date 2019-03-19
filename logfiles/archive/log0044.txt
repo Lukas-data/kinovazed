@@ -1,0 +1,5 @@
+    INFO: KinovaMain - Startup!
+    INFO: Connection to RoboRio established.
+    INFO: Connection to JacoArm established.
+      DEBUG0: CommandHandling: Recieved Event 'QuitEStop:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'

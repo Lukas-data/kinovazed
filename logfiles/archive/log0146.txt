@@ -1,0 +1,13 @@
+    INFO: KinovaMain - Startup!
+    INFO: Connection to RoboRio established.
+    INFO: Connection to JacoArm established.
+      DEBUG0: CommandHandling: Recieved Event 'Initialize:0'
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+      DEBUG2: PositionHandling::ReadFromFile: Objective 3 is Zero
+      DEBUG2: PositionHandling::ReadFromFile: Objective 4 is Zero
+    INFO: Points successfully loaded from File.
+      DEBUG0: Transformation matrices calculated
+      DEBUG0: CommandHandling: Sent Event 'Initialized:0'

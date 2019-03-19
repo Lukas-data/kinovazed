@@ -46,8 +46,9 @@ bool StateMachine::process() {
       CurrentState->entryAction();
       StateChange = true;
       return true;
-    }
+    }      
   }
+  ALL_LOG(logDEBUG4) << "StateMachine: Not Processing Event '" << KinovaFSM::EventName[e] << "'";
   CurrentState->tickAction(); 
   return false;
 }

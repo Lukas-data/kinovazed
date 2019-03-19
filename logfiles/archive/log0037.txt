@@ -1,0 +1,5 @@
+    INFO: KinovaMain - Startup!
+    INFO: Connection to RoboRio established.
+    INFO: Connection to JacoArm established.
+ERROR: TCPServer::readTCP(): Connection Lost
+      DEBUG0: CommandHandling: Recieved Event '

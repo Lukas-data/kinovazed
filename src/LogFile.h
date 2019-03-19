@@ -7,7 +7,7 @@
 #include "Log.h"
 
 #define REP_LEVEL_FILE    logDEBUG2
-#define REP_LEVEL_CONSOLE logDEBUG3
+#define REP_LEVEL_CONSOLE logDEBUG4
 
 #define LOG_FILEPATH "/home/kinova/Documents/kinovazed/logfiles/"
 #define LOGARCHIVE_FILEPATH "/home/kinova/Documents/kinovazed/logfiles/archive/"

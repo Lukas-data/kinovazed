@@ -1,0 +1,1141 @@
+    INFO: KinovaMain - Startup!
+    INFO: Connection to RoboRio established.
+    INFO: Connection to JacoArm established.
+      DEBUG0: CommandHandling: Recieved Event 'E_Stop:0'
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State PowerOff
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+      DEBUG0: CommandHandling: Sent Event 'E_Stop:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'QuitEStop:0'
+    INFO: StateMachine: Processing Event 'QuitEStop'
+    INFO: Exiting State EStop
+    INFO: Entering State PowerOff
+      DEBUG0: CommandHandling: Sent Event 'QuitEStop:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialize:0'
+    INFO: StateMachine: Processing Event 'Initialize'
+    INFO: Exiting State PowerOff
+    INFO: Entering State Initialize
+    INFO: Gained API control over the arm.
+      DEBUG2: PositionHandling::ReadFromFile: Objective 3 is Zero
+      DEBUG2: PositionHandling::ReadFromFile: Objective 4 is Zero
+    INFO: Points successfully loaded from File.
+      DEBUG0: Transformation matrices calculated
+      DEBUG0: CommandHandling: Sent Event 'Initialized:0'
+      DEBUG0: CommandHandling: Recieved Event 'Initialized:0'
+    INFO: StateMachine: Processing Event 'Initialized'
+    INFO: Exiting State Initialize 
+    INFO: Entering State Retracted
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'SetMode:1'
+      DEBUG0: CommandHandling: Recieved Event 'Retract:0'
+      DEBUG0: CommandHandling: Recieved Event 'Unfold:0'
+    INFO: StateMachine: Processing Event 'Unfold'
+    INFO: Exiting State Retracted 
+    INFO: Entering State Unfolding
+      DEBUG0: CommandHandling: Sent Event 'Unfold:0'
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 3
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 4
+      DEBUG2: unfolding from Mode: 1
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.162316
+      DEBUG2: [1]: dVel: 0.302624
+      DEBUG2: [2]: dVel: 0.492611
+      DEBUG2: [3]: dVel: 1.534
+      DEBUG2: [4]: dVel: 0.889979
+      DEBUG2: [5]: dVel: 0.0513609
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00459953
+      DEBUG2: [1]: dVel: 0.00246951
+      DEBUG2: [2]: dVel: 0.00052315
+      DEBUG2: [3]: dVel: 0.000262141
+      DEBUG2: [4]: dVel: 0.0135319
+      DEBUG2: [5]: dVel: 0.000697598
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00385779
+      DEBUG2: [1]: dVel: 0.0022057
+      DEBUG2: [2]: dVel: 0.000527173
+      DEBUG2: [3]: dVel: 0.000344396
+      DEBUG2: [4]: dVel: 0.0121862
+      DEBUG2: [5]: dVel: 0.0016793
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00538179
+      DEBUG2: [1]: dVel: 0.00368232
+      DEBUG2: [2]: dVel: 0.000250369
+      DEBUG2: [3]: dVel: 0.000671506
+      DEBUG2: [4]: dVel: 0.0156981
+      DEBUG2: [5]: dVel: 0.000888385
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.005309
+      DEBUG2: [1]: dVel: 0.00323856
+      DEBUG2: [2]: dVel: 0.000651091
+      DEBUG2: [3]: dVel: 0.000207663
+      DEBUG2: [4]: dVel: 0.0156735
+      DEBUG2: [5]: dVel: 0.000737302
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00293335
+      DEBUG2: [1]: dVel: 0.00157997
+      DEBUG2: [2]: dVel: 0.000437856
+      DEBUG2: [3]: dVel: 0.00347388
+      DEBUG2: [4]: dVel: 0.00735992
+      DEBUG2: [5]: dVel: 0.00347901
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00471623
+      DEBUG2: [1]: dVel: 0.00256899
+      DEBUG2: [2]: dVel: 0.000120878
+      DEBUG2: [3]: dVel: 0.000495672
+      DEBUG2: [4]: dVel: 0.0139561
+      DEBUG2: [5]: dVel: 0.00329638
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00338094
+      DEBUG2: [1]: dVel: 0.00244915
+      DEBUG2: [2]: dVel: 0.000238061
+      DEBUG2: [3]: dVel: 0.000299215
+      DEBUG2: [4]: dVel: 0.00872225
+      DEBUG2: [5]: dVel: 0.00041385
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0052595
+      DEBUG2: [1]: dVel: 0.00305986
+      DEBUG2: [2]: dVel: 0.000651777
+      DEBUG2: [3]: dVel: 0.000317097
+      DEBUG2: [4]: dVel: 0.0160754
+      DEBUG2: [5]: dVel: 0.000243183
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00364611
+      DEBUG2: [1]: dVel: 0.00207078
+      DEBUG2: [2]: dVel: 0.000402659
+      DEBUG2: [3]: dVel: 0.0011543
+      DEBUG2: [4]: dVel: 0.0130368
+      DEBUG2: [5]: dVel: 0.00363848
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00550098
+      DEBUG2: [1]: dVel: 0.00337645
+      DEBUG2: [2]: dVel: 0.000320166
+      DEBUG2: [3]: dVel: 0.00341368
+      DEBUG2: [4]: dVel: 0.0172953
+      DEBUG2: [5]: dVel: 0.00147384
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00310797
+      DEBUG2: [1]: dVel: 0.00203609
+      DEBUG2: [2]: dVel: 0.000646859
+      DEBUG2: [3]: dVel: 0.000576258
+      DEBUG2: [4]: dVel: 0.00910002
+      DEBUG2: [5]: dVel: 0.00251187
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00533174
+      DEBUG2: [1]: dVel: 0.00335255
+      DEBUG2: [2]: dVel: 0.000309914
+      DEBUG2: [3]: dVel: 0.00127697
+      DEBUG2: [4]: dVel: 0.0190684
+      DEBUG2: [5]: dVel: 0.00394981
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00335584
+      DEBUG2: [1]: dVel: 0.00197196
+      DEBUG2: [2]: dVel: 0.000105202
+      DEBUG2: [3]: dVel: 0.000295281
+      DEBUG2: [4]: dVel: 0.0112674
+      DEBUG2: [5]: dVel: 4.58546e-05
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00616026
+      DEBUG2: [1]: dVel: 0.00378907
+      DEBUG2: [2]: dVel: 0.0003663
+      DEBUG2: [3]: dVel: 0.00344098
+      DEBUG2: [4]: dVel: 0.0219927
+      DEBUG2: [5]: dVel: 0.00206454
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00352872
+      DEBUG2: [1]: dVel: 0.00227886
+      DEBUG2: [2]: dVel: 7.4625e-05
+      DEBUG2: [3]: dVel: 0.000456095
+      DEBUG2: [4]: dVel: 0.0138087
+      DEBUG2: [5]: dVel: 0.000384748
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00492599
+      DEBUG2: [1]: dVel: 0.00284278
+      DEBUG2: [2]: dVel: 0.000608742
+      DEBUG2: [3]: dVel: 0.000262618
+      DEBUG2: [4]: dVel: 0.0172764
+      DEBUG2: [5]: dVel: 0.000846818
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00478733
+      DEBUG2: [1]: dVel: 0.00260603
+      DEBUG2: [2]: dVel: 0.00052467
+      DEBUG2: [3]: dVel: 0.00343633
+      DEBUG2: [4]: dVel: 0.0185075
+      DEBUG2: [5]: dVel: 0.00452453
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00453056
+      DEBUG2: [1]: dVel: 0.00294369
+      DEBUG2: [2]: dVel: 0.000555158
+      DEBUG2: [3]: dVel: 4.05312e-06
+      DEBUG2: [4]: dVel: 0.018069
+      DEBUG2: [5]: dVel: 0.000536699
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00465941
+      DEBUG2: [1]: dVel: 0.00247478
+      DEBUG2: [3]: dVel: 0.000832915
+      DEBUG2: [4]: dVel: 0.0176867
+      DEBUG2: [5]: dVel: 0.000942264
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00403175
+      DEBUG2: [1]: dVel: 0.00273156
+      DEBUG2: [2]: dVel: 0.000509858
+      DEBUG2: [3]: dVel: 0.00191998
+      DEBUG2: [4]: dVel: 0.0163478
+      DEBUG2: [5]: dVel: 0.00160449
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00444593
+      DEBUG2: [1]: dVel: 0.00253105
+      DEBUG2: [2]: dVel: 0.000365436
+      DEBUG2: [3]: dVel: 0.00218689
+      DEBUG2: [4]: dVel: 0.0192599
+      DEBUG2: [5]: dVel: 0.0064435
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0052544
+      DEBUG2: [1]: dVel: 0.00332803
+      DEBUG2: [2]: dVel: 0.000684083
+      DEBUG2: [3]: dVel: 0.00281739
+      DEBUG2: [4]: dVel: 0.0227395
+      DEBUG2: [5]: dVel: 0.000445325
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00413594
+      DEBUG2: [1]: dVel: 0.00212067
+      DEBUG2: [2]: dVel: 0.000303566
+      DEBUG2: [3]: dVel: 0.000721574
+      DEBUG2: [4]: dVel: 0.0184262
+      DEBUG2: [5]: dVel: 0.00192009
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00373344
+      DEBUG2: [1]: dVel: 0.0022819
+      DEBUG2: [2]: dVel: 0.000211537
+      DEBUG2: [3]: dVel: 0.00178099
+      DEBUG2: [4]: dVel: 0.0166783
+      DEBUG2: [5]: dVel: 0.000869215
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00494454
+      DEBUG2: [1]: dVel: 0.00286934
+      DEBUG2: [2]: dVel: 0.000401765
+      DEBUG2: [3]: dVel: 0.00279212
+      DEBUG2: [4]: dVel: 0.0230517
+      DEBUG2: [5]: dVel: 0.00205445
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00490215
+      DEBUG2: [1]: dVel: 0.00312796
+      DEBUG2: [2]: dVel: 1.38581e-05
+      DEBUG2: [3]: dVel: 0.00121379
+      DEBUG2: [4]: dVel: 0.0246826
+      DEBUG2: [5]: dVel: 0.00140141
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00280244
+      DEBUG2: [1]: dVel: 0.00139433
+      DEBUG2: [2]: dVel: 0.000442207
+      DEBUG2: [3]: dVel: 0.00238097
+      DEBUG2: [4]: dVel: 0.0148597
+      DEBUG2: [5]: dVel: 0.00363771
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00403169
+      DEBUG2: [1]: dVel: 0.00191426
+      DEBUG2: [2]: dVel: 0.00068897
+      DEBUG2: [3]: dVel: 0.00364041
+      DEBUG2: [4]: dVel: 0.0211917
+      DEBUG2: [5]: dVel: 0.00225189
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00317921
+      DEBUG2: [1]: dVel: 0.00179467
+      DEBUG2: [2]: dVel: 0.00059849
+      DEBUG2: [3]: dVel: 0.000429153
+      DEBUG2: [4]: dVel: 0.0160815
+      DEBUG2: [5]: dVel: 0.00258298
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00465895
+      DEBUG2: [1]: dVel: 0.00214672
+      DEBUG2: [2]: dVel: 0.000387996
+      DEBUG2: [3]: dVel: 0.00254381
+      DEBUG2: [4]: dVel: 0.0244814
+      DEBUG2: [5]: dVel: 0.00149828
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00196656
+      DEBUG2: [1]: dVel: 0.00116816
+      DEBUG2: [2]: dVel: 2.60472e-05
+      DEBUG2: [3]: dVel: 0.000667453
+      DEBUG2: [4]: dVel: 0.0121517
+      DEBUG2: [5]: dVel: 0.000369508
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00437585
+      DEBUG2: [1]: dVel: 0.00234467
+      DEBUG2: [2]: dVel: 0.000439644
+      DEBUG2: [3]: dVel: 0.000626802
+      DEBUG2: [4]: dVel: 0.0251385
+      DEBUG2: [5]: dVel: 4.94346e-05
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00547566
+      DEBUG2: [1]: dVel: 0.00242564
+      DEBUG2: [2]: dVel: 0.000485808
+      DEBUG2: [3]: dVel: 0.003492
+      DEBUG2: [4]: dVel: 0.0300158
+      DEBUG2: [5]: dVel: 0.00344574
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 7.16224e-05
+      DEBUG2: [1]: dVel: 0.000552922
+      DEBUG2: [2]: dVel: 0.000146747
+      DEBUG2: [3]: dVel: 0.000200272
+      DEBUG2: [4]: dVel: 0.00401333
+      DEBUG2: [5]: dVel: 0.00182783
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00258292
+      DEBUG2: [1]: dVel: 0.00131175
+      DEBUG2: [2]: dVel: 0.000146836
+      DEBUG2: [3]: dVel: 0.000324368
+      DEBUG2: [4]: dVel: 0.0153076
+      DEBUG2: [5]: dVel: 0.00030796
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00307043
+      DEBUG2: [1]: dVel: 0.00189579
+      DEBUG2: [2]: dVel: 6.2108e-05
+      DEBUG2: [3]: dVel: 0.00127971
+      DEBUG2: [4]: dVel: 0.0212709
+      DEBUG2: [5]: dVel: 0.000220216
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.0030757
+      DEBUG2: [1]: dVel: 0.00169355
+      DEBUG2: [2]: dVel: 0.000273585
+      DEBUG2: [3]: dVel: 0.00144851
+      DEBUG2: [4]: dVel: 0.0223766
+      DEBUG2: [5]: dVel: 0.00249309
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00098158
+      DEBUG2: [1]: dVel: 0.00115755
+      DEBUG2: [2]: dVel: 0.000520945
+      DEBUG2: [3]: dVel: 0.000940323
+      DEBUG2: [4]: dVel: 0.0107912
+      DEBUG2: [5]: dVel: 0.000971278
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00255949
+      DEBUG2: [1]: dVel: 0.00167716
+      DEBUG2: [2]: dVel: 7.40588e-05
+      DEBUG2: [3]: dVel: 0.00105441
+      DEBUG2: [4]: dVel: 0.0216261
+      DEBUG2: [5]: dVel: 0.000487236
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00206796
+      DEBUG2: [1]: dVel: 0.00115764
+      DEBUG2: [2]: dVel: 0.000219077
+      DEBUG2: [3]: dVel: 0.000562787
+      DEBUG2: [4]: dVel: 0.0143859
+      DEBUG2: [5]: dVel: 0.000280993
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00287368
+      DEBUG2: [1]: dVel: 0.00151691
+      DEBUG2: [2]: dVel: 0.000491053
+      DEBUG2: [3]: dVel: 0.000411153
+      DEBUG2: [4]: dVel: 0.0272997
+      DEBUG2: [5]: dVel: 0.00213303
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000526574
+      DEBUG2: [1]: dVel: 0.00059399
+      DEBUG2: [2]: dVel: 0.000953853
+      DEBUG2: [3]: dVel: 0.00285304
+      DEBUG2: [4]: dVel: 0.0118747
+      DEBUG2: [5]: dVel: 0.00090204
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00222389
+      DEBUG2: [1]: dVel: 0.00125706
+      DEBUG2: [2]: dVel: 0.00084132
+      DEBUG2: [3]: dVel: 0.00140715
+      DEBUG2: [4]: dVel: 0.0241525
+      DEBUG2: [5]: dVel: 0.00267559
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000387363
+      DEBUG2: [1]: dVel: 0.000597268
+      DEBUG2: [2]: dVel: 0.00143191
+      DEBUG2: [3]: dVel: 0.00354707
+      DEBUG2: [4]: dVel: 0.0169945
+      DEBUG2: [5]: dVel: 0.00488159
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00176135
+      DEBUG2: [1]: dVel: 0.000776082
+      DEBUG2: [2]: dVel: 0.00117052
+      DEBUG2: [3]: dVel: 0.0020014
+      DEBUG2: [4]: dVel: 0.0170054
+      DEBUG2: [5]: dVel: 0.0159589
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000984251
+      DEBUG2: [1]: dVel: 4.78029e-05
+      DEBUG2: [2]: dVel: 1.91331e-05
+      DEBUG2: [3]: dVel: 0.000418663
+      DEBUG2: [4]: dVel: 0.0070606
+      DEBUG2: [5]: dVel: 0.0109887
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 4.86281e-05
+      DEBUG2: [1]: dVel: 1.13845e-05
+      DEBUG2: [2]: dVel: 0.00116086
+      DEBUG2: [3]: dVel: 0.00260091
+      DEBUG2: [4]: dVel: 0.00860748
+      DEBUG2: [5]: dVel: 0.00810556
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00017691
+      DEBUG2: [1]: dVel: 0.000230104
+      DEBUG2: [2]: dVel: 0.000851363
+      DEBUG2: [3]: dVel: 0.00154781
+      DEBUG2: [4]: dVel: 0.00858925
+      DEBUG2: [5]: dVel: 0.0052495
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00122512
+      DEBUG2: [1]: dVel: 9.67681e-05
+      DEBUG2: [2]: dVel: 0.000526369
+      DEBUG2: [3]: dVel: 0.00143564
+      DEBUG2: [4]: dVel: 0.02133
+      DEBUG2: [5]: dVel: 0.00472023
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000835629
+      DEBUG2: [1]: dVel: 0.000170499
+      DEBUG2: [2]: dVel: 0.00014931
+      DEBUG2: [3]: dVel: 0.000584126
+      DEBUG2: [4]: dVel: 0.00224203
+      DEBUG2: [5]: dVel: 0.000818653
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00010151
+      DEBUG2: [1]: dVel: 5.96941e-05
+      DEBUG2: [2]: dVel: 0.000549167
+      DEBUG2: [3]: dVel: 0.0013597
+      DEBUG2: [4]: dVel: 0.00794147
+      DEBUG2: [5]: dVel: 0.00109826
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000122638
+      DEBUG2: [1]: dVel: 2.22325e-05
+      DEBUG2: [2]: dVel: 0.00054881
+      DEBUG2: [3]: dVel: 0.00141764
+      DEBUG2: [4]: dVel: 0.0118746
+      DEBUG2: [5]: dVel: 0.00325099
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000204077
+      DEBUG2: [1]: dVel: 0.000422955
+      DEBUG2: [2]: dVel: 0.000311136
+      DEBUG2: [3]: dVel: 0.000846148
+      DEBUG2: [4]: dVel: 0.00787121
+      DEBUG2: [5]: dVel: 0.000314916
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000367416
+      DEBUG2: [1]: dVel: 0.000280648
+      DEBUG2: [2]: dVel: 0.000270575
+      DEBUG2: [3]: dVel: 0.0011133
+      DEBUG2: [4]: dVel: 0.0100343
+      DEBUG2: [5]: dVel: 0.00011855
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000558631
+      DEBUG2: [1]: dVel: 7.70092e-05
+      DEBUG2: [2]: dVel: 0.000929505
+      DEBUG2: [3]: dVel: 0.00239325
+      DEBUG2: [4]: dVel: 0.00926234
+      DEBUG2: [5]: dVel: 0.000385042
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000906894
+      DEBUG2: [1]: dVel: 0.000136793
+      DEBUG2: [2]: dVel: 8.91387e-05
+      DEBUG2: [3]: dVel: 0.00037384
+      DEBUG2: [4]: dVel: 0.0044078
+      DEBUG2: [5]: dVel: 0.00176403
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000163775
+      DEBUG2: [1]: dVel: 0.000558466
+      DEBUG2: [2]: dVel: 0.000415951
+      DEBUG2: [3]: dVel: 0.000807166
+      DEBUG2: [4]: dVel: 0.0128344
+      DEBUG2: [5]: dVel: 0.000877441
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00131289
+      DEBUG2: [1]: dVel: 0.000410765
+      DEBUG2: [2]: dVel: 0.000747949
+      DEBUG2: [3]: dVel: 0.00156951
+      DEBUG2: [4]: dVel: 0.012048
+      DEBUG2: [5]: dVel: 0.000813658
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00125846
+      DEBUG2: [1]: dVel: 0.000321239
+      DEBUG2: [2]: dVel: 0.00113732
+      DEBUG2: [3]: dVel: 0.00287795
+      DEBUG2: [4]: dVel: 0.00542382
+      DEBUG2: [5]: dVel: 0.00103812
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000538699
+      DEBUG2: [1]: dVel: 0.000146091
+      DEBUG2: [2]: dVel: 0.000324041
+      DEBUG2: [3]: dVel: 0.000800133
+      DEBUG2: [4]: dVel: 0.00780492
+      DEBUG2: [5]: dVel: 0.00142048
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000252437
+      DEBUG2: [1]: dVel: 0.000172108
+      DEBUG2: [2]: dVel: 0.000469327
+      DEBUG2: [3]: dVel: 0.0010494
+      DEBUG2: [4]: dVel: 0.00608853
+      DEBUG2: [5]: dVel: 0.000580287
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 4.13954e-05
+      DEBUG2: [1]: dVel: 0.000420868
+      DEBUG2: [2]: dVel: 0.00112748
+      DEBUG2: [3]: dVel: 0.00256419
+      DEBUG2: [4]: dVel: 0.00867482
+      DEBUG2: [5]: dVel: 0.00299615
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000344623
+      DEBUG2: [1]: dVel: 1.14739e-05
+      DEBUG2: [2]: dVel: 0.000102609
+      DEBUG2: [3]: dVel: 0.000627041
+      DEBUG2: [4]: dVel: 0.00474675
+      DEBUG2: [5]: dVel: 0.00193723
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000317801
+      DEBUG2: [1]: dVel: 0.000414133
+      DEBUG2: [2]: dVel: 0.000828117
+      DEBUG2: [3]: dVel: 0.00147307
+      DEBUG2: [4]: dVel: 0.00369413
+      DEBUG2: [5]: dVel: 0.00103662
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000409378
+      DEBUG2: [1]: dVel: 0.000100493
+      DEBUG2: [2]: dVel: 0.000286281
+      DEBUG2: [3]: dVel: 0.000688314
+      DEBUG2: [4]: dVel: 0.000298124
+      DEBUG2: [5]: dVel: 0.00060085
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000698317
+      DEBUG2: [4]: dVel: 0.00174551
+      DEBUG2: [5]: dVel: 2.36951e-05
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000576138
+      DEBUG2: [1]: dVel: 0.00019896
+      DEBUG2: [2]: dVel: 0.000573099
+      DEBUG2: [3]: dVel: 0.00137722
+      DEBUG2: [4]: dVel: 0.00289245
+      DEBUG2: [5]: dVel: 0.00114862
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000446264
+      DEBUG2: [1]: dVel: 0.000403672
+      DEBUG2: [2]: dVel: 0.00115219
+      DEBUG2: [3]: dVel: 0.00279045
+      DEBUG2: [4]: dVel: 0.00402244
+      DEBUG2: [5]: dVel: 0.00231797
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00171605
+      DEBUG2: [1]: dVel: 0.000629038
+      DEBUG2: [2]: dVel: 0.00186935
+      DEBUG2: [3]: dVel: 0.00480437
+      DEBUG2: [4]: dVel: 0.0111336
+      DEBUG2: [5]: dVel: 0.00189942
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000564335
+      DEBUG2: [1]: dVel: 0.000224382
+      DEBUG2: [2]: dVel: 0.000724018
+      DEBUG2: [3]: dVel: 0.00204957
+      DEBUG2: [4]: dVel: 0.00534844
+      DEBUG2: [5]: dVel: 0.00222287
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.00138851
+      DEBUG2: [1]: dVel: 0.000445694
+      DEBUG2: [2]: dVel: 0.00100508
+      DEBUG2: [3]: dVel: 0.00207663
+      DEBUG2: [4]: dVel: 0.0095693
+      DEBUG2: [5]: dVel: 0.00180227
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 1.19526e-05
+      DEBUG2: [1]: dVel: 1.89245e-05
+      DEBUG2: [2]: dVel: 0.000155896
+      DEBUG2: [3]: dVel: 0.000693321
+      DEBUG2: [4]: dVel: 0.00245864
+      DEBUG2: [5]: dVel: 0.00108126
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000285
+      DEBUG2: [1]: dVel: 9.26554e-05
+      DEBUG2: [2]: dVel: 0.000142545
+      DEBUG2: [3]: dVel: 6.30617e-05
+      DEBUG2: [4]: dVel: 0.00104212
+      DEBUG2: [5]: dVel: 0.000520497
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000286749
+      DEBUG2: [1]: dVel: 1.42753e-05
+      DEBUG2: [2]: dVel: 0.00016138
+      DEBUG2: [3]: dVel: 0.000806451
+      DEBUG2: [4]: dVel: 0.00391097
+      DEBUG2: [5]: dVel: 0.00305378
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000431478
+      DEBUG2: [1]: dVel: 0.000107944
+      DEBUG2: [2]: dVel: 0.000306129
+      DEBUG2: [3]: dVel: 0.000799537
+      DEBUG2: [4]: dVel: 0.00034812
+      DEBUG2: [5]: dVel: 0.0032199
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000293911
+      DEBUG2: [1]: dVel: 8.80957e-05
+      DEBUG2: [2]: dVel: 0.000133127
+      DEBUG2: [3]: dVel: 1.2517e-05
+      DEBUG2: [4]: dVel: 0.00102788
+      DEBUG2: [5]: dVel: 0.00210703
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000314228
+      DEBUG2: [1]: dVel: 8.34465e-06
+      DEBUG2: [2]: dVel: 0.000324279
+      DEBUG2: [3]: dVel: 0.00154042
+      DEBUG2: [4]: dVel: 0.00149216
+      DEBUG2: [5]: dVel: 0.0011173
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [0]: dVel: 0.000557702
+      DEBUG2: [1]: dVel: 0.00020206
+      DEBUG2: [2]: dVel: 0.000438631
+      DEBUG2: [3]: dVel: 0.000807166
+      DEBUG2: [4]: dVel: 0.000366574
+      DEBUG2: [5]: dVel: 0.0026653
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: [5]: dVel: 0.00261826
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG2: unfolding from Mode: 5
+      DEBUG2: KinovaArm::RangeCheck: following Axis do not pass:
+      DEBUG0: Sequence-Point 0 reached.
+      DEBUG2: unfolding from Mode: 5
+      DEBUG0: CommandHandling: Sent Event 'Unfolded:0'
+      DEBUG0: CommandHandling: Recieved Event 'Unfolded:0'
+    INFO: StateMachine: Processing Event 'Unfolded'
+    INFO: Exiting State Unfolding 
+    INFO: Entering State Idle
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'SetMode:1'
+    INFO: StateMachine: Processing Event 'SetMode'
+    INFO: Exiting State Idle
+    INFO: Entering State ChangeMode
+      DEBUG0: CommandHandling: Sent Event 'SetMode:1'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Sent Event 'ModeSet:1'
+      DEBUG0: CommandHandling: Recieved Event 'ModeSet:0'
+    INFO: StateMachine: Processing Event 'ModeSet'
+    INFO: Exiting State ChangeMode
+    INFO: Entering State Steering
+      DEBUG0: CommandHandling: Sent Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'
+      DEBUG0: CommandHandling: Recieved Event 'Retract:0'
+    INFO: StateMachine: Processing Event 'Retract'
+    INFO: Exiting State Steering
+    INFO: Entering State Retracted
+      DEBUG0: CommandHandling: Sent Event 'Retract:0'
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 5
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 0
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 1
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG2: retracting from Mode: 2
+      DEBUG0: CommandHandling: Recieved Event 'E_Stop:0'
+    INFO: StateMachine: Processing Event 'E_Stop'
+    INFO: Exiting State Retracted 
+    INFO: Entering State EStop
+    INFO: Released API control over the arm.
+      DEBUG0: CommandHandling: Sent Event 'E_Stop:0'
+      DEBUG0: CommandHandling: Recieved Event 'NoEvent:0'

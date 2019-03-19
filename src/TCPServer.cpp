@@ -58,6 +58,7 @@ bool TCPServer::connect() {
 /*sends Message to Client (RoboRio). Takes Command and data packages as input*/
 bool TCPServer::sendTCP(int command, int eventVar, int data1, int data2, int data3) {  
   if (RIO_DUMMY == false) {
+    ALL_LOG(logDEBUG4) << "TCPServer::sendTCP(): start";
     int n; 
     char buffer[COMMAND_LENGTH + (MessageLength)];
     int m=sprintf( buffer, "%6d%6d%6d%6d%6d", command, eventVar, data1, data2, data3);
@@ -65,6 +66,7 @@ bool TCPServer::sendTCP(int command, int eventVar, int data1, int data2, int dat
       error("sendTCP","Error preparing message");
       return false;
     }
+    ALL_LOG(logDEBUG4) << "TCPServer::sendTCP(): Message prepared.";
     if ( ( n = write( newsockfd, buffer, strlen(buffer) ) ) < 0 ) {
       error("sendTCP","Error writing to socket");
       return false;

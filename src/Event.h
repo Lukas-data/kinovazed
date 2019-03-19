@@ -9,50 +9,50 @@ namespace KinovaFSM {
 //Events !Hardware Events at the End!
   enum Event {
     //System Events
-    NoEvent,
-    Tick,
+    NoEvent, //0
+    Tick,    //1 
     
     //User Events
-    Initialize,
-    NoMode,
-    Retract,
-    Unfold,
-    SetMode,
-    MoveJoystick,
-    GoToPosition,
-    Teach,
-    SavePoint,
-    SaveOrigin,
-    DeletePoint,
-    Previous,
-    Next,
-    MoveOrigin,
-    Exit,
-    Shutdown,
-    E_Stop,
-    QuitEStop,
+    Initialize,   //2
+    NoMode,       //3
+    Retract,      //4
+    Unfold,       //5
+    SetMode,      //6
+    MoveJoystick, //7
+    GoToPosition, //8
+    Teach,        //9
+    SavePoint,    //10
+    SaveOrigin,   //11
+    DeletePoint,  //12
+    Previous,     //13
+    Next,         //14
+    MoveOrigin,   //15
+    Exit,         //16
+    Shutdown,     //17  
+    E_Stop,       //18
+    QuitEStop,    //19
     
     //Hardware Events Communicated To RoboRio (external)
-    Initialized,
-    Unfolded,
-    ModeSet,
-    SequenceDone,
-    PointReached,
-    PointNotReached,
-    PointSaved,
-    PointNotSaved,
-    OriginSaved,
-    OriginNotSaved,
-    PointDeleted,
-    PointNotDeleted,
-    PreviousPointSet,
-    PreviousPointNotSet,
-    NextPointSet,
-    NextPointNotSet,
+    Initialized,          //20
+    Unfolded,             //21
+    ModeSet,              //22
+    SequenceDone,         //23
+    PointReached,         //24
+    PointNotReached,      //25
+    PointSaved,           //26
+    PointNotSaved,        //27
+    OriginSaved,          //28
+    OriginNotSaved,       //29
+    PointDeleted,         //30
+    PointNotDeleted,      //31
+    PreviousPointSet,     //32
+    PreviousPointNotSet,  //33
+    NextPointSet,         //34
+    NextPointNotSet,      //35
 
     //Hardware Events Uncommunicated (internal)
-    InitHomeReached,
-    Error,
+    InitHomeReached,      //36
+    Error,                //37
   };
 
   //ForDebugUse

@@ -46,6 +46,11 @@ void CommandHandling::process() {
                       << KinovaFSM::EventName[CommandIn] 
                       << ":" << CommandVarIn << "'" ;
   }
+  else {
+    ALL_LOG(logDEBUG4) << "CommandHandling: Recieved Event '"
+                       << KinovaFSM::EventName[CommandIn] 
+                       << ":" << CommandVarIn << "'" ;
+  }
   //Check for E_Stop
   if ( CommandIn == KinovaFSM::E_Stop )
   { 
@@ -55,10 +60,12 @@ void CommandHandling::process() {
   else {
     //get Hardware Error
     if( JacoZED.getError() ) {
+      ALL_LOG(logDEBUG3) << "Hardware Error detected: E-Stop set.";
       newEvent = KinovaFSM::E_Stop;
     }
     //get Internal HW Events
     else {
+      ALL_LOG(logDEBUG4) << "No Hardware Error detected.";
       newEvent = JacoZED.getInternalEvent();
     }
     if (newEvent == KinovaFSM::NoEvent) {
@@ -105,6 +112,11 @@ void CommandHandling::process() {
                       << KinovaFSM::EventName[CommandOut] 
                       << ":" << CommandVarOut << "'" ;
   }
+  else {
+    ALL_LOG(logDEBUG4) << "CommandHandling: Sent Event '" 
+                      << KinovaFSM::EventName[CommandOut] 
+                      << ":" << CommandVarOut << "'" ;
+  }
 }
 
 
@@ -123,6 +135,7 @@ void CommandHandling::getInputs() {
   //Event is MoveJoystick, if Joystick moves and No Event is set.
   if (!JSisZero && CommandIn !=  KinovaFSM::E_Stop) {
     CommandIn = KinovaFSM::MoveJoystick;
+    ALL_LOG(logDEBUG4) << "CommandHandling::getInputs(): MoveJoystick";
   }
 }
 
