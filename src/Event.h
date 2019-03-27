@@ -34,25 +34,26 @@ namespace KinovaFSM {
     
     //Hardware Events Communicated To RoboRio (external)
     Initialized,          //20
-    Unfolded,             //21
-    ModeSet,              //22
-    SequenceDone,         //23
-    PointReached,         //24
-    PointNotReached,      //25
-    PointSaved,           //26
-    PointNotSaved,        //27
-    OriginSaved,          //28
-    OriginNotSaved,       //29
-    PointDeleted,         //30
-    PointNotDeleted,      //31
-    PreviousPointSet,     //32
-    PreviousPointNotSet,  //33
-    NextPointSet,         //34
-    NextPointNotSet,      //35
+    Retracted,            //21
+    Unfolded,             //22
+    ModeSet,              //23
+    SequenceDone,         //24
+    PointReached,         //25
+    PointNotReached,      //26
+    PointSaved,           //27
+    PointNotSaved,        //28
+    OriginSaved,          //29
+    OriginNotSaved,       //30
+    PointDeleted,         //31
+    PointNotDeleted,      //32
+    PreviousPointSet,     //33
+    PreviousPointNotSet,  //34
+    NextPointSet,         //35
+    NextPointNotSet,      //36
 
     //Hardware Events Uncommunicated (internal)
-    InitHomeReached,      //36
-    Error,                //37
+    InitHomeReached,      //37
+    Error,                //38
   };
 
   //ForDebugUse
@@ -84,6 +85,7 @@ namespace KinovaFSM {
     
     //Hardware Events Communicated
     "Initialized",
+    "Retracted",
     "Unfolded",
     "ModeSet",
     "SequenceDone",

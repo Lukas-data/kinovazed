@@ -1,3 +1,1 @@
     INFO: KinovaMain - Startup!
-    INFO: Connection to RoboRio established.
-    INFO: Connection to JacoArm established.

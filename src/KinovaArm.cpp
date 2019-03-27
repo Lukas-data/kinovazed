@@ -223,6 +223,7 @@ void KinovaArm::retract() {
           break;
         case KinDrv::MODE_RETRACT_STANDBY:
           arm->release_joystick();
+          ExternalEvent = KinovaFSM::Retracted;
           break;
       }
     }
