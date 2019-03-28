@@ -135,6 +135,7 @@ void CommandHandling::getInputs() {
   //Event is MoveJoystick, if Joystick moves and No Event is set.
   if (!JSisZero && CommandIn !=  KinovaFSM::E_Stop) {
     CommandIn = KinovaFSM::MoveJoystick;
+    CommandVarIn = 0;
     ALL_LOG(logDEBUG4) << "CommandHandling::getInputs(): MoveJoystick";
   }
 }

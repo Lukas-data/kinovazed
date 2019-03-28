@@ -69,6 +69,13 @@ class StateChangeMode : public State {
     void tickAction();
 };
 
+class StateChangeModeDefault : public State {
+  public:
+    void entryAction();
+    void exitAction();
+    void tickAction();
+};
+
 class StateSteering : public State {
   public:
     void entryAction();

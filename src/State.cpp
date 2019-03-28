@@ -98,6 +98,18 @@ void StateChangeMode::tickAction() {
   JacoZED->modeChangeTimer();
 }
 
+// ChangeModeDefault
+void StateChangeModeDefault::entryAction() {
+  ALL_LOG(logINFO) << "Entering State ChangeModeDefault";
+  JacoZED->changeMode(static_cast<KinovaStatus::SteeringMode>(0));
+}
+void StateChangeModeDefault::exitAction() {
+ ALL_LOG(logINFO) << "Exiting State ChangeModeDefault";
+}
+void StateChangeModeDefault::tickAction() {
+  JacoZED->modeChangeTimer();
+}
+
 // Steering
 void StateSteering::entryAction() {
   ALL_LOG(logINFO) << "Entering State Steering";

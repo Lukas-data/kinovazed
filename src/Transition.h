@@ -17,6 +17,7 @@ namespace KinovaFSM {
   static StateUnfold unfolding;
   static StateIdle idle;
   static StateChangeMode changeMode;
+  static StateChangeModeDefault changeModeDef;
   static StateSteering steering;
   static StateMovePosition movePosition;
   static StateTeach teach;
@@ -79,8 +80,13 @@ namespace KinovaFSM {
     { &changeMode,      Retract,            &retract          },
     { &changeMode,      E_Stop,             &eStop            },
 
+    { &changeModeDef,   ModeSet,            &steering         },
+    { &changeModeDef,   NoMode,             &idle             },
+    { &changeModeDef,   Retract,            &retract          },
+    { &changeModeDef,   E_Stop,             &eStop            },
+
     { &movePosition,    SequenceDone,       &changeMode       },
-    { &movePosition,    MoveJoystick,       &changeMode       },
+    { &movePosition,    MoveJoystick,       &changeModeDef    },
     { &movePosition,    NoMode,             &idle             },
     { &movePosition,    Retract,            &retract          },
     { &movePosition,    Shutdown,           &powerOff         },
