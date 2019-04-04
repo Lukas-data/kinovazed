@@ -38,12 +38,13 @@ void KinovaArm::error(const char* funcName, const char* errorMsg) {
 bool KinovaArm::connect() {
   if (KINOVA_DUMMY == false && Connected == false) {
     try {
+      //KinovaArm::disconnect();
       arm = new KinDrv::JacoArm();
       Connected = true;
       ALL_LOG(logINFO) << "Connection to JacoArm established.";
       return 1;
     } catch( KinDrv::KinDrvException &e ) {
-      error("connect", e, true);
+      error("connect", e, false);
       return 0;
     }
   }
@@ -57,10 +58,14 @@ bool KinovaArm::connect() {
 /*Disconnects to KinovaArm*/
 void KinovaArm::disconnect() {
   if (KINOVA_DUMMY == false) {
-    if( arm != NULL ) {
-      delete arm;
+    try {
+      if( arm != NULL ) {
+        delete arm;
+      }
+      ALL_LOG(logINFO) << "Connection to JacoArm closed. " ;
+    } catch( KinDrv::KinDrvException &e ) {
+      error("disconnect", e, false);
     }
-    ALL_LOG(logINFO) << "Connection to JacoArm closed. " ;
   }
   Connected = false;
 }
@@ -68,6 +73,7 @@ void KinovaArm::disconnect() {
 
 void KinovaArm::reconnectOnError() {
   if ( Error ) {
+    ALL_LOG(logDEBUG3) << "Connection to JacoArm reopend after Error." ;
     if ( Connected ) { disconnect(); }
     Error = !connect();
   }
@@ -202,7 +208,7 @@ void KinovaArm::retract() {
     try {
       KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
       if (armStatus != 3) {
-        ALL_LOG(logDEBUG2) << "retracting from Mode: " << armStatus;
+        ALL_LOG(logDEBUG4) << "retracting from Mode: " << armStatus;
       }
       switch (armStatus) {
         case KinDrv::MODE_READY_TO_RETRACT:
@@ -244,7 +250,7 @@ void KinovaArm::unfold() {
       try {
         KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
         //if (armStatus != 3) {
-        ALL_LOG(logDEBUG2) << "unfolding from Mode: " << armStatus;
+        ALL_LOG(logDEBUG4) << "unfolding from Mode: " << armStatus;
         //}
         switch (armStatus) {    
           case KinDrv::MODE_RETRACT_TO_READY:
@@ -407,7 +413,12 @@ void KinovaArm::moveToPosition(bool init) {
     bool currentLimit = checkCurrents();
     if (PointReached || currentLimit) {
       ALL_LOG(logDEBUG) << "Sequence-Point " << PositionHandler.getSequence() << " reached.";
-      arm->erase_trajectories();
+      try {
+        arm->erase_trajectories();
+      }
+      catch( KinDrv::KinDrvException &e ) {
+        error("moveToPosition", e, false);
+      }
       //Next Point in Sequence.
       PositionHandler.incrementSequence();
     }
@@ -706,11 +717,11 @@ bool KinovaArm::checkIfReached(float* targetCoordinates, float* currentCoordinat
 
   if (elapsedTime > 500) {
     bool pointReached = true;
-    ALL_LOG(logDEBUG2) << "KinovaArm::RangeCheck: following Axis do not pass:";
+    ALL_LOG(logDEBUG4) << "KinovaArm::RangeCheck: following Axis do not pass:";
     for (int i = 0; i<6; i++) {
       float dVel = fabs( currentCoordinates[i] - LastCoordinates[i] );
       if ( dVel > VELOCITY_RANGE ) {
-        ALL_LOG(logDEBUG2) << "[" << i << "]: dVel: " << dVel;
+        ALL_LOG(logDEBUG4) << "[" << i << "]: dVel: " << dVel;
         pointReached = false; 
       }
       LastCoordinates[i] = currentCoordinates[i];

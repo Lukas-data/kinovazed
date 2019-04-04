@@ -35,7 +35,7 @@ bool StateMachine::process() {
 
   int var = InputVariable;
   InputVariable = 0;
-
+  
   //Print handled Event and reset InputEvent.
   for (int i = 0; i<NumberOfTransitions; i++) {
     if ( (CurrentState == KinovaFSM::TransitionTable[i].currentState) && (e == KinovaFSM::TransitionTable[i].event) )  {
