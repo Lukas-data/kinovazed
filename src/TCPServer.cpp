@@ -33,6 +33,12 @@ bool TCPServer::connect() {
         return false;
       }
 
+      int opt = 1;
+      if (setsockopt( sockfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) == -1 ) {
+        error("connect", "Error on setting Socket options");
+        return false;
+      }
+
       memset(&serv_addr, 0, sizeof(serv_addr));
       serv_addr.sin_family = AF_INET;
       serv_addr.sin_port = htons(portno);

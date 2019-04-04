@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctime>
 
 #include "StateMachine.h"
 #include "Log.h"
@@ -12,6 +13,7 @@ StateMachine::~StateMachine() {}
 void StateMachine::init(KinovaArm* jacoZED) {
   CurrentState = KinovaFSM::initState;
   CurrentState->init(jacoZED);
+  clock_gettime(CLOCK_REALTIME, &LastTick);
 }
 
 
@@ -49,7 +51,16 @@ bool StateMachine::process() {
     }      
   }
   ALL_LOG(logDEBUG4) << "StateMachine: Not Processing Event '" << KinovaFSM::EventName[e] << "'";
-  CurrentState->tickAction(); 
+  timespec timeNow;
+  clock_gettime(CLOCK_REALTIME, &timeNow);
+  double elapsedTime = (timeNow.tv_sec-LastTick.tv_sec) * 1000.0 +
+                    (timeNow.tv_nsec-LastTick.tv_nsec) / 1000000.0;
+  if( elapsedTime > LOOPTIME ) {
+    ALL_LOG(logDEBUG4) << "Tick!";
+    CurrentState->tickAction();
+    clock_gettime(CLOCK_REALTIME, &LastTick);
+  }
+  
   return false;
 }
 
