@@ -18,6 +18,7 @@ class KinovaArm {
       Error(false),
       Initialized(false),
       Active(false),
+      Homed(false),
       ExternalEvent(KinovaFSM::NoEvent),
       InternalEvent(KinovaFSM::NoEvent),
       currentPosition(-1),

@@ -151,6 +151,7 @@ void KinovaArm::checkInitialize() {
     }
   }
   else {
+    Initialized = true;
     ExternalEvent = KinovaFSM::Initialized;
     ALL_LOG(logINFO) << "Arm connection is turned off. Dummy-Initialized." ;
   }
@@ -188,13 +189,17 @@ void KinovaArm::startRetracting(bool init) {
       if (armStatus != 3) {
         ALL_LOG(logDEBUG) << "Arm starts retracting from Mode: " << armStatus;
         arm->push_joystick_button(2);
+        ALL_LOG(logDEBUG2) << "Start Retracting: Button pressed!";
+        armStatus = arm->get_status();
       }
       else {
         arm->release_joystick();
+        ALL_LOG(logDEBUG2) << "Allready retracted: Button released!";
         if (!init) {
           ExternalEvent = KinovaFSM::Retracted;
         }
         else {
+          Initialized = true;
           ExternalEvent = KinovaFSM::Initialized;
         }
         
@@ -208,27 +213,37 @@ void KinovaArm::startRetracting(bool init) {
 
 /*brings arm to retracted position*/
 void KinovaArm::retract(bool init) {
+  ALL_LOG(logDEBUG3) << "Arm tries to retract!";
   currentPosition = 0;
   if(!KINOVA_DUMMY) {
     try {
       KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
-      if (armStatus != 3) {
-        ALL_LOG(logDEBUG3) << "Retracting Arm. Currently in Mode: " << armStatus;
-      }
-      if (armStatus == KinDrv::MODE_READY_STANDBY) {  
+      if (!Homed && armStatus == KinDrv::MODE_READY_STANDBY) {  
         Homed = true;
-      }
-      else if (Homed || armStatus == KinDrv::MODE_RETRACT_TO_READY) {
         arm->release_joystick();
+        ALL_LOG(logDEBUG2) << "Retract from Home: Button released!";
+        armStatus = arm->get_status();
         arm->push_joystick_button(2);
+        ALL_LOG(logDEBUG2) << "Retract from Home: Button pressed!";
+        armStatus = arm->get_status();
+      }
+      else if (Homed && armStatus == KinDrv::MODE_READY_TO_RETRACT) {
         Homed = false;
+      }
+      else if (armStatus == KinDrv::MODE_RETRACT_TO_READY) {
+        arm->release_joystick();
+        ALL_LOG(logDEBUG2) << "Retract to Home: Button released!";
+        arm->push_joystick_button(2);
+        ALL_LOG(logDEBUG2) << "Retract to Home: Button pressed!";
       }
       else if (armStatus == KinDrv::MODE_RETRACT_STANDBY) {
           arm->release_joystick();
+          ALL_LOG(logDEBUG2) << "Retracted: Button released!";
           if (!init) {
             ExternalEvent = KinovaFSM::Retracted;
           }
           else {
+            Initialized = true;
             ExternalEvent = KinovaFSM::Initialized;
           }
       }
