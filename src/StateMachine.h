@@ -9,7 +9,7 @@
 
 /*This State Machine runs the entry, exit and tick events from the states in "State.h" according to the events and transitions in "Transition.h". There is no Queue. If an event finds no use, it is dropped.*/
 
-#define LOOPTIME 30.0
+#define LOOPTIME 50.0
 
 class StateMachine {
 

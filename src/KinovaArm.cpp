@@ -208,7 +208,7 @@ void KinovaArm::retract() {
     try {
       KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
       if (armStatus != 3) {
-        ALL_LOG(logDEBUG4) << "retracting from Mode: " << armStatus;
+        ALL_LOG(logDEBUG3) << "retracting from Mode: " << armStatus;
       }
       switch (armStatus) {
         case KinDrv::MODE_READY_TO_RETRACT:

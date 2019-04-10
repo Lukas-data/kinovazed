@@ -83,6 +83,7 @@ class KinovaArm {
     bool Active;
     KinovaStatus::SteeringMode Mode;
     int currentPosition;
+    bool Homed;
 
     KinovaPts::Objective TargetObjective;
     KinovaPts::Objective TeachTarget;
