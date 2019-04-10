@@ -52,6 +52,7 @@ void StateInitialize::tickAction() {
 // Retracted
 void StateRetract::entryAction() {
   ALL_LOG(logINFO) << "Entering State Retracted";
+  JacoZED->startRetracting();
 }
 void StateRetract::exitAction() {
   ALL_LOG(logINFO) << "Exiting State Retracted ";

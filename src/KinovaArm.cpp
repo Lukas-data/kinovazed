@@ -200,6 +200,27 @@ void KinovaArm::initialize()
   }
 }
 
+/*Pushes Button if Arm is not allready retracted*/
+void KinovaArm::startRetracting() {
+  currentPosition = 0;
+  if(!KINOVA_DUMMY) {
+    Homed = false;
+    try {
+      KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
+      if (armStatus != 3) {
+        ALL_LOG(logDEBUG) << "Arm starts retracting from Mode: " << armStatus;
+        arm->push_joystick_button(2);
+      }
+      else {
+        arm->release_joystick();
+        ExternalEvent = KinovaFSM::Retracted;
+      }
+    }
+    catch ( KinDrv::KinDrvException &e ) {
+      error("retract", e, false);
+    }
+  }
+}
 
 /*brings arm to retracted position*/
 void KinovaArm::retract() {
@@ -208,29 +229,22 @@ void KinovaArm::retract() {
     try {
       KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
       if (armStatus != 3) {
-        ALL_LOG(logDEBUG3) << "retracting from Mode: " << armStatus;
+        ALL_LOG(logDEBUG3) << "Retracting Arm. Currently in Mode: " << armStatus;
       }
-      switch (armStatus) {
-        case KinDrv::MODE_READY_TO_RETRACT:
-          arm->push_joystick_button(2);
-          break;
-        case KinDrv::MODE_READY_STANDBY:  
-          arm->release_joystick();      
-        case KinDrv::MODE_RETRACT_TO_READY:
-          arm->push_joystick_button(2);
-          break;
-        case KinDrv::MODE_NORMAL_TO_READY:
-        case KinDrv::MODE_NORMAL:
-        case KinDrv::MODE_NOINIT:
-          arm->push_joystick_button(2);
-          break;
-        case KinDrv::MODE_ERROR:
-          error("retract", "Arm has an Error!");
-          break;
-        case KinDrv::MODE_RETRACT_STANDBY:
+      if (armStatus == KinDrv::MODE_READY_STANDBY) {  
+        Homed = true;
+      }
+      else if (Homed || armStatus == KinDrv::MODE_RETRACT_TO_READY) {
+        arm->release_joystick();
+        arm->push_joystick_button(2);
+        Homed = false;
+      }
+      else if (armStatus == KinDrv::MODE_RETRACT_STANDBY) {
           arm->release_joystick();
           ExternalEvent = KinovaFSM::Retracted;
-          break;
+      }
+      else if (armStatus == KinDrv::MODE_ERROR) {
+        error("retract", "Arm has an Error!");
       }
     }
     catch ( KinDrv::KinDrvException &e ) {

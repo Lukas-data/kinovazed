@@ -38,6 +38,7 @@ class KinovaArm {
     void dontMove();
     void checkInitialize();
     void initialize();
+    void startRetracting();
     void retract();
     void unfold();
     void changeMode(KinovaStatus::SteeringMode nextMode);
