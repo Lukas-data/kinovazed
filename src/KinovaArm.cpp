@@ -142,18 +142,9 @@ void KinovaArm::dontMove() {
 void KinovaArm::checkInitialize() {
   Initialized = false;
   PositionHandler.init();
-  if (KINOVA_DUMMY == false) {
+  if (!KINOVA_DUMMY) {
     try {
-      KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
-
-      //Moves Arm to Kinova Home position if not in initialized Position
-      if( armStatus == KinDrv::MODE_NOINIT) {
-        setTarget(KinovaPts::Home);
-      }
-      else {
-        ExternalEvent = KinovaFSM::Initialized;
-        Initialized = true;
-      }
+      startRetracting(true);
     }
     catch ( KinDrv::KinDrvException &e ) {
       error("initialize", e, false);
@@ -170,23 +161,10 @@ void KinovaArm::checkInitialize() {
 void KinovaArm::initialize()
 {
   currentPosition = 0;
-  if (KINOVA_DUMMY == false) {
+  if (!KINOVA_DUMMY) {
     if (!Initialized) {
       try {
-        KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
-        //Moves Arm to Kinova Home position if not in initialized Position
-        if( armStatus == KinDrv::MODE_NOINIT) {
-          ALL_LOG(logDEBUG3) << "Initializing: Status is NOINIT.";
-          //push the "HOME/RETRACT" button until arm is initialized
-          KinDrv::jaco_joystick_button_t buttons = {0};
-          buttons[2] = 1;
-          arm->push_joystick_button(buttons);
-        }
-        else {
-          ALL_LOG(logDEBUG3) << "Initializing: Statuts is " << armStatus << ".";
-          arm->release_joystick();
-          moveToPosition(true);
-        }
+        retract(true);
       }
       catch ( KinDrv::KinDrvException &e ) {
         error("initialize", e, false);
@@ -201,7 +179,7 @@ void KinovaArm::initialize()
 }
 
 /*Pushes Button if Arm is not allready retracted*/
-void KinovaArm::startRetracting() {
+void KinovaArm::startRetracting(bool init) {
   currentPosition = 0;
   if(!KINOVA_DUMMY) {
     Homed = false;
@@ -213,7 +191,13 @@ void KinovaArm::startRetracting() {
       }
       else {
         arm->release_joystick();
-        ExternalEvent = KinovaFSM::Retracted;
+        if (!init) {
+          ExternalEvent = KinovaFSM::Retracted;
+        }
+        else {
+          ExternalEvent = KinovaFSM::Initialized;
+        }
+        
       }
     }
     catch ( KinDrv::KinDrvException &e ) {
@@ -223,7 +207,7 @@ void KinovaArm::startRetracting() {
 }
 
 /*brings arm to retracted position*/
-void KinovaArm::retract() {
+void KinovaArm::retract(bool init) {
   currentPosition = 0;
   if(!KINOVA_DUMMY) {
     try {
@@ -241,7 +225,12 @@ void KinovaArm::retract() {
       }
       else if (armStatus == KinDrv::MODE_RETRACT_STANDBY) {
           arm->release_joystick();
-          ExternalEvent = KinovaFSM::Retracted;
+          if (!init) {
+            ExternalEvent = KinovaFSM::Retracted;
+          }
+          else {
+            ExternalEvent = KinovaFSM::Initialized;
+          }
       }
       else if (armStatus == KinDrv::MODE_ERROR) {
         error("retract", "Arm has an Error!");
