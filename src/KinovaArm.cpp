@@ -1,9 +1,10 @@
+#include "KinovaArm.h"
+
 #include <stdio.h>
 #include <ctime> 
 #include <Log.h>
 #include <string>
 
-#include "KinovaArm.h"
 
 
 

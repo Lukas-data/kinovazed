@@ -1,10 +1,10 @@
 #ifndef _COMMANDHANDLING_H_
 #define _COMMANDHANDLING_H_
 
-#include "StateMachine.h"
-#include "TCPServer.h"
 #include "KinovaArm.h"
 #include "KinovaStatus.h"
+#include "StateMachine.h"
+#include "TCPServer.h"
 
 
 /**/

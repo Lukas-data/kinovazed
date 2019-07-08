@@ -1,10 +1,10 @@
 #ifndef _KINOVAFUNCTION_H_
 #define _KINOVAFUNCTION_H_
 
-#include "../thirdparty/libkindrv/include/kindrv.h"
 #include "Event.h"
 #include "KinovaStatus.h"
 #include "PositionHandling.h"
+#include "kindrv.h"
 
 #define POSITION_RANGE 0.05
 #define ROTATION_RANGE 0.25

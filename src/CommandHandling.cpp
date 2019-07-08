@@ -1,10 +1,11 @@
+#include "CommandHandling.h"
+
 #include <stdio.h>
 #include <stdexcept>
 #include <unistd.h>
 #include "Log.h"
 
 
-#include "CommandHandling.h"
 
 /*Initiailizes Communication with Jaco-Arm and TCPServer.*/
 void CommandHandling::init() {

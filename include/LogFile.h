@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string>
 #include <fstream>
+
 #include "Log.h"
 
 #define REP_LEVEL_FILE    logDEBUG4

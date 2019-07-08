@@ -41,6 +41,10 @@ inline bool LogFile::create() {
   std::ifstream newfile(filepath.c_str());
   if (!newfile) {
     Output2FILE::Stream() = fopen(filepath.c_str(), "a");
+    if (Output2FILE::Stream() == NULL) {
+    	printf("ERROR at creating Log-File!\n");
+    	return false;
+    }
     FILELog::ReportingLevel() = REP_LEVEL_FILE;
     return true;
   }

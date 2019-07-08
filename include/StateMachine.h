@@ -1,10 +1,10 @@
 #ifndef _STATEMACHINE_H_
 #define _STATEMACHINE_H_
 
-#include "State.h"
-#include "Transition.h"
 #include "Event.h"
 #include "KinovaArm.h"
+#include "State.h"
+#include "Transition.h"
 
 
 /*This State Machine runs the entry, exit and tick events from the states in "State.h" according to the events and transitions in "Transition.h". There is no Queue. If an event finds no use, it is dropped.*/

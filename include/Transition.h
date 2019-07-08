@@ -1,9 +1,9 @@
 #ifndef _TRANSITION_H_
 #define _TRANSITION_H_
 
-#include "State.h"
-#include "KinovaArm.h"
 #include "Event.h"
+#include "KinovaArm.h"
+#include "State.h"
 
 /*Handles all Transitions for "StateMachine.h".*/
 
