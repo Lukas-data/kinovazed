@@ -1,0 +1,3 @@
+[submodule "thirdparty/libkindrv"]
+	path = thirdparty/libkindrv
+	url = https://github.com/personalrobotics/libkindrv/
