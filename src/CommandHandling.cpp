@@ -2,12 +2,14 @@
 #include "Log.h"
 
 #include <algorithm>
-
 #include <array>
+#include <chrono>
 #include <iterator>
-
 #include <stdio.h>
+#include <thread>
 #include <unistd.h>
+
+using namespace std::chrono_literals;
 
 void CommandHandling::connectRoboRio() {
 	ALL_LOG(logDEBUG3) << "Trying to connect to RoboRio";
@@ -18,7 +20,7 @@ void CommandHandling::connectRoboRio() {
 		} else {
 			ALL_LOG(logDEBUG1) << "Connection to RoboRio unsuccessful. Retry.";
 		}
-		usleep(1000000);
+		std::this_thread::sleep_for(1s);
 	}
 }
 
@@ -31,7 +33,7 @@ void CommandHandling::connectJacoZed() {
 		} else {
 			ALL_LOG(logDEBUG1) << "Connection to JacoArm unsuccessful. Retry.";
 		}
-		usleep(1000000);
+		std::this_thread::sleep_for(1s);
 	}
 }
 
@@ -41,7 +43,7 @@ void CommandHandling::init() {
 	kinovaSM.init(&jacoZed);
 }
 
-bool CommandHandling::processInput(Command &newInCommand) {
+auto CommandHandling::processInput(Command &newInCommand) -> bool {
 	ALL_LOG(logERROR) << "process()";
 
 	//INPUTS
@@ -95,7 +97,7 @@ void CommandHandling::processOutput(bool processed, Command const &newInCommand,
 	} else {
 		commandOut = Command { HWEvent };
 	}
-	sendOutputs(commandOut.event, commandOut.var);
+	sendOutputs(commandOut);
 	if (commandOut != oldOutCommand) {
 		ALL_LOG(logDEBUG) << "CommandHandling: Sent Event '" << KinovaFSM::EventName[commandOut.event] << ":" << commandOut.var << "'";
 	} else {
@@ -112,7 +114,7 @@ void CommandHandling::process() {
 
 }
 
-/*Recieves Inputs from TCP Connection with Roborio connection. Writes Joystick Data directly to hardware.*/
+/*Recieves Inputs from TCP Connection with RoboRIO connection. Writes Joystick Data directly to hardware.*/
 auto CommandHandling::getInputs() -> Command {
 	Command commandIn = Command { static_cast<KinovaFSM::Event>(roboRio.getCommand()), roboRio.getData(0) };
 	std::array<int, numberOfJoystickMoveInputs> inData { };
@@ -120,13 +122,14 @@ auto CommandHandling::getInputs() -> Command {
 	for (int n = 0; n < numberOfJoystickMoveInputs; n++) {
 		inData[n] = roboRio.getData(n + 1);
 	}
+	//TODO: (tcorbat) Shouldn't we check where whether event is actually MoveJoystick?
+	jacoZed.setJoystick(inData[0], inData[1], inData[2]);
+
+	//Event is MoveJoystick, if Joystick moves and No Event is set.
 	auto isZero = [](int value) {
 		return value == 0;
 	};
 	bool jSisZero = std::all_of(std::begin(inData), std::end(inData), isZero);
-
-	jacoZed.setJoystick(inData[0], inData[1], inData[2]);
-	//Event is MoveJoystick, if Joystick moves and No Event is set.
 	if (!jSisZero && commandIn.event != KinovaFSM::E_Stop) {
 		commandIn = Command { KinovaFSM::MoveJoystick };
 		ALL_LOG(logDEBUG4) << "CommandHandling::getInputs(): MoveJoystick";
@@ -135,20 +138,20 @@ auto CommandHandling::getInputs() -> Command {
 }
 
 /*Sends Output Variables on TCP*/
-void CommandHandling::sendOutputs(int event, int eventVar) {
-	roboRio.sendTCP(event, eventVar, 0, 0, 0);
+void CommandHandling::sendOutputs(Command const & command) {
+	roboRio.sendTCP(command.event, command.var, 0, 0, 0);
 }
 
 /*define Exception for Events, that should or should not be sent to Statemachine*/
 void CommandHandling::checkInputEvent(Command &command) {
-	// 'SetMode' is only sent when mode is not allready set.
+	// 'SetMode' is only sent when mode is not already set.
 	int currentMode = jacoZed.getMode();
 	if (jacoZed.getActive() && command == Command { KinovaFSM::SetMode, currentMode }) {
 		//printf("eventVar: %d, Mode on Jaco: %d\n", eventVarToCheck, currentMode);
 		command = Command { KinovaFSM::NoEvent };
 	}
 
-	//'GoToPosition' is only sent when the Arm is not allready at the Position
+	//'GoToPosition' is only sent when the Arm is not already at the Position
 	int currentPosition = jacoZed.getCurrentPosition();
 	if (jacoZed.getActive() && command == Command { KinovaFSM::GoToPosition, currentPosition }) {
 		//printf("eventVar: %d, Mode on Jaco: %d\n", eventVarToCheck, currentMode);

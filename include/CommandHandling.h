@@ -42,12 +42,12 @@ private:
 	Command commandIn{KinovaFSM::NoEvent};
 
 	auto getInputs() -> Command;
-	void sendOutputs(int event, int eventVar);
+	void sendOutputs(Command const & command);
 	void checkInputEvent(Command & command);
 	auto getHWEventVar(KinovaFSM::Event const &event) -> int;
 	void connectRoboRio();
 	void connectJacoZed();
-	bool processInput(Command & newInCommand);
+	auto processInput(Command & newInCommand) -> bool;
 	void processOutput(bool processed, Command const & newInCommand, Command const & oldOutCommand);
 };
 #endif
