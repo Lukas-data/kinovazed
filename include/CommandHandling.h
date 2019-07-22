@@ -6,38 +6,48 @@
 #include "StateMachine.h"
 #include "TCPServer.h"
 
+constexpr int numberOfJoystickMoveInputs = 3;
 
-/**/
+struct Command {
+	KinovaFSM::Event event;
+	int var;
 
+	explicit Command(KinovaFSM::Event event, int var = 0) : event{event}, var{var}{}
 
+	bool operator==(Command const & other) const {
+		return event == other.event && var == other.var;
+	}
 
+	bool operator!=(Command const & other) const {
+		return !(*this == other);
+	}
+};
 
-class CommandHandling {
-  public:
-    void init();
-    void process();
-    
-    //Debug only:
-    void debugSendEvent(KinovaFSM::Event e);
-    void debugSendEvent(KinovaFSM::Event e, int var);
-    void debugSetJoystick(int x, int y, int z);
-    void debugPrintPosition();
+struct CommandHandling {
+	void init();
+	void process();
 
-  private:
-    KinovaArm JacoZED;
-    TCPServer RoboRio;
-    StateMachine KinovaSM;
+	//Debug only:
+	void debugSendEvent(KinovaFSM::Event e);
+	void debugSendEvent(KinovaFSM::Event e, int var);
+	void debugSetJoystick(int x, int y, int z);
+	void debugPrintPosition();
 
-    KinovaFSM::Event CommandOut;
-    KinovaFSM::Event CommandIn;
-    int CommandVarOut;
-    int CommandVarIn;
-    int DataOut[3];
-    int DataIn[3];
+private:
+	KinovaArm jacoZed;
+	TCPServer roboRio;
+	StateMachine kinovaSM;
 
-    void getInputs();
-    void sendOutputs(int event, int eventVar);
-    void checkInputEvent(KinovaFSM::Event &event, int &eventVar);
-    bool getHWEventVar(KinovaFSM::Event &event, int &eventVar);
+	Command commandOut{KinovaFSM::NoEvent};
+	Command commandIn{KinovaFSM::NoEvent};
+
+	auto getInputs() -> Command;
+	void sendOutputs(int event, int eventVar);
+	void checkInputEvent(Command & command);
+	auto getHWEventVar(KinovaFSM::Event const &event) -> int;
+	void connectRoboRio();
+	void connectJacoZed();
+	bool processInput(Command & newInCommand);
+	void processOutput(bool processed, Command const & newInCommand, Command const & oldOutCommand);
 };
 #endif

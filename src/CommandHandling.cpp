@@ -1,168 +1,169 @@
 #include "CommandHandling.h"
 #include "Log.h"
 
+#include <algorithm>
+
+#include <array>
+#include <iterator>
+
 #include <stdio.h>
 #include <unistd.h>
 
-/*Initiailizes Communication with Jaco-Arm and TCPServer.*/
-void CommandHandling::init() {
-	//Connect to RoboRio (ZED Main Controller)
+void CommandHandling::connectRoboRio() {
 	ALL_LOG(logDEBUG3) << "Trying to connect to RoboRio";
 	while (true) {
-		if (RoboRio.connect()) {
+		if (roboRio.connect()) {
 			ALL_LOG(logINFO) << "Connection to RoboRio established.";
 			break;
 		} else {
-			ALL_LOG(logDEBUG1) << "Connection to RoboRio unsuccessfull. Retry.";
+			ALL_LOG(logDEBUG1) << "Connection to RoboRio unsuccessful. Retry.";
 		}
 		usleep(1000000);
 	}
+}
 
+void CommandHandling::connectJacoZed() {
 	//Connect to Kinova robotic arm
 	ALL_LOG(logDEBUG3) << "Trying to connect to JacoArm.";
 	while (true) {
-		if (JacoZED.connect()) {
+		if (jacoZed.connect()) {
 			break;
 		} else {
-			ALL_LOG(logDEBUG1) << "Connection to JacoArm unsuccessfull. Retry.";
+			ALL_LOG(logDEBUG1) << "Connection to JacoArm unsuccessful. Retry.";
 		}
 		usleep(1000000);
 	}
-	//Initialize StateMachine.
-	KinovaSM.init(&JacoZED);
 }
 
-void CommandHandling::process() {
+void CommandHandling::init() {
+	connectRoboRio();
+	connectJacoZed();
+	kinovaSM.init(&jacoZed);
+}
+
+bool CommandHandling::processInput(Command &newInCommand) {
 	ALL_LOG(logERROR) << "process()";
-	KinovaFSM::Event newEvent = KinovaFSM::NoEvent;
-	int newVar = 0;
 
 	//INPUTS
-	KinovaFSM::Event oldCommand = CommandIn;
-	int oldCommandVar = CommandVarIn;
-	getInputs();
+	Command oldInCommand = commandIn;
+	commandIn = getInputs();
 
-	if (CommandIn != oldCommand || CommandVarIn != oldCommandVar) {
-		ALL_LOG(logDEBUG) << "CommandHandling: Recieved Event '" << KinovaFSM::EventName[CommandIn] << ":" << CommandVarIn << "'";
+	if (commandIn != oldInCommand) {
+		ALL_LOG(logDEBUG) << "CommandHandling: Received Event '" << KinovaFSM::EventName[commandIn.event] << ":" << commandIn.var << "'";
 	} else {
-		ALL_LOG(logDEBUG4) << "CommandHandling: Recieved Event '" << KinovaFSM::EventName[CommandIn] << ":" << CommandVarIn << "'";
+		ALL_LOG(logDEBUG4) << "CommandHandling: Received Event '" << KinovaFSM::EventName[commandIn.event] << ":" << commandIn.var << "'";
 	}
 	//Check for E_Stop
-	if (CommandIn == KinovaFSM::E_Stop) {
-		newEvent = KinovaFSM::E_Stop;
-		newVar = 0;
+	if (commandIn.event == KinovaFSM::E_Stop) {
+		newInCommand = Command { KinovaFSM::E_Stop };
 	} else {
 		//get Hardware Error
-		if (JacoZED.getError()) {
+		if (jacoZed.getError()) {
 			ALL_LOG(logDEBUG3) << "Hardware Error detected: E-Stop set.";
-			newEvent = KinovaFSM::E_Stop;
+			newInCommand.event = KinovaFSM::E_Stop;
 		}
 		//get Internal HW Events
 		else {
 			ALL_LOG(logDEBUG4) << "No Hardware Error detected.";
-			newEvent = JacoZED.getInternalEvent();
+			newInCommand.event = jacoZed.getInternalEvent();
 		}
-		if (newEvent == KinovaFSM::NoEvent) {
+		if (newInCommand.event == KinovaFSM::NoEvent) {
 			//get Events from RoboRio
-			newEvent = CommandIn;
-			newVar = CommandVarIn;
+			newInCommand = commandIn;
 		}
 	}
-	checkInputEvent(newEvent, newVar);
-	KinovaSM.sendEvent(newEvent, newVar);
-	bool processed = KinovaSM.process();
+	checkInputEvent(newInCommand);
+	kinovaSM.sendEvent(newInCommand.event, newInCommand.var);
+	return kinovaSM.process();
+}
 
-	//OUTPUTS
-	oldCommand = CommandOut;
-	oldCommandVar = CommandVarOut;
-
-	KinovaFSM::Event HWEvent = JacoZED.getExternalEvent();
-	int HWVar = 0;
-	bool enforce = getHWEventVar(HWEvent, HWVar);
+void CommandHandling::processOutput(bool processed, Command const &newInCommand, Command const &oldOutCommand) {
+	KinovaFSM::Event HWEvent = jacoZed.getExternalEvent();
+	int HWVar = getHWEventVar(HWEvent);
 	if (HWEvent == KinovaFSM::NoEvent) {
 		if (processed) {
 			//Processed Event
-			CommandOut = newEvent;
-			CommandVarOut = newVar;
+			commandOut = newInCommand;
 		}
 		//Don't repeat last Event when HW-Event recieved
-		if (newEvent > KinovaFSM::numberOfNonHWEvents) {
-			CommandOut = KinovaFSM::NoEvent;
-			CommandVarOut = 0;
+		if (newInCommand.event > KinovaFSM::numberOfNonHWEvents) {
+			commandOut = Command { KinovaFSM::NoEvent };
 		}
-	} else if (HWEvent == newEvent) {
-		CommandOut = KinovaFSM::NoEvent;
-		CommandVarOut = 0;
+	} else if (HWEvent == newInCommand.event) {
+		commandOut = Command { KinovaFSM::NoEvent };
 
 	} else {
-		CommandOut = HWEvent;
-		CommandVarOut = HWVar;
+		commandOut = Command { HWEvent };
 	}
-	sendOutputs(CommandOut, CommandVarOut);
-	if (CommandOut != oldCommand || CommandVarOut != oldCommandVar) {
-		ALL_LOG(logDEBUG) << "CommandHandling: Sent Event '" << KinovaFSM::EventName[CommandOut] << ":" << CommandVarOut << "'";
+	sendOutputs(commandOut.event, commandOut.var);
+	if (commandOut != oldOutCommand) {
+		ALL_LOG(logDEBUG) << "CommandHandling: Sent Event '" << KinovaFSM::EventName[commandOut.event] << ":" << commandOut.var << "'";
 	} else {
-		ALL_LOG(logDEBUG4) << "CommandHandling: Sent Event '" << KinovaFSM::EventName[CommandOut] << ":" << CommandVarOut << "'";
+		ALL_LOG(logDEBUG4) << "CommandHandling: Sent Event '" << KinovaFSM::EventName[commandOut.event] << ":" << commandOut.var << "'";
 	}
 }
 
+void CommandHandling::process() {
+
+	Command newInCommand { KinovaFSM::NoEvent };
+	bool processed = processInput(newInCommand);
+	//OUTPUTS
+	processOutput(processed, newInCommand, commandOut);
+
+}
+
 /*Recieves Inputs from TCP Connection with Roborio connection. Writes Joystick Data directly to hardware.*/
-void CommandHandling::getInputs() {
-	CommandIn = static_cast<KinovaFSM::Event>(RoboRio.getCommand());
-	CommandVarIn = RoboRio.getData(0);
-	bool JSisZero = true;
-	for (int n = 0; n < 3; n++) {
-		DataIn[n] = RoboRio.getData(n + 1);
-		if (DataIn[n] != 0) {
-			JSisZero = false;
-		}
+auto CommandHandling::getInputs() -> Command {
+	Command commandIn = Command { static_cast<KinovaFSM::Event>(roboRio.getCommand()), roboRio.getData(0) };
+	std::array<int, numberOfJoystickMoveInputs> inData { };
+
+	for (int n = 0; n < numberOfJoystickMoveInputs; n++) {
+		inData[n] = roboRio.getData(n + 1);
 	}
-	JacoZED.setJoystick(DataIn[0], DataIn[1], DataIn[2]);
+	auto isZero = [](int value) {
+		return value == 0;
+	};
+	bool jSisZero = std::all_of(std::begin(inData), std::end(inData), isZero);
+
+	jacoZed.setJoystick(inData[0], inData[1], inData[2]);
 	//Event is MoveJoystick, if Joystick moves and No Event is set.
-	if (!JSisZero && CommandIn != KinovaFSM::E_Stop) {
-		CommandIn = KinovaFSM::MoveJoystick;
-		CommandVarIn = 0;
+	if (!jSisZero && commandIn.event != KinovaFSM::E_Stop) {
+		commandIn = Command { KinovaFSM::MoveJoystick };
 		ALL_LOG(logDEBUG4) << "CommandHandling::getInputs(): MoveJoystick";
 	}
+	return commandIn;
 }
 
 /*Sends Output Variables on TCP*/
 void CommandHandling::sendOutputs(int event, int eventVar) {
-	RoboRio.sendTCP(event, eventVar, 0, 0, 0);
+	roboRio.sendTCP(event, eventVar, 0, 0, 0);
 }
 
 /*define Exception for Events, that should or should not be sent to Statemachine*/
-void CommandHandling::checkInputEvent(KinovaFSM::Event &event, int &eventVar) {
-	KinovaFSM::Event eventToCheck = event;
-	int eventVarToCheck = eventVar;
-
+void CommandHandling::checkInputEvent(Command &command) {
 	// 'SetMode' is only sent when mode is not allready set.
-	int currentMode = JacoZED.getMode();
-	if (JacoZED.getActive() && eventToCheck == KinovaFSM::SetMode && eventVarToCheck == currentMode) {
+	int currentMode = jacoZed.getMode();
+	if (jacoZed.getActive() && command == Command { KinovaFSM::SetMode, currentMode }) {
 		//printf("eventVar: %d, Mode on Jaco: %d\n", eventVarToCheck, currentMode);
-		event = KinovaFSM::NoEvent;
-		eventVar = 0;
+		command = Command { KinovaFSM::NoEvent };
 	}
 
 	//'GoToPosition' is only sent when the Arm is not allready at the Position
-	int currentPosition = JacoZED.getCurrentPosition();
-	if (JacoZED.getActive() && eventToCheck == KinovaFSM::GoToPosition && eventVarToCheck == currentPosition) {
+	int currentPosition = jacoZed.getCurrentPosition();
+	if (jacoZed.getActive() && command == Command { KinovaFSM::GoToPosition, currentPosition }) {
 		//printf("eventVar: %d, Mode on Jaco: %d\n", eventVarToCheck, currentMode);
-		event = KinovaFSM::NoEvent;
-		eventVar = 0;
+		command = Command { KinovaFSM::NoEvent };
 	}
 }
 
 /*retrieves EventVariable for different HW-Events.*/
-bool CommandHandling::getHWEventVar(KinovaFSM::Event &event, int &eventVar) {
+auto CommandHandling::getHWEventVar(KinovaFSM::Event const &event) -> int {
 	//Hardware Events
 	switch (event) {
 	case KinovaFSM::ModeSet:
-		eventVar = JacoZED.getMode();
-		return true;
+		return jacoZed.getMode();
 	case KinovaFSM::SequenceDone:
-		eventVar = JacoZED.getCurrentPosition();
-		return true;
+		return jacoZed.getCurrentPosition();
 	case KinovaFSM::PointReached:
 	case KinovaFSM::PointSaved:
 	case KinovaFSM::PointNotSaved:
@@ -172,30 +173,29 @@ bool CommandHandling::getHWEventVar(KinovaFSM::Event &event, int &eventVar) {
 	case KinovaFSM::PreviousPointSet:
 	case KinovaFSM::NextPointNotSet:
 	case KinovaFSM::NextPointSet:
-		eventVar = JacoZED.getCurrentPoint();
-		return true;
+		return jacoZed.getCurrentPoint();
 	}
-	return false;
+	return 0;
 }
 
 /************************************/
 //* Debug use only! */
 void CommandHandling::debugSendEvent(KinovaFSM::Event e) {
-	KinovaSM.sendEvent(e);
+	kinovaSM.sendEvent(e);
 }
 
 void CommandHandling::debugSendEvent(KinovaFSM::Event e, int var) {
-	KinovaSM.sendEvent(e, var);
+	kinovaSM.sendEvent(e, var);
 }
 
 void CommandHandling::debugSetJoystick(int x, int y, int z) {
 	//printf("CommandHandling::setJoystick (%d,%d,%d)\n",x,y,z);
-	JacoZED.setJoystick(x, y, z);
+	jacoZed.setJoystick(x, y, z);
 }
 
 void CommandHandling::debugPrintPosition() {
 	float coordinates[6];
-	JacoZED.getPosition(coordinates);
+	jacoZed.getPosition(coordinates);
 	printf("Current Position = (");
 	for (int i = 0; i < 6; i++) {
 		printf("%f", coordinates[i]);
