@@ -3,154 +3,144 @@
 
 #include "KinovaArm.h"
 
+#include <string>
+#include <utility>
+
 //Abstract State-Class. (Id not used, but implemented for debug uses.)
-class State {
-  public:
+struct State {
     void init(KinovaArm* jacoZED);
-	  virtual void entryAction() = 0;
-    virtual void exitAction() = 0;
-    virtual void tickAction() = 0;
+	void entryAction();
+	void exitAction();
+    virtual void tickAction();
+
     void setEventVar(int eventVar);
 
+    virtual ~State() noexcept = default;
+
   protected:
+    explicit State(std::string name) : name{std::move(name)}{}
+
     static KinovaArm* JacoZED;
-    int EventVariable;
+    int EventVariable{};
+    std::string name;
+
+    virtual void entryActionHook() {}
+    virtual void exitActionHook() {}
 };
 
 
 //Derived States of State-Class. 
 
-class StatePowerOff : public State {
-  public:
-    void entryAction();
+struct StatePowerOff : State {
+	StatePowerOff() : State{"PowerOff"}{}
+    void entryActionHook();
+};
+
+struct StateEStop : State {
+	StateEStop() : State{"EStop"}{}
+	void entryActionHook();
+    void tickAction();
+};
+
+struct StateInitialize : State {
+	StateInitialize() : State{"Initialize"}{}
+    void entryActionHook();
+    void exitActionHook();
+    void tickAction();
+};
+
+struct StateRetract : State {
+	StateRetract() : State{"Retract"}{}
+	void entryActionHook();
+    void tickAction();
+};
+
+struct StateUnfold : State {
+  	StateUnfold() : State{"Unfolding"}{}
+    void exitActionHook();
+    void tickAction();
+};
+
+struct StateIdle : State {
+	StateIdle() : State{"Idle"}{}
+    void entryActionHook();
+    void exitActionHook();
+};
+
+struct StateChangeMode : State {
+	StateChangeMode() : State{"ChangeMode"}{}
+    void entryActionHook();
+    void tickAction();
+};
+
+struct StateChangeModeDefault : State {
+	StateChangeModeDefault() : State{"ChangeModeDefault"}{}
+    void entryActionHook();
+    void tickAction();
+};
+
+struct StateSteering : State {
+	StateSteering() : State{"Steering"}{}
+    void exitActionHook();
+    void tickAction();
+};
+
+struct StateMovePosition : State {
+	StateMovePosition() : State{"MovePosition"}{}
+	void entryActionHook();
+    void exitActionHook();
+    void tickAction();
+};
+
+struct StateTeach : State {
+	StateTeach() : State{"Teach"}{}
+	void entryActionHook();
+    void exitActionHook();
+    void tickAction();
+};
+
+struct StateChangeModeTeach : State {
+	StateChangeModeTeach() : State{"ChangeModeTeach"}{}
+    void entryActionHook();
     void exitAction();
     void tickAction();
 };
 
-class StateEStop : public State {
-  public:
-    void entryAction();
-    void exitAction();
+struct StateTeachMovePoint : State {
+	StateTeachMovePoint() : State{"TeachMovePoint"}{}
+    void exitActionHook();
     void tickAction();
 };
 
-class StateInitialize : public State {
-  public:
-    void entryAction();
-    void exitAction();
+struct StateTeachMoveOrigin : State {
+	StateTeachMoveOrigin() : State{"TeachMoveOrigin"}{}
+    void exitActionHook();
     void tickAction();
 };
 
-class StateRetract : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
+struct StateTeachSavePoint : State {
+	StateTeachSavePoint() : State{"TeachSavePoint"}{}
+    void entryActionHook();
 };
 
-class StateUnfold : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
+struct StateTeachSaveOrigin : State {
+	StateTeachSaveOrigin() : State{"TeachSaveOrigin"}{}
+    void entryActionHook();
 };
 
-class StateIdle : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
+struct StateTeachDeletePoint : State {
+	StateTeachDeletePoint() : State{"TeachDeletePoint"}{}
+    void entryActionHook();
 };
 
-class StateChangeMode : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
+struct StateTeachPrevious : State {
+	StateTeachPrevious() : State{"TeachPrevious"}{}
+    void entryActionHook();
 };
 
-class StateChangeModeDefault : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
-};
-
-class StateSteering : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
-};
-
-class StateMovePosition : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
-};
-
-class StateTeach : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
-};
-
-class StateChangeModeTeach : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
-};
-
-class StateTeachMovePoint : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
-};
-
-class StateTeachMoveOrigin : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
-};
-
-class StateTeachSavePoint : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
-};
-
-class StateTeachSaveOrigin : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
-};
-
-class StateTeachDeletePoint : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
-};
-
-class StateTeachPrevious : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
-};
-
-class StateTeachNext : public State {
-  public:
-    void entryAction();
-    void exitAction();
-    void tickAction();
+struct StateTeachNext : State {
+	StateTeachNext() : State{"TeachNext"}{}
+	void entryActionHook();
 };
 
 #endif
