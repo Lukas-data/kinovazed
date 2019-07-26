@@ -1,7 +1,10 @@
 #include "TCPServer.h"
+#include "Log.h"
+
+#include <array>
+#include <cstddef>
 
 #include <stdio.h>
-#include <stdexcept>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -10,131 +13,160 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <errno.h>
-#include "Log.h"
+#include <sstream>
+#include <stdexcept>
 
-#define RIO_DUMMY false
+constexpr auto rioDummy = false;
+constexpr auto bufferSize = 256;
+constexpr auto messageLength = RoboRioProtocol::commandLength + (RoboRioProtocol::dataPackages * RoboRioProtocol::dataLength);
+constexpr auto numberOfQueueConnections = 5;
 
-//TODO: different Errorhandling!
 void TCPServer::error(const char *funcName, const char *msg) {
 	ALL_LOG(logERROR) << "TCPServer::" << funcName << "(): " << msg;
 }
 
+TCPServer::TCPServer() :
+		serverSocket{socket(AF_INET, SOCK_STREAM, 0)} {
+	if (serverSocket < 0) {
+		throw std::runtime_error{"Error opening socket"};
+	}
+
+	int opt = 1;
+	if (setsockopt(serverSocket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) == -1) {
+		throw std::runtime_error{"Error on setting socket options"};
+	}
+
+	sockaddr_in serv_addr{};
+	serv_addr.sin_family = AF_INET;
+	serv_addr.sin_port = htons(portno);
+	serv_addr.sin_addr.s_addr = INADDR_ANY;
+	if (bind(serverSocket, (struct sockaddr*) &serv_addr, sizeof(serv_addr)) < 0) {
+		throw std::runtime_error{"Error on binding socket"};
+	}
+
+	if (listen(serverSocket, numberOfQueueConnections) == -1) {
+		throw std::runtime_error{"Error on listening on socket"};
+	}
+}
+
+TCPServer::~TCPServer() noexcept {
+	if (serverSocket > 0) {
+		close(serverSocket);
+	}
+}
+
 /*Opens TCP Server and establishes connection to a client(RoboRio)*/
-bool TCPServer::connect() {
-	if (RIO_DUMMY == false) {
-		if (clilen == 0) {
-			portno = 51717;
-			sockfd = socket(AF_INET, SOCK_STREAM, 0);
-			if (sockfd < 0) {
-				error("connect", "Error opening socket");
-				return false;
-			}
-
-			int opt = 1;
-			if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) == -1) {
-				error("connect", "Error on setting Socket options");
-				return false;
-			}
-
-			memset(&serv_addr, 0, sizeof(serv_addr));
-			serv_addr.sin_family = AF_INET;
-			serv_addr.sin_port = htons(portno);
-			serv_addr.sin_addr.s_addr = INADDR_ANY;
-
-			if (bind(sockfd, (struct sockaddr*) &serv_addr, sizeof(serv_addr)) < 0) {
-				error("connect", "Error on binding");
-				return false;
-			}
-			listen(sockfd, 5);
-			clilen = sizeof(cli_addr);
+void TCPServer::connect() {
+	if (!rioDummy) {
+		if (clientSocket > 0) {
+			disconnect();
 		}
-
-		// Wait for a connection with a client
-		if ((newsockfd = accept(sockfd, (struct sockaddr*) &cli_addr, (socklen_t*) &clilen)) < 0) {
-			error("connect", "Error on accept");
-			return false;
+		int clilen = sizeof(cli_addr);
+		if ((clientSocket = accept(serverSocket, (struct sockaddr*) &cli_addr, (socklen_t*) &clilen)) < 0) {
+			throw std::runtime_error{"Error accepting client connection"};
 		}
 	}
-	return true;
+}
+
+void TCPServer::disconnect() {
+	if (clientSocket) {
+		close(clientSocket);
+		clientSocket = 0;
+	}
 }
 
 /*sends Message to Client (RoboRio). Takes Command and data packages as input*/
-bool TCPServer::sendTCP(int command, int eventVar, int data1, int data2, int data3) {
-	if (RIO_DUMMY == false) {
+auto TCPServer::sendTCP(RoboRioProtocol::Packet packet) -> bool {
+	if (!rioDummy) {
 		ALL_LOG(logDEBUG4) << "TCPServer::sendTCP(): start";
-		int n;
-		char buffer[COMMAND_LENGTH + (MessageLength)];
-		int m = sprintf(buffer, "%6d%6d%6d%6d%6d", command, eventVar, data1, data2, data3);
-		if (m != MessageLength) {
+		std::array<char, messageLength> buffer{};
+		int m = sprintf(buffer.data(), "%6d%6d%6d%6d%6d", packet.command, packet.var, packet.x, packet.y, packet.z);
+		if (m != messageLength) {
 			error("sendTCP", "Error preparing message");
 			return false;
 		}
 		ALL_LOG(logDEBUG4) << "TCPServer::sendTCP(): Message prepared.";
-		if ((n = write(newsockfd, buffer, strlen(buffer))) < 0) {
+		if (write(clientSocket, buffer.data(), messageLength) < 0) {
 			error("sendTCP", "Error writing to socket");
 			return false;
 		}
 	}
-	ALL_LOG(logDEBUG4) << "TCPServer::sendTCP(" << command << ", " << eventVar << ", " << data1 << ", " << data2 << ", " << data3 << ")";
+	ALL_LOG(logDEBUG4) << "TCPServer::sendTCP(" << packet.command << ", " << packet.var << ", " << packet.x << ", " << packet.y << ", " << packet.z << ")";
 	return true;
 }
+
 
 /*reads Message from Client (RoboRio). Saves Command to commandRecieved
  and Data to dataRecieved[]*/
-bool TCPServer::readTCP() {
-	if (RIO_DUMMY == false) {
-		memset(buffer, '\0', BUFFER_SIZE);
-
-		char commandString[COMMAND_LENGTH];
-		char dataString[DATA_PACKAGES][DATA_LENGTH];
-
-		int n = read(newsockfd, buffer, MessageLength);
-
-		if (n == 0 && NoDataCycleCount > 0) {
-			--NoDataCycleCount;
-			commandRecieved = 0;
-			return true;
-		} else if (n == 0 && NoDataCycleCount <= 0) {
-			error("readTCP", "Connection Lost");
-			NoDataCycleCount = NOCONNECTION_COUNT;
-			return false;
-		} else if (n != MessageLength) {
-			error("readTCP", "Error reading from socket");
-			NoDataCycleCount = NOCONNECTION_COUNT;
-			return false;
+auto TCPServer::readPacket() -> RoboRioProtocol::Packet {
+	std::array<char, bufferSize> buffer{};
+	int totalRead = 0;
+	for (int numberOfTries = 1; numberOfTries < retryLimit; numberOfTries++) {
+		int n = read(clientSocket, buffer.data() + totalRead, messageLength - totalRead);
+		totalRead += n;
+		if (totalRead == messageLength) {
+			std::istringstream input{buffer.data()};
+			int command, var, x, y, z;
+			if (input >> command >> var >> x >> y >> z) {
+				return RoboRioProtocol::Packet{command, var, x, y, z};
+			}
+			break;
 		}
-
-		memcpy(commandString, buffer, COMMAND_LENGTH);
-		commandRecieved = atoi(buffer);
-		for (int i = 0; i < DATA_PACKAGES; i++) {
-			memcpy(dataString[i], buffer + COMMAND_LENGTH + DATA_LENGTH * i, DATA_LENGTH);
-			dataRecieved[i] = atoi(dataString[i]);
-		}
-		NoDataCycleCount = NOCONNECTION_COUNT;
 	}
-	return true;
+	error("readTCP", "Connection Lost");
+	return RoboRioProtocol::Packet{RoboRioProtocol::errorCommand}; //Report issue
 }
 
-int TCPServer::getCommand() {
-	if (readTCP())
-		return commandRecieved;
-	else
-		return 99;
-}
+	//read command and data from buffer
 
-int TCPServer::getData(int dataPackage) {
-	if (dataPackage < 0 || dataPackage > DATA_PACKAGES - 1) {
-		ALL_LOG(logDEBUG4) << "no data[" << dataPackage << "] in communication protocol.";
-		return 0;
-	}
-	return dataRecieved[dataPackage];
-}
+//	if (RIO_DUMMY == false) {
+//		memset(buffer, '\0', bufferSize);
+//
+//		char commandString[commandLength];
+//		char dataString[dataPackages][dataLength];
+//
+//		int n = read(newsockfd, buffer, messageLength);
+//
+//		if (n == 0 && retryLimit > 0) {
+//			--retryLimit;
+//			commandRecieved = 0;
+//			return true;
+//		} else if (n == 0 && retryLimit <= 0) {
+//			error("readTCP", "Connection Lost");
+//			retryLimit = noConnectionCount;
+//			return false;
+//		} else if (n != messageLength) {
+//			error("readTCP", "Error reading from socket");
+//			retryLimit = noConnectionCount;
+//			return false;
+//		}
+//
+//		memcpy(commandString, buffer, commandLength);
+//		commandRecieved = atoi(buffer);
+//		for (int i = 0; i < dataPackages; i++) {
+//			memcpy(dataString[i], buffer + commandLength + dataLength * i, dataLength);
+//			dataRecieved[i] = atoi(dataString[i]);
+//		}
+//		retryLimit = noConnectionCount;
+//	}
+//	return true;
+//}
 
-int TCPServer::closeOnCommand(int command) {
-	close(newsockfd);
-	if (command == -2)
-		return -1;
-	return 0;
 
-}
+//int TCPServer::getData(int dataPackage) {
+//	if (dataPackage < 0 || dataPackage > RoboRioProtocol::dataPackages - 1) {
+//		ALL_LOG(logDEBUG4) << "no data[" << dataPackage << "] in communication protocol.";
+//		return 0;
+//	}
+//	return dataRecieved[dataPackage];
+//}
+
+//int TCPServer::closeOnCommand(int command) {
+//	close(clientSocket);
+//	if (command == -2) {
+//		return -1;
+//	}
+//	return 0;
+//
+//}
 
