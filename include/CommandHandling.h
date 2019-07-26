@@ -131,7 +131,7 @@ private:
 		ALL_LOG(logDEBUG3) << "Trying to connect to JacoArm.";
 		while (true) {
 			if (jacoZed.connect()) {
-				break;
+				return;
 			} else {
 				ALL_LOG(logDEBUG1) << "Connection to JacoArm unsuccessful. Retry.";
 			}

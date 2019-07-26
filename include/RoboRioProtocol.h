@@ -10,11 +10,11 @@ constexpr auto dataPackages = 4;
 constexpr int errorCommand = 99;
 
 struct Packet {
-	int command;
-	int var;
-	int x;
-	int y;
-	int z;
+	int command = 0;
+	int var = 0;
+	int x = 0;
+	int y = 0;
+	int z = 0;
 };
 
 //TODO: (tcorbat) Specify input and output operators
