@@ -6,12 +6,11 @@ find_package(Boost REQUIRED COMPONENTS system)
 add_subdirectory(thirdparty/libkindrv)
 
 add_library(kinovaArm_lib STATIC 
-src/KinovaArm.cpp
-src/TCPServer.cpp
-src/PositionHandling.cpp
-src/StateMachine.cpp
-src/State.cpp
-src/CommandHandling.cpp
+  src/KinovaArm.cpp
+  src/TCPServer.cpp
+  src/PositionHandling.cpp
+  src/StateMachine.cpp
+  src/State.cpp
 )
 
 set_property(TARGET kinovaArm_lib PROPERTY CXX_STANDARD 17)
