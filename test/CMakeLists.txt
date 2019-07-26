@@ -18,6 +18,7 @@ target_link_libraries(KinovaTest
   PRIVATE
   kinovaArm_lib
 )
+set_property(TARGET KinovaTest PROPERTY CXX_STANDARD 14)
 
 #Log Test
 add_library(logtest_lib

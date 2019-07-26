@@ -13,7 +13,7 @@ add_library(kinovaArm_lib STATIC
   src/State.cpp
 )
 
-set_property(TARGET kinovaArm_lib PROPERTY CXX_STANDARD 17)
+set_property(TARGET kinovaArm_lib PROPERTY CXX_STANDARD 14)
 
 target_include_directories(kinovaArm_lib
   PUBLIC
@@ -34,6 +34,7 @@ target_link_libraries(KinovaZED
   rt
 )
 
+set_property(TARGET KinovaZED PROPERTY CXX_STANDARD 14)
 
 add_subdirectory(test)
 
