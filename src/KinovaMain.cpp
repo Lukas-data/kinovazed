@@ -12,15 +12,14 @@
 #include "CommandHandling.h"
 
 
-CommandHandling commandHandler;
 
 
 int main(int argc, char *argv[])
 {
   if ( LogFile::create() ) {
     ALL_LOG(logINFO) << "KinovaMain - Startup!";
+    CommandHandling<> commandHandler{};
 
-    commandHandler.init();     
     while (1) {
       try {
         commandHandler.process();

@@ -30,8 +30,9 @@ struct Command {
 	}
 };
 
+template <typename EventIo = TCPServer, typename Arm = KinovaArm>
 struct CommandHandling {
-	void init() {
+	CommandHandling() {
 		connectRoboRio();
 		connectJacoZed();
 		kinovaSM.init(&jacoZed);
@@ -43,15 +44,9 @@ struct CommandHandling {
 		processOutput(processed, newInCommand, commandOut);
 	}
 
-	//Debug only:
-	void debugSendEvent(KinovaFSM::Event e);
-	void debugSendEvent(KinovaFSM::Event e, int var);
-	void debugSetJoystick(int x, int y, int z);
-	void debugPrintPosition();
-
 private:
-	KinovaArm jacoZed;
-	TCPServer roboRio;
+	Arm jacoZed;
+	EventIo roboRio;
 	StateMachine kinovaSM;
 
 	Command commandOut{KinovaFSM::NoEvent};
