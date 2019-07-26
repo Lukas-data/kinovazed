@@ -45,8 +45,6 @@ void thisIsAIntegrationSuiteTest() {
 		commandHandling.process();
 		std::this_thread::sleep_for(1s);
 	}
-	//Setup with EventIOFake and KinovaArmMock
-	//Run for x Iterations?
 }
 
 cute::suite make_suite_IntegrationSuite() {
