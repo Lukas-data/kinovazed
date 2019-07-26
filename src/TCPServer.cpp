@@ -2,8 +2,6 @@
 #include "Log.h"
 
 #include <array>
-#include <cstddef>
-
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -55,7 +53,6 @@ TCPServer::~TCPServer() noexcept {
 	}
 }
 
-/*Opens TCP Server and establishes connection to a client(RoboRio)*/
 void TCPServer::connect() {
 	if (!rioDummy) {
 		if (clientSocket > 0) {
@@ -75,7 +72,6 @@ void TCPServer::disconnect() {
 	}
 }
 
-/*sends Message to Client (RoboRio). Takes Command and data packages as input*/
 auto TCPServer::sendTCP(RoboRioProtocol::Packet packet) -> bool {
 	if (!rioDummy) {
 		ALL_LOG(logDEBUG4) << "TCPServer::sendTCP(): start";
@@ -95,9 +91,6 @@ auto TCPServer::sendTCP(RoboRioProtocol::Packet packet) -> bool {
 	return true;
 }
 
-
-/*reads Message from Client (RoboRio). Saves Command to commandRecieved
- and Data to dataRecieved[]*/
 auto TCPServer::readPacket() -> RoboRioProtocol::Packet {
 	std::array<char, bufferSize> buffer{};
 	int totalRead = 0;
@@ -116,57 +109,3 @@ auto TCPServer::readPacket() -> RoboRioProtocol::Packet {
 	error("readTCP", "Connection Lost");
 	return RoboRioProtocol::Packet{RoboRioProtocol::errorCommand}; //Report issue
 }
-
-	//read command and data from buffer
-
-//	if (RIO_DUMMY == false) {
-//		memset(buffer, '\0', bufferSize);
-//
-//		char commandString[commandLength];
-//		char dataString[dataPackages][dataLength];
-//
-//		int n = read(newsockfd, buffer, messageLength);
-//
-//		if (n == 0 && retryLimit > 0) {
-//			--retryLimit;
-//			commandRecieved = 0;
-//			return true;
-//		} else if (n == 0 && retryLimit <= 0) {
-//			error("readTCP", "Connection Lost");
-//			retryLimit = noConnectionCount;
-//			return false;
-//		} else if (n != messageLength) {
-//			error("readTCP", "Error reading from socket");
-//			retryLimit = noConnectionCount;
-//			return false;
-//		}
-//
-//		memcpy(commandString, buffer, commandLength);
-//		commandRecieved = atoi(buffer);
-//		for (int i = 0; i < dataPackages; i++) {
-//			memcpy(dataString[i], buffer + commandLength + dataLength * i, dataLength);
-//			dataRecieved[i] = atoi(dataString[i]);
-//		}
-//		retryLimit = noConnectionCount;
-//	}
-//	return true;
-//}
-
-
-//int TCPServer::getData(int dataPackage) {
-//	if (dataPackage < 0 || dataPackage > RoboRioProtocol::dataPackages - 1) {
-//		ALL_LOG(logDEBUG4) << "no data[" << dataPackage << "] in communication protocol.";
-//		return 0;
-//	}
-//	return dataRecieved[dataPackage];
-//}
-
-//int TCPServer::closeOnCommand(int command) {
-//	close(clientSocket);
-//	if (command == -2) {
-//		return -1;
-//	}
-//	return 0;
-//
-//}
-
