@@ -4,10 +4,32 @@ project (kinovaZED_test)
 
 
 #Test Program
-add_executable(KinovaTest KinovaTest.cpp)
-target_link_libraries(KinovaTest PUBLIC libkindrv PRIVATE kinovaArm_lib)
+add_executable(KinovaTest 
+  KinovaTest.cpp 
+  IntegrationSuite.cpp
+)
+target_include_directories(KinovaTest 
+  PRIVATE
+  ${PROJECT_SOURCE_DIR}/cute
+)
+target_link_libraries(KinovaTest 
+  PUBLIC
+  libkindrv
+  PRIVATE
+  kinovaArm_lib
+)
 
 #Log Test
-add_library(logtest_lib STATIC LogTestSubClass.cpp LogTestSubClass.h Log.h LogFile.h)
-add_executable(LogTest LogTest.cpp)
-target_link_libraries(LogTest PUBLIC kinovaArm_lib PRIVATE logtest_lib )
+add_library(logtest_lib
+  STATIC
+  LogTestSubClass.cpp
+)
+add_executable(LogTest
+  LogTest.cpp
+)
+target_link_libraries(LogTest
+  PUBLIC
+  kinovaArm_lib
+  PRIVATE
+  logtest_lib
+)

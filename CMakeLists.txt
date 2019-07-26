@@ -14,6 +14,8 @@ src/State.cpp
 src/CommandHandling.cpp
 )
 
+set_property(TARGET kinovaArm_lib PROPERTY CXX_STANDARD 17)
+
 target_include_directories(kinovaArm_lib
   PUBLIC
   ${PROJECT_SOURCE_DIR}/include
