@@ -1,6 +1,8 @@
 #ifndef _EVENT_H_
 #define _EVENT_H_
 
+#include <array>
+
 /*Handles all Events for "StateMachine.h".*/
 
 namespace KinovaFSM {
@@ -57,8 +59,7 @@ namespace KinovaFSM {
   };
 
   //ForDebugUse
-  static const char *EventName[] =
-  {
+  static constexpr std::array<char const *, 39> EventName {
     //System Events
     "NoEvent",
     "Tick",
