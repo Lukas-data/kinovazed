@@ -26,8 +26,7 @@ class StateMachine {
     void init(KinovaArm* jacoZED);
     
     //Send Event to the StateMachine.
-    void sendEvent(KinovaFSM::Event e);
-    void sendEvent(KinovaFSM::Event e, int eventVar);
+    void sendEvent(KinovaFSM::Event e, int eventVar = 0);
 
 
     //Run the StateMachine. Return True if StateChange is performed.

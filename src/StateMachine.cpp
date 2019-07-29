@@ -17,12 +17,6 @@ void StateMachine::init(KinovaArm* jacoZED) {
 }
 
 
-void StateMachine::sendEvent(KinovaFSM::Event e) {
-  InputEvent = e;
-  InputVariable = 0;
-}
-
-
 void StateMachine::sendEvent(KinovaFSM::Event e, int eventVar) {
   InputEvent = e;
   InputVariable = eventVar;  
