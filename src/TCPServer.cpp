@@ -101,11 +101,13 @@ auto TCPServer::readPacket() -> RoboRioProtocol::Packet {
 			std::istringstream input{buffer.data()};
 			int command, var, x, y, z;
 			if (input >> command >> var >> x >> y >> z) {
-				return RoboRioProtocol::Packet{command, var, x, y, z};
+				KinovaFSM::Event event = static_cast<KinovaFSM::Event>(command);
+				return RoboRioProtocol::Packet{event, var, x, y, z};
 			}
 			break;
 		}
 	}
 	error("readTCP", "Connection Lost");
-	return RoboRioProtocol::Packet{RoboRioProtocol::errorCommand}; //Report issue
+	KinovaFSM::Event errorEvent = static_cast<KinovaFSM::Event>(RoboRioProtocol::errorCommand);
+	return RoboRioProtocol::Packet{errorEvent};
 }
