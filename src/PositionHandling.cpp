@@ -4,7 +4,8 @@
 #include <sstream>
 #include <string>
 #include <algorithm>
-#include <math.h>
+#include <cmath>
+#include <vector>
 
 
 
@@ -328,8 +329,8 @@ PositionHandling::f2d_vec_t PositionHandling::rotMatrix(float angle[3]) {
   f2d_vec_t mat(3, std::vector<float>(3,0) );
   double c[3], s[3];
   for (int i = 0; i < 3; i++) {
-    c[i] = cos( angle[i] );
-    s[i] = sin( angle[i] );
+    c[i] = std::cos( angle[i] );
+    s[i] = std::sin( angle[i] );
   }
   //Hardcoded RotationMatrix of Euler XYZ
   mat[0][0] =  c[1]*c[2];
@@ -369,19 +370,19 @@ std::vector<float> PositionHandling::getEulerAngles(const f2d_vec_t rotMat) {
   std::vector<float> res(3);
   if (rotMat[1][3] < 1) {
     if(rotMat[1][3] > -1) {
-      res[1] = asin( rotMat[0][2] );
-      res[0] = atan2( -rotMat[1][2], rotMat[2][2] );
-      res[2] = atan2( -rotMat[0][1], rotMat[0][0] );
+      res[1] = std::asin( rotMat[0][2] );
+      res[0] = std::atan2( -rotMat[1][2], rotMat[2][2] );
+      res[2] = std::atan2( -rotMat[0][1], rotMat[0][0] );
     }
     else {
       res[1] = -1.5708;
-      res[0] = -atan2( rotMat[1][0], rotMat[1][1] );
+      res[0] = -std::atan2( rotMat[1][0], rotMat[1][1] );
       res[2] = 0;
     }
   }
   else {
     res[1] = 1.5708;
-    res[0] = atan2( rotMat[1][0], rotMat[1][1] );
+    res[0] = std::atan2( rotMat[1][0], rotMat[1][1] );
     res[2] = 0;
   }
   return res;
