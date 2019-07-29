@@ -1,13 +1,11 @@
-#include <stdexcept>
-#include <iostream>
+#include "PositionHandling.h"
+#include "Log.h"
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <algorithm>
 #include <math.h>
-#include "Log.h"
 
-#include "PositionHandling.h"
 
 
 #define FILEPATH "/home/kinova/Documents/kinovazed/CybathlonObjectives.dat"
@@ -47,7 +45,7 @@ bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
   bool isZero = true;
   for (int i = 0; i < 6; i++) {
     if (Points[targetObjective-1][SequenceCounter][i] != 0) {
-      ALL_LOG(logDEBUG3) << "PositionHandling::getCoordinates: " 
+      ALL_LOG(logDEBUG3) << "PositionHandling::getCoordinates: "
                          << "Points[" << targetObjective-1 << "]["
                                       << SequenceCounter << "]["
                                       << i << "] != 0" ;
