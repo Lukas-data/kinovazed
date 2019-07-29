@@ -3,7 +3,6 @@
 
 #include <vector>
 
-constexpr auto numberOfSubpoints = 10;
 
 namespace KinovaPts {
   
@@ -19,14 +18,14 @@ namespace KinovaPts {
                     AntennaPull
                  };
 
-  typedef struct posCoordinates{ 
+  struct posCoordinates{
     float x; //Kinova Left/Right(-)  0.8..-0.8
     float y; //Kinova Front(-)/Back  -0.85..0.85
     float z; //Kinova Up  1.15..
     float pitch;
     float yaw;
     float roll;
-  }posCoordinates;
+  };
 }
 
 class PositionHandling {
@@ -73,8 +72,6 @@ class PositionHandling {
     f2d_vec_t matMultiply(const f2d_vec_t &mat1, const f2d_vec_t &mat2);
     std::vector<float> getEulerAngles(const f2d_vec_t rotMat);
     void calcTransMat();
-    
-
 };
 
 
