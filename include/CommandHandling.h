@@ -175,8 +175,7 @@ private:
 			}
 		}
 		checkInputEvent(newInCommand);
-		kinovaSM.sendEvent(newInCommand.event, newInCommand.var);
-		return kinovaSM.process();
+		return kinovaSM.process(newInCommand.event, newInCommand.var);
 	}
 
 	void processOutput(bool processed, Command const &newInCommand, Command const &oldOutCommand) {

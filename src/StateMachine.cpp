@@ -17,20 +17,20 @@ void StateMachine::init(KinovaArm* jacoZED) {
 }
 
 
-void StateMachine::sendEvent(KinovaFSM::Event e, int eventVar) {
-  InputEvent = e;
-  InputVariable = eventVar;  
-}
+//void StateMachine::sendEvent(KinovaFSM::Event e, int eventVar) {
+//  InputEvent = e;
+//  InputVariable = eventVar;
+//}
 
 
 /*Processes InputEvent and InputVariable in Statemachine. Returns true if state Change is peformed.*/
-bool StateMachine::process() {
+bool StateMachine::process(KinovaFSM::Event e, int var) {
   bool StateChange = false;
-  KinovaFSM::Event e = InputEvent;
-  InputEvent = KinovaFSM::NoEvent;
-
-  int var = InputVariable;
-  InputVariable = 0;
+//  KinovaFSM::Event e = InputEvent;
+//  InputEvent = KinovaFSM::NoEvent;
+//
+//  int var = InputVariable;
+//  InputVariable = 0;
   
   //Print handled Event and reset InputEvent.
   for (int i = 0; i<NumberOfTransitions; i++) {
