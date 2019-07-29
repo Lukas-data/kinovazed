@@ -33,10 +33,10 @@ auto PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
   }
 
   //Check SequenceNumber. Returns 0 and resets ZeroObjective if Sequence is over.
-  if (SequenceCounter >= Points[targetObjective-1].size()) {
+  if (SequenceCounter >= points[targetObjective-1].size()) {
     if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() ) {
       for (int i = 0; i < 6; i++) {
-      Location[targetObjective-1][i] = 0;
+    	  location[targetObjective-1][i] = 0;
       }
     }
     return false;
@@ -45,7 +45,7 @@ auto PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
   //Check if current Position
   bool isZero = true;
   for (int i = 0; i < 6; i++) {
-    if (Points[targetObjective-1][SequenceCounter][i] != 0) {
+    if (points[targetObjective-1][SequenceCounter][i] != 0) {
       ALL_LOG(logDEBUG3) << "PositionHandling::getCoordinates: "
                          << "Points[" << targetObjective-1 << "]["
                                       << SequenceCounter << "]["
@@ -55,12 +55,12 @@ auto PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
   }
   if (isZero) {
     for (int i = 0; i < 6; i++) {
-        targetCoordinates[i] = Location[targetObjective-1][i];
+        targetCoordinates[i] = location[targetObjective-1][i];
     }
   }
   else {
     for (int i = 0; i < 6; i++) {
-      targetCoordinates[i] = Points[targetObjective-1][SequenceCounter][i];     
+      targetCoordinates[i] = points[targetObjective-1][SequenceCounter][i];
     }
     coordTransform(targetCoordinates, TransMat[targetObjective-1]);
   }
@@ -78,7 +78,7 @@ auto PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
 void PositionHandling::setZeroObjective(KinovaPts::Objective targetObjective, float* currentCoordinates) {
   if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() && SequenceCounter == 0) {
     for (int i = 0; i < 6; i++) {
-      Location[targetObjective-1][i] = currentCoordinates[i];
+      location[targetObjective-1][i] = currentCoordinates[i];
     }
   calcTransMat();
   }
@@ -89,12 +89,12 @@ bool PositionHandling::getOrigin(float* targetCoordinates, KinovaPts::Objective 
   //Check if Zero.  Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.
   bool isZero = true;
   for (int i = 0; i < 6; i++) {
-    if ( Location[targetObjective-1][i] != 0 ) { isZero = false; }
+    if ( location[targetObjective-1][i] != 0 ) { isZero = false; }
   }
   if (isZero) { return false; }
   else {
     for (int i = 0; i < 6; i++) {
-        targetCoordinates[i] = Location[targetObjective-1][i];
+        targetCoordinates[i] = location[targetObjective-1][i];
     }
   return true;
   }
@@ -116,27 +116,28 @@ bool PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targ
   //check targetObjective
   if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives ) {
     coordTransform(coordinates, InvTransMat[targetObjective-1]);
+//    std::vector<float> vec_coord(coordinates, coordinates + 6);
     std::vector<float> vec_coord(coordinates, coordinates + 6);
     //check SequenceCounter
-    if ( SequenceCounter ==  Points[targetObjective-1].size()) {
-      Points[targetObjective-1].push_back(vec_coord);
+    if ( SequenceCounter ==  points[targetObjective-1].size()) {
+      points[targetObjective-1].push_back(vec_coord);
       return true;
     }
     else if ( SequenceCounter == -1 ) {
-      Points[targetObjective-1].insert( Points[targetObjective-1].begin(), vec_coord );
+      points[targetObjective-1].insert( points[targetObjective-1].begin(), vec_coord );
       SequenceCounter = 0;
       return true;
     }
-    else if ( SequenceCounter >= 0 && SequenceCounter < Points[targetObjective-1].size() ) {
+    else if ( SequenceCounter >= 0 && SequenceCounter < points[targetObjective-1].size() ) {
       for (int i = 0; i < 6; i++) {
-        Points[targetObjective-1][SequenceCounter][i] = coordinates[i];
+        points[targetObjective-1][SequenceCounter][i] = coordinates[i];
       }
       return true;
     }
     else {
       ALL_LOG(logWARNING) << "PositionHandling::SavePoint: SequenceCounter is out of bound: "
                           << SequenceCounter << " at SequenceSize off "
-                          << Points[targetObjective-1].size() ;
+                          << points[targetObjective-1].size() ;
       return false;
     }
   }
@@ -151,7 +152,7 @@ bool PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targ
 /*Saves coordinates as origin of objectiv.*/
 void PositionHandling::saveOrigin(float coordinates[6], KinovaPts::Objective targetObjective) {
   for (int i = 0; i < 6; i++) {
-    Location[targetObjective-1][i] = coordinates[i];
+    location[targetObjective-1][i] = coordinates[i];
   }
   calcTransMat();
 }
@@ -160,9 +161,9 @@ void PositionHandling::saveOrigin(float coordinates[6], KinovaPts::Objective tar
 void PositionHandling::deletePoint(KinovaPts::Objective targetObjective) {
   //check targetObjective and SequenceCounter
   if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives &&
-      SequenceCounter >= 0 && SequenceCounter < Points[targetObjective-1].size() ) {
+      SequenceCounter >= 0 && SequenceCounter < points[targetObjective-1].size() ) {
     //Delete Element
-    Points[targetObjective-1].erase(Points[targetObjective-1].begin() + SequenceCounter);
+    points[targetObjective-1].erase(points[targetObjective-1].begin() + SequenceCounter);
   }
 }
 
@@ -191,7 +192,7 @@ void PositionHandling::readFromFile() {
       bool isZero = true;
       for (int j = 0; j < 6; j++) {
         if (vec_int[j] != 0) { isZero = false; }
-        Location[i][j] = (float)vec_int[j]/1000;
+        location[i][j] = (float)vec_int[j]/1000;
       }
       if (isZero) {
         ZeroObjectives.push_back(i);
@@ -206,14 +207,14 @@ void PositionHandling::readFromFile() {
   
   //reset Point-Vector
   for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
-    f2d_vec_t(0,std::vector<float>(6)).swap(Points[i]); 
+    f2d_vec_t(0,std::vector<float>(6)).swap(points[i]);
   }
   
   //Reads Points from Files
   int location = 0;
   int sequence = 0;
   //bool PrePoint = true;
-  f2d_vec_t::iterator it = Points[location].begin();
+  f2d_vec_t::iterator it = points[location].begin();
   
   while (std::getline(infile,line) && location < KinovaPts::NumberOfObjectives) { 
     ALL_LOG(logDEBUG4) << "PositionHandling::ReadFromFile: "
@@ -229,7 +230,7 @@ void PositionHandling::readFromFile() {
       //start new Objective.
       location++;
       sequence = 0;
-      it = Points[location].begin();
+      it = points[location].begin();
       ALL_LOG(logDEBUG4) << "PositionHandling::ReadFromFile: "
                          << "Empty line. Next Objective.";
     }
@@ -239,7 +240,7 @@ void PositionHandling::readFromFile() {
       for (int i = 0; i < 6; i++) {
         vec_float[i] = (float)vec_int[i]/1000;
       }
-      Points[location].push_back(vec_float);
+      points[location].push_back(vec_float);
       sequence++;
     }
   }
@@ -262,7 +263,7 @@ void PositionHandling::writeToFile() {
       else {
         //Normal Objective
         for (int j = 0; j < 6; j++) {
-          saveFile << (int)(Location[i][j]*1000) << " ";
+          saveFile << (int)(location[i][j]*1000) << " ";
         }
       }
       saveFile << "\n";
@@ -270,9 +271,9 @@ void PositionHandling::writeToFile() {
     saveFile << "\n";
     //Write Sequences
     for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
-      for (int j = 0; j < Points[i].size(); j++) {
+      for (int j = 0; j < points[i].size(); j++) {
         for (int k = 0; k < 6; k++) {
-          saveFile << (int)(Points[i][j][k]*1000) << " ";
+          saveFile << (int)(points[i][j][k]*1000) << " ";
         }
         saveFile << "\n";
       }
@@ -396,9 +397,9 @@ void PositionHandling::calcTransMat() {
   //Calculate Sinus and Cosinus of all angles
   for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
     for (int j =0; j<3; j++) {
-    p[j] = Location[i][j];
-    c[j] = cos( Location[i][j+3] );
-    s[j] = sin( Location[i][j+3] );
+    p[j] = location[i][j];
+    c[j] = cos( location[i][j+3] );
+    s[j] = sin( location[i][j+3] );
     }
 
     //Hardcoded Euler XYZ Transformation Matrix
