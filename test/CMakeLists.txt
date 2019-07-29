@@ -21,16 +21,16 @@ target_link_libraries(KinovaTest
 set_property(TARGET KinovaTest PROPERTY CXX_STANDARD 14)
 
 #Log Test
-add_library(logtest_lib
-  STATIC
-  LogTestSubClass.cpp
-)
-add_executable(LogTest
-  LogTest.cpp
-)
-target_link_libraries(LogTest
-  PUBLIC
-  kinovaArm_lib
-  PRIVATE
-  logtest_lib
-)
+#add_library(logtest_lib
+#  STATIC
+#  LogTestSubClass.cpp
+#)
+#add_executable(LogTest
+#  LogTest.cpp
+#)
+#target_link_libraries(LogTest
+#  PUBLIC
+#  kinovaArm_lib
+#  PRIVATE
+#  logtest_lib
+#)
