@@ -86,7 +86,6 @@ struct PositionHandling {
 	void writeToFile();
 
 private:
-	//typedef std::vector<std::vector<float> > f2d_vec_t;
 	using Location = std::vector<KinovaPts::PosCoordinate>;
 	using LocationSequence = std::vector<Location>;
 	//static KinovaPts::posCoordinates Locations[KinovaPts::NumberOfObjectives][NUMBER_OF_SUBPOINTS];
