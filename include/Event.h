@@ -59,7 +59,7 @@ namespace KinovaFSM {
   };
 
   //ForDebugUse
-  static constexpr std::array<char const *, 39> EventName {
+  static constexpr std::array<char const *, 39> eventNames {
     //System Events
     "NoEvent",
     "Tick",

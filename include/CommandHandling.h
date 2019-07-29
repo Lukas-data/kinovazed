@@ -151,9 +151,9 @@ private:
 		commandIn = getInputs();
 
 		if (commandIn != oldInCommand) {
-			ALL_LOG(logDEBUG) << "CommandHandling: Received Event '" << KinovaFSM::EventName[commandIn.event] << ":" << commandIn.var << "'";
+			ALL_LOG(logDEBUG) << "CommandHandling: Received Event '" << KinovaFSM::eventNames[commandIn.event] << ":" << commandIn.var << "'";
 		} else {
-			ALL_LOG(logDEBUG4) << "CommandHandling: Received Event '" << KinovaFSM::EventName[commandIn.event] << ":" << commandIn.var << "'";
+			ALL_LOG(logDEBUG4) << "CommandHandling: Received Event '" << KinovaFSM::eventNames[commandIn.event] << ":" << commandIn.var << "'";
 		}
 		//Check for E_Stop
 		if (commandIn.event == KinovaFSM::E_Stop) {
@@ -199,9 +199,9 @@ private:
 		}
 		sendOutputs(commandOut);
 		if (commandOut != oldOutCommand) {
-			ALL_LOG(logDEBUG) << "CommandHandling: Sent Event '" << KinovaFSM::EventName[commandOut.event] << ":" << commandOut.var << "'";
+			ALL_LOG(logDEBUG) << "CommandHandling: Sent Event '" << KinovaFSM::eventNames[commandOut.event] << ":" << commandOut.var << "'";
 		} else {
-			ALL_LOG(logDEBUG4) << "CommandHandling: Sent Event '" << KinovaFSM::EventName[commandOut.event] << ":" << commandOut.var << "'";
+			ALL_LOG(logDEBUG4) << "CommandHandling: Sent Event '" << KinovaFSM::eventNames[commandOut.event] << ":" << commandOut.var << "'";
 		}
 	}
 };

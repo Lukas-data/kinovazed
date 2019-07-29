@@ -41,7 +41,7 @@ bool StateMachine::process() {
   //Print handled Event and reset InputEvent.
   for (int i = 0; i<NumberOfTransitions; i++) {
     if ( (CurrentState == KinovaFSM::TransitionTable[i].currentState) && (e == KinovaFSM::TransitionTable[i].event) )  {
-      ALL_LOG(logINFO) << "StateMachine: Processing Event '" << KinovaFSM::EventName[e] << "'";
+      ALL_LOG(logINFO) << "StateMachine: Processing Event '" << KinovaFSM::eventNames[e] << "'";
       KinovaFSM::TransitionTable[i].currentState->exitAction();
       CurrentState = KinovaFSM::TransitionTable[i].nextState;
       CurrentState->setEventVar(var);
@@ -50,7 +50,7 @@ bool StateMachine::process() {
       return true;
     }      
   }
-  ALL_LOG(logDEBUG4) << "StateMachine: Not Processing Event '" << KinovaFSM::EventName[e] << "'";
+  ALL_LOG(logDEBUG4) << "StateMachine: Not Processing Event '" << KinovaFSM::eventNames[e] << "'";
   timespec timeNow;
   clock_gettime(CLOCK_REALTIME, &timeNow);
   double elapsedTime = (timeNow.tv_sec-LastTick.tv_sec) * 1000.0 +

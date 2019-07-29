@@ -34,7 +34,7 @@ inline auto operator!=(Packet const & lhs, Packet const & rhs) {
 inline auto operator<<(std::ostream & out, Packet const & packet) -> std::ostream &{
 	using namespace std::string_literals;
 	int commandNumber = packet.command;
-	auto commandName = commandNumber > 38 ? "<unknown> #"s + std::to_string(commandNumber) : KinovaFSM::EventName[commandNumber];
+	auto commandName = commandNumber > 38 ? "<unknown> #"s + std::to_string(commandNumber) : KinovaFSM::eventNames[commandNumber];
 	out << "RoboRIO Protocol Packet[" << commandName << ", " << packet.var << ", x=" << packet.x << ", y=" << packet.y << ", z=" << packet.z << ']';
 	return out;
 }

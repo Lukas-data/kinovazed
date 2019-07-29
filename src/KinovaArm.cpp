@@ -677,14 +677,14 @@ int  KinovaArm::getCurrentPosition() { return currentPosition; }
 int  KinovaArm::getCurrentPoint() { return PositionHandler.getSequence(); }
 
 KinovaFSM::Event KinovaArm::getExternalEvent() {
-  ALL_LOG(logDEBUG4) << "KinovaArm::getExternalEvent: " << KinovaFSM::EventName[ExternalEvent];
+  ALL_LOG(logDEBUG4) << "KinovaArm::getExternalEvent: " << KinovaFSM::eventNames[ExternalEvent];
   KinovaFSM::Event e = ExternalEvent;
   ExternalEvent = KinovaFSM::NoEvent;
   return e;
 }
 
 KinovaFSM::Event KinovaArm::getInternalEvent() {
-  ALL_LOG(logDEBUG4) << "KinovaArm::getInternalEvent: " << KinovaFSM::EventName[ExternalEvent];
+  ALL_LOG(logDEBUG4) << "KinovaArm::getInternalEvent: " << KinovaFSM::eventNames[ExternalEvent];
   KinovaFSM::Event e = InternalEvent;
   InternalEvent = KinovaFSM::NoEvent;
   return e;
