@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#define NUMBER_OF_SUBPOINTS 10   //Corresponds with the maximum length of a Sequence.
+constexpr auto numberOfSubpoints = 10;
 
 namespace KinovaPts {
   
