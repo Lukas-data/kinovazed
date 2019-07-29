@@ -8,8 +8,10 @@
 #include "TCPServer.h"
 
 #include <chrono>
+#include <memory>
 #include <stdexcept>
 #include <thread>
+#include <utility>
 
 constexpr int numberOfJoystickMoveInputs = 3;
 
@@ -32,10 +34,13 @@ struct Command {
 
 template <typename EventIo = TCPServer, typename Arm = KinovaArm>
 struct CommandHandling {
-	CommandHandling() {
-		connectRoboRio();
-		connectJacoZed();
-		kinovaSM.init(&jacoZed);
+	CommandHandling(std::unique_ptr<EventIo> roboRio, std::unique_ptr<Arm> jacoZed) :
+		roboRio{std::move(roboRio)}, jacoZed{std::move(jacoZed)} {
+			connectRoboRio();
+			connectJacoZed();
+			kinovaSM.init(&*CommandHandling::jacoZed);
+		}
+	CommandHandling() : CommandHandling(std::make_unique<EventIo>(), std::make_unique<Arm>()) {
 	}
 	void process() {
 		Command newInCommand{KinovaFSM::NoEvent};
@@ -45,8 +50,8 @@ struct CommandHandling {
 	}
 
 private:
-	Arm jacoZed;
-	EventIo roboRio;
+	std::unique_ptr<Arm> jacoZed;
+	std::unique_ptr<EventIo> roboRio;
 	StateMachine kinovaSM;
 
 	Command commandOut{KinovaFSM::NoEvent};
@@ -54,10 +59,10 @@ private:
 
 	/*Recieves Inputs from TCP Connection with RoboRIO connection. Writes Joystick Data directly to hardware.*/
 	auto getInputs() -> Command {
-		auto packet = roboRio.readPacket();
+		auto packet = roboRio->readPacket();
 		Command commandIn = Command{static_cast<KinovaFSM::Event>(packet.command), packet.var};
 		//TODO: (tcorbat) Shouldn't we check where whether event is actually MoveJoystick?
-		jacoZed.setJoystick(packet.x, packet.y, packet.z);
+		jacoZed->setJoystick(packet.x, packet.y, packet.z);
 
 		//Event is MoveJoystick, if Joystick moves and No Event is set.
 		bool jSisZero = packet.x == 0 && packet.y == 0 && packet.z == 0;
@@ -70,21 +75,21 @@ private:
 
 	void sendOutputs(Command const &command) {
 		RoboRioProtocol::Packet packet{command.event, command.var, 0, 0, 0};
-		roboRio.sendTCP(packet);
+		roboRio->sendTCP(packet);
 	}
 
 	/*define Exception for Events, that should or should not be sent to Statemachine*/
 	void checkInputEvent(Command &command) {
 		// 'SetMode' is only sent when mode is not already set.
-		int currentMode = jacoZed.getMode();
-		if (jacoZed.getActive() && command == Command{KinovaFSM::SetMode, currentMode}) {
+		int currentMode = jacoZed->getMode();
+		if (jacoZed->getActive() && command == Command{KinovaFSM::SetMode, currentMode}) {
 			//printf("eventVar: %d, Mode on Jaco: %d\n", eventVarToCheck, currentMode);
 			command = Command{KinovaFSM::NoEvent};
 		}
 
 		//'GoToPosition' is only sent when the Arm is not already at the Position
-		int currentPosition = jacoZed.getCurrentPosition();
-		if (jacoZed.getActive() && command == Command{KinovaFSM::GoToPosition, currentPosition}) {
+		int currentPosition = jacoZed->getCurrentPosition();
+		if (jacoZed->getActive() && command == Command{KinovaFSM::GoToPosition, currentPosition}) {
 			//printf("eventVar: %d, Mode on Jaco: %d\n", eventVarToCheck, currentMode);
 			command = Command{KinovaFSM::NoEvent};
 		}
@@ -95,9 +100,9 @@ private:
 		//Hardware Events
 		switch (event) {
 		case KinovaFSM::ModeSet:
-			return jacoZed.getMode();
+			return jacoZed->getMode();
 		case KinovaFSM::SequenceDone:
-			return jacoZed.getCurrentPosition();
+			return jacoZed->getCurrentPosition();
 		case KinovaFSM::PointReached:
 		case KinovaFSM::PointSaved:
 		case KinovaFSM::PointNotSaved:
@@ -107,7 +112,7 @@ private:
 		case KinovaFSM::PreviousPointSet:
 		case KinovaFSM::NextPointNotSet:
 		case KinovaFSM::NextPointSet:
-			return jacoZed.getCurrentPoint();
+			return jacoZed->getCurrentPoint();
 		}
 		return 0;
 	}
@@ -117,7 +122,7 @@ private:
 		ALL_LOG(logDEBUG3) << "Trying to connect to RoboRio";
 		while (true) {
 			try {
-				roboRio.connect();
+				roboRio->connect();
 				ALL_LOG(logINFO) << "Connection to RoboRio established.";
 				return;
 			} catch (std::runtime_error const &e) {
@@ -130,7 +135,7 @@ private:
 		using namespace std::chrono_literals;
 		ALL_LOG(logDEBUG3) << "Trying to connect to JacoArm.";
 		while (true) {
-			if (jacoZed.connect()) {
+			if (jacoZed->connect()) {
 				return;
 			} else {
 				ALL_LOG(logDEBUG1) << "Connection to JacoArm unsuccessful. Retry.";
@@ -155,14 +160,14 @@ private:
 			newInCommand = Command{KinovaFSM::E_Stop};
 		} else {
 			//get Hardware Error
-			if (jacoZed.getError()) {
+			if (jacoZed->getError()) {
 				ALL_LOG(logDEBUG3) << "Hardware Error detected: E-Stop set.";
 				newInCommand.event = KinovaFSM::E_Stop;
 			}
 			//get Internal HW Events
 			else {
 				ALL_LOG(logDEBUG4) << "No Hardware Error detected.";
-				newInCommand.event = jacoZed.getInternalEvent();
+				newInCommand.event = jacoZed->getInternalEvent();
 			}
 			if (newInCommand.event == KinovaFSM::NoEvent) {
 				//get Events from RoboRio
@@ -175,7 +180,7 @@ private:
 	}
 
 	void processOutput(bool processed, Command const &newInCommand, Command const &oldOutCommand) {
-		KinovaFSM::Event HWEvent = jacoZed.getExternalEvent();
+		KinovaFSM::Event HWEvent = jacoZed->getExternalEvent();
 		int HWVar = getHWEventVar(HWEvent);
 		if (HWEvent == KinovaFSM::NoEvent) {
 			if (processed) {

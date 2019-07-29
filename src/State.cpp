@@ -5,7 +5,7 @@
 #include "PositionHandling.h"
 #include "Log.h"
 
-KinovaArm *State::JacoZED = NULL;
+KinovaArm *State::JacoZED = nullptr;
 
 void State::entryAction() {
 	ALL_LOG(logINFO) << "Entering State " << name;

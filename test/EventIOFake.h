@@ -3,16 +3,18 @@
 
 #include "RoboRioProtocol.h"
 
-#include <utility>
+#include <memory>
 
 template <typename ReadGenerator>
 struct EventIOFake {
+	explicit EventIOFake(std::shared_ptr<ReadGenerator> packetGenerator) : packetGenerator{packetGenerator}{}
+
 	auto readPacket() -> RoboRioProtocol::Packet {
-		return packetGenerator();
+		return (*packetGenerator)();
 	}
 
 	auto sendTCP(RoboRioProtocol::Packet command) -> bool {
-		return true;
+		return packetGenerator->check(command);
 	}
 
 	void connect() {
@@ -24,7 +26,7 @@ struct EventIOFake {
 	}
 
 private:
-	ReadGenerator packetGenerator{};
+	std::shared_ptr<ReadGenerator> packetGenerator;
 };
 
 
