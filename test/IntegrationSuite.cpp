@@ -7,7 +7,6 @@
 #include "../include/LogFile.h"
 
 #include <chrono>
-#include <iostream>
 #include <string>
 #include <thread>
 #include <vector>
@@ -33,19 +32,19 @@ private:
 	int nextCommandIndex{0};
 	std::vector<SequenceEvent> commands{
 		{200ms, {KinovaFSM::Initialize}},
-		{3000ms, {KinovaFSM::Tick}},
-		{6000ms, {KinovaFSM::Initialized}},
-		{3000ms, {KinovaFSM::Tick}},
-		{7000ms, {KinovaFSM::Unfold}},
-		{3000ms, {KinovaFSM::Tick}},
-		{7000ms, {KinovaFSM::Unfolded}},
-		{1000ms, {KinovaFSM::GoToPosition, 4}},
+		{6000ms, {KinovaFSM::Tick}},
+		{5000ms, {KinovaFSM::Initialized}},
+		{200ms, {KinovaFSM::Tick}},
+		{200ms, {KinovaFSM::Unfold}},
+		{200ms, {KinovaFSM::Tick}},
+		{5000ms, {KinovaFSM::Unfolded}},
+		{200ms, {KinovaFSM::GoToPosition, 4}},
 
 	};
 };
 template <typename EventFake>
 void tickUntilEnd(CommandHandling<EventFake> & commandHandling) {
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < 300; i++) {
 		commandHandling.process();
 	}
 }
@@ -55,7 +54,6 @@ void thisIsAIntegrationSuiteTest() {
 	CommandHandling<EventIOFake<EventsForBellSequence>> commandHandling{};
 	for (int i = 0; i < 8; i++) {
 		std::string dummy{};
-		std::getline(std::cin, dummy);
 		commandHandling.process();
 	}
 	tickUntilEnd(commandHandling);
