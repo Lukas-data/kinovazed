@@ -5,6 +5,10 @@
 #include "EventIOFake.h"
 #include "RoboRioProtocol.h"
 #include "../include/LogFile.h"
+
+#include <chrono>
+#include <iostream>
+#include <string>
 #include <thread>
 #include <vector>
 
@@ -28,7 +32,7 @@ struct EventsForBellSequence {
 private:
 	int nextCommandIndex{0};
 	std::vector<SequenceEvent> commands{
-		{1000ms, {KinovaFSM::Initialize}},
+		{200ms, {KinovaFSM::Initialize}},
 		{3000ms, {KinovaFSM::Tick}},
 		{6000ms, {KinovaFSM::Initialized}},
 		{3000ms, {KinovaFSM::Tick}},
@@ -50,6 +54,8 @@ void thisIsAIntegrationSuiteTest() {
 	LogFile::create();
 	CommandHandling<EventIOFake<EventsForBellSequence>> commandHandling{};
 	for (int i = 0; i < 8; i++) {
+		std::string dummy{};
+		std::getline(std::cin, dummy);
 		commandHandling.process();
 	}
 	tickUntilEnd(commandHandling);
