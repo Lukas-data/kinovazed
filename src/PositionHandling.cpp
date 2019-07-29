@@ -8,7 +8,7 @@
 
 
 
-#define FILEPATH "/home/kinova/Documents/kinovazed/CybathlonObjectives.dat"
+#define FILEPATH "CybathlonObjectives.dat"
 
 
 PositionHandling::~PositionHandling() {
