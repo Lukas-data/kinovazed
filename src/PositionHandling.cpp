@@ -25,11 +25,11 @@ void PositionHandling::init() {
 
 //Writes Requested targetCoordinates[6] of Objective by pos-number and its Subpositions by Sequence-number. Takes currentPosition[6] if Objective is 0.
 //Returns 0 if sequence has ended.
-bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objective targetObjective, float* currentCoordinates) {
+auto PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objective targetObjective, float* currentCoordinates) -> bool {
 
   if (targetObjective == 0) {
     ALL_LOG(logDEBUG3) << "PositionHandling::No targetObjective. ";
-    return 0;
+    return false;
   }
 
   //Check SequenceNumber. Returns 0 and resets ZeroObjective if Sequence is over.
@@ -39,7 +39,7 @@ bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
       Location[targetObjective-1][i] = 0;
       }
     }
-    return 0;
+    return false;
   }
  
   //Check if current Position
@@ -71,6 +71,7 @@ bool PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
                                                << targetCoordinates[3] << ", "
                                                << targetCoordinates[4] << ", "
                                                << targetCoordinates[5] << ")" ;
+  return true;
 }
 
 /*Check if targetObjective is known ZeroObjective. Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.*/
