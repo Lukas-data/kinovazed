@@ -38,7 +38,7 @@ struct EventsForBellSequence {
 			nextCommandIndex++;
 		}
 		if (reaction.command == KinovaFSM::SequenceDone) {
-			//endReached = true;
+			endReached = true;
 		}
 		return true;
 	}
