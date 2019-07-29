@@ -6,7 +6,6 @@
 #include <string>
 #include <utility>
 
-//Abstract State-Class. (Id not used, but implemented for debug uses.)
 struct State {
     void init(KinovaArm* jacoZED);
 	void entryAction();
