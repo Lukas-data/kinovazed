@@ -12,12 +12,12 @@ KinovaArm::~KinovaArm() {
 
 /*Prints Error/Warning-Message.Sets Errorflag and removes Connected flag on Error.*/
 void KinovaArm::error(const char *funcName, KinDrv::KinDrvException &e, bool warning) {
-	if (!warning) {
+	if (warning) {
+		ALL_LOG(logWARNING) << "KinovaArm::" << funcName << "(): " << e.error() << ", " << e.what();
+	} else {
 		ALL_LOG(logERROR) << "KinovaArm::" << funcName << "(): " << e.error() << ", " << e.what();
 		connected = false; //Simplification!!
 		Error = true;
-	} else {
-		ALL_LOG(logWARNING) << "KinovaArm::" << funcName << "(): " << e.error() << ", " << e.what();
 	}
 }
 void KinovaArm::error(const char *funcName, const char *errorMsg) {
