@@ -9,6 +9,7 @@
 constexpr auto positionRange = 0.05;
 constexpr auto rotationRange = 0.25;
 constexpr auto velocityRange = 0.000002;
+constexpr auto joystickCalcFactor = 0.0025f;
 
 struct KinovaArm {
 	KinovaArm() = default;
@@ -63,34 +64,32 @@ private:
 	KinDrv::JacoArm *arm;
 	PositionHandling PositionHandler{};
 
-	bool Connected = false;
+	bool connected = false;
 	bool Error = false;
-	bool Initialized = false;
-	bool Active = false;
-	bool Homed = false;
-	KinovaStatus::SteeringMode Mode = KinovaStatus::NoMode;
+	bool initialized = false;
+	bool active = false;
+	bool homed = false;
+	KinovaStatus::SteeringMode mode = KinovaStatus::NoMode;
 	int currentPosition = -1;
 
 	KinovaPts::Objective TargetObjective;
-	KinovaPts::Objective TeachTarget;
-	bool NeedsInit;
+	KinovaPts::Objective teachTarget;
 
-	int JoystickX = 0;
-	int JoystickY = 0;
-	int JoystickZ = 0;
-	float JoystickCalcFactor = 0.0025;
+	int joystickX = 0;
+	int joystickY = 0;
+	int joystickZ = 0;
 
-	timespec ModeChangeTimerStart;
+	timespec modeChangeTimerStart;
 	int ModeChangeTimer;
 
-	timespec MoveTimerStart;
+	timespec moveTimerStart;
 
-	KinovaFSM::Event ExternalEvent = KinovaFSM::NoEvent;
-	KinovaFSM::Event InternalEvent = KinovaFSM::NoEvent;
+	KinovaFSM::Event externalEvent = KinovaFSM::NoEvent;
+	KinovaFSM::Event internalEvent = KinovaFSM::NoEvent;
 
-	float LastCoordinates[6];
+	float lastCoordinates[6];
 
-	int PointReachedCount;
+	int pointReachedCount;
 
 	void error(const char *funcName, KinDrv::KinDrvException &e, bool warning);
 	void error(const char *funcName, const char *errorMsg);
