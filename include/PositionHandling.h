@@ -2,6 +2,8 @@
 #define _POSHANDLING_H_
 
 
+
+#include <array>
 #include <cstddef>
 #include <sstream>
 #include <stdexcept>
@@ -35,6 +37,10 @@ struct PosCoordinate {
 		throw std::invalid_argument{errorMessage.str()};
 	}
 
+	operator std::array<float, 6>() const {
+		return {x, y, z, pitch, yaw, roll};
+	}
+
 	float x = 0.0f; //Kinova Left/Right(-)  0.8..-0.8
 	float y = 0.0f; //Kinova Front(-)/Back  -0.85..0.85
 	float z = 0.0f; //Kinova Up  1.15..
@@ -65,7 +71,7 @@ private:
 
 struct PositionHandling {
 	PositionHandling() :
-			location(KinovaPts::NumberOfObjectives), points(KinovaPts::NumberOfObjectives), TransMat(KinovaPts::NumberOfObjectives, f2d_vec_t(4, std::vector<float>(4))), InvTransMat(
+			location(KinovaPts::NumberOfObjectives, std::vector<float>(6)), points(KinovaPts::NumberOfObjectives, f2d_vec_t(0, std::vector<float>(6))), TransMat(KinovaPts::NumberOfObjectives, f2d_vec_t(4, std::vector<float>(4))), InvTransMat(
 					KinovaPts::NumberOfObjectives, f2d_vec_t(4, std::vector<float>(4))) {
 	}
 	~PositionHandling();
@@ -74,6 +80,7 @@ struct PositionHandling {
 	static int printPos();
 	bool getCoordinates(float *coordinates, KinovaPts::Objective targetObjective, float *currentCoordinates);
 	bool getOrigin(float *coordinates, KinovaPts::Objective targetObjective, float *currentCoordinates);
+	auto getOrigin(KinovaPts::PosCoordinate & targetCoordinates, KinovaPts::Objective targetObjective) -> bool;
 	void incrementSequence();
 	void decrementSequence();
 	void resetSequence();

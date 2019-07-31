@@ -100,6 +100,20 @@ bool PositionHandling::getOrigin(float* targetCoordinates, KinovaPts::Objective 
   }
 }
 
+auto PositionHandling::getOrigin(KinovaPts::PosCoordinate & targetCoordinates, KinovaPts::Objective targetObjective) -> bool {
+  bool isZero = true;
+  for (int i = 0; i < 6; i++) {
+    if ( location[targetObjective-1][i] != 0 ) { isZero = false; }
+  }
+  if (isZero) { return false; }
+  else {
+    for (int i = 0; i < 6; i++) {
+        targetCoordinates[i] = location[targetObjective-1][i];
+    }
+  return true;
+  }
+}
+
 void PositionHandling::incrementSequence() {
   ++SequenceCounter;
 }

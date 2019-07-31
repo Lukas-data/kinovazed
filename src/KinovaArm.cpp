@@ -1,6 +1,8 @@
 #include "KinovaArm.h"
 #include "Log.h"
 
+#include <array>
+
 #include <cstdio>
 #include <ctime> 
 
@@ -37,10 +39,10 @@ bool KinovaArm::connect() {
 			arm = new KinDrv::JacoArm();
 			connected = true;
 			ALL_LOG(logINFO) << "Connection to JacoArm established.";
-			return 1;
+			return true;
 		} catch (KinDrv::KinDrvException const& e) {
 			error("connect", e, false);
-			return true;
+			return false;
 		}
 	}
 }
@@ -99,7 +101,7 @@ void KinovaArm::releaseControl() {
 
 /*Stops arm and erases all trajectories.*/
 void KinovaArm::dontMove() {
-	if (!kinovaDummy) {
+	if (kinovaDummy) {
 		return;
 	}
 	//reset Movement-Target
@@ -382,7 +384,7 @@ void KinovaArm::moveToPosition(bool init) {
 	//Check if Sequence is still going
 	if (PositionHandler.getCoordinates(targetCoordinates, TargetObjective, currentCoordinates)) {
 		//Check if in range
-		bool PointReached = checkIfReached(targetCoordinates, currentCoordinates);
+		bool PointReached = checkIfReached(currentCoordinates);
 		bool currentLimit = checkCurrents();
 		if (PointReached || currentLimit) {
 			ALL_LOG(logDEBUG) << "Sequence-Point " << PositionHandler.getSequence() << " reached.";
@@ -446,7 +448,7 @@ void KinovaArm::moveToPoint() {
 	//Check if Sequence is still going
 	if (PositionHandler.getCoordinates(targetCoordinates, teachTarget, currentCoordinates)) {
 		//Check if in range
-		bool PointReached = checkIfReached(targetCoordinates, currentCoordinates);
+		bool PointReached = checkIfReached(currentCoordinates);
 		checkCurrents();
 		if (PointReached) {
 			currentPosition = getCurrentPoint();
@@ -469,16 +471,17 @@ void KinovaArm::moveToPoint() {
 
 /*moves Arm to origin of current TeachTarget*/
 void KinovaArm::moveToOrigin() {
-	float targetCoordinates[6];
+	KinovaPts::PosCoordinate targetCoordinates{};
+	KinovaPts::PosCoordinate currentCoordinate{};
 	float currentCoordinates[6];
 	currentPosition = 0;
 
 	getPosition(currentCoordinates);
 
 	//Check if Origin is defined
-	if (PositionHandler.getOrigin(targetCoordinates, teachTarget, currentCoordinates)) {
+	if (PositionHandler.getOrigin(targetCoordinates, teachTarget)) {
 		//Check if in range
-		bool PointReached = checkIfReached(targetCoordinates, currentCoordinates);
+		bool PointReached = checkIfReached(currentCoordinates);
 		checkCurrents();
 		if (PointReached) {
 			currentPosition = -1;
@@ -488,7 +491,8 @@ void KinovaArm::moveToOrigin() {
 			//Move to Point
 			float fingers[3];
 			try {
-				arm->set_target_cart(targetCoordinates, fingers);
+				std::array<float, 6> targetForArm = targetCoordinates;
+				arm->set_target_cart(targetForArm.data(), fingers);
 			} catch (KinDrv::KinDrvException const &e) {
 				error("moveToPoint", e, false);
 			}
@@ -626,11 +630,11 @@ auto KinovaArm::getInternalEvent() -> KinovaFSM::Event {
 }
 
 void KinovaArm::getPosition(float *coordinates) {
-	if (kinovaDummy == false) {
+	if (!kinovaDummy) {
 		KinDrv::jaco_position_t Position;
 		try {
 			Position = arm->get_cart_pos();
-		} catch (KinDrv::KinDrvException &e) {
+		} catch (KinDrv::KinDrvException const &e) {
 			error("getPosition", e, false);
 		}
 
@@ -655,7 +659,7 @@ void KinovaArm::setInactive() {
 }
 
 /*Returns true if arm isn't moving anymore. Starts after initial timer of 200ms to wait for arm to start moving.*/
-auto KinovaArm::checkIfReached(float *targetCoordinates, float *currentCoordinates) -> bool {
+auto KinovaArm::checkIfReached(float *currentCoordinates) -> bool {
 	if (moveTimerStart.tv_sec == 0 && moveTimerStart.tv_nsec == 0) {
 		clock_gettime(CLOCK_REALTIME, &moveTimerStart);
 	}
