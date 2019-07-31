@@ -91,7 +91,7 @@ private:
 
 	int pointReachedCount;
 
-	void error(const char *funcName, KinDrv::KinDrvException &e, bool warning);
+	void error(const char *funcName, KinDrv::KinDrvException const &e, bool warning);
 	void error(const char *funcName, const char *errorMsg);
 	auto checkIfReached(float *targetCoordinates, float *currentCoordinates) -> bool;
 	auto checkCurrents() -> bool;

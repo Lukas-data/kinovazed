@@ -4,14 +4,14 @@
 #include <cstdio>
 #include <ctime> 
 
-#define KINOVA_DUMMY false
+constexpr auto kinovaDummy = false;
 
 KinovaArm::~KinovaArm() {
 	disconnect();
 }
 
 /*Prints Error/Warning-Message.Sets Errorflag and removes Connected flag on Error.*/
-void KinovaArm::error(const char *funcName, KinDrv::KinDrvException &e, bool warning) {
+void KinovaArm::error(const char *funcName, KinDrv::KinDrvException const &e, bool warning) {
 	if (warning) {
 		ALL_LOG(logWARNING) << "KinovaArm::" << funcName << "(): " << e.error() << ", " << e.what();
 	} else {
@@ -28,32 +28,32 @@ void KinovaArm::error(const char *funcName, const char *errorMsg) {
 
 /*Tries to connect to KinovaArm*/
 bool KinovaArm::connect() {
-	if (KINOVA_DUMMY == false && connected == false) {
+	if (kinovaDummy || connected) {
+		connected = true;
+		return true;
+	} else {
 		try {
 			//KinovaArm::disconnect();
 			arm = new KinDrv::JacoArm();
 			connected = true;
 			ALL_LOG(logINFO) << "Connection to JacoArm established.";
 			return 1;
-		} catch (KinDrv::KinDrvException &e) {
+		} catch (KinDrv::KinDrvException const& e) {
 			error("connect", e, false);
-			return 0;
+			return true;
 		}
-	} else {
-		connected = true;
-		return 1;
 	}
 }
 
 /*Disconnects to KinovaArm*/
 void KinovaArm::disconnect() {
-	if (KINOVA_DUMMY == false) {
+	if (!kinovaDummy) {
 		try {
-			if (arm != NULL) {
+			if (arm != nullptr) {
 				delete arm;
 			}
 			ALL_LOG(logINFO) << "Connection to JacoArm closed. ";
-		} catch (KinDrv::KinDrvException &e) {
+		} catch (KinDrv::KinDrvException const &e) {
 			error("disconnect", e, false);
 		}
 	}
@@ -72,24 +72,25 @@ void KinovaArm::reconnectOnError() {
 
 /*Gain API Control*/
 void KinovaArm::takeControl() {
-	if (KINOVA_DUMMY == false) {
-		try {
-			arm->start_api_ctrl();
-			ALL_LOG(logINFO) << "Gained API control over the arm.";
-		} catch (KinDrv::KinDrvException &e) {
-			error("takeControl", e, false);
-		}
+	if (kinovaDummy) {
+		return;
+	}
+	try {
+		arm->start_api_ctrl();
+		ALL_LOG(logINFO) << "Gained API control over the arm.";
+	} catch (KinDrv::KinDrvException const &e) {
+		error("takeControl", e, false);
 	}
 }
 
 /*Release API Control*/
 void KinovaArm::releaseControl() {
-	if (KINOVA_DUMMY == false) {
+	if (!kinovaDummy) {
 		try {
 			arm->stop_api_ctrl();
 			ALL_LOG(logINFO) << "Released API control over the arm.";
 			Error = false;
-		} catch (KinDrv::KinDrvException &e) {
+		} catch (KinDrv::KinDrvException const &e) {
 			error("releaseControl", e, false);
 		}
 	}
@@ -98,27 +99,28 @@ void KinovaArm::releaseControl() {
 
 /*Stops arm and erases all trajectories.*/
 void KinovaArm::dontMove() {
-	if (KINOVA_DUMMY == false) {
-		//reset Movement-Target
-		try {
-			arm->erase_trajectories();
-		} catch (KinDrv::KinDrvException &e) {
-			error("dontMove: stopping Movement", e, false);
-		}
-		//reset Joystick-input
-		KinDrv::jaco_joystick_axis_t axes;
-		axes.trans_lr = 0;
-		axes.trans_fb = 0;
-		axes.trans_rot = 0;
-		axes.wrist_lr = 0;
-		axes.wrist_fb = 0;
-		axes.wrist_rot = 0;
-		try {
-			arm->move_joystick_axis(axes);
-			arm->release_joystick();
-		} catch (KinDrv::KinDrvException &e) {
-			error("dontMove: releasing Joystick", e, false);
-		}
+	if (!kinovaDummy) {
+		return;
+	}
+	//reset Movement-Target
+	try {
+		arm->erase_trajectories();
+	} catch (KinDrv::KinDrvException const &e) {
+		error("dontMove: stopping Movement", e, false);
+	}
+	//reset Joystick-input
+	KinDrv::jaco_joystick_axis_t axes;
+	axes.trans_lr = 0;
+	axes.trans_fb = 0;
+	axes.trans_rot = 0;
+	axes.wrist_lr = 0;
+	axes.wrist_fb = 0;
+	axes.wrist_rot = 0;
+	try {
+		arm->move_joystick_axis(axes);
+		arm->release_joystick();
+	} catch (KinDrv::KinDrvException const &e) {
+		error("dontMove: releasing Joystick", e, false);
 	}
 }
 
@@ -126,63 +128,64 @@ void KinovaArm::dontMove() {
 void KinovaArm::checkInitialize() {
 	initialized = false;
 	PositionHandler.init();
-	if (!KINOVA_DUMMY) {
-		try {
-			startRetracting(true);
-		} catch (KinDrv::KinDrvException &e) {
-			error("initialize", e, false);
-		}
-	} else {
+	if (kinovaDummy) {
 		initialized = true;
 		externalEvent = KinovaFSM::Initialized;
 		ALL_LOG(logINFO) << "Arm connection is turned off. Dummy-Initialized.";
+		return;
+	}
+	try {
+		startRetracting(true);
+	} catch (KinDrv::KinDrvException const &e) {
+		error("initialize", e, false);
 	}
 }
 
 /*Initialize Arm and go to Home position*/
 void KinovaArm::initialize() {
 	currentPosition = 0;
-	if (!KINOVA_DUMMY) {
-		if (!initialized) {
-			try {
-				retract(true);
-			} catch (KinDrv::KinDrvException &e) {
-				error("initialize", e, false);
-			}
-		}
-	} else {
+	if (kinovaDummy) {
 		initialized = true;
 		externalEvent = KinovaFSM::Initialized;
 		ALL_LOG(logINFO) << "Arm connection is turned off. Dummy-Initialized.";
+		return;
+	}
+	if (!initialized) {
+		try {
+			retract(true);
+		} catch (KinDrv::KinDrvException const &e) {
+			error("initialize", e, false);
+		}
 	}
 }
 
 /*Pushes Button if Arm is not allready retracted*/
 void KinovaArm::startRetracting(bool init) {
 	currentPosition = 0;
-	if (!KINOVA_DUMMY) {
-		homed = false;
-		try {
-			KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
-			if (armStatus != 3) {
-				ALL_LOG(logDEBUG) << "Arm starts retracting from Mode: " << armStatus;
-				arm->push_joystick_button(2);
-				ALL_LOG(logDEBUG2) << "Start Retracting: Button pressed!";
-				armStatus = arm->get_status();
+	if (kinovaDummy) {
+		return;
+	}
+	homed = false;
+	try {
+		KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
+		if (armStatus != 3) {
+			ALL_LOG(logDEBUG) << "Arm starts retracting from Mode: " << armStatus;
+			arm->push_joystick_button(2);
+			ALL_LOG(logDEBUG2) << "Start Retracting: Button pressed!";
+			armStatus = arm->get_status();
+		} else {
+			arm->release_joystick();
+			ALL_LOG(logDEBUG2) << "Already retracted: Button released!";
+			if (!init) {
+				externalEvent = KinovaFSM::Retracted;
 			} else {
-				arm->release_joystick();
-				ALL_LOG(logDEBUG2) << "Allready retracted: Button released!";
-				if (!init) {
-					externalEvent = KinovaFSM::Retracted;
-				} else {
-					initialized = true;
-					externalEvent = KinovaFSM::Initialized;
-				}
-
+				initialized = true;
+				externalEvent = KinovaFSM::Initialized;
 			}
-		} catch (KinDrv::KinDrvException &e) {
-			error("retract", e, false);
+
 		}
+	} catch (KinDrv::KinDrvException const &e) {
+		error("retract", e, false);
 	}
 }
 
@@ -190,83 +193,84 @@ void KinovaArm::startRetracting(bool init) {
 void KinovaArm::retract(bool init) {
 	ALL_LOG(logDEBUG3) << "Arm tries to retract!";
 	currentPosition = 0;
-	if (!KINOVA_DUMMY) {
-		try {
-			KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
-			if (!homed && armStatus == KinDrv::MODE_READY_STANDBY) {
-				homed = true;
-				arm->release_joystick();
-				ALL_LOG(logDEBUG2) << "Retract from Home: Button released!";
-				armStatus = arm->get_status();
-				arm->push_joystick_button(2);
-				ALL_LOG(logDEBUG2) << "Retract from Home: Button pressed!";
-				armStatus = arm->get_status();
-			} else if (homed && armStatus == KinDrv::MODE_READY_TO_RETRACT) {
-				homed = false;
-			} else if (armStatus == KinDrv::MODE_RETRACT_TO_READY) {
-				arm->release_joystick();
-				ALL_LOG(logDEBUG2) << "Retract to Home: Button released!";
-				arm->push_joystick_button(2);
-				ALL_LOG(logDEBUG2) << "Retract to Home: Button pressed!";
-			} else if (armStatus == KinDrv::MODE_RETRACT_STANDBY) {
-				arm->release_joystick();
-				ALL_LOG(logDEBUG2) << "Retracted: Button released!";
-				if (!init) {
-					externalEvent = KinovaFSM::Retracted;
-				} else {
-					initialized = true;
-					externalEvent = KinovaFSM::Initialized;
-				}
-			} else if (armStatus == KinDrv::MODE_ERROR) {
-				error("retract", "Arm has an Error!");
+	if (kinovaDummy) {
+		return;
+	}
+	try {
+		KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
+		if (!homed && armStatus == KinDrv::MODE_READY_STANDBY) {
+			homed = true;
+			arm->release_joystick();
+			ALL_LOG(logDEBUG2) << "Retract from Home: Button released!";
+			armStatus = arm->get_status();
+			arm->push_joystick_button(2);
+			ALL_LOG(logDEBUG2) << "Retract from Home: Button pressed!";
+			armStatus = arm->get_status();
+		} else if (homed && armStatus == KinDrv::MODE_READY_TO_RETRACT) {
+			homed = false;
+		} else if (armStatus == KinDrv::MODE_RETRACT_TO_READY) {
+			arm->release_joystick();
+			ALL_LOG(logDEBUG2) << "Retract to Home: Button released!";
+			arm->push_joystick_button(2);
+			ALL_LOG(logDEBUG2) << "Retract to Home: Button pressed!";
+		} else if (armStatus == KinDrv::MODE_RETRACT_STANDBY) {
+			arm->release_joystick();
+			ALL_LOG(logDEBUG2) << "Retracted: Button released!";
+			if (!init) {
+				externalEvent = KinovaFSM::Retracted;
+			} else {
+				initialized = true;
+				externalEvent = KinovaFSM::Initialized;
 			}
-		} catch (KinDrv::KinDrvException &e) {
-			error("retract", e, false);
+		} else if (armStatus == KinDrv::MODE_ERROR) {
+			error("retract", "Arm has an Error!");
 		}
+	} catch (KinDrv::KinDrvException const &e) {
+		error("retract", e, false);
 	}
 }
 
 /*Moves Arm out of retracted Position to own home position.*/
 void KinovaArm::unfold() {
-	if (!KINOVA_DUMMY) {
-		if (currentPosition != KinovaPts::Home) {
-			if (TargetObjective != KinovaPts::Home) {
-				setTarget(KinovaPts::Home);
+	if (kinovaDummy) {
+		externalEvent = KinovaFSM::Unfolded;
+		return;
+	}
+	if (currentPosition != KinovaPts::Home) {
+		if (TargetObjective != KinovaPts::Home) {
+			setTarget(KinovaPts::Home);
+		}
+		try {
+			KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
+			//if (armStatus != 3) {
+			ALL_LOG(logDEBUG4) << "unfolding from Mode: " << armStatus;
+			//}
+			switch (armStatus) {
+			case KinDrv::MODE_RETRACT_TO_READY:
+				arm->push_joystick_button(2);
+				break;
+			case KinDrv::MODE_READY_TO_RETRACT:
+				arm->push_joystick_button(2);
+				//tcorbat: Discuss whether break is required here
+			case KinDrv::MODE_RETRACT_STANDBY:
+				arm->release_joystick();
+				arm->push_joystick_button(2);
+				break;
+			case KinDrv::MODE_NORMAL_TO_READY:
+			case KinDrv::MODE_NOINIT:
+				arm->push_joystick_button(2);
+				break;
+			case KinDrv::MODE_ERROR:
+				error("unfold", "Arm has an Error!");
+				break;
+			case KinDrv::MODE_NORMAL:
+			case KinDrv::MODE_READY_STANDBY:
+				arm->release_joystick();
+				moveToPosition(true);
+				break;
 			}
-			try {
-				KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
-				//if (armStatus != 3) {
-				ALL_LOG(logDEBUG4) << "unfolding from Mode: " << armStatus;
-				//}
-				switch (armStatus) {
-				case KinDrv::MODE_RETRACT_TO_READY:
-					arm->push_joystick_button(2);
-					break;
-				case KinDrv::MODE_READY_TO_RETRACT:
-					arm->push_joystick_button(2);
-				case KinDrv::MODE_RETRACT_STANDBY:
-					arm->release_joystick();
-					arm->push_joystick_button(2);
-					break;
-				case KinDrv::MODE_NORMAL_TO_READY:
-				case KinDrv::MODE_NOINIT:
-					arm->push_joystick_button(2);
-					break;
-				case KinDrv::MODE_ERROR:
-					error("unfold", "Arm has an Error!");
-					break;
-				case KinDrv::MODE_NORMAL:
-				case KinDrv::MODE_READY_STANDBY:
-					arm->release_joystick();
-					moveToPosition(true);
-					break;
-				}
-			} catch (KinDrv::KinDrvException &e) {
-				error("unfold", e, false);
-			}
-		} else {
-			externalEvent = KinovaFSM::Unfolded;
-
+		} catch (KinDrv::KinDrvException const &e) {
+			error("unfold", e, false);
 		}
 	} else {
 		externalEvent = KinovaFSM::Unfolded;
@@ -277,7 +281,7 @@ void KinovaArm::unfold() {
  mode on Jaco needs to be changed.). Default nextMode = NoMode is Translation!*/
 void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
 	if (mode != nextMode || mode == KinovaStatus::NoMode) {
-		if (KINOVA_DUMMY == false) {
+		if (!kinovaDummy) {
 			try {
 				if ((mode != KinovaStatus::Axis1 && mode != KinovaStatus::Axis2)
 						&& (nextMode == KinovaStatus::Axis1 || nextMode == KinovaStatus::Axis2)) {
@@ -289,7 +293,7 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
 					arm->set_control_cart();
 					ModeChangeTimer = 500;
 				}
-			} catch (KinDrv::KinDrvException &e) {
+			} catch (KinDrv::KinDrvException const &e) {
 				error("changeMode", e, false);
 			}
 		}
@@ -321,35 +325,36 @@ void KinovaArm::move() {
 	double currentSpeedY = -joystickY * joystickCalcFactor;
 	double currentSpeedZ = joystickZ * joystickCalcFactor;
 	currentPosition = -1;
-	if (KINOVA_DUMMY == false) {
-		KinDrv::jaco_joystick_axis_t axes;
-		axes.trans_lr = 0;
-		axes.trans_fb = 0;
-		axes.trans_rot = 0;
-		axes.wrist_lr = 0;
-		axes.wrist_fb = 0;
-		axes.wrist_rot = 0;
-
-		if (mode == KinovaStatus::Translation || mode == KinovaStatus::Axis1) {
-			axes.trans_lr = currentSpeedX;
-			axes.trans_fb = currentSpeedY;
-			axes.trans_rot = currentSpeedZ;
-			ALL_LOG(logDEBUG4) << "MoveArm In Mode: 1";
-		}
-		if (mode == KinovaStatus::Rotation || mode == KinovaStatus::Axis2) {
-			axes.wrist_lr = currentSpeedX;
-			axes.wrist_fb = currentSpeedY;
-			axes.wrist_rot = currentSpeedZ;
-			ALL_LOG(logDEBUG4) << "MoveArm In Mode: 2";
-		}
-		try {
-			arm->move_joystick_axis(axes);
-			ALL_LOG(logDEBUG4) << "currentSpeed: " << "x= " << currentSpeedX << ", y= " << currentSpeedY << ", z= " << currentSpeedZ;
-		} catch (KinDrv::KinDrvException &e) {
-			error("move", e, false);
-		}
-		checkCurrents();
+	if (kinovaDummy) {
+		return;
 	}
+	KinDrv::jaco_joystick_axis_t axes;
+	axes.trans_lr = 0;
+	axes.trans_fb = 0;
+	axes.trans_rot = 0;
+	axes.wrist_lr = 0;
+	axes.wrist_fb = 0;
+	axes.wrist_rot = 0;
+
+	if (mode == KinovaStatus::Translation || mode == KinovaStatus::Axis1) {
+		axes.trans_lr = currentSpeedX;
+		axes.trans_fb = currentSpeedY;
+		axes.trans_rot = currentSpeedZ;
+		ALL_LOG(logDEBUG4) << "MoveArm In Mode: 1";
+	}
+	if (mode == KinovaStatus::Rotation || mode == KinovaStatus::Axis2) {
+		axes.wrist_lr = currentSpeedX;
+		axes.wrist_fb = currentSpeedY;
+		axes.wrist_rot = currentSpeedZ;
+		ALL_LOG(logDEBUG4) << "MoveArm In Mode: 2";
+	}
+	try {
+		arm->move_joystick_axis(axes);
+		ALL_LOG(logDEBUG4) << "currentSpeed: " << "x= " << currentSpeedX << ", y= " << currentSpeedY << ", z= " << currentSpeedZ;
+	} catch (KinDrv::KinDrvException const &e) {
+		error("move", e, false);
+	}
+	checkCurrents();
 }
 
 /*Sets the Targetpoint for the Movement*/
@@ -393,7 +398,7 @@ void KinovaArm::moveToPosition(bool init) {
 			float fingers[3];
 			try {
 				arm->set_target_cart(targetCoordinates, fingers);
-			} catch (KinDrv::KinDrvException &e) {
+			} catch (KinDrv::KinDrvException const &e) {
 				error("moveToPosition", e, false);
 			}
 		}
@@ -452,7 +457,7 @@ void KinovaArm::moveToPoint() {
 			float fingers[3];
 			try {
 				arm->set_target_cart(targetCoordinates, fingers);
-			} catch (KinDrv::KinDrvException &e) {
+			} catch (KinDrv::KinDrvException const &e) {
 				error("moveToPoint", e, false);
 			}
 		}
@@ -484,7 +489,7 @@ void KinovaArm::moveToOrigin() {
 			float fingers[3];
 			try {
 				arm->set_target_cart(targetCoordinates, fingers);
-			} catch (KinDrv::KinDrvException &e) {
+			} catch (KinDrv::KinDrvException const &e) {
 				error("moveToPoint", e, false);
 			}
 		}
@@ -553,7 +558,7 @@ void KinovaArm::nextPoint(int EventVariable) {
 }
 
 /*PrintCurrents if greater than 2. returns True if Currents greater than 3.5, sends Error if Current is greater than 4.5 (fuse at 5 A)*/
-bool KinovaArm::checkCurrents() {
+auto KinovaArm::checkCurrents() -> bool {
 	try {
 		KinDrv::jaco_position_t current = arm->get_ang_current();
 		float sumCurrent = 0;
@@ -572,10 +577,10 @@ bool KinovaArm::checkCurrents() {
 		if (sumCurrent > 3.5) {
 			return true;
 		}
-		return false;
 	} catch (KinDrv::KinDrvException &e) {
 		error("checkCurrents", e, false);
 	}
+	return false;
 }
 
 /*Set-Functinons*/
@@ -587,33 +592,33 @@ void KinovaArm::setJoystick(int x, int y, int z) {
 }
 
 /*Get-Functions*/
-bool KinovaArm::getError() {
+auto KinovaArm::getError() -> bool {
 	return Error;
 }
-bool KinovaArm::getInitialize() {
+auto KinovaArm::getInitialize() -> bool {
 	return initialized;
 }
-bool KinovaArm::getActive() {
+auto KinovaArm::getActive() -> bool{
 	return active;
 }
-int KinovaArm::getMode() {
+auto KinovaArm::getMode() -> int {
 	return mode;
 }
-int KinovaArm::getCurrentPosition() {
+auto KinovaArm::getCurrentPosition() -> int {
 	return currentPosition;
 }
-int KinovaArm::getCurrentPoint() {
+auto KinovaArm::getCurrentPoint() -> int {
 	return PositionHandler.getSequence();
 }
 
-KinovaFSM::Event KinovaArm::getExternalEvent() {
+auto KinovaArm::getExternalEvent() -> KinovaFSM::Event {
 	ALL_LOG(logDEBUG4) << "KinovaArm::getExternalEvent: " << KinovaFSM::eventNames[externalEvent];
 	KinovaFSM::Event e = externalEvent;
 	externalEvent = KinovaFSM::NoEvent;
 	return e;
 }
 
-KinovaFSM::Event KinovaArm::getInternalEvent() {
+auto KinovaArm::getInternalEvent() -> KinovaFSM::Event {
 	ALL_LOG(logDEBUG4) << "KinovaArm::getInternalEvent: " << KinovaFSM::eventNames[externalEvent];
 	KinovaFSM::Event e = internalEvent;
 	internalEvent = KinovaFSM::NoEvent;
@@ -621,7 +626,7 @@ KinovaFSM::Event KinovaArm::getInternalEvent() {
 }
 
 void KinovaArm::getPosition(float *coordinates) {
-	if (KINOVA_DUMMY == false) {
+	if (kinovaDummy == false) {
 		KinDrv::jaco_position_t Position;
 		try {
 			Position = arm->get_cart_pos();
@@ -650,7 +655,7 @@ void KinovaArm::setInactive() {
 }
 
 /*Returns true if arm isn't moving anymore. Starts after initial timer of 200ms to wait for arm to start moving.*/
-bool KinovaArm::checkIfReached(float *targetCoordinates, float *currentCoordinates) {
+auto KinovaArm::checkIfReached(float *targetCoordinates, float *currentCoordinates) -> bool {
 	if (moveTimerStart.tv_sec == 0 && moveTimerStart.tv_nsec == 0) {
 		clock_gettime(CLOCK_REALTIME, &moveTimerStart);
 	}
@@ -691,7 +696,7 @@ void KinovaArm::getForces() {
 		KinDrv::jaco_position_t force = arm->get_ang_force();
 		ALL_LOG(logDEBUG2) << "getForces:" << "(" << force.joints[0] << ", " << force.joints[1] << ", " << force.joints[2] << ", " << force.joints[3]
 				<< ", " << force.joints[4] << ", " << force.joints[5] << ")";
-	} catch (KinDrv::KinDrvException &e) {
+	} catch (KinDrv::KinDrvException const &e) {
 		error("getForces", e, false);
 	}
 }
