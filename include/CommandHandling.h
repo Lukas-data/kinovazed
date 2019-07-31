@@ -83,14 +83,12 @@ private:
 		// 'SetMode' is only sent when mode is not already set.
 		int currentMode = jacoZed->getMode();
 		if (jacoZed->getActive() && command == Command{KinovaFSM::SetMode, currentMode}) {
-			//printf("eventVar: %d, Mode on Jaco: %d\n", eventVarToCheck, currentMode);
 			command = Command{KinovaFSM::NoEvent};
 		}
 
 		//'GoToPosition' is only sent when the Arm is not already at the Position
 		int currentPosition = jacoZed->getCurrentPosition();
 		if (jacoZed->getActive() && command == Command{KinovaFSM::GoToPosition, currentPosition}) {
-			//printf("eventVar: %d, Mode on Jaco: %d\n", eventVarToCheck, currentMode);
 			command = Command{KinovaFSM::NoEvent};
 		}
 	}
