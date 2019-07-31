@@ -32,15 +32,16 @@ struct Command {
 	}
 };
 
-template <typename EventIo = TCPServer, typename Arm = KinovaArm>
+template<typename EventIo = TCPServer, typename Arm = KinovaArm>
 struct CommandHandling {
 	CommandHandling(std::unique_ptr<EventIo> roboRio, std::unique_ptr<Arm> jacoZed) :
-		roboRio{std::move(roboRio)}, jacoZed{std::move(jacoZed)} {
-			connectRoboRio();
-			connectJacoZed();
-			kinovaSM.init(&*CommandHandling::jacoZed);
-		}
-	CommandHandling() : CommandHandling(std::make_unique<EventIo>(), std::make_unique<Arm>()) {
+			roboRio{std::move(roboRio)}, jacoZed{std::move(jacoZed)} {
+		connectRoboRio();
+		connectJacoZed();
+		kinovaSM.init(&*CommandHandling::jacoZed);
+	}
+	CommandHandling() :
+			CommandHandling(std::make_unique<EventIo>(), std::make_unique<Arm>()) {
 	}
 	void process() {
 		Command newInCommand{KinovaFSM::NoEvent};
@@ -141,6 +142,7 @@ private:
 			std::this_thread::sleep_for(1s);
 		}
 	}
+
 	auto processInput(Command &newInCommand) -> bool {
 		ALL_LOG(logERROR) << "process()";
 
