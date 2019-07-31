@@ -739,7 +739,7 @@ bool KinovaArm::checkIfReached(float* targetCoordinates, float* currentCoordinat
     ALL_LOG(logDEBUG4) << "KinovaArm::RangeCheck: following Axis do not pass:";
     for (int i = 0; i<6; i++) {
       float dVel = fabs( currentCoordinates[i] - LastCoordinates[i] );
-      if ( dVel > VELOCITY_RANGE ) {
+      if ( dVel > velocityRange ) {
         ALL_LOG(logDEBUG4) << "[" << i << "]: dVel: " << dVel;
         pointReached = false; 
       }
