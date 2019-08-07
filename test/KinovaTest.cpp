@@ -241,7 +241,7 @@ bool runAllTests(int argc, char const *argv[]) {
 	cute::xml_listener<cute::ide_listener<>> lis(xmlfile.out);
 	auto runner = cute::makeRunner(lis, argc, argv);
 	bool success = runner(matrixSuite, "Matrix Suite Tests");
-	success &= runner(integrationSuite, "Integration Suite Tests");
+//	success &= runner(integrationSuite, "Integration Suite Tests");
 	return success;
 }
 

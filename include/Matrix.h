@@ -1,6 +1,10 @@
 #ifndef KINOVA_MATRIX_H_
 #define KINOVA_MATRIX_H_
 
+#include "Coordinates.h"
+
+#include <array>
+
 #include <cmath>
 #include <vector>
 
@@ -9,7 +13,7 @@ using f2d_vec_t = std::vector<std::vector<float>>;
 constexpr float halfPi = 1.5708;
 
 /*Multiplies two matrices and returns resulting matrix.*/
-inline f2d_vec_t matMultiply(const f2d_vec_t &mat1, const f2d_vec_t &mat2) {
+inline auto matMultiply(const f2d_vec_t &mat1, const f2d_vec_t &mat2) -> f2d_vec_t {
 	if (mat1.empty()) {
 		return {};
 	}
@@ -29,7 +33,7 @@ inline f2d_vec_t matMultiply(const f2d_vec_t &mat1, const f2d_vec_t &mat2) {
 }
 
 /*takes Array of 3 Angles alpha, beta, gamma and returns RotationMatrix of Euler XYZ*/
-inline f2d_vec_t rotMatrix(float angle[3]) {
+inline auto rotMatrix(float angle[3]) -> f2d_vec_t {
 	f2d_vec_t mat(3, std::vector<float>(3, 0));
 	double c[3], s[3];
 	for (int i = 0; i < 3; i++) {
@@ -50,7 +54,7 @@ inline f2d_vec_t rotMatrix(float angle[3]) {
 }
 
 /*returns Euler Angles of Euler XYZ rotational matrix.*/
-inline std::vector<float> getEulerAngles(const f2d_vec_t rotMat) {
+inline auto getEulerAngles(const f2d_vec_t rotMat) -> std::vector<float> {
 	std::vector<float> res(3);
 	if (rotMat[0][2] < 1) {
 		if (rotMat[0][2] > -1) {
@@ -71,7 +75,7 @@ inline std::vector<float> getEulerAngles(const f2d_vec_t rotMat) {
 }
 
 /*Transforms coordinates Objective coordinate system to Basis coordinate system*/
-inline void coordTransform(float *coordinates, const f2d_vec_t &transMat) {
+inline auto coordTransform(float *coordinates, const f2d_vec_t &transMat) -> Kinova::Coordinates {
 	//define point Vector ([x;y;z;1]) and angle Vector ([alpha, beta, gamma])
 	f2d_vec_t cord(4, std::vector<float>(1, 0));
 	float ang[3];
@@ -100,6 +104,12 @@ inline void coordTransform(float *coordinates, const f2d_vec_t &transMat) {
 		coordinates[i] = cord[i][0];
 		coordinates[i + 3] = angles[i];
 	}
+	return {coordinates[0], coordinates[1], coordinates[2], coordinates[3], coordinates[4], coordinates[5]};
+}
+
+inline auto coordTransform(Kinova::Coordinates & coordinates, f2d_vec_t & transformationMatrix) -> Kinova::Coordinates {
+	std::array<float, 6> data = coordinates;
+	return coordTransform(data.data(), transformationMatrix);
 }
 
 #endif /* KINOVA_MATRIX_H_ */

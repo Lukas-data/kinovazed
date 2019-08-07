@@ -1,4 +1,5 @@
 #include "KinovaArm.h"
+#include "Coordinates.h"
 #include "Log.h"
 
 #include <array>
@@ -471,8 +472,8 @@ void KinovaArm::moveToPoint() {
 
 /*moves Arm to origin of current TeachTarget*/
 void KinovaArm::moveToOrigin() {
-	KinovaPts::PosCoordinate targetCoordinates{};
-	KinovaPts::PosCoordinate currentCoordinate{};
+	Kinova::Coordinates targetCoordinates{};
+	Kinova::Coordinates currentCoordinate{};
 	float currentCoordinates[6];
 	currentPosition = 0;
 
