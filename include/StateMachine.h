@@ -15,7 +15,6 @@ constexpr auto looptime = 50.0;
 
 struct StateMachine {
 	explicit StateMachine(std::shared_ptr<KinovaArm> jacoZed);
-    ~StateMachine();
 
     //Send Event to the StateMachine.
     void sendEvent(KinovaFSM::Event e, int eventVar = 0);

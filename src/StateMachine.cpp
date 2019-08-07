@@ -11,9 +11,6 @@ StateMachine::StateMachine(std::shared_ptr<KinovaArm> jacoZed) : CurrentState{Ki
 	clock_gettime(CLOCK_REALTIME, &LastTick);
 }
 
-StateMachine::~StateMachine() {}
-
-
 /*Processes InputEvent and InputVariable in Statemachine. Returns true if state Change is peformed.*/
 bool StateMachine::process(KinovaFSM::Event e, int var) {
   
