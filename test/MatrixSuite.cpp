@@ -274,45 +274,51 @@ f2d_vec_t const openDoorTransformationMatrix {
 };
 
 void testCoordTransformPosition1OfSequenceOpenDoor() {
-	std::array<float, 6> expected{0.211228, -0.274157, 0.499335, 1.46724, 1.03749, 0.820169};
-	std::array<float, 6> coordinates{-0.003, 0.008, 0, -0.027, -0.008, 0.713};
-	coordTransform(coordinates.data(), openDoorTransformationMatrix);
-	assertArrayEqual(expected, coordinates);
+	Kinova::Coordinates const expected{0.211228, -0.274157, 0.499335, 1.46724, 1.03749, 0.820169};
+	Kinova::Coordinates const coordinates{-0.003, 0.008, 0, -0.027, -0.008, 0.713};
+	std::array<float, 6> coordinatesData = coordinates;
+	auto transformedCoordinates = coordTransform(coordinatesData.data(), openDoorTransformationMatrix);
+	ASSERT_EQUAL(expected, transformedCoordinates);
 }
 
 void testCoordTransformPosition2OfSequenceOpenDoor() {
-	std::array<float, 6> expected{0.0253932, -0.201899, 0.50074, 1.30707, 1.22903, 0.847925};
-	std::array<float, 6> coordinates{-0.033, 0.015, -0.197, -0.06, 0.192, 0.598};
-	coordTransform(coordinates.data(), openDoorTransformationMatrix);
-	assertArrayEqual(expected, coordinates);
+	Kinova::Coordinates const expected{0.0253932, -0.201899, 0.50074, 1.30707, 1.22903, 0.847925};
+	Kinova::Coordinates const coordinates{-0.033, 0.015, -0.197, -0.06, 0.192, 0.598};
+	std::array<float, 6> coordinatesData = coordinates;
+	auto transformedCoordinates = coordTransform(coordinatesData.data(), openDoorTransformationMatrix);
+	ASSERT_EQUAL(expected, transformedCoordinates);
 }
 
 void testCoordTransformPosition3OfSequenceOpenDoor() {
-	std::array<float, 6> expected{ 0.0169657, -0.231357, 0.485404, 1.37741, 1.10907, -1.35781 };
-	std::array<float, 6> coordinates{ -0.063, 0, -0.19, -0.059, 0.069, -1.543};
-	coordTransform(coordinates.data(), openDoorTransformationMatrix);
-	assertArrayEqual(expected, coordinates);
+	Kinova::Coordinates const expected{ 0.0169657, -0.231357, 0.485404, 1.37741, 1.10907, -1.35781 };
+	Kinova::Coordinates const coordinates{ -0.063, 0, -0.19, -0.059, 0.069, -1.543};
+	std::array<float, 6> coordinatesData = coordinates;
+	auto transformedCoordinates = coordTransform(coordinatesData.data(), openDoorTransformationMatrix);
+	ASSERT_EQUAL(expected, transformedCoordinates);
 }
 
 void testCoordTransformPosition4OfSequenceOpenDoor() {
-	std::array<float, 6> expected{ 0.0126352, -0.238613, 0.568293, 1.39595, 1.09635, -1.385981 };
-	std::array<float, 6> coordinates{ -0.07, 0.083, -0.188, -0.053, 0.055, -1.555 };
-	coordTransform(coordinates.data(), openDoorTransformationMatrix);
-	assertArrayEqual(expected, coordinates);
+	Kinova::Coordinates const expected{ 0.0126352, -0.238613, 0.568293, 1.39595, 1.09635, -1.385981 };
+	Kinova::Coordinates const coordinates{ -0.07, 0.083, -0.188, -0.053, 0.055, -1.555 };
+	std::array<float, 6> coordinatesData = coordinates;
+	auto transformedCoordinates = coordTransform(coordinatesData.data(), openDoorTransformationMatrix);
+	ASSERT_EQUAL(expected, transformedCoordinates);
 }
 
 void testCoordTransformPosition5OfSequenceOpenDoor() {
-	std::array<float, 6> expected{ 0.0209449, 0.0357301, 0.516158, -1.19642, 1.47223, 2.65887 };
-	std::array<float, 6> coordinates{ 0.171, 0.03, -0.319, -0.006, 0.614, -0.106 };
-	coordTransform(coordinates.data(), openDoorTransformationMatrix);
-	assertArrayEqual(expected, coordinates);
+	Kinova::Coordinates const expected{ 0.0209449, 0.0357301, 0.516158, -1.19642, 1.47223, 2.65887 };
+	Kinova::Coordinates const coordinates{ 0.171, 0.03, -0.319, -0.006, 0.614, -0.106 };
+	std::array<float, 6> coordinatesData = coordinates;
+	auto transformedCoordinates = coordTransform(coordinatesData.data(), openDoorTransformationMatrix);
+	ASSERT_EQUAL(expected, transformedCoordinates);
 }
 
 void testCoordTransformPosition6OfSequenceOpenDoor() {
-	std::array<float, 6> expected{ 0.266373, -0.110374, 0.302327, 1.54954, 1.26463, -0.0882606 };
-	std::array<float, 6> coordinates{ 0.163, -0.191, -0.039, 0.023, 0.216, -0.125 };
-	coordTransform(coordinates.data(), openDoorTransformationMatrix);
-	assertArrayEqual(expected, coordinates);
+	Kinova::Coordinates const  expected{ 0.266373, -0.110374, 0.302327, 1.54954, 1.26463, -0.0882606 };
+	Kinova::Coordinates const  coordinates{ 0.163, -0.191, -0.039, 0.023, 0.216, -0.125 };
+	std::array<float, 6> coordinatesData = coordinates;
+	auto transformedCoordinates = coordTransform(coordinatesData.data(), openDoorTransformationMatrix);
+	ASSERT_EQUAL(expected, transformedCoordinates);
 }
 
 cute::suite make_suite_MatrixSuite() {

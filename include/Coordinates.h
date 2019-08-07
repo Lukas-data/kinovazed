@@ -1,12 +1,11 @@
 #ifndef KINOVA_COORDINATES_H_
 #define KINOVA_COORDINATES_H_
 
-
 #include <array>
+#include <cmath>
 #include <cstddef>
 #include <sstream>
 #include <stdexcept>
-
 
 namespace Kinova {
 
@@ -19,12 +18,18 @@ struct Coordinates {
 
 	auto operator[](std::size_t index) -> float & {
 		switch (index) {
-		case 0: return x;
-		case 1: return y;
-		case 2: return z;
-		case 3: return pitch;
-		case 4: return yaw;
-		case 5: return roll;
+		case 0:
+			return x;
+		case 1:
+			return y;
+		case 2:
+			return z;
+		case 3:
+			return pitch;
+		case 4:
+			return yaw;
+		case 5:
+			return roll;
 		}
 		std::ostringstream errorMessage{"PosCoordinate index is out of range. Must be <6: "};
 		errorMessage << index;
@@ -61,6 +66,30 @@ private:
 		}
 	}
 };
+
+static auto isEqualFloat(float lhs, float rhs) {
+	constexpr float epsilon = 0.00001;
+	return std::fabs(lhs - rhs) < epsilon;
+}
+
+inline auto operator==(Coordinates const &lhs, Coordinates const &rhs) -> bool {
+	return isEqualFloat(lhs.x, rhs.x) && isEqualFloat(lhs.y, rhs.y) && isEqualFloat(lhs.z, rhs.z) && isEqualFloat(lhs.pitch, rhs.pitch)
+			&& isEqualFloat(lhs.yaw, rhs.yaw) && isEqualFloat(lhs.roll, rhs.roll);
+}
+
+inline auto operator!=(Coordinates const &lhs, Coordinates const &rhs) -> bool {
+	return !(lhs == rhs);
+}
+
+inline auto operator<<(std::ostream &out, Coordinates const &coordinates) -> std::ostream & {
+	out << "Coordinates{x=" << coordinates.x <<
+			", y=" << coordinates.y <<
+			", z=" << coordinates.z <<
+			", pitch=" << coordinates.pitch <<
+			", yaw=" << coordinates.yaw <<
+			", roll=" << coordinates.roll << '}';
+	return out;
+}
 
 }
 
