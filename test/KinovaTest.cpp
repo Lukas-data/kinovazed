@@ -232,13 +232,16 @@
 #include "xml_listener.h"
 #include "cute_runner.h"
 #include "IntegrationSuite.h"
+#include "MatrixSuite.h"
 
 bool runAllTests(int argc, char const *argv[]) {
-	cute::suite s = make_suite_IntegrationSuite();
+	cute::suite matrixSuite = make_suite_MatrixSuite();
+	cute::suite integrationSuite = make_suite_IntegrationSuite();
 	cute::xml_file_opener xmlfile(argc, argv);
 	cute::xml_listener<cute::ide_listener<>> lis(xmlfile.out);
 	auto runner = cute::makeRunner(lis, argc, argv);
-	bool success = runner(s, "AllTests");
+	bool success = runner(matrixSuite, "Matrix Suite Tests");
+	//success &= runner(integrationSuite, "Integration Suite Tests");
 	return success;
 }
 

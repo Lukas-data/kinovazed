@@ -7,6 +7,7 @@ project (kinovaZED_test)
 add_executable(KinovaTest 
   KinovaTest.cpp 
   IntegrationSuite.cpp
+  MatrixSuite.cpp
 )
 target_include_directories(KinovaTest 
   PRIVATE
