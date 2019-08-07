@@ -3,11 +3,13 @@
 
 #include "KinovaArm.h"
 
+#include <memory>
+
 #include <string>
 #include <utility>
 
 struct State {
-    void init(KinovaArm* jacoZED);
+    void init(std::shared_ptr<KinovaArm> jacoZed);
 	void entryAction();
 	void exitAction();
     virtual void tickAction();
@@ -19,7 +21,7 @@ struct State {
   protected:
     explicit State(std::string name) : name{std::move(name)}{}
 
-    static KinovaArm* JacoZED;
+    static std::shared_ptr<KinovaArm> JacoZED;
     int EventVariable{};
     std::string name;
 

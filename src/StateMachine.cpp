@@ -3,19 +3,15 @@
 
 #include <cstdio>
 #include <ctime>
+#include <memory>
 
 
-
+StateMachine::StateMachine(std::shared_ptr<KinovaArm> jacoZed) : CurrentState{KinovaFSM::initState} {
+	CurrentState->init(jacoZed);
+	clock_gettime(CLOCK_REALTIME, &LastTick);
+}
 
 StateMachine::~StateMachine() {}
-
-
-
-void StateMachine::init(KinovaArm* jacoZED) {
-  CurrentState = KinovaFSM::initState;
-  CurrentState->init(jacoZED);
-  clock_gettime(CLOCK_REALTIME, &LastTick);
-}
 
 
 /*Processes InputEvent and InputVariable in Statemachine. Returns true if state Change is peformed.*/

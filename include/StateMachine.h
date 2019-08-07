@@ -6,17 +6,17 @@
 #include "State.h"
 #include "Transition.h"
 
+#include <memory>
+
 
 /*This State Machine runs the entry, exit and tick events from the states in "State.h" according to the events and transitions in "Transition.h". There is no Queue. If an event finds no use, it is dropped.*/
 
 constexpr auto looptime = 50.0;
 
 struct StateMachine {
+	explicit StateMachine(std::shared_ptr<KinovaArm> jacoZed);
     ~StateMachine();
 
-    //Initializes the StateMachine.
-    void init(KinovaArm* jacoZED);
-    
     //Send Event to the StateMachine.
     void sendEvent(KinovaFSM::Event e, int eventVar = 0);
 

@@ -1,11 +1,13 @@
-#include <stdio.h>
 
 #include "State.h"
 #include "KinovaStatus.h"
 #include "PositionHandling.h"
 #include "Log.h"
 
-KinovaArm *State::JacoZED = nullptr;
+#include <cstdio>
+#include <memory>
+
+std::shared_ptr<KinovaArm> State::JacoZED = nullptr;
 
 void State::entryAction() {
 	ALL_LOG(logINFO) << "Entering State " << name;
@@ -20,8 +22,8 @@ void State::exitAction() {
 void State::tickAction() {
 }
 
-void State::init(KinovaArm *jacoZED) {
-	JacoZED = jacoZED;
+void State::init(std::shared_ptr<KinovaArm> jacoZed) {
+	JacoZED = jacoZed;
 }
 void State::setEventVar(int eventVar) {
 	EventVariable = eventVar;

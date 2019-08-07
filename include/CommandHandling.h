@@ -34,14 +34,13 @@ struct Command {
 
 template<typename EventIo = TCPServer, typename Arm = KinovaArm>
 struct CommandHandling {
-	CommandHandling(std::unique_ptr<EventIo> roboRio, std::unique_ptr<Arm> jacoZed) :
-			roboRio{std::move(roboRio)}, jacoZed{std::move(jacoZed)} {
+	CommandHandling(std::unique_ptr<EventIo> roboRio, std::shared_ptr<Arm> jacoZed) :
+			roboRio{std::move(roboRio)}, jacoZed{jacoZed}, kinovaSM{jacoZed} {
 		connectRoboRio();
 		connectJacoZed();
-		kinovaSM.init(&*CommandHandling::jacoZed);
 	}
 	CommandHandling() :
-			CommandHandling(std::make_unique<EventIo>(), std::make_unique<Arm>()) {
+			CommandHandling(std::make_unique<EventIo>(), std::make_shared<Arm>()) {
 	}
 	void process() {
 		Command newInCommand{KinovaFSM::NoEvent};
@@ -51,7 +50,7 @@ struct CommandHandling {
 	}
 
 private:
-	std::unique_ptr<Arm> jacoZed;
+	std::shared_ptr<Arm> jacoZed;
 	std::unique_ptr<EventIo> roboRio;
 	StateMachine kinovaSM;
 
