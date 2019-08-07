@@ -1,8 +1,9 @@
-#include <stdio.h>
-#include <ctime>
-
 #include "StateMachine.h"
 #include "Log.h"
+
+#include <cstdio>
+#include <ctime>
+
 
 
 
@@ -17,20 +18,8 @@ void StateMachine::init(KinovaArm* jacoZED) {
 }
 
 
-//void StateMachine::sendEvent(KinovaFSM::Event e, int eventVar) {
-//  InputEvent = e;
-//  InputVariable = eventVar;
-//}
-
-
 /*Processes InputEvent and InputVariable in Statemachine. Returns true if state Change is peformed.*/
 bool StateMachine::process(KinovaFSM::Event e, int var) {
-  bool StateChange = false;
-//  KinovaFSM::Event e = InputEvent;
-//  InputEvent = KinovaFSM::NoEvent;
-//
-//  int var = InputVariable;
-//  InputVariable = 0;
   
   //Print handled Event and reset InputEvent.
   for (int i = 0; i<NumberOfTransitions; i++) {
@@ -40,7 +29,6 @@ bool StateMachine::process(KinovaFSM::Event e, int var) {
       CurrentState = KinovaFSM::TransitionTable[i].nextState;
       CurrentState->setEventVar(var);
       CurrentState->entryAction();
-      StateChange = true;
       return true;
     }      
   }
@@ -49,7 +37,7 @@ bool StateMachine::process(KinovaFSM::Event e, int var) {
   clock_gettime(CLOCK_REALTIME, &timeNow);
   double elapsedTime = (timeNow.tv_sec-LastTick.tv_sec) * 1000.0 +
                     (timeNow.tv_nsec-LastTick.tv_nsec) / 1000000.0;
-  if( elapsedTime > LOOPTIME ) {
+  if( elapsedTime > looptime ) {
     ALL_LOG(logDEBUG4) << "Tick!";
     CurrentState->tickAction();
     clock_gettime(CLOCK_REALTIME, &LastTick);

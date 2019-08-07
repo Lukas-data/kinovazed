@@ -9,17 +9,9 @@
 
 /*This State Machine runs the entry, exit and tick events from the states in "State.h" according to the events and transitions in "Transition.h". There is no Queue. If an event finds no use, it is dropped.*/
 
-#define LOOPTIME 50.0
+constexpr auto looptime = 50.0;
 
-class StateMachine {
-
-  public:
-    StateMachine() :
-      //Calculates the Number Of Transitions in the Transition Table as it is assumed unchanged during runtime.
- //     InputEvent(KinovaFSM::NoEvent),
-      NumberOfTransitions(sizeof(KinovaFSM::TransitionTable)/sizeof(KinovaFSM::Transition))
-      {}
-
+struct StateMachine {
     ~StateMachine();
 
     //Initializes the StateMachine.
@@ -28,22 +20,14 @@ class StateMachine {
     //Send Event to the StateMachine.
     void sendEvent(KinovaFSM::Event e, int eventVar = 0);
 
-
     //Run the StateMachine. Return True if StateChange is performed.
     bool process(KinovaFSM::Event e, int var);
-    
-    //returns current Event of StateMachine
-    //int getCurrentState();
 
   private:
-//    KinovaFSM::Event InputEvent;
-//    int InputVariable;
-    State* CurrentState;
-    int NumberOfTransitions;
-
+    State* CurrentState = nullptr;
+    int NumberOfTransitions = sizeof(KinovaFSM::TransitionTable)/sizeof(KinovaFSM::Transition);
     timespec LastTick;
-
-
 };
+
 #endif
 
