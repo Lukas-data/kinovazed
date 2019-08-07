@@ -6,6 +6,8 @@
 
 using f2d_vec_t = std::vector<std::vector<float>>;
 
+constexpr float halfPi = 1.5708;
+
 /*Multiplies two matrices and returns resulting matrix.*/
 inline f2d_vec_t matMultiply(const f2d_vec_t &mat1, const f2d_vec_t &mat2) {
 	if (mat1.empty()) {
@@ -50,19 +52,19 @@ inline f2d_vec_t rotMatrix(float angle[3]) {
 /*returns Euler Angles of Euler XYZ rotational matrix.*/
 inline std::vector<float> getEulerAngles(const f2d_vec_t rotMat) {
 	std::vector<float> res(3);
-	if (rotMat[1][3] < 1) {
-		if (rotMat[1][3] > -1) {
-			res[1] = std::asin(rotMat[0][2]);
+	if (rotMat[0][2] < 1) {
+		if (rotMat[0][2] > -1) {
 			res[0] = std::atan2(-rotMat[1][2], rotMat[2][2]);
+			res[1] = std::asin(rotMat[0][2]);
 			res[2] = std::atan2(-rotMat[0][1], rotMat[0][0]);
-		} else {
-			res[1] = -1.5708;
+		} else { // <= -1
 			res[0] = -std::atan2(rotMat[1][0], rotMat[1][1]);
+			res[1] = -halfPi;
 			res[2] = 0;
 		}
-	} else {
-		res[1] = 1.5708;
+	} else { //>= 1
 		res[0] = std::atan2(rotMat[1][0], rotMat[1][1]);
+		res[1] = halfPi;
 		res[2] = 0;
 	}
 	return res;
@@ -89,13 +91,10 @@ inline void coordTransform(float *coordinates, const f2d_vec_t &transMat) {
 		}
 	}
 	//Get rotational Matrix from Point angles in Objective coordinate system.
-	f2d_vec_t R2(3, std::vector<float>(3, 0));
-	R2 = rotMatrix(ang);
+	f2d_vec_t R2 = rotMatrix(ang);
 	//Calculate rotational Matrix from Point in Objective Coordinate System
-	f2d_vec_t R3(3, std::vector<float>(3, 0));
-	R3 = matMultiply(R1, R2);
-	std::vector<float> angles(3);
-	angles = getEulerAngles(R3);
+	f2d_vec_t R3 = matMultiply(R1, R2);
+	std::vector<float> angles = getEulerAngles(R3);
 	//write coordinates
 	for (int i = 0; i < 3; i++) {
 		coordinates[i] = cord[i][0];

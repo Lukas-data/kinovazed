@@ -86,3 +86,4 @@ cute::suite make_suite_IntegrationSuite() {
 	s.push_back(CUTE(thisIsAIntegrationSuiteTest));
 	return s;
 }
+
