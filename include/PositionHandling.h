@@ -23,19 +23,17 @@ struct PositionHandling {
 	~PositionHandling();
 
 	void init();
-	static int printPos();
-	bool getCoordinates(float *coordinates, KinovaPts::Objective targetObjective, float *currentCoordinates);
-	bool getOrigin(float *coordinates, KinovaPts::Objective targetObjective, float *currentCoordinates);
+	auto getCoordinates(float *coordinates, KinovaPts::Objective targetObjective, float *currentCoordinates) -> bool;
+	auto getOrigin(float *coordinates, KinovaPts::Objective targetObjective, float *currentCoordinates) -> bool;
 	auto getOrigin(Kinova::Coordinates & targetCoordinates, KinovaPts::Objective targetObjective) -> bool;
 	void incrementSequence();
 	void decrementSequence();
 	void resetSequence();
 	void setZeroObjective(KinovaPts::Objective targetObjective, float *currentCoordinates);
-	bool savePoint(float coordinates[6], KinovaPts::Objective targetObjective);
+	auto savePoint(float coordinates[6], KinovaPts::Objective targetObjective) -> bool;
 	void saveOrigin(float coordinates[6], KinovaPts::Objective targetObjective);
 	void deletePoint(KinovaPts::Objective targetObjective);
-	int getSequence();
-	void readFromFile();
+	auto getSequence() -> int;
 	void writeToFile();
 
 private:
@@ -52,6 +50,8 @@ private:
 	f3d_vec_t InvTransMat;
 	std::vector<int> ZeroObjectives;
 
+	void readFromFile();
+	void loadData(std::istream & in);
 	void calcTransMat();
 };
 

@@ -181,83 +181,85 @@ void PositionHandling::deletePoint(KinovaPts::Objective targetObjective) {
   }
 }
 
+void PositionHandling::loadData(std::istream & in) {
+	ZeroObjectives.clear();
+	std::string line{};
+	  //Reads Objectives from Files
+	  for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
+	    if (std::getline(in,line)) {
+	      std::istringstream iss(line);
+	      int n;
+	      std::vector<int> vec_int;
+	      vec_int.reserve(6);
+	      while (iss >> n) {
+	        vec_int.push_back(n);
+	      }
+	      if (vec_int.size() == 0) {
+	        ALL_LOG(logERROR) << "PositionHandling::ReadFromFile: "
+	                          << "File-Mismatch: No Objectives found";
+	        break;
+	      }
+	      bool isZero = true;
+	      for (int j = 0; j < 6; j++) {
+	        if (vec_int[j] != 0) { isZero = false; }
+	        location[i][j] = (float)vec_int[j]/1000;
+	      }
+	      if (isZero) {
+	        ZeroObjectives.push_back(i);
+	        ALL_LOG(logDEBUG2) << "PositionHandling::ReadFromFile: "
+	                           << "Objective " << i << " is Zero";
+	      }
+	    }
+	  }
+
+	  //Empty Line
+	  std::getline(in,line);
+
+	  //reset Point-Vector
+	  for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
+	    f2d_vec_t(0,std::vector<float>(6)).swap(points[i]);
+	  }
+
+	  //Reads Points from Files
+	  int location = 0;
+	  int sequence = 0;
+	  //bool PrePoint = true;
+	  f2d_vec_t::iterator it = points[location].begin();
+
+	  while (std::getline(in,line) && location < KinovaPts::NumberOfObjectives) {
+	    ALL_LOG(logDEBUG4) << "PositionHandling::ReadFromFile: "
+	                       << "Objective: " << location << ", Point: " << sequence;
+	    std::istringstream iss(line);
+	    int n;
+	    std::vector<int> vec_int;
+	    vec_int.reserve(6);
+	    while (iss >> n) {
+	      vec_int.push_back(n);
+	    }
+	    if (vec_int.size() == 0) {
+	      //start new Objective.
+	      location++;
+	      sequence = 0;
+	      it = points[location].begin();
+	      ALL_LOG(logDEBUG4) << "PositionHandling::ReadFromFile: "
+	                         << "Empty line. Next Objective.";
+	    }
+	    else {
+	      //save Point
+	      std::vector<float> vec_float(6);
+	      for (int i = 0; i < 6; i++) {
+	        vec_float[i] = (float)vec_int[i]/1000;
+	      }
+	      points[location].push_back(vec_float);
+	      sequence++;
+	    }
+	  }
+}
 
 /*Reads Location and Points Vectors from SaveFile*/
 void PositionHandling::readFromFile() {
-  std::vector<int>().swap(ZeroObjectives);
-  std::string line;
   std::ifstream infile (FILEPATH);
-  
-  //Reads Objectives from Files
-  for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
-    if (std::getline(infile,line)) {     
-      std::istringstream iss(line);
-      int n;
-      std::vector<int> vec_int;
-      vec_int.reserve(6);
-      while (iss >> n) {
-        vec_int.push_back(n);
-      }
-      if (vec_int.size() == 0) {
-        ALL_LOG(logERROR) << "PositionHandling::ReadFromFile: "
-                          << "File-Missmatch: No Objectives found";
-        break;
-      }
-      bool isZero = true;
-      for (int j = 0; j < 6; j++) {
-        if (vec_int[j] != 0) { isZero = false; }
-        location[i][j] = (float)vec_int[j]/1000;
-      }
-      if (isZero) {
-        ZeroObjectives.push_back(i);
-        ALL_LOG(logDEBUG2) << "PositionHandling::ReadFromFile: "
-                           << "Objective " << i << " is Zero";
-      }
-    }
-  }
-
-  //Empty Line
-  std::getline(infile,line);
-  
-  //reset Point-Vector
-  for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
-    f2d_vec_t(0,std::vector<float>(6)).swap(points[i]);
-  }
-  
-  //Reads Points from Files
-  int location = 0;
-  int sequence = 0;
-  //bool PrePoint = true;
-  f2d_vec_t::iterator it = points[location].begin();
-  
-  while (std::getline(infile,line) && location < KinovaPts::NumberOfObjectives) { 
-    ALL_LOG(logDEBUG4) << "PositionHandling::ReadFromFile: "
-                       << "Objective: " << location << ", Point: " << sequence;
-    std::istringstream iss(line);
-    int n;
-    std::vector<int> vec_int;
-    vec_int.reserve(6);
-    while (iss >> n) {
-      vec_int.push_back(n);
-    }
-    if (vec_int.size() == 0) {
-      //start new Objective.
-      location++;
-      sequence = 0;
-      it = points[location].begin();
-      ALL_LOG(logDEBUG4) << "PositionHandling::ReadFromFile: "
-                         << "Empty line. Next Objective.";
-    }
-    else {
-      //save Point
-      std::vector<float> vec_float(6);
-      for (int i = 0; i < 6; i++) {
-        vec_float[i] = (float)vec_int[i]/1000;
-      }
-      points[location].push_back(vec_float);
-      sequence++;
-    }
-  }
+  loadData(infile);
   ALL_LOG(logINFO) << "Points successfully loaded from File.";
 }
 
