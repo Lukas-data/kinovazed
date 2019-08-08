@@ -11,6 +11,7 @@ add_library(kinovaArm_lib STATIC
   src/PositionHandling.cpp
   src/StateMachine.cpp
   src/State.cpp
+  src/Sequence.cpp
 )
 
 set_property(TARGET kinovaArm_lib PROPERTY CXX_STANDARD 14)

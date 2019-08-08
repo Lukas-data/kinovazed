@@ -9,6 +9,7 @@ add_executable(KinovaTest
   IntegrationSuite.cpp
   MatrixSuite.cpp
   PositionHandlingSuite.cpp
+  SequenceSuite.cpp
 )
 target_include_directories(KinovaTest 
   PRIVATE

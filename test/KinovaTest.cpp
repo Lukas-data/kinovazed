@@ -234,16 +234,19 @@
 #include "IntegrationSuite.h"
 #include "MatrixSuite.h"
 #include "PositionHandlingSuite.h"
+#include "SequenceSuite.h"
 
 bool runAllTests(int argc, char const *argv[]) {
 	cute::suite matrixSuite = make_suite_MatrixSuite();
 	cute::suite positionHandlingSuite = make_suite_PositionHandlingSuite();
+	cute::suite sequenceSuite = make_suite_SequenceSuite();
 	cute::suite integrationSuite = make_suite_IntegrationSuite();
 	cute::xml_file_opener xmlfile(argc, argv);
 	cute::xml_listener<cute::ide_listener<>> lis(xmlfile.out);
 	auto runner = cute::makeRunner(lis, argc, argv);
 	bool success = runner(matrixSuite, "Matrix Suite Tests");
 	success &= runner(positionHandlingSuite, "Position Handling Suite Tests");
+	success &= runner(sequenceSuite, "Sequence Suite Tests");
 //	success &= runner(integrationSuite, "Integration Suite Tests");
 	return success;
 }
