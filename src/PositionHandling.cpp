@@ -31,14 +31,14 @@ void PositionHandling::init() {
 //Returns 0 if sequence has ended.
 auto PositionHandling::getCoordinates(float* targetCoordinates, Kinova::Objective targetObjective, float* currentCoordinates) -> bool {
 
-  if (targetObjective == 0) {
+  if (targetObjective == Kinova::NoObjective) {
     ALL_LOG(logDEBUG3) << "PositionHandling::No targetObjective. ";
     return false;
   }
 
   //Check SequenceNumber. Returns 0 and resets ZeroObjective if Sequence is over.
   if (SequenceCounter >= points[targetObjective-1].size()) {
-    if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() ) {
+    if (ZeroObjectives.count(targetObjective - 1)) {
       for (int i = 0; i < 6; i++) {
     	  location[targetObjective-1][i] = 0;
       }
@@ -80,7 +80,7 @@ auto PositionHandling::getCoordinates(float* targetCoordinates, Kinova::Objectiv
 
 /*Check if targetObjective is known ZeroObjective. Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.*/
 void PositionHandling::setZeroObjective(Kinova::Objective targetObjective, float* currentCoordinates) {
-  if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() && SequenceCounter == 0) {
+  if (ZeroObjectives.count(targetObjective - 1) && SequenceCounter == 0) {
     for (int i = 0; i < 6; i++) {
       location[targetObjective-1][i] = currentCoordinates[i];
     }
@@ -209,7 +209,7 @@ void PositionHandling::loadData(std::istream & in) {
 	        location[i][j] = (float)vec_int[j]/1000;
 	      }
 	      if (isZero) {
-	        ZeroObjectives.push_back(i);
+	        ZeroObjectives.insert(i);
 	        ALL_LOG(logDEBUG2) << "PositionHandling::ReadFromFile: "
 	                           << "Objective " << i << " is Zero";
 	      }
@@ -274,7 +274,7 @@ void PositionHandling::writeToFile() {
   if ( saveFile.is_open() ) {
     //Write Locations
     for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
-      if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), i) != ZeroObjectives.end() ) {
+      if (ZeroObjectives.count(i)) {
         //Objecitve is a ZeroObjective. 
         for (int j = 0; j < 6; j++) {
           saveFile << 0 << " ";

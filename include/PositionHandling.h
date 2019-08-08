@@ -5,6 +5,7 @@
 #include "Matrix.h"
 #include "Objective.h"
 
+#include <set>
 #include <vector>
 
 
@@ -39,7 +40,7 @@ private:
 
 	f3d_vec_t TransMat;
 	f3d_vec_t InvTransMat;
-	std::vector<int> ZeroObjectives;
+	std::set<int> ZeroObjectives{};
 
 	void readFromFile();
 	void loadData(std::istream & in);
