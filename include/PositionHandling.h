@@ -31,9 +31,6 @@ struct PositionHandling {
 	void writeToFile();
 
 private:
-	using Location = std::vector<Kinova::Coordinates>;
-	using LocationSequence = std::vector<Location>;
-	//static Kinova::posCoordinates Locations[Kinova::NumberOfObjectives][NUMBER_OF_SUBPOINTS];
 	using f2d_vec_t = std::vector<std::vector<float>>;
 	using f3d_vec_t = std::vector<f2d_vec_t>;
 	f2d_vec_t location;
