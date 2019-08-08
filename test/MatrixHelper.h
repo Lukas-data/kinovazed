@@ -1,8 +1,7 @@
 #ifndef TEST_MATRIXHELPER_H_
 #define TEST_MATRIXHELPER_H_
 
-
-
+#include "Matrix.h"
 #include <algorithm>
 #include <array>
 #include <cstddef>
@@ -33,7 +32,7 @@ struct MatrixComparisonWrapper {
 	}
 };
 
-std::ostream & operator<<(std::ostream & out, MatrixComparisonWrapper const & matrix) {
+inline std::ostream & operator<<(std::ostream & out, MatrixComparisonWrapper const & matrix) {
 	out << "Matrix {\n";
 	for (auto const & row : matrix.data) {
 		out << "\t{";
@@ -57,11 +56,11 @@ struct VectorComparisonWrapper {
 	}
 };
 
-void assertMatrixEqual(f2d_vec_t const & expected, f2d_vec_t const & actual) {
+inline void assertMatrixEqual(f2d_vec_t const & expected, f2d_vec_t const & actual) {
 	ASSERT_EQUAL(MatrixComparisonWrapper{expected}, MatrixComparisonWrapper{actual});
 }
 
-std::ostream & operator<<(std::ostream & out, VectorComparisonWrapper const & vector) {
+inline std::ostream & operator<<(std::ostream & out, VectorComparisonWrapper const & vector) {
 	out << "Vector {\n";
 		copy(begin(vector.data), end(vector.data), std::ostream_iterator<float>{out, ", "});
 	out << "}\n";
@@ -69,7 +68,7 @@ std::ostream & operator<<(std::ostream & out, VectorComparisonWrapper const & ve
 }
 
 
-void assertVectorEqual(std::vector<float> const & expected, std::vector<float> const & actual) {
+inline void assertVectorEqual(std::vector<float> const & expected, std::vector<float> const & actual) {
 	ASSERT_EQUAL(VectorComparisonWrapper{expected}, VectorComparisonWrapper{actual});
 }
 

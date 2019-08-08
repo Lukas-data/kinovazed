@@ -9,11 +9,27 @@
 
 namespace Kinova {
 
+using f2d_vec_t = std::vector<std::vector<float>>;
+
+struct Origin {
+	explicit Origin(Coordinates const & origin);
+
+	auto getCoordinates() const -> Coordinates const &;
+	auto getTransformationMatrix() const -> f2d_vec_t const &;
+	auto getInvertedTransformationMatrix() const -> f2d_vec_t const &;
+
+private:
+	Coordinates origin;
+	f2d_vec_t transformationMatrix;
+	f2d_vec_t invertedTransformationMatrix;
+};
+
 struct Sequence {
 
 	Sequence(Coordinates origin, std::vector<Coordinates> points);
 
 	auto getCurrentCoordinates() const -> Coordinates;
+	auto getTransformedCoordinates() const -> Coordinates;
 	auto getOrigin() const -> Coordinates;
 	auto endReached() const -> bool;
 	void nextPoint();
@@ -23,7 +39,7 @@ struct Sequence {
 private:
 	void throwIfEndReached() const;
 
-	Coordinates origin;
+	Origin origin;
 	std::vector<Coordinates> points;
 	std::size_t currentPoint = 0;
 };

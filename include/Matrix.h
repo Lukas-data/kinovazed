@@ -107,7 +107,7 @@ inline auto coordTransform(float *coordinates, const f2d_vec_t &transMat) -> Kin
 	return {coordinates[0], coordinates[1], coordinates[2], coordinates[3], coordinates[4], coordinates[5]};
 }
 
-inline auto coordTransform(Kinova::Coordinates & coordinates, f2d_vec_t & transformationMatrix) -> Kinova::Coordinates {
+inline auto coordTransform(Kinova::Coordinates const & coordinates, f2d_vec_t const & transformationMatrix) -> Kinova::Coordinates {
 	std::array<float, 6> data = coordinates;
 	return coordTransform(data.data(), transformationMatrix);
 }
