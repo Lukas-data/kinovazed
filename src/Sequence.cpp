@@ -43,7 +43,7 @@ void Sequence::previousPoint() {
 	currentPoint--;
 }
 
-void Sequence::resetSequence() {
+void Sequence::reset() {
 	currentPoint = 0;
 }
 

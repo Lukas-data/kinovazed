@@ -112,4 +112,5 @@ inline auto coordTransform(Kinova::Coordinates & coordinates, f2d_vec_t & transf
 	return coordTransform(data.data(), transformationMatrix);
 }
 
+
 #endif /* KINOVA_MATRIX_H_ */

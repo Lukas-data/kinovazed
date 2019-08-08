@@ -29,10 +29,56 @@ void testNextPoint() {
 	ASSERT_EQUAL(secondPoint, sequence.getCurrentCoordinates());
 }
 
+void testReset() {
+	auto sequence = createTestSequence();
+	sequence.nextPoint();
+	sequence.reset();
+	ASSERT_EQUAL(firstPoint, sequence.getCurrentCoordinates());
+}
+
+void testPreviousPoint() {
+	auto sequence = createTestSequence();
+	sequence.nextPoint();
+	sequence.previousPoint();
+	ASSERT_EQUAL(firstPoint, sequence.getCurrentCoordinates());
+}
+
+void testEndReached() {
+	auto sequence = createTestSequence();
+	sequence.nextPoint();
+	sequence.nextPoint();
+	ASSERT(sequence.endReached());
+}
+
+void testGetCurrentCoordinatesAtEndThrows() {
+	auto sequence = createTestSequence();
+	sequence.nextPoint();
+	sequence.nextPoint();
+	ASSERT_THROWS(sequence.getCurrentCoordinates(), std::logic_error);
+}
+
+void testNextPointAtEndThrows() {
+	auto sequence = createTestSequence();
+	sequence.nextPoint();
+	sequence.nextPoint();
+	ASSERT_THROWS(sequence.nextPoint(), std::logic_error);
+}
+
+void testPreviousPointAtBeginningThrows() {
+	auto sequence = createTestSequence();
+	ASSERT_THROWS(sequence.previousPoint(), std::logic_error);
+}
+
 cute::suite make_suite_SequenceSuite() {
 	cute::suite s{};
 	s.push_back(CUTE(testGetOrigin));
 	s.push_back(CUTE(testGetInitialPoint));
 	s.push_back(CUTE(testNextPoint));
+	s.push_back(CUTE(testReset));
+	s.push_back(CUTE(testPreviousPoint));
+	s.push_back(CUTE(testEndReached));
+	s.push_back(CUTE(testGetCurrentCoordinatesAtEndThrows));
+	s.push_back(CUTE(testNextPointAtEndThrows));
+	s.push_back(CUTE(testPreviousPointAtBeginningThrows));
 	return s;
 }

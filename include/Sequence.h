@@ -18,7 +18,7 @@ struct Sequence {
 	auto endReached() const -> bool;
 	void nextPoint();
 	void previousPoint();
-	void resetSequence();
+	void reset();
 
 private:
 	void throwIfEndReached() const;

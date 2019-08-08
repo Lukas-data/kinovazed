@@ -1,68 +1,11 @@
 #include "MatrixSuite.h"
 #include "cute.h"
 #include "Matrix.h"
+#include "MatrixHelper.h"
 
-#include <algorithm>
-
-#include <iterator>
 #include <array>
-#include <cstddef>
 #include <vector>
 
-constexpr float epsilon = 0.00001;
-
-struct MatrixComparisonWrapper {
-	explicit MatrixComparisonWrapper(f2d_vec_t data) : data{data}{}
-	f2d_vec_t data;
-
-	bool operator==(MatrixComparisonWrapper const & other) const {
-		if (data.size() != other.data.size()) {
-			return false;
-		}
-		for (auto rowIndex = 0u; rowIndex < data.size(); rowIndex++) {
-			if (data[rowIndex].size() != other.data[rowIndex].size()) {
-				return false;
-			}
-			for (auto colIndex = 0u; colIndex < data[rowIndex].size(); colIndex++) {
-				if (fabs(data[rowIndex][colIndex] - other.data[rowIndex][colIndex]) > epsilon) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-};
-
-std::ostream & operator<<(std::ostream & out, MatrixComparisonWrapper const & matrix) {
-	out << "Matrix {\n";
-	for (auto const & row : matrix.data) {
-		out << "\t{";
-		copy(begin(row), end(row), std::ostream_iterator<float>{out, ", "});
-		out << "}\n";
-	}
-	out << "}\n";
-	return out;
-}
-
-struct VectorComparisonWrapper {
-	explicit VectorComparisonWrapper(std::vector<float> data) : data{data}{}
-	template <std::size_t N>
-	explicit VectorComparisonWrapper(std::array<float, N> data) : data{begin(data), end(data)}{}
-	std::vector<float> data;
-
-	bool operator==(VectorComparisonWrapper const & other) const {
-		return equal(begin(data), end(data), begin(other.data), end(other.data), [](auto lhs, auto rhs) {
-			return fabs(lhs - rhs) < epsilon;
-		});
-	}
-};
-
-std::ostream & operator<<(std::ostream & out, VectorComparisonWrapper const & vector) {
-	out << "Vector {\n";
-		copy(begin(vector.data), end(vector.data), std::ostream_iterator<float>{out, ", "});
-	out << "}\n";
-	return out;
-}
 
 void testMatrixMultiplyEmptyMatrices() {
 	f2d_vec_t const lhs{};
@@ -111,13 +54,10 @@ void testMatrixMultiplyDifferentSizes() {
 	ASSERT_EQUAL(expected, matMultiply(lhs, rhs));
 }
 
-void assertMatrixEqual(f2d_vec_t const & expected, f2d_vec_t const & actual) {
-	ASSERT_EQUAL(MatrixComparisonWrapper{expected}, MatrixComparisonWrapper{actual});
-}
 
 void testRotationMatrixPosition1OfSequenceOpenDoor() {
 	std::array<float, 3> angles{{-0.027, -0.008, 0.713}};
-	f2d_vec_t expected {
+	f2d_vec_t const expected{
 		{ 0.756379,  -0.654085, -0.00799991, },
 		{ 0.654031,   0.755986,  0.0269959,  },
 		{-0.0116098, -0.0256513, 0.999604,   }
@@ -127,7 +67,7 @@ void testRotationMatrixPosition1OfSequenceOpenDoor() {
 
 void testRotationMatrixPosition2OfSequenceOpenDoor() {
 	std::array<float, 3> angles{{-0.06, 0.192, 0.598}};
-	f2d_vec_t expected {
+	f2d_vec_t const expected{
 		{ 0.811277, -0.552645,  0.190823  },
 		{ 0.552521,  0.831418,  0.0588621 },
 		{-0.191183,  0.0576799, 0.979858  }
@@ -137,7 +77,7 @@ void testRotationMatrixPosition2OfSequenceOpenDoor() {
 
 void testRotationMatrixPosition3OfSequenceOpenDoor() {
 	std::array<float, 3> angles{{-0.059, 0.069, -1.543}};
-	f2d_vec_t expected {
+	f2d_vec_t const expected {
 		{ 0.0277266,   0.997235, 0.0689453 },
 		{-0.997987,   0.0236806, 0.0588255 },
 		{ 0.0570302, -0.0704375, 0.995885  }
@@ -147,7 +87,7 @@ void testRotationMatrixPosition3OfSequenceOpenDoor() {
 
 void testRotationMatrixPosition4OfSequenceOpenDoor() {
 	std::array<float, 3> angles{{-0.053, 0.055, -1.555}};
-	f2d_vec_t expected {
+	f2d_vec_t const expected {
 		{ 0.0157718,  0.998363,  0.0549723 },
 		{-0.998517,   0.0128617, 0.0528951 },
 		{ 0.0521015, -0.055725,  0.997086  }
@@ -157,7 +97,7 @@ void testRotationMatrixPosition4OfSequenceOpenDoor() {
 
 void testRotationMatrixPosition5OfSequenceOpenDoor() {
 	std::array<float, 3> angles{-0.006, 0.614, -0.106};
-	f2d_vec_t expected {
+	f2d_vec_t const expected {
 		{ 0.812762,  0.0864769, 0.576141   },
 		{-0.109237,  0.994004,  0.00490407 },
 		{-0.572263, -0.0669219, 0.817335   }
@@ -168,7 +108,7 @@ void testRotationMatrixPosition5OfSequenceOpenDoor() {
 
 void testRotationMatrixPosition6OfSequenceOpenDoor() {
 	std::array<float, 3> angles{{0.023, 0.216, -0.125}};
-	f2d_vec_t expected {
+	f2d_vec_t const expected {
 		{ 0.969142,  0.121778,    0.214324  },
 		{-0.119751,  0.99255,    -0.0224636 },
 		{-0.215463, -0.00389522,  0.976504  }
@@ -176,9 +116,6 @@ void testRotationMatrixPosition6OfSequenceOpenDoor() {
 	assertMatrixEqual(expected, rotMatrix(angles.data()));
 }
 
-void assertVectorEqual(std::vector<float> const & expected, std::vector<float> const & actual) {
-	ASSERT_EQUAL(VectorComparisonWrapper{expected}, VectorComparisonWrapper{actual});
-}
 
 void testGetEulerAnglesPosition1OfSequenceOpenDoor() {
 	f2d_vec_t const rotationMatrix {
@@ -261,10 +198,6 @@ void testGetEulerAnglesForMinumumBetaRotation() {
 	assertVectorEqual(expected, getEulerAngles(rotationMatrix));
 }
 
-template <std::size_t N>
-void assertArrayEqual(std::array<float, N> const & expected, std::array<float, N> const & actual) {
-	ASSERT_EQUAL(VectorComparisonWrapper{expected}, VectorComparisonWrapper{actual});
-}
 
 f2d_vec_t const openDoorTransformationMatrix {
 	{0.498557, -0.0310022,   0.866302,  0.212972 },
