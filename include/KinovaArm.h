@@ -33,7 +33,7 @@ struct KinovaArm {
 	void moveToPosition(bool init);
 	void sequenceDone();
 
-	void teachPosition(KinovaPts::Objective targetObjective);
+	void teachPosition(Kinova::Objective targetObjective);
 	void moveToPoint();
 	void moveToOrigin();
 	void savePoint(int EventVariable);
@@ -44,7 +44,7 @@ struct KinovaArm {
 
 	void setJoystick(int x, int y, int z);
 
-	void setTarget(KinovaPts::Objective targetObjective);
+	void setTarget(Kinova::Objective targetObjective);
 
 	auto getError() -> bool;
 	auto getInitialize() -> bool;
@@ -72,8 +72,8 @@ private:
 	KinovaStatus::SteeringMode mode = KinovaStatus::NoMode;
 	int currentPosition = -1;
 
-	KinovaPts::Objective TargetObjective;
-	KinovaPts::Objective teachTarget;
+	Kinova::Objective TargetObjective;
+	Kinova::Objective teachTarget;
 
 	int joystickX = 0;
 	int joystickY = 0;

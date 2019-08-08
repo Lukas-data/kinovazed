@@ -11,6 +11,10 @@
 
 #define FILEPATH "CybathlonObjectives.dat"
 
+PositionHandling::PositionHandling(std::istream & in) : PositionHandling{} {
+	loadData(in);
+}
+
 
 PositionHandling::~PositionHandling() {
   writeToFile();
@@ -25,7 +29,7 @@ void PositionHandling::init() {
 
 //Writes Requested targetCoordinates[6] of Objective by pos-number and its Subpositions by Sequence-number. Takes currentPosition[6] if Objective is 0.
 //Returns 0 if sequence has ended.
-auto PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objective targetObjective, float* currentCoordinates) -> bool {
+auto PositionHandling::getCoordinates(float* targetCoordinates, Kinova::Objective targetObjective, float* currentCoordinates) -> bool {
 
   if (targetObjective == 0) {
     ALL_LOG(logDEBUG3) << "PositionHandling::No targetObjective. ";
@@ -75,7 +79,7 @@ auto PositionHandling::getCoordinates(float* targetCoordinates, KinovaPts::Objec
 }
 
 /*Check if targetObjective is known ZeroObjective. Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.*/
-void PositionHandling::setZeroObjective(KinovaPts::Objective targetObjective, float* currentCoordinates) {
+void PositionHandling::setZeroObjective(Kinova::Objective targetObjective, float* currentCoordinates) {
   if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), targetObjective-1) != ZeroObjectives.end() && SequenceCounter == 0) {
     for (int i = 0; i < 6; i++) {
       location[targetObjective-1][i] = currentCoordinates[i];
@@ -84,7 +88,7 @@ void PositionHandling::setZeroObjective(KinovaPts::Objective targetObjective, fl
   }
 }
 
-bool PositionHandling::getOrigin(float* targetCoordinates, KinovaPts::Objective targetObjective, float* currentCoordinates) {
+bool PositionHandling::getOrigin(float* targetCoordinates, Kinova::Objective targetObjective, float* currentCoordinates) {
   
   //Check if Zero.  Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.
   bool isZero = true;
@@ -100,7 +104,7 @@ bool PositionHandling::getOrigin(float* targetCoordinates, KinovaPts::Objective 
   }
 }
 
-auto PositionHandling::getOrigin(Kinova::Coordinates & targetCoordinates, KinovaPts::Objective targetObjective) -> bool {
+auto PositionHandling::getOrigin(Kinova::Coordinates & targetCoordinates, Kinova::Objective targetObjective) -> bool {
   bool isZero = true;
   for (int i = 0; i < 6; i++) {
     if ( location[targetObjective-1][i] != 0 ) { isZero = false; }
@@ -126,9 +130,9 @@ void PositionHandling::resetSequence() {
 
 
 /*Saves coordinates to current Sequence Point or as Location in object. Returns true if successfull.*/
-bool PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targetObjective) {
+bool PositionHandling::savePoint(float coordinates[6], Kinova::Objective targetObjective) {
   //check targetObjective
-  if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives ) {
+  if (targetObjective > 0 && targetObjective <= Kinova::NumberOfObjectives ) {
     coordTransform(coordinates, InvTransMat[targetObjective-1]);
 //    std::vector<float> vec_coord(coordinates, coordinates + 6);
     std::vector<float> vec_coord(coordinates, coordinates + 6);
@@ -164,7 +168,7 @@ bool PositionHandling::savePoint(float coordinates[6], KinovaPts::Objective targ
 
 
 /*Saves coordinates as origin of objectiv.*/
-void PositionHandling::saveOrigin(float coordinates[6], KinovaPts::Objective targetObjective) {
+void PositionHandling::saveOrigin(float coordinates[6], Kinova::Objective targetObjective) {
   for (int i = 0; i < 6; i++) {
     location[targetObjective-1][i] = coordinates[i];
   }
@@ -172,9 +176,9 @@ void PositionHandling::saveOrigin(float coordinates[6], KinovaPts::Objective tar
 }
 
 
-void PositionHandling::deletePoint(KinovaPts::Objective targetObjective) {
+void PositionHandling::deletePoint(Kinova::Objective targetObjective) {
   //check targetObjective and SequenceCounter
-  if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives &&
+  if (targetObjective > 0 && targetObjective <= Kinova::NumberOfObjectives &&
       SequenceCounter >= 0 && SequenceCounter < points[targetObjective-1].size() ) {
     //Delete Element
     points[targetObjective-1].erase(points[targetObjective-1].begin() + SequenceCounter);
@@ -185,7 +189,7 @@ void PositionHandling::loadData(std::istream & in) {
 	ZeroObjectives.clear();
 	std::string line{};
 	  //Reads Objectives from Files
-	  for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
+	  for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
 	    if (std::getline(in,line)) {
 	      std::istringstream iss(line);
 	      int n;
@@ -216,7 +220,7 @@ void PositionHandling::loadData(std::istream & in) {
 	  std::getline(in,line);
 
 	  //reset Point-Vector
-	  for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
+	  for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
 	    f2d_vec_t(0,std::vector<float>(6)).swap(points[i]);
 	  }
 
@@ -226,7 +230,7 @@ void PositionHandling::loadData(std::istream & in) {
 	  //bool PrePoint = true;
 	  f2d_vec_t::iterator it = points[location].begin();
 
-	  while (std::getline(in,line) && location < KinovaPts::NumberOfObjectives) {
+	  while (std::getline(in,line) && location < Kinova::NumberOfObjectives) {
 	    ALL_LOG(logDEBUG4) << "PositionHandling::ReadFromFile: "
 	                       << "Objective: " << location << ", Point: " << sequence;
 	    std::istringstream iss(line);
@@ -269,7 +273,7 @@ void PositionHandling::writeToFile() {
   std::ofstream saveFile (FILEPATH);
   if ( saveFile.is_open() ) {
     //Write Locations
-    for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
+    for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
       if (std::find(ZeroObjectives.begin(), ZeroObjectives.end(), i) != ZeroObjectives.end() ) {
         //Objecitve is a ZeroObjective. 
         for (int j = 0; j < 6; j++) {
@@ -286,7 +290,7 @@ void PositionHandling::writeToFile() {
     }
     saveFile << "\n";
     //Write Sequences
-    for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
+    for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
       for (int j = 0; j < points[i].size(); j++) {
         for (int k = 0; k < 6; k++) {
           saveFile << (int)(points[i][j][k]*1000) << " ";
@@ -309,7 +313,7 @@ int PositionHandling::getSequence() {
 void PositionHandling::calcTransMat() {
   double p[3], c[3], s[3];
   //Calculate Sinus and Cosinus of all angles
-  for (int i = 0; i < KinovaPts::NumberOfObjectives; i++) {
+  for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
     for (int j =0; j<3; j++) {
     p[j] = location[i][j];
     c[j] = cos( location[i][j+3] );

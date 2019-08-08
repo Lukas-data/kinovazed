@@ -108,7 +108,7 @@ void StateSteering::tickAction() {
 
 // MovePosition
 void StateMovePosition::entryActionHook() {
-	JacoZED->setTarget(static_cast<KinovaPts::Objective>(EventVariable));
+	JacoZED->setTarget(static_cast<Kinova::Objective>(EventVariable));
 }
 void StateMovePosition::exitActionHook() {
 	JacoZED->sequenceDone();
@@ -120,7 +120,7 @@ void StateMovePosition::tickAction() {
 
 //Teach
 void StateTeach::entryActionHook() {
-	JacoZED->teachPosition(static_cast<KinovaPts::Objective>(EventVariable));
+	JacoZED->teachPosition(static_cast<Kinova::Objective>(EventVariable));
 }
 void StateTeach::exitActionHook() {
 	JacoZED->dontMove();

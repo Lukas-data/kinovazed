@@ -239,9 +239,9 @@ void KinovaArm::unfold() {
 		externalEvent = KinovaFSM::Unfolded;
 		return;
 	}
-	if (currentPosition != KinovaPts::Home) {
-		if (TargetObjective != KinovaPts::Home) {
-			setTarget(KinovaPts::Home);
+	if (currentPosition != Kinova::Home) {
+		if (TargetObjective != Kinova::Home) {
+			setTarget(Kinova::Home);
 		}
 		try {
 			KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
@@ -361,8 +361,8 @@ void KinovaArm::move() {
 }
 
 /*Sets the Targetpoint for the Movement*/
-void KinovaArm::setTarget(KinovaPts::Objective targetObjective) {
-	if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives) {
+void KinovaArm::setTarget(Kinova::Objective targetObjective) {
+	if (targetObjective > 0 && targetObjective <= Kinova::NumberOfObjectives) {
 		TargetObjective = targetObjective;
 		PositionHandler.resetSequence();
 		float currentCoordinates[6];
@@ -418,13 +418,13 @@ void KinovaArm::moveToPosition(bool init) {
 
 void KinovaArm::sequenceDone() {
 	PositionHandler.resetSequence();
-	TargetObjective = KinovaPts::NoObjective;
+	TargetObjective = Kinova::NoObjective;
 }
 
 /*sets the TeachingTarget (Objective at whitch will be teached). Keeps old objective and Sequence when called with Zero.*/
-void KinovaArm::teachPosition(KinovaPts::Objective targetObjective) {
+void KinovaArm::teachPosition(Kinova::Objective targetObjective) {
 	if (targetObjective != 0) {
-		if (targetObjective > 0 && targetObjective <= KinovaPts::NumberOfObjectives) {
+		if (targetObjective > 0 && targetObjective <= Kinova::NumberOfObjectives) {
 			ALL_LOG(logDEBUG) << "new teachTarget, sequence reset.";
 			float currentCoordinates[6];
 			getPosition(currentCoordinates);

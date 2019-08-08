@@ -3,43 +3,37 @@
 
 #include "Coordinates.h"
 #include "Matrix.h"
+#include "Objective.h"
 
 #include <vector>
 
-namespace KinovaPts {
-
-static constexpr int NumberOfObjectives = 8; //excl. NoObjective
-enum Objective {
-	NoObjective, Home, Bell, Handle, OpenDoor, PullDoor, PlaceCup, Antenna, AntennaPull
-};
-
-}
 
 struct PositionHandling {
+	explicit PositionHandling(std::istream & in);
 	PositionHandling() :
-			location(KinovaPts::NumberOfObjectives, std::vector<float>(6)), points(KinovaPts::NumberOfObjectives, f2d_vec_t(0, std::vector<float>(6))), TransMat(KinovaPts::NumberOfObjectives, f2d_vec_t(4, std::vector<float>(4))), InvTransMat(
-					KinovaPts::NumberOfObjectives, f2d_vec_t(4, std::vector<float>(4))) {
+			location(Kinova::NumberOfObjectives, std::vector<float>(6)), points(Kinova::NumberOfObjectives, f2d_vec_t(0, std::vector<float>(6))), TransMat(Kinova::NumberOfObjectives, f2d_vec_t(4, std::vector<float>(4))), InvTransMat(
+					Kinova::NumberOfObjectives, f2d_vec_t(4, std::vector<float>(4))) {
 	}
 	~PositionHandling();
 
 	void init();
-	auto getCoordinates(float *coordinates, KinovaPts::Objective targetObjective, float *currentCoordinates) -> bool;
-	auto getOrigin(float *coordinates, KinovaPts::Objective targetObjective, float *currentCoordinates) -> bool;
-	auto getOrigin(Kinova::Coordinates & targetCoordinates, KinovaPts::Objective targetObjective) -> bool;
+	auto getCoordinates(float *coordinates, Kinova::Objective targetObjective, float *currentCoordinates) -> bool;
+	auto getOrigin(float *coordinates, Kinova::Objective targetObjective, float *currentCoordinates) -> bool;
+	auto getOrigin(Kinova::Coordinates & targetCoordinates, Kinova::Objective targetObjective) -> bool;
 	void incrementSequence();
 	void decrementSequence();
 	void resetSequence();
-	void setZeroObjective(KinovaPts::Objective targetObjective, float *currentCoordinates);
-	auto savePoint(float coordinates[6], KinovaPts::Objective targetObjective) -> bool;
-	void saveOrigin(float coordinates[6], KinovaPts::Objective targetObjective);
-	void deletePoint(KinovaPts::Objective targetObjective);
+	void setZeroObjective(Kinova::Objective targetObjective, float *currentCoordinates);
+	auto savePoint(float coordinates[6], Kinova::Objective targetObjective) -> bool;
+	void saveOrigin(float coordinates[6], Kinova::Objective targetObjective);
+	void deletePoint(Kinova::Objective targetObjective);
 	auto getSequence() -> int;
 	void writeToFile();
 
 private:
 	using Location = std::vector<Kinova::Coordinates>;
 	using LocationSequence = std::vector<Location>;
-	//static KinovaPts::posCoordinates Locations[KinovaPts::NumberOfObjectives][NUMBER_OF_SUBPOINTS];
+	//static Kinova::posCoordinates Locations[Kinova::NumberOfObjectives][NUMBER_OF_SUBPOINTS];
 	using f2d_vec_t = std::vector<std::vector<float>>;
 	using f3d_vec_t = std::vector<f2d_vec_t>;
 	f2d_vec_t location;
