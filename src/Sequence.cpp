@@ -4,6 +4,7 @@
 
 #include <array>
 #include <cmath>
+#include <cstddef>
 
 #include <stdexcept>
 #include <utility>
@@ -73,6 +74,10 @@ auto Sequence::getOrigin() const -> Coordinates {
 
 auto Sequence::endReached() const -> bool {
 	return currentPoint >= points.size();
+}
+
+auto Sequence::numberOfPoints() const -> std::size_t {
+	return points.size();
 }
 
 void Sequence::nextPoint() {

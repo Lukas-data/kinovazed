@@ -1,3 +1,4 @@
+
 #include "PositionHandlingSuite.h"
 #include "cute.h"
 #include "PositionHandling.h"
@@ -119,13 +120,47 @@ void testGetCoordinateForAntennaPullObjective() {
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
-void testGetCoordinateForNoObjectiveDoesNotChangeCoordinates() {
-	std::array<float, 6> coordinates{1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f};
-	auto const expectedCoordinates = coordinates;
+void testGetCoordinateForNoObjectiveThrows() {
+	std::array<float, 6> coordinates{};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::NoObjective);
-	ASSERT_EQUAL(expectedCoordinates, coordinates);
+	ASSERT_THROWS(positionHandling.getCoordinates(coordinates.data(), Kinova::NoObjective), std::invalid_argument);
+}
+
+void testGetCoordinateThrowsForUnknownObjective() {
+	std::array<float, 6> coordinates{};
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	ASSERT_THROWS(positionHandling.getCoordinates(coordinates.data(), static_cast<Kinova::Objective>(255)), std::invalid_argument);
+}
+
+void testGetCoordinateThrowsIfValidObjectiveHasNotBeenInitialized() {
+	std::array<float, 6> coordinates{};
+	std::istringstream positionData{};
+	PositionHandling positionHandling{positionData};
+	ASSERT_THROWS(positionHandling.getCoordinates(coordinates.data(), Kinova::Home), std::invalid_argument);
+}
+
+auto toCoordinates(std::vector<float> const & data) {
+	return Kinova::Coordinates{data[0], data[1], data[2], data[3], data[4], data[5]};
+}
+
+void testCompareContentOfSequence() {
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	auto location = positionHandling.getLocations();
+	auto points = positionHandling.getPoints();
+	auto sequences = positionHandling.getSequences();
+
+	for (int objective = 0; objective < Kinova::NumberOfObjectives; objective++) {
+		auto sequence = sequences[static_cast<Kinova::Objective>(objective + 1)];
+		ASSERT_EQUAL(sequence.getOrigin(), toCoordinates(location[objective]));
+		ASSERT_EQUAL(sequence.numberOfPoints(), points[objective].size());
+		for (auto point : points[objective]) {
+			ASSERT_EQUAL(sequence.getCurrentCoordinates(), toCoordinates(point));
+			sequence.nextPoint();
+		}
+	}
 }
 
 cute::suite make_suite_PositionHandlingSuite() {
@@ -138,6 +173,9 @@ cute::suite make_suite_PositionHandlingSuite() {
 	s.push_back(CUTE(testGetCoordinateForPlaceCupObjective));
 	s.push_back(CUTE(testGetCoordinateForAntennaObjective));
 	s.push_back(CUTE(testGetCoordinateForAntennaPullObjective));
-	s.push_back(CUTE(testGetCoordinateForNoObjectiveDoesNotChangeCoordinates));
+	s.push_back(CUTE(testGetCoordinateForNoObjectiveThrows));
+	s.push_back(CUTE(testGetCoordinateThrowsForUnknownObjective));
+	s.push_back(CUTE(testGetCoordinateThrowsIfValidObjectiveHasNotBeenInitialized));
+	s.push_back(CUTE(testCompareContentOfSequence));
 	return s;
 }

@@ -52,6 +52,11 @@ void testEndReached() {
 	ASSERT(sequence.endReached());
 }
 
+void testNumberOfPoints() {
+	auto const sequence = createTestSequence();
+	ASSERT_EQUAL(2, sequence.numberOfPoints());
+}
+
 void testGetCurrentCoordinatesAtEndThrows() {
 	auto sequence = createTestSequence();
 	sequence.nextPoint();
@@ -110,6 +115,7 @@ cute::suite make_suite_SequenceSuite() {
 	s.push_back(CUTE(testReset));
 	s.push_back(CUTE(testPreviousPoint));
 	s.push_back(CUTE(testEndReached));
+	s.push_back(CUTE(testNumberOfPoints));
 	s.push_back(CUTE(testGetCurrentCoordinatesAtEndThrows));
 	s.push_back(CUTE(testNextPointAtEndThrows));
 	s.push_back(CUTE(testPreviousPointAtBeginningThrows));

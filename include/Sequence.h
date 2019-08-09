@@ -12,6 +12,7 @@ namespace Kinova {
 using f2d_vec_t = std::vector<std::vector<float>>;
 
 struct Origin {
+	Origin() = default;
 	explicit Origin(Coordinates const & origin);
 
 	auto getCoordinates() const -> Coordinates const &;
@@ -25,13 +26,14 @@ private:
 };
 
 struct Sequence {
-
+	Sequence() = default;
 	Sequence(Coordinates origin, std::vector<Coordinates> points);
 
 	auto getCurrentCoordinates() const -> Coordinates;
 	auto getTransformedCoordinates() const -> Coordinates;
 	auto getOrigin() const -> Coordinates;
 	auto endReached() const -> bool;
+	auto numberOfPoints() const -> std::size_t;
 	void nextPoint();
 	void previousPoint();
 	void reset();

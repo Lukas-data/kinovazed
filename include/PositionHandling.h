@@ -32,6 +32,18 @@ struct PositionHandling {
 	auto getSequence() -> int;
 	void writeToFile();
 
+	auto getLocations() const {
+		return location;
+	}
+
+	auto getPoints() const {
+		return points;
+	}
+
+	auto getSequences() const {
+		return sequences;
+	}
+
 private:
 	using f2d_vec_t = std::vector<std::vector<float>>;
 	using f3d_vec_t = std::vector<f2d_vec_t>;

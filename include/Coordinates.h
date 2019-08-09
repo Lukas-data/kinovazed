@@ -1,6 +1,8 @@
 #ifndef KINOVA_COORDINATES_H_
 #define KINOVA_COORDINATES_H_
 
+#include "Exceptions.h"
+
 #include <array>
 #include <cmath>
 #include <cstddef>
@@ -31,8 +33,8 @@ struct Coordinates {
 		case 5:
 			return roll;
 		}
-		std::ostringstream errorMessage{"PosCoordinate index is out of range. Must be <6: "};
-		errorMessage << index;
+		std::ostringstream errorMessage{};
+		errorMessage << "PosCoordinate index is out of range. Must be <6: " << index;
 		throw std::invalid_argument{errorMessage.str()};
 	}
 
@@ -50,19 +52,13 @@ struct Coordinates {
 private:
 	static void checkCooridateValues(float x, float y, float z) {
 		if (x < -0.8f || x > 0.8) {
-			std::ostringstream errorMessage{"Value of x is out of valid range [-0.8, 0.8]: "};
-			errorMessage << x;
-			throw std::invalid_argument{errorMessage.str()};
+			throw composeException<std::invalid_argument>("Value of x is out of valid range [-0.8, 0.8]: ", x);
 		}
 		if (y < -0.85 || y > 0.85) {
-			std::ostringstream errorMessage{"Value of y is out of valid range [-0.85, 0.85]: "};
-			errorMessage << y;
-			throw std::invalid_argument{errorMessage.str()};
+			throw composeException<std::invalid_argument>("Value of y is out of valid range [-0.85, 0.85]: ", y);
 		}
 		if (z >= 1.15) {
-			std::ostringstream errorMessage{"Value of z is out of valid range [?, 1.15]: "};
-			errorMessage << z;
-			throw std::invalid_argument{errorMessage.str()};
+			throw Kinova::composeException<std::invalid_argument>("Value of z is out of valid range [?, 1.15]: ", z);
 		}
 	}
 };

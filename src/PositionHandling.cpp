@@ -1,10 +1,12 @@
 #include "PositionHandling.h"
+#include "Exceptions.h"
 #include "Log.h"
+#include "Sequence.h"
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <algorithm>
 #include <cmath>
+#include <stdexcept>
 #include <vector>
 
 
@@ -32,8 +34,11 @@ void PositionHandling::init() {
 auto PositionHandling::getCoordinates(float* targetCoordinates, Kinova::Objective targetObjective) -> bool {
 
   if (targetObjective == Kinova::NoObjective) {
-    ALL_LOG(logDEBUG3) << "PositionHandling::No targetObjective. ";
-    return false;
+	  throw std::invalid_argument{"Cannot call GetCoordinates() for NoObjective"};
+  }
+
+  if (sequences.count(targetObjective) == 0) {
+	  throw Kinova::composeException<std::invalid_argument>("Objective does not have a sequence: ", targetObjective, ' ', Kinova::getObjectiveName(targetObjective));
   }
 
   //Check SequenceNumber. Returns 0 and resets ZeroObjective if Sequence is over.
@@ -171,6 +176,8 @@ void PositionHandling::deletePoint(Kinova::Objective targetObjective) {
 
 void PositionHandling::loadData(std::istream & in) {
 	ZeroObjectives.clear();
+	std::vector<Kinova::Coordinates> loadedOrigins{};
+	std::vector<std::vector<Kinova::Coordinates>> loadedPoints{Kinova::NumberOfObjectives};
 	std::string line{};
 	  //Reads Objectives from Files
 	  for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
@@ -192,6 +199,8 @@ void PositionHandling::loadData(std::istream & in) {
 	        if (vec_int[j] != 0) { isZero = false; }
 	        location[i][j] = (float)vec_int[j]/1000;
 	      }
+	      Kinova::Coordinates loadedCoordinates{location[i][0], location[i][1], location[i][2], location[i][3], location[i][4], location[i][5]};
+	      loadedOrigins.push_back(loadedCoordinates);
 	      if (isZero) {
 	        ZeroObjectives.insert(i);
 	        ALL_LOG(logDEBUG2) << "PositionHandling::ReadFromFile: "
@@ -214,7 +223,7 @@ void PositionHandling::loadData(std::istream & in) {
 	  //bool PrePoint = true;
 	  f2d_vec_t::iterator it = points[location].begin();
 
-	  while (std::getline(in,line) && location < Kinova::NumberOfObjectives) {
+	   while (std::getline(in,line) && location < Kinova::NumberOfObjectives) {
 	    ALL_LOG(logDEBUG4) << "PositionHandling::ReadFromFile: "
 	                       << "Objective: " << location << ", Point: " << sequence;
 	    std::istringstream iss(line);
@@ -239,9 +248,14 @@ void PositionHandling::loadData(std::istream & in) {
 	        vec_float[i] = (float)vec_int[i]/1000;
 	      }
 	      points[location].push_back(vec_float);
+	      loadedPoints[location].push_back(Kinova::Coordinates{vec_float[0], vec_float[1], vec_float[2], vec_float[3], vec_float[4], vec_float[5]});
 	      sequence++;
 	    }
 	  }
+
+	   for (auto index = 0; index < loadedOrigins.size(); index++) {
+		   sequences[static_cast<Kinova::Objective>(index + 1)] = Kinova::Sequence{loadedOrigins.at(index), loadedPoints.at(index)};
+	   }
 }
 
 /*Reads Location and Points Vectors from SaveFile*/
