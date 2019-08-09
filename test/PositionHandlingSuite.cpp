@@ -113,21 +113,18 @@ void testGetCoordinateForAntennaPullObjective() {
 }
 
 void testGetCoordinateForNoObjectiveThrows() {
-	Kinova::Coordinates coordinates{};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
 	ASSERT_THROWS(positionHandling.getCoordinates(Kinova::NoObjective), std::invalid_argument);
 }
 
 void testGetCoordinateThrowsForUnknownObjective() {
-	Kinova::Coordinates coordinates{};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
 	ASSERT_THROWS(positionHandling.getCoordinates(static_cast<Kinova::Objective>(255)), std::invalid_argument);
 }
 
 void testGetCoordinateThrowsIfValidObjectiveHasNotBeenInitialized() {
-	Kinova::Coordinates coordinates{};
 	std::istringstream positionData{};
 	PositionHandling positionHandling{positionData};
 	ASSERT_THROWS(positionHandling.getCoordinates(Kinova::Home), std::invalid_argument);
@@ -135,7 +132,7 @@ void testGetCoordinateThrowsIfValidObjectiveHasNotBeenInitialized() {
 
 void testCompareContentOfSequence() {
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling const positionHandling{positionData};
 	auto location = positionHandling.getLocations();
 	auto points = positionHandling.getPoints();
 	auto sequences = positionHandling.getSequences();
