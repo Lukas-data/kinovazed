@@ -88,22 +88,6 @@ void PositionHandling::setZeroObjective(Kinova::Objective targetObjective, float
   }
 }
 
-bool PositionHandling::getOrigin(float* targetCoordinates, Kinova::Objective targetObjective, float* currentCoordinates) {
-  
-  //Check if Zero.  Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.
-  bool isZero = true;
-  for (int i = 0; i < 6; i++) {
-    if ( location[targetObjective-1][i] != 0 ) { isZero = false; }
-  }
-  if (isZero) { return false; }
-  else {
-    for (int i = 0; i < 6; i++) {
-        targetCoordinates[i] = location[targetObjective-1][i];
-    }
-  return true;
-  }
-}
-
 auto PositionHandling::getOrigin(Kinova::Coordinates & targetCoordinates, Kinova::Objective targetObjective) -> bool {
   bool isZero = true;
   for (int i = 0; i < 6; i++) {
