@@ -513,7 +513,7 @@ void KinovaArm::savePoint(int EventVariable) {
 	if (EventVariable == PositionHandler.getSequence()) {
 		getPosition(currentCoordinates.data());
 
-		PositionHandler.savePoint(currentCoordinates.data(), teachTarget);
+		PositionHandler.savePoint(Kinova::Coordinates{currentCoordinates}, teachTarget);
 		PositionHandler.writeToFile();
 		externalEvent = KinovaFSM::PointSaved;
 	}

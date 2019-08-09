@@ -5,6 +5,7 @@
 
 #include <array>
 #include <fstream>
+#include <iterator>
 #include <sstream>
 #include <string>
 #include <stdexcept>
@@ -100,32 +101,31 @@ void PositionHandling::resetSequence() {
 }
 
 /*Saves coordinates to current Sequence Point or as Location in object. Returns true if successful.*/
-bool PositionHandling::savePoint(float coordinates[6], Kinova::Objective targetObjective) {
+bool PositionHandling::savePoint(Kinova::Coordinates coordinates, Kinova::Objective targetObjective) {
 	//check targetObjective
-	if (targetObjective > 0 && targetObjective <= Kinova::NumberOfObjectives) {
-		coordTransform(coordinates, InvTransMat[targetObjective - 1]);
-//    std::vector<float> vec_coord(coordinates, coordinates + 6);
-		std::vector<float> vec_coord(coordinates, coordinates + 6);
-		//check SequenceCounter
-		if (SequenceCounter == points[targetObjective - 1].size()) {
-			points[targetObjective - 1].push_back(vec_coord);
-			return true;
-		} else if (SequenceCounter == -1) {
-			points[targetObjective - 1].insert(points[targetObjective - 1].begin(), vec_coord);
-			SequenceCounter = 0;
-			return true;
-		} else if (SequenceCounter >= 0 && SequenceCounter < points[targetObjective - 1].size()) {
-			for (int i = 0; i < 6; i++) {
-				points[targetObjective - 1][SequenceCounter][i] = coordinates[i];
-			}
-			return true;
-		} else {
-			ALL_LOG(logWARNING) << "PositionHandling::SavePoint: SequenceCounter is out of bound: " << SequenceCounter << " at SequenceSize off "
-					<< points[targetObjective - 1].size();
-			return false;
-		}
-	} else {
+	if (targetObjective <= 0 || targetObjective > Kinova::NumberOfObjectives) {
 		ALL_LOG(logERROR) << "PositionHandling::SavePoint: targetObjective is out of bound: " << targetObjective;
+		return false;
+	}
+	coordTransform(coordinates, InvTransMat[targetObjective - 1]);
+	std::array<float, 6> const coordinatesData = coordinates;
+	std::vector<float> const vec_coord{begin(coordinatesData), end(coordinatesData)};
+	//check SequenceCounter
+	if (SequenceCounter == points[targetObjective - 1].size()) { //at the end
+		points[targetObjective - 1].push_back(vec_coord);
+		return true;
+	} else if (SequenceCounter == -1) {  //TODO: tcorbat: Is this ever going to happen?
+		points[targetObjective - 1].insert(points[targetObjective - 1].begin(), vec_coord);
+		SequenceCounter = 0;
+		return true;
+	} else if (SequenceCounter >= 0 && SequenceCounter < points[targetObjective - 1].size()) { //somewhere in the sequence
+		for (int i = 0; i < 6; i++) {
+			points[targetObjective - 1][SequenceCounter][i] = coordinates[i];
+		}
+		return true;
+	} else { //out of range
+		ALL_LOG(logWARNING) << "PositionHandling::SavePoint: SequenceCounter is out of bound: " << SequenceCounter << " at SequenceSize off "
+				<< points[targetObjective - 1].size();
 		return false;
 	}
 }

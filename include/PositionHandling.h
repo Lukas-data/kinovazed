@@ -28,7 +28,7 @@ struct PositionHandling {
 	void decrementSequence();
 	void resetSequence();
 	void setZeroObjective(Kinova::Objective targetObjective, float *currentCoordinates);
-	auto savePoint(float coordinates[6], Kinova::Objective targetObjective) -> bool;
+	auto savePoint(Kinova::Coordinates coordinates, Kinova::Objective targetObjective) -> bool;
 	void saveOrigin(float coordinates[6], Kinova::Objective targetObjective);
 	void deletePoint(Kinova::Objective targetObjective);
 	auto getSequence() -> int;
