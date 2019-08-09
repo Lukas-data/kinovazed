@@ -474,15 +474,15 @@ void KinovaArm::moveToPoint() {
 
 /*moves Arm to origin of current TeachTarget*/
 void KinovaArm::moveToOrigin() {
-	Kinova::Coordinates targetCoordinates{};
-	Kinova::Coordinates currentCoordinate{};
 	float currentCoordinates[6];
+	Kinova::Coordinates currentCoordinate{};
 	currentPosition = 0;
 
 	getPosition(currentCoordinates);
 
 	//Check if Origin is defined
-	if (PositionHandler.getOrigin(targetCoordinates, teachTarget)) {
+	if (PositionHandler.hasOrigin(teachTarget)) {
+		auto const targetCoordinates = PositionHandler.getOrigin(teachTarget);
 		//Check if in range
 		bool PointReached = checkIfReached(currentCoordinates);
 		checkCurrents();

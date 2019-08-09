@@ -130,6 +130,18 @@ void testGetCoordinateThrowsIfValidObjectiveHasNotBeenInitialized() {
 	ASSERT_THROWS(positionHandling.getCoordinates(Kinova::Home), std::invalid_argument);
 }
 
+void testHasOriginForTargetWithoutOrigin() {
+	std::istringstream positionData{exampleData};
+	PositionHandling const positionHandling{positionData};
+	ASSERT(!positionHandling.hasOrigin(Kinova::OpenDoor));
+}
+
+void testHasOriginForTargetWithOrigin() {
+	std::istringstream positionData{exampleData};
+	PositionHandling const positionHandling{positionData};
+	ASSERT(positionHandling.hasOrigin(Kinova::Handle));
+}
+
 void testCompareContentOfSequence() {
 	std::istringstream positionData{exampleData};
 	PositionHandling const positionHandling{positionData};
@@ -162,5 +174,7 @@ cute::suite make_suite_PositionHandlingSuite() {
 	s.push_back(CUTE(testGetCoordinateThrowsForUnknownObjective));
 	s.push_back(CUTE(testGetCoordinateThrowsIfValidObjectiveHasNotBeenInitialized));
 	s.push_back(CUTE(testCompareContentOfSequence));
+	s.push_back(CUTE(testHasOriginForTargetWithoutOrigin));
+	s.push_back(CUTE(testHasOriginForTargetWithOrigin));
 	return s;
 }

@@ -3,11 +3,13 @@
 #include "Log.h"
 #include "Sequence.h"
 
+#include <algorithm>
 #include <array>
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <cmath>
+#include <iterator>
 #include <stdexcept>
 #include <vector>
 
@@ -90,21 +92,17 @@ void PositionHandling::setZeroObjective(Kinova::Objective targetObjective, float
 	}
 }
 
-auto PositionHandling::getOrigin(Kinova::Coordinates &targetCoordinates, Kinova::Objective targetObjective) -> bool {
-	bool isZero = true;
-	for (int i = 0; i < 6; i++) {
-		if (location[targetObjective - 1][i] != 0) {
-			isZero = false;
-		}
-	}
-	if (isZero) {
-		return false;
-	} else {
-		for (int i = 0; i < 6; i++) {
-			targetCoordinates[i] = location[targetObjective - 1][i];
-		}
-		return true;
-	}
+auto PositionHandling::hasOrigin(Kinova::Objective targetObjective) const -> bool {
+	constexpr auto isNotZero = [](auto const & location) {
+		return location != 0.0f;
+	};
+	auto const targetIndex = targetObjective - 1;
+	auto const & targetLocation = location[targetIndex];
+	return any_of(begin(targetLocation), end(targetLocation), isNotZero);
+}
+
+auto PositionHandling::getOrigin(Kinova::Objective targetObjective) const -> Kinova::Coordinates {
+	return Kinova::Coordinates{location[targetObjective - 1]};
 }
 
 void PositionHandling::incrementSequence() {
