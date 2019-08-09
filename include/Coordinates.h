@@ -8,6 +8,7 @@
 #include <cstddef>
 #include <sstream>
 #include <stdexcept>
+#include <vector>
 
 namespace Kinova {
 
@@ -16,6 +17,14 @@ struct Coordinates {
 	Coordinates(float x, float y, float z, float pitch, float yaw, float roll) :
 			x{x}, y{y}, z{z}, pitch{pitch}, yaw{yaw}, roll{roll} {
 		checkCooridateValues(x, y, z);
+	}
+
+	explicit Coordinates(std::vector<float> const &data) :
+		Coordinates{data[0], data[1], data[2], data[3], data[4], data[5]} {
+	}
+
+	explicit Coordinates(std::array<float, 6> const &data) :
+		Coordinates{data[0], data[1], data[2], data[3], data[4], data[5]} {
 	}
 
 	auto operator[](std::size_t index) -> float & {
@@ -78,12 +87,8 @@ inline auto operator!=(Coordinates const &lhs, Coordinates const &rhs) -> bool {
 }
 
 inline auto operator<<(std::ostream &out, Coordinates const &coordinates) -> std::ostream & {
-	out << "Coordinates{x=" << coordinates.x <<
-			", y=" << coordinates.y <<
-			", z=" << coordinates.z <<
-			", pitch=" << coordinates.pitch <<
-			", yaw=" << coordinates.yaw <<
-			", roll=" << coordinates.roll << '}';
+	out << "Coordinates{x=" << coordinates.x << ", y=" << coordinates.y << ", z=" << coordinates.z << ", pitch=" << coordinates.pitch << ", yaw="
+			<< coordinates.yaw << ", roll=" << coordinates.roll << '}';
 	return out;
 }
 

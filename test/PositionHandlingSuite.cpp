@@ -49,100 +49,88 @@ R"data(0 -400 500 1571 0 0
 };
 
 void testGetCoordinateForHomeObjective() {
-	std::array<float, 6> expectedCoordinates{0.0f, -0.4f, 0.5f, 1.571f, 0.0f, 0.0f};
+	Kinova::Coordinates expectedCoordinates{0.0f, -0.4f, 0.5f, 1.571f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::Home);
+	auto coordinates = positionHandling.getCoordinates(Kinova::Home);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
 void testGetCoordinateForBellObjective() {
-	std::array<float, 6> expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::Bell);
+	auto coordinates = positionHandling.getCoordinates(Kinova::Bell);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
 void testGetCoordinateForHandleObjective() {
-	std::array<float, 6> expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::Handle);
+	auto coordinates = positionHandling.getCoordinates(Kinova::Handle);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
 void testGetCoordinateForOpenDoorObjective() {
-	std::array<float, 6> expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::OpenDoor);
+	auto coordinates = positionHandling.getCoordinates(Kinova::OpenDoor);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
 void testGetCoordinateForPullDoorObjective() {
-	std::array<float, 6> expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::PullDoor);
+	auto coordinates = positionHandling.getCoordinates(Kinova::PullDoor);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
 void testGetCoordinateForPlaceCupObjective() {
-	std::array<float, 6> expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::PlaceCup);
+	auto coordinates = positionHandling.getCoordinates(Kinova::PlaceCup);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
 void testGetCoordinateForAntennaObjective() {
-	std::array<float, 6> expectedCoordinates{-0.249f, 0.173f, 0.968f, 0.936f, -0.9f, 2.146f};
+	Kinova::Coordinates expectedCoordinates{-0.249f, 0.173f, 0.968f, 0.936f, -0.9f, 2.146f};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::Antenna);
+	auto coordinates = positionHandling.getCoordinates(Kinova::Antenna);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
 void testGetCoordinateForAntennaPullObjective() {
-	std::array<float, 6> expectedCoordinates{-0.249f, 0.173f, 0.968f, 0.936f, -0.9f, 2.146f};
+	Kinova::Coordinates expectedCoordinates{-0.249f, 0.173f, 0.968f, 0.936f, -0.9f, 2.146f};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::AntennaPull);
+	auto coordinates = positionHandling.getCoordinates(Kinova::AntennaPull);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
 void testGetCoordinateForNoObjectiveThrows() {
-	std::array<float, 6> coordinates{};
+	Kinova::Coordinates coordinates{};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	ASSERT_THROWS(positionHandling.getCoordinates(coordinates.data(), Kinova::NoObjective), std::invalid_argument);
+	ASSERT_THROWS(positionHandling.getCoordinates(Kinova::NoObjective), std::invalid_argument);
 }
 
 void testGetCoordinateThrowsForUnknownObjective() {
-	std::array<float, 6> coordinates{};
+	Kinova::Coordinates coordinates{};
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	ASSERT_THROWS(positionHandling.getCoordinates(coordinates.data(), static_cast<Kinova::Objective>(255)), std::invalid_argument);
+	ASSERT_THROWS(positionHandling.getCoordinates(static_cast<Kinova::Objective>(255)), std::invalid_argument);
 }
 
 void testGetCoordinateThrowsIfValidObjectiveHasNotBeenInitialized() {
-	std::array<float, 6> coordinates{};
+	Kinova::Coordinates coordinates{};
 	std::istringstream positionData{};
 	PositionHandling positionHandling{positionData};
-	ASSERT_THROWS(positionHandling.getCoordinates(coordinates.data(), Kinova::Home), std::invalid_argument);
-}
-
-auto toCoordinates(std::vector<float> const & data) {
-	return Kinova::Coordinates{data[0], data[1], data[2], data[3], data[4], data[5]};
+	ASSERT_THROWS(positionHandling.getCoordinates(Kinova::Home), std::invalid_argument);
 }
 
 void testCompareContentOfSequence() {
@@ -154,10 +142,10 @@ void testCompareContentOfSequence() {
 
 	for (int objective = 0; objective < Kinova::NumberOfObjectives; objective++) {
 		auto sequence = sequences[static_cast<Kinova::Objective>(objective + 1)];
-		ASSERT_EQUAL(sequence.getOrigin(), toCoordinates(location[objective]));
+		ASSERT_EQUAL(sequence.getOrigin(), Kinova::Coordinates{location[objective]});
 		ASSERT_EQUAL(sequence.numberOfPoints(), points[objective].size());
 		for (auto point : points[objective]) {
-			ASSERT_EQUAL(sequence.getCurrentCoordinates(), toCoordinates(point));
+			ASSERT_EQUAL(sequence.getCurrentCoordinates(), Kinova::Coordinates{point});
 			sequence.nextPoint();
 		}
 	}

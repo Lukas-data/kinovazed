@@ -28,27 +28,29 @@ void PositionHandling::init() {
   calcTransMat();
 }
 
+auto PositionHandling::resetOriginAtEnd(Kinova::Objective targetObjective) -> bool {
+	if (SequenceCounter < points[targetObjective-1].size()) {
+		false;
+	}
+	if (ZeroObjectives.count(targetObjective - 1)) {
+		for (int i = 0; i < 6; i++) {
+			location[targetObjective - 1][i] = 0;
+		}
+	}
+	return true;
+}
+
 
 //Writes Requested targetCoordinates[6] of Objective by pos-number and its Subpositions by Sequence-number. Takes currentPosition[6] if Objective is 0.
 //Returns 0 if sequence has ended.
-auto PositionHandling::getCoordinates(float* targetCoordinates, Kinova::Objective targetObjective) -> bool {
-
+auto PositionHandling::getCoordinates(Kinova::Objective targetObjective) -> Kinova::Coordinates {
+	std::array<float, 6> targetCoordinates{};
   if (targetObjective == Kinova::NoObjective) {
 	  throw std::invalid_argument{"Cannot call GetCoordinates() for NoObjective"};
   }
 
   if (sequences.count(targetObjective) == 0) {
 	  throw Kinova::composeException<std::invalid_argument>("Objective does not have a sequence: ", targetObjective, ' ', Kinova::getObjectiveName(targetObjective));
-  }
-
-  //Check SequenceNumber. Returns 0 and resets ZeroObjective if Sequence is over.
-  if (SequenceCounter >= points[targetObjective-1].size()) {
-    if (ZeroObjectives.count(targetObjective - 1)) {
-      for (int i = 0; i < 6; i++) {
-    	  location[targetObjective-1][i] = 0;
-      }
-    }
-    return false;
   }
  
   //Check if current Position
@@ -71,7 +73,7 @@ auto PositionHandling::getCoordinates(float* targetCoordinates, Kinova::Objectiv
     for (int i = 0; i < 6; i++) {
       targetCoordinates[i] = points[targetObjective-1][SequenceCounter][i];
     }
-    coordTransform(targetCoordinates, TransMat[targetObjective-1]);
+    coordTransform(targetCoordinates.data(), TransMat[targetObjective-1]);
   }
   ALL_LOG(logDEBUG4) << "PositionHandling::getCoordinates: " 
                      << "TargetCoordinates: (" << targetCoordinates[0] << ", "
@@ -80,7 +82,7 @@ auto PositionHandling::getCoordinates(float* targetCoordinates, Kinova::Objectiv
                                                << targetCoordinates[3] << ", "
                                                << targetCoordinates[4] << ", "
                                                << targetCoordinates[5] << ")" ;
-  return true;
+  return {targetCoordinates[0], targetCoordinates[1], targetCoordinates[2], targetCoordinates[3], targetCoordinates[4], targetCoordinates[5]};
 }
 
 /*Check if targetObjective is known ZeroObjective. Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.*/

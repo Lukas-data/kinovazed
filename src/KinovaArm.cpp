@@ -378,12 +378,12 @@ void KinovaArm::setTarget(Kinova::Objective targetObjective) {
  If Point is reached, sequence is counted up.
  If end of sequence is reached, PositionReached event is sent.*/
 void KinovaArm::moveToPosition(bool init) {
-	float targetCoordinates[6];
 	float currentCoordinates[6];
 	currentPosition = 0;
 	getPosition(currentCoordinates);
 	//Check if Sequence is still going
-	if (teachTarget != Kinova::NoObjective && PositionHandler.getCoordinates(targetCoordinates, TargetObjective)) {
+	if (TargetObjective != Kinova::NoObjective && !PositionHandler.resetOriginAtEnd(TargetObjective)) {
+		 auto targetCoordinates = PositionHandler.getCoordinates(TargetObjective);
 		//Check if in range
 		bool PointReached = checkIfReached(currentCoordinates);
 		bool currentLimit = checkCurrents();
@@ -400,7 +400,8 @@ void KinovaArm::moveToPosition(bool init) {
 			//Move to Position
 			float fingers[3];
 			try {
-				arm->set_target_cart(targetCoordinates, fingers);
+				std::array<float, 6> coordinatesData = targetCoordinates;
+				arm->set_target_cart(coordinatesData.data(), fingers);
 			} catch (KinDrv::KinDrvException const &e) {
 				error("moveToPosition", e, false);
 			}
@@ -440,14 +441,14 @@ void KinovaArm::teachPosition(Kinova::Objective targetObjective) {
 
 /*moves Arm to the current point in the sequence at the current TeachTarget*/
 void KinovaArm::moveToPoint() {
-	float targetCoordinates[6];
 	float currentCoordinates[6];
 	currentPosition = 0;
 
 	getPosition(currentCoordinates);
 
 	//Check if Sequence is still going
-	if (teachTarget != Kinova::NoObjective && PositionHandler.getCoordinates(targetCoordinates, teachTarget)) {
+	if (teachTarget != Kinova::NoObjective && !PositionHandler.resetOriginAtEnd(teachTarget)) {
+		auto targetCoordinates = PositionHandler.getCoordinates(teachTarget);
 		//Check if in range
 		bool PointReached = checkIfReached(currentCoordinates);
 		checkCurrents();
@@ -459,7 +460,8 @@ void KinovaArm::moveToPoint() {
 			//Move to Point
 			float fingers[3];
 			try {
-				arm->set_target_cart(targetCoordinates, fingers);
+				std::array<float, 6> coordinatesData = targetCoordinates;
+				arm->set_target_cart(coordinatesData.data(), fingers);
 			} catch (KinDrv::KinDrvException const &e) {
 				error("moveToPoint", e, false);
 			}

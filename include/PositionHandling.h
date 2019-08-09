@@ -20,7 +20,7 @@ struct PositionHandling {
 	~PositionHandling();
 
 	void init();
-	auto getCoordinates(float *coordinates, Kinova::Objective targetObjective) -> bool;
+	auto getCoordinates(Kinova::Objective targetObjective) -> Kinova::Coordinates;
 	auto getOrigin(Kinova::Coordinates & targetCoordinates, Kinova::Objective targetObjective) -> bool;
 	void incrementSequence();
 	void decrementSequence();
@@ -31,6 +31,7 @@ struct PositionHandling {
 	void deletePoint(Kinova::Objective targetObjective);
 	auto getSequence() -> int;
 	void writeToFile();
+	auto resetOriginAtEnd(Kinova::Objective targetObjective) -> bool;
 
 	auto getLocations() const {
 		return location;
@@ -60,6 +61,7 @@ private:
 	void readFromFile();
 	void loadData(std::istream & in);
 	void calcTransMat();
+
 };
 
 #endif
