@@ -3,14 +3,17 @@
 
 #include "Exceptions.h"
 
+#include <algorithm>
 #include <array>
 #include <cmath>
 #include <cstddef>
+#include <iterator>
 #include <sstream>
 #include <stdexcept>
 #include <vector>
 
 namespace Kinova {
+
 
 struct Coordinates {
 	Coordinates() = default;
@@ -51,6 +54,16 @@ struct Coordinates {
 		return {x, y, z, pitch, yaw, roll};
 	}
 
+	auto isZero() const -> bool {
+		constexpr auto isZero = [](auto const & location) {
+			return std::fabs(location) < epsilon;
+		};
+		std::array<float, 6> values = *this;
+		return std::all_of(begin(values), end(values), isZero);
+	}
+
+	constexpr static float epsilon = 0.00001f;
+
 	float x = 0.0f; //Kinova Left/Right(-)  0.8..-0.8
 	float y = 0.0f; //Kinova Front(-)/Back  -0.85..0.85
 	float z = 0.0f; //Kinova Up  1.15..
@@ -73,8 +86,7 @@ private:
 };
 
 static auto isEqualFloat(float lhs, float rhs) {
-	constexpr float epsilon = 0.00001;
-	return std::fabs(lhs - rhs) < epsilon;
+	return std::fabs(lhs - rhs) < Coordinates::epsilon;
 }
 
 inline auto operator==(Coordinates const &lhs, Coordinates const &rhs) -> bool {

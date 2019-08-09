@@ -63,7 +63,6 @@ private:
 	void readFromFile();
 	void loadData(std::istream & in);
 	void calcTransMat();
-
 };
 
 #endif

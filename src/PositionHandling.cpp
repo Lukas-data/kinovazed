@@ -55,22 +55,13 @@ auto PositionHandling::getCoordinates(Kinova::Objective targetObjective) const -
 	}
 
 	//Check if current Position
-	bool isZero = true;
-	for (int i = 0; i < 6; i++) {
-		if (points[targetObjective - 1][SequenceCounter][i] != 0) {
-			ALL_LOG(logDEBUG3) << "PositionHandling::getCoordinates: " << "Points[" << targetObjective - 1 << "][" << SequenceCounter << "][" << i
-					<< "] != 0";
-			isZero = false;
-		}
-	}
-	if (isZero) {
-		for (int i = 0; i < 6; i++) {
-			targetCoordinates[i] = location[targetObjective - 1][i];
-		}
+	Kinova::Coordinates const coordinates{points[targetObjective - 1][SequenceCounter]};
+
+	if (coordinates.isZero()) {
+		targetCoordinates = Kinova::Coordinates{location[targetObjective - 1]};
 	} else {
-		for (int i = 0; i < 6; i++) {
-			targetCoordinates[i] = points[targetObjective - 1][SequenceCounter][i];
-		}
+		ALL_LOG(logDEBUG3) << "PositionHandling::getCoordinates: " << "Points[" << targetObjective - 1 << "][" << SequenceCounter << "] is not zero " << coordinates;
+		targetCoordinates = coordinates;
 		coordTransform(targetCoordinates.data(), TransMat[targetObjective - 1]);
 	}
 	ALL_LOG(logDEBUG4) << "PositionHandling::getCoordinates: " << "TargetCoordinates: (" << targetCoordinates[0] << ", " << targetCoordinates[1]
@@ -93,12 +84,8 @@ void PositionHandling::setZeroObjective(Kinova::Objective targetObjective, float
 }
 
 auto PositionHandling::hasOrigin(Kinova::Objective targetObjective) const -> bool {
-	constexpr auto isNotZero = [](auto const & location) {
-		return location != 0.0f;
-	};
 	auto const targetIndex = targetObjective - 1;
-	auto const & targetLocation = location[targetIndex];
-	return any_of(begin(targetLocation), end(targetLocation), isNotZero);
+	return !Kinova::Coordinates{location[targetIndex]}.isZero();
 }
 
 auto PositionHandling::getOrigin(Kinova::Objective targetObjective) const -> Kinova::Coordinates {
