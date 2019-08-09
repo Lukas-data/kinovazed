@@ -508,12 +508,12 @@ void KinovaArm::moveToOrigin() {
 
 /*Saves current Arm-Position to current SequencePoint of teachTarget*/
 void KinovaArm::savePoint(int EventVariable) {
-	float currentCoordinates[6];
+	std::array<float, 6> currentCoordinates{};
 
 	if (EventVariable == PositionHandler.getSequence()) {
-		getPosition(currentCoordinates);
+		getPosition(currentCoordinates.data());
 
-		PositionHandler.savePoint(currentCoordinates, teachTarget);
+		PositionHandler.savePoint(currentCoordinates.data(), teachTarget);
 		PositionHandler.writeToFile();
 		externalEvent = KinovaFSM::PointSaved;
 	}
