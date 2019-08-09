@@ -142,6 +142,32 @@ void testHasOriginForTargetWithOrigin() {
 	ASSERT(positionHandling.hasOrigin(Kinova::Handle));
 }
 
+void testHasOriginForInvalidTarget() {
+	std::istringstream positionData{exampleData};
+	PositionHandling const positionHandling{positionData};
+	ASSERT(!positionHandling.hasOrigin(static_cast<Kinova::Objective>(255)));
+}
+
+void testGetOriginForTargetWithOrigin() {
+	std::istringstream positionData{exampleData};
+	PositionHandling const positionHandling{positionData};
+	Kinova::Coordinates const expected{0.12f, -0.723f, 0.551f, 1.491f, -0.066f, 0.002f };
+	ASSERT_EQUAL(expected, positionHandling.getOrigin(Kinova::Handle));
+}
+
+void testGetOriginForTargetWithoutOrigin() {
+	std::istringstream positionData{exampleData};
+	PositionHandling const positionHandling{positionData};
+	Kinova::Coordinates const expected{};
+	ASSERT_EQUAL(expected, positionHandling.getOrigin(Kinova::OpenDoor));
+}
+
+void testGetOriginForInvalidTarget() {
+	std::istringstream positionData{exampleData};
+	PositionHandling const positionHandling{positionData};
+	ASSERT_THROWS(positionHandling.getOrigin(static_cast<Kinova::Objective>(255)), std::out_of_range);
+}
+
 void assertFullSequence(PositionHandling & positionHandling, Kinova::Objective objective, std::vector<Kinova::Coordinates> expectedPoints) {
 	positionHandling.resetSequence();
 	for (auto const & point : expectedPoints) {
@@ -247,6 +273,10 @@ cute::suite make_suite_PositionHandlingSuite() {
 	s.push_back(CUTE(testCompareContentOfSequence));
 	s.push_back(CUTE(testHasOriginForTargetWithoutOrigin));
 	s.push_back(CUTE(testHasOriginForTargetWithOrigin));
+	s.push_back(CUTE(testHasOriginForInvalidTarget));
+	s.push_back(CUTE(testGetOriginForTargetWithOrigin));
+	s.push_back(CUTE(testGetOriginForTargetWithoutOrigin));
+	s.push_back(CUTE(testGetOriginForInvalidTarget));
 	s.push_back(CUTE(testSavePointForBell));
 	s.push_back(CUTE(testSavePointForBellAtEndOfSequence));
 	s.push_back(CUTE(testSavePointForBellAfterEndOfSequence));

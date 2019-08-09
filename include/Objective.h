@@ -23,6 +23,10 @@ inline std::string getObjectiveName(Objective objective) {
 	return ObjectiveNames[objective];
 }
 
+inline auto isValidObjective(Objective objective) -> bool {
+	return objective >= NoObjective && objective <= AntennaPull;
+}
+
 }
 
 

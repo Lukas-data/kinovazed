@@ -82,11 +82,17 @@ void PositionHandling::setZeroObjective(Kinova::Objective targetObjective, float
 }
 
 auto PositionHandling::hasOrigin(Kinova::Objective targetObjective) const -> bool {
+	if (targetObjective == Kinova::NoObjective || !isValidObjective(targetObjective)) {
+		return false;
+	}
 	auto const targetIndex = targetObjective - 1;
 	return !Kinova::Coordinates{location[targetIndex]}.isZero();
 }
 
 auto PositionHandling::getOrigin(Kinova::Objective targetObjective) const -> Kinova::Coordinates {
+	if (targetObjective == Kinova::NoObjective || !isValidObjective(targetObjective)) {
+		throw Kinova::composeException<std::out_of_range>("PositionHandling::getOrigin(): Cannot access origin of invalid objective ", targetObjective);
+	}
 	return Kinova::Coordinates{location[targetObjective - 1]};
 }
 
