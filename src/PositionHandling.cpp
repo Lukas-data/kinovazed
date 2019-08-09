@@ -41,7 +41,7 @@ auto PositionHandling::resetOriginAtEnd(Kinova::Objective targetObjective) -> bo
 
 //Writes Requested targetCoordinates[6] of Objective by pos-number and its Subpositions by Sequence-number. Takes currentPosition[6] if Objective is 0.
 //Returns 0 if sequence has ended.
-auto PositionHandling::getCoordinates(Kinova::Objective targetObjective) -> Kinova::Coordinates {
+auto PositionHandling::getCoordinates(Kinova::Objective targetObjective) const -> Kinova::Coordinates {
 	std::array<float, 6> targetCoordinates{};
 	if (targetObjective == Kinova::NoObjective) {
 		throw std::invalid_argument{"Cannot call GetCoordinates() for NoObjective"};
