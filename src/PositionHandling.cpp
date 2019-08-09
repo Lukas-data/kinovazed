@@ -76,6 +76,10 @@ auto PositionHandling::getCoordinates(Kinova::Objective targetObjective) -> Kino
 	return Kinova::Coordinates{targetCoordinates};
 }
 
+auto PositionHandling::getSequence(Kinova::Objective targetObjective) const -> Kinova::Sequence {
+	return sequences.at(targetObjective);
+}
+
 /*Check if targetObjective is known ZeroObjective. Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.*/
 void PositionHandling::setZeroObjective(Kinova::Objective targetObjective, float *currentCoordinates) {
 	if (ZeroObjectives.count(targetObjective - 1) && SequenceCounter == 0) {
