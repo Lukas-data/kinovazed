@@ -8,6 +8,7 @@ add_executable(KinovaTest
   KinovaTest.cpp 
   IntegrationSuite.cpp
   MatrixSuite.cpp
+  KinovaArmSuite.cpp
   PositionHandlingSuite.cpp
   SequenceSuite.cpp
 )
