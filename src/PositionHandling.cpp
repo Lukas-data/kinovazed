@@ -3,13 +3,10 @@
 #include "Log.h"
 #include "Sequence.h"
 
-#include <algorithm>
 #include <array>
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <cmath>
-#include <iterator>
 #include <stdexcept>
 #include <vector>
 
@@ -169,16 +166,12 @@ void PositionHandling::loadData(std::istream &in) {
 				ALL_LOG(logERROR) << "PositionHandling::ReadFromFile: " << "File-Mismatch: No Objectives found";
 				break;
 			}
-			bool isZero = true;
 			for (int j = 0; j < 6; j++) {
-				if (vec_int[j] != 0) {
-					isZero = false;
-				}
 				location[i][j] = (float) vec_int[j] / 1000;
 			}
-			Kinova::Coordinates loadedCoordinates{location[i]};
+			Kinova::Coordinates const loadedCoordinates{location[i]};
 			loadedOrigins.push_back(loadedCoordinates);
-			if (isZero) {
+			if (loadedCoordinates.isZero()) {
 				ZeroObjectives.insert(i);
 				ALL_LOG(logDEBUG2) << "PositionHandling::ReadFromFile: " << "Objective " << i << " is Zero";
 			}
