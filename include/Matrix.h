@@ -4,7 +4,6 @@
 #include "Coordinates.h"
 
 #include <array>
-
 #include <cmath>
 #include <vector>
 

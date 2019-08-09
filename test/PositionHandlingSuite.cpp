@@ -3,10 +3,10 @@
 #include "cute.h"
 #include "PositionHandling.h"
 
-#include <array>
 #include <sstream>
-
 #include <string>
+#include <vector>
+
 
 
 std::string const exampleData {
@@ -57,7 +57,7 @@ void testGetCoordinateForHomeObjective() {
 }
 
 void testGetCoordinateForBellObjective() {
-	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+	Kinova::Coordinates expectedCoordinates{-0.26333f, -0.294817f, 0.537362f, -1.989f, -1.418f, 2.632f};
 	std::istringstream positionData{exampleData};
 	PositionHandling const positionHandling{positionData};
 	auto coordinates = positionHandling.getCoordinates(Kinova::Bell);
@@ -65,7 +65,7 @@ void testGetCoordinateForBellObjective() {
 }
 
 void testGetCoordinateForHandleObjective() {
-	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+	Kinova::Coordinates expectedCoordinates{0.10044f, -0.540117, 0.621585, 1.46395, -0.0940299, 0.0202154};
 	std::istringstream positionData{exampleData};
 	PositionHandling const positionHandling{positionData};
 	auto coordinates = positionHandling.getCoordinates(Kinova::Handle);
@@ -89,7 +89,7 @@ void testGetCoordinateForPullDoorObjective() {
 }
 
 void testGetCoordinateForPlaceCupObjective() {
-	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+	Kinova::Coordinates expectedCoordinates{-0.533746, -0.0288264, 0.651697, -0.008, -1.028, 1.608};
 	std::istringstream positionData{exampleData};
 	PositionHandling const positionHandling{positionData};
 	auto coordinates = positionHandling.getCoordinates(Kinova::PlaceCup);
@@ -142,6 +142,77 @@ void testHasOriginForTargetWithOrigin() {
 	ASSERT(positionHandling.hasOrigin(Kinova::Handle));
 }
 
+void assertFullSequence(PositionHandling & positionHandling, Kinova::Objective objective, std::vector<Kinova::Coordinates> expectedPoints) {
+	positionHandling.resetSequence();
+	for (auto const & point : expectedPoints) {
+		auto currentCoordinates = positionHandling.getCoordinates(objective);
+		ASSERT_EQUAL(point, currentCoordinates);
+		positionHandling.incrementSequence();
+	}
+	ASSERT(positionHandling.resetOriginAtEnd(objective));
+}
+
+void testSavePointForBell() {
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
+	ASSERT(positionHandling.savePoint(pointToAdd, Kinova::Bell));
+	assertFullSequence(positionHandling, Kinova::Bell, {
+			{-0.420609, -0.317719, 0.573951, -1.84516, -1.45474, 2.84915},
+			{-0.362165, -0.280909, 0.531181, -1.989,   -1.418,   2.632}
+		}
+	);
+}
+
+
+void testSavePointForBellAtEndOfSequence() {
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	positionHandling.incrementSequence();
+	positionHandling.incrementSequence();
+	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
+	Kinova::Coordinates const expected{-0.420609, -0.317719, 0.573951, -1.84516, -1.45474, 2.84915};
+	ASSERT(positionHandling.savePoint(pointToAdd, Kinova::Bell));
+	assertFullSequence(positionHandling, Kinova::Bell, {
+			{-0.26333f, -0.294817f, 0.537362f, -1.989f, -1.418f, 2.632f},
+			{-0.362165, -0.280909, 0.531181, -1.989,   -1.418,   2.632},
+			{-0.420609, -0.317719, 0.573951, -1.84516, -1.45474, 2.84915}
+		}
+	);
+}
+
+
+void testSavePointForBellAfterEndOfSequence() {
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	positionHandling.incrementSequence();
+	positionHandling.incrementSequence();
+	positionHandling.incrementSequence();
+	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
+	ASSERT(!positionHandling.savePoint(pointToAdd, Kinova::Bell));
+	assertFullSequence(positionHandling, Kinova::Bell, {
+			{-0.26333f, -0.294817f, 0.537362f, -1.989f, -1.418f, 2.632f},
+			{-0.362165, -0.280909, 0.531181, -1.989,   -1.418,   2.632}
+		}
+	);
+}
+
+
+void testSavePointForBellBeforeSequence() {
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	positionHandling.decrementSequence();
+	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
+	ASSERT(positionHandling.savePoint(pointToAdd, Kinova::Bell));
+	assertFullSequence(positionHandling, Kinova::Bell, {
+			{-0.420609, -0.317719, 0.573951, -1.84516, -1.45474, 2.84915},
+			{-0.26333f, -0.294817f, 0.537362f, -1.989f, -1.418f, 2.632f},
+			{-0.362165, -0.280909, 0.531181, -1.989,   -1.418,   2.632}
+		}
+	);
+}
+
+
 void testCompareContentOfSequence() {
 	std::istringstream positionData{exampleData};
 	PositionHandling const positionHandling{positionData};
@@ -176,5 +247,9 @@ cute::suite make_suite_PositionHandlingSuite() {
 	s.push_back(CUTE(testCompareContentOfSequence));
 	s.push_back(CUTE(testHasOriginForTargetWithoutOrigin));
 	s.push_back(CUTE(testHasOriginForTargetWithOrigin));
+	s.push_back(CUTE(testSavePointForBell));
+	s.push_back(CUTE(testSavePointForBellAtEndOfSequence));
+	s.push_back(CUTE(testSavePointForBellAfterEndOfSequence));
+	s.push_back(CUTE(testSavePointForBellBeforeSequence));
 	return s;
 }

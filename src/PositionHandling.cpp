@@ -16,6 +16,7 @@
 PositionHandling::PositionHandling(std::istream &in) :
 		PositionHandling{} {
 	loadData(in);
+	calcTransMat();
 }
 
 PositionHandling::~PositionHandling() {
@@ -29,7 +30,7 @@ void PositionHandling::init() {
 
 auto PositionHandling::resetOriginAtEnd(Kinova::Objective targetObjective) -> bool {
 	if (SequenceCounter < points[targetObjective - 1].size()) {
-		false;
+		return false;
 	}
 	if (ZeroObjectives.count(targetObjective - 1)) {
 		for (int i = 0; i < 6; i++) {
@@ -42,7 +43,7 @@ auto PositionHandling::resetOriginAtEnd(Kinova::Objective targetObjective) -> bo
 //Writes Requested targetCoordinates[6] of Objective by pos-number and its Subpositions by Sequence-number. Takes currentPosition[6] if Objective is 0.
 //Returns 0 if sequence has ended.
 auto PositionHandling::getCoordinates(Kinova::Objective targetObjective) const -> Kinova::Coordinates {
-	std::array<float, 6> targetCoordinates{};
+
 	if (targetObjective == Kinova::NoObjective) {
 		throw std::invalid_argument{"Cannot call GetCoordinates() for NoObjective"};
 	}
@@ -53,18 +54,17 @@ auto PositionHandling::getCoordinates(Kinova::Objective targetObjective) const -
 	}
 
 	//Check if current Position
-	Kinova::Coordinates const coordinates{points[targetObjective - 1][SequenceCounter]};
+	Kinova::Coordinates targetCoordinates{points[targetObjective - 1][SequenceCounter]};
 
-	if (coordinates.isZero()) {
+	if (targetCoordinates.isZero()) {
 		targetCoordinates = Kinova::Coordinates{location[targetObjective - 1]};
 	} else {
-		ALL_LOG(logDEBUG3) << "PositionHandling::getCoordinates: " << "Points[" << targetObjective - 1 << "][" << SequenceCounter << "] is not zero " << coordinates;
-		targetCoordinates = coordinates;
-		coordTransform(targetCoordinates.data(), TransMat[targetObjective - 1]);
+		ALL_LOG(logDEBUG3) << "PositionHandling::getCoordinates: " << "Points[" << targetObjective - 1 << "][" << SequenceCounter << "] is not zero " << targetCoordinates;
+		targetCoordinates = coordTransform(targetCoordinates, TransMat[targetObjective - 1]);
 	}
 	ALL_LOG(logDEBUG4) << "PositionHandling::getCoordinates: " << "TargetCoordinates: (" << targetCoordinates[0] << ", " << targetCoordinates[1]
 			<< ", " << targetCoordinates[2] << ", " << targetCoordinates[3] << ", " << targetCoordinates[4] << ", " << targetCoordinates[5] << ")";
-	return Kinova::Coordinates{targetCoordinates};
+	return targetCoordinates;
 }
 
 auto PositionHandling::getSequence(Kinova::Objective targetObjective) const -> Kinova::Sequence {
