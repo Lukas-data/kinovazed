@@ -522,11 +522,11 @@ void KinovaArm::savePoint(int EventVariable) {
 
 /*save current Arm-Position as new origin of Coordinate System*/
 void KinovaArm::saveOrigin() {
-	float currentCoordinates[6];
+	std::array<float, 6> currentCoordinates{};
 
-	getPosition(currentCoordinates);
+	getPosition(currentCoordinates.data());
 
-	PositionHandler.saveOrigin(currentCoordinates, teachTarget);
+	PositionHandler.saveOrigin(Kinova::Coordinates{currentCoordinates}, teachTarget);
 	PositionHandler.writeToFile();
 	externalEvent = KinovaFSM::OriginSaved;
 

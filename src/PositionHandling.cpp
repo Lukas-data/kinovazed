@@ -137,10 +137,9 @@ bool PositionHandling::savePoint(Kinova::Coordinates coordinates, Kinova::Object
 }
 
 /*Saves coordinates as origin of objective.*/
-void PositionHandling::saveOrigin(float coordinates[6], Kinova::Objective targetObjective) {
-	for (int i = 0; i < 6; i++) {
-		location[targetObjective - 1][i] = coordinates[i];
-	}
+void PositionHandling::saveOrigin(Kinova::Coordinates coordinates, Kinova::Objective targetObjective) {
+	std::array<float, 6> coordinatesData = coordinates;
+	location[targetObjective - 1].assign(begin(coordinatesData), end(coordinatesData));
 	calcTransMat();
 }
 

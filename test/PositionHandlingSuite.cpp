@@ -184,8 +184,8 @@ void testSavePointForBell() {
 	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
 	ASSERT(positionHandling.savePoint(pointToAdd, Kinova::Bell));
 	assertFullSequence(positionHandling, Kinova::Bell, {
-			{-0.420609, -0.317719, 0.573951, -1.84516, -1.45474, 2.84915},
-			{-0.362165, -0.280909, 0.531181, -1.989,   -1.418,   2.632}
+			{-0.420609f, -0.317719f, 0.573951f, -1.84516f, -1.45474f, 2.84915f},
+			{-0.362165f, -0.280909f, 0.531181f, -1.989f,   -1.418f,   2.632f}
 		}
 	);
 }
@@ -200,9 +200,9 @@ void testSavePointForBellAtEndOfSequence() {
 	Kinova::Coordinates const expected{-0.420609, -0.317719, 0.573951, -1.84516, -1.45474, 2.84915};
 	ASSERT(positionHandling.savePoint(pointToAdd, Kinova::Bell));
 	assertFullSequence(positionHandling, Kinova::Bell, {
-			{-0.26333f, -0.294817f, 0.537362f, -1.989f, -1.418f, 2.632f},
-			{-0.362165, -0.280909, 0.531181, -1.989,   -1.418,   2.632},
-			{-0.420609, -0.317719, 0.573951, -1.84516, -1.45474, 2.84915}
+			{-0.26333f,  -0.294817f, 0.537362f, -1.989f,   -1.418f,   2.632f},
+			{-0.362165f, -0.280909f, 0.531181f, -1.989f,   -1.418f,   2.632f},
+			{-0.420609f, -0.317719f, 0.573951f, -1.84516f, -1.45474f, 2.84915f}
 		}
 	);
 }
@@ -217,8 +217,8 @@ void testSavePointForBellAfterEndOfSequence() {
 	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
 	ASSERT(!positionHandling.savePoint(pointToAdd, Kinova::Bell));
 	assertFullSequence(positionHandling, Kinova::Bell, {
-			{-0.26333f, -0.294817f, 0.537362f, -1.989f, -1.418f, 2.632f},
-			{-0.362165, -0.280909, 0.531181, -1.989,   -1.418,   2.632}
+			{-0.26333f,  -0.294817f, 0.537362f, -1.989f,  -1.418f,  2.632f},
+			{-0.362165f, -0.280909f, 0.531181f, -1.989f,   -1.418f, 2.632f}
 		}
 	);
 }
@@ -231,11 +231,30 @@ void testSavePointForBellBeforeSequence() {
 	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
 	ASSERT(positionHandling.savePoint(pointToAdd, Kinova::Bell));
 	assertFullSequence(positionHandling, Kinova::Bell, {
-			{-0.420609, -0.317719, 0.573951, -1.84516, -1.45474, 2.84915},
-			{-0.26333f, -0.294817f, 0.537362f, -1.989f, -1.418f, 2.632f},
-			{-0.362165, -0.280909, 0.531181, -1.989,   -1.418,   2.632}
+			{-0.420609f, -0.317719f, 0.573951f, -1.84516f, -1.45474f, 2.84915f},
+			{-0.26333f,  -0.294817f, 0.537362f, -1.989f,   -1.418f,   2.632f},
+			{-0.362165f, -0.280909f, 0.531181f, -1.989f,   -1.418f,   2.632f}
 		}
 	);
+}
+
+
+void testSaveOriginSetsOrigin() {
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	Kinova::Coordinates const newOrigin{-0.12f, 0.123f, 0.41f, -1.491f, -0.16f, -0.002f};
+	positionHandling.saveOrigin(newOrigin, Kinova::Handle);
+	ASSERT_EQUAL(newOrigin, positionHandling.getOrigin(Kinova::Handle));
+}
+
+void testSaveOriginUpdatesTranformationMatrix() {
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	Kinova::Coordinates const newOrigin{-0.12f, 0.123f, 0.41f, -1.491f, -0.16f, -0.002f};
+	Kinova::Coordinates expectedCoordinates{-0.122555f, -0.0473307f, 0.311046f, -1.51853f, -0.187887f, 0.0136127f};
+	positionHandling.saveOrigin(newOrigin, Kinova::Handle);
+	auto coordinates = positionHandling.getCoordinates(Kinova::Handle);
+	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
 
@@ -270,7 +289,6 @@ cute::suite make_suite_PositionHandlingSuite() {
 	s.push_back(CUTE(testGetCoordinateForNoObjectiveThrows));
 	s.push_back(CUTE(testGetCoordinateThrowsForUnknownObjective));
 	s.push_back(CUTE(testGetCoordinateThrowsIfValidObjectiveHasNotBeenInitialized));
-	s.push_back(CUTE(testCompareContentOfSequence));
 	s.push_back(CUTE(testHasOriginForTargetWithoutOrigin));
 	s.push_back(CUTE(testHasOriginForTargetWithOrigin));
 	s.push_back(CUTE(testHasOriginForInvalidTarget));
@@ -281,5 +299,9 @@ cute::suite make_suite_PositionHandlingSuite() {
 	s.push_back(CUTE(testSavePointForBellAtEndOfSequence));
 	s.push_back(CUTE(testSavePointForBellAfterEndOfSequence));
 	s.push_back(CUTE(testSavePointForBellBeforeSequence));
+	s.push_back(CUTE(testSaveOriginSetsOrigin));
+	s.push_back(CUTE(testSaveOriginUpdatesTranformationMatrix));
+
+	s.push_back(CUTE(testCompareContentOfSequence));
 	return s;
 }

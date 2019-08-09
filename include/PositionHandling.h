@@ -29,7 +29,7 @@ struct PositionHandling {
 	void resetSequence();
 	void setZeroObjective(Kinova::Objective targetObjective, float *currentCoordinates);
 	auto savePoint(Kinova::Coordinates coordinates, Kinova::Objective targetObjective) -> bool;
-	void saveOrigin(float coordinates[6], Kinova::Objective targetObjective);
+	void saveOrigin(Kinova::Coordinates coordinates, Kinova::Objective targetObjective);
 	void deletePoint(Kinova::Objective targetObjective);
 	auto getSequence() -> int;
 	void writeToFile();
