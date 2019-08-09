@@ -130,7 +130,7 @@ bool PositionHandling::savePoint(float coordinates[6], Kinova::Objective targetO
 	}
 }
 
-/*Saves coordinates as origin of objectiv.*/
+/*Saves coordinates as origin of objective.*/
 void PositionHandling::saveOrigin(float coordinates[6], Kinova::Objective targetObjective) {
 	for (int i = 0; i < 6; i++) {
 		location[targetObjective - 1][i] = coordinates[i];
