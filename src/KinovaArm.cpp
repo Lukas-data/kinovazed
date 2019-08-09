@@ -383,7 +383,7 @@ void KinovaArm::moveToPosition(bool init) {
 	currentPosition = 0;
 	getPosition(currentCoordinates);
 	//Check if Sequence is still going
-	if (PositionHandler.getCoordinates(targetCoordinates, TargetObjective, currentCoordinates)) {
+	if (PositionHandler.getCoordinates(targetCoordinates, TargetObjective)) {
 		//Check if in range
 		bool PointReached = checkIfReached(currentCoordinates);
 		bool currentLimit = checkCurrents();
@@ -447,7 +447,7 @@ void KinovaArm::moveToPoint() {
 	getPosition(currentCoordinates);
 
 	//Check if Sequence is still going
-	if (PositionHandler.getCoordinates(targetCoordinates, teachTarget, currentCoordinates)) {
+	if (PositionHandler.getCoordinates(targetCoordinates, teachTarget)) {
 		//Check if in range
 		bool PointReached = checkIfReached(currentCoordinates);
 		checkCurrents();

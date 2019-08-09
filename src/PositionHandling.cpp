@@ -29,7 +29,7 @@ void PositionHandling::init() {
 
 //Writes Requested targetCoordinates[6] of Objective by pos-number and its Subpositions by Sequence-number. Takes currentPosition[6] if Objective is 0.
 //Returns 0 if sequence has ended.
-auto PositionHandling::getCoordinates(float* targetCoordinates, Kinova::Objective targetObjective, float* currentCoordinates) -> bool {
+auto PositionHandling::getCoordinates(float* targetCoordinates, Kinova::Objective targetObjective) -> bool {
 
   if (targetObjective == Kinova::NoObjective) {
     ALL_LOG(logDEBUG3) << "PositionHandling::No targetObjective. ";

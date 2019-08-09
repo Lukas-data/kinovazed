@@ -20,7 +20,7 @@ struct PositionHandling {
 	~PositionHandling();
 
 	void init();
-	auto getCoordinates(float *coordinates, Kinova::Objective targetObjective, float *currentCoordinates) -> bool;
+	auto getCoordinates(float *coordinates, Kinova::Objective targetObjective) -> bool;
 	auto getOrigin(Kinova::Coordinates & targetCoordinates, Kinova::Objective targetObjective) -> bool;
 	void incrementSequence();
 	void decrementSequence();

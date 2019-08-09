@@ -52,7 +52,7 @@ void testGetCoordinateForHomeObjective() {
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
 	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::Home, nullptr);
+	positionHandling.getCoordinates(coordinates.data(), Kinova::Home);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
@@ -61,7 +61,7 @@ void testGetCoordinateForBellObjective() {
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
 	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::Bell, nullptr);
+	positionHandling.getCoordinates(coordinates.data(), Kinova::Bell);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
@@ -70,7 +70,7 @@ void testGetCoordinateForHandleObjective() {
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
 	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::Handle, nullptr);
+	positionHandling.getCoordinates(coordinates.data(), Kinova::Handle);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
@@ -79,7 +79,7 @@ void testGetCoordinateForOpenDoorObjective() {
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
 	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::OpenDoor, nullptr);
+	positionHandling.getCoordinates(coordinates.data(), Kinova::OpenDoor);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
@@ -88,7 +88,7 @@ void testGetCoordinateForPullDoorObjective() {
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
 	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::PullDoor, nullptr);
+	positionHandling.getCoordinates(coordinates.data(), Kinova::PullDoor);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
@@ -97,7 +97,7 @@ void testGetCoordinateForPlaceCupObjective() {
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
 	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::PlaceCup, nullptr);
+	positionHandling.getCoordinates(coordinates.data(), Kinova::PlaceCup);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
@@ -106,7 +106,7 @@ void testGetCoordinateForAntennaObjective() {
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
 	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::Antenna, nullptr);
+	positionHandling.getCoordinates(coordinates.data(), Kinova::Antenna);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
@@ -115,7 +115,7 @@ void testGetCoordinateForAntennaPullObjective() {
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
 	std::array<float, 6> coordinates{};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::AntennaPull, nullptr);
+	positionHandling.getCoordinates(coordinates.data(), Kinova::AntennaPull);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
@@ -124,7 +124,7 @@ void testGetCoordinateForNoObjectiveDoesNotChangeCoordinates() {
 	auto const expectedCoordinates = coordinates;
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	positionHandling.getCoordinates(coordinates.data(), Kinova::NoObjective, nullptr);
+	positionHandling.getCoordinates(coordinates.data(), Kinova::NoObjective);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
