@@ -119,6 +119,15 @@ void testGetCoordinateForAntennaPullObjective() {
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
+void testGetCoordinateForNoObjectiveDoesNotChangeCoordinates() {
+	std::array<float, 6> coordinates{1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f};
+	auto const expectedCoordinates = coordinates;
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	positionHandling.getCoordinates(coordinates.data(), Kinova::NoObjective, nullptr);
+	ASSERT_EQUAL(expectedCoordinates, coordinates);
+}
+
 cute::suite make_suite_PositionHandlingSuite() {
 	cute::suite s { };
 	s.push_back(CUTE(testGetCoordinateForHomeObjective));
@@ -129,5 +138,6 @@ cute::suite make_suite_PositionHandlingSuite() {
 	s.push_back(CUTE(testGetCoordinateForPlaceCupObjective));
 	s.push_back(CUTE(testGetCoordinateForAntennaObjective));
 	s.push_back(CUTE(testGetCoordinateForAntennaPullObjective));
+	s.push_back(CUTE(testGetCoordinateForNoObjectiveDoesNotChangeCoordinates));
 	return s;
 }

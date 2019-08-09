@@ -4,7 +4,9 @@
 #include "Coordinates.h"
 #include "Matrix.h"
 #include "Objective.h"
+#include "Sequence.h"
 
+#include <map>
 #include <set>
 #include <vector>
 
@@ -33,6 +35,8 @@ struct PositionHandling {
 private:
 	using f2d_vec_t = std::vector<std::vector<float>>;
 	using f3d_vec_t = std::vector<f2d_vec_t>;
+	std::map<Kinova::Objective, Kinova::Sequence> sequences{};
+
 	f2d_vec_t location;
 	f3d_vec_t points;
 	int SequenceCounter{0};
