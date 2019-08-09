@@ -2,6 +2,8 @@
 #include "Exceptions.h"
 #include "Log.h"
 #include "Sequence.h"
+
+#include <array>
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -82,7 +84,7 @@ auto PositionHandling::getCoordinates(Kinova::Objective targetObjective) -> Kino
                                                << targetCoordinates[3] << ", "
                                                << targetCoordinates[4] << ", "
                                                << targetCoordinates[5] << ")" ;
-  return {targetCoordinates[0], targetCoordinates[1], targetCoordinates[2], targetCoordinates[3], targetCoordinates[4], targetCoordinates[5]};
+  return Kinova::Coordinates{targetCoordinates};
 }
 
 /*Check if targetObjective is known ZeroObjective. Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.*/
@@ -201,7 +203,7 @@ void PositionHandling::loadData(std::istream & in) {
 	        if (vec_int[j] != 0) { isZero = false; }
 	        location[i][j] = (float)vec_int[j]/1000;
 	      }
-	      Kinova::Coordinates loadedCoordinates{location[i][0], location[i][1], location[i][2], location[i][3], location[i][4], location[i][5]};
+	      Kinova::Coordinates loadedCoordinates{location[i]};
 	      loadedOrigins.push_back(loadedCoordinates);
 	      if (isZero) {
 	        ZeroObjectives.insert(i);
@@ -250,7 +252,7 @@ void PositionHandling::loadData(std::istream & in) {
 	        vec_float[i] = (float)vec_int[i]/1000;
 	      }
 	      points[location].push_back(vec_float);
-	      loadedPoints[location].push_back(Kinova::Coordinates{vec_float[0], vec_float[1], vec_float[2], vec_float[3], vec_float[4], vec_float[5]});
+	      loadedPoints[location].push_back(Kinova::Coordinates{vec_float});
 	      sequence++;
 	    }
 	  }
