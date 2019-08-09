@@ -51,7 +51,7 @@ R"data(0 -400 500 1571 0 0
 void testGetCoordinateForHomeObjective() {
 	Kinova::Coordinates expectedCoordinates{0.0f, -0.4f, 0.5f, 1.571f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling const positionHandling{positionData};
 	auto coordinates = positionHandling.getCoordinates(Kinova::Home);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -59,7 +59,7 @@ void testGetCoordinateForHomeObjective() {
 void testGetCoordinateForBellObjective() {
 	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling const positionHandling{positionData};
 	auto coordinates = positionHandling.getCoordinates(Kinova::Bell);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -67,7 +67,7 @@ void testGetCoordinateForBellObjective() {
 void testGetCoordinateForHandleObjective() {
 	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling const positionHandling{positionData};
 	auto coordinates = positionHandling.getCoordinates(Kinova::Handle);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -75,7 +75,7 @@ void testGetCoordinateForHandleObjective() {
 void testGetCoordinateForOpenDoorObjective() {
 	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling const positionHandling{positionData};
 	auto coordinates = positionHandling.getCoordinates(Kinova::OpenDoor);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -83,7 +83,7 @@ void testGetCoordinateForOpenDoorObjective() {
 void testGetCoordinateForPullDoorObjective() {
 	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling const positionHandling{positionData};
 	auto coordinates = positionHandling.getCoordinates(Kinova::PullDoor);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -91,7 +91,7 @@ void testGetCoordinateForPullDoorObjective() {
 void testGetCoordinateForPlaceCupObjective() {
 	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling const positionHandling{positionData};
 	auto coordinates = positionHandling.getCoordinates(Kinova::PlaceCup);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -99,7 +99,7 @@ void testGetCoordinateForPlaceCupObjective() {
 void testGetCoordinateForAntennaObjective() {
 	Kinova::Coordinates expectedCoordinates{-0.249f, 0.173f, 0.968f, 0.936f, -0.9f, 2.146f};
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling const positionHandling{positionData};
 	auto coordinates = positionHandling.getCoordinates(Kinova::Antenna);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -107,26 +107,26 @@ void testGetCoordinateForAntennaObjective() {
 void testGetCoordinateForAntennaPullObjective() {
 	Kinova::Coordinates expectedCoordinates{-0.249f, 0.173f, 0.968f, 0.936f, -0.9f, 2.146f};
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling const positionHandling{positionData};
 	auto coordinates = positionHandling.getCoordinates(Kinova::AntennaPull);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
 void testGetCoordinateForNoObjectiveThrows() {
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling const positionHandling{positionData};
 	ASSERT_THROWS(positionHandling.getCoordinates(Kinova::NoObjective), std::invalid_argument);
 }
 
 void testGetCoordinateThrowsForUnknownObjective() {
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling const positionHandling{positionData};
 	ASSERT_THROWS(positionHandling.getCoordinates(static_cast<Kinova::Objective>(255)), std::invalid_argument);
 }
 
 void testGetCoordinateThrowsIfValidObjectiveHasNotBeenInitialized() {
 	std::istringstream positionData{};
-	PositionHandling positionHandling{positionData};
+	PositionHandling const positionHandling{positionData};
 	ASSERT_THROWS(positionHandling.getCoordinates(Kinova::Home), std::invalid_argument);
 }
 
