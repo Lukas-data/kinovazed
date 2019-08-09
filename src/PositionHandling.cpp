@@ -122,7 +122,7 @@ void PositionHandling::resetSequence() {
 }
 
 
-/*Saves coordinates to current Sequence Point or as Location in object. Returns true if successfull.*/
+/*Saves coordinates to current Sequence Point or as Location in object. Returns true if successful.*/
 bool PositionHandling::savePoint(float coordinates[6], Kinova::Objective targetObjective) {
   //check targetObjective
   if (targetObjective > 0 && targetObjective <= Kinova::NumberOfObjectives ) {
