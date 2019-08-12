@@ -4,7 +4,6 @@
 #include "Sequence.h"
 
 #include <algorithm>
-
 #include <array>
 #include <fstream>
 #include <iterator>
@@ -12,7 +11,6 @@
 #include <string>
 #include <stdexcept>
 #include <vector>
-#include <iostream>
 
 #define FILEPATH "CybathlonObjectives.dat"
 
@@ -97,7 +95,6 @@ void PositionHandling::decrementSequence(Kinova::Objective targetObjective) {
 	sequences.at(targetObjective).previousPoint();
 }
 void PositionHandling::resetSequence(Kinova::Objective targetObjective) {
-	std::cout << "PositionHandling::resetSequence() " << Kinova::ObjectiveNames[targetObjective] << std::endl;
 	sequences.at(targetObjective).reset();
 }
 
@@ -204,39 +201,44 @@ void PositionHandling::readFromFile() {
 
 /*Writes Location and Points Vectors to SaveFile*/
 void PositionHandling::writeToFile() {
-//	std::ofstream saveFile(FILEPATH);
-//	if (saveFile.is_open()) {
-//		//Write Locations
-//		for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
-//			if (ZeroObjectives.count(i)) {
-//				//Objecitve is a ZeroObjective.
-//				for (int j = 0; j < 6; j++) {
-//					saveFile << 0 << " ";
-//				}
-//			} else {
-//				//Normal Objective
-//				for (int j = 0; j < 6; j++) {
-//					saveFile << (int) (location[i][j] * 1000) << " ";
-//				}
-//			}
-//			saveFile << "\n";
-//		}
-//		saveFile << "\n";
-//		//Write Sequences
-//		for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
-//			for (int j = 0; j < points[i].size(); j++) {
-//				for (int k = 0; k < 6; k++) {
-//					saveFile << (int) (points[i][j][k] * 1000) << " ";
-//				}
-//				saveFile << "\n";
-//			}
-//			saveFile << "\n";
-//		}
-//	} else {
-//		ALL_LOG(logERROR) << "PosiionHandling::writeToFile: Unable to open file.";
-//	}
-//	saveFile.close();
-//	ALL_LOG(logINFO) << "Point successfully saved to File.";
+	std::ofstream saveFile(FILEPATH);
+	if (saveFile.is_open()) {
+		//Write Locations
+		for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
+			auto const objective = static_cast<Kinova::Objective>(i + 1);
+			if (ZeroObjectives.count(objective)) {
+				for (int j = 0; j < 6; j++) {
+					saveFile << 0 << " ";
+				}
+			} else {
+				std::array<float, 6> origin = sequences[objective].getOrigin();
+				transform(begin(origin), end(origin), std::ostream_iterator<int>{saveFile, " "}, [](float component) {
+					return static_cast<int>(component * 1000);
+				});
+			}
+			saveFile << "\n";
+		}
+		saveFile << "\n";
+		//Write Sequences
+		for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
+			auto const objective = static_cast<Kinova::Objective>(i + 1);
+			auto sequence = sequences[objective];
+			sequence.reset();
+			while (!sequence.endReached()) {
+				std::array<float, 6> coordinate = sequence.getCurrentCoordinates();
+				transform(begin(coordinate), end(coordinate), std::ostream_iterator<int>{saveFile, " "}, [](float component) {
+					return static_cast<int>(component * 1000);
+				});
+				saveFile << "\n";
+				sequence.nextPoint();
+			}
+			saveFile << "\n";
+		}
+	} else {
+		ALL_LOG(logERROR) << "PosiionHandling::writeToFile: Unable to open file.";
+	}
+	saveFile.close();
+	ALL_LOG(logINFO) << "Point successfully saved to File.";
 }
 
 auto PositionHandling::getSequence(Kinova::Objective targetObjective) const -> int {
