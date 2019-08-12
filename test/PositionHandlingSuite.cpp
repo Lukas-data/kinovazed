@@ -2,6 +2,7 @@
 #include "PositionHandlingSuite.h"
 #include "cute.h"
 #include "PositionHandling.h"
+#include "TimesLiteral.h"
 
 #include <sstream>
 #include <string>
@@ -257,6 +258,46 @@ void testSaveOriginUpdatesTranformationMatrix() {
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
+void testSetZeroObjectiveForZeroObjective() {
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	Kinova::Coordinates const newOrigin{-0.12f, 0.123f, 0.41f, -1.491f, -0.16f, -0.002f};
+	positionHandling.setZeroObjective(newOrigin, Kinova::OpenDoor);
+	ASSERT_EQUAL(newOrigin, positionHandling.getOrigin(Kinova::OpenDoor));
+}
+
+void testSetZeroObjectiveForNonZeroObjective() {
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	Kinova::Coordinates const newOrigin{0.1f, 0.1f, 0.1f, 1.0f, 0.1f, 0.001f};
+	Kinova::Coordinates const expected{0.12f, -0.723f, 0.551f, 1.491f, -0.066f, 0.002f};
+	positionHandling.setZeroObjective(newOrigin, Kinova::Handle);
+	ASSERT_EQUAL(expected, positionHandling.getOrigin(Kinova::Handle));
+}
+
+void testResetOriginAtEndResetsOriginAtEndOfSequence() {
+	using namespace TimesLiteral;
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	auto const originalOrigin = positionHandling.getOrigin(Kinova::PullDoor);
+	Kinova::Coordinates const newOrigin{0.1f, 0.1f, 0.1f, 1.0f, 0.1f, 0.001f};
+	positionHandling.setZeroObjective(newOrigin, Kinova::PullDoor);
+	3_times([&]{positionHandling.incrementSequence();});
+	positionHandling.resetOriginAtEnd(Kinova::PullDoor);
+	ASSERT_EQUAL(originalOrigin, positionHandling.getOrigin(Kinova::PullDoor));
+}
+
+void testResetOriginAtEndDoesNotResetOriginAtBeginningOfSequence() {
+	using namespace TimesLiteral;
+	std::istringstream positionData{exampleData};
+	PositionHandling positionHandling{positionData};
+	Kinova::Coordinates const newOrigin{0.1f, 0.1f, 0.1f, 1.0f, 0.1f, 0.001f};
+	positionHandling.setZeroObjective(newOrigin, Kinova::PullDoor);
+	ASSERT(!positionHandling.resetOriginAtEnd(Kinova::PullDoor));
+	ASSERT_EQUAL(newOrigin, positionHandling.getOrigin(Kinova::PullDoor));
+}
+
+
 
 void testCompareContentOfSequence() {
 	std::istringstream positionData{exampleData};
@@ -301,6 +342,10 @@ cute::suite make_suite_PositionHandlingSuite() {
 	s.push_back(CUTE(testSavePointForBellBeforeSequence));
 	s.push_back(CUTE(testSaveOriginSetsOrigin));
 	s.push_back(CUTE(testSaveOriginUpdatesTranformationMatrix));
+	s.push_back(CUTE(testSetZeroObjectiveForZeroObjective));
+	s.push_back(CUTE(testSetZeroObjectiveForNonZeroObjective));
+	s.push_back(CUTE(testResetOriginAtEndResetsOriginAtEndOfSequence));
+	s.push_back(CUTE(testResetOriginAtEndDoesNotResetOriginAtBeginningOfSequence));
 
 	s.push_back(CUTE(testCompareContentOfSequence));
 	return s;

@@ -72,7 +72,7 @@ auto PositionHandling::getSequence(Kinova::Objective targetObjective) const -> K
 }
 
 /*Check if targetObjective is known ZeroObjective. Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.*/
-void PositionHandling::setZeroObjective(Kinova::Objective targetObjective, float *currentCoordinates) {
+void PositionHandling::setZeroObjective(Kinova::Coordinates currentCoordinates, Kinova::Objective targetObjective) {
 	if (ZeroObjectives.count(targetObjective - 1) && SequenceCounter == 0) {
 		for (int i = 0; i < 6; i++) {
 			location[targetObjective - 1][i] = currentCoordinates[i];

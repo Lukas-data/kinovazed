@@ -20,20 +20,20 @@ struct PositionHandling {
 	~PositionHandling();
 
 	void init();
-	auto getCoordinates(Kinova::Objective targetObjective) const -> Kinova::Coordinates;
-	auto getSequence(Kinova::Objective targetObjective) const -> Kinova::Sequence;
-	auto hasOrigin(Kinova::Objective targetObjective) const -> bool;
-	auto getOrigin(Kinova::Objective targetObjective) const -> Kinova::Coordinates;
-	void incrementSequence();
-	void decrementSequence();
+	auto getCoordinates(Kinova::Objective targetObjective) const -> Kinova::Coordinates; //tested
+	auto getSequence(Kinova::Objective targetObjective) const -> Kinova::Sequence; //unused
+	auto hasOrigin(Kinova::Objective targetObjective) const -> bool; //tested
+	auto getOrigin(Kinova::Objective targetObjective) const -> Kinova::Coordinates; //tested
+	void incrementSequence(); //tested
+	void decrementSequence(); //tested
 	void resetSequence();
-	void setZeroObjective(Kinova::Objective targetObjective, float *currentCoordinates);
-	auto savePoint(Kinova::Coordinates coordinates, Kinova::Objective targetObjective) -> bool;
-	void saveOrigin(Kinova::Coordinates coordinates, Kinova::Objective targetObjective);
+	void setZeroObjective(Kinova::Coordinates coordinates, Kinova::Objective targetObjective); //tested
+	auto savePoint(Kinova::Coordinates coordinates, Kinova::Objective targetObjective) -> bool; //tested
+	void saveOrigin(Kinova::Coordinates coordinates, Kinova::Objective targetObjective); //tested
 	void deletePoint(Kinova::Objective targetObjective);
 	auto getSequence() -> int;
 	void writeToFile();
-	auto resetOriginAtEnd(Kinova::Objective targetObjective) -> bool;
+	auto resetOriginAtEnd(Kinova::Objective targetObjective) -> bool; //tested
 
 	auto getLocations() const {
 		return location;

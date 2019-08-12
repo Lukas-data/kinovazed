@@ -365,9 +365,9 @@ void KinovaArm::setTarget(Kinova::Objective targetObjective) {
 	if (targetObjective > 0 && targetObjective <= Kinova::NumberOfObjectives) {
 		TargetObjective = targetObjective;
 		PositionHandler.resetSequence();
-		float currentCoordinates[6];
-		getPosition(currentCoordinates);
-		PositionHandler.setZeroObjective(targetObjective, currentCoordinates);
+		std::array<float, 6> currentCoordinates{};
+		getPosition(currentCoordinates.data());
+		PositionHandler.setZeroObjective(Kinova::Coordinates{currentCoordinates}, targetObjective);
 	} else {
 		ALL_LOG(logWARNING) << "KinovaArm: invalid targetPosition.";
 		externalEvent = KinovaFSM::SequenceDone;
@@ -427,10 +427,10 @@ void KinovaArm::teachPosition(Kinova::Objective targetObjective) {
 	if (targetObjective != Kinova::NoObjective) {
 		if (Kinova::isValidObjective(targetObjective)) {
 			ALL_LOG(logDEBUG) << "new teachTarget, sequence reset.";
-			float currentCoordinates[6];
-			getPosition(currentCoordinates);
+			std::array<float, 6> currentCoordinates{};
+			getPosition(currentCoordinates.data());
 			PositionHandler.resetSequence();
-			PositionHandler.setZeroObjective(targetObjective, currentCoordinates);
+			PositionHandler.setZeroObjective(Kinova::Coordinates{currentCoordinates}, targetObjective);
 			teachTarget = targetObjective;
 		} else {
 			ALL_LOG(logWARNING) << "KinovaArm: invalid teach Objective.";
