@@ -343,23 +343,23 @@ void testDeletePointBeforeBeginningEndOfSequenceDoesNotDeletePoint() {
 	);
 }
 
-void testCompareContentOfSequence() {
-	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
-	auto location = positionHandling.getLocations();
-	auto points = positionHandling.getPoints();
-	auto sequences = positionHandling.getSequences();
-
-	for (int objective = 0; objective < Kinova::NumberOfObjectives; objective++) {
-		auto sequence = sequences[static_cast<Kinova::Objective>(objective + 1)];
-		ASSERT_EQUAL(sequence.getOrigin(), Kinova::Coordinates{location[objective]});
-		ASSERT_EQUAL(sequence.numberOfPoints(), points[objective].size());
-		for (auto point : points[objective]) {
-			ASSERT_EQUAL(sequence.getCurrentCoordinates(), Kinova::Coordinates{point});
-			sequence.nextPoint();
-		}
-	}
-}
+//void testCompareContentOfSequence() {
+//	std::istringstream positionData{exampleData};
+//	PositionHandling const positionHandling{positionData};
+//	auto location = positionHandling.getLocations();
+//	auto points = positionHandling.getPoints();
+//	auto sequences = positionHandling.getSequences();
+//
+//	for (int objective = 0; objective < Kinova::NumberOfObjectives; objective++) {
+//		auto sequence = sequences[static_cast<Kinova::Objective>(objective + 1)];
+//		ASSERT_EQUAL(sequence.getOrigin(), Kinova::Coordinates{location[objective]});
+//		ASSERT_EQUAL(sequence.numberOfPoints(), points[objective].size());
+//		for (auto point : points[objective]) {
+//			ASSERT_EQUAL(sequence.getCurrentCoordinates(), Kinova::Coordinates{point});
+//			sequence.nextPoint();
+//		}
+//	}
+//}
 
 cute::suite make_suite_PositionHandlingSuite() {
 	cute::suite s { };
@@ -395,6 +395,6 @@ cute::suite make_suite_PositionHandlingSuite() {
 	s.push_back(CUTE(testDeletePointBeyondEndOfSequenceDoesNotDeletePoint));
 	s.push_back(CUTE(testDeletePointBeforeBeginningEndOfSequenceDoesNotDeletePoint));
 
-	s.push_back(CUTE(testCompareContentOfSequence));
+//	s.push_back(CUTE(testCompareContentOfSequence));
 	return s;
 }

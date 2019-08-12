@@ -9,6 +9,7 @@
 #include <stdexcept>
 #include <utility>
 #include <vector>
+#include <iostream>
 
 namespace Kinova {
 
@@ -33,6 +34,8 @@ static auto invertMatrix(f2d_vec_t const & matrix) -> f2d_vec_t {
 		{0,				0,				0,				1}
 	};
 }
+
+Origin::Origin() : Origin{Coordinates{}}{}
 
 Origin::Origin(Coordinates const & origin) : origin{origin}, transformationMatrix{calculateTransformationMatrix(origin)}, invertedTransformationMatrix{invertMatrix(transformationMatrix)} {
 }
@@ -68,32 +71,72 @@ auto Sequence::getTransformedCoordinates() const -> Coordinates {
 	return coordTransform(currentCoordinates, origin.getTransformationMatrix());
 }
 
+auto Sequence::getInvertedTransformedCoordinates() const -> Coordinates {
+	auto currentCoordinates = getCurrentCoordinates();
+	return coordTransform(currentCoordinates, origin.getInvertedTransformationMatrix());
+}
+
 auto Sequence::getOrigin() const -> Coordinates {
 	return origin.getCoordinates();
 }
 
+void Sequence::setOrigin(Coordinates newOrigin) {
+	origin = Origin{newOrigin};
+}
+
+void Sequence::resetOrigin() {
+	origin = Origin{};
+}
+
 auto Sequence::endReached() const -> bool {
-	return currentPoint >= points.size();
+	return currentPoint >= static_cast<int>(points.size());
 }
 
 auto Sequence::numberOfPoints() const -> std::size_t {
 	return points.size();
 }
 
+auto Sequence::currentSequencePoint() const -> std::size_t {
+	return currentPoint;
+}
+
 void Sequence::nextPoint() {
-	throwIfEndReached();
+//	throwIfEndReached();
 	currentPoint++;
 }
 
 void Sequence::previousPoint() {
-	if (currentPoint == 0) {
-		throw std::logic_error{"Cannot go to previous point from the beginning"};
-	}
+//	if (currentPoint == 0) {
+//		throw std::logic_error{"Cannot go to previous point from the beginning"};
+//	}
 	currentPoint--;
 }
 
 void Sequence::reset() {
 	currentPoint = 0;
+}
+
+
+auto Sequence::savePoint(Coordinates coordinates) -> bool {
+	if (currentPoint > numberOfPoints() && currentPoint != -1) {
+		return false;
+	}
+	auto const transformedCoordinates = coordTransform(coordinates, origin.getInvertedTransformationMatrix());
+	if (endReached()) {
+		points.push_back(coordinates);
+	} else if (currentPoint == -1) { //TODO: (tcorbat) this is currently not possible with size_t as datatype for currentPoint
+		std::cout << "inserting coordinates at [" << currentPoint << "]" << std::endl;
+		points.insert(points.begin(), coordinates);
+	} else if (currentPoint >= 0) {
+		points[currentPoint] = coordinates;
+	}
+	return true;
+}
+
+void Sequence::deletePoint() {
+	if (currentPoint >= 0 && currentPoint < numberOfPoints()){
+		points.erase(points.begin() + currentPoint);
+	}
 }
 
 }
