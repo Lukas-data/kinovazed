@@ -145,7 +145,7 @@ void PositionHandling::saveOrigin(Kinova::Coordinates coordinates, Kinova::Objec
 
 void PositionHandling::deletePoint(Kinova::Objective targetObjective) {
 	//check targetObjective and SequenceCounter
-	if (targetObjective > 0 && targetObjective <= Kinova::NumberOfObjectives && SequenceCounter >= 0
+	if (targetObjective != Kinova::NoObjective && Kinova::isValidObjective(targetObjective) && SequenceCounter >= 0
 			&& SequenceCounter < points[targetObjective - 1].size()) {
 		//Delete Element
 		points[targetObjective - 1].erase(points[targetObjective - 1].begin() + SequenceCounter);
