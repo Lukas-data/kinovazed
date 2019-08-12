@@ -250,7 +250,7 @@ bool runAllTests(int argc, char const *argv[]) {
 	success &= runner(kinovaArmSuite, "KinovaArm Suite Tests");
 	success &= runner(positionHandlingSuite, "Position Handling Suite Tests");
 	success &= runner(sequenceSuite, "Sequence Suite Tests");
-//	success &= runner(integrationSuite, "Integration Suite Tests");
+	success &= runner(integrationSuite, "Integration Suite Tests");
 	return success;
 }
 
