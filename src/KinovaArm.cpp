@@ -422,7 +422,7 @@ void KinovaArm::sequenceDone() {
 	TargetObjective = Kinova::NoObjective;
 }
 
-/*sets the TeachingTarget (Objective at whitch will be teached). Keeps old objective and Sequence when called with Zero.*/
+/*sets the TeachingTarget (Objective at which will be taught). Keeps old objective and Sequence when called with Zero.*/
 void KinovaArm::teachPosition(Kinova::Objective targetObjective) {
 	if (targetObjective != 0) {
 		if (targetObjective > 0 && targetObjective <= Kinova::NumberOfObjectives) {
