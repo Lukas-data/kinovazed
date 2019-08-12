@@ -170,7 +170,7 @@ void testGetOriginForInvalidTarget() {
 }
 
 void assertFullSequence(PositionHandling & positionHandling, Kinova::Objective objective, std::vector<Kinova::Coordinates> expectedPoints) {
-	positionHandling.resetSequence();
+	positionHandling.resetSequence(objective);
 	for (auto const & point : expectedPoints) {
 		auto currentCoordinates = positionHandling.getCoordinates(objective);
 		ASSERT_EQUAL(point, currentCoordinates);

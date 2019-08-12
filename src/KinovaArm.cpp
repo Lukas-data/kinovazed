@@ -363,8 +363,9 @@ void KinovaArm::move() {
 /*Sets the Targetpoint for the Movement*/
 void KinovaArm::setTarget(Kinova::Objective targetObjective) {
 	if (targetObjective > 0 && targetObjective <= Kinova::NumberOfObjectives) {
+		PositionHandler.resetSequence(TargetObjective);
+		PositionHandler.resetSequence(targetObjective);
 		TargetObjective = targetObjective;
-		PositionHandler.resetSequence();
 		std::array<float, 6> currentCoordinates{};
 		getPosition(currentCoordinates.data());
 		PositionHandler.setZeroObjective(Kinova::Coordinates{currentCoordinates}, targetObjective);
@@ -418,7 +419,7 @@ void KinovaArm::moveToPosition(bool init) {
 }
 
 void KinovaArm::sequenceDone() {
-	PositionHandler.resetSequence();
+	PositionHandler.resetSequence(TargetObjective);
 	TargetObjective = Kinova::NoObjective;
 }
 
@@ -429,7 +430,8 @@ void KinovaArm::teachPosition(Kinova::Objective targetObjective) {
 			ALL_LOG(logDEBUG) << "new teachTarget, sequence reset.";
 			std::array<float, 6> currentCoordinates{};
 			getPosition(currentCoordinates.data());
-			PositionHandler.resetSequence();
+			PositionHandler.resetSequence(teachTarget);
+			PositionHandler.resetSequence(targetObjective);
 			PositionHandler.setZeroObjective(Kinova::Coordinates{currentCoordinates}, targetObjective);
 			teachTarget = targetObjective;
 		} else {

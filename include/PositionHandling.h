@@ -26,7 +26,7 @@ struct PositionHandling {
 	auto getOrigin(Kinova::Objective targetObjective) const -> Kinova::Coordinates; //tested
 	void incrementSequence(); //tested
 	void decrementSequence(); //tested
-	void resetSequence();
+	void resetSequence(Kinova::Objective targetObjective);
 	void setZeroObjective(Kinova::Coordinates coordinates, Kinova::Objective targetObjective); //tested
 	auto savePoint(Kinova::Coordinates coordinates, Kinova::Objective targetObjective) -> bool; //tested
 	void saveOrigin(Kinova::Coordinates coordinates, Kinova::Objective targetObjective); //tested

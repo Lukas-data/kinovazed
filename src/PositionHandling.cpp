@@ -102,7 +102,7 @@ void PositionHandling::incrementSequence() {
 void PositionHandling::decrementSequence() {
 	--SequenceCounter;
 }
-void PositionHandling::resetSequence() {
+void PositionHandling::resetSequence(Kinova::Objective targetObjective) {
 	SequenceCounter = 0;
 }
 
