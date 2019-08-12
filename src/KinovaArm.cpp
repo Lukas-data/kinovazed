@@ -388,7 +388,7 @@ void KinovaArm::moveToPosition(bool init) {
 		bool PointReached = checkIfReached(currentCoordinates);
 		bool currentLimit = checkCurrents();
 		if (PointReached || currentLimit) {
-			ALL_LOG(logDEBUG) << "Sequence-Point " << PositionHandler.getSequence() << " reached.";
+			ALL_LOG(logDEBUG) << "Sequence-Point " << PositionHandler.getSequence(TargetObjective) << " reached.";
 			try {
 				arm->erase_trajectories();
 			} catch (KinDrv::KinDrvException &e) {
@@ -436,7 +436,7 @@ void KinovaArm::teachPosition(Kinova::Objective targetObjective) {
 			ALL_LOG(logWARNING) << "KinovaArm: invalid teach Objective.";
 		}
 	}
-	ALL_LOG(logDEBUG) << "TeachMode: Teaching at Point " << teachTarget << ":" << PositionHandler.getSequence();
+	ALL_LOG(logDEBUG) << "TeachMode: Teaching at Point " << teachTarget << ":" << PositionHandler.getSequence(teachTarget);
 }
 
 /*moves Arm to the current point in the sequence at the current TeachTarget*/
@@ -453,7 +453,7 @@ void KinovaArm::moveToPoint() {
 		bool PointReached = checkIfReached(currentCoordinates);
 		checkCurrents();
 		if (PointReached) {
-			currentPosition = getCurrentPoint();
+			currentPosition = getCurrentPoint(teachTarget);
 			externalEvent = KinovaFSM::PointReached;
 			ALL_LOG(logDEBUG) << "Point " << currentPosition << " of Target: " << teachTarget << " is reached.";
 		} else {
@@ -510,7 +510,7 @@ void KinovaArm::moveToOrigin() {
 void KinovaArm::savePoint(int EventVariable) {
 	std::array<float, 6> currentCoordinates{};
 
-	if (EventVariable == PositionHandler.getSequence()) {
+	if (EventVariable == PositionHandler.getSequence(teachTarget)) {
 		getPosition(currentCoordinates.data());
 
 		PositionHandler.savePoint(Kinova::Coordinates{currentCoordinates}, teachTarget);
@@ -540,7 +540,7 @@ void KinovaArm::deletePoint() {
 
 /*decrements Sequence if EventVariable is the expected point after decrement.*/
 void KinovaArm::previousPoint(int EventVariable) {
-	int currentSequence = PositionHandler.getSequence();
+	int currentSequence = PositionHandler.getSequence(teachTarget);
 	if (EventVariable == currentSequence - 1) {
 		PositionHandler.decrementSequence();
 		externalEvent = KinovaFSM::PreviousPointSet;
@@ -553,7 +553,7 @@ void KinovaArm::previousPoint(int EventVariable) {
 
 /*increments Sequence if EventVariable is the expected point after increment.*/
 void KinovaArm::nextPoint(int EventVariable) {
-	int currentSequence = PositionHandler.getSequence();
+	int currentSequence = PositionHandler.getSequence(teachTarget);
 	if (EventVariable == currentSequence + 1) {
 		PositionHandler.incrementSequence();
 		externalEvent = KinovaFSM::NextPointSet;
@@ -615,7 +615,10 @@ auto KinovaArm::getCurrentPosition() -> int {
 	return currentPosition;
 }
 auto KinovaArm::getCurrentPoint() -> int {
-	return PositionHandler.getSequence();
+	return getCurrentPoint(teachTarget);
+}
+auto KinovaArm::getCurrentPoint(Kinova::Objective target) -> int {
+	return PositionHandler.getSequence(target);
 }
 
 auto KinovaArm::getExternalEvent() -> KinovaFSM::Event {

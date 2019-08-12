@@ -67,9 +67,9 @@ auto PositionHandling::getCoordinates(Kinova::Objective targetObjective) const -
 	return targetCoordinates;
 }
 
-auto PositionHandling::getSequence(Kinova::Objective targetObjective) const -> Kinova::Sequence {
-	return sequences.at(targetObjective);
-}
+//auto PositionHandling::getSequence(Kinova::Objective targetObjective) const -> Kinova::Sequence {
+//	return sequences.at(targetObjective);
+//}
 
 /*Check if targetObjective is known ZeroObjective. Inserts currentCoordinates and recalcs TransMat at beginning of Sequence.*/
 void PositionHandling::setZeroObjective(Kinova::Coordinates currentCoordinates, Kinova::Objective targetObjective) {
@@ -273,7 +273,7 @@ void PositionHandling::writeToFile() {
 	ALL_LOG(logINFO) << "Point successfully saved to File.";
 }
 
-int PositionHandling::getSequence() {
+auto PositionHandling::getSequence(Kinova::Objective targetObjective) const -> int {
 	return SequenceCounter;
 }
 

@@ -52,6 +52,7 @@ struct KinovaArm {
 	auto getMode() -> int;
 	auto getCurrentPosition() -> int;
 	auto getCurrentPoint() -> int;
+	auto getCurrentPoint(Kinova::Objective target) -> int;
 
 	auto getExternalEvent() -> KinovaFSM::Event;
 	auto getInternalEvent() -> KinovaFSM::Event;
