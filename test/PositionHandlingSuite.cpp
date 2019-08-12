@@ -174,7 +174,7 @@ void assertFullSequence(PositionHandling & positionHandling, Kinova::Objective o
 	for (auto const & point : expectedPoints) {
 		auto currentCoordinates = positionHandling.getCoordinates(objective);
 		ASSERT_EQUAL(point, currentCoordinates);
-		positionHandling.incrementSequence();
+		positionHandling.incrementSequence(objective);
 	}
 	ASSERT(positionHandling.resetOriginAtEnd(objective));
 }
@@ -196,7 +196,7 @@ void testSavePointForBellAtEndOfSequence() {
 	using namespace TimesLiteral;
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	2_times([&]{positionHandling.incrementSequence();});
+	2_times([&]{positionHandling.incrementSequence(Kinova::Bell);});
 	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
 	Kinova::Coordinates const expected{-0.420609, -0.317719, 0.573951, -1.84516, -1.45474, 2.84915};
 	ASSERT(positionHandling.savePoint(pointToAdd, Kinova::Bell));
@@ -213,7 +213,7 @@ void testSavePointForBellAfterEndOfSequence() {
 	using namespace TimesLiteral;
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	3_times([&]{positionHandling.incrementSequence();});
+	3_times([&]{positionHandling.incrementSequence(Kinova::Bell);});
 	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
 	ASSERT(!positionHandling.savePoint(pointToAdd, Kinova::Bell));
 	assertFullSequence(positionHandling, Kinova::Bell, {
@@ -281,7 +281,7 @@ void testResetOriginAtEndResetsOriginAtEndOfSequence() {
 	auto const originalOrigin = positionHandling.getOrigin(Kinova::PullDoor);
 	Kinova::Coordinates const newOrigin{0.1f, 0.1f, 0.1f, 1.0f, 0.1f, 0.001f};
 	positionHandling.setZeroObjective(newOrigin, Kinova::PullDoor);
-	3_times([&]{positionHandling.incrementSequence();});
+	3_times([&]{positionHandling.incrementSequence(Kinova::PullDoor);});
 	positionHandling.resetOriginAtEnd(Kinova::PullDoor);
 	ASSERT_EQUAL(originalOrigin, positionHandling.getOrigin(Kinova::PullDoor));
 }
@@ -309,7 +309,7 @@ void testDeletePointAtBeginningOfSequence() {
 void testDeletePointAtEndOfSequence() {
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	positionHandling.incrementSequence();
+	positionHandling.incrementSequence(Kinova::Bell);
 	positionHandling.deletePoint(Kinova::Bell);
 	assertFullSequence(positionHandling, Kinova::Bell, {
 			{-0.26333f,  -0.294817f, 0.537362f, -1.989f,   -1.418f,   2.632f}
@@ -321,7 +321,7 @@ void testDeletePointBeyondEndOfSequenceDoesNotDeletePoint() {
 	using namespace TimesLiteral;
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	2_times([&]{positionHandling.incrementSequence();});
+	2_times([&]{positionHandling.incrementSequence(Kinova::Bell);});
 	positionHandling.deletePoint(Kinova::Bell);
 	assertFullSequence(positionHandling, Kinova::Bell, {
 			{-0.26333f,  -0.294817f, 0.537362f, -1.989f,   -1.418f,   2.632f},

@@ -96,7 +96,7 @@ auto PositionHandling::getOrigin(Kinova::Objective targetObjective) const -> Kin
 	return Kinova::Coordinates{location[targetObjective - 1]};
 }
 
-void PositionHandling::incrementSequence() {
+void PositionHandling::incrementSequence(Kinova::Objective targetObjective) {
 	++SequenceCounter;
 }
 void PositionHandling::decrementSequence() {

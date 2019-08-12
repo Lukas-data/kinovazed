@@ -24,7 +24,7 @@ struct PositionHandling {
 //	auto getSequence(Kinova::Objective targetObjective) const -> Kinova::Sequence; //unused
 	auto hasOrigin(Kinova::Objective targetObjective) const -> bool; //tested
 	auto getOrigin(Kinova::Objective targetObjective) const -> Kinova::Coordinates; //tested
-	void incrementSequence(); //tested
+	void incrementSequence(Kinova::Objective targetObjective); //tested
 	void decrementSequence(); //tested
 	void resetSequence(Kinova::Objective targetObjective);
 	void setZeroObjective(Kinova::Coordinates coordinates, Kinova::Objective targetObjective); //tested

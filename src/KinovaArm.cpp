@@ -396,7 +396,7 @@ void KinovaArm::moveToPosition(bool init) {
 				error("moveToPosition", e, false);
 			}
 			//Next Point in Sequence.
-			PositionHandler.incrementSequence();
+			PositionHandler.incrementSequence(TargetObjective);
 		} else {
 			//Move to Position
 			float fingers[3];
@@ -557,7 +557,7 @@ void KinovaArm::previousPoint(int EventVariable) {
 void KinovaArm::nextPoint(int EventVariable) {
 	int currentSequence = PositionHandler.getSequence(teachTarget);
 	if (EventVariable == currentSequence + 1) {
-		PositionHandler.incrementSequence();
+		PositionHandler.incrementSequence(teachTarget);
 		externalEvent = KinovaFSM::NextPointSet;
 	} else if (EventVariable == currentSequence) {
 		externalEvent = KinovaFSM::NextPointSet;
