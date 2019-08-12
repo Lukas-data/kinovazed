@@ -30,9 +30,9 @@ struct PositionHandling {
 	void setZeroObjective(Kinova::Coordinates coordinates, Kinova::Objective targetObjective); //tested
 	auto savePoint(Kinova::Coordinates coordinates, Kinova::Objective targetObjective) -> bool; //tested
 	void saveOrigin(Kinova::Coordinates coordinates, Kinova::Objective targetObjective); //tested
-	void deletePoint(Kinova::Objective targetObjective);
+	void deletePoint(Kinova::Objective targetObjective); //tested
 	auto getSequence() -> int;
-	void writeToFile();
+	void writeToFile(); //TODO: (tcorbat): Extract serialization to file
 	auto resetOriginAtEnd(Kinova::Objective targetObjective) -> bool; //tested
 
 	auto getLocations() const {
