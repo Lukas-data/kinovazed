@@ -7,16 +7,16 @@
 namespace TimesLiteral {
 
 struct TimesFunctor {
-	explicit constexpr TimesFunctor(std::size_t numberOfExecutions) : numberOfExecutions{numberOfExecutions}{}
+	explicit constexpr TimesFunctor(unsigned long long numberOfExecutions) : numberOfExecutions{numberOfExecutions}{}
 
 	template <typename Function>
 	void operator()(Function && function) const {
-		for (auto iteration = 0u; iteration < numberOfExecutions; iteration++) {
+		for (auto iteration = 0ull; iteration < numberOfExecutions; iteration++) {
 			function();
 		}
 	}
 
-	std::size_t numberOfExecutions;
+	unsigned long long numberOfExecutions;
 };
 
 constexpr auto operator""_times(unsigned long long numberOfExecutions) {
