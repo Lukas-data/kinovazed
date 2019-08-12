@@ -227,7 +227,7 @@ void testSavePointForBellAfterEndOfSequence() {
 void testSavePointForBellBeforeSequence() {
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	positionHandling.decrementSequence();
+	positionHandling.decrementSequence(Kinova::Bell);
 	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
 	ASSERT(positionHandling.savePoint(pointToAdd, Kinova::Bell));
 	assertFullSequence(positionHandling, Kinova::Bell, {
@@ -334,7 +334,7 @@ void testDeletePointBeforeBeginningEndOfSequenceDoesNotDeletePoint() {
 	using namespace TimesLiteral;
 	std::istringstream positionData{exampleData};
 	PositionHandling positionHandling{positionData};
-	positionHandling.decrementSequence();
+	positionHandling.decrementSequence(Kinova::Bell);
 	positionHandling.deletePoint(Kinova::Bell);
 	assertFullSequence(positionHandling, Kinova::Bell, {
 			{-0.26333f,  -0.294817f, 0.537362f, -1.989f,   -1.418f,   2.632f},

@@ -544,7 +544,7 @@ void KinovaArm::deletePoint() {
 void KinovaArm::previousPoint(int EventVariable) {
 	int currentSequence = PositionHandler.getSequence(teachTarget);
 	if (EventVariable == currentSequence - 1) {
-		PositionHandler.decrementSequence();
+		PositionHandler.decrementSequence(teachTarget);
 		externalEvent = KinovaFSM::PreviousPointSet;
 	} else if (EventVariable == currentSequence) {
 		externalEvent = KinovaFSM::PreviousPointSet;

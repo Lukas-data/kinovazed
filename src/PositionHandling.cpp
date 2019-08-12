@@ -99,7 +99,7 @@ auto PositionHandling::getOrigin(Kinova::Objective targetObjective) const -> Kin
 void PositionHandling::incrementSequence(Kinova::Objective targetObjective) {
 	++SequenceCounter;
 }
-void PositionHandling::decrementSequence() {
+void PositionHandling::decrementSequence(Kinova::Objective targetObjective) {
 	--SequenceCounter;
 }
 void PositionHandling::resetSequence(Kinova::Objective targetObjective) {
