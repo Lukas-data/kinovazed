@@ -424,8 +424,8 @@ void KinovaArm::sequenceDone() {
 
 /*sets the TeachingTarget (Objective at which will be taught). Keeps old objective and Sequence when called with Zero.*/
 void KinovaArm::teachPosition(Kinova::Objective targetObjective) {
-	if (targetObjective != 0) {
-		if (targetObjective > 0 && targetObjective <= Kinova::NumberOfObjectives) {
+	if (targetObjective != Kinova::NoObjective) {
+		if (Kinova::isValidObjective(targetObjective)) {
 			ALL_LOG(logDEBUG) << "new teachTarget, sequence reset.";
 			float currentCoordinates[6];
 			getPosition(currentCoordinates);
