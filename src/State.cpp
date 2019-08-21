@@ -139,7 +139,6 @@ void StateChangeModeTeach::tickAction() {
 
 // TeachMovePoint
 void StateTeachMovePoint::exitActionHook() {
-	ALL_LOG(logINFO) << "Exiting State TeachMovePoint";
 	JacoZED->dontMove();
 }
 void StateTeachMovePoint::tickAction() {
