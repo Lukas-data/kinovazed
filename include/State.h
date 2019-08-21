@@ -23,7 +23,7 @@ protected:
 	}
 
 	static std::shared_ptr<KinovaArm> JacoZED;
-	int EventVariable{};
+	int eventVariable{};
 	std::string name;
 
 	virtual void entryActionHook() {

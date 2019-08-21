@@ -26,7 +26,7 @@ void State::init(std::shared_ptr<KinovaArm> jacoZed) {
 	JacoZED = jacoZed;
 }
 void State::setEventVar(int eventVar) {
-	EventVariable = eventVar;
+	eventVariable = eventVar;
 }
 
 // PowerOff
@@ -84,7 +84,7 @@ void StateIdle::exitActionHook() {
 
 // ChangeMode
 void StateChangeMode::entryActionHook() {
-	JacoZED->changeMode(static_cast<KinovaStatus::SteeringMode>(EventVariable));
+	JacoZED->changeMode(static_cast<KinovaStatus::SteeringMode>(eventVariable));
 }
 void StateChangeMode::tickAction() {
 	JacoZED->modeChangeTimer();
@@ -108,7 +108,7 @@ void StateSteering::tickAction() {
 
 // MovePosition
 void StateMovePosition::entryActionHook() {
-	JacoZED->setTarget(static_cast<Kinova::Objective>(EventVariable));
+	JacoZED->setTarget(static_cast<Kinova::Objective>(eventVariable));
 }
 void StateMovePosition::exitActionHook() {
 	JacoZED->sequenceDone();
@@ -120,7 +120,7 @@ void StateMovePosition::tickAction() {
 
 //Teach
 void StateTeach::entryActionHook() {
-	JacoZED->teachPosition(static_cast<Kinova::Objective>(EventVariable));
+	JacoZED->teachPosition(static_cast<Kinova::Objective>(eventVariable));
 }
 void StateTeach::exitActionHook() {
 	JacoZED->dontMove();
@@ -131,7 +131,7 @@ void StateTeach::tickAction() {
 
 // ChangeModeTeach
 void StateChangeModeTeach::entryActionHook() {
-	JacoZED->changeMode(static_cast<KinovaStatus::SteeringMode>(EventVariable));
+	JacoZED->changeMode(static_cast<KinovaStatus::SteeringMode>(eventVariable));
 }
 void StateChangeModeTeach::tickAction() {
 	JacoZED->modeChangeTimer();
@@ -156,7 +156,7 @@ void StateTeachMoveOrigin::tickAction() {
 
 // TeachSavePoint
 void StateTeachSavePoint::entryActionHook() {
-	JacoZED->savePoint(EventVariable);
+	JacoZED->savePoint(eventVariable);
 }
 
 // TeachSaveOrigin
@@ -171,11 +171,11 @@ void StateTeachDeletePoint::entryActionHook() {
 
 // TeachPrevious
 void StateTeachPrevious::entryActionHook() {
-	JacoZED->previousPoint(EventVariable);
+	JacoZED->previousPoint(eventVariable);
 }
 
 // TeachNext
 void StateTeachNext::entryActionHook() {
-	JacoZED->nextPoint(EventVariable);
+	JacoZED->nextPoint(eventVariable);
 }
 
