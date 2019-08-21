@@ -1,14 +1,14 @@
 #include "StateMachine.h"
 #include "Log.h"
 
-#include <cstdio>
-#include <ctime>
+#include <chrono>
 #include <memory>
 
 StateMachine::StateMachine(std::shared_ptr<KinovaArm> jacoZed) :
-		currentState { KinovaFSM::initState }, numberOfTransitions { sizeof(KinovaFSM::TransitionTable) / sizeof(KinovaFSM::Transition) } {
+		currentState { KinovaFSM::initState }, //
+		numberOfTransitions { sizeof(KinovaFSM::TransitionTable) / sizeof(KinovaFSM::Transition) }, //
+		lastTick { std::chrono::steady_clock::now() } {
 	currentState->init(jacoZed);
-	clock_gettime(CLOCK_REALTIME, &lastTick);
 }
 
 bool StateMachine::process(KinovaFSM::Event e, int var) {
@@ -24,13 +24,10 @@ bool StateMachine::process(KinovaFSM::Event e, int var) {
 	}
 
 	ALL_LOG(logDEBUG4) << "StateMachine: Not Processing Event '" << KinovaFSM::eventNames[e] << "'";
-	timespec timeNow;
-	clock_gettime(CLOCK_REALTIME, &timeNow);
-	double elapsedTime = (timeNow.tv_sec - lastTick.tv_sec) * 1000.0 + (timeNow.tv_nsec - lastTick.tv_nsec) / 1000000.0;
-	if (elapsedTime > looptime) {
+	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - lastTick) > loopTime) {
 		ALL_LOG(logDEBUG4) << "Tick!";
 		currentState->tickAction();
-		clock_gettime(CLOCK_REALTIME, &lastTick);
+		lastTick = std::chrono::steady_clock::now();
 	}
 	return false;
 }

@@ -6,11 +6,12 @@
 #include "State.h"
 #include "Transition.h"
 
+#include <chrono>
 #include <memory>
 
 /*This State Machine runs the entry, exit and tick events from the states in "State.h" according to the events and transitions in "Transition.h". There is no Queue. If an event finds no use, it is dropped.*/
 
-constexpr auto looptime = 50.0;
+constexpr auto loopTime { std::chrono::milliseconds { 50 } };
 
 struct StateMachine {
 	explicit StateMachine(std::shared_ptr<KinovaArm> jacoZed);
@@ -20,8 +21,8 @@ struct StateMachine {
 
 private:
 	State *currentState;
-	int numberOfTransitions;
-	timespec lastTick;
+	int const numberOfTransitions;
+	std::chrono::time_point<std::chrono::steady_clock> lastTick;
 };
 
 #endif
