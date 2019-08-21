@@ -4,7 +4,6 @@
 #include "PositionHandling.h"
 #include "Log.h"
 
-#include <cstdio>
 #include <memory>
 
 std::shared_ptr<KinovaArm> State::JacoZED = nullptr;
