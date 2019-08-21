@@ -300,11 +300,17 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
 				error("changeMode", e, false);
 			}
 		}
-		if (nextMode > 0 && nextMode <= 4) {
-			mode = nextMode;
-		} else if (nextMode == 0) {
+		switch (nextMode) {
+		case KinovaStatus::NoMode:
 			mode = KinovaStatus::Translation;
-		} else {
+			break;
+		case KinovaStatus::Translation:
+		case KinovaStatus::Rotation:
+		case KinovaStatus::Axis1:
+		case KinovaStatus::Axis2:
+			mode = nextMode;
+			break;
+		default:
 			ALL_LOG(logWARNING) << "KinovaArm: Requested Mode invalid.";
 		}
 	}
