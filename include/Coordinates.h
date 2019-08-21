@@ -55,7 +55,7 @@ struct Coordinates {
 	}
 
 	auto isZero() const -> bool {
-		constexpr auto isZero = [](auto const & location) {
+		auto isZero = [](auto const & location) {
 			return std::fabs(location) < epsilon;
 		};
 		std::array<float, 6> values = *this;
