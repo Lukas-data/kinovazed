@@ -9,7 +9,7 @@ echo "Creating logging folders if needed"
 mkdir -p ${SCRIPTPATH}/logfiles/archive
 
 echo "Starting KinovaZED"
-until mate-terminal -x bash -c 'cd ${SCRIPTPATH} && sudo ./KinovaZED -r;'; do
+until [ mate-terminal -x bash -c 'cd ${SCRIPTPATH} && sudo ./KinovaZED' ]; do
   echo "KinovaZED crashed with exit code $?. Restarting Script" >&2
   sleep 2
 done
