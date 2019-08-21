@@ -19,9 +19,9 @@ struct StateMachine {
 	bool process(KinovaFSM::Event e, int var);
 
 private:
-	State *CurrentState;
-	int NumberOfTransitions;
-	timespec LastTick;
+	State *currentState;
+	int numberOfTransitions;
+	timespec lastTick;
 };
 
 #endif
