@@ -3,9 +3,7 @@
 #include "Log.h"
 
 #include <array>
-
-#include <cstdio>
-#include <ctime> 
+#include <chrono>
 
 constexpr auto kinovaDummy = false;
 
@@ -289,12 +287,12 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
 				if ((mode != KinovaStatus::Axis1 && mode != KinovaStatus::Axis2)
 						&& (nextMode == KinovaStatus::Axis1 || nextMode == KinovaStatus::Axis2)) {
 					arm->set_control_ang();
-					ModeChangeTimer = 500;
+					maxModeChangeTimer = std::chrono::milliseconds { 500 };
 				}
 				if ((mode != KinovaStatus::Translation && mode != KinovaStatus::Rotation)
 						&& (nextMode == KinovaStatus::Translation || nextMode == KinovaStatus::Rotation || nextMode == KinovaStatus::NoMode)) {
 					arm->set_control_cart();
-					ModeChangeTimer = 500;
+					maxModeChangeTimer = std::chrono::milliseconds { 500 };
 				}
 			} catch (KinDrv::KinDrvException const &e) {
 				error("changeMode", e, false);
@@ -314,17 +312,17 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
 			ALL_LOG(logWARNING) << "KinovaArm: Requested Mode invalid.";
 		}
 	}
-	clock_gettime(CLOCK_REALTIME, &modeChangeTimerStart);
+	modeChangeTimerStart = std::chrono::steady_clock::now();
 }
 
 /*Runs Timer and sends ModeChange Event when done.*/
 void KinovaArm::modeChangeTimer() {
-	timespec TimerNow;
-	clock_gettime(CLOCK_REALTIME, &TimerNow);
-	double elapsedTime = (TimerNow.tv_sec - modeChangeTimerStart.tv_sec) * 1000 + (TimerNow.tv_nsec - modeChangeTimerStart.tv_nsec) / 1000000;
-	if (elapsedTime > ModeChangeTimer) {
+	if (!modeChangeTimerStart) {
+		modeChangeTimerStart = std::chrono::steady_clock::now();
+	}
+	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - *modeChangeTimerStart) > maxModeChangeTimer) {
 		externalEvent = KinovaFSM::ModeSet;
-		ModeChangeTimer = 0;
+		maxModeChangeTimer = std::chrono::milliseconds { 0 };
 	}
 }
 
@@ -672,16 +670,13 @@ void KinovaArm::setInactive() {
 	mode = KinovaStatus::NoMode;
 }
 
-/*Returns true if arm isn't moving anymore. Starts after initial timer of 200ms to wait for arm to start moving.*/
+/*Returns true if arm isn't moving anymore. Starts after initial timer of 500ms to wait for arm to start moving.*/
 auto KinovaArm::checkIfReached(float *currentCoordinates) -> bool {
-	if (moveTimerStart.tv_sec == 0 && moveTimerStart.tv_nsec == 0) {
-		clock_gettime(CLOCK_REALTIME, &moveTimerStart);
+	if (!moveTimerStart) {
+		moveTimerStart = std::chrono::steady_clock::now();
 	}
-	timespec TimerNow;
-	clock_gettime(CLOCK_REALTIME, &TimerNow);
-	double elapsedTime = (TimerNow.tv_sec - moveTimerStart.tv_sec) * 1000 + (TimerNow.tv_nsec - moveTimerStart.tv_nsec) / 1000000;
 
-	if (elapsedTime > 500) {
+	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - *moveTimerStart) > std::chrono::milliseconds { 500 }) {
 		bool pointReached = true;
 		ALL_LOG(logDEBUG4) << "KinovaArm::RangeCheck: following Axis do not pass:";
 		for (int i = 0; i < 6; i++) {
@@ -700,8 +695,7 @@ auto KinovaArm::checkIfReached(float *currentCoordinates) -> bool {
 		}
 		if (pointReachedCount > 3) {
 			pointReachedCount = 0;
-			moveTimerStart.tv_sec = 0;
-			moveTimerStart.tv_nsec = 0;
+			moveTimerStart = std::experimental::nullopt;
 			return pointReached;
 		}
 	}

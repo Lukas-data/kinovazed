@@ -6,6 +6,9 @@
 #include "PositionHandling.h"
 #include "kindrv.h"
 
+#include <chrono>
+#include <experimental/optional>
+
 constexpr auto positionRange = 0.05;
 constexpr auto rotationRange = 0.25;
 constexpr auto velocityRange = 0.000002;
@@ -80,10 +83,9 @@ private:
 	int joystickY = 0;
 	int joystickZ = 0;
 
-	timespec modeChangeTimerStart;
-	int ModeChangeTimer;
-
-	timespec moveTimerStart;
+	std::chrono::milliseconds maxModeChangeTimer { 0 };
+	std::experimental::optional<std::chrono::time_point<std::chrono::steady_clock>> modeChangeTimerStart { std::experimental::nullopt };
+	std::experimental::optional<std::chrono::time_point<std::chrono::steady_clock>> moveTimerStart { std::experimental::nullopt };
 
 	KinovaFSM::Event externalEvent = KinovaFSM::NoEvent;
 	KinovaFSM::Event internalEvent = KinovaFSM::NoEvent;
