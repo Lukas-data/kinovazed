@@ -39,4 +39,7 @@ set_property(TARGET KinovaZED PROPERTY CXX_STANDARD 14)
 
 add_subdirectory(test)
 
+#Copy autorun script and data points
+configure_file(${PROJECT_SOURCE_DIR}/KinovaStartUp.sh ${PROJECT_BINARY_DIR} COPYONLY)
+configure_file(${PROJECT_SOURCE_DIR}/CybathlonObjectives.dat ${PROJECT_BINARY_DIR} COPYONLY)
 
