@@ -143,8 +143,6 @@ private:
 	}
 
 	auto processInput(Command &newInCommand) -> bool {
-		ALL_LOG(logERROR) << "process()";
-
 		//INPUTS
 		Command oldInCommand = commandIn;
 		commandIn = getInputs();
@@ -191,7 +189,6 @@ private:
 			}
 		} else if (HWEvent == newInCommand.event) {
 			commandOut = Command{KinovaFSM::NoEvent};
-
 		} else {
 			commandOut = Command{HWEvent};
 		}
