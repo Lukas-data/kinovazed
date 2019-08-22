@@ -22,3 +22,5 @@ until mate-terminal -x /usr/bin/env bash --rcfile ${BASHRCTMP} -c 'sudo ./Kinova
   sleep 2
 done
 
+rm -f ${BASHRCTMP}
+
