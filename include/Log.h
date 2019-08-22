@@ -7,7 +7,7 @@
 
 #include <sstream>
 #include <string>
-#include <stdio.h>
+#include <cstdio>
 
 
 enum TLogLevel {logERROR, logWARNING, logINFO, logDEBUG, logDEBUG1, logDEBUG2, logDEBUG3, logDEBUG4};
