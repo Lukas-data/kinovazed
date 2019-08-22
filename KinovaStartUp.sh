@@ -8,8 +8,16 @@ sleep 10
 echo "Creating logging folders if needed"
 mkdir -p ${SCRIPTPATH}/logfiles/archive
 
+BASHRC=~/.bashrc
+BASHRCTMP=/tmp/.bashrc
+
+if [ -f ${BASHRC} ]; then
+  cp ${BASHRC} ${BASHRCTMP}
+fi
+echo "cd ${SCRIPTPATH}" >> ${BASHRCTMP}
+
 echo "Starting KinovaZED"
-until mate-terminal -x bash -c 'cd ${SCRIPTPATH} && sudo ./KinovaZED'; do
+until mate-terminal -x /usr/bin/env bash --rcfile ${BASHRCTMP} -c 'sudo ./KinovaZED'; do
   echo "KinovaZED crashed with exit code $?. Restarting Script" >&2
   sleep 2
 done
