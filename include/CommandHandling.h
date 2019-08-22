@@ -177,7 +177,6 @@ private:
 
 	void processOutput(bool processed, Command const &newInCommand, Command const &oldOutCommand) {
 		KinovaFSM::Event HWEvent = jacoZed->getExternalEvent();
-		int HWVar = getHWEventVar(HWEvent);
 		if (HWEvent == KinovaFSM::NoEvent) {
 			if (processed) {
 				//Processed Event
@@ -190,7 +189,7 @@ private:
 		} else if (HWEvent == newInCommand.event) {
 			commandOut = Command{KinovaFSM::NoEvent};
 		} else {
-			commandOut = Command{HWEvent};
+			commandOut = Command{HWEvent,getHWEventVar(HWEvent)};
 		}
 		sendOutputs(commandOut);
 		if (commandOut != oldOutCommand) {
