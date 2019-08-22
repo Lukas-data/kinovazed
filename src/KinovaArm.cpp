@@ -392,7 +392,7 @@ void KinovaArm::setTarget(Kinova::Objective targetObjective) {
  If Point is reached, sequence is counted up.
  If end of sequence is reached, PositionReached event is sent.*/
 void KinovaArm::moveToPosition(bool init) {
-	float currentCoordinates[6];
+	float currentCoordinates[6] { };
 	currentPosition = 0;
 	getPosition(currentCoordinates);
 	//Check if Sequence is still going
@@ -456,7 +456,7 @@ void KinovaArm::teachPosition(Kinova::Objective targetObjective) {
 
 /*moves Arm to the current point in the sequence at the current TeachTarget*/
 void KinovaArm::moveToPoint() {
-	float currentCoordinates[6];
+	float currentCoordinates[6] { };
 	currentPosition = 0;
 
 	getPosition(currentCoordinates);
@@ -489,7 +489,7 @@ void KinovaArm::moveToPoint() {
 
 /*moves Arm to origin of current TeachTarget*/
 void KinovaArm::moveToOrigin() {
-	float currentCoordinates[6];
+	float currentCoordinates[6] { };
 	Kinova::Coordinates currentCoordinate{};
 	currentPosition = 0;
 

@@ -70,7 +70,7 @@ struct KinovaArm {
 	void setInactive();
 
 private:
-	KinDrv::JacoArm *arm;
+	KinDrv::JacoArm *arm { nullptr };
 	PositionHandling PositionHandler{};
 
 	bool connected = false;
@@ -81,8 +81,8 @@ private:
 	KinovaStatus::SteeringMode mode = KinovaStatus::NoMode;
 	int currentPosition = -1;
 
-	Kinova::Objective TargetObjective;
-	Kinova::Objective teachTarget;
+	Kinova::Objective TargetObjective { Kinova::Objective::NoObjective };
+	Kinova::Objective teachTarget { Kinova::Objective::NoObjective };
 
 	int joystickX = 0;
 	int joystickY = 0;
@@ -101,7 +101,7 @@ private:
 	KinovaFSM::Event externalEvent = KinovaFSM::NoEvent;
 	KinovaFSM::Event internalEvent = KinovaFSM::NoEvent;
 
-	float lastCoordinates[6];
+	float lastCoordinates[6] { };
 
 	int pointReachedCount { };
 
