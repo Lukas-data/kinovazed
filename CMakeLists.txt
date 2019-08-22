@@ -32,7 +32,6 @@ add_executable(KinovaZED src/KinovaMain.cpp)
 target_link_libraries(KinovaZED
   PUBLIC
   kinovaArm_lib
-  rt
 )
 
 set_property(TARGET KinovaZED PROPERTY CXX_STANDARD 14)

@@ -12,6 +12,8 @@ StateMachine::StateMachine(std::shared_ptr<KinovaArm> jacoZed) :
 }
 
 bool StateMachine::process(KinovaFSM::Event e, int var) {
+	using namespace std::chrono_literals;
+
 	for (int i = 0; i < numberOfTransitions; i++) {
 		if ((currentState == KinovaFSM::TransitionTable[i].currentState) && (e == KinovaFSM::TransitionTable[i].event)) {
 			ALL_LOG(logINFO) << "StateMachine: Processing Event '" << KinovaFSM::eventNames[e] << "'";
@@ -24,7 +26,9 @@ bool StateMachine::process(KinovaFSM::Event e, int var) {
 	}
 
 	ALL_LOG(logDEBUG4) << "StateMachine: Not Processing Event '" << KinovaFSM::eventNames[e] << "'";
-	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - lastTick) > loopTime) {
+	auto elapsedTime { std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - lastTick) };
+	ALL_LOG(logDEBUG4) << "StateMachine: Time since last tick " << elapsedTime.count() << "ms";
+	if (elapsedTime > 50ms) {
 		ALL_LOG(logDEBUG4) << "Tick!";
 		currentState->tickAction();
 		lastTick = std::chrono::steady_clock::now();

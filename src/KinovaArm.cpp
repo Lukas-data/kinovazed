@@ -5,6 +5,12 @@
 #include <array>
 #include <chrono>
 
+#if __cplusplus >= 201703L
+#include <optional>
+#else
+#include <experimental/optional>
+#endif
+
 constexpr auto kinovaDummy = false;
 
 KinovaArm::~KinovaArm() {
@@ -281,18 +287,19 @@ void KinovaArm::unfold() {
 /*Changes current Mode and sets TimerTime (only necessary if kinematic 
  mode on Jaco needs to be changed.). Default nextMode = NoMode is Translation!*/
 void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
+	using namespace std::chrono_literals;
 	if (mode != nextMode || mode == KinovaStatus::NoMode) {
 		if (!kinovaDummy) {
 			try {
 				if ((mode != KinovaStatus::Axis1 && mode != KinovaStatus::Axis2)
 						&& (nextMode == KinovaStatus::Axis1 || nextMode == KinovaStatus::Axis2)) {
 					arm->set_control_ang();
-					maxModeChangeTimer = std::chrono::milliseconds { 500 };
+					maxModeChangeTimer = 500ms;
 				}
 				if ((mode != KinovaStatus::Translation && mode != KinovaStatus::Rotation)
 						&& (nextMode == KinovaStatus::Translation || nextMode == KinovaStatus::Rotation || nextMode == KinovaStatus::NoMode)) {
 					arm->set_control_cart();
-					maxModeChangeTimer = std::chrono::milliseconds { 500 };
+					maxModeChangeTimer = 500ms;
 				}
 			} catch (KinDrv::KinDrvException const &e) {
 				error("changeMode", e, false);
@@ -317,12 +324,14 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
 
 /*Runs Timer and sends ModeChange Event when done.*/
 void KinovaArm::modeChangeTimer() {
+	using namespace std::chrono_literals;
 	if (!modeChangeTimerStart) {
 		modeChangeTimerStart = std::chrono::steady_clock::now();
 	}
-	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - *modeChangeTimerStart) > maxModeChangeTimer) {
+	auto elapsedTime { std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - *modeChangeTimerStart) };
+	if (elapsedTime > maxModeChangeTimer) {
 		externalEvent = KinovaFSM::ModeSet;
-		maxModeChangeTimer = std::chrono::milliseconds { 0 };
+		maxModeChangeTimer = 0ms;
 	}
 }
 
@@ -695,7 +704,11 @@ auto KinovaArm::checkIfReached(float *currentCoordinates) -> bool {
 		}
 		if (pointReachedCount > 3) {
 			pointReachedCount = 0;
+#if __cplusplus >= 201703L
+			moveTimerStart = std::nullopt;
+#else
 			moveTimerStart = std::experimental::nullopt;
+#endif
 			return pointReached;
 		}
 	}

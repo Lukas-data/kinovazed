@@ -7,7 +7,12 @@
 #include "kindrv.h"
 
 #include <chrono>
+
+#if __cplusplus >= 201703L
+#include <optional>
+#else
 #include <experimental/optional>
+#endif
 
 constexpr auto positionRange = 0.05;
 constexpr auto rotationRange = 0.25;
@@ -83,16 +88,22 @@ private:
 	int joystickY = 0;
 	int joystickZ = 0;
 
-	std::chrono::milliseconds maxModeChangeTimer { 0 };
+	std::chrono::milliseconds maxModeChangeTimer { };
+
+#if __cplusplus >= 201703L
+	std::optional<std::chrono::time_point<std::chrono::steady_clock>> modeChangeTimerStart { std::nullopt };
+	std::optional<std::chrono::time_point<std::chrono::steady_clock>> moveTimerStart { std::nullopt };
+#else
 	std::experimental::optional<std::chrono::time_point<std::chrono::steady_clock>> modeChangeTimerStart { std::experimental::nullopt };
 	std::experimental::optional<std::chrono::time_point<std::chrono::steady_clock>> moveTimerStart { std::experimental::nullopt };
+#endif
 
 	KinovaFSM::Event externalEvent = KinovaFSM::NoEvent;
 	KinovaFSM::Event internalEvent = KinovaFSM::NoEvent;
 
 	float lastCoordinates[6];
 
-	int pointReachedCount;
+	int pointReachedCount { };
 
 	void error(const char *funcName, KinDrv::KinDrvException const &e, bool warning);
 	void error(const char *funcName, const char *errorMsg);
