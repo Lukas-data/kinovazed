@@ -507,7 +507,7 @@ void KinovaArm::moveToOrigin() {
 			ALL_LOG(logDEBUG) << "Origin of " << teachTarget << " reached.";
 		} else {
 			//Move to Point
-			float fingers[3];
+			float fingers[3] { };
 			try {
 				std::array<float, 6> targetForArm = targetCoordinates;
 				arm->set_target_cart(targetForArm.data(), fingers);
@@ -660,11 +660,9 @@ void KinovaArm::getPosition(float *coordinates) {
 		}
 
 		//transform jaco_position_t to float[]
-		for (int i = 0; i < 6; i++) {
-			if (i < 3)
-				coordinates[i] = Position.position[i];
-			else
-				coordinates[i] = Position.rotation[i - 3];
+		for (int i = 0; i < 3; i++) {
+			coordinates[i] = Position.position[i];
+			coordinates[i+3] = Position.rotation[i];
 		}
 	}
 	ALL_LOG(logDEBUG4) << "KinovaArm::getPosition: currentCoordinates: (" << coordinates[0] << ", " << coordinates[1] << ", " << coordinates[2]
