@@ -1,26 +1,23 @@
 #!/usr/bin/env bash
 
 SCRIPTPATH="$(cd "$(dirname "$0")" ; pwd -P)"
+LASTLOG=/tmp/KinovaStartUp.log
 
-echo "Give the OS some time to finish booting"
+if [ -f ${LASTLOG} ]; then
+  rm -f ${LASTLOG}
+fi
+
+echo "Scriptpath: ${SCRIPTPATH}" >> ${LASTLOG}
+
+echo "Give the OS some time to finish booting" >> ${LASTLOG}
 sleep 10
 
-echo "Creating logging folders if needed"
+echo "Creating logging folders if needed" >> ${LASTLOG}
 mkdir -p ${SCRIPTPATH}/logfiles/archive
 
-BASHRC=~/.bashrc
-BASHRCTMP=/tmp/.bashrc
-
-if [ -f ${BASHRC} ]; then
-  cp ${BASHRC} ${BASHRCTMP}
-fi
-echo "cd ${SCRIPTPATH}" >> ${BASHRCTMP}
-
-echo "Starting KinovaZED"
-until mate-terminal -x /usr/bin/env bash --rcfile ${BASHRCTMP} -c 'sudo ./KinovaZED'; do
-  echo "KinovaZED crashed with exit code $?. Restarting Script" >&2
+echo "Starting KinovaZED" >> ${LASTLOG}
+until mate-terminal -x $(cd ${SCRIPTPATH} && sudo ./KinovaZED); do
+  echo "KinovaZED crashed with exit code $?. Restarting Script" >> ${LASTLOG}
   sleep 2
 done
-
-rm -f ${BASHRCTMP}
 
