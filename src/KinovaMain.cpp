@@ -3,6 +3,7 @@
 #include "CommandHandling.h"
 
 #include <chrono>
+#include <exception>
 #include <stdexcept>
 #include <thread>
 
@@ -15,6 +16,12 @@ int main() {
 				commandHandler.process();
 			} catch (std::runtime_error const &e) {
 				ALL_LOG(logERROR) << "RuntimeError: " << e.what();
+				return -1;
+			} catch (std::exception const &e) {
+				ALL_LOG(logERROR) << "Exception: " << e.what();
+				return -1;
+			} catch (...) {
+				ALL_LOG(logERROR) << "UNKNOWN ERROR.";
 				return -1;
 			}
 		}
