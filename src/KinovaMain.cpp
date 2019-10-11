@@ -1,4 +1,5 @@
 
+#include "LogFile.h"
 #include "spdlog/spdlog.h"
 #include "CommandHandling.h"
 
