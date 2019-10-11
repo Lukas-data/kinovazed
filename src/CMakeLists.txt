@@ -21,7 +21,12 @@ target_include_directories(kinovaArm_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 #Main Program
 add_executable(KinovaZED KinovaMain.cpp)
-target_link_libraries(KinovaZED PUBLIC libkindrv PRIVATE kinovaArm_lib rt )
+target_link_libraries(KinovaZED PUBLIC libkindrv PRIVATE kinovaArm_lib rt 
+                                PRIVATE spdlog::spdlog_header_only
+                                )
+
+#Create logs directory
+file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/logs")
 
 #install (TARGETS KinovaZED DESTINATION bin)
 #install (FILES KinovaArm.h  DESTINATION include)
