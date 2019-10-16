@@ -3,7 +3,7 @@
 
 #include "KinovaArm.h"
 #include "KinovaStatus.h"
-#include "Log.h"
+#include "spdlog/spdlog.h"
 #include "StateMachine.h"
 #include "TCPServer.h"
 
@@ -68,7 +68,7 @@ private:
 		bool jSisZero = packet.x == 0 && packet.y == 0 && packet.z == 0;
 		if (!jSisZero && commandIn.event != KinovaFSM::E_Stop) {
 			commandIn = Command{KinovaFSM::MoveJoystick};
-			ALL_LOG(logDEBUG4) << "CommandHandling::getInputs(): MoveJoystick";
+			spdlog::info("CommandHandling::getInputs(): MoveJoystick");
 		}
 		return commandIn;
 	}
