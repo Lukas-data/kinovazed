@@ -1,5 +1,4 @@
 
-#include "LogFile.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/sinks/rotating_file_sink.h"
@@ -28,12 +27,10 @@ int main() {
 		* set log level here
 		*/
 		log->set_level(spdlog::level::info);
-	}
-	else {
-		spdlog::error("create logger failed!");
-	}
 
-	if (LogFile::create()) {
+		/*
+		 * run with active logger
+		 */
 		log->info("KinovaMain - Startup!");
 		CommandHandling<> commandHandler { };
 		while (true) {
@@ -51,8 +48,14 @@ int main() {
 			}
 		}
 	}
+	else 
+	{
+		//TODO: think about running anyways, and point logger to console only
+		spdlog::error("create logger failed!");
+	}
 	using namespace std::chrono_literals;
 	std::this_thread::sleep_for(10s);
 	return -1;
+
 }
 
