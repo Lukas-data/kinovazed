@@ -54,6 +54,8 @@ private:
 	std::unique_ptr<EventIo> roboRio;
 	StateMachine kinovaSM;
 
+	auto log = spdlog::get("robolog");
+
 	Command commandOut{KinovaFSM::NoEvent};
 	Command commandIn{KinovaFSM::NoEvent};
 
@@ -68,7 +70,7 @@ private:
 		bool jSisZero = packet.x == 0 && packet.y == 0 && packet.z == 0;
 		if (!jSisZero && commandIn.event != KinovaFSM::E_Stop) {
 			commandIn = Command{KinovaFSM::MoveJoystick};
-			spdlog::info("CommandHandling::getInputs(): MoveJoystick");
+			log->info("CommandHandling::getInputs(): MoveJoystick");
 		}
 		return commandIn;
 	}
@@ -117,28 +119,27 @@ private:
 
 	void connectRoboRio() {
 		using namespace std::chrono_literals;
-		ALL_LOG(logDEBUG3) << "Trying to connect to RoboRio";
 		while (true) {
 			try {
 				roboRio->connect();
-				ALL_LOG(logINFO) << "Connection to RoboRio established.";
+				log->info("Connection to RoboRio established.");
 				return;
 			} catch (std::runtime_error const &e) {
-				ALL_LOG(logDEBUG1) << "Connection to RoboRio unsuccessful. Retry.";
+				log->warn("Connection to RoboRio unsuccessful. Retry.");
 				std::this_thread::sleep_for(1s);
 			}
 		}
 	}
 	void connectJacoZed() {
 		using namespace std::chrono_literals;
-		ALL_LOG(logDEBUG3) << "Trying to connect to JacoArm.";
 		while (true) {
 			if (jacoZed->connect()) {
+				log->info("Connection to JacoArm established.");
 				return;
 			} else {
-				ALL_LOG(logDEBUG1) << "Connection to JacoArm unsuccessful. Retry.";
+				log->warn("Connection to JacoArm unsuccessful. Retry.");
+				std::this_thread::sleep_for(1s);
 			}
-			std::this_thread::sleep_for(1s);
 		}
 	}
 
@@ -148,9 +149,9 @@ private:
 		commandIn = getInputs();
 
 		if (commandIn != oldInCommand) {
-			ALL_LOG(logDEBUG) << "CommandHandling: Received Event '" << KinovaFSM::eventNames[commandIn.event] << ":" << commandIn.var << "'";
+			log->debug("CommandHandling: event: new: {}: {}", KinovaFSM::eventNames[commandIn.event], commandIn.var);
 		} else {
-			ALL_LOG(logDEBUG4) << "CommandHandling: Received Event '" << KinovaFSM::eventNames[commandIn.event] << ":" << commandIn.var << "'";
+			log->info("CommandHandling: event: identical");
 		}
 		//Check for E_Stop
 		if (commandIn.event == KinovaFSM::E_Stop) {
@@ -158,12 +159,11 @@ private:
 		} else {
 			//get Hardware Error
 			if (jacoZed->getError()) {
-				ALL_LOG(logDEBUG3) << "Hardware Error detected: E-Stop set.";
 				newInCommand.event = KinovaFSM::E_Stop;
+				log->error("Hardware Error detected: E-Stop set.");
 			}
 			//get Internal HW Events
 			else {
-				ALL_LOG(logDEBUG4) << "No Hardware Error detected.";
 				newInCommand.event = jacoZed->getInternalEvent();
 			}
 			if (newInCommand.event == KinovaFSM::NoEvent) {
@@ -193,9 +193,9 @@ private:
 		}
 		sendOutputs(commandOut);
 		if (commandOut != oldOutCommand) {
-			ALL_LOG(logDEBUG) << "CommandHandling: Sent Event '" << KinovaFSM::eventNames[commandOut.event] << ":" << commandOut.var << "'";
+			log->debug("CommandHandling: cmd out: {}: {}", KinovaFSM::eventNames[commandOut.event], commandOut.var);
 		} else {
-			ALL_LOG(logDEBUG4) << "CommandHandling: Sent Event '" << KinovaFSM::eventNames[commandOut.event] << ":" << commandOut.var << "'";
+			log->info("CommandHandling: cmd out: identical");
 		}
 	}
 };
