@@ -1,6 +1,8 @@
 
 #include "LogFile.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/sinks/stdout_color_sinks.h"
+#include "spdlog/sinks/rotating_file_sink.h"
 #include "CommandHandling.h"
 
 #include <chrono>
@@ -49,9 +51,8 @@ int main() {
 bool setup_logger(){
 
 	std::vector<spdlog::sink_ptr> sinks;
-	sinks.push_back(std::make_shared<spdlog::sinks::stdout_sink_st>());
+	sinks.push_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
 	sinks.push_back(std::make_shared<spdlog::sinks::rotating_file_sink_mt>("filelog", "log.txt", 1048576 * 20, 200, true));
 	auto debug_logger = std::make_shared<spdlog::logger>("robolog", begin(sinks), end(sinks));
 	spdlog::register_logger(debug_logger);
-	
 }
