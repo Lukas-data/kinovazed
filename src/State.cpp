@@ -2,19 +2,20 @@
 #include "State.h"
 #include "KinovaStatus.h"
 #include "PositionHandling.h"
-#include "Log.h"
+
+#include "spdlog/spdlog.h"
 
 #include <memory>
 
 std::shared_ptr<KinovaArm> State::JacoZED = nullptr;
 
 void State::entryAction() {
-	ALL_LOG(logINFO) << "Entering State " << name;
+	spdlog::info("Entering State {0}", name);
 	entryActionHook();
 }
 
 void State::exitAction() {
-	ALL_LOG(logINFO) << "Exiting State " << name;
+	spdlog::info("Exiting State {0}", name);
 	exitActionHook();
 }
 

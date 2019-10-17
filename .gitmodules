@@ -1,3 +1,6 @@
 [submodule "thirdparty/libkindrv"]
 	path = thirdparty/libkindrv
 	url = https://github.com/IFS-HSR/libkindrv 
+[submodule "thirdparty/spdlog"]
+	path = thirdparty/spdlog
+	url = https://github.com/gabime/spdlog.git

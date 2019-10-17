@@ -1,7 +1,9 @@
 #include "PositionHandling.h"
 #include "Exceptions.h"
-#include "Log.h"
 #include "Sequence.h"
+
+#include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 
 #include <algorithm>
 #include <array>
@@ -12,7 +14,7 @@
 #include <stdexcept>
 #include <vector>
 
-#define FILEPATH "CybathlonObjectives.dat"
+auto constexpr FILEPATH = "CybathlonObjectives.dat";
 
 PositionHandling::PositionHandling(std::istream &in) :
 		PositionHandling{} {
@@ -56,10 +58,10 @@ auto PositionHandling::getCoordinates(Kinova::Objective targetObjective) const -
 	if (targetCoordinates.isZero()) {
 		targetCoordinates = sequence.getOrigin();
 	} else {
-		ALL_LOG(logDEBUG3) << "PositionHandling::getCoordinates: " << "Points[" << targetObjective - 1 << "][" << sequence.currentSequencePoint() << "] is not zero " << targetCoordinates;
+		spdlog::debug("PositionHandling::getCoordinates: Points[{0}][{1}] is not zero {2}", targetObjective - 1, sequence.currentSequencePoint(), targetCoordinates);
 		targetCoordinates = sequences.at(targetObjective).getTransformedCoordinates();
 	}
-	ALL_LOG(logDEBUG4) << "PositionHandling::getCoordinates: " << "TargetCoordinates: " << targetCoordinates;
+	spdlog::debug("PositionHandling::getCoordinates: TargetCoordinates: {0}", targetCoordinates);
 	return targetCoordinates;
 }
 
@@ -102,13 +104,13 @@ void PositionHandling::resetSequence(Kinova::Objective targetObjective) {
 bool PositionHandling::savePoint(Kinova::Coordinates coordinates, Kinova::Objective targetObjective) {
 	//check targetObjective
 	if (targetObjective <= 0 || targetObjective > Kinova::NumberOfObjectives) {
-		ALL_LOG(logERROR) << "PositionHandling::SavePoint: targetObjective is out of bound: " << targetObjective;
+		spdlog::error("PositionHandling::SavePoint: targetObjective is out of bound: {0}", targetObjective);
 		return false;
 	}
 	auto const result = sequences[targetObjective].savePoint(coordinates);
 	if (!result) {
-		ALL_LOG(logWARNING) << "PositionHandling::SavePoint: SequenceCounter is out of bound: " << sequences[targetObjective].currentSequencePoint() << " at SequenceSize off "
-				<< sequences[targetObjective].numberOfPoints();
+		spdlog::warn("PositionHandling::SavePoint: SequenceCounter is out of bound: {0} at SequenceSize off {1}",
+				sequences[targetObjective].currentSequencePoint(), sequences[targetObjective].numberOfPoints());
 	}
 	return result;
 }
@@ -143,7 +145,7 @@ void PositionHandling::loadData(std::istream &in) {
 			if (coordinateData.size() < 6) {
 				std::ostringstream incompleteCoordinate{};
 				copy(begin(coordinateData), end(coordinateData), std::ostream_iterator<float>{incompleteCoordinate, ", "});
-				ALL_LOG(logERROR) << "PositionHandling::ReadFromFile: Incomplete coordinates " << incompleteCoordinate.str();
+				spdlog::error("PositionHandling::ReadFromFile: Incomplete coordinates {0}", incompleteCoordinate.str());
 				break;
 			}
 			Kinova::Coordinates const loadedCoordinates{coordinateData};
@@ -151,7 +153,7 @@ void PositionHandling::loadData(std::istream &in) {
 			if (loadedCoordinates.isZero()) {
 				auto const objective = static_cast<Kinova::Objective>(i + 1);
 				ZeroObjectives.insert(objective);
-				ALL_LOG(logDEBUG2) << "PositionHandling::ReadFromFile: " << "Objective " << (i + 1) << " [" << Kinova::ObjectiveNames[objective] << "] is Zero";
+				spdlog::debug("PositionHandling::ReadFromFile: Objective {0} [{1}] is Zero", (i + 1), Kinova::ObjectiveNames[objective]);
 			}
 		}
 	}
@@ -166,7 +168,7 @@ void PositionHandling::loadData(std::istream &in) {
 //	f2d_vec_t::iterator it = points[location].begin();
 
 	while (std::getline(in, line) && location < Kinova::NumberOfObjectives) {
-		ALL_LOG(logDEBUG4) << "PositionHandling::ReadFromFile: " << "Objective: " << location << ", Point: " << sequence;
+		spdlog::debug("PositionHandling::ReadFromFile: Objective: {0}, Point: {1}", location, sequence);
 		std::istringstream iss(line);
 		int n;
 		std::vector<float> coordinateData;
@@ -178,7 +180,7 @@ void PositionHandling::loadData(std::istream &in) {
 			//start new Objective.
 			location++;
 			sequence = 0;
-			ALL_LOG(logDEBUG4) << "PositionHandling::ReadFromFile: " << "Empty line. Next Objective.";
+			spdlog::debug("PositionHandling::ReadFromFile: Empty line. Next Objective.");
 		} else {
 			//save Point
 			loadedPoints[location].push_back(Kinova::Coordinates{coordinateData});
@@ -196,7 +198,7 @@ void PositionHandling::loadData(std::istream &in) {
 void PositionHandling::readFromFile() {
 	std::ifstream infile(FILEPATH);
 	loadData(infile);
-	ALL_LOG(logINFO) << "Points successfully loaded from File.";
+	spdlog::info("Points successfully loaded from File.");
 }
 
 /*Writes Location and Points Vectors to SaveFile*/
@@ -235,10 +237,10 @@ void PositionHandling::writeToFile() {
 			saveFile << "\n";
 		}
 	} else {
-		ALL_LOG(logERROR) << "PosiionHandling::writeToFile: Unable to open file.";
+		spdlog::error("PosiionHandling::writeToFile: Unable to open file.");
 	}
 	saveFile.close();
-	ALL_LOG(logINFO) << "Point successfully saved to File.";
+	spdlog::info("Point successfully saved to File.");
 }
 
 auto PositionHandling::getSequence(Kinova::Objective targetObjective) const -> int {

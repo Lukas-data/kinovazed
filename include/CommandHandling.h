@@ -35,8 +35,10 @@ struct Command {
 template<typename EventIo = TCPServer, typename Arm = KinovaArm>
 struct CommandHandling {
 	CommandHandling(std::unique_ptr<EventIo> roboRio, std::shared_ptr<Arm> jacoZed) :
-			roboRio{std::move(roboRio)}, jacoZed{jacoZed}, kinovaSM{jacoZed} {
+			roboRio { std::move(roboRio) }, jacoZed { jacoZed }, kinovaSM { jacoZed } {
+		spdlog::debug("Connecting to RoboRio.");
 		connectRoboRio();
+		spdlog::debug("Connecting to JacoArm.");
 		connectJacoZed();
 	}
 	CommandHandling() :

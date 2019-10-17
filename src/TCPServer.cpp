@@ -1,5 +1,6 @@
 #include "TCPServer.h"
-#include "Log.h"
+
+#include "spdlog/spdlog.h"
 
 #include <array>
 #include <stdio.h>
@@ -20,7 +21,7 @@ constexpr auto messageLength = RoboRioProtocol::commandLength + (RoboRioProtocol
 constexpr auto numberOfQueueConnections = 5;
 
 void TCPServer::error(const char *funcName, const char *msg) {
-	ALL_LOG(logERROR) << "TCPServer::" << funcName << "(): " << msg;
+	spdlog::error("TCPServer::{0}(): {1}", funcName, msg);
 }
 
 TCPServer::TCPServer() :
@@ -74,20 +75,20 @@ void TCPServer::disconnect() {
 
 auto TCPServer::sendTCP(RoboRioProtocol::Packet packet) -> bool {
 	if (!rioDummy) {
-		ALL_LOG(logDEBUG4) << "TCPServer::sendTCP(): start";
+		spdlog::debug("TCPServer::sendTCP(): start");
 		std::array<char, messageLength> buffer{};
 		int m = sprintf(buffer.data(), "%6d%6d%6d%6d%6d", packet.command, packet.var, packet.x, packet.y, packet.z);
 		if (m != messageLength) {
 			error("sendTCP", "Error preparing message");
 			return false;
 		}
-		ALL_LOG(logDEBUG4) << "TCPServer::sendTCP(): Message prepared.";
+		spdlog::debug("TCPServer::sendTCP(): Message prepared.");
 		if (write(clientSocket, buffer.data(), messageLength) < 0) {
 			error("sendTCP", "Error writing to socket");
 			return false;
 		}
 	}
-	ALL_LOG(logDEBUG4) << "TCPServer::sendTCP(" << packet.command << ", " << packet.var << ", " << packet.x << ", " << packet.y << ", " << packet.z << ")";
+	spdlog::debug("TCPServer::sendTCP({0}, {1}, {2}, {3}, {4})", packet.command, packet.var, packet.x, packet.y, packet.z);
 	return true;
 }
 

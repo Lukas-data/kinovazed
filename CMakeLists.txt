@@ -4,6 +4,7 @@ project (kinovaZED)
 find_package(Boost REQUIRED COMPONENTS system)
 
 add_subdirectory(thirdparty/libkindrv)
+add_subdirectory(thirdparty/spdlog)
 
 add_library(kinovaArm_lib STATIC 
   src/KinovaArm.cpp
@@ -24,6 +25,7 @@ target_include_directories(kinovaArm_lib
 target_link_libraries(kinovaArm_lib
   PUBLIC
   libkindrv
+  spdlog::spdlog_header_only
   ${Boost_LIBRARIES}
 )
 

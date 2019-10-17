@@ -4,7 +4,6 @@
 #include "Event.h"
 #include "EventIOFake.h"
 #include "RoboRioProtocol.h"
-#include "../include/LogFile.h"
 
 #include <chrono>
 #include <memory>
@@ -70,7 +69,6 @@ private:
 
 
 void thisIsAIntegrationSuiteTest() {
-	LogFile::create();
 	std::shared_ptr<EventsForBellSequence> sequence = std::make_shared<EventsForBellSequence>();
 	auto eventIo = std::make_unique<EventIOFake<EventsForBellSequence>>(sequence);
 	auto jacoArm = std::make_unique<KinovaArm>();

@@ -2,59 +2,58 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/sinks/rotating_file_sink.h"
+#include "spdlog/sinks/dist_sink.h"
 #include "CommandHandling.h"
+#include "Prefix.h"
 
 #include <chrono>
 #include <exception>
+#include <memory>
 #include <stdexcept>
 #include <thread>
+#include <string>
 
 namespace Constants {
 	auto constexpr LOG_FILE = "logs/log.txt";
+	auto constexpr LOGGER_NAME = "robolog";
 }
 
-bool setup_logger(){
-	try{
-		auto console_sink { std::make_shared<spdlog::sinks::stdout_color_sink_mt>() };
+void setup_logger(std::string name) {
+	try {
+		auto console_sink { std::make_shared<spdlog::sinks::stdout_color_sink_st>() };
 		console_sink->set_level(spdlog::level::info);
 
-		auto file_sink { std::make_shared<spdlog::sinks::rotating_file_sink_mt>(Constants::LOG_FILE, 1048576 * 20, 200, true) };
+		using namespace BytePrefix;
+		auto file_sink { std::make_shared<spdlog::sinks::rotating_file_sink_mt>(Constants::LOG_FILE, 50_M, 200, true) };
 		file_sink->set_level(spdlog::level::trace);
-		
-		spdlog::logger logger("robolog", { console_sink, file_sink });
+
+		auto logger { std::make_shared<spdlog::logger>(name, spdlog::sinks_init_list { console_sink, file_sink }) };
+		logger->set_level(spdlog::level::trace);
 		spdlog::register_logger(logger);
 		spdlog::set_default_logger(logger);
-		return true;
-	}
-	catch (const spdlog::spdlog_ex& ex)
-	{
-		std::cout << "Log initialization failed: " << ex.what() << std::endl;
-		return false
+		spdlog::flush_on(spdlog::level::warn);
+		using namespace std::chrono_literals;
+		spdlog::flush_every(15s);
+	} catch (const spdlog::spdlog_ex &ex) {
+		spdlog::critical("Log initialization failed: {}", ex.what());
 	}
 }
 
 int main() {
-
-	setup_logger();
-
-	spdlog::set_level(spdlog::level::info);
-
-	/*
-		* run with active logger
-		*/
+	setup_logger(Constants::LOGGER_NAME);
 	spdlog::info("KinovaMain - Startup!");
 	CommandHandling<> commandHandler { };
 	while (true) {
 		try {
 			commandHandler.process();
 		} catch (std::runtime_error const &e) {
-			spdlog::error("RuntimeError: {}", e.what());
+			spdlog::critical("RuntimeError: {}", e.what());
 			return -1;
 		} catch (std::exception const &e) {
-			spdlog::error("Exception: {}", e.what());
+			spdlog::critical("Exception: {}", e.what());
 			return -1;
 		} catch (...) {
-			spdlog::error("UNKNOWN ERROR");
+			spdlog::critical("UNKNOWN ERROR");
 			return -1;
 		}
 	}
