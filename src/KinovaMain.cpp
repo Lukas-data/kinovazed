@@ -14,10 +14,11 @@ namespace Constants {
 }
 
 bool setup_logger(){
-	std::vector<spdlog::sink_ptr> sinks;
-	sinks.push_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
-	sinks.push_back(std::make_shared<spdlog::sinks::rotating_file_sink_mt>(Constants::LOG_FILE, 1048576 * 20, 200, true));
-	auto debug_logger = std::make_shared<spdlog::logger>("robolog", begin(sinks), end(sinks));
+	auto console_sink { std::make_shared<spdlog::sinks::stdout_color_sink_mt>() };
+	console_sink->set_level(spdlog::level::info);
+	auto file_sink { std::make_shared<spdlog::sinks::rotating_file_sink_mt>(Constants::LOG_FILE, 1048576 * 20, 200, true) };
+	file_sink->set_level(spdlog::level::trace);
+	auto debug_logger = std::make_shared<spdlog::logger>("robolog", { console_sink, file_sink });
 	spdlog::register_logger(debug_logger);
 	spdlog::set_default_logger(debug_logger);
 	return true;
