@@ -14,14 +14,23 @@ namespace Constants {
 }
 
 bool setup_logger(){
-	auto console_sink { std::make_shared<spdlog::sinks::stdout_color_sink_mt>() };
-	console_sink->set_level(spdlog::level::info);
-	auto file_sink { std::make_shared<spdlog::sinks::rotating_file_sink_mt>(Constants::LOG_FILE, 1048576 * 20, 200, true) };
-	file_sink->set_level(spdlog::level::trace);
-	auto debug_logger = std::make_shared<spdlog::logger>("robolog", { console_sink, file_sink });
-	spdlog::register_logger(debug_logger);
-	spdlog::set_default_logger(debug_logger);
-	return true;
+	try{
+		auto console_sink { std::make_shared<spdlog::sinks::stdout_color_sink_mt>() };
+		console_sink->set_level(spdlog::level::info);
+
+		auto file_sink { std::make_shared<spdlog::sinks::rotating_file_sink_mt>(Constants::LOG_FILE, 1048576 * 20, 200, true) };
+		file_sink->set_level(spdlog::level::trace);
+		
+		spdlog::logger logger("robolog", { console_sink, file_sink });
+		spdlog::register_logger(logger);
+		spdlog::set_default_logger(logger);
+		return true;
+	}
+	catch (const spdlog::spdlog_ex& ex)
+	{
+		std::cout << "Log initialization failed: " << ex.what() << std::endl;
+		return false
+	}
 }
 
 int main() {
