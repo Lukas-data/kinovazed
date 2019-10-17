@@ -50,7 +50,7 @@ bool setup_logger(){
 
 	std::vector<spdlog::sink_ptr> sinks;
 	sinks.push_back(std::make_shared<spdlog::sinks::stdout_sink_st>());
-	sinks.push_back(std::make_shared<spdlog::sinks::rotating_file_sink_mt>("log.txt", 1048576 * 20, 200, true));
+	sinks.push_back(std::make_shared<spdlog::sinks::rotating_file_sink_mt>("filelog", "log.txt", 1048576 * 20, 200, true));
 	auto debug_logger = std::make_shared<spdlog::logger>("robolog", begin(sinks), end(sinks));
 	spdlog::register_logger(debug_logger);
 	
