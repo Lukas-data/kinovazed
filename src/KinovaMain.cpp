@@ -10,6 +10,14 @@
 #include <stdexcept>
 #include <thread>
 
+bool setup_logger(){
+	std::vector<spdlog::sink_ptr> sinks;
+	sinks.push_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
+	sinks.push_back(std::make_shared<spdlog::sinks::rotating_file_sink_mt>("filelog/log.txt", 1048576 * 20, 200, true));
+	auto debug_logger = std::make_shared<spdlog::logger>("robolog", begin(sinks), end(sinks));
+	spdlog::register_logger(debug_logger);
+}
+
 int main() {
 
 	setup_logger();
@@ -48,11 +56,3 @@ int main() {
 	return -1;
 }
 
-bool setup_logger(){
-
-	std::vector<spdlog::sink_ptr> sinks;
-	sinks.push_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
-	sinks.push_back(std::make_shared<spdlog::sinks::rotating_file_sink_mt>("filelog", "log.txt", 1048576 * 20, 200, true));
-	auto debug_logger = std::make_shared<spdlog::logger>("robolog", begin(sinks), end(sinks));
-	spdlog::register_logger(debug_logger);
-}
