@@ -54,8 +54,6 @@ private:
 	std::unique_ptr<EventIo> roboRio;
 	StateMachine kinovaSM;
 
-	auto log = spdlog::get("robolog");
-
 	Command commandOut{KinovaFSM::NoEvent};
 	Command commandIn{KinovaFSM::NoEvent};
 
@@ -70,7 +68,7 @@ private:
 		bool jSisZero = packet.x == 0 && packet.y == 0 && packet.z == 0;
 		if (!jSisZero && commandIn.event != KinovaFSM::E_Stop) {
 			commandIn = Command{KinovaFSM::MoveJoystick};
-			log->info("CommandHandling::getInputs(): MoveJoystick");
+			spdlog::info("CommandHandling::getInputs(): MoveJoystick");
 		}
 		return commandIn;
 	}
@@ -122,10 +120,10 @@ private:
 		while (true) {
 			try {
 				roboRio->connect();
-				log->info("Connection to RoboRio established.");
+				spdlog::info("Connection to RoboRio established.");
 				return;
 			} catch (std::runtime_error const &e) {
-				log->warn("Connection to RoboRio unsuccessful. Retry.");
+				spdlog::warn("Connection to RoboRio unsuccessful. Retry.");
 				std::this_thread::sleep_for(1s);
 			}
 		}
@@ -134,10 +132,10 @@ private:
 		using namespace std::chrono_literals;
 		while (true) {
 			if (jacoZed->connect()) {
-				log->info("Connection to JacoArm established.");
+				spdlog::info("Connection to JacoArm established.");
 				return;
 			} else {
-				log->warn("Connection to JacoArm unsuccessful. Retry.");
+				spdlog::warn("Connection to JacoArm unsuccessful. Retry.");
 				std::this_thread::sleep_for(1s);
 			}
 		}
@@ -149,9 +147,9 @@ private:
 		commandIn = getInputs();
 
 		if (commandIn != oldInCommand) {
-			log->debug("CommandHandling: event: new: {}: {}", KinovaFSM::eventNames[commandIn.event], commandIn.var);
+			spdlog::debug("CommandHandling: event: new: {}: {}", KinovaFSM::eventNames[commandIn.event], commandIn.var);
 		} else {
-			log->info("CommandHandling: event: identical");
+			spdlog::info("CommandHandling: event: identical");
 		}
 		//Check for E_Stop
 		if (commandIn.event == KinovaFSM::E_Stop) {
@@ -160,7 +158,7 @@ private:
 			//get Hardware Error
 			if (jacoZed->getError()) {
 				newInCommand.event = KinovaFSM::E_Stop;
-				log->error("Hardware Error detected: E-Stop set.");
+				spdlog::error("Hardware Error detected: E-Stop set.");
 			}
 			//get Internal HW Events
 			else {
@@ -193,9 +191,9 @@ private:
 		}
 		sendOutputs(commandOut);
 		if (commandOut != oldOutCommand) {
-			log->debug("CommandHandling: cmd out: {}: {}", KinovaFSM::eventNames[commandOut.event], commandOut.var);
+			spdlog::debug("CommandHandling: cmd out: {}: {}", KinovaFSM::eventNames[commandOut.event], commandOut.var);
 		} else {
-			log->info("CommandHandling: cmd out: identical");
+			spdlog::info("CommandHandling: cmd out: identical");
 		}
 	}
 };
