@@ -1,8 +1,7 @@
-cmake_minimum_required (VERSION 3.5.1)
+cmake_minimum_required (VERSION 3.9.0)
 
 project (kinovaZED
   LANGUAGES CXX
-  VERSION "2.0.0"
 )
 
 set(CMAKE_CXX_STANDARD "14")
@@ -19,7 +18,7 @@ add_subdirectory(thirdparty/json)
 find_package(Boost REQUIRED COMPONENTS system)
 
 # Kinova Arm Core
-add_library(kinovaArm_core OBJECT
+add_library(kinovaArm_core STATIC
   "src/KinovaArm.cpp"
   "src/PositionHandling.cpp"
   "src/Sequence.cpp"
@@ -83,17 +82,17 @@ target_link_libraries(KinovaZED
 
 #Unit and Integration Tests
 add_executable(KinovaTest
-  "KinovaTest.cpp"
-  "IntegrationSuite.cpp"
-  "MatrixSuite.cpp"
-  "KinovaArmSuite.cpp"
-  "PositionHandlingSuite.cpp"
-  "SequenceSuite.cpp"
+  "test/KinovaTest.cpp"
+  "test/IntegrationSuite.cpp"
+  "test/MatrixSuite.cpp"
+  "test/KinovaArmSuite.cpp"
+  "test/PositionHandlingSuite.cpp"
+  "test/SequenceSuite.cpp"
 )
 
 target_include_directories("KinovaTest"
   PRIVATE
-  ${PROJECT_SOURCE_DIR}/cute
+  "test/cute"
 )
 
 target_link_libraries("KinovaTest"
