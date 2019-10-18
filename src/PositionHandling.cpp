@@ -5,6 +5,8 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
 
+#include "nlohmann/json.hpp"
+
 #include <algorithm>
 #include <array>
 #include <fstream>
@@ -14,7 +16,20 @@
 #include <stdexcept>
 #include <vector>
 
-auto constexpr FILEPATH = "CybathlonObjectives.dat";
+namespace Constants {
+
+	/*
+	 * path and file name to objectives in DAT file(s)
+	 */
+	auto constexpr OBJ_FILE_DAT = "CybathlonObjectives.dat";
+	
+	/*
+	 * path and file name to objectives in JSON file(s)
+	 */
+	auto constexpr OBJ_FILE_JSON = "CybathlonObjectives.json";
+
+}
+
 
 PositionHandling::PositionHandling(std::istream &in) :
 		PositionHandling{} {
@@ -196,7 +211,7 @@ void PositionHandling::loadData(std::istream &in) {
 
 /*Reads Location and Points Vectors from SaveFile*/
 void PositionHandling::readFromFile() {
-	std::ifstream infile(FILEPATH);
+	std::ifstream infile(Constants::OBJ_FILE_DAT);
 	loadData(infile);
 	spdlog::info("Points successfully loaded from File.");
 }

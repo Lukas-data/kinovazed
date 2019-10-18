@@ -1,46 +1,107 @@
 cmake_minimum_required (VERSION 3.5.1)
 
-project (kinovaZED)
-find_package(Boost REQUIRED COMPONENTS system)
+project (kinovaZED
+  LANGUAGES CXX
+  VERSION "2.0.0"
+)
+
+set(CMAKE_CXX_STANDARD "14")
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+#Create logs directory
+file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/logs")
 
 add_subdirectory(thirdparty/libkindrv)
 add_subdirectory(thirdparty/spdlog)
+add_subdirectory(thirdparty/json)
 
-add_library(kinovaArm_lib STATIC 
-  src/KinovaArm.cpp
-  src/TCPServer.cpp
-  src/PositionHandling.cpp
-  src/StateMachine.cpp
-  src/State.cpp
-  src/Sequence.cpp
+find_package(Boost REQUIRED COMPONENTS system)
+
+# Kinova Arm Core
+add_library(kinovaArm_core OBJECT
+  "src/KinovaArm.cpp"
+  "src/PositionHandling.cpp"
+  "src/Sequence.cpp"
+  "src/State.cpp"
+  "src/StateMachine.cpp"
+  "src/TCPServer.cpp"
+
+  "include/CommandHandling.h"
+  "include/Coordinates.h"
+  "include/Event.h"
+  "include/Exceptions.h"
+  "include/KinovaStatus.h"
+  "include/Matrix.h"
+  "include/Objective.h"
+  "include/Prefix.h"
+  "include/RoboRioProtocol.h"
+  "include/Transition.h"
 )
 
-set_property(TARGET kinovaArm_lib PROPERTY CXX_STANDARD 14)
-
-target_include_directories(kinovaArm_lib
+target_include_directories(kinovaArm_core
   PUBLIC
   ${PROJECT_SOURCE_DIR}/include
 )
 
-target_link_libraries(kinovaArm_lib
+target_link_libraries(kinovaArm_core
   PUBLIC
-  libkindrv
-  spdlog::spdlog_header_only
+  "libkindrv"
+  "spdlog::spdlog_header_only"
+  "nlohmann_json::nlohmann_json"
+  "rt"
   ${Boost_LIBRARIES}
 )
 
+get_target_property(kinovaArm_core_SOURCES "kinovaArm_core" SOURCES)
+foreach(SOURCE_FILE IN LISTS kinovaArm_core_SOURCES)
+  if(SOURCE_FILE MATCHES "src/.*\.cpp")
+    string(REGEX REPLACE
+      "src/(.*)\.cpp"
+      "include/\\1.h"
+      HEADER_FILE
+      "${SOURCE_FILE}"
+    )
+    get_filename_component(HEADER_FILE_PATH "${HEADER_FILE}" REALPATH)
+    if(EXISTS "${HEADER_FILE_PATH}")
+      target_sources("kinovaArm_core"
+        INTERFACE
+        "${HEADER_FILE_PATH}"
+      )
+    endif()
+  endif()
+endforeach()
+
 #Main Program
-add_executable(KinovaZED src/KinovaMain.cpp)
+add_executable(KinovaZED
+  "src/KinovaMain.cpp"
+)
 target_link_libraries(KinovaZED
   PUBLIC
-  kinovaArm_lib
+  "kinovaArm_core"
 )
 
-set_property(TARGET KinovaZED PROPERTY CXX_STANDARD 14)
+#Unit and Integration Tests
+add_executable(KinovaTest
+  "KinovaTest.cpp"
+  "IntegrationSuite.cpp"
+  "MatrixSuite.cpp"
+  "KinovaArmSuite.cpp"
+  "PositionHandlingSuite.cpp"
+  "SequenceSuite.cpp"
+)
 
-add_subdirectory(test)
+target_include_directories("KinovaTest"
+  PRIVATE
+  ${PROJECT_SOURCE_DIR}/cute
+)
+
+target_link_libraries("KinovaTest"
+  PRIVATE
+  "kinovaArm_core"
+)
 
 #Copy autorun script and data points
 configure_file(${PROJECT_SOURCE_DIR}/KinovaStartUp.sh ${PROJECT_BINARY_DIR} COPYONLY)
 configure_file(${PROJECT_SOURCE_DIR}/CybathlonObjectives.dat ${PROJECT_BINARY_DIR} COPYONLY)
-
+configure_file(${PROJECT_SOURCE_DIR}/CybathlonObjectives.json ${PROJECT_BINARY_DIR} COPYONLY)
