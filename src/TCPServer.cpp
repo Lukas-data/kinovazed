@@ -76,8 +76,8 @@ void TCPServer::disconnect() {
 auto TCPServer::sendTCP(RoboRioProtocol::Packet packet) -> bool {
 	if (!rioDummy) {
 		spdlog::debug("TCPServer::sendTCP(): start");
-		std::array<char, messageLength> buffer{};
-		int m = sprintf(buffer.data(), "%6d%6d%6d%6d%6d", packet.command, packet.var, packet.x, packet.y, packet.z);
+		std::array<char, messageLength + 1> buffer{};
+		int m = snprintf(buffer.data(), buffer.size(), "%6d%6d%6d%6d%6d", packet.command, packet.var, packet.x, packet.y, packet.z);
 		if (m != messageLength) {
 			error("sendTCP", "Error preparing message");
 			return false;

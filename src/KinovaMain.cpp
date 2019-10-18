@@ -2,7 +2,6 @@
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/sinks/rotating_file_sink.h"
-#include "spdlog/sinks/dist_sink.h"
 #include "CommandHandling.h"
 #include "Prefix.h"
 
@@ -32,8 +31,6 @@ void setup_logger(std::string name) {
 		spdlog::register_logger(logger);
 		spdlog::set_default_logger(logger);
 		spdlog::flush_on(spdlog::level::warn);
-		using namespace std::chrono_literals;
-		spdlog::flush_every(15s);
 	} catch (const spdlog::spdlog_ex &ex) {
 		spdlog::critical("Log initialization failed: {}", ex.what());
 	}
