@@ -218,7 +218,7 @@ void PositionHandling::readFromFile() {
 
 /*Writes Location and Points Vectors to SaveFile*/
 void PositionHandling::writeToFile() {
-	std::ofstream saveFile(FILEPATH);
+	std::ofstream saveFile(Constants::OBJ_FILE_DAT);
 	if (saveFile.is_open()) {
 		//Write Locations
 		for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
