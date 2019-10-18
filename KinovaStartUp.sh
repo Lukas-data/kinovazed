@@ -3,17 +3,13 @@
 KINOVABUILD="$(cd "$(dirname "$0")" ; pwd -P)"
 LASTLOG=/tmp/KinovaStartUp.log
 
-if [ -f ${LASTLOG} ]; then
-  rm -f ${LASTLOG}
-fi
-
 echo "Kinova build path: ${KINOVABUILD}" >> ${LASTLOG}
 
 echo "Give the OS some time to finish booting" >> ${LASTLOG}
 sleep 10
 
 echo "Creating logging folders if needed" >> ${LASTLOG}
-mkdir -p ${KINOVABUILD}/logfiles/archive
+mkdir -p ${KINOVABUILD}/logs/
 
 export KINOVABUILD
 
