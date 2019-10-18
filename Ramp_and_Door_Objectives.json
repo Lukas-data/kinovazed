@@ -1,0 +1,17 @@
+[
+	{
+	"name": "Home",
+	"origin": {"X": 0, "Y": -400, "Z": 500, "pitch": 1571, "yaw": 0, "roll": 0 },
+	"sequence": [
+				{"X": 0, "Y": 0, "Z": 0, "pitch": 0, "yaw": 0, "roll": 0}
+				]
+	},
+	{
+	"name": "Handle",
+	"origin": {"X": 120, "Y": -723, "Z": 551, "pitch": 1491, "yaw": -66, "roll": 2},
+	"sequence": [
+				{"X": -31, "Y": 85, "Z": -175, "pitch": -27, "yaw": -28, "roll": 20},
+				{"X": -40, "Y": 80, "Z": -25, "pitch": -9, "yaw": -68, "roll": 6}
+				]
+	}
+]
