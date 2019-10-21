@@ -6,6 +6,42 @@
 
 namespace Kinova {
 
+namespace JSON_KEY {
+	auto constexpr OBJ_NAME = "name";
+	auto constexpr OBJ_ORIGIN_ABS = "is_abs";
+	auto constexpr OBJ_ORIGIN = "origin";
+	auto constexpr OBJ_SEQUENCE = "sequence";
+	auto constexpr OBJ_CSYS_X = "X";
+	auto constexpr OBJ_CSYS_Y = "Y";
+	auto constexpr OBJ_CSYS_Z = "Z";
+	auto constexpr OBJ_CSYS_PITCH = "pitch";
+	auto constexpr OBJ_CSYS_YAW = "yaw";
+	auto constexpr OBJ_CSYS_ROLL = "roll";
+}
+
+// objective model
+struct Objective {
+
+
+private:
+	std::string name;
+	bool is_absolute;
+	Coordinates origin;
+	std::vector<Coordinates> sequence;
+};
+
+// origin model
+struct m_origin {
+	Coordinates point;
+};
+
+struct m_sequence {
+	std::vector<Coordinates> seqence_points;
+};
+
+
+
+
 static constexpr int NumberOfObjectives = 8; //excl. NoObjective
 
 enum Objective {
