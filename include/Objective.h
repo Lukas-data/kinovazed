@@ -1,8 +1,14 @@
 #ifndef KINOVA_OBJECTIVE_H_
 #define KINOVA_OBJECTIVE_H_
 
+#include "Coordinates.h"
+
+#include "nlohmann/json.hpp"
+
 #include <array>
 #include <string>
+#include <vector>
+#include <iosfwd>
 
 namespace Kinova {
 
@@ -20,8 +26,10 @@ namespace JSON_KEY {
 }
 
 // objective model
-struct Objective {
-
+struct JSONObjective {
+	friend void to_json(nlohmann::json &j, JSONObjective const &o);
+	friend void from_json(nlohmann::json const &j, JSONObjective &o);
+	friend std::ostream & operator<<(std::ostream & out, JSONObjective const & objective);
 
 private:
 	std::string name;
@@ -29,18 +37,6 @@ private:
 	Coordinates origin;
 	std::vector<Coordinates> sequence;
 };
-
-// origin model
-struct m_origin {
-	Coordinates point;
-};
-
-struct m_sequence {
-	std::vector<Coordinates> seqence_points;
-};
-
-
-
 
 static constexpr int NumberOfObjectives = 8; //excl. NoObjective
 

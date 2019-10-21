@@ -1,9 +1,9 @@
-
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/sinks/rotating_file_sink.h"
 #include "CommandHandling.h"
 #include "Prefix.h"
+#include "Constants.h"
 
 #include <chrono>
 #include <exception>
@@ -11,29 +11,6 @@
 #include <stdexcept>
 #include <thread>
 #include <string>
-
-namespace Constants {
-	/*
-	 * Logging
-	 */
-	auto constexpr LOG_FILE = "logs/log.txt";
-	auto constexpr LOGGER_NAME = "robolog";
-
-	/*
-	 * JSON keys
-	 */
-	auto constexpr OBJ_NAME = "name";
-	auto constexpr OBJ_ORIGIN_ABS = "is_abs";
-	auto constexpr OBJ_ORIGIN = "origin";
-	auto constexpr OBJ_SEQUENCE = "sequence";
-	auto constexpr OBJ_CSYS_X = "X";
-	auto constexpr OBJ_CSYS_Y = "Y";
-	auto constexpr OBJ_CSYS_Z = "Z";
-	auto constexpr OBJ_CSYS_PITCH = "pitch";
-	auto constexpr OBJ_CSYS_YAW = "yaw";
-	auto constexpr OBJ_CSYS_ROLL = "roll";
-
-}
 
 void setup_logger(std::string name) {
 	try {
@@ -57,6 +34,9 @@ void setup_logger(std::string name) {
 int main() {
 	setup_logger(Constants::LOGGER_NAME);
 	spdlog::info("KinovaMain - Startup!");
+
+	std::ifstream file{Constants::OBJ_FILE_JSON};
+
 	CommandHandling<> commandHandler { };
 	while (true) {
 		try {

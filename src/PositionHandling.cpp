@@ -1,6 +1,7 @@
 #include "PositionHandling.h"
 #include "Exceptions.h"
 #include "Sequence.h"
+#include "Constants.h"
 
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
@@ -15,21 +16,6 @@
 #include <string>
 #include <stdexcept>
 #include <vector>
-
-namespace Constants {
-
-	/*
-	 * path and file name to objectives in DAT file(s)
-	 */
-	auto constexpr OBJ_FILE_DAT = "CybathlonObjectives.dat";
-	
-	/*
-	 * path and file name to objectives in JSON file(s)
-	 */
-	auto constexpr OBJ_FILE_JSON = "CybathlonObjectives.json";
-
-}
-
 
 PositionHandling::PositionHandling(std::istream &in) :
 		PositionHandling{} {
@@ -144,6 +130,14 @@ void PositionHandling::deletePoint(Kinova::Objective targetObjective) {
 
 void PositionHandling::loadData(std::istream &in) {
 	ZeroObjectives.clear();
+
+	// TODO replace with in and remove code afert objectives have been loaded
+	std::ifstream file{Constants::OBJ_FILE_JSON};
+
+	nlohmann::json root{};
+	file >> root;
+	objectives = root.get<std::vector<Kinova::JSONObjective>>();
+
 	std::vector<Kinova::Coordinates> loadedOrigins{};
 	std::vector<std::vector<Kinova::Coordinates>> loadedPoints{Kinova::NumberOfObjectives};
 	std::string line{};

@@ -13,6 +13,8 @@ file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/logs")
 
 add_subdirectory(thirdparty/libkindrv)
 add_subdirectory(thirdparty/spdlog)
+
+set(JSON_BuildTests OFF CACHE INTERNAL "")
 add_subdirectory(thirdparty/json)
 
 find_package(Boost REQUIRED COMPONENTS system)
@@ -20,6 +22,8 @@ find_package(Boost REQUIRED COMPONENTS system)
 # Kinova Arm Core
 add_library(kinovaArm_core STATIC
   "src/KinovaArm.cpp"
+  "src/Coordinates.cpp"
+  "src/Objective.cpp"
   "src/PositionHandling.cpp"
   "src/Sequence.cpp"
   "src/State.cpp"

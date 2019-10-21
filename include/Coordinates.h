@@ -3,6 +3,8 @@
 
 #include "Exceptions.h"
 
+#include "nlohmann/json.hpp"
+
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -61,6 +63,9 @@ struct Coordinates {
 		std::array<float, 6> values = *this;
 		return std::all_of(begin(values), end(values), isZero);
 	}
+
+	friend void from_json(nlohmann::json const &j, Coordinates &c);
+	friend void to_json(nlohmann::json &j, Coordinates const &c);
 
 	constexpr static float epsilon = 0.00001f;
 

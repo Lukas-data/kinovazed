@@ -37,6 +37,7 @@ private:
 	using f3d_vec_t = std::vector<f2d_vec_t>;
 	std::map<Kinova::Objective, Kinova::Sequence> sequences{};
 	std::set<Kinova::Objective> ZeroObjectives{};
+	std::vector<Kinova::JSONObjective> objectives{};
 
 	void readFromFile();
 	void loadData(std::istream & in);
