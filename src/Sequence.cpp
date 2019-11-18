@@ -122,15 +122,14 @@ auto Sequence::savePoint(Coordinates coordinates) -> bool {
 	if (currentPoint > static_cast<decltype(currentPoint)>(numberOfPoints()) && currentPoint != -1) {
 		return false;
 	}
-	// TODO(hpatzen) what's the point of this?
-	//auto const transformedCoordinates = coordTransform(coordinates, origin.getInvertedTransformationMatrix());
+	auto const transformedCoordinates = coordTransform(coordinates, origin.getInvertedTransformationMatrix());
 	if (endReached()) {
-		points.push_back(coordinates);
+		points.push_back(transformedCoordinates);
 	} else if (currentPoint == -1) {
 		spdlog::info("Inserting coordinates at [{0}]", currentPoint);
-		points.insert(points.begin(), coordinates);
+		points.insert(points.begin(), transformedCoordinates);
 	} else if (currentPoint >= 0) {
-		points[currentPoint] = coordinates;
+		points[currentPoint] = transformedCoordinates;
 	}
 	return true;
 }
