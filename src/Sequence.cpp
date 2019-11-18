@@ -2,6 +2,8 @@
 #include "Coordinates.h"
 #include "Matrix.h"
 
+#include "spdlog/spdlog.h"
+
 #include <array>
 #include <cmath>
 #include <cstddef>
@@ -9,7 +11,6 @@
 #include <stdexcept>
 #include <utility>
 #include <vector>
-#include <iostream>
 
 namespace Kinova {
 
@@ -118,14 +119,15 @@ void Sequence::reset() {
 
 
 auto Sequence::savePoint(Coordinates coordinates) -> bool {
-	if (currentPoint > numberOfPoints() && currentPoint != -1) {
+	if (currentPoint > static_cast<decltype(currentPoint)>(numberOfPoints()) && currentPoint != -1) {
 		return false;
 	}
-	auto const transformedCoordinates = coordTransform(coordinates, origin.getInvertedTransformationMatrix());
+	// TODO(hpatzen) what's the point of this?
+	//auto const transformedCoordinates = coordTransform(coordinates, origin.getInvertedTransformationMatrix());
 	if (endReached()) {
 		points.push_back(coordinates);
-	} else if (currentPoint == -1) { //TODO: (tcorbat) this is currently not possible with size_t as datatype for currentPoint
-		std::cout << "inserting coordinates at [" << currentPoint << "]" << std::endl;
+	} else if (currentPoint == -1) {
+		spdlog::info("Inserting coordinates at [{0}]", currentPoint);
 		points.insert(points.begin(), coordinates);
 	} else if (currentPoint >= 0) {
 		points[currentPoint] = coordinates;
@@ -134,7 +136,7 @@ auto Sequence::savePoint(Coordinates coordinates) -> bool {
 }
 
 void Sequence::deletePoint() {
-	if (currentPoint >= 0 && currentPoint < numberOfPoints()){
+	if (currentPoint >= 0 && currentPoint < static_cast<decltype(currentPoint)>(numberOfPoints())){
 		points.erase(points.begin() + currentPoint);
 	}
 }

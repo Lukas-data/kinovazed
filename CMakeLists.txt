@@ -42,6 +42,17 @@ add_library(kinovaArm_core STATIC
   "include/Transition.h"
 )
 
+target_compile_options(
+  kinovaArm_core
+  PUBLIC
+  $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>:
+    -Wall
+    -Wextra
+    -Werror
+#    -pedantic-errors
+  >
+)
+
 target_include_directories(kinovaArm_core
   PUBLIC
   ${PROJECT_SOURCE_DIR}/include
@@ -82,6 +93,16 @@ add_executable(KinovaZED
 target_link_libraries(KinovaZED
   PUBLIC
   "kinovaArm_core"
+)
+target_compile_options(
+  KinovaZED
+  PUBLIC
+  $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:GNU>>:
+    -Wall
+    -Wextra
+    -Werror
+#    -pedantic-errors
+  >
 )
 
 #Unit and Integration Tests

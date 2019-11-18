@@ -52,8 +52,8 @@ struct CommandHandling {
 	}
 
 private:
-	std::shared_ptr<Arm> jacoZed;
 	std::unique_ptr<EventIo> roboRio;
+	std::shared_ptr<Arm> jacoZed;
 	StateMachine kinovaSM;
 
 	Command commandOut{KinovaFSM::NoEvent};
@@ -113,8 +113,36 @@ private:
 		case KinovaFSM::NextPointNotSet:
 		case KinovaFSM::NextPointSet:
 			return jacoZed->getCurrentPoint();
+		case KinovaFSM::Tick:
+		case KinovaFSM::Initialize:
+		case KinovaFSM::NoMode:
+		case KinovaFSM::Retract:
+		case KinovaFSM::Unfold:
+		case KinovaFSM::SetMode:
+		case KinovaFSM::MoveJoystick:
+		case KinovaFSM::GoToPosition:
+		case KinovaFSM::Teach:
+		case KinovaFSM::SavePoint:
+		case KinovaFSM::SaveOrigin:
+		case KinovaFSM::DeletePoint:
+		case KinovaFSM::Previous:
+		case KinovaFSM::Next:
+		case KinovaFSM::MoveOrigin:
+		case KinovaFSM::Exit:
+		case KinovaFSM::Shutdown:
+		case KinovaFSM::E_Stop:
+		case KinovaFSM::QuitEStop:
+		case KinovaFSM::Initialized:
+		case KinovaFSM::Retracted:
+		case KinovaFSM::Unfolded:
+		case KinovaFSM::PointNotReached:
+		case KinovaFSM::OriginSaved:
+		case KinovaFSM::OriginNotSaved:
+		case KinovaFSM::InitHomeReached:
+		case KinovaFSM::Error:
+		default:
+			return 0;
 		}
-		return 0;
 	}
 
 	void connectRoboRio() {

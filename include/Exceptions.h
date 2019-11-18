@@ -16,7 +16,7 @@ void streamArguments(std::ostream & out, Args const &...args) {
 
 #else
 
-inline void streamArguments(std::ostream & out) {
+inline void streamArguments(std::ostream &) {
 }
 
 template <typename First, typename...Args>

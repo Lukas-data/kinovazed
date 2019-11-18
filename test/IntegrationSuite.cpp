@@ -22,7 +22,7 @@ using namespace std::chrono_literals;
 
 struct EventsForBellSequence {
 	auto operator()() -> RoboRioProtocol::Packet {
-		if (nextCommandIndex >= commands.size()) {
+		if (nextCommandIndex >= static_cast<decltype(nextCommandIndex)>(commands.size())) {
 			std::this_thread::sleep_for(100ms);
 			return RoboRioProtocol::Packet{KinovaFSM::Tick};
 		}
@@ -32,7 +32,7 @@ struct EventsForBellSequence {
 	}
 
 	auto check(RoboRioProtocol::Packet const & reaction) -> bool{
-		if (nextCommandIndex < commands.size()) {
+		if (nextCommandIndex < static_cast<decltype(nextCommandIndex)>(commands.size())) {
 			ASSERT_EQUAL(commands.at(nextCommandIndex).reaction, reaction);
 			nextCommandIndex++;
 		}

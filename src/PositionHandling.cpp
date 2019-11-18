@@ -198,7 +198,7 @@ void PositionHandling::loadData(std::istream &in) {
 	}
 
 	sequences[Kinova::NoObjective] = Kinova::Sequence{};
-	for (auto index = 0; index < loadedOrigins.size(); index++) {
+	for (auto index = 0u; index < loadedOrigins.size(); index++) {
 		sequences[static_cast<Kinova::Objective>(index + 1)] = Kinova::Sequence{loadedOrigins.at(index), loadedPoints.at(index)};
 	}
 }

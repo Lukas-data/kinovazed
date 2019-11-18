@@ -258,7 +258,9 @@ void KinovaArm::unfold() {
 				break;
 			case KinDrv::MODE_READY_TO_RETRACT:
 				arm->push_joystick_button(2);
+				[[fallthrough]];
 				//tcorbat: Discuss whether break is required here
+				// fall through
 			case KinDrv::MODE_RETRACT_STANDBY:
 				arm->release_joystick();
 				arm->push_joystick_button(2);

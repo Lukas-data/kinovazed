@@ -7,6 +7,7 @@
 
 #include <chrono>
 #include <exception>
+#include <fstream>
 #include <memory>
 #include <stdexcept>
 #include <thread>
@@ -35,7 +36,7 @@ int main() {
 	setup_logger(Constants::LOGGER_NAME);
 	spdlog::info("KinovaMain - Startup!");
 
-	std::ifstream file{Constants::OBJ_FILE_JSON};
+	std::ifstream file { Constants::OBJ_FILE_JSON };
 
 	CommandHandling<> commandHandler { };
 	while (true) {

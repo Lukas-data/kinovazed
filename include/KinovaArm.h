@@ -4,7 +4,7 @@
 #include "Event.h"
 #include "KinovaStatus.h"
 #include "PositionHandling.h"
-#include "kindrv.h"
+#include "libkindrv/kindrv.h"
 
 #include <chrono>
 
