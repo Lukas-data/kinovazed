@@ -20,6 +20,12 @@ if(NOT CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   set(CMAKE_INSTALL_PREFIX "$ENV{HOME}/.local")
 endif()
 
+if(NOT DEFAULT_LOG_DIRECTORY)
+  set(DEFAULT_LOG_DIRECTORY "$ENV{HOME}/.var/log")
+endif()
+
+set(GENERATED_FILE_REMARK "THIS FILE IS GENERATED AUTOMATICALLY! DON'T EDIT IT! DON'T COMMIT IT!")
+
 ### System Dependencies Setup
 
 find_package("Boost"
@@ -41,11 +47,6 @@ conan_cmake_run(CONANFILE "conanfile.txt"
 ### Local Dependencies Setup
 
 add_subdirectory("thirdparty/libkindrv")
-
-#Create logs directory
-
-file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/logs")
-
 
 ### Core Library
 
@@ -81,6 +82,11 @@ target_link_libraries("${PROJECT_NAME}Core"
   "CONAN_PKG::spdlog"
   "kindrv"
   "rt"
+)
+
+configure_file("${PROJECT_SOURCE_DIR}/include/Paths.h.in"
+  "${PROJECT_SOURCE_DIR}/include/Paths.h"
+  @ONLY
 )
 
 ### Main Application

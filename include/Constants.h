@@ -7,19 +7,7 @@ namespace Constants {
 /*
  * Logging
  */
-auto constexpr LOG_FILE = "logs/log.txt";
 auto constexpr LOGGER_NAME = "robolog";
-
-
-/*
- * path and file name to objectives in DAT file(s)
- */
-auto constexpr OBJ_FILE_DAT = "CybathlonObjectives.dat";
-
-/*
- * path and file name to objectives in JSON file(s)
- */
-auto constexpr OBJ_FILE_JSON = "CybathlonObjectives.json";
 
 /*
  * JSON keys

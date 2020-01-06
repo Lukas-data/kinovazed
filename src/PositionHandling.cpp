@@ -2,6 +2,7 @@
 
 #include "Constants.h"
 #include "Exceptions.h"
+#include "Paths.h"
 #include "Sequence.h"
 #include "nlohmann/json.hpp"
 #include "spdlog/fmt/ostr.h"
@@ -137,7 +138,7 @@ void PositionHandling::loadData(std::istream &in) {
 	ZeroObjectives.clear();
 
 	// TODO replace with in and remove code afert objectives have been loaded
-	std::ifstream file{Constants::OBJ_FILE_JSON};
+	std::ifstream file{Paths::DEFAULT_OBJ_FILE_JSON};
 
 	nlohmann::json root{};
 	file >> root;
@@ -215,14 +216,14 @@ void PositionHandling::loadData(std::istream &in) {
 
 /*Reads Location and Points Vectors from SaveFile*/
 void PositionHandling::readFromFile() {
-	std::ifstream infile(Constants::OBJ_FILE_DAT);
+	std::ifstream infile(Paths::DEFAULT_OBJ_FILE_DAT);
 	loadData(infile);
 	spdlog::info("Points successfully loaded from File.");
 }
 
 /*Writes Location and Points Vectors to SaveFile*/
 void PositionHandling::writeToFile() {
-	std::ofstream saveFile(Constants::OBJ_FILE_DAT);
+	std::ofstream saveFile(Paths::DEFAULT_OBJ_FILE_DAT);
 	if (saveFile.is_open()) {
 		// Write Locations
 		for (int i = 0; i < Kinova::NumberOfObjectives; i++) {
