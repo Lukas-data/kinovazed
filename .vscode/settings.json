@@ -1,0 +1,7 @@
+{
+    "cmake.cpptools.intelliSenseMode": "gcc-x64",
+    "cmake.cpptools.guessSourceFileConfigurations": true,
+    "[cpp]": {
+        "editor.formatOnSave": true
+    },
+}
