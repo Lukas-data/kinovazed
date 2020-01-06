@@ -1,232 +1,3 @@
-//
-///***************************************************************************
-// *  Kinova Main
-// *
-// *  Created: Fri Jun 15 2018
-// ****************************************************************************/
-//
-//#include <stdio.h>
-//#include <unistd.h>
-//#include <poll.h>
-////#include "StateMachine.h"
-////#include "Transition.h"
-//
-//
-//#include "CommandHandling.h"
-//
-////StateMachine *fsm;
-////CommandHandling *communication;
-//
-// CommandHandling communication;
-//
-// void wait(int n) {
-//  for (int i =0; i<n; i++) {
-//    communication.process();
-//    usleep(200000);
-//  }
-//}
-//
-// void move(int x, int y, int z, int n) {
-//  printf("Move araound\n");
-//  for (int i =0; i<n; i++) {
-//    communication.debugSetJoystick(x,y,z);
-//    communication.process();
-//    usleep(200000);
-//  }
-//  communication.debugSetJoystick(0,0,0);
-//  communication.process();
-//  usleep(200000);
-//}
-//
-//
-// int main(int argc, char *argv[])
-//{
-//
-//  printf("-------------------------\n");
-//  printf("|      KinovaTest!      |\n");
-//  printf("-------------------------\n");
-//
-//  /************************/
-//  /* Testing StateMachine */
-//  /************************/
-//  /*
-//  StateMachine fsm;
-//  fsm.init();
-//  int i;
-//  printf("0 = No Event\n1 = Initialize\n2=Shutdown\n");
-//  while (true) {
-//
-//    scanf("%d", &i);
-//    if (i == 1) {
-//      fsm.sendEvent(KinovaFSM::Initialize);
-//      printf("Sent evInitialize\n");
-//    }
-//    else if(i == 2) {
-//      fsm.sendEvent(KinovaFSM::Shutdown);
-//      printf("Sent evShutdown\n");
-//    }
-//    fsm.process();
-//    usleep(1000000);
-//  }
-//  */
-//
-//  /***************************/
-//  /* Testing CommandHandling */
-//  /***************************/
-//  /*
-//  communication.init();
-//  communication.process();
-//  usleep(200000);
-//  communication.debugSendEvent(KinovaFSM::Initialize);
-//  wait(10);
-//  communication.debugSendEvent(KinovaFSM::SetMode,3);
-//  wait(10);
-//  communication.debugSendEvent(KinovaFSM::SetMode,4);
-//  wait(10);
-//  communication.debugSendEvent(KinovaFSM::SetMode,2);
-//  wait(10);
-//  */
-//
-//  /********************/
-//  /* Testing Steering */
-//  /********************/
-//  /*
-//  communication.init();
-//  wait(1);
-//  communication.debugSendEvent(KinovaFSM::Initialize);
-//  wait(5);
-//  communication.debugSendEvent(KinovaFSM::SetModeTranslation);
-//  wait(5);
-//  move(1000,0,0,5);
-//  move(-1000,0,0,5);
-//  move(0,1000,0,5);
-//  move(0,-1000,0,5);
-//  move(0,0,1000,5);
-//  move(0,0,-1000,5);
-//  */
-//
-//  /*********************/
-//  /* Testing MoveToPos */
-//  /*********************/
-//  /*
-//  communication.init();
-//  wait(1);
-//  communication.debugSendEvent(KinovaFSM::Initialize);
-//  wait(5);
-//  communication.debugSendEvent(KinovaFSM::GoToPosition,1);
-//  wait(20);
-//  */
-//
-//  /***********************/
-//  /* Testing getPosition */
-//  /***********************/
-//  /*
-//  communication.init();
-//  wait(1);
-//  communication.debugSendEvent(KinovaFSM::Initialize);
-//  wait(40);
-//  communication.debugSendEvent(KinovaFSM::SetMode,1);
-//  wait(5);
-//  communication.debugPrintPosition();
-//  wait(5);
-//  */
-//
-//  /****************/
-//  /* Testing Init */
-//  /****************/
-//  /*
-//  communication.init();
-//  wait(1);
-//  communication.debugSendEvent(KinovaFSM::Initialize);
-//  wait(30);
-//  communication.debugSendEvent(KinovaFSM::GoToPosition,1);
-//  wait(30);
-//  */
-//
-//  /*******************************/
-//  /* Testing TeachState Movement */
-//  /*******************************/
-//  /*
-//  communication.init();
-//  wait(1);
-//  communication.debugSendEvent(KinovaFSM::Initialize);
-//  wait(30);
-//  communication.debugSendEvent(KinovaFSM::GoToPosition,1);
-//  wait(20);
-//  communication.debugSendEvent(KinovaFSM::Teach,1);
-//  wait(5);
-//  move(0,500,0,5);
-//  move(0,-500,0,5);
-//  communication.debugSendEvent(KinovaFSM::SetMode,3);
-//  wait(5);
-//  move(0,500,0,5);
-//  move(0,-500,0,5);
-//  communication.debugSendEvent(KinovaFSM::Exit);
-//  wait(5);
-//  move(0,500,0,5);
-//  move(0,-500,0,5);
-//  */
-//
-//  /**********************/
-//  /* Testing TeachState */
-//  /**********************/
-//  /*
-//  communication.init();
-//  wait(1);
-//  communication.debugSendEvent(KinovaFSM::Initialize);
-//  wait(30);
-//  communication.debugSendEvent(KinovaFSM::SetMode,1);
-//  //wait(20);
-//  //communication.debugSendEvent(KinovaFSM::GoToPosition,2); //Go to Bell
-//  //wait(40);
-//  //communication.debugSendEvent(KinovaFSM::GoToPosition,1); //Go to Home
-//  //wait(20);
-//  communication.debugSendEvent(KinovaFSM::Teach,2);        //change to Teach Mode Bell:0
-//  wait(5);
-//  communication.debugSendEvent(KinovaFSM::GoToPosition,2); //Go To Bell:0
-//  wait(20);
-//  communication.debugSendEvent(KinovaFSM::Next);           //change to Teach Mode Bell:1
-//  wait(5);
-//  communication.debugSendEvent(KinovaFSM::GoToPosition,2); //Go To Bell:1
-//  wait(20);
-//  communication.debugSendEvent(KinovaFSM::Next);           //change to Teach Mode Bell:2
-//  wait(5);
-//  communication.debugSendEvent(KinovaFSM::GoToPosition,2); //Go To Bell:2
-//  wait(20);
-//  communication.debugSendEvent(KinovaFSM::Next);           //change to Teach Mode Bell:3
-//  wait(5);
-//  move(200,0,0,5);                                         //Move away.
-//  wait(5);
-//  communication.debugSendEvent(KinovaFSM::SavePoint);      //Save current Position to Bell:3
-//  wait(5);
-//  communication.debugSendEvent(KinovaFSM::Exit);
-//  wait(5);
-//  communication.debugSendEvent(KinovaFSM::GoToPosition,1); //Go to Home
-//  wait(20);
-//  communication.debugSendEvent(KinovaFSM::GoToPosition,2); //Go to Bell
-//  wait(20);
-//  */
-//
-//  /***********************/
-//  /* Testing Save Points */
-//  /***********************/
-//
-//  communication.init();
-//  wait(1);
-//  communication.debugSendEvent(KinovaFSM::Initialize);
-//  wait(30);
-//  communication.debugSendEvent(KinovaFSM::SetMode,1);
-//  wait(20);
-//  communication.debugSendEvent(KinovaFSM::Teach,1);        //change to Teach Mode Home:0
-//  wait(5);
-//  communication.debugSendEvent(KinovaFSM::SavePoint,0);    //Save Point
-//  wait(5);
-//  communication.debugSendEvent(KinovaFSM::Exit);           //Exit Teach Mode (Saves Data to File)
-//  wait(5);
-//}
-//
-//
-
 #include "IntegrationSuite.h"
 #include "KinovaArmSuite.h"
 #include "MatrixSuite.h"
@@ -238,23 +9,83 @@
 #include <cute/ide_listener.h>
 #include <cute/xml_listener.h>
 
-bool runAllTests(int argc, char const *argv[]) {
-	cute::suite matrixSuite = make_suite_MatrixSuite();
-	cute::suite positionHandlingSuite = make_suite_PositionHandlingSuite();
-	cute::suite kinovaArmSuite = make_suite_KinovaArmSuite();
-	cute::suite sequenceSuite = make_suite_SequenceSuite();
-	cute::suite integrationSuite = make_suite_IntegrationSuite();
-	cute::xml_file_opener xmlfile(argc, argv);
-	cute::xml_listener<cute::ide_listener<>> lis(xmlfile.out);
-	auto runner = cute::makeRunner(lis, argc, argv);
-	bool success = runner(matrixSuite, "Matrix Suite Tests");
-	success &= runner(kinovaArmSuite, "KinovaArm Suite Tests");
-	success &= runner(positionHandlingSuite, "Position Handling Suite Tests");
-	success &= runner(sequenceSuite, "Sequence Suite Tests");
-	success &= runner(integrationSuite, "Integration Suite Tests");
-	return success;
+#include <lyra/arg.hpp>
+#include <lyra/cli_parser.hpp>
+#include <lyra/help.hpp>
+#include <lyra/opt.hpp>
+
+#include <algorithm>
+#include <cstdlib>
+#include <iostream>
+#include <iterator>
+#include <numeric>
+#include <string>
+#include <utility>
+#include <vector>
+
+using suite_list = std::vector<std::pair<cute::suite, std::string>>;
+
+auto get_test_selectors(suite_list const &suites) -> std::vector<std::string> {
+	auto selectors = std::vector<std::string>{};
+
+	for_each(cbegin(suites), cend(suites), [&](auto descriptor) {
+		auto const &[suite, name] = descriptor;
+		transform(cbegin(suite), cend(suite), std::back_inserter(selectors), [&, name = name](auto test) {
+			return name + "#" + test.name();
+		});
+	});
+
+	return selectors;
 }
 
-int main(int argc, char const *argv[]) {
-	return runAllTests(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE;
+auto do_run_tests(suite_list const &suites, int argc, char **argv) -> bool {
+	auto xunit_file = cute::xml_file_opener{argc, argv};
+	auto listener = cute::xml_listener<cute::ide_listener<>>{xunit_file.out};
+	auto runner = cute::makeRunner(listener, argc, argv);
+
+	return accumulate(cbegin(suites), cend(suites), true, [&](auto accumulator, auto const &descriptor) {
+		auto const &[suite, name] = descriptor;
+		return accumulator && runner(suite, name.c_str());
+	});
+}
+
+int main(int argc, char **argv) {
+	using namespace std::string_literals;
+
+	auto suites = std::vector{
+	    std::pair{make_suite_MatrixSuite(), "Matrix Operations"s},
+	    std::pair{make_suite_PositionHandlingSuite(), "Position Handling"s},
+	    std::pair{make_suite_SequenceSuite(), "Sequencing"s},
+	    std::pair{make_suite_IntegrationSuite(), "Integration Tests"s},
+	    std::pair{make_suite_KinovaArmSuite(), "Kinova Arm"s},
+	};
+
+	auto selectors = get_test_selectors(suites);
+
+	auto list_tests{false};
+	auto list_suites{false};
+	auto show_help{false};
+	auto selected_tests = std::vector<std::string>{};
+
+	auto cli = lyra::cli_parser() |                                                         //
+	    lyra::opt(list_tests)["-t"]["--tests"]("List all registered tests") |               //
+	    lyra::opt(list_suites)["-s"]["--suites"]("List all registered suites") |            //
+	    lyra::arg(selected_tests, "test selector")("A pattern to select a specific test") | //
+	    lyra::help(show_help);
+	auto result = cli.parse({argc, argv});
+
+	if (list_tests) {
+		copy(cbegin(selectors), cend(selectors), std::ostream_iterator<std::string>{std::cout, "\n"});
+	}
+	if (list_suites) {
+		transform(
+		    cbegin(suites), cend(suites), std::ostream_iterator<std::string>{std::cout, "\n"}, [](auto descriptor) {
+			    auto const &[_, name] = descriptor;
+			    return name;
+		    });
+	} else if (!result || show_help) {
+		std::cout << cli;
+	} else {
+		return do_run_tests(suites, argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE;
+	}
 }

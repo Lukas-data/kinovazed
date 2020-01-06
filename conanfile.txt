@@ -1,3 +1,6 @@
 [requires]
 spdlog/1.4.2
 nlohmann_json/3.7.3
+
+[build_requires]
+lyra/1.2.0

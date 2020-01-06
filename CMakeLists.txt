@@ -8,7 +8,7 @@ project("kinovaZED"
 
 list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules")
 
-set(CMAKE_CXX_STANDARD "14")
+set(CMAKE_CXX_STANDARD "17")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
@@ -106,6 +106,8 @@ target_compile_options("${PROJECT_NAME}" PUBLIC
 ### Tests
 
 if(BUILD_TESTING)
+  include("DiscoverTests")
+
   add_executable("${PROJECT_NAME}Test"
     "test/src/IntegrationSuite.cpp"
     "test/src/KinovaArmSuite.cpp"
@@ -125,5 +127,15 @@ if(BUILD_TESTING)
 
   target_link_libraries("${PROJECT_NAME}Test" PUBLIC
     "${PROJECT_NAME}Core"
+    "CONAN_PKG::lyra"
+  )
+
+  discover_tests(TARGET "${PROJECT_NAME}Test")
+
+  add_custom_target("run_all_tests"
+    COMMAND ${CMAKE_CTEST_COMMAND} "--output-on-failure"
+    WORKING_DIRECTORY ${PROJECT_BINARY_DIR}
+    DEPENDS "${PROJECT_NAME}Test"
+    COMMENT "Running unit tests..."
   )
 endif()
