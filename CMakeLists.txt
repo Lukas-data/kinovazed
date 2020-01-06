@@ -4,9 +4,21 @@ project (kinovaZED
   LANGUAGES CXX
 )
 
+list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules")
+
 set(CMAKE_CXX_STANDARD "14")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+include("Conan")
+conan_check(REQUIRED)
+# conan_add_remote(NAME "fmorgner-public" URL "https://api.bintray.com/conan/fmorgner/conan-public")
+conan_cmake_run(CONANFILE "conanfile.txt"
+  BASIC_SETUP
+  CMAKE_TARGETS
+  BUILD "missing"
+  NO_OUTPUT_DIRS
+)
 
 #Create logs directory
 file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/logs")
@@ -61,8 +73,10 @@ target_include_directories(kinovaArm_core
 target_link_libraries(kinovaArm_core
   PUBLIC
   "libkindrv"
-  "spdlog::spdlog_header_only"
-  "nlohmann_json::nlohmann_json"
+  "CONAN_PKG::nlohmann_json"
+  "CONAN_PKG::spdlog"
+  # "spdlog::spdlog_header_only"
+  # "nlohmann_json::nlohmann_json"
   "rt"
   ${Boost_LIBRARIES}
 )
