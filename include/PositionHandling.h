@@ -12,27 +12,27 @@
 
 
 struct PositionHandling {
-	explicit PositionHandling(std::istream & in);
+	explicit PositionHandling(std::istream &in);
 	PositionHandling() = default;
 	~PositionHandling();
 
 	void init();
-	auto getCoordinates(Kinova::Objective targetObjective) const -> Kinova::Coordinates; //tested
-//	auto getSequence(Kinova::Objective targetObjective) const -> Kinova::Sequence; //unused
-	auto hasOrigin(Kinova::Objective targetObjective) const -> bool; //tested
-	auto getOrigin(Kinova::Objective targetObjective) const -> Kinova::Coordinates; //tested
-	void incrementSequence(Kinova::Objective targetObjective); //tested
-	void decrementSequence(Kinova::Objective targetObjective); //tested
+	auto getCoordinates(Kinova::Objective targetObjective) const -> Kinova::Coordinates; // tested
+	//	auto getSequence(Kinova::Objective targetObjective) const -> Kinova::Sequence; //unused
+	auto hasOrigin(Kinova::Objective targetObjective) const -> bool;                // tested
+	auto getOrigin(Kinova::Objective targetObjective) const -> Kinova::Coordinates; // tested
+	void incrementSequence(Kinova::Objective targetObjective);                      // tested
+	void decrementSequence(Kinova::Objective targetObjective);                      // tested
 	void resetSequence(Kinova::Objective targetObjective);
-	void setZeroObjective(Kinova::Coordinates coordinates, Kinova::Objective targetObjective); //tested
-	auto savePoint(Kinova::Coordinates coordinates, Kinova::Objective targetObjective) -> bool; //tested
-	void saveOrigin(Kinova::Coordinates coordinates, Kinova::Objective targetObjective); //tested
-	void deletePoint(Kinova::Objective targetObjective); //tested
+	void setZeroObjective(Kinova::Coordinates coordinates, Kinova::Objective targetObjective);  // tested
+	auto savePoint(Kinova::Coordinates coordinates, Kinova::Objective targetObjective) -> bool; // tested
+	void saveOrigin(Kinova::Coordinates coordinates, Kinova::Objective targetObjective);        // tested
+	void deletePoint(Kinova::Objective targetObjective);                                        // tested
 	auto getSequence(Kinova::Objective targetObjective) const -> int;
-	void writeToFile(); //TODO: (tcorbat): Extract serialization to file
-	auto resetOriginAtEnd(Kinova::Objective targetObjective) -> bool; //tested
+	void writeToFile();                                               // TODO: (tcorbat): Extract serialization to file
+	auto resetOriginAtEnd(Kinova::Objective targetObjective) -> bool; // tested
 
-private:
+  private:
 	using f2d_vec_t = std::vector<std::vector<float>>;
 	using f3d_vec_t = std::vector<f2d_vec_t>;
 	std::map<Kinova::Objective, Kinova::Sequence> sequences{};
@@ -40,7 +40,7 @@ private:
 	std::vector<Kinova::JSONObjective> objectives{};
 
 	void readFromFile();
-	void loadData(std::istream & in);
+	void loadData(std::istream &in);
 };
 
 #endif

@@ -2,30 +2,32 @@
 
 #include "spdlog/spdlog.h"
 
-#include <array>
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netdb.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <errno.h>
+#include <netdb.h>
+#include <netinet/in.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+#include <array>
 #include <sstream>
 #include <stdexcept>
 
 constexpr auto rioDummy = false;
 constexpr auto bufferSize = 256;
-constexpr auto messageLength = RoboRioProtocol::commandLength + (RoboRioProtocol::dataPackages * RoboRioProtocol::dataLength);
+constexpr auto messageLength =
+    RoboRioProtocol::commandLength + (RoboRioProtocol::dataPackages * RoboRioProtocol::dataLength);
 constexpr auto numberOfQueueConnections = 5;
 
 void TCPServer::error(const char *funcName, const char *msg) {
 	spdlog::error("TCPServer::{0}(): {1}", funcName, msg);
 }
 
-TCPServer::TCPServer() :
-		serverSocket{socket(AF_INET, SOCK_STREAM, 0)} {
+TCPServer::TCPServer()
+    : serverSocket{socket(AF_INET, SOCK_STREAM, 0)} {
 	if (serverSocket < 0) {
 		throw std::runtime_error{"Error opening socket"};
 	}
@@ -39,7 +41,7 @@ TCPServer::TCPServer() :
 	serv_addr.sin_family = AF_INET;
 	serv_addr.sin_port = htons(portno);
 	serv_addr.sin_addr.s_addr = INADDR_ANY;
-	if (bind(serverSocket, (struct sockaddr*) &serv_addr, sizeof(serv_addr)) < 0) {
+	if (bind(serverSocket, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
 		throw std::runtime_error{"Error on binding socket"};
 	}
 
@@ -60,7 +62,7 @@ void TCPServer::connect() {
 			disconnect();
 		}
 		int clilen = sizeof(cli_addr);
-		if ((clientSocket = accept(serverSocket, (struct sockaddr*) &cli_addr, (socklen_t*) &clilen)) < 0) {
+		if ((clientSocket = accept(serverSocket, (struct sockaddr *)&cli_addr, (socklen_t *)&clilen)) < 0) {
 			throw std::runtime_error{"Error accepting client connection"};
 		}
 	}
@@ -77,7 +79,8 @@ auto TCPServer::sendTCP(RoboRioProtocol::Packet packet) -> bool {
 	if (!rioDummy) {
 		spdlog::debug("TCPServer::sendTCP(): start");
 		std::array<char, messageLength + 1> buffer{};
-		int m = snprintf(buffer.data(), buffer.size(), "%6d%6d%6d%6d%6d", packet.command, packet.var, packet.x, packet.y, packet.z);
+		int m = snprintf(
+		    buffer.data(), buffer.size(), "%6d%6d%6d%6d%6d", packet.command, packet.var, packet.x, packet.y, packet.z);
 		if (m != messageLength) {
 			error("sendTCP", "Error preparing message");
 			return false;
@@ -88,7 +91,8 @@ auto TCPServer::sendTCP(RoboRioProtocol::Packet packet) -> bool {
 			return false;
 		}
 	}
-	spdlog::debug("TCPServer::sendTCP({0}, {1}, {2}, {3}, {4})", packet.command, packet.var, packet.x, packet.y, packet.z);
+	spdlog::debug(
+	    "TCPServer::sendTCP({0}, {1}, {2}, {3}, {4})", packet.command, packet.var, packet.x, packet.y, packet.z);
 	return true;
 }
 

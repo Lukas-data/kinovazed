@@ -4,13 +4,13 @@
 /**/
 
 namespace KinovaStatus {
-  enum SteeringMode {
-    NoMode,
-    Translation,
-    Rotation,
-    Axis1,
-    Axis2,
-  };
+enum SteeringMode {
+	NoMode,
+	Translation,
+	Rotation,
+	Axis1,
+	Axis2,
+};
 }
 
 #endif

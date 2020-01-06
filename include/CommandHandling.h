@@ -3,9 +3,9 @@
 
 #include "KinovaArm.h"
 #include "KinovaStatus.h"
-#include "spdlog/spdlog.h"
 #include "StateMachine.h"
 #include "TCPServer.h"
+#include "spdlog/spdlog.h"
 
 #include <chrono>
 #include <memory>
@@ -19,8 +19,9 @@ struct Command {
 	KinovaFSM::Event event;
 	int var;
 
-	explicit Command(KinovaFSM::Event event, int var = 0) :
-			event{event}, var{var} {
+	explicit Command(KinovaFSM::Event event, int var = 0)
+	    : event{event}
+	    , var{var} {
 	}
 
 	bool operator==(Command const &other) const {
@@ -34,24 +35,26 @@ struct Command {
 
 template<typename EventIo = TCPServer, typename Arm = KinovaArm>
 struct CommandHandling {
-	CommandHandling(std::unique_ptr<EventIo> roboRio, std::shared_ptr<Arm> jacoZed) :
-			roboRio { std::move(roboRio) }, jacoZed { jacoZed }, kinovaSM { jacoZed } {
+	CommandHandling(std::unique_ptr<EventIo> roboRio, std::shared_ptr<Arm> jacoZed)
+	    : roboRio{std::move(roboRio)}
+	    , jacoZed{jacoZed}
+	    , kinovaSM{jacoZed} {
 		spdlog::debug("Connecting to RoboRio.");
 		connectRoboRio();
 		spdlog::debug("Connecting to JacoArm.");
 		connectJacoZed();
 	}
-	CommandHandling() :
-			CommandHandling(std::make_unique<EventIo>(), std::make_shared<Arm>()) {
+	CommandHandling()
+	    : CommandHandling(std::make_unique<EventIo>(), std::make_shared<Arm>()) {
 	}
 	void process() {
 		Command newInCommand{KinovaFSM::NoEvent};
 		bool processed = processInput(newInCommand);
-		//OUTPUTS
+		// OUTPUTS
 		processOutput(processed, newInCommand, commandOut);
 	}
 
-private:
+  private:
 	std::unique_ptr<EventIo> roboRio;
 	std::shared_ptr<Arm> jacoZed;
 	StateMachine kinovaSM;
@@ -63,10 +66,10 @@ private:
 	auto getInputs() -> Command {
 		auto packet = roboRio->readPacket();
 		Command commandIn = Command{static_cast<KinovaFSM::Event>(packet.command), packet.var};
-		//TODO: (tcorbat) Shouldn't we check where whether event is actually MoveJoystick?
+		// TODO: (tcorbat) Shouldn't we check where whether event is actually MoveJoystick?
 		jacoZed->setJoystick(packet.x, packet.y, packet.z);
 
-		//Event is MoveJoystick, if Joystick moves and No Event is set.
+		// Event is MoveJoystick, if Joystick moves and No Event is set.
 		bool jSisZero = packet.x == 0 && packet.y == 0 && packet.z == 0;
 		if (!jSisZero && commandIn.event != KinovaFSM::E_Stop) {
 			commandIn = Command{KinovaFSM::MoveJoystick};
@@ -97,7 +100,7 @@ private:
 
 	/*retrieves EventVariable for different HW-Events.*/
 	auto getHWEventVar(KinovaFSM::Event const &event) -> int {
-		//Hardware Events
+		// Hardware Events
 		switch (event) {
 		case KinovaFSM::ModeSet:
 			return jacoZed->getMode();
@@ -172,7 +175,7 @@ private:
 	}
 
 	auto processInput(Command &newInCommand) -> bool {
-		//INPUTS
+		// INPUTS
 		Command oldInCommand = commandIn;
 		commandIn = getInputs();
 
@@ -181,21 +184,21 @@ private:
 		} else {
 			spdlog::info("CommandHandling: event: identical");
 		}
-		//Check for E_Stop
+		// Check for E_Stop
 		if (commandIn.event == KinovaFSM::E_Stop) {
 			newInCommand = Command{KinovaFSM::E_Stop};
 		} else {
-			//get Hardware Error
+			// get Hardware Error
 			if (jacoZed->getError()) {
 				newInCommand.event = KinovaFSM::E_Stop;
 				spdlog::error("Hardware Error detected: E-Stop set.");
 			}
-			//get Internal HW Events
+			// get Internal HW Events
 			else {
 				newInCommand.event = jacoZed->getInternalEvent();
 			}
 			if (newInCommand.event == KinovaFSM::NoEvent) {
-				//get Events from RoboRio
+				// get Events from RoboRio
 				newInCommand = commandIn;
 			}
 		}
@@ -207,17 +210,17 @@ private:
 		KinovaFSM::Event HWEvent = jacoZed->getExternalEvent();
 		if (HWEvent == KinovaFSM::NoEvent) {
 			if (processed) {
-				//Processed Event
+				// Processed Event
 				commandOut = newInCommand;
 			}
-			//Don't repeat last Event when HW-Event received
+			// Don't repeat last Event when HW-Event received
 			if (newInCommand.event > KinovaFSM::numberOfNonHWEvents) {
 				commandOut = Command{KinovaFSM::NoEvent};
 			}
 		} else if (HWEvent == newInCommand.event) {
 			commandOut = Command{KinovaFSM::NoEvent};
 		} else {
-			commandOut = Command{HWEvent,getHWEventVar(HWEvent)};
+			commandOut = Command{HWEvent, getHWEventVar(HWEvent)};
 		}
 		sendOutputs(commandOut);
 		if (commandOut != oldOutCommand) {

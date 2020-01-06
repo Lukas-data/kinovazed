@@ -69,8 +69,8 @@ struct KinovaArm {
 	void setActive();
 	void setInactive();
 
-private:
-	KinDrv::JacoArm *arm { nullptr };
+  private:
+	KinDrv::JacoArm *arm{nullptr};
 	PositionHandling PositionHandler{};
 
 	bool connected = false;
@@ -81,29 +81,31 @@ private:
 	KinovaStatus::SteeringMode mode = KinovaStatus::NoMode;
 	int currentPosition = -1;
 
-	Kinova::Objective TargetObjective { Kinova::Objective::NoObjective };
-	Kinova::Objective teachTarget { Kinova::Objective::NoObjective };
+	Kinova::Objective TargetObjective{Kinova::Objective::NoObjective};
+	Kinova::Objective teachTarget{Kinova::Objective::NoObjective};
 
 	int joystickX = 0;
 	int joystickY = 0;
 	int joystickZ = 0;
 
-	std::chrono::milliseconds maxModeChangeTimer { };
+	std::chrono::milliseconds maxModeChangeTimer{};
 
 #if __cplusplus >= 201703L
-	std::optional<std::chrono::time_point<std::chrono::steady_clock>> modeChangeTimerStart { std::nullopt };
-	std::optional<std::chrono::time_point<std::chrono::steady_clock>> moveTimerStart { std::nullopt };
+	std::optional<std::chrono::time_point<std::chrono::steady_clock>> modeChangeTimerStart{std::nullopt};
+	std::optional<std::chrono::time_point<std::chrono::steady_clock>> moveTimerStart{std::nullopt};
 #else
-	std::experimental::optional<std::chrono::time_point<std::chrono::steady_clock>> modeChangeTimerStart { std::experimental::nullopt };
-	std::experimental::optional<std::chrono::time_point<std::chrono::steady_clock>> moveTimerStart { std::experimental::nullopt };
+	std::experimental::optional<std::chrono::time_point<std::chrono::steady_clock>> modeChangeTimerStart{
+	    std::experimental::nullopt};
+	std::experimental::optional<std::chrono::time_point<std::chrono::steady_clock>> moveTimerStart{
+	    std::experimental::nullopt};
 #endif
 
 	KinovaFSM::Event externalEvent = KinovaFSM::NoEvent;
 	KinovaFSM::Event internalEvent = KinovaFSM::NoEvent;
 
-	float lastCoordinates[6] { };
+	float lastCoordinates[6]{};
 
-	int pointReachedCount { };
+	int pointReachedCount{};
 
 	void error(const char *funcName, KinDrv::KinDrvException const &e, bool warning);
 	void error(const char *funcName, const char *errorMsg);

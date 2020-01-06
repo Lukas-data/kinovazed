@@ -39,7 +39,7 @@ inline auto rotMatrix(float angle[3]) -> f2d_vec_t {
 		c[i] = std::cos(angle[i]);
 		s[i] = std::sin(angle[i]);
 	}
-	//Hardcoded RotationMatrix of Euler XYZ
+	// Hardcoded RotationMatrix of Euler XYZ
 	mat[0][0] = c[1] * c[2];
 	mat[0][1] = -c[1] * s[2];
 	mat[0][2] = s[1];
@@ -75,7 +75,7 @@ inline auto getEulerAngles(const f2d_vec_t rotMat) -> std::vector<float> {
 
 /*Transforms coordinates Objective coordinate system to Basis coordinate system*/
 inline auto coordTransform(float *coordinates, const f2d_vec_t &transMat) -> Kinova::Coordinates {
-	//define point Vector ([x;y;z;1]) and angle Vector ([alpha, beta, gamma])
+	// define point Vector ([x;y;z;1]) and angle Vector ([alpha, beta, gamma])
 	f2d_vec_t cord(4, std::vector<float>(1, 0));
 	float ang[3];
 	for (int i = 0; i < 3; i++) {
@@ -83,22 +83,22 @@ inline auto coordTransform(float *coordinates, const f2d_vec_t &transMat) -> Kin
 		ang[i] = coordinates[i + 3];
 	}
 	cord[3][0] = 1;
-	//Multiply Point Vector with TransformationMatrix
+	// Multiply Point Vector with TransformationMatrix
 	cord = matMultiply(transMat, cord);
 
-	//Get rotational Matrix from Objective in Base Coordinate System. (extracted from inverse transformation Matrix
+	// Get rotational Matrix from Objective in Base Coordinate System. (extracted from inverse transformation Matrix
 	f2d_vec_t R1(3, std::vector<float>(3, 0));
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 3; j++) {
 			R1[i][j] = transMat[i][j];
 		}
 	}
-	//Get rotational Matrix from Point angles in Objective coordinate system.
+	// Get rotational Matrix from Point angles in Objective coordinate system.
 	f2d_vec_t R2 = rotMatrix(ang);
-	//Calculate rotational Matrix from Point in Objective Coordinate System
+	// Calculate rotational Matrix from Point in Objective Coordinate System
 	f2d_vec_t R3 = matMultiply(R1, R2);
 	std::vector<float> angles = getEulerAngles(R3);
-	//write coordinates
+	// write coordinates
 	for (int i = 0; i < 3; i++) {
 		coordinates[i] = cord[i][0];
 		coordinates[i + 3] = angles[i];
@@ -106,7 +106,8 @@ inline auto coordTransform(float *coordinates, const f2d_vec_t &transMat) -> Kin
 	return {coordinates[0], coordinates[1], coordinates[2], coordinates[3], coordinates[4], coordinates[5]};
 }
 
-inline auto coordTransform(Kinova::Coordinates const & coordinates, f2d_vec_t const & transformationMatrix) -> Kinova::Coordinates {
+inline auto coordTransform(Kinova::Coordinates const &coordinates, f2d_vec_t const &transformationMatrix)
+    -> Kinova::Coordinates {
 	std::array<float, 6> data = coordinates;
 	return coordTransform(data.data(), transformationMatrix);
 }

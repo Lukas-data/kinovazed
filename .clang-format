@@ -1,0 +1,44 @@
+﻿BasedOnStyle: LLVM
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: 'false'
+AlignConsecutiveDeclarations: 'false'
+AlignEscapedNewlines: Left
+AlignOperands: 'false'
+AlignTrailingComments: 'true'
+AllowAllParametersOfDeclarationOnNextLine: 'true'
+AllowShortBlocksOnASingleLine: 'false'
+AllowShortCaseLabelsOnASingleLine: 'false'
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: 'false'
+AllowShortLoopsOnASingleLine: 'false'
+AlwaysBreakAfterDefinitionReturnType: None
+AlwaysBreakAfterReturnType: None
+AlwaysBreakTemplateDeclarations: 'true'
+BinPackArguments: 'false'
+BinPackParameters: 'false'
+BreakConstructorInitializers: BeforeComma
+ColumnLimit: '120'
+CompactNamespaces: 'false'
+Cpp11BracedListStyle: 'true'
+DerivePointerAlignment: 'false'
+IndentWidth: '4'
+Language: Cpp
+MaxEmptyLinesToKeep: '2'
+SpaceAfterTemplateKeyword: 'false'
+Standard: Cpp11
+UseTab: ForIndentation
+TabWidth: '4'
+IncludeBlocks: Regroup
+IncludeCategories:
+    # CUTE Headers
+    - Regex: '<cute/[[:alnum:]._]+\.(h|hpp)>'
+      Priority: 200
+    # STL Headers
+    - Regex: '<[[:alnum:]._]+(?!\.(h|hpp))>'
+      Priority: 400
+    # General System Headers
+    - Regex: '<([[:alnum:]._]/*)+\.(h|hpp)>'
+      Priority: 300
+    # Local Headers
+    - Regex: '".+\.(h|hpp)"'
+      Priority: 100

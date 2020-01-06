@@ -13,13 +13,13 @@ using f2d_vec_t = std::vector<std::vector<float>>;
 
 struct Origin {
 	Origin();
-	explicit Origin(Coordinates const & origin);
+	explicit Origin(Coordinates const &origin);
 
 	auto getCoordinates() const -> Coordinates const &;
 	auto getTransformationMatrix() const -> f2d_vec_t const &;
 	auto getInvertedTransformationMatrix() const -> f2d_vec_t const &;
 
-private:
+  private:
 	Coordinates origin;
 	f2d_vec_t transformationMatrix;
 	f2d_vec_t invertedTransformationMatrix;
@@ -44,7 +44,7 @@ struct Sequence {
 	auto savePoint(Coordinates coordinates) -> bool;
 	void deletePoint();
 
-private:
+  private:
 	void throwIfEndReached() const;
 
 	Origin origin;
@@ -52,6 +52,6 @@ private:
 	int currentPoint = 0;
 };
 
-}
+} // namespace Kinova
 
 #endif /* KINOVA_SEQUENCE_H_ */

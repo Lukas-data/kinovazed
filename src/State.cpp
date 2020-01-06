@@ -1,8 +1,8 @@
 
 #include "State.h"
+
 #include "KinovaStatus.h"
 #include "PositionHandling.h"
-
 #include "spdlog/spdlog.h"
 
 #include <memory>
@@ -76,7 +76,6 @@ void StateUnfold::tickAction() {
 void StateIdle::entryActionHook() {
 	JacoZED->dontMove();
 	JacoZED->setInactive();
-
 }
 void StateIdle::exitActionHook() {
 	JacoZED->setActive();
@@ -118,7 +117,7 @@ void StateMovePosition::tickAction() {
 	JacoZED->moveToPosition(false);
 }
 
-//Teach
+// Teach
 void StateTeach::entryActionHook() {
 	JacoZED->teachPosition(static_cast<Kinova::Objective>(eventVariable));
 }
@@ -177,4 +176,3 @@ void StateTeachPrevious::entryActionHook() {
 void StateTeachNext::entryActionHook() {
 	JacoZED->nextPoint(eventVariable);
 }
-

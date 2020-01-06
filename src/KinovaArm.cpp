@@ -1,4 +1,5 @@
 #include "KinovaArm.h"
+
 #include "Coordinates.h"
 #include "spdlog/spdlog.h"
 
@@ -23,13 +24,13 @@ void KinovaArm::error(const char *funcName, KinDrv::KinDrvException const &e, bo
 		spdlog::warn("KinovaArm::{0}(): {1}, {2}", funcName, e.error(), e.what());
 	} else {
 		spdlog::error("KinovaArm::{0}(): {1}, {2}", funcName, e.error(), e.what());
-		connected = false; //Simplification!!
+		connected = false; // Simplification!!
 		Error = true;
 	}
 }
 void KinovaArm::error(const char *funcName, const char *errorMsg) {
 	spdlog::error("KinovaArm::{0}(): {1}, {2}", funcName, errorMsg);
-	connected = false; //Simplification!!
+	connected = false; // Simplification!!
 	Error = true;
 }
 
@@ -40,12 +41,12 @@ bool KinovaArm::connect() {
 		return true;
 	} else {
 		try {
-			//KinovaArm::disconnect();
+			// KinovaArm::disconnect();
 			arm = new KinDrv::JacoArm();
 			connected = true;
 			spdlog::info("Connection to JacoArm established.");
 			return true;
-		} catch (KinDrv::KinDrvException const& e) {
+		} catch (KinDrv::KinDrvException const &e) {
 			error("connect", e, false);
 			return false;
 		}
@@ -109,13 +110,13 @@ void KinovaArm::dontMove() {
 	if (kinovaDummy) {
 		return;
 	}
-	//reset Movement-Target
+	// reset Movement-Target
 	try {
 		arm->erase_trajectories();
 	} catch (KinDrv::KinDrvException const &e) {
 		error("dontMove: stopping Movement", e, false);
 	}
-	//reset Joystick-input
+	// reset Joystick-input
 	KinDrv::jaco_joystick_axis_t axes;
 	axes.trans_lr = 0;
 	axes.trans_fb = 0;
@@ -189,7 +190,6 @@ void KinovaArm::startRetracting(bool init) {
 				initialized = true;
 				externalEvent = KinovaFSM::Initialized;
 			}
-
 		}
 	} catch (KinDrv::KinDrvException const &e) {
 		error("retract", e, false);
@@ -249,7 +249,7 @@ void KinovaArm::unfold() {
 		}
 		try {
 			KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
-			//if (armStatus != 3) {
+			// if (armStatus != 3) {
 			spdlog::debug("unfolding from Mode: {0}", armStatus);
 			//}
 			switch (armStatus) {
@@ -259,7 +259,7 @@ void KinovaArm::unfold() {
 			case KinDrv::MODE_READY_TO_RETRACT:
 				arm->push_joystick_button(2);
 				[[fallthrough]];
-				//tcorbat: Discuss whether break is required here
+				// tcorbat: Discuss whether break is required here
 				// fall through
 			case KinDrv::MODE_RETRACT_STANDBY:
 				arm->release_joystick();
@@ -286,20 +286,21 @@ void KinovaArm::unfold() {
 	}
 }
 
-/*Changes current Mode and sets TimerTime (only necessary if kinematic 
+/*Changes current Mode and sets TimerTime (only necessary if kinematic
  mode on Jaco needs to be changed.). Default nextMode = NoMode is Translation!*/
 void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
 	using namespace std::chrono_literals;
 	if (mode != nextMode || mode == KinovaStatus::NoMode) {
 		if (!kinovaDummy) {
 			try {
-				if ((mode != KinovaStatus::Axis1 && mode != KinovaStatus::Axis2)
-						&& (nextMode == KinovaStatus::Axis1 || nextMode == KinovaStatus::Axis2)) {
+				if ((mode != KinovaStatus::Axis1 && mode != KinovaStatus::Axis2) &&
+				    (nextMode == KinovaStatus::Axis1 || nextMode == KinovaStatus::Axis2)) {
 					arm->set_control_ang();
 					maxModeChangeTimer = 500ms;
 				}
-				if ((mode != KinovaStatus::Translation && mode != KinovaStatus::Rotation)
-						&& (nextMode == KinovaStatus::Translation || nextMode == KinovaStatus::Rotation || nextMode == KinovaStatus::NoMode)) {
+				if ((mode != KinovaStatus::Translation && mode != KinovaStatus::Rotation) &&
+				    (nextMode == KinovaStatus::Translation || nextMode == KinovaStatus::Rotation ||
+				     nextMode == KinovaStatus::NoMode)) {
 					arm->set_control_cart();
 					maxModeChangeTimer = 500ms;
 				}
@@ -330,7 +331,8 @@ void KinovaArm::modeChangeTimer() {
 	if (!modeChangeTimerStart) {
 		modeChangeTimerStart = std::chrono::steady_clock::now();
 	}
-	auto elapsedTime { std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - *modeChangeTimerStart) };
+	auto elapsedTime{std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() -
+	                                                                       *modeChangeTimerStart)};
 	if (elapsedTime > maxModeChangeTimer) {
 		externalEvent = KinovaFSM::ModeSet;
 		maxModeChangeTimer = 0ms;
@@ -394,13 +396,13 @@ void KinovaArm::setTarget(Kinova::Objective targetObjective) {
  If Point is reached, sequence is counted up.
  If end of sequence is reached, PositionReached event is sent.*/
 void KinovaArm::moveToPosition(bool init) {
-	float currentCoordinates[6] { };
+	float currentCoordinates[6]{};
 	currentPosition = 0;
 	getPosition(currentCoordinates);
-	//Check if Sequence is still going
+	// Check if Sequence is still going
 	if (TargetObjective != Kinova::NoObjective && !PositionHandler.resetOriginAtEnd(TargetObjective)) {
-		 auto targetCoordinates = PositionHandler.getCoordinates(TargetObjective);
-		//Check if in range
+		auto targetCoordinates = PositionHandler.getCoordinates(TargetObjective);
+		// Check if in range
 		bool PointReached = checkIfReached(currentCoordinates);
 		bool currentLimit = checkCurrents();
 		if (PointReached || currentLimit) {
@@ -410,10 +412,10 @@ void KinovaArm::moveToPosition(bool init) {
 			} catch (KinDrv::KinDrvException &e) {
 				error("moveToPosition", e, false);
 			}
-			//Next Point in Sequence.
+			// Next Point in Sequence.
 			PositionHandler.incrementSequence(TargetObjective);
 		} else {
-			//Move to Position
+			// Move to Position
 			float fingers[3];
 			try {
 				std::array<float, 6> coordinatesData = targetCoordinates;
@@ -458,15 +460,15 @@ void KinovaArm::teachPosition(Kinova::Objective targetObjective) {
 
 /*moves Arm to the current point in the sequence at the current TeachTarget*/
 void KinovaArm::moveToPoint() {
-	float currentCoordinates[6] { };
+	float currentCoordinates[6]{};
 	currentPosition = 0;
 
 	getPosition(currentCoordinates);
 
-	//Check if Sequence is still going
+	// Check if Sequence is still going
 	if (teachTarget != Kinova::NoObjective && !PositionHandler.resetOriginAtEnd(teachTarget)) {
 		auto targetCoordinates = PositionHandler.getCoordinates(teachTarget);
-		//Check if in range
+		// Check if in range
 		bool PointReached = checkIfReached(currentCoordinates);
 		checkCurrents();
 		if (PointReached) {
@@ -474,7 +476,7 @@ void KinovaArm::moveToPoint() {
 			externalEvent = KinovaFSM::PointReached;
 			spdlog::debug("Point '{0}' of target '{1}' is reached", currentPosition, teachTarget);
 		} else {
-			//Move to Point
+			// Move to Point
 			float fingers[3];
 			try {
 				std::array<float, 6> coordinatesData = targetCoordinates;
@@ -491,16 +493,16 @@ void KinovaArm::moveToPoint() {
 
 /*moves Arm to origin of current TeachTarget*/
 void KinovaArm::moveToOrigin() {
-	float currentCoordinates[6] { };
+	float currentCoordinates[6]{};
 	Kinova::Coordinates currentCoordinate{};
 	currentPosition = 0;
 
 	getPosition(currentCoordinates);
 
-	//Check if Origin is defined
+	// Check if Origin is defined
 	if (PositionHandler.hasOrigin(teachTarget)) {
 		auto const targetCoordinates = PositionHandler.getOrigin(teachTarget);
-		//Check if in range
+		// Check if in range
 		bool PointReached = checkIfReached(currentCoordinates);
 		checkCurrents();
 		if (PointReached) {
@@ -508,8 +510,8 @@ void KinovaArm::moveToOrigin() {
 			externalEvent = KinovaFSM::PointReached;
 			spdlog::debug("Origin of {0} reached.", teachTarget);
 		} else {
-			//Move to Point
-			float fingers[3] { };
+			// Move to Point
+			float fingers[3]{};
 			try {
 				std::array<float, 6> targetForArm = targetCoordinates;
 				arm->set_target_cart(targetForArm.data(), fingers);
@@ -546,7 +548,6 @@ void KinovaArm::saveOrigin() {
 	PositionHandler.saveOrigin(Kinova::Coordinates{currentCoordinates}, teachTarget);
 	PositionHandler.writeToFile();
 	externalEvent = KinovaFSM::OriginSaved;
-
 }
 
 void KinovaArm::deletePoint() {
@@ -581,7 +582,8 @@ void KinovaArm::nextPoint(int EventVariable) {
 	}
 }
 
-/*PrintCurrents if greater than 2. returns True if Currents greater than 3.5, sends Error if Current is greater than 4.5 (fuse at 5 A)*/
+/*PrintCurrents if greater than 2. returns True if Currents greater than 3.5, sends Error if Current is greater than 4.5
+ * (fuse at 5 A)*/
 auto KinovaArm::checkCurrents() -> bool {
 	try {
 		KinDrv::jaco_position_t current = arm->get_ang_current();
@@ -590,8 +592,13 @@ auto KinovaArm::checkCurrents() -> bool {
 			sumCurrent += current.joints[i];
 		}
 		if (sumCurrent > 2) {
-			spdlog::debug("getCurrents: ({0}, {1}, {2}, {3}, {4}, {5})", current.joints[0], current.joints[1], current.joints[2], current.joints[3],
-					current.joints[4], current.joints[5]);
+			spdlog::debug("getCurrents: ({0}, {1}, {2}, {3}, {4}, {5})",
+			              current.joints[0],
+			              current.joints[1],
+			              current.joints[2],
+			              current.joints[3],
+			              current.joints[4],
+			              current.joints[5]);
 		}
 		if (sumCurrent > 4.5) {
 			error("checkCurrents", "Overcurrent");
@@ -622,7 +629,7 @@ auto KinovaArm::getError() -> bool {
 auto KinovaArm::getInitialize() -> bool {
 	return initialized;
 }
-auto KinovaArm::getActive() -> bool{
+auto KinovaArm::getActive() -> bool {
 	return active;
 }
 auto KinovaArm::getMode() -> int {
@@ -661,14 +668,19 @@ void KinovaArm::getPosition(float *coordinates) {
 			error("getPosition", e, false);
 		}
 
-		//transform jaco_position_t to float[]
+		// transform jaco_position_t to float[]
 		for (int i = 0; i < 3; i++) {
 			coordinates[i] = Position.position[i];
-			coordinates[i+3] = Position.rotation[i];
+			coordinates[i + 3] = Position.rotation[i];
 		}
 	}
-	spdlog::debug("KinovaArm::getPosition: currentCoordinates: ({0}, {1}, {2}, {3}, {4}, {5})", coordinates[0], coordinates[1], coordinates[2],
-			coordinates[3], coordinates[4], coordinates[5]);
+	spdlog::debug("KinovaArm::getPosition: currentCoordinates: ({0}, {1}, {2}, {3}, {4}, {5})",
+	              coordinates[0],
+	              coordinates[1],
+	              coordinates[2],
+	              coordinates[3],
+	              coordinates[4],
+	              coordinates[5]);
 }
 
 void KinovaArm::setActive() {
@@ -685,7 +697,8 @@ auto KinovaArm::checkIfReached(float *currentCoordinates) -> bool {
 		moveTimerStart = std::chrono::steady_clock::now();
 	}
 
-	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - *moveTimerStart) > std::chrono::milliseconds { 500 }) {
+	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - *moveTimerStart) >
+	    std::chrono::milliseconds{500}) {
 		bool pointReached = true;
 		spdlog::warn("KinovaArm::RangeCheck: following Axis do not pass:");
 		for (int i = 0; i < 6; i++) {
@@ -696,7 +709,7 @@ auto KinovaArm::checkIfReached(float *currentCoordinates) -> bool {
 			}
 			lastCoordinates[i] = currentCoordinates[i];
 		}
-		//Returns PointReached if PointReachedCount is higher than 3, to prevent errors.
+		// Returns PointReached if PointReachedCount is higher than 3, to prevent errors.
 		if (pointReached) {
 			++pointReachedCount;
 		} else {
@@ -719,7 +732,13 @@ auto KinovaArm::checkIfReached(float *currentCoordinates) -> bool {
 void KinovaArm::getForces() {
 	try {
 		KinDrv::jaco_position_t force = arm->get_ang_force();
-		spdlog::debug("getForces: ({0}, {1}, {2}, {3}, {4}, {5})", force.joints[0], force.joints[1], force.joints[2], force.joints[3], force.joints[4], force.joints[5]);
+		spdlog::debug("getForces: ({0}, {1}, {2}, {3}, {4}, {5})",
+		              force.joints[0],
+		              force.joints[1],
+		              force.joints[2],
+		              force.joints[3],
+		              force.joints[4],
+		              force.joints[5]);
 	} catch (KinDrv::KinDrvException const &e) {
 		error("getForces", e, false);
 	}

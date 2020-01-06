@@ -18,7 +18,7 @@ struct TCPServer {
 	auto readPacket() -> RoboRioProtocol::Packet;
 	auto sendTCP(RoboRioProtocol::Packet command) -> bool;
 
-private:
+  private:
 	bool connected{false};
 	void error(const char *funcName, const char *msg);
 

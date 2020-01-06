@@ -35,6 +35,6 @@ auto constexpr OBJ_CSYS_PITCH = "pitch";
 auto constexpr OBJ_CSYS_YAW = "yaw";
 auto constexpr OBJ_CSYS_ROLL = "roll";
 
-}
+} // namespace Constants
 
 #endif /* INCLUDE_CONSTANTS_H_ */

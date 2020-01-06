@@ -8,9 +8,9 @@ namespace Kinova {
 
 
 #if __cplusplus >= 201703L
-//C++17
-template <typename...Args>
-void streamArguments(std::ostream & out, Args const &...args) {
+// C++17
+template<typename... Args>
+void streamArguments(std::ostream &out, Args const &... args) {
 	(out << ... << args);
 }
 
@@ -19,22 +19,22 @@ void streamArguments(std::ostream & out, Args const &...args) {
 inline void streamArguments(std::ostream &) {
 }
 
-template <typename First, typename...Args>
-void streamArguments(std::ostream & out, First const & first, Args const &...args) {
+template<typename First, typename... Args>
+void streamArguments(std::ostream &out, First const &first, Args const &... args) {
 	out << first;
 	streamArguments(out, args...);
 }
 
 #endif
 
-template <typename ExceptionType, typename...Args>
-auto composeException(Args const &...args) {
+template<typename ExceptionType, typename... Args>
+auto composeException(Args const &... args) {
 	std::ostringstream errorMessage{};
 	streamArguments(errorMessage, args...);
 	return ExceptionType{errorMessage.str()};
 }
 
-}
+} // namespace Kinova
 
 
 #endif /* INCLUDE_EXCEPTIONS_H_ */
