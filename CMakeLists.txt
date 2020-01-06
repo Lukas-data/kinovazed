@@ -14,6 +14,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
 
 include("CTest")
+include("GNUInstallDirs")
+
+if(NOT CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+  set(CMAKE_INSTALL_PREFIX "$ENV{HOME}/.local")
+endif()
 
 ### System Dependencies Setup
 
@@ -98,10 +103,37 @@ target_compile_options("${PROJECT_NAME}" PUBLIC
   >
 )
 
-# #Copy autorun script and data points
-# configure_file(${PROJECT_SOURCE_DIR}/KinovaStartUp.sh ${PROJECT_BINARY_DIR} COPYONLY)
-# configure_file(${PROJECT_SOURCE_DIR}/CybathlonObjectives.dat ${PROJECT_BINARY_DIR} COPYONLY)
-# configure_file(${PROJECT_SOURCE_DIR}/CybathlonObjectives.json ${PROJECT_BINARY_DIR} COPYONLY)
+install(TARGETS
+  "${PROJECT_NAME}Core"
+  "${PROJECT_NAME}"
+  RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+)
+
+### Support Data and Scripts
+
+configure_file("${PROJECT_SOURCE_DIR}/support/scripts/KinovaStartUp"
+  "${PROJECT_BINARY_DIR}/KinovaStartUp"
+  @ONLY
+)
+
+install(FILES
+  "${PROJECT_BINARY_DIR}/KinovaStartUp"
+  DESTINATION "${CMAKE_INSTALL_BINDIR}"
+  PERMISSIONS
+  GROUP_EXECUTE
+  GROUP_READ
+  OWNER_EXECUTE
+  OWNER_READ
+  OWNER_WRITE
+  WORLD_EXECUTE
+  WORLD_READ
+)
+
+install(FILES
+  "${PROJECT_SOURCE_DIR}/support/objectives/CybathlonObjectives.dat"
+  "${PROJECT_SOURCE_DIR}/support/objectives/CybathlonObjectives.json"
+  DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}"
+)
 
 ### Tests
 
