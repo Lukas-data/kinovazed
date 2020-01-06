@@ -17,16 +17,16 @@
 ////StateMachine *fsm;
 ////CommandHandling *communication;
 //
-//CommandHandling communication;
+// CommandHandling communication;
 //
-//void wait(int n) {
+// void wait(int n) {
 //  for (int i =0; i<n; i++) {
 //    communication.process();
 //    usleep(200000);
 //  }
 //}
 //
-//void move(int x, int y, int z, int n) {
+// void move(int x, int y, int z, int n) {
 //  printf("Move araound\n");
 //  for (int i =0; i<n; i++) {
 //    communication.debugSetJoystick(x,y,z);
@@ -39,7 +39,7 @@
 //}
 //
 //
-//int main(int argc, char *argv[])
+// int main(int argc, char *argv[])
 //{
 //
 //  printf("-------------------------\n");
@@ -227,15 +227,16 @@
 //
 //
 
-#include "cute.h"
-#include "ide_listener.h"
-#include "xml_listener.h"
-#include "cute_runner.h"
 #include "IntegrationSuite.h"
-#include "MatrixSuite.h"
 #include "KinovaArmSuite.h"
+#include "MatrixSuite.h"
 #include "PositionHandlingSuite.h"
 #include "SequenceSuite.h"
+
+#include <cute/cute.h>
+#include <cute/cute_runner.h>
+#include <cute/ide_listener.h>
+#include <cute/xml_listener.h>
 
 bool runAllTests(int argc, char const *argv[]) {
 	cute::suite matrixSuite = make_suite_MatrixSuite();
@@ -255,6 +256,5 @@ bool runAllTests(int argc, char const *argv[]) {
 }
 
 int main(int argc, char const *argv[]) {
-    return runAllTests(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE;
+	return runAllTests(argc, argv) ? EXIT_SUCCESS : EXIT_FAILURE;
 }
-

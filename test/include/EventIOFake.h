@@ -5,9 +5,11 @@
 
 #include <memory>
 
-template <typename ReadGenerator>
+template<typename ReadGenerator>
 struct EventIOFake {
-	explicit EventIOFake(std::shared_ptr<ReadGenerator> packetGenerator) : packetGenerator{packetGenerator}{}
+	explicit EventIOFake(std::shared_ptr<ReadGenerator> packetGenerator)
+	    : packetGenerator{packetGenerator} {
+	}
 
 	auto readPacket() -> RoboRioProtocol::Packet {
 		return (*packetGenerator)();
@@ -18,14 +20,12 @@ struct EventIOFake {
 	}
 
 	void connect() {
-
 	}
 
 	void disconnect() {
-
 	}
 
-private:
+  private:
 	std::shared_ptr<ReadGenerator> packetGenerator;
 };
 

@@ -1,7 +1,7 @@
 #ifndef SEQUENCESUITE_H_
 #define SEQUENCESUITE_H_
 
-#include "cute_suite.h"
+#include <cute/cute_suite.h>
 
 extern cute::suite make_suite_SequenceSuite();
 

@@ -1,7 +1,9 @@
 #include "SequenceSuite.h"
-#include "Sequence.h"
-#include "cute.h"
+
 #include "MatrixHelper.h"
+#include "Sequence.h"
+
+#include <cute/cute.h>
 
 using Kinova::Coordinates;
 using Kinova::Origin;
@@ -78,24 +80,20 @@ void testPreviousPointAtBeginningThrows() {
 
 void testOriginTransformationMatrix() {
 	Origin const origin{testOriginCoordinates};
-	Kinova::f2d_vec_t const expectedMatrix {
-		{ 0.997821f,  -0.00199564f, -0.0659521f, 0.12},
-		{-0.0655827f,  0.0798429f,  -0.994648f, -0.723},
-		{ 0.00725077f, 0.996805f,    0.0795381,  0.551f},
-		{ 0.0f,        0.0f,         0.0f,       1.0f}
-	};
+	Kinova::f2d_vec_t const expectedMatrix{{0.997821f, -0.00199564f, -0.0659521f, 0.12},
+	                                       {-0.0655827f, 0.0798429f, -0.994648f, -0.723},
+	                                       {0.00725077f, 0.996805f, 0.0795381, 0.551f},
+	                                       {0.0f, 0.0f, 0.0f, 1.0f}};
 	auto const transformationMatrix = origin.getTransformationMatrix();
 	assertMatrixEqual(expectedMatrix, transformationMatrix);
 }
 
 void testOriginInvertedTransformationMatrix() {
 	Origin const origin{testOriginCoordinates};
-	Kinova::f2d_vec_t const expectedMatrix {
-		{ 0.997821f,  -0.0655827f,   0.00725077f, -0.17115},
-		{-0.00199564f, 0.0798429f,   0.996805f,   -0.491274},
-		{-0.0659521f, -0.994648f,    0.0795381,   -0.755041},
-		{ 0.0f,        0.0f,         0.0f,         1.0f}
-	};
+	Kinova::f2d_vec_t const expectedMatrix{{0.997821f, -0.0655827f, 0.00725077f, -0.17115},
+	                                       {-0.00199564f, 0.0798429f, 0.996805f, -0.491274},
+	                                       {-0.0659521f, -0.994648f, 0.0795381, -0.755041},
+	                                       {0.0f, 0.0f, 0.0f, 1.0f}};
 	auto const invertedTransformationMatrix = origin.getInvertedTransformationMatrix();
 	assertMatrixEqual(expectedMatrix, invertedTransformationMatrix);
 }
@@ -117,8 +115,9 @@ cute::suite make_suite_SequenceSuite() {
 	s.push_back(CUTE(testEndReached));
 	s.push_back(CUTE(testNumberOfPoints));
 	s.push_back(CUTE(testGetCurrentCoordinatesAtEndThrows));
-//	s.push_back(CUTE(testNextPointAtEndThrows)); //Test disabled as teaching might require sequence number to be -1
-//	s.push_back(CUTE(testPreviousPointAtBeginningThrows)); //Test disabled as teaching might require sequence number to be higher than number of points
+	//	s.push_back(CUTE(testNextPointAtEndThrows)); //Test disabled as teaching might require sequence number to be -1
+	//	s.push_back(CUTE(testPreviousPointAtBeginningThrows)); //Test disabled as teaching might require sequence number
+	// to be higher than number of points
 	s.push_back(CUTE(testOriginTransformationMatrix));
 	s.push_back(CUTE(testOriginInvertedTransformationMatrix));
 	s.push_back(CUTE(testGetTransformedCoordinates));

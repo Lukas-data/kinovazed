@@ -13,6 +13,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
 
+include("CTest")
+
 ### System Dependencies Setup
 
 find_package("Boost"
@@ -96,28 +98,32 @@ target_compile_options("${PROJECT_NAME}" PUBLIC
   >
 )
 
-# #Unit and Integration Tests
-
-# add_executable(KinovaTest
-#   "test/KinovaTest.cpp"
-#   "test/IntegrationSuite.cpp"
-#   "test/MatrixSuite.cpp"
-#   "test/KinovaArmSuite.cpp"
-#   "test/PositionHandlingSuite.cpp"
-#   "test/SequenceSuite.cpp"
-# )
-
-# target_include_directories("KinovaTest"
-#   PRIVATE
-#   "test/cute"
-# )
-
-# target_link_libraries("KinovaTest"
-#   PRIVATE
-#   "kinovaArm_core"
-# )
-
 # #Copy autorun script and data points
 # configure_file(${PROJECT_SOURCE_DIR}/KinovaStartUp.sh ${PROJECT_BINARY_DIR} COPYONLY)
 # configure_file(${PROJECT_SOURCE_DIR}/CybathlonObjectives.dat ${PROJECT_BINARY_DIR} COPYONLY)
 # configure_file(${PROJECT_SOURCE_DIR}/CybathlonObjectives.json ${PROJECT_BINARY_DIR} COPYONLY)
+
+### Tests
+
+if(BUILD_TESTING)
+  add_executable("${PROJECT_NAME}Test"
+    "test/src/IntegrationSuite.cpp"
+    "test/src/KinovaArmSuite.cpp"
+    "test/src/KinovaTest.cpp"
+    "test/src/MatrixSuite.cpp"
+    "test/src/PositionHandlingSuite.cpp"
+    "test/src/SequenceSuite.cpp"
+  )
+
+  target_include_directories("${PROJECT_NAME}Test" SYSTEM PUBLIC
+    "test/thirdparty"
+  )
+
+  target_include_directories("${PROJECT_NAME}Test" PRIVATE
+    "test/include"
+  )
+
+  target_link_libraries("${PROJECT_NAME}Test" PUBLIC
+    "${PROJECT_NAME}Core"
+  )
+endif()
