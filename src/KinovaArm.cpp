@@ -118,12 +118,12 @@ void KinovaArm::dontMove() {
 	}
 	// reset Joystick-input
 	KinDrv::jaco_joystick_axis_t axes;
-	axes.trans_lr = 0;
-	axes.trans_fb = 0;
-	axes.trans_rot = 0;
-	axes.wrist_lr = 0;
-	axes.wrist_fb = 0;
-	axes.wrist_rot = 0;
+	axes.s.trans_lr = 0;
+	axes.s.trans_fb = 0;
+	axes.s.trans_rot = 0;
+	axes.s.wrist_lr = 0;
+	axes.s.wrist_fb = 0;
+	axes.s.wrist_rot = 0;
 	try {
 		arm->move_joystick_axis(axes);
 		arm->release_joystick();
@@ -349,23 +349,23 @@ void KinovaArm::move() {
 		return;
 	}
 	KinDrv::jaco_joystick_axis_t axes;
-	axes.trans_lr = 0;
-	axes.trans_fb = 0;
-	axes.trans_rot = 0;
-	axes.wrist_lr = 0;
-	axes.wrist_fb = 0;
-	axes.wrist_rot = 0;
+	axes.s.trans_lr = 0;
+	axes.s.trans_fb = 0;
+	axes.s.trans_rot = 0;
+	axes.s.wrist_lr = 0;
+	axes.s.wrist_fb = 0;
+	axes.s.wrist_rot = 0;
 
 	if (mode == KinovaStatus::Translation || mode == KinovaStatus::Axis1) {
-		axes.trans_lr = currentSpeedX;
-		axes.trans_fb = currentSpeedY;
-		axes.trans_rot = currentSpeedZ;
+		axes.s.trans_lr = currentSpeedX;
+		axes.s.trans_fb = currentSpeedY;
+		axes.s.trans_rot = currentSpeedZ;
 		spdlog::debug("MoveArm In Mode: 1");
 	}
 	if (mode == KinovaStatus::Rotation || mode == KinovaStatus::Axis2) {
-		axes.wrist_lr = currentSpeedX;
-		axes.wrist_fb = currentSpeedY;
-		axes.wrist_rot = currentSpeedZ;
+		axes.s.wrist_lr = currentSpeedX;
+		axes.s.wrist_fb = currentSpeedY;
+		axes.s.wrist_rot = currentSpeedZ;
 		spdlog::debug("MoveArm In Mode: 2");
 	}
 	try {
@@ -670,8 +670,8 @@ void KinovaArm::getPosition(float *coordinates) {
 
 		// transform jaco_position_t to float[]
 		for (int i = 0; i < 3; i++) {
-			coordinates[i] = Position.position[i];
-			coordinates[i + 3] = Position.rotation[i];
+			coordinates[i] = Position.s.position[i];
+			coordinates[i + 3] = Position.s.rotation[i];
 		}
 	}
 	spdlog::debug("KinovaArm::getPosition: currentCoordinates: ({0}, {1}, {2}, {3}, {4}, {5})",
