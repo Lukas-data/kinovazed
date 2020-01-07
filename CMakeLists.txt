@@ -85,6 +85,12 @@ target_link_libraries("${PROJECT_NAME}Core"
   "rt"
 )
 
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS "9.0")
+  target_link_libraries("${PROJECT_NAME}Core" PUBLIC
+    "stdc++fs"
+  )
+endif()
+
 configure_file("${PROJECT_SOURCE_DIR}/include/Paths.h.in"
   "${PROJECT_SOURCE_DIR}/include/Paths.h"
   @ONLY
