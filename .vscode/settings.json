@@ -4,7 +4,4 @@
     "[cpp]": {
         "editor.formatOnSave": true
     },
-    "files.associations": {
-        "*.in": "cpp"
-    },
 }

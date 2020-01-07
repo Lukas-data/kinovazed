@@ -51,8 +51,9 @@ add_subdirectory("thirdparty/libkindrv")
 ### Core Library
 
 add_library("${PROJECT_NAME}Core"
-  "src/KinovaArm.cpp"
   "src/Coordinates.cpp"
+  "src/KinovaArm.cpp"
+  "src/Logging.cpp"
   "src/Objective.cpp"
   "src/PositionHandling.cpp"
   "src/Sequence.cpp"

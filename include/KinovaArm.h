@@ -3,16 +3,12 @@
 
 #include "Event.h"
 #include "KinovaStatus.h"
+#include "Logging.h"
 #include "PositionHandling.h"
 #include "libkindrv/kindrv.h"
 
 #include <chrono>
-
-#if __cplusplus >= 201703L
 #include <optional>
-#else
-#include <experimental/optional>
-#endif
 
 constexpr auto positionRange = 0.05;
 constexpr auto rotationRange = 0.25;
@@ -20,7 +16,7 @@ constexpr auto velocityRange = 0.000002;
 constexpr auto joystickCalcFactor = 0.0025f;
 
 struct KinovaArm {
-	KinovaArm() = default;
+	KinovaArm(Logging::Logger logger);
 	~KinovaArm();
 
 	auto connect() -> bool;
@@ -71,7 +67,8 @@ struct KinovaArm {
 
   private:
 	KinDrv::JacoArm *arm{nullptr};
-	PositionHandling PositionHandler{};
+	Logging::Logger logger;
+	PositionHandling PositionHandler{logger};
 
 	bool connected = false;
 	bool Error = false;
@@ -90,15 +87,8 @@ struct KinovaArm {
 
 	std::chrono::milliseconds maxModeChangeTimer{};
 
-#if __cplusplus >= 201703L
 	std::optional<std::chrono::time_point<std::chrono::steady_clock>> modeChangeTimerStart{std::nullopt};
 	std::optional<std::chrono::time_point<std::chrono::steady_clock>> moveTimerStart{std::nullopt};
-#else
-	std::experimental::optional<std::chrono::time_point<std::chrono::steady_clock>> modeChangeTimerStart{
-	    std::experimental::nullopt};
-	std::experimental::optional<std::chrono::time_point<std::chrono::steady_clock>> moveTimerStart{
-	    std::experimental::nullopt};
-#endif
 
 	KinovaFSM::Event externalEvent = KinovaFSM::NoEvent;
 	KinovaFSM::Event internalEvent = KinovaFSM::NoEvent;

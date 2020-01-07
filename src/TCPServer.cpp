@@ -23,11 +23,12 @@ constexpr auto messageLength =
 constexpr auto numberOfQueueConnections = 5;
 
 void TCPServer::error(const char *funcName, const char *msg) {
-	spdlog::error("TCPServer::{0}(): {1}", funcName, msg);
+	logger->error("TCPServer::{0}(): {1}", funcName, msg);
 }
 
-TCPServer::TCPServer()
-    : serverSocket{socket(AF_INET, SOCK_STREAM, 0)} {
+TCPServer::TCPServer(Logging::Logger logger)
+    : logger{logger}
+    , serverSocket{socket(AF_INET, SOCK_STREAM, 0)} {
 	if (serverSocket < 0) {
 		throw std::runtime_error{"Error opening socket"};
 	}
@@ -77,7 +78,7 @@ void TCPServer::disconnect() {
 
 auto TCPServer::sendTCP(RoboRioProtocol::Packet packet) -> bool {
 	if (!rioDummy) {
-		spdlog::debug("TCPServer::sendTCP(): start");
+		logger->debug("TCPServer::sendTCP(): start");
 		std::array<char, messageLength + 1> buffer{};
 		int m = snprintf(
 		    buffer.data(), buffer.size(), "%6d%6d%6d%6d%6d", packet.command, packet.var, packet.x, packet.y, packet.z);
@@ -85,13 +86,13 @@ auto TCPServer::sendTCP(RoboRioProtocol::Packet packet) -> bool {
 			error("sendTCP", "Error preparing message");
 			return false;
 		}
-		spdlog::debug("TCPServer::sendTCP(): Message prepared.");
+		logger->debug("TCPServer::sendTCP(): Message prepared.");
 		if (write(clientSocket, buffer.data(), messageLength) < 0) {
 			error("sendTCP", "Error writing to socket");
 			return false;
 		}
 	}
-	spdlog::debug(
+	logger->debug(
 	    "TCPServer::sendTCP({0}, {1}, {2}, {3}, {4})", packet.command, packet.var, packet.x, packet.y, packet.z);
 	return true;
 }

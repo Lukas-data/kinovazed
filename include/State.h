@@ -14,6 +14,7 @@ struct State {
 	virtual void tickAction();
 
 	void setEventVar(int eventVar);
+	std::string getName() const;
 
 	virtual ~State() noexcept = default;
 

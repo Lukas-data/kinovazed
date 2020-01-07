@@ -1,18 +1,16 @@
 #include "KinovaArm.h"
 
 #include "Coordinates.h"
-#include "spdlog/spdlog.h"
 
 #include <array>
 #include <chrono>
-
-#if __cplusplus >= 201703L
 #include <optional>
-#else
-#include <experimental/optional>
-#endif
 
 constexpr auto kinovaDummy = false;
+
+KinovaArm::KinovaArm(Logging::Logger logger)
+    : logger{logger} {
+}
 
 KinovaArm::~KinovaArm() {
 	disconnect();
@@ -21,15 +19,15 @@ KinovaArm::~KinovaArm() {
 /*Prints Error/Warning-Message.Sets Errorflag and removes Connected flag on Error.*/
 void KinovaArm::error(const char *funcName, KinDrv::KinDrvException const &e, bool warning) {
 	if (warning) {
-		spdlog::warn("KinovaArm::{0}(): {1}, {2}", funcName, e.error(), e.what());
+		logger->warn("KinovaArm::{0}(): {1}, {2}", funcName, e.error(), e.what());
 	} else {
-		spdlog::error("KinovaArm::{0}(): {1}, {2}", funcName, e.error(), e.what());
+		logger->error("KinovaArm::{0}(): {1}, {2}", funcName, e.error(), e.what());
 		connected = false; // Simplification!!
 		Error = true;
 	}
 }
 void KinovaArm::error(const char *funcName, const char *errorMsg) {
-	spdlog::error("KinovaArm::{0}(): {1}, {2}", funcName, errorMsg);
+	logger->error("KinovaArm::{0}(): {1}, {2}", funcName, errorMsg);
 	connected = false; // Simplification!!
 	Error = true;
 }
@@ -44,7 +42,7 @@ bool KinovaArm::connect() {
 			// KinovaArm::disconnect();
 			arm = new KinDrv::JacoArm();
 			connected = true;
-			spdlog::info("Connection to JacoArm established.");
+			logger->info("Connection to JacoArm established.");
 			return true;
 		} catch (KinDrv::KinDrvException const &e) {
 			error("connect", e, false);
@@ -60,7 +58,7 @@ void KinovaArm::disconnect() {
 			if (arm != nullptr) {
 				delete arm;
 			}
-			spdlog::info("Connection to JacoArm closed.");
+			logger->info("Connection to JacoArm closed.");
 		} catch (KinDrv::KinDrvException const &e) {
 			error("disconnect", e, false);
 		}
@@ -70,7 +68,7 @@ void KinovaArm::disconnect() {
 
 void KinovaArm::reconnectOnError() {
 	if (Error) {
-		spdlog::debug("Connection to JacoArm reopened after Error.");
+		logger->debug("Connection to JacoArm reopened after Error.");
 		if (connected) {
 			disconnect();
 		}
@@ -85,7 +83,7 @@ void KinovaArm::takeControl() {
 	}
 	try {
 		arm->start_api_ctrl();
-		spdlog::info("Gained API control over the arm.");
+		logger->info("Gained API control over the arm.");
 	} catch (KinDrv::KinDrvException const &e) {
 		error("takeControl", e, false);
 	}
@@ -96,7 +94,7 @@ void KinovaArm::releaseControl() {
 	if (!kinovaDummy) {
 		try {
 			arm->stop_api_ctrl();
-			spdlog::info("Released API control over the arm.");
+			logger->info("Released API control over the arm.");
 			Error = false;
 		} catch (KinDrv::KinDrvException const &e) {
 			error("releaseControl", e, false);
@@ -139,7 +137,7 @@ void KinovaArm::checkInitialize() {
 	if (kinovaDummy) {
 		initialized = true;
 		externalEvent = KinovaFSM::Initialized;
-		spdlog::info("Arm connection is turned off. Dummy-Initialized.");
+		logger->info("Arm connection is turned off. Dummy-Initialized.");
 		return;
 	}
 	try {
@@ -155,7 +153,7 @@ void KinovaArm::initialize() {
 	if (kinovaDummy) {
 		initialized = true;
 		externalEvent = KinovaFSM::Initialized;
-		spdlog::info("Arm connection is turned off. Dummy-Initialized.");
+		logger->info("Arm connection is turned off. Dummy-Initialized.");
 		return;
 	}
 	if (!initialized) {
@@ -177,13 +175,13 @@ void KinovaArm::startRetracting(bool init) {
 	try {
 		KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
 		if (armStatus != 3) {
-			spdlog::debug("Arm starts retracting from Mode: {}", armStatus);
+			logger->debug("Arm starts retracting from Mode: {}", armStatus);
 			arm->push_joystick_button(2);
-			spdlog::debug("Start Retracting: Button pressed!");
+			logger->debug("Start Retracting: Button pressed!");
 			armStatus = arm->get_status();
 		} else {
 			arm->release_joystick();
-			spdlog::debug("Already retracted: Button released!");
+			logger->debug("Already retracted: Button released!");
 			if (!init) {
 				externalEvent = KinovaFSM::Retracted;
 			} else {
@@ -198,7 +196,7 @@ void KinovaArm::startRetracting(bool init) {
 
 /*brings arm to retracted position*/
 void KinovaArm::retract(bool init) {
-	spdlog::debug("Arm tries to retract!");
+	logger->debug("Arm tries to retract!");
 	currentPosition = 0;
 	if (kinovaDummy) {
 		return;
@@ -208,21 +206,21 @@ void KinovaArm::retract(bool init) {
 		if (!homed && armStatus == KinDrv::MODE_READY_STANDBY) {
 			homed = true;
 			arm->release_joystick();
-			spdlog::debug("Retract from Home: Button released!");
+			logger->debug("Retract from Home: Button released!");
 			armStatus = arm->get_status();
 			arm->push_joystick_button(2);
-			spdlog::debug("Retract from Home: Button pressed!");
+			logger->debug("Retract from Home: Button pressed!");
 			armStatus = arm->get_status();
 		} else if (homed && armStatus == KinDrv::MODE_READY_TO_RETRACT) {
 			homed = false;
 		} else if (armStatus == KinDrv::MODE_RETRACT_TO_READY) {
 			arm->release_joystick();
-			spdlog::debug("Retract to Home: Button released!");
+			logger->debug("Retract to Home: Button released!");
 			arm->push_joystick_button(2);
-			spdlog::debug("Retract to Home: Button pressed!");
+			logger->debug("Retract to Home: Button pressed!");
 		} else if (armStatus == KinDrv::MODE_RETRACT_STANDBY) {
 			arm->release_joystick();
-			spdlog::debug("Retracted: Button released!");
+			logger->debug("Retracted: Button released!");
 			if (!init) {
 				externalEvent = KinovaFSM::Retracted;
 			} else {
@@ -250,7 +248,7 @@ void KinovaArm::unfold() {
 		try {
 			KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
 			// if (armStatus != 3) {
-			spdlog::debug("unfolding from Mode: {0}", armStatus);
+			logger->debug("unfolding from Mode: {0}", armStatus);
 			//}
 			switch (armStatus) {
 			case KinDrv::MODE_RETRACT_TO_READY:
@@ -319,7 +317,7 @@ void KinovaArm::changeMode(KinovaStatus::SteeringMode nextMode) {
 			mode = nextMode;
 			break;
 		default:
-			spdlog::error("KinovaArm: Requested Mode invalid.");
+			logger->error("KinovaArm: Requested Mode invalid.");
 		}
 	}
 	modeChangeTimerStart = std::chrono::steady_clock::now();
@@ -360,17 +358,17 @@ void KinovaArm::move() {
 		axes.s.trans_lr = currentSpeedX;
 		axes.s.trans_fb = currentSpeedY;
 		axes.s.trans_rot = currentSpeedZ;
-		spdlog::debug("MoveArm In Mode: 1");
+		logger->debug("MoveArm In Mode: 1");
 	}
 	if (mode == KinovaStatus::Rotation || mode == KinovaStatus::Axis2) {
 		axes.s.wrist_lr = currentSpeedX;
 		axes.s.wrist_fb = currentSpeedY;
 		axes.s.wrist_rot = currentSpeedZ;
-		spdlog::debug("MoveArm In Mode: 2");
+		logger->debug("MoveArm In Mode: 2");
 	}
 	try {
 		arm->move_joystick_axis(axes);
-		spdlog::debug("currentSpeed: x = {0}, y = {1}, y = {2}", currentSpeedX, currentSpeedY, currentSpeedZ);
+		logger->debug("currentSpeed: x = {0}, y = {1}, y = {2}", currentSpeedX, currentSpeedY, currentSpeedZ);
 	} catch (KinDrv::KinDrvException const &e) {
 		error("move", e, false);
 	}
@@ -387,7 +385,7 @@ void KinovaArm::setTarget(Kinova::Objective targetObjective) {
 		getPosition(currentCoordinates.data());
 		PositionHandler.setZeroObjective(Kinova::Coordinates{currentCoordinates}, targetObjective);
 	} else {
-		spdlog::warn("KinovaArm: invalid targetPosition.");
+		logger->warn("KinovaArm: invalid targetPosition.");
 		externalEvent = KinovaFSM::SequenceDone;
 	}
 }
@@ -406,7 +404,7 @@ void KinovaArm::moveToPosition(bool init) {
 		bool PointReached = checkIfReached(currentCoordinates);
 		bool currentLimit = checkCurrents();
 		if (PointReached || currentLimit) {
-			spdlog::debug("Sequence-Point {0} reached.", PositionHandler.getSequence(TargetObjective));
+			logger->debug("Sequence-Point {0} reached.", PositionHandler.getSequence(TargetObjective));
 			try {
 				arm->erase_trajectories();
 			} catch (KinDrv::KinDrvException &e) {
@@ -429,7 +427,7 @@ void KinovaArm::moveToPosition(bool init) {
 		if (init) {
 			internalEvent = KinovaFSM::InitHomeReached;
 		} else {
-			spdlog::debug("Sequence {0} done.", currentPosition);
+			logger->debug("Sequence {0} done.", currentPosition);
 			externalEvent = KinovaFSM::SequenceDone;
 		}
 	}
@@ -444,7 +442,7 @@ void KinovaArm::sequenceDone() {
 void KinovaArm::teachPosition(Kinova::Objective targetObjective) {
 	if (targetObjective != Kinova::NoObjective) {
 		if (Kinova::isValidObjective(targetObjective)) {
-			spdlog::debug("new teachTarget, sequence reset.");
+			logger->debug("new teachTarget, sequence reset.");
 			std::array<float, 6> currentCoordinates{};
 			getPosition(currentCoordinates.data());
 			PositionHandler.resetSequence(teachTarget);
@@ -452,10 +450,10 @@ void KinovaArm::teachPosition(Kinova::Objective targetObjective) {
 			PositionHandler.setZeroObjective(Kinova::Coordinates{currentCoordinates}, targetObjective);
 			teachTarget = targetObjective;
 		} else {
-			spdlog::warn("KinovaArm: invalid teach Objective.");
+			logger->warn("KinovaArm: invalid teach Objective.");
 		}
 	}
-	spdlog::debug("TeachMode: Teaching at Point {0}:{1}", teachTarget, PositionHandler.getSequence(teachTarget));
+	logger->debug("TeachMode: Teaching at Point {0}:{1}", teachTarget, PositionHandler.getSequence(teachTarget));
 }
 
 /*moves Arm to the current point in the sequence at the current TeachTarget*/
@@ -474,7 +472,7 @@ void KinovaArm::moveToPoint() {
 		if (PointReached) {
 			currentPosition = getCurrentPoint(teachTarget);
 			externalEvent = KinovaFSM::PointReached;
-			spdlog::debug("Point '{0}' of target '{1}' is reached", currentPosition, teachTarget);
+			logger->debug("Point '{0}' of target '{1}' is reached", currentPosition, teachTarget);
 		} else {
 			// Move to Point
 			float fingers[3];
@@ -486,7 +484,7 @@ void KinovaArm::moveToPoint() {
 			}
 		}
 	} else {
-		spdlog::warn("moveToPoint: No such Point in Sequence.");
+		logger->warn("moveToPoint: No such Point in Sequence.");
 		externalEvent = KinovaFSM::PointNotReached;
 	}
 }
@@ -508,7 +506,7 @@ void KinovaArm::moveToOrigin() {
 		if (PointReached) {
 			currentPosition = -1;
 			externalEvent = KinovaFSM::PointReached;
-			spdlog::debug("Origin of {0} reached.", teachTarget);
+			logger->debug("Origin of {0} reached.", teachTarget);
 		} else {
 			// Move to Point
 			float fingers[3]{};
@@ -520,7 +518,7 @@ void KinovaArm::moveToOrigin() {
 			}
 		}
 	} else {
-		spdlog::warn("moveToOrigin: No Origin defined.");
+		logger->warn("moveToOrigin: No Origin defined.");
 		externalEvent = KinovaFSM::PointNotReached;
 	}
 }
@@ -592,7 +590,7 @@ auto KinovaArm::checkCurrents() -> bool {
 			sumCurrent += current.joints[i];
 		}
 		if (sumCurrent > 2) {
-			spdlog::debug("getCurrents: ({0}, {1}, {2}, {3}, {4}, {5})",
+			logger->debug("getCurrents: ({0}, {1}, {2}, {3}, {4}, {5})",
 			              current.joints[0],
 			              current.joints[1],
 			              current.joints[2],
@@ -616,7 +614,7 @@ auto KinovaArm::checkCurrents() -> bool {
 
 /*Set-Functinons*/
 void KinovaArm::setJoystick(int x, int y, int z) {
-	spdlog::debug("KinovaArm::setJoystick ({0}, {1}, {2})", x, y, z);
+	logger->debug("KinovaArm::setJoystick ({0}, {1}, {2})", x, y, z);
 	joystickX = x;
 	joystickY = y;
 	joystickZ = z;
@@ -646,14 +644,14 @@ auto KinovaArm::getCurrentPoint(Kinova::Objective target) -> int {
 }
 
 auto KinovaArm::getExternalEvent() -> KinovaFSM::Event {
-	spdlog::debug("KinovaArm::getExternalEvent: {0}", KinovaFSM::eventNames[externalEvent]);
+	logger->debug("KinovaArm::getExternalEvent: {0}", KinovaFSM::eventNames[externalEvent]);
 	KinovaFSM::Event e = externalEvent;
 	externalEvent = KinovaFSM::NoEvent;
 	return e;
 }
 
 auto KinovaArm::getInternalEvent() -> KinovaFSM::Event {
-	spdlog::debug("KinovaArm::getInternalEvent: {0}", KinovaFSM::eventNames[externalEvent]);
+	logger->debug("KinovaArm::getInternalEvent: {0}", KinovaFSM::eventNames[externalEvent]);
 	KinovaFSM::Event e = internalEvent;
 	internalEvent = KinovaFSM::NoEvent;
 	return e;
@@ -674,7 +672,7 @@ void KinovaArm::getPosition(float *coordinates) {
 			coordinates[i + 3] = Position.s.rotation[i];
 		}
 	}
-	spdlog::debug("KinovaArm::getPosition: currentCoordinates: ({0}, {1}, {2}, {3}, {4}, {5})",
+	logger->debug("KinovaArm::getPosition: currentCoordinates: ({0}, {1}, {2}, {3}, {4}, {5})",
 	              coordinates[0],
 	              coordinates[1],
 	              coordinates[2],
@@ -700,11 +698,11 @@ auto KinovaArm::checkIfReached(float *currentCoordinates) -> bool {
 	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - *moveTimerStart) >
 	    std::chrono::milliseconds{500}) {
 		bool pointReached = true;
-		spdlog::warn("KinovaArm::RangeCheck: following Axis do not pass:");
+		logger->warn("KinovaArm::RangeCheck: following Axis do not pass:");
 		for (int i = 0; i < 6; i++) {
 			float dVel = fabs(currentCoordinates[i] - lastCoordinates[i]);
 			if (dVel > velocityRange) {
-				spdlog::debug("[i: {0} dVel: {1}", i, dVel);
+				logger->debug("[i: {0} dVel: {1}", i, dVel);
 				pointReached = false;
 			}
 			lastCoordinates[i] = currentCoordinates[i];
@@ -732,7 +730,7 @@ auto KinovaArm::checkIfReached(float *currentCoordinates) -> bool {
 void KinovaArm::getForces() {
 	try {
 		KinDrv::jaco_position_t force = arm->get_ang_force();
-		spdlog::debug("getForces: ({0}, {1}, {2}, {3}, {4}, {5})",
+		logger->debug("getForces: ({0}, {1}, {2}, {3}, {4}, {5})",
 		              force.joints[0],
 		              force.joints[1],
 		              force.joints[2],

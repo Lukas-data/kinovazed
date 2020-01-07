@@ -1,5 +1,6 @@
 #include "SequenceSuite.h"
 
+#include "Logging.h"
 #include "MatrixHelper.h"
 #include "Sequence.h"
 
@@ -14,7 +15,8 @@ Coordinates const firstPoint{-0.031f, 0.085f, -0.175f, -0.027f, -0.028f, 0.020f}
 Coordinates const secondPoint{-0.040f, 0.080f, -0.025f, -0.009f, -0.068f, 0.006f};
 
 auto createTestSequence() {
-	return Sequence{testOriginCoordinates, {firstPoint, secondPoint}};
+	auto logger = Logging::makeLogger({"SequenceSuite", {}, {}, {}});
+	return Sequence{testOriginCoordinates, {firstPoint, secondPoint}, logger};
 }
 
 void testGetOrigin() {

@@ -3,6 +3,7 @@
 #include "CommandHandling.h"
 #include "Event.h"
 #include "EventIOFake.h"
+#include "Logging.h"
 #include "RoboRioProtocol.h"
 
 #include <cute/cute.h>
@@ -72,9 +73,10 @@ struct EventsForBellSequence {
 
 void thisIsAIntegrationSuiteTest() {
 	std::shared_ptr<EventsForBellSequence> sequence = std::make_shared<EventsForBellSequence>();
+	auto logger = Logging::makeLogger({"IntegrationSuite", {}, {}, {}});
 	auto eventIo = std::make_unique<EventIOFake<EventsForBellSequence>>(sequence);
-	auto jacoArm = std::make_unique<KinovaArm>();
-	CommandHandling<EventIOFake<EventsForBellSequence>> commandHandling{std::move(eventIo), std::move(jacoArm)};
+	auto jacoArm = std::make_unique<KinovaArm>(logger);
+	CommandHandling<EventIOFake<EventsForBellSequence>> commandHandling{std::move(eventIo), std::move(jacoArm), logger};
 	for (int i = 0; i < 8; i++) {
 		commandHandling.process();
 	}

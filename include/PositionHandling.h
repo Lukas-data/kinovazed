@@ -2,6 +2,7 @@
 #define _POSHANDLING_H_
 
 #include "Coordinates.h"
+#include "Logging.h"
 #include "Matrix.h"
 #include "Objective.h"
 #include "Sequence.h"
@@ -12,8 +13,8 @@
 
 
 struct PositionHandling {
-	explicit PositionHandling(std::istream &in);
-	PositionHandling() = default;
+	PositionHandling(std::istream &in, Logging::Logger logger);
+	PositionHandling(Logging::Logger logger);
 	~PositionHandling();
 
 	void init();
@@ -35,6 +36,7 @@ struct PositionHandling {
   private:
 	using f2d_vec_t = std::vector<std::vector<float>>;
 	using f3d_vec_t = std::vector<f2d_vec_t>;
+	Logging::Logger logger;
 	std::map<Kinova::Objective, Kinova::Sequence> sequences{};
 	std::set<Kinova::Objective> ZeroObjectives{};
 	std::vector<Kinova::JSONObjective> objectives{};

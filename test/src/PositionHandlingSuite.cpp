@@ -1,6 +1,7 @@
 
 #include "PositionHandlingSuite.h"
 
+#include "Logging.h"
 #include "PositionHandling.h"
 #include "TimesLiteral.h"
 
@@ -49,10 +50,12 @@ std::string const exampleData{
 
 0 0 0 0 0 0 )data"};
 
+auto const logger = Logging::makeLogger({"PositionHandlingSuite", {}, {}, {}});
+
 void testGetCoordinateForHomeObjective() {
 	Kinova::Coordinates expectedCoordinates{0.0f, -0.4f, 0.5f, 1.571f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	auto coordinates = positionHandling.getCoordinates(Kinova::Home);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -60,7 +63,7 @@ void testGetCoordinateForHomeObjective() {
 void testGetCoordinateForBellObjective() {
 	Kinova::Coordinates expectedCoordinates{-0.26333f, -0.294817f, 0.537362f, -1.989f, -1.418f, 2.632f};
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	auto coordinates = positionHandling.getCoordinates(Kinova::Bell);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -68,7 +71,7 @@ void testGetCoordinateForBellObjective() {
 void testGetCoordinateForHandleObjective() {
 	Kinova::Coordinates expectedCoordinates{0.10044f, -0.540117, 0.621585, 1.46395, -0.0940299, 0.0202154};
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	auto coordinates = positionHandling.getCoordinates(Kinova::Handle);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -76,7 +79,7 @@ void testGetCoordinateForHandleObjective() {
 void testGetCoordinateForOpenDoorObjective() {
 	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	auto coordinates = positionHandling.getCoordinates(Kinova::OpenDoor);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -84,7 +87,7 @@ void testGetCoordinateForOpenDoorObjective() {
 void testGetCoordinateForPullDoorObjective() {
 	Kinova::Coordinates expectedCoordinates{0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	auto coordinates = positionHandling.getCoordinates(Kinova::PullDoor);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -92,7 +95,7 @@ void testGetCoordinateForPullDoorObjective() {
 void testGetCoordinateForPlaceCupObjective() {
 	Kinova::Coordinates expectedCoordinates{-0.533746, -0.0288264, 0.651697, -0.008, -1.028, 1.608};
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	auto coordinates = positionHandling.getCoordinates(Kinova::PlaceCup);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -100,7 +103,7 @@ void testGetCoordinateForPlaceCupObjective() {
 void testGetCoordinateForAntennaObjective() {
 	Kinova::Coordinates expectedCoordinates{-0.249f, 0.173f, 0.968f, 0.936f, -0.9f, 2.146f};
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	auto coordinates = positionHandling.getCoordinates(Kinova::Antenna);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
@@ -108,64 +111,64 @@ void testGetCoordinateForAntennaObjective() {
 void testGetCoordinateForAntennaPullObjective() {
 	Kinova::Coordinates expectedCoordinates{-0.249f, 0.173f, 0.968f, 0.936f, -0.9f, 2.146f};
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	auto coordinates = positionHandling.getCoordinates(Kinova::AntennaPull);
 	ASSERT_EQUAL(expectedCoordinates, coordinates);
 }
 
 void testGetCoordinateForNoObjectiveThrows() {
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	ASSERT_THROWS(positionHandling.getCoordinates(Kinova::NoObjective), std::invalid_argument);
 }
 
 void testGetCoordinateThrowsForUnknownObjective() {
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	ASSERT_THROWS(positionHandling.getCoordinates(static_cast<Kinova::Objective>(255)), std::invalid_argument);
 }
 
 void testGetCoordinateThrowsIfValidObjectiveHasNotBeenInitialized() {
 	std::istringstream positionData{};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	ASSERT_THROWS(positionHandling.getCoordinates(Kinova::Home), std::invalid_argument);
 }
 
 void testHasOriginForTargetWithoutOrigin() {
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	ASSERT(!positionHandling.hasOrigin(Kinova::OpenDoor));
 }
 
 void testHasOriginForTargetWithOrigin() {
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	ASSERT(positionHandling.hasOrigin(Kinova::Handle));
 }
 
 void testHasOriginForInvalidTarget() {
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	ASSERT(!positionHandling.hasOrigin(static_cast<Kinova::Objective>(255)));
 }
 
 void testGetOriginForTargetWithOrigin() {
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	Kinova::Coordinates const expected{0.12f, -0.723f, 0.551f, 1.491f, -0.066f, 0.002f};
 	ASSERT_EQUAL(expected, positionHandling.getOrigin(Kinova::Handle));
 }
 
 void testGetOriginForTargetWithoutOrigin() {
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	Kinova::Coordinates const expected{};
 	ASSERT_EQUAL(expected, positionHandling.getOrigin(Kinova::OpenDoor));
 }
 
 void testGetOriginForInvalidTarget() {
 	std::istringstream positionData{exampleData};
-	PositionHandling const positionHandling{positionData};
+	PositionHandling const positionHandling{positionData, logger};
 	ASSERT_THROWS(positionHandling.getOrigin(static_cast<Kinova::Objective>(255)), std::out_of_range);
 }
 
@@ -183,7 +186,7 @@ void assertFullSequence(PositionHandling &positionHandling,
 
 void testSavePointForBell() {
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
 	ASSERT(positionHandling.savePoint(pointToAdd, Kinova::Bell));
 	assertFullSequence(positionHandling,
@@ -196,7 +199,7 @@ void testSavePointForBell() {
 void testSavePointForBellAtEndOfSequence() {
 	using namespace TimesLiteral;
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	2_times([&] { positionHandling.incrementSequence(Kinova::Bell); });
 	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
 	Kinova::Coordinates const expected{-0.420609, -0.317719, 0.573951, -1.84516, -1.45474, 2.84915};
@@ -212,7 +215,7 @@ void testSavePointForBellAtEndOfSequence() {
 void testSavePointForBellAfterEndOfSequence() {
 	using namespace TimesLiteral;
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	3_times([&] { positionHandling.incrementSequence(Kinova::Bell); });
 	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
 	ASSERT(!positionHandling.savePoint(pointToAdd, Kinova::Bell));
@@ -225,7 +228,7 @@ void testSavePointForBellAfterEndOfSequence() {
 
 void testSavePointForBellBeforeSequence() {
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	positionHandling.decrementSequence(Kinova::Bell);
 	Kinova::Coordinates const pointToAdd{0.04f, 0.05f, -0.05f, -0.033f, 0.025f, 0.075f};
 	ASSERT(positionHandling.savePoint(pointToAdd, Kinova::Bell));
@@ -239,7 +242,7 @@ void testSavePointForBellBeforeSequence() {
 
 void testSaveOriginSetsOrigin() {
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	Kinova::Coordinates const newOrigin{-0.12f, 0.123f, 0.41f, -1.491f, -0.16f, -0.002f};
 	positionHandling.saveOrigin(newOrigin, Kinova::Handle);
 	ASSERT_EQUAL(newOrigin, positionHandling.getOrigin(Kinova::Handle));
@@ -247,7 +250,7 @@ void testSaveOriginSetsOrigin() {
 
 void testSaveOriginUpdatesTranformationMatrix() {
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	Kinova::Coordinates const newOrigin{-0.12f, 0.123f, 0.41f, -1.491f, -0.16f, -0.002f};
 	Kinova::Coordinates expectedCoordinates{-0.122555f, -0.0473307f, 0.311046f, -1.51853f, -0.187887f, 0.0136127f};
 	positionHandling.saveOrigin(newOrigin, Kinova::Handle);
@@ -257,7 +260,7 @@ void testSaveOriginUpdatesTranformationMatrix() {
 
 void testSetZeroObjectiveForZeroObjective() {
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	Kinova::Coordinates const newOrigin{-0.12f, 0.123f, 0.41f, -1.491f, -0.16f, -0.002f};
 	positionHandling.setZeroObjective(newOrigin, Kinova::OpenDoor);
 	ASSERT_EQUAL(newOrigin, positionHandling.getOrigin(Kinova::OpenDoor));
@@ -265,7 +268,7 @@ void testSetZeroObjectiveForZeroObjective() {
 
 void testSetZeroObjectiveForNonZeroObjective() {
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	Kinova::Coordinates const newOrigin{0.1f, 0.1f, 0.1f, 1.0f, 0.1f, 0.001f};
 	Kinova::Coordinates const expected{0.12f, -0.723f, 0.551f, 1.491f, -0.066f, 0.002f};
 	positionHandling.setZeroObjective(newOrigin, Kinova::Handle);
@@ -275,7 +278,7 @@ void testSetZeroObjectiveForNonZeroObjective() {
 void testResetOriginAtEndResetsOriginAtEndOfSequence() {
 	using namespace TimesLiteral;
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	auto const originalOrigin = positionHandling.getOrigin(Kinova::PullDoor);
 	Kinova::Coordinates const newOrigin{0.1f, 0.1f, 0.1f, 1.0f, 0.1f, 0.001f};
 	positionHandling.setZeroObjective(newOrigin, Kinova::PullDoor);
@@ -287,7 +290,7 @@ void testResetOriginAtEndResetsOriginAtEndOfSequence() {
 void testResetOriginAtEndDoesNotResetOriginAtBeginningOfSequence() {
 	using namespace TimesLiteral;
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	Kinova::Coordinates const newOrigin{0.1f, 0.1f, 0.1f, 1.0f, 0.1f, 0.001f};
 	positionHandling.setZeroObjective(newOrigin, Kinova::PullDoor);
 	ASSERT(!positionHandling.resetOriginAtEnd(Kinova::PullDoor));
@@ -296,14 +299,14 @@ void testResetOriginAtEndDoesNotResetOriginAtBeginningOfSequence() {
 
 void testDeletePointAtBeginningOfSequence() {
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	positionHandling.deletePoint(Kinova::Bell);
 	assertFullSequence(positionHandling, Kinova::Bell, {{-0.362165f, -0.280909f, 0.531181f, -1.989f, -1.418f, 2.632f}});
 }
 
 void testDeletePointAtEndOfSequence() {
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	positionHandling.incrementSequence(Kinova::Bell);
 	positionHandling.deletePoint(Kinova::Bell);
 	assertFullSequence(positionHandling, Kinova::Bell, {{-0.26333f, -0.294817f, 0.537362f, -1.989f, -1.418f, 2.632f}});
@@ -312,7 +315,7 @@ void testDeletePointAtEndOfSequence() {
 void testDeletePointBeyondEndOfSequenceDoesNotDeletePoint() {
 	using namespace TimesLiteral;
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	2_times([&] { positionHandling.incrementSequence(Kinova::Bell); });
 	positionHandling.deletePoint(Kinova::Bell);
 	assertFullSequence(positionHandling,
@@ -324,7 +327,7 @@ void testDeletePointBeyondEndOfSequenceDoesNotDeletePoint() {
 void testDeletePointBeforeBeginningEndOfSequenceDoesNotDeletePoint() {
 	using namespace TimesLiteral;
 	std::istringstream positionData{exampleData};
-	PositionHandling positionHandling{positionData};
+	PositionHandling positionHandling{positionData, logger};
 	positionHandling.decrementSequence(Kinova::Bell);
 	positionHandling.deletePoint(Kinova::Bell);
 	assertFullSequence(positionHandling,

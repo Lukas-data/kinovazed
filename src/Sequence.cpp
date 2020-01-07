@@ -68,9 +68,14 @@ auto Origin::getInvertedTransformationMatrix() const -> f2d_vec_t const & {
 	return invertedTransformationMatrix;
 }
 
-Sequence::Sequence(Coordinates origin, std::vector<Coordinates> points)
+Sequence::Sequence(Logging::Logger logger)
+    : logger{logger} {
+}
+
+Sequence::Sequence(Coordinates origin, std::vector<Coordinates> points, Logging::Logger logger)
     : origin{origin}
-    , points{std::move(points)} {
+    , points{std::move(points)}
+    , logger{logger} {
 }
 
 void Sequence::throwIfEndReached() const {
@@ -143,7 +148,7 @@ auto Sequence::savePoint(Coordinates coordinates) -> bool {
 	if (endReached()) {
 		points.push_back(transformedCoordinates);
 	} else if (currentPoint == -1) {
-		spdlog::info("Inserting coordinates at [{0}]", currentPoint);
+		logger->info("Inserting coordinates at [{0}]", currentPoint);
 		points.insert(points.begin(), transformedCoordinates);
 	} else if (currentPoint >= 0) {
 		points[currentPoint] = transformedCoordinates;

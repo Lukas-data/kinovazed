@@ -3,9 +3,9 @@
 
 #include "KinovaArm.h"
 #include "KinovaStatus.h"
+#include "Logging.h"
 #include "StateMachine.h"
 #include "TCPServer.h"
-#include "spdlog/spdlog.h"
 
 #include <chrono>
 #include <memory>
@@ -35,18 +35,21 @@ struct Command {
 
 template<typename EventIo = TCPServer, typename Arm = KinovaArm>
 struct CommandHandling {
-	CommandHandling(std::unique_ptr<EventIo> roboRio, std::shared_ptr<Arm> jacoZed)
+	CommandHandling(std::unique_ptr<EventIo> roboRio, std::shared_ptr<Arm> jacoZed, Logging::Logger logger)
 	    : roboRio{std::move(roboRio)}
 	    , jacoZed{jacoZed}
-	    , kinovaSM{jacoZed} {
-		spdlog::debug("Connecting to RoboRio.");
+	    , logger{logger}
+	    , kinovaSM{jacoZed, logger} {
+		logger->debug("Connecting to RoboRio.");
 		connectRoboRio();
-		spdlog::debug("Connecting to JacoArm.");
+		logger->debug("Connecting to JacoArm.");
 		connectJacoZed();
 	}
-	CommandHandling()
-	    : CommandHandling(std::make_unique<EventIo>(), std::make_shared<Arm>()) {
+
+	CommandHandling(Logging::Logger logger)
+	    : CommandHandling(std::make_unique<EventIo>(logger), std::make_shared<Arm>(logger), logger) {
 	}
+
 	void process() {
 		Command newInCommand{KinovaFSM::NoEvent};
 		bool processed = processInput(newInCommand);
@@ -57,6 +60,7 @@ struct CommandHandling {
   private:
 	std::unique_ptr<EventIo> roboRio;
 	std::shared_ptr<Arm> jacoZed;
+	Logging::Logger logger;
 	StateMachine kinovaSM;
 
 	Command commandOut{KinovaFSM::NoEvent};
@@ -73,7 +77,7 @@ struct CommandHandling {
 		bool jSisZero = packet.x == 0 && packet.y == 0 && packet.z == 0;
 		if (!jSisZero && commandIn.event != KinovaFSM::E_Stop) {
 			commandIn = Command{KinovaFSM::MoveJoystick};
-			spdlog::info("CommandHandling::getInputs(): MoveJoystick");
+			logger->info("CommandHandling::getInputs(): MoveJoystick");
 		}
 		return commandIn;
 	}
@@ -153,10 +157,10 @@ struct CommandHandling {
 		while (true) {
 			try {
 				roboRio->connect();
-				spdlog::info("Connection to RoboRio established.");
+				logger->info("Connection to RoboRio established.");
 				return;
 			} catch (std::runtime_error const &e) {
-				spdlog::warn("Connection to RoboRio unsuccessful. Retry.");
+				logger->warn("Connection to RoboRio unsuccessful. Retry.");
 				std::this_thread::sleep_for(1s);
 			}
 		}
@@ -165,10 +169,10 @@ struct CommandHandling {
 		using namespace std::chrono_literals;
 		while (true) {
 			if (jacoZed->connect()) {
-				spdlog::info("Connection to JacoArm established.");
+				logger->info("Connection to JacoArm established.");
 				return;
 			} else {
-				spdlog::warn("Connection to JacoArm unsuccessful. Retry.");
+				logger->warn("Connection to JacoArm unsuccessful. Retry.");
 				std::this_thread::sleep_for(1s);
 			}
 		}
@@ -180,9 +184,9 @@ struct CommandHandling {
 		commandIn = getInputs();
 
 		if (commandIn != oldInCommand) {
-			spdlog::debug("CommandHandling: event: new: {}: {}", KinovaFSM::eventNames[commandIn.event], commandIn.var);
+			logger->debug("CommandHandling: event: new: {}: {}", KinovaFSM::eventNames[commandIn.event], commandIn.var);
 		} else {
-			spdlog::info("CommandHandling: event: identical");
+			logger->info("CommandHandling: event: identical");
 		}
 		// Check for E_Stop
 		if (commandIn.event == KinovaFSM::E_Stop) {
@@ -191,7 +195,7 @@ struct CommandHandling {
 			// get Hardware Error
 			if (jacoZed->getError()) {
 				newInCommand.event = KinovaFSM::E_Stop;
-				spdlog::error("Hardware Error detected: E-Stop set.");
+				logger->error("Hardware Error detected: E-Stop set.");
 			}
 			// get Internal HW Events
 			else {
@@ -224,9 +228,9 @@ struct CommandHandling {
 		}
 		sendOutputs(commandOut);
 		if (commandOut != oldOutCommand) {
-			spdlog::debug("CommandHandling: cmd out: {}: {}", KinovaFSM::eventNames[commandOut.event], commandOut.var);
+			logger->debug("CommandHandling: cmd out: {}: {}", KinovaFSM::eventNames[commandOut.event], commandOut.var);
 		} else {
-			spdlog::info("CommandHandling: cmd out: identical");
+			logger->info("CommandHandling: cmd out: identical");
 		}
 	}
 };

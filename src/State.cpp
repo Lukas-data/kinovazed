@@ -10,12 +10,10 @@
 std::shared_ptr<KinovaArm> State::JacoZED = nullptr;
 
 void State::entryAction() {
-	spdlog::info("Entering State {0}", name);
 	entryActionHook();
 }
 
 void State::exitAction() {
-	spdlog::info("Exiting State {0}", name);
 	exitActionHook();
 }
 
@@ -25,8 +23,13 @@ void State::tickAction() {
 void State::init(std::shared_ptr<KinovaArm> jacoZed) {
 	JacoZED = jacoZed;
 }
+
 void State::setEventVar(int eventVar) {
 	eventVariable = eventVar;
+}
+
+std::string State::getName() const {
+	return name;
 }
 
 // PowerOff

@@ -2,6 +2,7 @@
 #define KINOVA_SEQUENCE_H_
 
 #include "Coordinates.h"
+#include "Logging.h"
 #include "Objective.h"
 
 #include <cstddef>
@@ -26,8 +27,8 @@ struct Origin {
 };
 
 struct Sequence {
-	Sequence() = default;
-	Sequence(Coordinates origin, std::vector<Coordinates> points);
+	Sequence(Logging::Logger logger);
+	Sequence(Coordinates origin, std::vector<Coordinates> points, Logging::Logger logger);
 
 	auto getCurrentCoordinates() const -> Coordinates;
 	auto getTransformedCoordinates() const -> Coordinates;
@@ -49,6 +50,7 @@ struct Sequence {
 
 	Origin origin;
 	std::vector<Coordinates> points;
+	Logging::Logger logger;
 	int currentPoint = 0;
 };
 
