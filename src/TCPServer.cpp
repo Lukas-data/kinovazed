@@ -16,7 +16,7 @@
 #include <sstream>
 #include <stdexcept>
 
-constexpr auto rioDummy = true;
+constexpr auto rioDummy = false;
 constexpr auto bufferSize = 256;
 constexpr auto messageLength =
     RoboRioProtocol::commandLength + (RoboRioProtocol::dataPackages * RoboRioProtocol::dataLength);
