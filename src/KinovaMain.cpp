@@ -5,6 +5,7 @@
 
 #include <chrono>
 #include <exception>
+#include <fstream>
 #include <stdexcept>
 #include <thread>
 
@@ -32,7 +33,11 @@ int main() {
 
 	logger->info("KinovaMain - Startup!");
 
-	CommandHandling<> commandHandler{logger};
+	auto objectivesFile = std::ifstream{Paths::DEFAULT_OBJ_FILE_JSON};
+
+	auto io = std::make_unique<TCPServer>(logger);
+	auto arm = std::make_shared<KinovaArm>(objectivesFile, logger);
+	auto commandHandler = CommandHandling{std::move(io), arm, logger};
 
 	while (true) {
 		try {

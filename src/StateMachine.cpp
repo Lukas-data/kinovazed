@@ -24,7 +24,7 @@ bool StateMachine::process(KinovaFSM::Event e, int var) {
 			KinovaFSM::TransitionTable[i].currentState->exitAction();
 			currentState = KinovaFSM::TransitionTable[i].nextState;
 			currentState->setEventVar(var);
-			logger->info("Entering State {0}", KinovaFSM::TransitionTable[i].currentState->getName());
+			logger->info("Entering State {0}", currentState->getName());
 			currentState->entryAction();
 			return true;
 		}

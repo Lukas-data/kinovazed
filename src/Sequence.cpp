@@ -162,4 +162,8 @@ void Sequence::deletePoint() {
 	}
 }
 
+auto Sequence::getPoints() const -> std::vector<Coordinates> {
+	return points;
+}
+
 } // namespace Kinova

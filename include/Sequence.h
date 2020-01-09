@@ -3,7 +3,6 @@
 
 #include "Coordinates.h"
 #include "Logging.h"
-#include "Objective.h"
 
 #include <cstddef>
 #include <vector>
@@ -44,6 +43,7 @@ struct Sequence {
 	void reset();
 	auto savePoint(Coordinates coordinates) -> bool;
 	void deletePoint();
+	auto getPoints() const -> std::vector<Coordinates>;
 
   private:
 	void throwIfEndReached() const;

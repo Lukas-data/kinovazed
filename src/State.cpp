@@ -110,7 +110,10 @@ void StateSteering::tickAction() {
 
 // MovePosition
 void StateMovePosition::entryActionHook() {
-	JacoZED->setTarget(static_cast<Kinova::Objective>(eventVariable));
+	if (!Kinova::isKnownObjective(eventVariable)) {
+		throw std::invalid_argument{"The supplied event variable was no objective ID!"};
+	}
+	JacoZED->setTarget(static_cast<Kinova::ObjectiveId>(eventVariable));
 }
 void StateMovePosition::exitActionHook() {
 	JacoZED->sequenceDone();
@@ -122,7 +125,10 @@ void StateMovePosition::tickAction() {
 
 // Teach
 void StateTeach::entryActionHook() {
-	JacoZED->teachPosition(static_cast<Kinova::Objective>(eventVariable));
+	if (!Kinova::isKnownObjective(eventVariable)) {
+		throw std::invalid_argument{"The supplied event variable was no objective ID!"};
+	}
+	JacoZED->teachPosition(static_cast<Kinova::ObjectiveId>(eventVariable));
 }
 void StateTeach::exitActionHook() {
 	JacoZED->dontMove();

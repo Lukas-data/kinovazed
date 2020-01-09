@@ -11,38 +11,34 @@
 #include <set>
 #include <vector>
 
-
 struct PositionHandling {
-	PositionHandling(std::istream &in, Logging::Logger logger);
-	PositionHandling(Logging::Logger logger);
-	~PositionHandling();
-
-	void init();
-	auto getCoordinates(Kinova::Objective targetObjective) const -> Kinova::Coordinates; // tested
-	//	auto getSequence(Kinova::Objective targetObjective) const -> Kinova::Sequence; //unused
-	auto hasOrigin(Kinova::Objective targetObjective) const -> bool;                // tested
-	auto getOrigin(Kinova::Objective targetObjective) const -> Kinova::Coordinates; // tested
-	void incrementSequence(Kinova::Objective targetObjective);                      // tested
-	void decrementSequence(Kinova::Objective targetObjective);                      // tested
-	void resetSequence(Kinova::Objective targetObjective);
-	void setZeroObjective(Kinova::Coordinates coordinates, Kinova::Objective targetObjective);  // tested
-	auto savePoint(Kinova::Coordinates coordinates, Kinova::Objective targetObjective) -> bool; // tested
-	void saveOrigin(Kinova::Coordinates coordinates, Kinova::Objective targetObjective);        // tested
-	void deletePoint(Kinova::Objective targetObjective);                                        // tested
-	auto getSequence(Kinova::Objective targetObjective) const -> int;
-	void writeToFile();                                               // TODO: (tcorbat): Extract serialization to file
-	auto resetOriginAtEnd(Kinova::Objective targetObjective) -> bool; // tested
-
-  private:
 	using f2d_vec_t = std::vector<std::vector<float>>;
 	using f3d_vec_t = std::vector<f2d_vec_t>;
-	Logging::Logger logger;
-	std::map<Kinova::Objective, Kinova::Sequence> sequences{};
-	std::set<Kinova::Objective> ZeroObjectives{};
-	std::vector<Kinova::JSONObjective> objectives{};
 
-	void readFromFile();
-	void loadData(std::istream &in);
+	PositionHandling(std::istream &in, Logging::Logger logger);
+	PositionHandling(Logging::Logger logger);
+
+	auto getObjective(Kinova::ObjectiveId id) const -> Kinova::Objective const &;
+	auto getObjective(Kinova::ObjectiveId id) -> Kinova::Objective &;
+
+	auto getCoordinates(Kinova::ObjectiveId id) const -> Kinova::Coordinates;
+
+	auto setZeroObjective(Kinova::Coordinates coordinates, Kinova::ObjectiveId) -> void;
+
+	auto incrementSequence(Kinova::ObjectiveId id) -> void;
+	auto decrementSequence(Kinova::ObjectiveId id) -> void;
+	auto resetSequence(Kinova::ObjectiveId id) -> void;
+
+	auto savePoint(Kinova::Coordinates point, Kinova::ObjectiveId id) -> bool;
+	auto saveOrigin(Kinova::Coordinates point, Kinova::ObjectiveId id) -> void;
+	auto deletePoint(Kinova::ObjectiveId id) -> void;
+
+	auto getSequence(Kinova::ObjectiveId id) const -> int;
+	auto resetOriginAtEnd(Kinova::ObjectiveId id) -> bool;
+
+  private:
+	Logging::Logger logger;
+	std::map<Kinova::ObjectiveId, Kinova::Objective> objectives{};
 };
 
 #endif

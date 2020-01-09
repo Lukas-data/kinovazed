@@ -4,12 +4,14 @@
 
 #include <array>
 #include <chrono>
+#include <istream>
 #include <optional>
 
 constexpr auto kinovaDummy = false;
 
-KinovaArm::KinovaArm(Logging::Logger logger)
-    : logger{logger} {
+KinovaArm::KinovaArm(std::istream &objectives, Logging::Logger logger)
+    : logger{logger}
+    , PositionHandler{objectives, logger} {
 }
 
 KinovaArm::~KinovaArm() {
@@ -133,7 +135,7 @@ void KinovaArm::dontMove() {
 /*Checks if Arm is allready initialized and sets Home as targetPosition if not.*/
 void KinovaArm::checkInitialize() {
 	initialized = false;
-	PositionHandler.init();
+	// PositionHandler.init();
 	if (kinovaDummy) {
 		initialized = true;
 		externalEvent = KinovaFSM::Initialized;
@@ -241,9 +243,9 @@ void KinovaArm::unfold() {
 		externalEvent = KinovaFSM::Unfolded;
 		return;
 	}
-	if (currentPosition != Kinova::Home) {
-		if (TargetObjective != Kinova::Home) {
-			setTarget(Kinova::Home);
+	if (static_cast<Kinova::ObjectiveId>(currentPosition) != Kinova::ObjectiveId::Home) {
+		if (TargetObjective != Kinova::ObjectiveId::Home) {
+			setTarget(Kinova::ObjectiveId::Home);
 		}
 		try {
 			KinDrv::jaco_retract_mode_t armStatus = arm->get_status();
@@ -376,8 +378,8 @@ void KinovaArm::move() {
 }
 
 /*Sets the Targetpoint for the Movement*/
-void KinovaArm::setTarget(Kinova::Objective targetObjective) {
-	if (targetObjective > 0 && targetObjective <= Kinova::NumberOfObjectives) {
+void KinovaArm::setTarget(Kinova::ObjectiveId targetObjective) {
+	if (targetObjective != Kinova::ObjectiveId::None && Kinova::isKnownObjective(static_cast<int>(targetObjective))) {
 		PositionHandler.resetSequence(TargetObjective);
 		PositionHandler.resetSequence(targetObjective);
 		TargetObjective = targetObjective;
@@ -398,7 +400,7 @@ void KinovaArm::moveToPosition(bool init) {
 	currentPosition = 0;
 	getPosition(currentCoordinates);
 	// Check if Sequence is still going
-	if (TargetObjective != Kinova::NoObjective && !PositionHandler.resetOriginAtEnd(TargetObjective)) {
+	if (TargetObjective != Kinova::ObjectiveId::None && !PositionHandler.resetOriginAtEnd(TargetObjective)) {
 		auto targetCoordinates = PositionHandler.getCoordinates(TargetObjective);
 		// Check if in range
 		bool PointReached = checkIfReached(currentCoordinates);
@@ -423,7 +425,7 @@ void KinovaArm::moveToPosition(bool init) {
 			}
 		}
 	} else {
-		currentPosition = TargetObjective;
+		currentPosition = static_cast<int>(TargetObjective);
 		if (init) {
 			internalEvent = KinovaFSM::InitHomeReached;
 		} else {
@@ -435,13 +437,13 @@ void KinovaArm::moveToPosition(bool init) {
 
 void KinovaArm::sequenceDone() {
 	PositionHandler.resetSequence(TargetObjective);
-	TargetObjective = Kinova::NoObjective;
+	TargetObjective = Kinova::ObjectiveId::None;
 }
 
 /*sets the TeachingTarget (Objective at which will be taught). Keeps old objective and Sequence when called with Zero.*/
-void KinovaArm::teachPosition(Kinova::Objective targetObjective) {
-	if (targetObjective != Kinova::NoObjective) {
-		if (Kinova::isValidObjective(targetObjective)) {
+void KinovaArm::teachPosition(Kinova::ObjectiveId targetObjective) {
+	if (targetObjective != Kinova::ObjectiveId::None) {
+		if (Kinova::isKnownObjective(static_cast<int>(targetObjective))) {
 			logger->debug("new teachTarget, sequence reset.");
 			std::array<float, 6> currentCoordinates{};
 			getPosition(currentCoordinates.data());
@@ -464,7 +466,7 @@ void KinovaArm::moveToPoint() {
 	getPosition(currentCoordinates);
 
 	// Check if Sequence is still going
-	if (teachTarget != Kinova::NoObjective && !PositionHandler.resetOriginAtEnd(teachTarget)) {
+	if (teachTarget != Kinova::ObjectiveId::None && !PositionHandler.resetOriginAtEnd(teachTarget)) {
 		auto targetCoordinates = PositionHandler.getCoordinates(teachTarget);
 		// Check if in range
 		bool PointReached = checkIfReached(currentCoordinates);
@@ -498,8 +500,8 @@ void KinovaArm::moveToOrigin() {
 	getPosition(currentCoordinates);
 
 	// Check if Origin is defined
-	if (PositionHandler.hasOrigin(teachTarget)) {
-		auto const targetCoordinates = PositionHandler.getOrigin(teachTarget);
+	if (PositionHandler.getObjective(teachTarget).hasOrigin()) {
+		auto const targetCoordinates = PositionHandler.getObjective(teachTarget).getOrigin();
 		// Check if in range
 		bool PointReached = checkIfReached(currentCoordinates);
 		checkCurrents();
@@ -531,7 +533,7 @@ void KinovaArm::savePoint(int EventVariable) {
 		getPosition(currentCoordinates.data());
 
 		PositionHandler.savePoint(Kinova::Coordinates{currentCoordinates}, teachTarget);
-		PositionHandler.writeToFile();
+		// PositionHandler.writeToFile();
 		externalEvent = KinovaFSM::PointSaved;
 	}
 	externalEvent = KinovaFSM::PointSaved;
@@ -544,13 +546,13 @@ void KinovaArm::saveOrigin() {
 	getPosition(currentCoordinates.data());
 
 	PositionHandler.saveOrigin(Kinova::Coordinates{currentCoordinates}, teachTarget);
-	PositionHandler.writeToFile();
+	// PositionHandler.writeToFile();
 	externalEvent = KinovaFSM::OriginSaved;
 }
 
 void KinovaArm::deletePoint() {
 	PositionHandler.deletePoint(teachTarget);
-	PositionHandler.writeToFile();
+	// PositionHandler.writeToFile();
 	externalEvent = KinovaFSM::PointDeleted;
 }
 
@@ -639,7 +641,7 @@ auto KinovaArm::getCurrentPosition() -> int {
 auto KinovaArm::getCurrentPoint() -> int {
 	return getCurrentPoint(teachTarget);
 }
-auto KinovaArm::getCurrentPoint(Kinova::Objective target) -> int {
+auto KinovaArm::getCurrentPoint(Kinova::ObjectiveId target) -> int {
 	return PositionHandler.getSequence(target);
 }
 

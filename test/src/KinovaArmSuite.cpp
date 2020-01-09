@@ -5,10 +5,13 @@
 
 #include <cute/cute.h>
 
+#include <sstream>
+
 auto logger = Logging::makeLogger({"KinovaArmSuite", {}, {}, {}});
 
 void thisIsAKinovaArmSuiteTest() {
-	KinovaArm arm{logger};
+	auto objectives = std::istringstream{};
+	KinovaArm arm{objectives, logger};
 }
 
 cute::suite make_suite_KinovaArmSuite() {

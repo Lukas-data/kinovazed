@@ -2,58 +2,60 @@
 #define KINOVA_OBJECTIVE_H_
 
 #include "Coordinates.h"
-#include "nlohmann/json.hpp"
+#include "Logging.h"
+#include "ObjectiveId.h"
+#include "Sequence.h"
 
-#include <array>
+#include <nlohmann/json.hpp>
+
+#include <cstdint>
 #include <iosfwd>
+#include <optional>
 #include <string>
-#include <vector>
+#include <type_traits>
 
 namespace Kinova {
 
-namespace JSON_KEY {
-auto constexpr OBJ_NAME = "name";
-auto constexpr OBJ_ORIGIN_ABS = "is_abs";
-auto constexpr OBJ_ORIGIN = "origin";
-auto constexpr OBJ_SEQUENCE = "sequence";
-auto constexpr OBJ_CSYS_X = "X";
-auto constexpr OBJ_CSYS_Y = "Y";
-auto constexpr OBJ_CSYS_Z = "Z";
-auto constexpr OBJ_CSYS_PITCH = "pitch";
-auto constexpr OBJ_CSYS_YAW = "yaw";
-auto constexpr OBJ_CSYS_ROLL = "roll";
-} // namespace JSON_KEY
+struct Objective {
+	explicit Objective(Logging::Logger logger)
+	    : id{ObjectiveId::None}
+	    , origin{}
+	    , sequence{logger}
+	    , absolute{} {
+	}
 
-// objective model
-struct JSONObjective {
-	friend void to_json(nlohmann::json &j, JSONObjective const &o);
-	friend void from_json(nlohmann::json const &j, JSONObjective &o);
-	friend std::ostream &operator<<(std::ostream &out, JSONObjective const &objective);
+	Objective(nlohmann::json const &json, Logging::Logger logger);
+
+	auto getSequence() -> Sequence &;
+
+	auto getSequence() const -> Sequence const &;
+
+	auto hasOrigin() const -> bool;
+
+	auto getOrigin() const -> Coordinates;
+
+	auto isAbsolute() const -> bool;
+
+	auto getId() const -> ObjectiveId;
 
   private:
-	std::string name;
-	bool is_absolute;
+	friend auto to_json(nlohmann::json &output, Objective const &objective) -> void;
+
+	ObjectiveId id;
 	Coordinates origin;
-	std::vector<Coordinates> sequence;
+	Sequence sequence;
+	bool absolute;
 };
 
-static constexpr int NumberOfObjectives = 8; // excl. NoObjective
+/**
+ * Load a list of objectives from the given input stream
+ */
+auto loadObjectives(std::istream &in, Logging::Logger logger) -> std::vector<Kinova::Objective>;
 
-enum Objective { NoObjective, Home, Bell, Handle, OpenDoor, PullDoor, PlaceCup, Antenna, AntennaPull };
-
-constexpr std::array<char const *, NumberOfObjectives + 1> ObjectiveNames{
-    "NoObjective", "Home", "Bell", "Handle", "OpenDoor", "PullDoor", "PlaceCup", "Antenna", "AntennaPull"};
-
-inline std::string getObjectiveName(Objective objective) {
-	if (objective > NumberOfObjectives) {
-		return "Unknown";
-	}
-	return ObjectiveNames[objective];
-}
-
-inline auto isValidObjective(Objective objective) -> bool {
-	return objective >= NoObjective && objective <= AntennaPull;
-}
+/**
+ * Serialize an objective from a json structure
+ */
+auto to_json(nlohmann::json &output, Objective const &objective) -> void;
 
 } // namespace Kinova
 

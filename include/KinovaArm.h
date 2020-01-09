@@ -8,6 +8,7 @@
 #include "libkindrv/kindrv.h"
 
 #include <chrono>
+#include <iosfwd>
 #include <optional>
 
 constexpr auto positionRange = 0.05;
@@ -16,7 +17,7 @@ constexpr auto velocityRange = 0.000002;
 constexpr auto joystickCalcFactor = 0.0025f;
 
 struct KinovaArm {
-	KinovaArm(Logging::Logger logger);
+	KinovaArm(std::istream &objectives, Logging::Logger logger);
 	~KinovaArm();
 
 	auto connect() -> bool;
@@ -37,7 +38,7 @@ struct KinovaArm {
 	void moveToPosition(bool init);
 	void sequenceDone();
 
-	void teachPosition(Kinova::Objective targetObjective);
+	void teachPosition(Kinova::ObjectiveId targetObjective);
 	void moveToPoint();
 	void moveToOrigin();
 	void savePoint(int EventVariable);
@@ -48,7 +49,7 @@ struct KinovaArm {
 
 	void setJoystick(int x, int y, int z);
 
-	void setTarget(Kinova::Objective targetObjective);
+	void setTarget(Kinova::ObjectiveId targetObjective);
 
 	auto getError() -> bool;
 	auto getInitialize() -> bool;
@@ -56,7 +57,7 @@ struct KinovaArm {
 	auto getMode() -> int;
 	auto getCurrentPosition() -> int;
 	auto getCurrentPoint() -> int;
-	auto getCurrentPoint(Kinova::Objective target) -> int;
+	auto getCurrentPoint(Kinova::ObjectiveId target) -> int;
 
 	auto getExternalEvent() -> KinovaFSM::Event;
 	auto getInternalEvent() -> KinovaFSM::Event;
@@ -68,7 +69,7 @@ struct KinovaArm {
   private:
 	KinDrv::JacoArm *arm{nullptr};
 	Logging::Logger logger;
-	PositionHandling PositionHandler{logger};
+	PositionHandling PositionHandler;
 
 	bool connected = false;
 	bool Error = false;
@@ -78,8 +79,8 @@ struct KinovaArm {
 	KinovaStatus::SteeringMode mode = KinovaStatus::NoMode;
 	int currentPosition = -1;
 
-	Kinova::Objective TargetObjective{Kinova::Objective::NoObjective};
-	Kinova::Objective teachTarget{Kinova::Objective::NoObjective};
+	Kinova::ObjectiveId TargetObjective{Kinova::ObjectiveId::None};
+	Kinova::ObjectiveId teachTarget{Kinova::ObjectiveId::None};
 
 	int joystickX = 0;
 	int joystickY = 0;
