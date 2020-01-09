@@ -26,47 +26,41 @@ void Sequence::throwIfEndReached() const {
 	}
 }
 
-auto Sequence::getCurrentCoordinates() const -> Coordinates {
+auto Sequence::currentPoint() const -> Coordinates {
 	throwIfEndReached();
-	return points[currentPoint];
+	return points[currentIndex];
 }
 
-auto Sequence::getTransformedCoordinates(Origin origin) const -> Coordinates {
-	auto currentCoordinates = getCurrentCoordinates();
-	return coordTransform(currentCoordinates, origin.getTransformationMatrix());
-}
-
-auto Sequence::getInvertedTransformedCoordinates(Origin origin) const -> Coordinates {
-	auto currentCoordinates = getCurrentCoordinates();
-	return coordTransform(currentCoordinates, origin.getInvertedTransformationMatrix());
+auto Sequence::currentPoint(Origin origin) const -> Coordinates {
+	return coordTransform(currentPoint(), origin.getTransformationMatrix());
 }
 
 auto Sequence::endReached() const -> bool {
-	return currentPoint >= static_cast<int>(points.size());
+	return currentIndex >= static_cast<int>(points.size());
 }
 
-auto Sequence::numberOfPoints() const -> std::size_t {
+auto Sequence::length() const -> std::size_t {
 	return points.size();
 }
 
-auto Sequence::currentSequencePoint() const -> std::size_t {
-	return currentPoint;
+auto Sequence::currentStep() const -> std::size_t {
+	return currentIndex;
 }
 
-void Sequence::nextPoint() {
+void Sequence::advance() {
 	//	throwIfEndReached();
-	currentPoint++;
+	currentIndex++;
 }
 
-void Sequence::previousPoint() {
+void Sequence::stepBack() {
 	//	if (currentPoint == 0) {
 	//		throw std::logic_error{"Cannot go to previous point from the beginning"};
 	//	}
-	currentPoint--;
+	currentIndex--;
 }
 
 void Sequence::reset() {
-	currentPoint = 0;
+	currentIndex = 0;
 }
 
 auto to_json(nlohmann::json &json, Sequence const &sequence) -> void {
@@ -74,30 +68,26 @@ auto to_json(nlohmann::json &json, Sequence const &sequence) -> void {
 }
 
 
-auto Sequence::savePoint(Origin origin, Coordinates coordinates) -> bool {
-	if (currentPoint > static_cast<decltype(currentPoint)>(numberOfPoints()) && currentPoint != -1) {
+auto Sequence::putPoint(Origin origin, Coordinates coordinates) -> bool {
+	if (currentIndex > static_cast<decltype(currentIndex)>(length()) && currentIndex != -1) {
 		return false;
 	}
 	auto const transformedCoordinates = coordTransform(coordinates, origin.getInvertedTransformationMatrix());
 	if (endReached()) {
 		points.push_back(transformedCoordinates);
-	} else if (currentPoint == -1) {
-		logger->info("Inserting coordinates at [{0}]", currentPoint);
+	} else if (currentIndex == -1) {
+		logger->info("Inserting coordinates at [{0}]", currentIndex);
 		points.insert(points.begin(), transformedCoordinates);
-	} else if (currentPoint >= 0) {
-		points[currentPoint] = transformedCoordinates;
+	} else if (currentIndex >= 0) {
+		points[currentIndex] = transformedCoordinates;
 	}
 	return true;
 }
 
-void Sequence::deletePoint() {
-	if (currentPoint >= 0 && currentPoint < static_cast<decltype(currentPoint)>(numberOfPoints())) {
-		points.erase(points.begin() + currentPoint);
+void Sequence::removeCurrentPoint() {
+	if (currentIndex >= 0 && currentIndex < static_cast<decltype(currentIndex)>(length())) {
+		points.erase(points.begin() + currentIndex);
 	}
 }
-
-// auto Sequence::getPoints() const -> std::vector<Coordinates> {
-// 	return points;
-// }
 
 } // namespace Kinova

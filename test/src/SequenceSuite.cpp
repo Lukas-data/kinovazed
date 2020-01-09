@@ -21,58 +21,58 @@ auto createTestSequence() {
 
 void testGetInitialPoint() {
 	auto const sequence = createTestSequence();
-	ASSERT_EQUAL(firstPoint, sequence.getCurrentCoordinates());
+	ASSERT_EQUAL(firstPoint, sequence.currentPoint());
 }
 
 void testNextPoint() {
 	auto sequence = createTestSequence();
-	sequence.nextPoint();
-	ASSERT_EQUAL(secondPoint, sequence.getCurrentCoordinates());
+	sequence.advance();
+	ASSERT_EQUAL(secondPoint, sequence.currentPoint());
 }
 
 void testReset() {
 	auto sequence = createTestSequence();
-	sequence.nextPoint();
+	sequence.advance();
 	sequence.reset();
-	ASSERT_EQUAL(firstPoint, sequence.getCurrentCoordinates());
+	ASSERT_EQUAL(firstPoint, sequence.currentPoint());
 }
 
 void testPreviousPoint() {
 	auto sequence = createTestSequence();
-	sequence.nextPoint();
-	sequence.previousPoint();
-	ASSERT_EQUAL(firstPoint, sequence.getCurrentCoordinates());
+	sequence.advance();
+	sequence.stepBack();
+	ASSERT_EQUAL(firstPoint, sequence.currentPoint());
 }
 
 void testEndReached() {
 	auto sequence = createTestSequence();
-	sequence.nextPoint();
-	sequence.nextPoint();
+	sequence.advance();
+	sequence.advance();
 	ASSERT(sequence.endReached());
 }
 
 void testNumberOfPoints() {
 	auto const sequence = createTestSequence();
-	ASSERT_EQUAL(2, sequence.numberOfPoints());
+	ASSERT_EQUAL(2, sequence.length());
 }
 
 void testGetCurrentCoordinatesAtEndThrows() {
 	auto sequence = createTestSequence();
-	sequence.nextPoint();
-	sequence.nextPoint();
-	ASSERT_THROWS(sequence.getCurrentCoordinates(), std::logic_error);
+	sequence.advance();
+	sequence.advance();
+	ASSERT_THROWS(sequence.currentPoint(), std::logic_error);
 }
 
 void testNextPointAtEndThrows() {
 	auto sequence = createTestSequence();
-	sequence.nextPoint();
-	sequence.nextPoint();
-	ASSERT_THROWS(sequence.nextPoint(), std::logic_error);
+	sequence.advance();
+	sequence.advance();
+	ASSERT_THROWS(sequence.advance(), std::logic_error);
 }
 
 void testPreviousPointAtBeginningThrows() {
 	auto sequence = createTestSequence();
-	ASSERT_THROWS(sequence.previousPoint(), std::logic_error);
+	ASSERT_THROWS(sequence.stepBack(), std::logic_error);
 }
 
 void testOriginTransformationMatrix() {
@@ -96,7 +96,7 @@ void testOriginInvertedTransformationMatrix() {
 void testGetTransformedCoordinates() {
 	auto const sequence = createTestSequence();
 	Coordinates const coordData{0.10044f, -0.540117f, 0.621585f, 1.46395f, -0.0940299f, 0.0202154f};
-	ASSERT_EQUAL(coordData, sequence.getTransformedCoordinates(testOrigin));
+	ASSERT_EQUAL(coordData, sequence.currentPoint(testOrigin));
 }
 
 

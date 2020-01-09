@@ -393,10 +393,10 @@ void testDeletePointBeforeBeginningEndOfSequenceDoesNotDeletePoint() {
 //	for (int objective = 0; objective < Kinova::NumberOfObjectives; objective++) {
 //		auto sequence = sequences[static_cast<Kinova::Objective>(objective + 1)];
 //		ASSERT_EQUAL(sequence.getOrigin(), Kinova::Coordinates{location[objective]});
-//		ASSERT_EQUAL(sequence.numberOfPoints(), points[objective].size());
+//		ASSERT_EQUAL(sequence.length(), points[objective].size());
 //		for (auto point : points[objective]) {
-//			ASSERT_EQUAL(sequence.getCurrentCoordinates(), Kinova::Coordinates{point});
-//			sequence.nextPoint();
+//			ASSERT_EQUAL(sequence.currentPoint(), Kinova::Coordinates{point});
+//			sequence.advance();
 //		}
 //	}
 //}

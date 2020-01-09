@@ -44,35 +44,35 @@ auto Objective::setOrigin(Coordinates point) -> void {
 }
 
 auto Objective::getCurrentSequencePoint() const -> Coordinates {
-	return sequence.getCurrentCoordinates();
+	return sequence.currentPoint();
 }
 
 auto Objective::getTransformedSequencePoint() const -> Coordinates {
-	return sequence.getTransformedCoordinates(origin);
+	return sequence.currentPoint(origin);
 }
 
 auto Objective::saveSequencePoint(Coordinates point) -> bool {
-	return sequence.savePoint(origin, point);
+	return sequence.putPoint(origin, point);
 }
 
 auto Objective::deleteSequencePoint() -> void {
-	sequence.deletePoint();
+	sequence.removeCurrentPoint();
 }
 
 auto Objective::numberOfSequencePoints() const -> std::size_t {
-	return sequence.numberOfPoints();
+	return sequence.length();
 }
 
 auto Objective::currentSequenceIndex() const -> std::size_t {
-	return sequence.currentSequencePoint();
+	return sequence.currentStep();
 }
 
 auto Objective::forwardSequence() -> void {
-	sequence.nextPoint();
+	sequence.advance();
 }
 
 auto Objective::rewindSequence() -> void {
-	sequence.previousPoint();
+	sequence.stepBack();
 }
 
 auto Objective::resetSequence() -> void {
