@@ -46,13 +46,13 @@ auto PositionHandling::getCoordinates(Kinova::ObjectiveId id) const -> Kinova::C
 	}
 
 	auto const &objective = getObjective(id);
-	if (objective.getSequence().getPoints().empty()) {
+	if (!objective.numberOfSequencePoints()) {
 		throw std::invalid_argument{"Objective '" + Kinova::getObjectiveName(id) + "' does not have a sequence!"};
 	}
 
-	auto const &sequence = objective.getSequence();
-	auto const coordinates =
-	    sequence.getCurrentCoordinates().isZero() ? sequence.getOrigin() : sequence.getTransformedCoordinates();
+	auto const &origin = objective.getOrigin();
+	auto const &currentPoint = objective.getCurrentSequencePoint();
+	auto const coordinates = currentPoint.isZero() ? origin.getCoordinates() : objective.getTransformedSequencePoint();
 
 	logger->debug("PositionHandling::getCoordinates: TargetCoordinates: {0}", coordinates);
 	return coordinates;
@@ -60,55 +60,55 @@ auto PositionHandling::getCoordinates(Kinova::ObjectiveId id) const -> Kinova::C
 
 auto PositionHandling::setZeroObjective(Kinova::Coordinates coordinates, Kinova::ObjectiveId id) -> void {
 	auto &objective = objectives.at(id);
-	if (!objective.isAbsolute() && !objective.getSequence().currentSequencePoint()) {
-		objective.getSequence().setOrigin(coordinates);
+	if (!objective.isAbsolute() && !objective.currentSequenceIndex()) {
+		objective.setOrigin(coordinates);
 	}
 }
 
 auto PositionHandling::incrementSequence(Kinova::ObjectiveId targetObjective) -> void {
-	objectives.at(targetObjective).getSequence().nextPoint();
+	objectives.at(targetObjective).forwardSequence();
 }
 
 auto PositionHandling::decrementSequence(Kinova::ObjectiveId targetObjective) -> void {
-	objectives.at(targetObjective).getSequence().previousPoint();
+	objectives.at(targetObjective).rewindSequence();
 }
 
 auto PositionHandling::resetSequence(Kinova::ObjectiveId targetObjective) -> void {
-	objectives.at(targetObjective).getSequence().reset();
+	objectives.at(targetObjective).resetSequence();
 }
 
 auto PositionHandling::savePoint(Kinova::Coordinates point, Kinova::ObjectiveId id) -> bool {
 	auto &objective = objectives.at(id);
-	auto const result = objective.getSequence().savePoint(point);
+	auto const result = objective.saveSequencePoint(point);
 	if (!result) {
 		logger->warn("PositionHandling::SavePoint: SequenceCounter is out of bound: {0} at SequenceSize off {1}",
-		             objective.getSequence().currentSequencePoint(),
-		             objective.getSequence().numberOfPoints());
+		             objective.currentSequenceIndex(),
+		             objective.numberOfSequencePoints());
 	}
 	return result;
 }
 
 auto PositionHandling::saveOrigin(Kinova::Coordinates point, Kinova::ObjectiveId id) -> void {
-	objectives.at(id).getSequence().setOrigin(point);
+	objectives.at(id).setOrigin(point);
 }
 
 auto PositionHandling::deletePoint(Kinova::ObjectiveId id) -> void {
 	if (id != Kinova::ObjectiveId::None) {
-		objectives.at(id).getSequence().deletePoint();
+		objectives.at(id).deleteSequencePoint();
 	}
 }
 
 auto PositionHandling::getSequence(Kinova::ObjectiveId id) const -> int {
-	return static_cast<int>(objectives.at(id).getSequence().currentSequencePoint());
+	return static_cast<int>(objectives.at(id).currentSequenceIndex());
 }
 
 auto PositionHandling::resetOriginAtEnd(Kinova::ObjectiveId id) -> bool {
 	auto &objective = objectives.at(id);
-	if (!objective.getSequence().endReached()) {
+	if (!objective.sequenceEnded()) {
 		return false;
 	}
 	if (!objective.isAbsolute()) {
-		objective.getSequence().resetOrigin();
+		objective.setOrigin(Kinova::Coordinates{});
 	}
 	return true;
 }

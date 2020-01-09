@@ -4,10 +4,12 @@
 #include "Coordinates.h"
 #include "Logging.h"
 #include "ObjectiveId.h"
+#include "Origin.h"
 #include "Sequence.h"
 
 #include <nlohmann/json.hpp>
 
+#include <cstddef>
 #include <cstdint>
 #include <iosfwd>
 #include <optional>
@@ -17,22 +19,24 @@
 namespace Kinova {
 
 struct Objective {
-	explicit Objective(Logging::Logger logger)
-	    : id{ObjectiveId::None}
-	    , origin{}
-	    , sequence{logger}
-	    , absolute{} {
-	}
+	explicit Objective(Logging::Logger logger);
 
 	Objective(nlohmann::json const &json, Logging::Logger logger);
 
-	auto getSequence() -> Sequence &;
+	auto getOrigin() const -> Origin;
+	auto setOrigin(Coordinates point) -> void;
 
-	auto getSequence() const -> Sequence const &;
+	auto getCurrentSequencePoint() const -> Coordinates;
+	auto getTransformedSequencePoint() const -> Coordinates;
+	auto saveSequencePoint(Coordinates point) -> bool;
+	auto deleteSequencePoint() -> void;
 
-	auto hasOrigin() const -> bool;
-
-	auto getOrigin() const -> Coordinates;
+	auto numberOfSequencePoints() const -> std::size_t;
+	auto currentSequenceIndex() const -> std::size_t;
+	auto forwardSequence() -> void;
+	auto rewindSequence() -> void;
+	auto resetSequence() -> void;
+	auto sequenceEnded() const -> bool;
 
 	auto isAbsolute() const -> bool;
 
@@ -42,7 +46,7 @@ struct Objective {
 	friend auto to_json(nlohmann::json &output, Objective const &objective) -> void;
 
 	ObjectiveId id;
-	Coordinates origin;
+	Origin origin;
 	Sequence sequence;
 	bool absolute;
 };

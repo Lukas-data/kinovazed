@@ -182,13 +182,13 @@ void testGetCoordinateThrowsIfValidObjectiveHasNotBeenInitialized() {
 void testHasOriginForTargetWithoutOrigin() {
 	std::istringstream positionData{exampleData};
 	PositionHandling const positionHandling{positionData, logger};
-	ASSERT(!positionHandling.getObjective(Kinova::ObjectiveId::OpenDoor).hasOrigin());
+	ASSERT(positionHandling.getObjective(Kinova::ObjectiveId::OpenDoor).getOrigin().isZero());
 }
 
 void testHasOriginForTargetWithOrigin() {
 	std::istringstream positionData{exampleData};
 	PositionHandling const positionHandling{positionData, logger};
-	ASSERT(positionHandling.getObjective(Kinova::ObjectiveId::Handle).hasOrigin());
+	ASSERT(!positionHandling.getObjective(Kinova::ObjectiveId::Handle).getOrigin().isZero());
 }
 
 // void testHasOriginForInvalidTarget() {
@@ -201,14 +201,14 @@ void testGetOriginForTargetWithOrigin() {
 	std::istringstream positionData{exampleData};
 	PositionHandling const positionHandling{positionData, logger};
 	Kinova::Coordinates const expected{0.12f, -0.723f, 0.551f, 1.491f, -0.066f, 0.002f};
-	ASSERT_EQUAL(expected, positionHandling.getObjective(Kinova::ObjectiveId::Handle).getOrigin());
+	ASSERT_EQUAL(expected, positionHandling.getObjective(Kinova::ObjectiveId::Handle).getOrigin().getCoordinates());
 }
 
 void testGetOriginForTargetWithoutOrigin() {
 	std::istringstream positionData{exampleData};
 	PositionHandling const positionHandling{positionData, logger};
 	Kinova::Coordinates const expected{};
-	ASSERT_EQUAL(expected, positionHandling.getObjective(Kinova::ObjectiveId::OpenDoor).getOrigin());
+	ASSERT_EQUAL(expected, positionHandling.getObjective(Kinova::ObjectiveId::OpenDoor).getOrigin().getCoordinates());
 }
 
 void testGetOriginForInvalidTarget() {
@@ -290,7 +290,7 @@ void testSaveOriginSetsOrigin() {
 	PositionHandling positionHandling{positionData, logger};
 	Kinova::Coordinates const newOrigin{-0.12f, 0.123f, 0.41f, -1.491f, -0.16f, -0.002f};
 	positionHandling.saveOrigin(newOrigin, Kinova::ObjectiveId::Handle);
-	ASSERT_EQUAL(newOrigin, positionHandling.getObjective(Kinova::ObjectiveId::Handle).getSequence().getOrigin());
+	ASSERT_EQUAL(newOrigin, positionHandling.getObjective(Kinova::ObjectiveId::Handle).getOrigin().getCoordinates());
 }
 
 void testSaveOriginUpdatesTranformationMatrix() {
@@ -308,7 +308,7 @@ void testSetZeroObjectiveForZeroObjective() {
 	PositionHandling positionHandling{positionData, logger};
 	Kinova::Coordinates const newOrigin{-0.12f, 0.123f, 0.41f, -1.491f, -0.16f, -0.002f};
 	positionHandling.setZeroObjective(newOrigin, Kinova::ObjectiveId::OpenDoor);
-	ASSERT_EQUAL(newOrigin, positionHandling.getObjective(Kinova::ObjectiveId::OpenDoor).getSequence().getOrigin());
+	ASSERT_EQUAL(newOrigin, positionHandling.getObjective(Kinova::ObjectiveId::OpenDoor).getOrigin().getCoordinates());
 }
 
 void testSetZeroObjectiveForNonZeroObjective() {
@@ -317,7 +317,7 @@ void testSetZeroObjectiveForNonZeroObjective() {
 	Kinova::Coordinates const newOrigin{0.1f, 0.1f, 0.1f, 1.0f, 0.1f, 0.001f};
 	Kinova::Coordinates const expected{0.12f, -0.723f, 0.551f, 1.491f, -0.066f, 0.002f};
 	positionHandling.setZeroObjective(newOrigin, Kinova::ObjectiveId::Handle);
-	ASSERT_EQUAL(expected, positionHandling.getObjective(Kinova::ObjectiveId::Handle).getOrigin());
+	ASSERT_EQUAL(expected, positionHandling.getObjective(Kinova::ObjectiveId::Handle).getOrigin().getCoordinates());
 }
 
 void testResetOriginAtEndResetsOriginAtEndOfSequence() {
@@ -339,7 +339,7 @@ void testResetOriginAtEndDoesNotResetOriginAtBeginningOfSequence() {
 	Kinova::Coordinates const newOrigin{0.1f, 0.1f, 0.1f, 1.0f, 0.1f, 0.001f};
 	positionHandling.setZeroObjective(newOrigin, Kinova::ObjectiveId::PullDoor);
 	ASSERT(!positionHandling.resetOriginAtEnd(Kinova::ObjectiveId::PullDoor));
-	ASSERT_EQUAL(newOrigin, positionHandling.getObjective(Kinova::ObjectiveId::PullDoor).getSequence().getOrigin());
+	ASSERT_EQUAL(newOrigin, positionHandling.getObjective(Kinova::ObjectiveId::PullDoor).getOrigin().getCoordinates());
 }
 
 void testDeletePointAtBeginningOfSequence() {

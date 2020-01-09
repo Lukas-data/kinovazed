@@ -500,8 +500,8 @@ void KinovaArm::moveToOrigin() {
 	getPosition(currentCoordinates);
 
 	// Check if Origin is defined
-	if (PositionHandler.getObjective(teachTarget).hasOrigin()) {
-		auto const targetCoordinates = PositionHandler.getObjective(teachTarget).getOrigin();
+	if (!PositionHandler.getObjective(teachTarget).getOrigin().isZero()) {
+		auto const targetCoordinates = PositionHandler.getObjective(teachTarget).getOrigin().getCoordinates();
 		// Check if in range
 		bool PointReached = checkIfReached(currentCoordinates);
 		checkCurrents();
