@@ -73,6 +73,9 @@
         "valarray": "cpp",
         "*.ipp": "cpp",
         "*.inc": "cpp",
-        "cassert": "cpp"
+        "cassert": "cpp",
+        "csignal": "cpp",
+        "future": "cpp",
+        "cfenv": "cpp"
     },
 }

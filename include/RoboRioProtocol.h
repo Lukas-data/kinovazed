@@ -13,6 +13,8 @@ namespace RoboRioProtocol {
 constexpr auto commandLength = 6;
 constexpr auto dataLength = 6;
 constexpr auto dataPackages = 4;
+auto constexpr messageLength = commandLength + (dataPackages * dataLength);
+
 constexpr int errorCommand = 99; // TODO (tcorbat): Currently this error is coerced into a Packet (command). This is not
                                  // nice, as 99 is not a proper value for KinovaFSM::Event
 

@@ -63,6 +63,7 @@ add_library("${PROJECT_NAME}Core"
   "src/Sequence.cpp"
   "src/State.cpp"
   "src/StateMachine.cpp"
+  "src/TCPControlInterface.cpp"
   "src/TCPServer.cpp"
 )
 
@@ -83,6 +84,7 @@ target_include_directories("${PROJECT_NAME}Core" PUBLIC
 target_link_libraries("${PROJECT_NAME}Core"
   PUBLIC
   "Boost::system"
+  "CONAN_PKG::asio"
   "CONAN_PKG::nlohmann_json"
   "CONAN_PKG::spdlog"
   "kindrv"

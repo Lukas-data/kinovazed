@@ -37,7 +37,7 @@ struct Command {
 	};
 
 	auto constexpr operator==(Command const &other) const -> bool {
-		return id == other.id && payload == other.payload;
+		return id == other.id && variable == other.variable;
 	}
 
 	auto constexpr operator!=(Command const &other) const -> bool {
@@ -45,7 +45,10 @@ struct Command {
 	}
 
 	Id id;
-	std::optional<int> payload;
+	int variable{};
+	int x{};
+	int y{};
+	int z{};
 };
 
 template<>

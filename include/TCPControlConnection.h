@@ -1,0 +1,6 @@
+#ifndef INCLUDE_TCP_CONTROL_CONNECTION_H_H
+#define INCLUDE_TCP_CONTROL_CONNECTION_H_H
+
+namespace Kinova {}
+
+#endif

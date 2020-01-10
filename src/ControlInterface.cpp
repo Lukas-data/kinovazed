@@ -10,12 +10,12 @@
 namespace Kinova {
 
 auto ControlInterface::start() -> void {
-	do_start();
+	doStart();
 	std::for_each(begin(subscribers), end(subscribers), [&](auto subscriber) { subscriber->onInterfaceStarted(); });
 }
 
 auto ControlInterface::stop() -> void {
-	do_stop();
+	doStop();
 	std::for_each(begin(subscribers), end(subscribers), [&](auto subscriber) { subscriber->onInterfaceStopped(); });
 }
 

@@ -41,12 +41,12 @@ struct ControlInterface {
 	/**
 	 * Concrete implementation of interface start
 	 */
-	auto virtual do_start() -> void = 0;
+	auto virtual doStart() -> void = 0;
 
 	/**
 	 * Concrete implementation of interface stop
 	 */
-	auto virtual do_stop() -> void = 0;
+	auto virtual doStop() -> void = 0;
 
 	/**
 	 * Notify all known subscribers about an incoming command
