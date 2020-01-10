@@ -1,6 +1,7 @@
 #ifndef _COMMANDHANDLING_H_
 #define _COMMANDHANDLING_H_
 
+#include "Command.h"
 #include "KinovaArm.h"
 #include "KinovaStatus.h"
 #include "Logging.h"
