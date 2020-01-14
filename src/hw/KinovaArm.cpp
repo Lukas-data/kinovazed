@@ -212,117 +212,38 @@ auto KinovaArm::setSteeringMode(SteeringMode mode) -> bool {
 	assert(arm);
 	assert(isKnownSteeringMode(static_cast<int>(mode)));
 
-	if (currentSteeringMode != mode || mode == SteeringMode::NoMode) {
+	if ((currentSteeringMode != mode || mode == SteeringMode::NoMode)) {
+		if (!canChangeMode()) {
+			return false;
+		}
+
 		try {
 			if ((currentSteeringMode != SteeringMode::Axis1 && currentSteeringMode != SteeringMode::Axis2) &&
 			    (mode == SteeringMode::Axis1 || mode == SteeringMode::Axis2)) {
-				if (canChangeMode()) {
-					arm->set_control_ang();
-					lastSteeringModeChange = std::chrono::steady_clock::now();
-				} else {
-					return false;
-				}
+				arm->set_control_ang();
+				lastSteeringModeChange = std::chrono::steady_clock::now();
 			}
 			if ((currentSteeringMode != SteeringMode::Translation && currentSteeringMode != SteeringMode::Rotation) &&
 			    (mode == SteeringMode::Translation || mode == SteeringMode::Rotation) && canChangeMode()) {
-				if (canChangeMode()) {
-					arm->set_control_cart();
-					lastSteeringModeChange = std::chrono::steady_clock::now();
-				} else {
-					return false;
-				}
+				arm->set_control_cart();
+				lastSteeringModeChange = std::chrono::steady_clock::now();
 			}
 		} catch (std::exception const &e) {
 			logError("setSteeringMode", "failed to set steering mode. reason: {0}", e.what());
 			return false;
 		}
-	}
-	switch (mode) {
-	case SteeringMode::NoMode:
-		currentSteeringMode = SteeringMode::Translation;
-		break;
-	case SteeringMode::Translation:
-	case SteeringMode::Rotation:
-	case SteeringMode::Axis1:
-	case SteeringMode::Axis2:
+
 		currentSteeringMode = mode;
-		break;
-	default:
-		break;
+	} else if (mode == SteeringMode::NoMode) {
+		currentSteeringMode = SteeringMode::Translation;
 	}
+
 	return true;
-}
+} // namespace KinovaZED::Hw
 
 auto KinovaArm::hasFailed() const -> bool {
 	return isInFailState;
 }
-
-// /*Get-Functions*/
-// auto KinovaArm::getError() -> bool {
-// 	return Error;
-// }
-// auto KinovaArm::getInitialize() -> bool {
-// 	return initialized;
-// }
-// auto KinovaArm::getActive() -> bool {
-// 	return active;
-// }
-// auto KinovaArm::getMode() -> int {
-// 	return static_cast<int>(mode);
-// }
-// auto KinovaArm::getCurrentPosition() -> int {
-// 	return currentPosition;
-// }
-// auto KinovaArm::getCurrentPoint() -> int {
-// 	return getCurrentPoint(teachTarget);
-// }
-// auto KinovaArm::getCurrentPoint(Control::ObjectiveId target) -> int {
-// 	return PositionHandler.getSequence(target);
-// }
-
-// void KinovaArm::setActive() {
-// 	active = true;
-// }
-// void KinovaArm::setInactive() {
-// 	active = false;
-// 	mode = SteeringMode::NoMode;
-// }
-
-// /*Returns true if arm isn't moving anymore. Starts after initial timer of 500ms to wait for arm to start
-// moving.*/ auto KinovaArm::checkIfReached(float *currentCoordinates) -> bool { 	if (!moveTimerStart) {
-// 		moveTimerStart = std::chrono::steady_clock::now();
-// 	}
-
-// 	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - *moveTimerStart) >
-// 	    std::chrono::milliseconds{500}) {
-// 		bool pointReached = true;
-// 		logger->warn("KinovaArm::RangeCheck: following Axis do not pass:");
-// 		for (int i = 0; i < 6; i++) {
-// 			float dVel = fabs(currentCoordinates[i] - lastCoordinates[i]);
-// 			if (dVel > velocityRange) {
-// 				logger->debug("[i: {0} dVel: {1}", i, dVel);
-// 				pointReached = false;
-// 			}
-// 			lastCoordinates[i] = currentCoordinates[i];
-// 		}
-// 		// Returns PointReached if PointReachedCount is higher than 3, to prevent errors.
-// 		if (pointReached) {
-// 			++pointReachedCount;
-// 		} else {
-// 			pointReachedCount = 0;
-// 		}
-// 		if (pointReachedCount > 3) {
-// 			pointReachedCount = 0;
-// #if __cplusplus >= 201703L
-// 			moveTimerStart = std::nullopt;
-// #else
-// 			moveTimerStart = std::experimental::nullopt;
-// #endif
-// 			return pointReached;
-// 		}
-// 	}
-// 	return false;
-// }
 
 /// @section Private Implementation
 
