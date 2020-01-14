@@ -1,7 +1,7 @@
 #ifndef EVENTIOFAKE_H_
 #define EVENTIOFAKE_H_
 
-#include "RoboRioProtocol.h"
+#include "comm/TCPInterface.h"
 
 #include <memory>
 

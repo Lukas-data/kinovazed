@@ -39,6 +39,9 @@ IncludeCategories:
     # General System Headers
     - Regex: '<([[:alnum:]._]/*)+\.(h|hpp)>'
       Priority: 300
+    # libkindrv Headers
+    - Regex: '"libkindrv/.+\.h"'
+      Priority: 200
     # Local Headers
     - Regex: '".+\.(h|hpp)"'
       Priority: 100

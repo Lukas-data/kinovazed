@@ -13,23 +13,23 @@ int main() {
 	using namespace std::chrono_literals;
 	using namespace BytePrefix;
 
-	auto loggerConfig = Logging::LogConfiguration{};
+	auto loggerConfig = KinovaZED::LogConfiguration{};
 
 	loggerConfig.loggerName = "kinovaZED";
 
-	loggerConfig.consoleConfiguration = Logging::ConsoleLogConfiguration{
-	    Logging::ConsoleStream::StandardOutput,
-	    Logging::ColorPolicy::DoColor,
+	loggerConfig.consoleConfiguration = KinovaZED::ConsoleLogConfiguration{
+	    KinovaZED::ConsoleStream::StandardOutput,
+	    KinovaZED::ColorPolicy::DoColor,
 	};
 
-	loggerConfig.fileConfiguration = Logging::FileLogConfiguration{
+	loggerConfig.fileConfiguration = KinovaZED::FileLogConfiguration{
 	    Paths::DEFAULT_LOG_FILE,
 	    50_M,
 	    200,
-	    Logging::RotationPolicy::DoRotateOnOpen,
+	    KinovaZED::RotationPolicy::DoRotateOnOpen,
 	};
 
-	auto logger = Logging::makeLogger(loggerConfig);
+	auto logger = KinovaZED::makeLogger(loggerConfig);
 
 	logger->info("KinovaMain - Startup!");
 

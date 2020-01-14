@@ -1,10 +1,10 @@
 #include "IntegrationSuite.h"
 
-#include "CommandHandling.h"
-#include "Event.h"
 #include "EventIOFake.h"
-#include "Logging.h"
-#include "RoboRioProtocol.h"
+#include "comm/TCPInterface.h"
+#include "control/CommandHandling.h"
+#include "control/Event.h"
+#include "support/Logging.h"
 
 #include <cute/cute.h>
 

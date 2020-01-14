@@ -51,20 +51,27 @@ add_subdirectory("thirdparty/libkindrv")
 ### Core Library
 
 add_library("${PROJECT_NAME}Core"
-  "src/Command.cpp"
-  "src/ControlInterface.cpp"
-  "src/Coordinates.cpp"
-  "src/KinovaArm.cpp"
-  "src/Logging.cpp"
-  "src/Objective.cpp"
-  "src/ObjectiveId.cpp"
-  "src/Origin.cpp"
-  "src/PositionHandling.cpp"
-  "src/Sequence.cpp"
-  "src/State.cpp"
-  "src/StateMachine.cpp"
-  "src/TCPControlInterface.cpp"
-  "src/TCPServer.cpp"
+  # Communication
+  "src/comm/Command.cpp"
+  "src/comm/CommandInterface.cpp"
+  "src/comm/TCPInterface.cpp"
+
+  # Control
+  "src/control/Objective.cpp"
+  "src/control/ObjectiveId.cpp"
+  "src/control/PositionHandling.cpp"
+  "src/control/Sequence.cpp"
+  # "src/control/State.cpp"
+  "src/control/StateMachine.cpp"
+
+  # Hardware
+  "src/hw/Actor.cpp"
+  "src/hw/Coordinates.cpp"
+  "src/hw/KinovaArm.cpp"
+  "src/hw/Origin.cpp"
+
+  # Support
+  "src/support/Logging.cpp"
 )
 
 target_compile_options("${PROJECT_NAME}Core" PUBLIC
@@ -97,8 +104,8 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_L
   )
 endif()
 
-configure_file("${PROJECT_SOURCE_DIR}/include/Paths.h.in"
-  "${PROJECT_SOURCE_DIR}/include/Paths.h"
+configure_file("${PROJECT_SOURCE_DIR}/include/support/Paths.h.in"
+  "${PROJECT_SOURCE_DIR}/include/support/Paths.h"
   @ONLY
 )
 
@@ -158,7 +165,7 @@ install(FILES
 
 ### Tests
 
-if(BUILD_TESTING)
+if(NOT BUILD_TESTING)
   include("DiscoverTests")
 
   add_executable("${PROJECT_NAME}Test"
