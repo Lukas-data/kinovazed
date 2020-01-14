@@ -1,7 +1,8 @@
-#include "CommandHandling.h"
-#include "Logging.h"
-#include "Paths.h"
-#include "Prefix.h"
+// #include "control/CommandHandler.h"
+#include "hw/KinovaArm.h"
+#include "support/Logging.h"
+#include "support/Paths.h"
+#include "support/Prefix.h"
 
 #include <chrono>
 #include <exception>
@@ -11,7 +12,7 @@
 
 int main() {
 	using namespace std::chrono_literals;
-	using namespace BytePrefix;
+	using namespace KinovaZED::Literals;
 
 	auto loggerConfig = KinovaZED::LogConfiguration{};
 
@@ -23,7 +24,7 @@ int main() {
 	};
 
 	loggerConfig.fileConfiguration = KinovaZED::FileLogConfiguration{
-	    Paths::DEFAULT_LOG_FILE,
+	    KinovaZED::DEFAULT_LOG_FILE,
 	    50_M,
 	    200,
 	    KinovaZED::RotationPolicy::DoRotateOnOpen,
@@ -31,30 +32,45 @@ int main() {
 
 	auto logger = KinovaZED::makeLogger(loggerConfig);
 
-	logger->info("KinovaMain - Startup!");
+	logger->set_level(spdlog::level::debug);
 
-	auto objectivesFile = std::ifstream{Paths::DEFAULT_OBJ_FILE_JSON};
+	logger->info("main: starting up");
 
-	auto io = std::make_unique<TCPServer>(logger);
-	auto arm = std::make_shared<KinovaArm>(objectivesFile, logger);
-	auto commandHandler = CommandHandling{std::move(io), arm, logger};
+	auto arm = KinovaZED::Hw::KinovaArm{logger};
+	arm.setShouldReconnectOnError(true);
 
-	while (true) {
-		try {
-			commandHandler.process();
-		} catch (std::runtime_error const &e) {
-			logger->critical("RuntimeError: {}", e.what());
-			return -1;
-		} catch (std::exception const &e) {
-			logger->critical("Exception: {}", e.what());
-			return -1;
-		} catch (...) {
-			logger->critical("UNKNOWN ERROR");
-			return -1;
-		}
+	if (arm.connect()) {
+		arm.takeControl();
+		arm.home();
+		std::this_thread::sleep_for(2s);
+		arm.setSteeringMode(KinovaZED::Hw::SteeringMode::Rotation);
+		std::this_thread::sleep_for(1s);
+		arm.setJoystick(1000, 1000, 1000);
 	}
+
+
+	// auto objectivesFile = std::ifstream{Paths::DEFAULT_OBJ_FILE_JSON};
+
+	// auto io = std::make_unique<TCPServer>(logger);
+	// auto arm = std::make_shared<KinovaArm>(objectivesFile, logger);
+	// auto commandHandler = CommandHandling{std::move(io), arm, logger};
+
+	// while (true) {
+	// 	try {
+	// 		commandHandler.process();
+	// 	} catch (std::runtime_error const &e) {
+	// 		logger->critical("RuntimeError: {}", e.what());
+	// 		return -1;
+	// 	} catch (std::exception const &e) {
+	// 		logger->critical("Exception: {}", e.what());
+	// 		return -1;
+	// 	} catch (...) {
+	// 		logger->critical("UNKNOWN ERROR");
+	// 		return -1;
+	// 	}
+	// }
 
 	std::this_thread::sleep_for(10s);
 
-	return -1;
+	// return -1;
 }

@@ -50,7 +50,8 @@ struct KinovaArm : Actor {
 	template<typename... Args>
 	auto logError(std::string function, std::string format, Args &&... args) {
 		auto prefix = "KinovaArm::" + function + ": ";
-		logger->info(prefix + format, std::forward<Args &&>(args)...);
+		logger->error(prefix + format, std::forward<Args &&>(args)...);
+		isInFailState = true;
 	}
 
 	template<typename... Args>
@@ -73,6 +74,10 @@ struct KinovaArm : Actor {
 	auto updateRetractionMode() -> void;
 	auto updateSteeringMode() -> void;
 
+	auto startSurveillance() -> void;
+	auto stopSurveillance() -> void;
+	auto reconnectOnError() -> void;
+
 	auto moveToHardwareHome() -> void;
 	auto moveToSoftwareHome() -> void;
 	auto moveToRetractionPoint() -> void;
@@ -82,16 +87,19 @@ struct KinovaArm : Actor {
 	std::optional<Coordinates> const homePosition;
 	Logger logger;
 
-	std::mutex accessLock{};
+	std::recursive_mutex accessLock{};
 
 	std::atomic_bool runUpdateLoop{};
 	std::future<void> updateLoopHandle{};
 
+	std::atomic_bool runSurveillance{};
+	std::future<void> surveillanceHandle{};
+
 	std::optional<KinDrv::JacoArm> arm{};
 	Coordinates currentPosition{};
-	Coordinates targetPosition{};
+	std::optional<Coordinates> targetPosition{};
 	RetractionMode currentRetractionMode{};
-	RetractionMode targetRetractionMode{};
+	std::optional<RetractionMode> targetRetractionMode{};
 	SteeringMode currentSteeringMode{};
 	std::chrono::steady_clock::time_point lastSteeringModeChange{};
 

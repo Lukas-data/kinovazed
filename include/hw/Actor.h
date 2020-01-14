@@ -11,6 +11,9 @@ enum struct SteeringMode {
 	Rotation,
 	Axis1,
 	Axis2,
+
+	// End Marker
+	END_OF_ENUM
 };
 
 auto isKnownSteeringMode(int candidate) -> bool;
@@ -72,6 +75,8 @@ struct Actor {
 	auto virtual hasFailed() const -> bool = 0;
 
 	auto setShouldReconnectOnError(bool reconnect) -> void;
+
+	auto shouldReconnectOnError() -> bool;
 
   private:
 	bool reconnectOnError{false};
