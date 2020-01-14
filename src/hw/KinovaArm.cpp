@@ -117,7 +117,7 @@ auto KinovaArm::stopMoving() -> bool {
 		arm->move_joystick_axis(joystickPosition);
 		logInfo("stopMoving", "successfully put the joystick into the neutral position.");
 		arm->release_joystick();
-		logInfo("stopMoving", "successfully release the joystick.");
+		logInfo("stopMoving", "successfully released the joystick.");
 		return true;
 	} catch (std::exception const &e) {
 		logError("stop moving", "failed to release the joystick in the neutral position. reason: {}", e.what());
@@ -135,7 +135,7 @@ auto KinovaArm::home() -> void {
 		return;
 	}
 
-	if (!wasHomed) {
+	if (!wasHomed || !homePosition) {
 		isHoming = true;
 		moveToHardwareHome();
 	} else {
@@ -310,12 +310,12 @@ auto KinovaArm::updatePosition() -> void {
 				currentPosition[coordinateIndex + 3] = rawPosition.s.rotation[coordinateIndex];
 			}
 			if (currentPosition == targetPosition) {
-				targetPosition.reset();
 				if (isHoming) {
 					isHoming = false;
-					wasHomed = true;
+					// fireIsHomed();
 				}
 				// fire position reached
+				targetPosition.reset();
 			}
 		} catch (std::exception const &e) {
 			logError("<updatePosition>", "failed to read position from arm. reason: {0}", e.what());
@@ -328,11 +328,13 @@ auto KinovaArm::updateRetractionMode() -> void {
 		try {
 			currentRetractionMode = static_cast<RetractionMode>(arm->get_status());
 			if (currentRetractionMode == targetRetractionMode) {
+				logDebug("<updateRetractionMode>", "reached desired retraction mode.");
 				if (isHoming && currentRetractionMode == RetractionMode::ReadyToStandby) {
-					targetRetractionMode.reset();
+					wasHomed = true;
 					arm->release_joystick();
 					moveToSoftwareHome();
 				}
+				targetRetractionMode.reset();
 			}
 		} catch (std::exception const &e) {
 			logError("<updateRetractionMode>", "failed to read retractionMode. reason: {0}", e.what());
@@ -389,27 +391,31 @@ auto KinovaArm::reconnectOnError() -> void {
 }
 
 auto KinovaArm::moveToHardwareHome() -> void {
-	switch (currentRetractionMode) {
-	case RetractionMode::RetractToReady:
-		targetRetractionMode = RetractionMode::ReadyToStandby;
-		arm->push_joystick_button(2);
-		arm->release_joystick();
-		arm->push_joystick_button(2);
-		break;
-	case RetractionMode::NormalToReady:
-	case RetractionMode::ReadyToRetract:
-	case RetractionMode::RetractToStandby:
-	case RetractionMode::Normal:
-	case RetractionMode::NoInitToReady:
-		targetRetractionMode = RetractionMode::ReadyToStandby;
-		arm->push_joystick_button(2);
-		break;
-	case RetractionMode::Error:
-		logError("moveToHardwareHome", "arm is in a failure state.");
-		break;
-	default:
-		logDebug("moveToHardwareHome", "the arm is already in the hardware home position.");
-		break;
+	try {
+		switch (currentRetractionMode) {
+		case RetractionMode::RetractToReady:
+			targetRetractionMode = RetractionMode::ReadyToStandby;
+			arm->push_joystick_button(2);
+			arm->release_joystick();
+			arm->push_joystick_button(2);
+			break;
+		case RetractionMode::NormalToReady:
+		case RetractionMode::ReadyToRetract:
+		case RetractionMode::RetractToStandby:
+		case RetractionMode::Normal:
+		case RetractionMode::NoInitToReady:
+			targetRetractionMode = RetractionMode::ReadyToStandby;
+			arm->push_joystick_button(2);
+			break;
+		case RetractionMode::Error:
+			logError("moveToHardwareHome", "arm is in a failure state.");
+			break;
+		default:
+			logDebug("moveToHardwareHome", "the arm is already in the hardware home position.");
+			break;
+		}
+	} catch (std::exception const &e) {
+		logError("moveToHardwareHome", "failed to move to hardware home. reason: {0}", e.what());
 	}
 }
 
@@ -417,6 +423,7 @@ auto KinovaArm::moveToSoftwareHome() -> void {
 	assert(wasHomed);
 
 	if (!homePosition) {
+		// fireIsHomed();
 		return;
 	}
 

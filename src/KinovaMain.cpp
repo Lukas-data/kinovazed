@@ -42,10 +42,16 @@ int main() {
 	if (arm.connect()) {
 		arm.takeControl();
 		arm.home();
-		std::this_thread::sleep_for(2s);
+		std::this_thread::sleep_for(5s);
 		arm.setSteeringMode(KinovaZED::Hw::SteeringMode::Rotation);
 		std::this_thread::sleep_for(1s);
 		arm.setJoystick(1000, 1000, 1000);
+		std::this_thread::sleep_for(5s);
+		arm.stopMoving();
+		std::this_thread::sleep_for(1s);
+		arm.home();
+		std::this_thread::sleep_for(6s);
+		arm.retract();
 	}
 
 
