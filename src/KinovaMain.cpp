@@ -18,8 +18,7 @@ struct ArmListener : KinovaZED::Hw::Actor::EventSubscriber {
 
 	auto onHomeReached(KinovaZED::Hw::Actor &arm) -> void {
 		logger->info("ArmListener::onHomeReached: the arm reached the home position");
-		arm.retract();
-		// arm.setSteeringMode(KinovaZED::Hw::SteeringMode::Rotation);
+		arm.setSteeringMode(KinovaZED::Hw::SteeringMode::Rotation);
 	}
 
 	auto onRetractionPointReached(KinovaZED::Hw::Actor &arm) -> void {
@@ -30,7 +29,11 @@ struct ArmListener : KinovaZED::Hw::Actor::EventSubscriber {
 	auto onSteeringModeChanged(KinovaZED::Hw::Actor &arm, KinovaZED::Hw::SteeringMode mode) -> void {
 		logger->info("ArmListener::onSteeringModeChanged: the arm changed to steering mode {0}",
 		             static_cast<int>(mode));
-		(void)arm;
+		arm.setJoystick(4000, 4000, 4000);
+	}
+
+	auto onReconnectedDueToError(KinovaZED::Hw::Actor &arm) -> void {
+		arm.home();
 	}
 
   private:
@@ -72,32 +75,9 @@ int main() {
 
 	if (arm.connect()) {
 		arm.takeControl();
+		arm.stopMoving();
 		arm.home();
 	}
 
-
-	// auto objectivesFile = std::ifstream{Paths::DEFAULT_OBJ_FILE_JSON};
-
-	// auto io = std::make_unique<TCPServer>(logger);
-	// auto arm = std::make_shared<KinovaArm>(objectivesFile, logger);
-	// auto commandHandler = CommandHandling{std::move(io), arm, logger};
-
-	// while (true) {
-	// 	try {
-	// 		commandHandler.process();
-	// 	} catch (std::runtime_error const &e) {
-	// 		logger->critical("RuntimeError: {}", e.what());
-	// 		return -1;
-	// 	} catch (std::exception const &e) {
-	// 		logger->critical("Exception: {}", e.what());
-	// 		return -1;
-	// 	} catch (...) {
-	// 		logger->critical("UNKNOWN ERROR");
-	// 		return -1;
-	// 	}
-	// }
-
 	std::this_thread::sleep_for(120s);
-
-	// return -1;
 }

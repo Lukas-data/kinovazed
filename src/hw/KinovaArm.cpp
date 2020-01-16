@@ -27,17 +27,14 @@ constexpr auto joystickCalcFactor = 0.0025f;
 KinovaArm::KinovaArm(Logger logger)
     : homePosition{}
     , logger{logger} {
-	startSurveillance();
 }
 
 KinovaArm::KinovaArm(Coordinates homePosition, Logger logger)
     : homePosition{homePosition}
     , logger{logger} {
-	startSurveillance();
 }
 
 KinovaArm::~KinovaArm() {
-	stopSurveillance();
 	stopUpdateLoop();
 	if (hasControl) {
 		releaseControl();
@@ -52,10 +49,12 @@ auto KinovaArm::connect() -> bool {
 		arm.emplace();
 		logInfo("connect", "successfully connected to arm.");
 		isInFailState = false;
-		arm->start_force_ctrl();
 		currentPosition = readPosition();
 		retractionMode = readRetractionMode();
-		startUpdateLoop();
+		steeringMode.reset();
+		if (!runUpdateLoop) {
+			startUpdateLoop();
+		}
 		return true;
 	} catch (std::exception const &e) {
 		logError("connect", "failed to connect to the arm. reason: {0}", e.what());
@@ -87,17 +86,17 @@ auto KinovaArm::takeControl() -> bool {
 	try {
 		arm->start_api_ctrl();
 
-	auto mode = arm->get_status();
-	if (mode == KinDrv::MODE_NOINIT) {
-		pushButton(2);
+		auto mode = arm->get_status();
+		if (mode == KinDrv::MODE_NOINIT) {
+			pushButton(2);
 
-		while (mode == KinDrv::MODE_NOINIT) {
-			std::this_thread::sleep_for(std::chrono::milliseconds{10});
-			mode = arm->get_status();
+			while (mode == KinDrv::MODE_NOINIT) {
+				std::this_thread::sleep_for(std::chrono::milliseconds{10});
+				mode = arm->get_status();
+			}
+
+			releaseJoystick();
 		}
-
-		releaseJoystick();
-	}
 
 		logInfo("takeControl", "gained API control over the arm.");
 		hasControl = true;

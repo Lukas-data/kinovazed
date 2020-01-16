@@ -1,8 +1,8 @@
 #include "hw/KinovaArm.h"
 
 #include <algorithm>
-#include <thread>
 #include <future>
+#include <thread>
 
 using namespace std::chrono_literals;
 
@@ -23,6 +23,7 @@ auto KinovaArm::startUpdateLoop() -> void {
 					checkCurrents();
 				}
 			}
+			reconnectOnError();
 			std::this_thread::sleep_for(10ms);
 		}
 	});
@@ -73,14 +74,14 @@ auto KinovaArm::updatePosition() -> void {
 		if (movementStatus == MovementStatus::HomingToSoftwareHome && currentPosition == homePosition) {
 			retractionStatus = RetractionStatus::Homed;
 			movementStatus.reset();
-            std::this_thread::sleep_for(10ms);
+			std::this_thread::sleep_for(10ms);
 			fireHomeReached();
 			return;
 		}
 
 		if (movementStatus == MovementStatus::MovingToPosition && currentPosition == targetPosition) {
 			targetPosition.reset();
-            std::this_thread::sleep_for(10ms);
+			std::this_thread::sleep_for(10ms);
 			firePositionReached(*currentPosition);
 			return;
 		}
@@ -152,41 +153,22 @@ auto KinovaArm::updateSteeringMode() -> void {
 	}
 }
 
-auto KinovaArm::startSurveillance() -> void {
-	using namespace std::chrono_literals;
-
-	runSurveillance = true;
-	surveillanceHandle = std::async(std::launch::async, [this] {
-		while (runSurveillance) {
-			{
-				auto guard = std::lock_guard{accessLock};
-				reconnectOnError();
-			}
-			std::this_thread::sleep_for(10ms);
-		}
-	});
-}
-
-auto KinovaArm::stopSurveillance() -> void {
-	if (runSurveillance) {
-		runSurveillance = false;
-		surveillanceHandle.get();
-	}
-}
-
 auto KinovaArm::reconnectOnError() -> void {
-	auto guard = std::lock_guard(accessLock);
+	{
+		auto guard = std::lock_guard(accessLock);
 
-	if (arm && hasFailed() && shouldReconnectOnError()) {
-		logWarning("<reconnectOnError>", "reconnecting due to arm failure.");
-		stopUpdateLoop();
-		disconnect();
-		connect();
+		if (!(hasFailed() && shouldReconnectOnError())) {
+			return;
+		}
+	}
 
+	if (connect()) {
 		if (hasControl) {
 			takeControl();
+			stopMoving();
 		}
 
+		auto guard = std::lock_guard(accessLock);
 		fireReconnectedDueToError();
 	}
 }
@@ -281,13 +263,13 @@ auto KinovaArm::canChangeMode() -> bool {
 
 auto KinovaArm::pushButton(int index) -> void {
 	logDebug("pushButton", "pushing button {0}", index);
-    std::this_thread::sleep_for(std::chrono::milliseconds{10});
+	std::this_thread::sleep_for(std::chrono::milliseconds{10});
 	arm->push_joystick_button(index);
 }
 
 auto KinovaArm::releaseJoystick() -> void {
 	logDebug("releaseJoystick", "releasing joystick");
-    std::this_thread::sleep_for(std::chrono::milliseconds{10});
+	std::this_thread::sleep_for(std::chrono::milliseconds{10});
 	arm->release_joystick();
 }
 

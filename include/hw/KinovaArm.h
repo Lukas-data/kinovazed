@@ -93,9 +93,6 @@ struct KinovaArm : Actor {
 
 	auto checkCurrents() -> void;
 
-
-	auto startSurveillance() -> void;
-	auto stopSurveillance() -> void;
 	auto reconnectOnError() -> void;
 
 	auto moveToHardwareHome() -> void;
@@ -114,9 +111,6 @@ struct KinovaArm : Actor {
 
 	std::atomic_bool runUpdateLoop{};
 	std::future<void> updateLoopHandle{};
-
-	std::atomic_bool runSurveillance{};
-	std::future<void> surveillanceHandle{};
 
 	std::optional<KinDrv::JacoArm> arm{};
 
