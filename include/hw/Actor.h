@@ -3,6 +3,8 @@
 
 #include "hw/Coordinates.h"
 
+#include <set>
+
 namespace KinovaZED::Hw {
 
 enum struct SteeringMode {
@@ -19,6 +21,31 @@ enum struct SteeringMode {
 auto isKnownSteeringMode(int candidate) -> bool;
 
 struct Actor {
+
+	struct EventSubscriber {
+		auto virtual onPositionReached(Actor &who, Coordinates point) -> void {
+			(void)who, (void)point;
+		}
+
+		auto virtual onHomeReached(Actor &who) -> void {
+			(void)who;
+		}
+
+		auto virtual onRetractionPointReached(Actor &who) -> void {
+			(void)who;
+		}
+
+		auto virtual onSteeringModeChanged(Actor &who, SteeringMode mode) -> void {
+			(void)who, (void)mode;
+		}
+
+		auto virtual onReconnectedDueToError(Actor &who) -> void {
+			(void)who;
+		}
+	};
+
+	using EventSubscriberPtr = std::shared_ptr<EventSubscriber>;
+
 	/**
 	 * Connect to the actor
 	 */
@@ -75,11 +102,21 @@ struct Actor {
 	auto virtual hasFailed() const -> bool = 0;
 
 	auto setShouldReconnectOnError(bool reconnect) -> void;
-
 	auto shouldReconnectOnError() -> bool;
+
+	auto subscribe(EventSubscriberPtr subscriber) -> bool;
+	auto unsubscribe(EventSubscriberPtr subscriber) -> bool;
+
+  protected:
+	auto firePositionReached(Coordinates point) -> void;
+	auto fireHomeReached() -> void;
+	auto fireRetractionPointReached() -> void;
+	auto fireSteeringModeChanged(SteeringMode mode) -> void;
+	auto fireReconnectedDueToError() -> void;
 
   private:
 	bool reconnectOnError{false};
+	std::set<EventSubscriberPtr> eventSubscribers{};
 };
 
 } // namespace KinovaZED::Hw

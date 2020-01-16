@@ -41,6 +41,20 @@ struct KinovaArm : Actor {
 	auto hasFailed() const -> bool;
 
   private:
+	enum struct MovementStatus {
+		HomingToHardwareHome,
+		HomingToSoftwareHome,
+		MovingToPosition,
+		Retracting,
+	};
+
+	enum struct RetractionStatus {
+		Retracting,
+		Retracted,
+		Homing,
+		Homed,
+	};
+
 	template<typename... Args>
 	auto logInfo(std::string function, std::string format, Args &&... args) {
 		auto prefix = "KinovaArm::" + function + ": ";
@@ -69,10 +83,16 @@ struct KinovaArm : Actor {
 	auto startUpdateLoop() -> void;
 	auto stopUpdateLoop() -> void;
 
-	auto checkCurrents() -> void;
 	auto updatePosition() -> void;
+	auto readPosition() -> Coordinates;
+
 	auto updateRetractionMode() -> void;
+	auto readRetractionMode() -> RetractionMode;
+
 	auto updateSteeringMode() -> void;
+
+	auto checkCurrents() -> void;
+
 
 	auto startSurveillance() -> void;
 	auto stopSurveillance() -> void;
@@ -83,6 +103,9 @@ struct KinovaArm : Actor {
 	auto moveToRetractionPoint() -> void;
 
 	auto canChangeMode() -> bool;
+
+	auto pushButton(int index) -> void;
+	auto releaseJoystick() -> void;
 
 	std::optional<Coordinates> const homePosition;
 	Logger logger;
@@ -96,18 +119,22 @@ struct KinovaArm : Actor {
 	std::future<void> surveillanceHandle{};
 
 	std::optional<KinDrv::JacoArm> arm{};
-	Coordinates currentPosition{};
+
+	std::optional<Coordinates> currentPosition{};
 	std::optional<Coordinates> targetPosition{};
-	RetractionMode currentRetractionMode{};
-	std::optional<RetractionMode> targetRetractionMode{};
-	SteeringMode currentSteeringMode{};
-	std::chrono::steady_clock::time_point lastSteeringModeChange{};
+
+	std::optional<RetractionMode> retractionMode{};
+
+	std::optional<SteeringMode> steeringMode{};
+	std::optional<std::chrono::steady_clock::time_point> lastSteeringModeChange{};
 
 	float fullCurrent{};
 
+	std::optional<MovementStatus> movementStatus;
+	std::optional<RetractionStatus> retractionStatus;
+
 	bool hasControl{};
 	bool wasHomed{};
-	bool isHoming{};
 	bool isInFailState{};
 };
 

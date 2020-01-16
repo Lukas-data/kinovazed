@@ -46,21 +46,32 @@ KinovaArm::~KinovaArm() {
 }
 
 auto KinovaArm::connect() -> bool {
+	auto guard = std::lock_guard{accessLock};
+
 	try {
 		arm.emplace();
 		logInfo("connect", "successfully connected to arm.");
 		isInFailState = false;
+		arm->start_force_ctrl();
+		currentPosition = readPosition();
+		retractionMode = readRetractionMode();
 		startUpdateLoop();
 		return true;
 	} catch (std::exception const &e) {
 		logError("connect", "failed to connect to the arm. reason: {0}", e.what());
 	}
+
 	isInFailState = true;
 	return false;
 }
 
 auto KinovaArm::disconnect() -> void {
+	auto guard = std::lock_guard{accessLock};
+
 	try {
+		if (hasControl) {
+			releaseControl();
+		}
 		arm.reset();
 		logInfo("disconnect", "closed connection to arm.");
 	} catch (std::exception const &e) {
@@ -70,8 +81,24 @@ auto KinovaArm::disconnect() -> void {
 
 auto KinovaArm::takeControl() -> bool {
 	assert(arm);
+
+	auto guard = std::lock_guard{accessLock};
+
 	try {
 		arm->start_api_ctrl();
+
+	auto mode = arm->get_status();
+	if (mode == KinDrv::MODE_NOINIT) {
+		pushButton(2);
+
+		while (mode == KinDrv::MODE_NOINIT) {
+			std::this_thread::sleep_for(std::chrono::milliseconds{10});
+			mode = arm->get_status();
+		}
+
+		releaseJoystick();
+	}
+
 		logInfo("takeControl", "gained API control over the arm.");
 		hasControl = true;
 		return true;
@@ -83,6 +110,9 @@ auto KinovaArm::takeControl() -> bool {
 
 auto KinovaArm::releaseControl() -> bool {
 	assert(arm);
+
+	auto guard = std::lock_guard{accessLock};
+
 	try {
 		arm->stop_api_ctrl();
 		logInfo("releaseControl", "released API control over the arm.");
@@ -97,6 +127,8 @@ auto KinovaArm::releaseControl() -> bool {
 auto KinovaArm::stopMoving() -> bool {
 	assert(arm);
 	assert(hasControl);
+
+	auto guard = std::lock_guard{accessLock};
 
 	try {
 		arm->erase_trajectories();
@@ -131,15 +163,14 @@ auto KinovaArm::home() -> void {
 
 	auto guard = std::lock_guard{accessLock};
 
-	if (currentPosition == homePosition) {
-		return;
-	}
-
-	if (!wasHomed || !homePosition) {
-		isHoming = true;
-		moveToHardwareHome();
-	} else {
+	if (homePosition) {
+		logInfo("home", "moving towards software home.");
+		movementStatus = MovementStatus::HomingToSoftwareHome;
 		moveToSoftwareHome();
+	} else {
+		logInfo("home", "moving towards hardware home.");
+		movementStatus = MovementStatus::HomingToHardwareHome;
+		moveToHardwareHome();
 	}
 }
 
@@ -149,11 +180,8 @@ auto KinovaArm::retract() -> void {
 
 	auto guard = std::lock_guard{accessLock};
 
-	if (currentRetractionMode == RetractionMode::RetractToStandby) {
-		return;
-	} else {
-		moveToRetractionPoint();
-	}
+	// logDebug("retract", "retracting the arm");
+	moveToRetractionPoint();
 }
 
 auto KinovaArm::moveTo(Coordinates position) -> void {
@@ -178,6 +206,8 @@ auto KinovaArm::moveTo(Coordinates position) -> void {
 auto KinovaArm::setJoystick(int x, int y, int z) -> void {
 	assert(arm);
 
+	auto guard = std::lock_guard{accessLock};
+
 	auto speedX = -x * joystickCalcFactor;
 	auto speedY = -y * joystickCalcFactor;
 	auto speedZ = z * joystickCalcFactor;
@@ -190,11 +220,11 @@ auto KinovaArm::setJoystick(int x, int y, int z) -> void {
 	rawPosition.s.wrist_fb = 0;
 	rawPosition.s.wrist_rot = 0;
 
-	if (currentSteeringMode == SteeringMode::Translation || currentSteeringMode == SteeringMode::Axis1) {
+	if (steeringMode == SteeringMode::Translation || steeringMode == SteeringMode::Axis1) {
 		rawPosition.s.trans_lr = speedX;
 		rawPosition.s.trans_fb = speedY;
 		rawPosition.s.trans_rot = speedZ;
-	} else if (currentSteeringMode == SteeringMode::Rotation || currentSteeringMode == SteeringMode::Axis2) {
+	} else if (steeringMode == SteeringMode::Rotation || steeringMode == SteeringMode::Axis2) {
 		rawPosition.s.wrist_lr = speedX;
 		rawPosition.s.wrist_fb = speedY;
 		rawPosition.s.wrist_rot = speedZ;
@@ -212,18 +242,20 @@ auto KinovaArm::setSteeringMode(SteeringMode mode) -> bool {
 	assert(arm);
 	assert(isKnownSteeringMode(static_cast<int>(mode)));
 
-	if ((currentSteeringMode != mode || mode == SteeringMode::NoMode)) {
+	auto guard = std::lock_guard{accessLock};
+
+	if ((steeringMode != mode || mode == SteeringMode::NoMode)) {
 		if (!canChangeMode()) {
 			return false;
 		}
 
 		try {
-			if ((currentSteeringMode != SteeringMode::Axis1 && currentSteeringMode != SteeringMode::Axis2) &&
+			if ((steeringMode != SteeringMode::Axis1 && steeringMode != SteeringMode::Axis2) &&
 			    (mode == SteeringMode::Axis1 || mode == SteeringMode::Axis2)) {
 				arm->set_control_ang();
 				lastSteeringModeChange = std::chrono::steady_clock::now();
 			}
-			if ((currentSteeringMode != SteeringMode::Translation && currentSteeringMode != SteeringMode::Rotation) &&
+			if ((steeringMode != SteeringMode::Translation && steeringMode != SteeringMode::Rotation) &&
 			    (mode == SteeringMode::Translation || mode == SteeringMode::Rotation) && canChangeMode()) {
 				arm->set_control_cart();
 				lastSteeringModeChange = std::chrono::steady_clock::now();
@@ -233,235 +265,16 @@ auto KinovaArm::setSteeringMode(SteeringMode mode) -> bool {
 			return false;
 		}
 
-		currentSteeringMode = mode;
+		steeringMode = mode;
 	} else if (mode == SteeringMode::NoMode) {
-		currentSteeringMode = SteeringMode::Translation;
+		steeringMode = SteeringMode::Translation;
 	}
 
 	return true;
-} // namespace KinovaZED::Hw
+}
 
 auto KinovaArm::hasFailed() const -> bool {
 	return isInFailState;
-}
-
-/// @section Private Implementation
-
-auto KinovaArm::startUpdateLoop() -> void {
-	using namespace std::chrono_literals;
-
-	runUpdateLoop = true;
-	updateLoopHandle = std::async(std::launch::async, [this] {
-		while (runUpdateLoop) {
-			{
-				auto guard = std::lock_guard{accessLock};
-				checkCurrents();
-				updatePosition();
-				updateRetractionMode();
-				updateSteeringMode();
-			}
-			std::this_thread::sleep_for(10ms);
-		}
-	});
-}
-
-auto KinovaArm::stopUpdateLoop() -> void {
-	if (runUpdateLoop) {
-		runUpdateLoop = false;
-		updateLoopHandle.get();
-	}
-}
-
-auto KinovaArm::checkCurrents() -> void {
-	if (arm) {
-		try {
-			auto rawCurrents = arm->get_ang_current();
-			fullCurrent = std::accumulate(std::cbegin(rawCurrents.joints), std::cend(rawCurrents.joints), .0f);
-
-			if (fullCurrent > 2) {
-				logDebug("checkCurrents",
-				         "({0}, {1}, {2}, {3}, {4}, {5})",
-				         rawCurrents.joints[0],
-				         rawCurrents.joints[1],
-				         rawCurrents.joints[2],
-				         rawCurrents.joints[3],
-				         rawCurrents.joints[4],
-				         rawCurrents.joints[5]);
-			}
-
-			if (fullCurrent > 4.5f) {
-				logError("checkCurrents", "overcurrent detected. Shutting down the arm. current {0}", fullCurrent);
-				arm.reset();
-				stopUpdateLoop();
-				isInFailState = true;
-			}
-		} catch (std::exception const &e) {
-			logError("updateCurrents", "failed to read currents from arm. reason: {0}", e.what());
-		}
-	}
-}
-
-auto KinovaArm::updatePosition() -> void {
-	if (arm) {
-		try {
-			auto rawPosition = arm->get_cart_pos();
-			for (auto coordinateIndex{0}; coordinateIndex < 3; ++coordinateIndex) {
-				currentPosition[coordinateIndex] = rawPosition.s.position[coordinateIndex];
-				currentPosition[coordinateIndex + 3] = rawPosition.s.rotation[coordinateIndex];
-			}
-			if (currentPosition == targetPosition) {
-				if (isHoming) {
-					isHoming = false;
-					// fireIsHomed();
-				}
-				// fire position reached
-				targetPosition.reset();
-			}
-		} catch (std::exception const &e) {
-			logError("<updatePosition>", "failed to read position from arm. reason: {0}", e.what());
-		}
-	}
-}
-
-auto KinovaArm::updateRetractionMode() -> void {
-	if (arm) {
-		try {
-			currentRetractionMode = static_cast<RetractionMode>(arm->get_status());
-			if (currentRetractionMode == targetRetractionMode) {
-				logDebug("<updateRetractionMode>", "reached desired retraction mode.");
-				if (isHoming && currentRetractionMode == RetractionMode::ReadyToStandby) {
-					wasHomed = true;
-					arm->release_joystick();
-					moveToSoftwareHome();
-				}
-				targetRetractionMode.reset();
-			}
-		} catch (std::exception const &e) {
-			logError("<updateRetractionMode>", "failed to read retractionMode. reason: {0}", e.what());
-		}
-	}
-}
-
-auto KinovaArm::updateSteeringMode() -> void {
-	using namespace std::chrono_literals;
-	if (lastSteeringModeChange != std::chrono::steady_clock::time_point{}) {
-		if ((std::chrono::steady_clock::now() - lastSteeringModeChange) >= 500ms) {
-			logInfo("<updateSteeringMode>", "desired stearing mode was reached.");
-			lastSteeringModeChange = std::chrono::steady_clock::time_point{};
-			// fireModeChanged();
-		}
-	}
-}
-
-auto KinovaArm::startSurveillance() -> void {
-	using namespace std::chrono_literals;
-
-	runSurveillance = true;
-	surveillanceHandle = std::async(std::launch::async, [this] {
-		while (runSurveillance) {
-			{
-				auto guard = std::lock_guard{accessLock};
-				reconnectOnError();
-			}
-			std::this_thread::sleep_for(10ms);
-		}
-	});
-}
-
-auto KinovaArm::stopSurveillance() -> void {
-	if (runSurveillance) {
-		runSurveillance = false;
-		surveillanceHandle.get();
-	}
-}
-
-auto KinovaArm::reconnectOnError() -> void {
-	auto guard = std::lock_guard(accessLock);
-
-	if (arm && hasFailed() && shouldReconnectOnError()) {
-		logWarning("<reconnectOnError>", "reconnecting due to arm failure.");
-		stopUpdateLoop();
-		disconnect();
-		connect();
-
-		if (hasControl) {
-			takeControl();
-		}
-	}
-}
-
-auto KinovaArm::moveToHardwareHome() -> void {
-	try {
-		switch (currentRetractionMode) {
-		case RetractionMode::RetractToReady:
-			targetRetractionMode = RetractionMode::ReadyToStandby;
-			arm->push_joystick_button(2);
-			arm->release_joystick();
-			arm->push_joystick_button(2);
-			break;
-		case RetractionMode::NormalToReady:
-		case RetractionMode::ReadyToRetract:
-		case RetractionMode::RetractToStandby:
-		case RetractionMode::Normal:
-		case RetractionMode::NoInitToReady:
-			targetRetractionMode = RetractionMode::ReadyToStandby;
-			arm->push_joystick_button(2);
-			break;
-		case RetractionMode::Error:
-			logError("moveToHardwareHome", "arm is in a failure state.");
-			break;
-		default:
-			logDebug("moveToHardwareHome", "the arm is already in the hardware home position.");
-			break;
-		}
-	} catch (std::exception const &e) {
-		logError("moveToHardwareHome", "failed to move to hardware home. reason: {0}", e.what());
-	}
-}
-
-auto KinovaArm::moveToSoftwareHome() -> void {
-	assert(wasHomed);
-
-	if (!homePosition) {
-		// fireIsHomed();
-		return;
-	}
-
-	moveTo(*homePosition);
-}
-
-auto KinovaArm::moveToRetractionPoint() -> void {
-	switch (currentRetractionMode) {
-	case RetractionMode::ReadyToRetract:
-		targetRetractionMode = RetractionMode::RetractToStandby;
-		arm->push_joystick_button(2);
-		arm->release_joystick();
-		arm->push_joystick_button(2);
-		break;
-	case RetractionMode::ReadyToStandby:
-	case RetractionMode::RetractToReady:
-		targetRetractionMode = RetractionMode::RetractToStandby;
-		arm->push_joystick_button(2);
-		break;
-	case RetractionMode::NormalToReady:
-	case RetractionMode::Normal:
-	case RetractionMode::NoInitToReady:
-		logError("moveToRetractionPoint",
-		         "cannot retract from current mode. mode: {0}",
-		         static_cast<int>(currentRetractionMode));
-		break;
-	case RetractionMode::Error:
-		logError("moveToRetractionPoint", "arm is in a failure state.");
-		break;
-	default:
-		logDebug("moveToRetractionPoint", "the arm is already retracted.");
-		break;
-	}
-}
-
-auto KinovaArm::canChangeMode() -> bool {
-	using namespace std::chrono_literals;
-	return (std::chrono::steady_clock::now() - lastSteeringModeChange) >= 500ms;
 }
 
 } // namespace KinovaZED::Hw

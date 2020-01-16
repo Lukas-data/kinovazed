@@ -10,6 +10,33 @@
 #include <stdexcept>
 #include <thread>
 
+struct ArmListener : KinovaZED::Hw::Actor::EventSubscriber {
+
+	explicit ArmListener(KinovaZED::Logger logger)
+	    : logger{logger} {
+	}
+
+	auto onHomeReached(KinovaZED::Hw::Actor &arm) -> void {
+		logger->info("ArmListener::onHomeReached: the arm reached the home position");
+		arm.retract();
+		// arm.setSteeringMode(KinovaZED::Hw::SteeringMode::Rotation);
+	}
+
+	auto onRetractionPointReached(KinovaZED::Hw::Actor &arm) -> void {
+		logger->info("ArmListener::onRetractionPointReached: the arm reached the retracted position");
+		arm.home();
+	}
+
+	auto onSteeringModeChanged(KinovaZED::Hw::Actor &arm, KinovaZED::Hw::SteeringMode mode) -> void {
+		logger->info("ArmListener::onSteeringModeChanged: the arm changed to steering mode {0}",
+		             static_cast<int>(mode));
+		(void)arm;
+	}
+
+  private:
+	KinovaZED::Logger logger;
+};
+
 int main() {
 	using namespace std::chrono_literals;
 	using namespace KinovaZED::Literals;
@@ -36,22 +63,16 @@ int main() {
 
 	logger->info("main: starting up");
 
+	auto listener = std::make_shared<ArmListener>(logger);
+
 	auto arm = KinovaZED::Hw::KinovaArm{logger};
 	arm.setShouldReconnectOnError(true);
+
+	arm.subscribe(listener);
 
 	if (arm.connect()) {
 		arm.takeControl();
 		arm.home();
-		std::this_thread::sleep_for(5s);
-		arm.setSteeringMode(KinovaZED::Hw::SteeringMode::Rotation);
-		std::this_thread::sleep_for(1s);
-		arm.setJoystick(1000, 1000, 1000);
-		std::this_thread::sleep_for(5s);
-		arm.stopMoving();
-		std::this_thread::sleep_for(1s);
-		arm.home();
-		std::this_thread::sleep_for(6s);
-		arm.retract();
 	}
 
 
@@ -76,7 +97,7 @@ int main() {
 	// 	}
 	// }
 
-	std::this_thread::sleep_for(10s);
+	std::this_thread::sleep_for(120s);
 
 	// return -1;
 }

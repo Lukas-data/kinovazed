@@ -11,7 +11,7 @@ list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake/Modules")
 set(CMAKE_CXX_STANDARD "17")
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
+set(CMAKE_INTERPROCEDURAL_OPTIMIZATION OFF)
 
 include("CTest")
 include("GNUInstallDirs")
@@ -68,6 +68,7 @@ add_library("${PROJECT_NAME}Core"
   "src/hw/Actor.cpp"
   "src/hw/Coordinates.cpp"
   "src/hw/KinovaArm.cpp"
+  "src/hw/KinovaArmPrivate.cpp"
   "src/hw/Origin.cpp"
 
   # Support
