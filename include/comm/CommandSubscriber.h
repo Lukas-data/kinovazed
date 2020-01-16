@@ -6,11 +6,15 @@
 namespace KinovaZED::Comm {
 
 struct CommandSubscriber {
-	auto virtual process(Command command) -> void = 0;
+	auto virtual process(Command command) -> void {
+		(void)command;
+	}
 
-	auto virtual onInterfaceStarted() -> void = 0;
+	auto virtual onInterfaceStarted() -> void {
+	}
 
-	auto virtual onInterfaceStopped() -> void = 0;
+	auto virtual onInterfaceStopped() -> void {
+	}
 };
 
 } // namespace KinovaZED::Comm

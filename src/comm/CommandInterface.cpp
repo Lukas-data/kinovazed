@@ -9,6 +9,10 @@
 
 namespace KinovaZED::Comm {
 
+CommandInterface::~CommandInterface() noexcept {
+	stop();
+}
+
 auto CommandInterface::start() -> void {
 	doStart();
 	std::for_each(begin(subscribers), end(subscribers), [&](auto subscriber) { subscriber->onInterfaceStarted(); });

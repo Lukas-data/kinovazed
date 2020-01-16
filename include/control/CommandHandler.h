@@ -7,37 +7,37 @@
 #include "hw/Actor.h"
 #include "support/Logging.h"
 
+#include <memory>
+
 constexpr int numberOfJoystickMoveInputs = 3;
 
 namespace KinovaZED::Control {
 
-struct CommandHandling : Comm::CommandSubscriber {
-	CommandHandling(Comm::CommandInterface &interface, Hw::Actor &actor, Logger logger);
+struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
+                        Comm::CommandSubscriber,
+                        Hw::Actor::EventSubscriber {
 
-	auto process() -> void;
+	auto process(Comm::Command command) -> void;
+
+	auto onPositionReached(Hw::Actor &who, Hw::Coordinates point) -> void;
+	auto onHomeReached(Hw::Actor &who) -> void;
+	auto onRetractionPointReached(Hw::Actor &who) -> void;
+	auto onSteeringModeChanged(Hw::Actor &who, Hw::SteeringMode mode) -> void;
+	auto onReconnectedDueToError(Hw::Actor &who) -> void;
+
+  protected:
+	CommandHandler(Comm::CommandInterface &interface, Hw::Actor &actor, Logger logger);
 
   private:
 	Comm::CommandInterface &commandSource;
 	Hw::Actor &arm;
 	Logger logger;
-	StateMachine kinovaSM;
 
-	// Comm::Command commandOut{};
-	// Comm::Command commandIn{};
-
-	/*Recieves Inputs from TCP Connection with RoboRIO connection. Writes Joystick Data directly to hardware.*/
-	auto getInputs() -> void;
-	auto sendOutputs(Comm::Command const &command) -> void;
-	auto checkInputEvent(Comm::Command &command) -> void;
-	auto getHWEventVar(Event const &event) -> int;
-
-	auto connectRoboRio() -> void;
-	auto connectJacoZed() -> void;
-
-	auto processInput(Comm::Command &newInCommand) -> bool;
-
-	auto processOutput(bool processed, Comm::Command const &newInCommand, Comm::Command const &oldOutCommand) -> void;
+	StateMachine stateMachine{logger};
 };
+
+auto makeCommandHandler(Comm::CommandInterface &interface, Hw::Actor &actor, Logger logger)
+    -> std::shared_ptr<CommandHandler>;
 
 } // namespace KinovaZED::Control
 #endif

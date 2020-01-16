@@ -1,4 +1,57 @@
-#include "control/CommandHandling.h"
+#include "control/CommandHandler.h"
+
+#include "comm/CommandInterface.h"
+#include "hw/Actor.h"
+#include "hw/Coordinates.h"
+
+#include <memory>
+
+namespace KinovaZED::Control {
+
+CommandHandler::CommandHandler(Comm::CommandInterface &interface, Hw::Actor &actor, Logger logger)
+    : commandSource(interface)
+    , arm{actor}
+    , logger{logger} {
+}
+
+auto CommandHandler::process(Comm::Command command) -> void {
+	(void)command;
+}
+
+auto CommandHandler::onPositionReached(Hw::Actor &who, Hw::Coordinates point) -> void {
+	(void)who, (void)point;
+}
+
+auto CommandHandler::onHomeReached(Hw::Actor &who) -> void {
+	(void)who;
+}
+
+auto CommandHandler::onRetractionPointReached(Hw::Actor &who) -> void {
+	(void)who;
+}
+
+auto CommandHandler::onSteeringModeChanged(Hw::Actor &who, Hw::SteeringMode mode) -> void {
+	(void)who, (void)mode;
+}
+
+auto CommandHandler::onReconnectedDueToError(Hw::Actor &who) -> void {
+	(void)who;
+}
+
+auto makeCommandHandler(Comm::CommandInterface &interface, Hw::Actor &actor, Logger logger)
+    -> std::shared_ptr<CommandHandler> {
+	struct CommandHandlerKey : CommandHandler {
+		CommandHandlerKey(Comm::CommandInterface &interface, Hw::Actor &actor, Logger logger)
+		    : CommandHandler(interface, actor, logger) {
+		}
+	};
+
+	return std::make_shared<CommandHandlerKey>(interface, actor, logger);
+}
+
+
+} // namespace KinovaZED::Control
+
 
 // #ifndef INCLUDE_CONTROL_COMMAND_HANDLING_H_
 // #define INCLUDE_CONTROL_COMMAND_HANDLING_H_

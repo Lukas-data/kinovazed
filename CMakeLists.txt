@@ -57,6 +57,7 @@ add_library("${PROJECT_NAME}Core"
   "src/comm/TCPInterface.cpp"
 
   # Control
+  "src/control/CommandHandler.cpp"
   "src/control/Objective.cpp"
   "src/control/ObjectiveId.cpp"
   "src/control/PositionHandling.cpp"

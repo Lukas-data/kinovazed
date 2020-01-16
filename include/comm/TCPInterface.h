@@ -26,7 +26,7 @@ constexpr auto dataPackages = 4;
 /// The length of full TCP message
 auto constexpr messageLength = commandLength + (dataPackages * dataLength);
 
-struct TCPInterface : private CommandInterface {
+struct TCPInterface : CommandInterface {
 	TCPInterface(asio::io_context &networkContext, std::uint16_t port, Logger logger);
 
   private:
