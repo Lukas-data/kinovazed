@@ -49,6 +49,7 @@ struct KinovaArm : Actor {
 	};
 
 	enum struct RetractionStatus {
+		Initializing,
 		Retracting,
 		Retracted,
 		Homing,
@@ -79,6 +80,8 @@ struct KinovaArm : Actor {
 		auto prefix = "KinovaArm::" + function + ": ";
 		logger->warn(prefix + format, std::forward<Args &&>(args)...);
 	}
+
+	auto initialize() -> void;
 
 	auto startUpdateLoop() -> void;
 	auto stopUpdateLoop() -> void;

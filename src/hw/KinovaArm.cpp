@@ -16,6 +16,8 @@
 #include <numeric>
 #include <optional>
 
+using namespace std::chrono_literals;
+
 namespace KinovaZED::Hw {
 
 constexpr auto positionRange = 0.05;
@@ -85,22 +87,14 @@ auto KinovaArm::takeControl() -> bool {
 
 	try {
 		arm->start_api_ctrl();
-
-		auto mode = arm->get_status();
-		if (mode == KinDrv::MODE_NOINIT) {
-			pushButton(2);
-
-			while (mode == KinDrv::MODE_NOINIT) {
-				std::this_thread::sleep_for(std::chrono::milliseconds{10});
-				mode = arm->get_status();
-			}
-
-			releaseJoystick();
-		}
-
-		logInfo("takeControl", "gained API control over the arm.");
 		hasControl = true;
-		return true;
+
+		initialize();
+
+		if (!hasFailed()) {
+			logInfo("takeControl", "gained control over the arm.");
+		}
+		return !hasFailed();
 	} catch (std::exception const &e) {
 		logError("takeControl", "failed to take API control over the arm. reason: {0}", e.what());
 	}
@@ -118,7 +112,7 @@ auto KinovaArm::releaseControl() -> bool {
 		hasControl = false;
 		return true;
 	} catch (std::exception const &e) {
-		logError("takeControl", "failed to release API control over the arm. reason: {0}", e.what());
+		logError("releaseControl", "failed to release API control over the arm. reason: {0}", e.what());
 	}
 	return false;
 }
@@ -179,7 +173,6 @@ auto KinovaArm::retract() -> void {
 
 	auto guard = std::lock_guard{accessLock};
 
-	// logDebug("retract", "retracting the arm");
 	moveToRetractionPoint();
 }
 

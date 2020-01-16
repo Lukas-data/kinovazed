@@ -8,6 +8,24 @@ using namespace std::chrono_literals;
 
 namespace KinovaZED::Hw {
 
+auto KinovaArm::initialize() -> void {
+	auto retractionMode = readRetractionMode();
+
+	if (retractionMode == RetractionMode::NoInitToReady) {
+		logInfo("initialize", "initializing the arm, this might take some time.");
+		pushButton(2);
+
+		while (retractionMode == RetractionMode::NoInitToReady) {
+			std::this_thread::sleep_for(10ms);
+			retractionMode = readRetractionMode();
+		}
+
+		releaseJoystick();
+	}
+
+	logInfo("initialize", "the arm seems to be initialized already");
+}
+
 auto KinovaArm::startUpdateLoop() -> void {
 	runUpdateLoop = true;
 	updateLoopHandle = std::async(std::launch::async, [this] {

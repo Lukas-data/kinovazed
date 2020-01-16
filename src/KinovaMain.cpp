@@ -79,5 +79,5 @@ int main() {
 		arm.home();
 	}
 
-	std::this_thread::sleep_for(120s);
+	std::this_thread::sleep_for(15s);
 }
