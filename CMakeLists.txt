@@ -28,11 +28,6 @@ set(GENERATED_FILE_REMARK "THIS FILE IS GENERATED AUTOMATICALLY! DON'T EDIT IT! 
 
 ### System Dependencies Setup
 
-find_package("Boost"
-  REQUIRED
-  COMPONENTS "system"
-)
-
 ### Conan Dependencies Setup
 
 include("Conan")
@@ -47,6 +42,7 @@ conan_cmake_run(CONANFILE "conanfile.txt"
 ### Local Dependencies Setup
 
 add_subdirectory("thirdparty/libkindrv")
+add_subdirectory("thirdparty/sml")
 
 ### Core Library
 
@@ -92,12 +88,12 @@ target_include_directories("${PROJECT_NAME}Core" PUBLIC
 
 target_link_libraries("${PROJECT_NAME}Core"
   PUBLIC
-  "Boost::system"
   "CONAN_PKG::asio"
   "CONAN_PKG::nlohmann_json"
   "CONAN_PKG::spdlog"
   "kindrv"
   "rt"
+  "sml"
 )
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS "9.0")

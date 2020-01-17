@@ -12,10 +12,18 @@ CommandHandler::CommandHandler(Comm::CommandInterface &interface, Hw::Actor &act
     : commandSource(interface)
     , arm{actor}
     , logger{logger} {
+	interface.subscribe(shared_from_this());
+	actor.subscribe(shared_from_this());
 }
 
 auto CommandHandler::process(Comm::Command command) -> void {
-	(void)command;
+	switch (command.id) {
+	case Comm::Command::Id::E_Stop:
+		logger->warn("CommandHandler::process: received emergency stop request.");
+		break;
+	default:
+		logger->info("CommandHandler::process: ignoring command '{0}'", toString(command.id));
+	}
 }
 
 auto CommandHandler::onPositionReached(Hw::Actor &who, Hw::Coordinates point) -> void {
