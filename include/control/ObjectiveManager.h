@@ -1,5 +1,5 @@
-#ifndef INCLUDE_CONTROL_POSITION_HANDLING_H_
-#define INCLUDE_CONTROL_POSITION_HANDLING_H_
+#ifndef INCLUDE_CONTROL_OBJECTIVE_MANAGER_H_
+#define INCLUDE_CONTROL_OBJECTIVE_MANAGER_H_
 
 #include "control/Objective.h"
 #include "control/Sequence.h"
@@ -13,12 +13,12 @@
 
 namespace KinovaZED::Control {
 
-struct PositionHandling {
+struct ObjectiveManager {
 	using f2d_vec_t = std::vector<std::vector<float>>;
 	using f3d_vec_t = std::vector<f2d_vec_t>;
 
-	PositionHandling(std::istream &in, Logger logger);
-	PositionHandling(Logger logger);
+	ObjectiveManager(std::istream &in, Logger logger);
+	ObjectiveManager(Logger logger);
 
 	auto getObjective(Objective::Id id) const -> Objective const &;
 	auto getObjective(Objective::Id id) -> Objective &;

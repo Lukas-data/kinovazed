@@ -1,8 +1,6 @@
 #ifndef INCLUDE_HW_KINOVA_ARM_H_
 #define INCLUDE_HW_KINOVA_ARM_H_
 
-#include "control/Event.h"
-#include "control/PositionHandling.h"
 #include "hw/Actor.h"
 #include "hw/Coordinates.h"
 #include "hw/KinovaStatus.h"

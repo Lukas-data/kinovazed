@@ -55,7 +55,7 @@ add_library("${PROJECT_NAME}Core"
   # Control
   "src/control/CommandHandler.cpp"
   "src/control/Objective.cpp"
-  "src/control/PositionHandling.cpp"
+  "src/control/ObjectiveManager.cpp"
   "src/control/Sequence.cpp"
 
   # Hardware
