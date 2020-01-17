@@ -153,8 +153,7 @@ install(FILES
 )
 
 install(FILES
-  "${PROJECT_SOURCE_DIR}/support/objectives/CybathlonObjectives.dat"
-  "${PROJECT_SOURCE_DIR}/support/objectives/CybathlonObjectives.json"
+  "${PROJECT_SOURCE_DIR}/support/objectives/Cybathlon.json"
   DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}"
 )
 

@@ -73,8 +73,10 @@ auto KinovaArm::disconnect() -> void {
 		if (hasControl) {
 			releaseControl();
 		}
-		arm.reset();
-		logInfo("disconnect", "closed connection to arm.");
+		if (arm) {
+			arm.reset();
+			logInfo("disconnect", "closed connection to arm.");
+		}
 	} catch (std::exception const &e) {
 		logError("disconnect", "failed to close the connection to the arm. reason: {0}", e.what());
 	}

@@ -16,7 +16,7 @@ namespace KinovaZED::Comm {
 TCPInterface::TCPInterface(asio::io_context &networkContext, std::uint16_t port, Logger logger)
     : logger{logger}
     , networkContext{networkContext}
-    , acceptor{networkContext, asio::ip::tcp::v4(), port} {
+    , acceptor{networkContext, asio::ip::tcp::endpoint{asio::ip::tcp::v4(), port}} {
 	assert(logger);
 }
 

@@ -1,5 +1,6 @@
 #include "comm/TCPInterface.h"
 #include "control/CommandHandler.h"
+#include "control/ObjectiveManager.h"
 #include "hw/KinovaArm.h"
 #include "support/Logging.h"
 #include "support/Paths.h"
@@ -43,22 +44,16 @@ int main() {
 	logger->set_level(spdlog::level::debug);
 	logger->info("main: starting up");
 
-	auto ioContext = asio::io_context{};
-
 	auto arm = KinovaZED::Hw::KinovaArm{logger};
 
 	if (!arm.connect()) {
 		return EXIT_FAILURE;
 	}
 
-	arm.takeControl();
-	arm.stopMoving();
-
-	if (arm.hasFailed()) {
-		return EXIT_FAILURE;
-	}
-
+	auto ioContext = asio::io_context{};
 	auto interface = KinovaZED::Comm::TCPInterface{ioContext, 12345, logger};
+	auto objectiveStream = std::ifstream{KinovaZED::DEFAULT_OBJ_FILE_JSON};
+	auto objectiveManager = KinovaZED::Control::ObjectiveManager{objectiveStream, logger};
 	auto commandHandler = KinovaZED::Control::makeCommandHandler(interface, arm, logger);
 
 	interface.start();

@@ -13,16 +13,9 @@ namespace KinovaZED {
 auto constexpr DEFAULT_LOG_FILE = "@DEFAULT_LOG_DIRECTORY@/log.txt";
 
 /**
- * The full default path to the objectives file (old-format)
+ * The full default path to the objectives file
  */
-auto constexpr DEFAULT_OBJ_FILE_DAT =
-    "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_DATADIR@/@PROJECT_NAME@/CybathlonObjectives.dat";
-
-/**
- * The full default path to the objectives file (new-format)
- */
-auto constexpr DEFAULT_OBJ_FILE_JSON =
-    "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_DATADIR@/@PROJECT_NAME@/CybathlonObjectives.json";
+auto constexpr DEFAULT_OBJ_FILE_JSON = "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_DATADIR@/@PROJECT_NAME@/Cybathlon.json";
 
 } // namespace KinovaZED
 
