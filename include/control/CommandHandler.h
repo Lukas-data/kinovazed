@@ -27,7 +27,6 @@ struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
   protected:
 	CommandHandler(Comm::CommandInterface &interface, Hw::Actor &actor, Logger logger);
 
-  private:
 	Comm::CommandInterface &commandSource;
 	Hw::Actor &arm;
 	Logger logger;
