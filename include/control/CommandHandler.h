@@ -3,7 +3,6 @@
 
 #include "comm/CommandInterface.h"
 #include "comm/CommandSubscriber.h"
-#include "control/StateMachine.h"
 #include "hw/Actor.h"
 #include "support/Logging.h"
 
@@ -32,8 +31,6 @@ struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
 	Comm::CommandInterface &commandSource;
 	Hw::Actor &arm;
 	Logger logger;
-
-	StateMachine stateMachine{logger};
 };
 
 auto makeCommandHandler(Comm::CommandInterface &interface, Hw::Actor &actor, Logger logger)

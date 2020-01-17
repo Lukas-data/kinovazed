@@ -58,8 +58,6 @@ add_library("${PROJECT_NAME}Core"
   "src/control/ObjectiveId.cpp"
   "src/control/PositionHandling.cpp"
   "src/control/Sequence.cpp"
-  # "src/control/State.cpp"
-  "src/control/StateMachine.cpp"
 
   # Hardware
   "src/hw/Actor.cpp"
