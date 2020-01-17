@@ -20,27 +20,27 @@ struct PositionHandling {
 	PositionHandling(std::istream &in, Logger logger);
 	PositionHandling(Logger logger);
 
-	auto getObjective(ObjectiveId id) const -> Objective const &;
-	auto getObjective(ObjectiveId id) -> Objective &;
+	auto getObjective(Objective::Id id) const -> Objective const &;
+	auto getObjective(Objective::Id id) -> Objective &;
 
-	auto getCoordinates(ObjectiveId id) const -> Hw::Coordinates;
+	auto getCoordinates(Objective::Id id) const -> Hw::Coordinates;
 
-	auto setZeroObjective(Hw::Coordinates coordinates, ObjectiveId) -> void;
+	auto setZeroObjective(Hw::Coordinates coordinates, Objective::Id) -> void;
 
-	auto incrementSequence(ObjectiveId id) -> void;
-	auto decrementSequence(ObjectiveId id) -> void;
-	auto resetSequence(ObjectiveId id) -> void;
+	auto incrementSequence(Objective::Id id) -> void;
+	auto decrementSequence(Objective::Id id) -> void;
+	auto resetSequence(Objective::Id id) -> void;
 
-	auto savePoint(Hw::Coordinates point, ObjectiveId id) -> bool;
-	auto saveOrigin(Hw::Coordinates point, ObjectiveId id) -> void;
-	auto deletePoint(ObjectiveId id) -> void;
+	auto savePoint(Hw::Coordinates point, Objective::Id id) -> bool;
+	auto saveOrigin(Hw::Coordinates point, Objective::Id id) -> void;
+	auto deletePoint(Objective::Id id) -> void;
 
-	auto getSequence(ObjectiveId id) const -> int;
-	auto resetOriginAtEnd(ObjectiveId id) -> bool;
+	auto getSequence(Objective::Id id) const -> int;
+	auto resetOriginAtEnd(Objective::Id id) -> bool;
 
   private:
 	Logger logger;
-	std::map<ObjectiveId, Objective> objectives{};
+	std::map<Objective::Id, Objective> objectives{};
 };
 
 } // namespace KinovaZED::Control

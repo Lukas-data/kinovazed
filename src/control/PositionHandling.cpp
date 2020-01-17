@@ -31,25 +31,25 @@ PositionHandling::PositionHandling(std::istream &in, Logger logger)
 			objectives.emplace(objective.getId(), objective);
 		}
 	}
-	objectives.emplace(ObjectiveId::None, Objective{logger});
+	objectives.emplace(Objective::Id::None, Objective{logger});
 }
 
-auto PositionHandling::getObjective(ObjectiveId id) const -> Objective const & {
+auto PositionHandling::getObjective(Objective::Id id) const -> Objective const & {
 	return objectives.at(id);
 }
 
-auto PositionHandling::getObjective(ObjectiveId id) -> Objective & {
+auto PositionHandling::getObjective(Objective::Id id) -> Objective & {
 	return objectives.at(id);
 }
 
-auto PositionHandling::getCoordinates(ObjectiveId id) const -> Hw::Coordinates {
-	if (id == ObjectiveId::None) {
+auto PositionHandling::getCoordinates(Objective::Id id) const -> Hw::Coordinates {
+	if (id == Objective::Id::None) {
 		throw std::invalid_argument{"Cannot call GetCoordinates() for objective 'None'"};
 	}
 
 	auto const &objective = getObjective(id);
 	if (!objective.numberOfSequencePoints()) {
-		throw std::invalid_argument{"Objective '" + getObjectiveName(id) + "' does not have a sequence!"};
+		throw std::invalid_argument{"Objective '" + toString(id) + "' does not have a sequence!"};
 	}
 
 	auto const &origin = objective.getOrigin();
@@ -60,26 +60,26 @@ auto PositionHandling::getCoordinates(ObjectiveId id) const -> Hw::Coordinates {
 	return coordinates;
 }
 
-auto PositionHandling::setZeroObjective(Hw::Coordinates coordinates, ObjectiveId id) -> void {
+auto PositionHandling::setZeroObjective(Hw::Coordinates coordinates, Objective::Id id) -> void {
 	auto &objective = objectives.at(id);
 	if (!objective.isAbsolute() && !objective.currentSequenceIndex()) {
 		objective.setOrigin(coordinates);
 	}
 }
 
-auto PositionHandling::incrementSequence(ObjectiveId targetObjective) -> void {
+auto PositionHandling::incrementSequence(Objective::Id targetObjective) -> void {
 	objectives.at(targetObjective).forwardSequence();
 }
 
-auto PositionHandling::decrementSequence(ObjectiveId targetObjective) -> void {
+auto PositionHandling::decrementSequence(Objective::Id targetObjective) -> void {
 	objectives.at(targetObjective).rewindSequence();
 }
 
-auto PositionHandling::resetSequence(ObjectiveId targetObjective) -> void {
+auto PositionHandling::resetSequence(Objective::Id targetObjective) -> void {
 	objectives.at(targetObjective).resetSequence();
 }
 
-auto PositionHandling::savePoint(Hw::Coordinates point, ObjectiveId id) -> bool {
+auto PositionHandling::savePoint(Hw::Coordinates point, Objective::Id id) -> bool {
 	auto &objective = objectives.at(id);
 	auto const result = objective.saveSequencePoint(point);
 	if (!result) {
@@ -90,21 +90,21 @@ auto PositionHandling::savePoint(Hw::Coordinates point, ObjectiveId id) -> bool 
 	return result;
 }
 
-auto PositionHandling::saveOrigin(Hw::Coordinates point, ObjectiveId id) -> void {
+auto PositionHandling::saveOrigin(Hw::Coordinates point, Objective::Id id) -> void {
 	objectives.at(id).setOrigin(point);
 }
 
-auto PositionHandling::deletePoint(ObjectiveId id) -> void {
-	if (id != ObjectiveId::None) {
+auto PositionHandling::deletePoint(Objective::Id id) -> void {
+	if (id != Objective::Id::None) {
 		objectives.at(id).deleteSequencePoint();
 	}
 }
 
-auto PositionHandling::getSequence(ObjectiveId id) const -> int {
+auto PositionHandling::getSequence(Objective::Id id) const -> int {
 	return static_cast<int>(objectives.at(id).currentSequenceIndex());
 }
 
-auto PositionHandling::resetOriginAtEnd(ObjectiveId id) -> bool {
+auto PositionHandling::resetOriginAtEnd(Objective::Id id) -> bool {
 	auto &objective = objectives.at(id);
 	if (!objective.sequenceEnded()) {
 		return false;

@@ -2,6 +2,7 @@
 
 #include "control/Sequence.h"
 #include "support/Constants.h"
+#include "support/EnumUtils.h"
 
 #include <nlohmann/json.hpp>
 
@@ -9,11 +10,34 @@
 #include <array>
 #include <iterator>
 #include <stdexcept>
+#include <string>
 #include <type_traits>
 #include <utility>
 #include <vector>
 
 namespace KinovaZED::Control {
+
+auto constexpr objectiveNames = std::array{
+    // clang-format off
+
+	std::pair{Objective::Id::Antenna, "Antenna"},
+	std::pair{Objective::Id::AntennaPull, "AntennaPull"},
+	std::pair{Objective::Id::Bell, "Bell"},
+	std::pair{Objective::Id::Handle, "Handle"},
+	std::pair{Objective::Id::None, "NoObjective"},
+	std::pair{Objective::Id::OpenDoor, "OpenDoor"},
+	std::pair{Objective::Id::PlaceCup, "PlaceCup"},
+	std::pair{Objective::Id::PullDoor, "PullDoor"},
+
+    // clang-format on
+};
+
+static_assert(enumNameMappingsAreUnique(objectiveNames), "Duplicate entry in name map!");
+static_assert(enumNameMapHasAllEntries(objectiveNames, Objective::Id::None), "Missing entry in name map!");
+
+auto isKnownObjectiveId(int candidate) -> bool {
+	return candidate >= 0 && candidate < static_cast<int>(Objective::Id::END_OF_ENUM);
+}
 
 auto constexpr KeyIsAbsolute = "is_abs";
 auto constexpr KeyName = "name";
@@ -21,19 +45,18 @@ auto constexpr KeyOrigin = "origin";
 auto constexpr KeySequence = "sequence";
 
 Objective::Objective(Logger logger)
-    : id{ObjectiveId::None}
+    : id{Id::None}
     , origin{}
     , sequence{logger}
     , absolute{} {
 }
 
 Objective::Objective(nlohmann::json const &json, Logger logger)
-    : id{getObjectiveId(json[KeyName].get<std::string>())}
+    : id{fromString<Id>(json[KeyName].get<std::string>())}
     , origin{json[KeyOrigin].get<Hw::Coordinates>()}
     , sequence{json[KeySequence].get<std::vector<Hw::Coordinates>>(), logger}
     , absolute{json[KeyIsAbsolute].get<bool>()} {
-	logger->info(
-	    "Loaded objective '{0}: {1}'", static_cast<std::underlying_type_t<ObjectiveId>>(id), getObjectiveName(id));
+	logger->info("Loaded objective '{0}: {1}'", static_cast<std::underlying_type_t<Id>>(id), toString(id));
 }
 
 auto Objective::getOrigin() const -> Hw::Origin {
@@ -88,7 +111,7 @@ auto Objective::isAbsolute() const -> bool {
 	return absolute;
 }
 
-auto Objective::getId() const -> ObjectiveId {
+auto Objective::getId() const -> Id {
 	return id;
 }
 
@@ -113,10 +136,37 @@ auto loadObjectives(std::istream &in, Logger logger) -> std::vector<Objective> {
 auto to_json(nlohmann::json &output, Objective const &objective) -> void {
 	output = nlohmann::json{
 	    {KeyIsAbsolute, objective.absolute},
-	    {KeyName, getObjectiveName(objective.id)},
+	    {KeyName, toString(objective.id)},
 	    {KeyOrigin, objective.origin.getCoordinates()},
 	    {KeySequence, objective.sequence},
 	};
 }
 
 } // namespace KinovaZED::Control
+
+// @section ToString support
+
+namespace KinovaZED {
+
+using namespace Control;
+
+template<>
+auto toString(Objective::Id const &id) -> std::string {
+	assert(isKnownObjectiveId(static_cast<std::underlying_type_t<Objective::Id>>(id)));
+
+	auto found =
+	    std::find_if(cbegin(objectiveNames), cend(objectiveNames), [&](auto entry) { return entry.first == id; });
+	return found->second;
+}
+
+template<>
+auto fromString(std::string const &name) -> Objective::Id {
+	auto found =
+	    std::find_if(cbegin(objectiveNames), cend(objectiveNames), [&](auto entry) { return entry.second == name; });
+
+	assert(found != cend(objectiveNames));
+
+	return found->first;
+}
+
+} // namespace KinovaZED

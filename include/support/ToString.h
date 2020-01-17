@@ -8,6 +8,9 @@ namespace KinovaZED {
 template<typename Type>
 auto toString(Type const &object) -> std::string = delete;
 
-}
+template<typename Type>
+auto fromString(std::string const &) -> Type = delete;
+
+} // namespace KinovaZED
 
 #endif
