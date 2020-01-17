@@ -7,10 +7,12 @@
 #include <asio/error_code.hpp>
 #include <asio/io_context.hpp>
 #include <asio/ip/tcp.hpp>
+#include <asio/streambuf.hpp>
 
-#include <array>
 #include <cstddef>
 #include <cstdint>
+#include <optional>
+#include <string>
 
 namespace KinovaZED::Comm {
 
@@ -29,26 +31,31 @@ auto constexpr messageLength = commandLength + (dataPackages * dataLength);
 struct TCPInterface : CommandInterface {
 	TCPInterface(asio::io_context &networkContext, std::uint16_t port, Logger logger);
 
+	~TCPInterface() noexcept;
+
   private:
 	auto doStart() -> void;
 
 	auto doStop() -> void;
 
-	auto handle_accept(asio::error_code error) -> void;
+	auto startAccepting() -> void;
+	auto handleAccept(asio::error_code error) -> void;
 
 	auto startReading() -> void;
-
 	auto processMessage(std::string message) -> void;
 
 	auto processReadError(asio::error_code error) -> void;
+
+	auto disconnectRemote() -> void;
 
 	Logger logger;
 
 	asio::io_context &networkContext;
 	asio::ip::tcp::acceptor acceptor;
-	asio::ip::tcp::socket remoteSocket{networkContext};
+	std::optional<asio::ip::tcp::socket> remoteSocket;
 
-	std::array<char, messageLength + 1> readBuffer{};
+	asio::streambuf readBuffer{128};
+	std::string messageBuffer{};
 };
 
 } // namespace KinovaZED::Comm

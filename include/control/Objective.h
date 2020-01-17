@@ -77,6 +77,11 @@ auto constexpr static NumberOfObjectives = static_cast<int>(Objective::Id::END_O
 auto isKnownObjectiveId(int candidate) -> bool;
 
 /**
+ * Check to see if a given string maps to a known objective ID
+ */
+auto isKnownObjectiveId(std::string const &candidate) -> bool;
+
+/**
  * Load a list of objectives from the given input stream
  */
 auto loadObjectives(std::istream &in, Logger logger) -> std::vector<Objective>;

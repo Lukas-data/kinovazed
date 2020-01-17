@@ -39,6 +39,12 @@ auto isKnownObjectiveId(int candidate) -> bool {
 	return candidate >= 0 && candidate < static_cast<int>(Objective::Id::END_OF_ENUM);
 }
 
+auto isKnownObjectiveId(std::string const &candidate) -> bool {
+	auto found = std::find_if(
+	    cbegin(objectiveNames), cend(objectiveNames), [&](auto entry) { return entry.second == candidate; });
+	return found != cend(objectiveNames);
+}
+
 auto constexpr KeyIsAbsolute = "is_abs";
 auto constexpr KeyName = "name";
 auto constexpr KeyOrigin = "origin";

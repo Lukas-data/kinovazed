@@ -2,13 +2,18 @@
 
 #include "support/Logging.h"
 
+#include <asio/error.hpp>
 #include <asio/io_context.hpp>
 #include <asio/ip/tcp.hpp>
-#include <asio/read.hpp>
+#include <asio/read_until.hpp>
 
+#include <algorithm>
 #include <cassert>
 #include <cstdint>
-#include <sstream>
+#include <exception>
+#include <istream>
+#include <iterator>
+#include <limits>
 #include <string>
 
 namespace KinovaZED::Comm {
@@ -16,62 +21,116 @@ namespace KinovaZED::Comm {
 TCPInterface::TCPInterface(asio::io_context &networkContext, std::uint16_t port, Logger logger)
     : logger{logger}
     , networkContext{networkContext}
-    , acceptor{networkContext, asio::ip::tcp::endpoint{asio::ip::tcp::v4(), port}, true} {
+    , acceptor{networkContext, asio::ip::tcp::endpoint{asio::ip::address_v4::any(), port}, true}
+    , remoteSocket{networkContext} {
 	assert(logger);
 }
 
+
+TCPInterface::~TCPInterface() noexcept {
+	stop();
+}
+
 auto TCPInterface::doStart() -> void {
-	acceptor.async_accept(remoteSocket, [&](auto error) { handle_accept(error); });
+	startAccepting();
 }
 
 auto TCPInterface::doStop() -> void {
-	if (remoteSocket.is_open()) {
-		remoteSocket.close();
+	auto ignored = asio::error_code{};
+	if (remoteSocket && remoteSocket->is_open()) {
+		remoteSocket->close(ignored);
 	}
-	acceptor.close();
+	acceptor.close(ignored);
 }
 
-auto TCPInterface::handle_accept(asio::error_code error) -> void {
+auto TCPInterface::startAccepting() -> void {
+	assert(remoteSocket);
+	logger->debug("TCPInterface::doStart: starting to accept connections on '{}:{}'",
+	              acceptor.local_endpoint().address().to_string(),
+	              acceptor.local_endpoint().port());
+	acceptor.async_accept(*remoteSocket, [&](auto error) { handleAccept(error); });
+}
+
+auto TCPInterface::handleAccept(asio::error_code error) -> void {
 	if (error) {
-		logger->error("TCPInterface: An error occurred while trying to accept a connection! code: {0} || reason: {1}",
+		logger->error("TCPInterface::handleAccept: an error occurred while trying to accept a connection! code: {0} "
+		              "|| reason: {1}",
 		              error.value(),
 		              error.message());
 	} else {
+		logger->info("TCPInterface::handleAccept: accepted a new connection from '{0}",
+		             remoteSocket->remote_endpoint().address().to_string());
 		startReading();
 	}
 }
 
 auto TCPInterface::startReading() -> void {
-	async_read(remoteSocket, asio::buffer(readBuffer), [this](auto error, auto read) {
+	using buffer_iterator = std::istream_iterator<char>;
+
+	async_read_until(*remoteSocket, readBuffer, ';', [this](auto error, auto read) {
 		if (error) {
 			processReadError(error);
-		} else {
-			auto message = std::string{readBuffer.data(), read};
-			processMessage(message);
+		} else if (read > 0) {
+			logger->debug("TCPInterface::<startReading::lambda>: read {0} bytes", read);
+			auto messageStream = std::istream{&readBuffer};
+			messageStream.unsetf(std::ios::skipws);
+			copy_n(buffer_iterator{messageStream}, read - 1, back_inserter(messageBuffer));
+			messageStream.ignore();
+			processMessage(messageBuffer);
+			messageBuffer.clear();
 			startReading();
 		}
 	});
 }
 
 auto TCPInterface::processMessage(std::string message) -> void {
-	int id, variable, x, y, z;
-	auto messageStream = std::istringstream{message};
-	if (messageStream >> id >> variable >> x >> y >> z) {
-		if (!isKnownCommandId(id)) {
-			logger->warn("TCPInterface: ignoring unknown command. id: {0}", id);
-		} else {
-			auto command = Command{static_cast<Command::Id>(id), variable, x, y, z};
-			notifySubscribers(command);
-		}
-	} else {
-		logger->error("TCPInterface: failed to decode incomming command.");
+	logger->debug("TCPInterface::processMessage: received message '{0}'", message);
+	auto command = parseCommand(message);
+	if (!command) {
+		logger->error("TCPInterface::processMessage: failed to decode incomming command. raw data: {0}", message);
+		return;
 	}
+
+	notifySubscribers(*command);
 }
 
 auto TCPInterface::processReadError(asio::error_code error) -> void {
-	logger->error("TCPInterface: error while reading message from network. code: {0} || reason: {1}",
-	              error.value(),
-	              error.message());
+	using buffer_iterator = std::istreambuf_iterator<char>;
+
+	if (error == asio::error::eof || error == asio::error::connection_reset) {
+		logger->info("TCPInterface::processReadError: the commander disconnected.");
+		disconnectRemote();
+		startAccepting();
+	} else if (error == asio::error::not_found) {
+		if (messageBuffer.size() < 1024) {
+			logger->debug("TCPInterface::processReadError: received a partial message. buffering...");
+			auto messageStream = std::istream{&readBuffer};
+			copy(buffer_iterator{messageStream}, buffer_iterator{}, back_inserter(messageBuffer));
+			startReading();
+		} else {
+			logger->error("TCPInterface::processReadError: no message found within 1kB, disconnecting the commander");
+			messageBuffer.clear();
+			disconnectRemote();
+			startAccepting();
+		}
+	} else {
+		logger->error(
+		    "TCPInterface::processReadError: error while reading message from network. code: {0} || reason: {1}",
+		    error.value(),
+		    error.message());
+	}
+}
+
+auto TCPInterface::disconnectRemote() -> void {
+	try {
+		remoteSocket->shutdown(remoteSocket->shutdown_both);
+		remoteSocket->close();
+	} catch (std::exception const &e) {
+		logger->error("TCPInterface::disconnectRemote: failed to cleanly disconnect the commander. reason: {0}",
+		              e.what());
+	}
+
+	remoteSocket.emplace(networkContext);
 }
 
 } // namespace KinovaZED::Comm

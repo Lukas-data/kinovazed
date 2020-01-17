@@ -16,7 +16,7 @@ CommandHandler::CommandHandler(Comm::CommandInterface &interface, Hw::Actor &act
 
 auto CommandHandler::process(Comm::Command command) -> void {
 	switch (command.id) {
-	case Comm::Command::Id::E_Stop:
+	case Comm::Command::Id::EStop:
 		logger->warn("CommandHandler::process: received emergency stop request.");
 		break;
 	default:

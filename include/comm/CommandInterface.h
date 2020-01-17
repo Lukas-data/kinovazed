@@ -11,7 +11,7 @@ namespace KinovaZED::Comm {
 struct CommandInterface {
 	using SubscriberPointer = std::shared_ptr<struct CommandSubscriber>;
 
-	virtual ~CommandInterface() noexcept;
+	virtual ~CommandInterface() noexcept = default;
 
 	/**
 	 * Start receiving commands and sending responses/events

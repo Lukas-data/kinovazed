@@ -3,55 +3,37 @@
 
 #include "support/ToString.h"
 
+#include <any>
 #include <cstdint>
 #include <optional>
+#include <string>
+#include <vector>
 
 namespace KinovaZED::Comm {
 
 struct Command {
-
 	enum struct Id : std::uint8_t {
-		NoOp,
-		Tick,
 		Initialize,
-		NoMode,
-		Retract,
-		Unfold,
 		SetMode,
+		NoMode,
 		MoveJoystick,
 		GoToPosition,
-		Teach,
-		SavePoint,
-		SaveOrigin,
-		DeletePoint,
-		Previous,
-		Next,
-		MoveOrigin,
-		Exit,
-		Shutdown,
-		E_Stop,
+		EStop,
 		QuitEStop,
 
 		// End Marker
 		END_OF_ENUM
 	};
 
-	auto constexpr operator==(Command const &other) const -> bool {
-		return id == other.id && variable == other.variable;
-	}
-
-	auto constexpr operator!=(Command const &other) const -> bool {
-		return !(*this == other);
-	}
-
 	Id id;
-	int variable{};
-	int x{};
-	int y{};
-	int z{};
+	std::vector<std::any> parameters;
 };
 
 auto isKnownCommandId(int candidate) -> bool;
+
+auto isKnownCommandId(std::string const &candidate) -> bool;
+
+auto parseCommand(std::string const &data) -> std::optional<Command>;
 
 } // namespace KinovaZED::Comm
 
@@ -60,6 +42,9 @@ namespace KinovaZED {
 template<>
 auto toString(Comm::Command::Id const &) -> std::string;
 
-}
+template<>
+auto fromString(std::string const &) -> Comm::Command::Id;
+
+} // namespace KinovaZED
 
 #endif
