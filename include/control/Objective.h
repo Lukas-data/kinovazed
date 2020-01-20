@@ -21,7 +21,6 @@ namespace KinovaZED::Control {
 struct Objective {
 
 	enum struct Id : std::uint8_t {
-		None,
 		Bell,
 		Handle,
 		OpenDoor,
@@ -33,8 +32,6 @@ struct Objective {
 		// End Marker
 		END_OF_ENUM,
 	};
-
-	explicit Objective(Logger logger);
 
 	Objective(nlohmann::json const &json, Logger logger);
 

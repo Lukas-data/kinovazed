@@ -24,7 +24,6 @@ auto constexpr objectiveNames = std::array{
 	std::pair{Objective::Id::AntennaPull, "AntennaPull"},
 	std::pair{Objective::Id::Bell, "Bell"},
 	std::pair{Objective::Id::Handle, "Handle"},
-	std::pair{Objective::Id::None, "NoObjective"},
 	std::pair{Objective::Id::OpenDoor, "OpenDoor"},
 	std::pair{Objective::Id::PlaceCup, "PlaceCup"},
 	std::pair{Objective::Id::PullDoor, "PullDoor"},
@@ -33,7 +32,7 @@ auto constexpr objectiveNames = std::array{
 };
 
 static_assert(enumNameMappingsAreUnique(objectiveNames), "Duplicate entry in name map!");
-static_assert(enumNameMapHasAllEntries(objectiveNames, Objective::Id::None), "Missing entry in name map!");
+static_assert(enumNameMapHasAllEntries(objectiveNames, Objective::Id::Bell), "Missing entry in name map!");
 
 auto isKnownObjectiveId(int candidate) -> bool {
 	return candidate >= 0 && candidate < static_cast<int>(Objective::Id::END_OF_ENUM);
@@ -50,19 +49,12 @@ auto constexpr KeyName = "name";
 auto constexpr KeyOrigin = "origin";
 auto constexpr KeySequence = "sequence";
 
-Objective::Objective(Logger logger)
-    : id{Id::None}
-    , origin{}
-    , sequence{logger}
-    , absolute{} {
-}
-
 Objective::Objective(nlohmann::json const &json, Logger logger)
     : id{fromString<Id>(json[KeyName].get<std::string>())}
     , origin{json[KeyOrigin].get<Hw::Coordinates>()}
     , sequence{json[KeySequence].get<std::vector<Hw::Coordinates>>(), logger}
     , absolute{json[KeyIsAbsolute].get<bool>()} {
-	logger->info("Loaded objective '{0}: {1}'", static_cast<std::underlying_type_t<Id>>(id), toString(id));
+	logger->info("Objective::Objective: loaded objective '{0}'", toString(id));
 }
 
 auto Objective::getOrigin() const -> Hw::Origin {
@@ -119,24 +111,6 @@ auto Objective::isAbsolute() const -> bool {
 
 auto Objective::getId() const -> Id {
 	return id;
-}
-
-auto loadObjectives(std::istream &in, Logger logger) -> std::vector<Objective> {
-	auto json = nlohmann::json::parse(in);
-
-	if (!json.empty() && !json.is_array()) {
-		logger->warn("Expected an array as the rool element!");
-		return {};
-	}
-
-	auto objectives = std::vector<Objective>{};
-	objectives.reserve(json.size());
-
-	transform(cbegin(json), cend(json), back_inserter(objectives), [&](auto const &element) {
-		return Objective{element, logger};
-	});
-
-	return objectives;
 }
 
 auto to_json(nlohmann::json &output, Objective const &objective) -> void {
