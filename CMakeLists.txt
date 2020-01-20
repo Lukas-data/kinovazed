@@ -56,7 +56,6 @@ add_library("${PROJECT_NAME}Core"
   "src/control/CommandHandler.cpp"
   "src/control/Objective.cpp"
   "src/control/ObjectiveManager.cpp"
-  "src/control/Sequence.cpp"
 
   # Hardware
   "src/hw/Actor.cpp"

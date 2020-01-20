@@ -1,6 +1,6 @@
 #include "control/ObjectiveManager.h"
 
-#include "control/Sequence.h"
+#include "control/Objective.h"
 #include "support/Constants.h"
 #include "support/Logging.h"
 #include "support/Paths.h"

@@ -1,7 +1,6 @@
 #ifndef INCLUDE_CONTROL_OBJECTIVE_H_
 #define INCLUDE_CONTROL_OBJECTIVE_H_
 
-#include "control/Sequence.h"
 #include "hw/Coordinates.h"
 #include "hw/Origin.h"
 #include "support/Logging.h"
@@ -38,29 +37,20 @@ struct Objective {
 	auto getOrigin() const -> Hw::Origin;
 	auto setOrigin(Hw::Coordinates point) -> void;
 
-	auto getCurrentSequencePoint() const -> Hw::Coordinates;
-	auto getTransformedSequencePoint() const -> Hw::Coordinates;
-	auto saveSequencePoint(Hw::Coordinates point) -> bool;
-	auto deleteSequencePoint() -> void;
-
-	auto numberOfSequencePoints() const -> std::size_t;
-	auto currentSequenceIndex() const -> std::size_t;
-	auto forwardSequence() -> void;
-	auto rewindSequence() -> void;
-	auto resetSequence() -> void;
-	auto sequenceEnded() const -> bool;
-
+	auto getId() const -> Id;
 	auto isAbsolute() const -> bool;
 
-	auto getId() const -> Id;
+	auto nextPoint() -> std::optional<Hw::Coordinates>;
 
   private:
 	friend auto to_json(nlohmann::json &output, Objective const &objective) -> void;
 
 	Id id;
 	Hw::Origin origin;
-	Sequence sequence;
+	std::vector<Hw::Coordinates> sequence;
 	bool absolute;
+
+	std::make_signed_t<std::size_t> currentSequenceIndex{-1};
 };
 
 /**

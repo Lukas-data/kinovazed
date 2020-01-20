@@ -1,6 +1,6 @@
 #include "control/Objective.h"
 
-#include "control/Sequence.h"
+#include "math/Matrix.h"
 #include "support/Constants.h"
 #include "support/EnumUtils.h"
 
@@ -52,7 +52,7 @@ auto constexpr KeySequence = "sequence";
 Objective::Objective(nlohmann::json const &json, Logger logger)
     : id{fromString<Id>(json[KeyName].get<std::string>())}
     , origin{json[KeyOrigin].get<Hw::Coordinates>()}
-    , sequence{json[KeySequence].get<std::vector<Hw::Coordinates>>(), logger}
+    , sequence{json[KeySequence].get<std::vector<Hw::Coordinates>>()}
     , absolute{json[KeyIsAbsolute].get<bool>()} {
 	logger->info("Objective::Objective: loaded objective '{0}'", toString(id));
 }
@@ -65,59 +65,28 @@ auto Objective::setOrigin(Hw::Coordinates point) -> void {
 	origin = Hw::Origin{point};
 }
 
-auto Objective::getCurrentSequencePoint() const -> Hw::Coordinates {
-	return sequence.currentPoint();
-}
-
-auto Objective::getTransformedSequencePoint() const -> Hw::Coordinates {
-	return sequence.currentPoint(origin);
-}
-
-auto Objective::saveSequencePoint(Hw::Coordinates point) -> bool {
-	return sequence.putPoint(origin, point);
-}
-
-auto Objective::deleteSequencePoint() -> void {
-	sequence.removeCurrentPoint();
-}
-
-auto Objective::numberOfSequencePoints() const -> std::size_t {
-	return sequence.length();
-}
-
-auto Objective::currentSequenceIndex() const -> std::size_t {
-	return sequence.currentStep();
-}
-
-auto Objective::forwardSequence() -> void {
-	sequence.advance();
-}
-
-auto Objective::rewindSequence() -> void {
-	sequence.stepBack();
-}
-
-auto Objective::resetSequence() -> void {
-	sequence.reset();
-}
-
-auto Objective::sequenceEnded() const -> bool {
-	return sequence.endReached();
-}
-
-auto Objective::isAbsolute() const -> bool {
-	return absolute;
+auto Objective::nextPoint() -> std::optional<Hw::Coordinates> {
+	++currentSequenceIndex;
+	if (currentSequenceIndex < static_cast<decltype(currentSequenceIndex)>(sequence.size())) {
+		auto coordinates = sequence[currentSequenceIndex];
+		return coordTransform(coordinates, origin.getTransformationMatrix());
+	}
+	return std::nullopt;
 }
 
 auto Objective::getId() const -> Id {
 	return id;
 }
 
+auto Objective::isAbsolute() const -> bool {
+	return absolute;
+}
+
 auto to_json(nlohmann::json &output, Objective const &objective) -> void {
 	output = nlohmann::json{
 	    {KeyIsAbsolute, objective.absolute},
 	    {KeyName, toString(objective.id)},
-	    {KeyOrigin, objective.origin.getCoordinates()},
+	    {KeyOrigin, objective.isAbsolute() ? objective.origin.getCoordinates() : Hw::Coordinates{}},
 	    {KeySequence, objective.sequence},
 	};
 }
