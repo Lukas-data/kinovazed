@@ -14,6 +14,7 @@ namespace KinovaZED::Comm {
 struct Command {
 	enum struct Id : std::uint8_t {
 		Initialize,
+		Unfold,
 		SetMode,
 		NoMode,
 		MoveJoystick,

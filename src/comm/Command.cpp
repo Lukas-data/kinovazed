@@ -25,6 +25,7 @@ auto constexpr commandNames = std::array{
     std::pair{Command::Id::NoMode, "NoMode"},
     std::pair{Command::Id::QuitEStop, "QuitEStop"},
     std::pair{Command::Id::SetMode, "SetMode"},
+    std::pair{Command::Id::Unfold, "Unfold"},
 };
 
 static_assert(enumNameMappingsAreUnique(commandNames), "Duplicate entry in name map!");
@@ -51,6 +52,7 @@ auto checkParameterCount(Command command) -> std::optional<Command> {
 	case Command::Id::EStop:
 	case Command::Id::QuitEStop:
 	case Command::Id::Initialize:
+	case Command::Id::Unfold:
 	case Command::Id::NoMode:
 		if (!command.parameters.empty()) {
 			return std::nullopt;

@@ -54,7 +54,7 @@ int main() {
 	auto interface = KinovaZED::Comm::TCPInterface{ioContext, 12345, logger};
 	auto objectiveStream = std::ifstream{KinovaZED::DEFAULT_OBJ_FILE_JSON};
 	auto objectiveManager = KinovaZED::Control::ObjectiveManager{objectiveStream, logger};
-	auto commandHandler = KinovaZED::Control::makeCommandHandler(interface, arm, logger);
+	auto commandHandler = KinovaZED::Control::makeCommandHandler(interface, arm, objectiveManager, logger);
 
 	interface.start();
 

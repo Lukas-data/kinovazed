@@ -3,10 +3,16 @@
 
 #include "comm/CommandInterface.h"
 #include "comm/CommandSubscriber.h"
+#include "control/CoreStateMachine.h"
+#include "control/Objective.h"
+#include "control/ObjectiveManager.h"
 #include "hw/Actor.h"
 #include "support/Logging.h"
 
+#include <sml/sml.hpp>
+
 #include <memory>
+#include <optional>
 
 constexpr int numberOfJoystickMoveInputs = 3;
 
@@ -25,15 +31,24 @@ struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
 	auto onReconnectedDueToError(Hw::Actor &who) -> void;
 
   protected:
-	CommandHandler(Comm::CommandInterface &interface, Hw::Actor &actor, Logger logger);
+	CommandHandler(Comm::CommandInterface &interface,
+	               Hw::Actor &actor,
+	               ObjectiveManager &objectiveManager,
+	               Logger logger);
 
 	Comm::CommandInterface &commandSource;
 	Hw::Actor &arm;
+	ObjectiveManager &objectiveManager;
 	Logger logger;
+	boost::sml::sm<CoreStateMachine> stateMachine;
+
+	std::optional<Objective> currentObjective{};
 };
 
-auto makeCommandHandler(Comm::CommandInterface &interface, Hw::Actor &actor, Logger logger)
-    -> std::shared_ptr<CommandHandler>;
+auto makeCommandHandler(Comm::CommandInterface &interface,
+                        Hw::Actor &actor,
+                        ObjectiveManager &objectiveManager,
+                        Logger logger) -> std::shared_ptr<CommandHandler>;
 
 } // namespace KinovaZED::Control
 #endif

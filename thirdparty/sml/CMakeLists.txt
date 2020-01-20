@@ -10,3 +10,6 @@ target_include_directories("${PROJECT_NAME}" SYSTEM
   $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
+target_compile_options("${PROJECT_NAME}" INTERFACE
+  "-Wno-pedantic"
+)
