@@ -17,19 +17,6 @@ namespace KinovaZED::Control {
 
 namespace {
 
-auto extractObjective(Comm::Command command, ObjectiveManager const &manager) -> Objective {
-	auto objectiveName = std::any_cast<std::string>(command.parameters[0]);
-	assert(isKnownObjectiveId(objectiveName));
-	auto objectiveId = fromString<Objective::Id>(objectiveName);
-	return manager.getObjective(objectiveId);
-}
-
-auto extractMode(Comm::Command command) -> Hw::SteeringMode {
-	auto modeName = std::any_cast<std::string>(command.parameters[0]);
-	assert(isKnownSteeringMode(modeName));
-	return fromString<Hw::SteeringMode>(modeName);
-}
-
 auto extractJoystickPosition(Comm::Command command) -> std::tuple<int, int, int> {
 	auto x = std::any_cast<int>(command.parameters[0]);
 	auto y = std::any_cast<int>(command.parameters[1]);
@@ -69,7 +56,7 @@ auto CommandHandler::process(Comm::Command command) -> void {
 		        "internal state machine refused to leave the emergency stop mode");
 		break;
 	case Command::Id::GoToPosition: {
-		currentObjective = extractObjective(command, objectiveManager);
+		currentObjective = objectiveManager.getObjective(std::any_cast<Objective::Id>(command.parameters[0]));
 		auto point = currentObjective->nextPoint();
 		auto name = toString(currentObjective->getId());
 		logStep(CoreStateMachine::Event::GoToPosition{arm, *point},
@@ -87,13 +74,18 @@ auto CommandHandler::process(Comm::Command command) -> void {
 		        "internal state machine refused to unfold the arm");
 		break;
 	case Command::Id::SetMode: {
-		auto mode = extractMode(command);
+		auto mode = std::any_cast<Hw::SteeringMode>(command.parameters[0]);
 		auto name = toString(mode);
-		logStep(CoreStateMachine::Event::SetMode{arm, extractMode(command)},
+		logStep(CoreStateMachine::Event::SetMode{arm, mode},
 		        fmt::format("changing steering mode to '{}'", name),
 		        fmt::format("internal state machine refused to change mode to '{}'", name));
 
 	} break;
+	case Command::Id::NoMode:
+		logStep(CoreStateMachine::Event::SetMode{arm, Hw::SteeringMode::NoMode},
+		        "changing into NoMode steering mode",
+		        "internal state machine refused to change into NoMode mode");
+		break;
 	case Command::Id::MoveJoystick: {
 		auto [x, y, z] = extractJoystickPosition(command);
 		logStep(CoreStateMachine::Event::JoystickMoved{arm, x, y, z},

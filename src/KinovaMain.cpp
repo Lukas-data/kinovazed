@@ -2,6 +2,7 @@
 #include "control/CommandHandler.h"
 #include "control/ObjectiveManager.h"
 #include "hw/KinovaArm.h"
+#include "support/LineCommandFactory.h"
 #include "support/Logging.h"
 #include "support/Paths.h"
 #include "support/Prefix.h"
@@ -51,7 +52,7 @@ int main() {
 	}
 
 	auto ioContext = asio::io_context{};
-	auto interface = KinovaZED::Comm::TCPInterface{ioContext, 12345, logger};
+	auto interface = KinovaZED::Comm::TCPInterface{KinovaZED::lineCommandFactory, ioContext, 12345, logger};
 	auto objectiveStream = std::ifstream{KinovaZED::DEFAULT_OBJ_FILE_JSON};
 	auto objectiveManager = KinovaZED::Control::ObjectiveManager{objectiveStream, logger};
 	auto commandHandler = KinovaZED::Control::makeCommandHandler(interface, arm, objectiveManager, logger);

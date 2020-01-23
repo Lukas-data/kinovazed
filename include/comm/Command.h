@@ -34,8 +34,6 @@ auto isKnownCommandId(int candidate) -> bool;
 
 auto isKnownCommandId(std::string const &candidate) -> bool;
 
-auto parseCommand(std::string const &data) -> std::optional<Command>;
-
 } // namespace KinovaZED::Comm
 
 namespace KinovaZED {

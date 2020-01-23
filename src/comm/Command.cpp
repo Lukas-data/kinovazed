@@ -1,6 +1,7 @@
 #include "comm/Command.h"
 
 #include "support/EnumUtils.h"
+#include "support/StringUtils.h"
 #include "support/ToString.h"
 
 #include <algorithm>
@@ -31,12 +32,6 @@ auto constexpr commandNames = std::array{
 static_assert(enumNameMappingsAreUnique(commandNames), "Duplicate entry in name map!");
 static_assert(enumNameMapHasAllEntries(commandNames, Command::Id::Initialize), "Missing entry in name map!");
 
-// https://stackoverflow.com/questions/216823/whats-the-best-way-to-trim-stdstring
-auto trim(std::string &s) -> void {
-	s.erase(begin(s), find_if(begin(s), end(s), [](int ch) { return !std::isspace(ch); }));
-	s.erase(find_if(rbegin(s), rend(s), [](int ch) { return !std::isspace(ch); }).base(), end(s));
-}
-
 auto isKnownCommandId(int candidate) -> bool {
 	return candidate >= 0 && candidate < static_cast<int>(Command::Id::END_OF_ENUM);
 }
@@ -45,89 +40,6 @@ auto isKnownCommandId(std::string const &candidate) -> bool {
 	auto found =
 	    std::find_if(cbegin(commandNames), cend(commandNames), [&](auto entry) { return entry.second == candidate; });
 	return found != cend(commandNames);
-}
-
-auto checkParameterCount(Command::Id id, std::vector<std::any> parameters) -> bool {
-	switch (id) {
-	case Command::Id::EStop:
-	case Command::Id::QuitEStop:
-	case Command::Id::Initialize:
-	case Command::Id::Unfold:
-	case Command::Id::NoMode:
-		if (!parameters.empty()) {
-			return false;
-		}
-		break;
-	case Command::Id::GoToPosition:
-	case Command::Id::SetMode:
-		if (parameters.size() != 1) {
-			return false;
-		}
-		break;
-	case Command::Id::MoveJoystick:
-		if (parameters.size() != 3) {
-			return false;
-		}
-		break;
-	default:
-		return false;
-	}
-
-	return true;
-}
-
-auto adjustParameterTypes(Command::Id id, std::vector<std::any> &parameters) -> bool {
-	switch (id) {
-	case Command::Id::EStop:
-	case Command::Id::QuitEStop:
-	case Command::Id::Initialize:
-	case Command::Id::Unfold:
-	case Command::Id::NoMode:
-	case Command::Id::GoToPosition:
-	case Command::Id::SetMode:
-		return true;
-	case Command::Id::MoveJoystick:
-		try {
-			transform(cbegin(parameters), cend(parameters), begin(parameters), [](auto raw) {
-				return stoi(std::any_cast<std::string>(raw));
-			});
-			return true;
-		} catch (std::exception const &) {
-			return false;
-		}
-		break;
-	default:
-		return false;
-	}
-}
-
-auto parseCommand(std::string const &data) -> std::optional<Command> {
-	auto dataStream = std::istringstream{data};
-
-	auto name = std::string{};
-	std::getline(dataStream, name, ':');
-	trim(name);
-	if (name.empty() || !isKnownCommandId(name)) {
-		return std::nullopt;
-	}
-
-	auto id = fromString<Command::Id>(name);
-
-	auto parameters = std::vector<std::any>{};
-	auto parameter = std::string{};
-	while (std::getline(dataStream, parameter, ':')) {
-		parameters.push_back(parameter);
-	}
-
-	if (!checkParameterCount(id, parameters)) {
-		return std::nullopt;
-	}
-
-	if (!adjustParameterTypes(id, parameters)) {
-		return std::nullopt;
-	}
-
-	return Command{id, parameters};
 }
 
 } // namespace KinovaZED::Comm

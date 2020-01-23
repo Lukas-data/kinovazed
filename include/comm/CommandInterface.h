@@ -3,13 +3,20 @@
 
 #include "comm/Command.h"
 
+#include <functional>
 #include <memory>
+#include <optional>
 #include <set>
+#include <string>
+#include <type_traits>
 
 namespace KinovaZED::Comm {
 
 struct CommandInterface {
 	using SubscriberPointer = std::shared_ptr<struct CommandSubscriber>;
+	using CommandFactory = std::function<std::optional<Command>(std::string)>;
+
+	explicit CommandInterface(CommandFactory commandFactory);
 
 	virtual ~CommandInterface() noexcept = default;
 
@@ -53,7 +60,13 @@ struct CommandInterface {
 	 */
 	auto notifySubscribers(Command command) -> void;
 
+	/**
+	 * Create a command by processing the provided data using the command factory
+	 */
+	auto makeCommand(std::string data) -> std::invoke_result_t<CommandFactory, std::string>;
+
   private:
+	CommandFactory commandFactory;
 	std::set<SubscriberPointer> subscribers;
 };
 

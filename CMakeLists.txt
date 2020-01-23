@@ -67,6 +67,7 @@ add_library("${PROJECT_NAME}Core"
 
   # Support
   "src/support/Logging.cpp"
+  "src/support/LineCommandFactory.cpp"
 )
 
 target_compile_options("${PROJECT_NAME}Core" PUBLIC

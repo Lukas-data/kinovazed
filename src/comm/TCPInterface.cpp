@@ -1,6 +1,7 @@
 #include "comm/TCPInterface.h"
 
 #include "support/Logging.h"
+#include "support/StringUtils.h"
 
 #include <asio/error.hpp>
 #include <asio/io_context.hpp>
@@ -18,8 +19,12 @@
 
 namespace KinovaZED::Comm {
 
-TCPInterface::TCPInterface(asio::io_context &networkContext, std::uint16_t port, Logger logger)
-    : logger{logger}
+TCPInterface::TCPInterface(CommandFactory commandFactory,
+                           asio::io_context &networkContext,
+                           std::uint16_t port,
+                           Logger logger)
+    : CommandInterface{commandFactory}
+    , logger{logger}
     , networkContext{networkContext}
     , acceptor{networkContext, asio::ip::tcp::endpoint{asio::ip::address_v4::any(), port}, true}
     , remoteSocket{networkContext} {
@@ -76,6 +81,7 @@ auto TCPInterface::startReading() -> void {
 			messageStream.unsetf(std::ios::skipws);
 			copy_n(buffer_iterator{messageStream}, read - 1, back_inserter(messageBuffer));
 			messageStream.ignore();
+			trim(messageBuffer);
 			processMessage(messageBuffer);
 			messageBuffer.clear();
 			startReading();
@@ -85,9 +91,9 @@ auto TCPInterface::startReading() -> void {
 
 auto TCPInterface::processMessage(std::string message) -> void {
 	logger->debug("TCPInterface::processMessage: received message '{0}'", message);
-	auto command = parseCommand(message);
+	auto command = makeCommand(message);
 	if (!command) {
-		logger->error("TCPInterface::processMessage: failed to decode incomming command. raw data: {0}", message);
+		logger->error("TCPInterface::processMessage: failed to decode incomming command. raw data: '{0}'", message);
 		return;
 	}
 

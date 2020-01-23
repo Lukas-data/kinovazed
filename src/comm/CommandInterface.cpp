@@ -9,6 +9,10 @@
 
 namespace KinovaZED::Comm {
 
+CommandInterface::CommandInterface(CommandFactory commandFactory)
+    : commandFactory{commandFactory} {
+}
+
 auto CommandInterface::start() -> void {
 	doStart();
 	std::for_each(begin(subscribers), end(subscribers), [&](auto subscriber) { subscriber->onInterfaceStarted(); });
@@ -31,6 +35,11 @@ auto CommandInterface::unsubscribe(SubscriberPointer subscriber) -> bool {
 
 auto CommandInterface::notifySubscribers(Command command) -> void {
 	std::for_each(begin(subscribers), end(subscribers), [&](auto subscriber) { subscriber->process(command); });
+}
+
+auto CommandInterface::makeCommand(std::string data) -> std::invoke_result_t<CommandFactory, std::string> {
+	assert(commandFactory);
+	return commandFactory(data);
 }
 
 } // namespace KinovaZED::Comm
