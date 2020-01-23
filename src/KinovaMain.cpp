@@ -51,6 +51,8 @@ int main() {
 		return EXIT_FAILURE;
 	}
 
+	arm.setShouldReconnectOnError(true);
+
 	auto ioContext = asio::io_context{};
 	auto interface = KinovaZED::Comm::TCPInterface{KinovaZED::lineCommandFactory, ioContext, 12345, logger};
 	auto objectiveStream = std::ifstream{KinovaZED::DEFAULT_OBJ_FILE_JSON};

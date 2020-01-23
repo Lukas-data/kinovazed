@@ -17,7 +17,7 @@
 namespace KinovaZED::Hw {
 
 
-struct KinovaArm : Actor {
+struct KinovaArm : Actor, LoggingMixin {
 	explicit KinovaArm(Logger logger);
 	KinovaArm(Coordinates homePosition, Logger logger);
 	~KinovaArm();
@@ -68,28 +68,9 @@ struct KinovaArm : Actor {
 	};
 
 	template<typename... Args>
-	auto logInfo(std::string function, std::string format, Args &&... args) {
-		auto prefix = "KinovaArm::" + function + ": ";
-		logger->info(prefix + format, std::forward<Args &&>(args)...);
-	}
-
-	template<typename... Args>
 	auto logError(std::string function, std::string format, Args &&... args) {
-		auto prefix = "KinovaArm::" + function + ": ";
-		logger->error(prefix + format, std::forward<Args &&>(args)...);
+		LoggingMixin::template logError(function, format, std::forward<Args>(args)...);
 		isInFailState = true;
-	}
-
-	template<typename... Args>
-	auto logDebug(std::string function, std::string format, Args &&... args) {
-		auto prefix = "KinovaArm::" + function + ": ";
-		logger->debug(prefix + format, std::forward<Args &&>(args)...);
-	}
-
-	template<typename... Args>
-	auto logWarning(std::string function, std::string format, Args &&... args) {
-		auto prefix = "KinovaArm::" + function + ": ";
-		logger->warn(prefix + format, std::forward<Args &&>(args)...);
 	}
 
 	auto startUpdateLoop() -> void;
@@ -117,7 +98,6 @@ struct KinovaArm : Actor {
 	auto releaseJoystick() -> void;
 
 	std::optional<Coordinates> const homePosition;
-	Logger logger;
 
 	std::recursive_mutex accessLock{};
 

@@ -27,13 +27,12 @@ constexpr auto joystickCalcFactor = 0.0025f;
 
 
 KinovaArm::KinovaArm(Logger logger)
-    : homePosition{}
-    , logger{logger} {
+    : KinovaArm{{}, logger} {
 }
 
 KinovaArm::KinovaArm(Coordinates homePosition, Logger logger)
-    : homePosition{homePosition}
-    , logger{logger} {
+    : LoggingMixin{logger, "KinovaArm"}
+    , homePosition{homePosition} {
 }
 
 KinovaArm::~KinovaArm() {
