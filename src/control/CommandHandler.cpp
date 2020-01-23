@@ -33,7 +33,7 @@ CommandHandler::CommandHandler(Comm::CommandInterface &interface,
     , commandSource(interface)
     , arm{actor}
     , objectiveManager{objectiveManager}
-    , stateMachine{} {
+    , stateMachine{CoreStateMachine{logger}} {
 }
 
 auto CommandHandler::process(Comm::Command command) -> void {
