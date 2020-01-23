@@ -28,7 +28,7 @@ constexpr auto dataPackages = 4;
 /// The length of full TCP message
 auto constexpr messageLength = commandLength + (dataPackages * dataLength);
 
-struct TCPInterface : CommandInterface {
+struct TCPInterface : CommandInterface, LoggingMixin {
 	TCPInterface(CommandFactory commandFactory, asio::io_context &networkContext, std::uint16_t port, Logger logger);
 
 	~TCPInterface() noexcept;
@@ -47,8 +47,6 @@ struct TCPInterface : CommandInterface {
 	auto processReadError(asio::error_code error) -> void;
 
 	auto disconnectRemote() -> void;
-
-	Logger logger;
 
 	asio::io_context &networkContext;
 	asio::ip::tcp::acceptor acceptor;
