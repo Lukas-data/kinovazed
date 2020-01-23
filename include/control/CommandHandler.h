@@ -13,6 +13,7 @@
 
 #include <memory>
 #include <optional>
+#include <string>
 
 constexpr int numberOfJoystickMoveInputs = 3;
 
@@ -42,6 +43,19 @@ struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
 	ObjectiveManager &objectiveManager;
 	Logger logger;
 	boost::sml::sm<CoreStateMachine> stateMachine;
+
+  private:
+	template<typename EventType>
+	auto logStep(EventType event, std::string function, std::string success, std::string failure) -> bool {
+		auto baseFormat = "CommandHandler::" + function + ": ";
+		auto didAccept = stateMachine.process_event(event);
+		if (didAccept) {
+			logger->info(baseFormat + success);
+		} else {
+			logger->warn(baseFormat + failure);
+		}
+		return didAccept;
+	}
 
 	std::optional<Objective> currentObjective{};
 };

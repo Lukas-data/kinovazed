@@ -6,11 +6,24 @@
 #include "hw/Coordinates.h"
 
 #include <sml/sml.hpp>
+#include <spdlog/fmt/fmt.h>
 
 #include <cassert>
+#include <functional>
 #include <memory>
 
 namespace KinovaZED::Control {
+
+namespace {
+
+auto extractObjective(Comm::Command command, ObjectiveManager const &manager) -> Objective {
+	auto objectiveName = std::any_cast<std::string>(command.parameters[0]);
+	assert(isKnownObjectiveId(objectiveName));
+	auto objectiveId = fromString<Objective::Id>(objectiveName);
+	return manager.getObjective(objectiveId);
+}
+
+} // namespace
 
 CommandHandler::CommandHandler(Comm::CommandInterface &interface,
                                Hw::Actor &actor,
@@ -25,87 +38,110 @@ CommandHandler::CommandHandler(Comm::CommandInterface &interface,
 
 auto CommandHandler::process(Comm::Command command) -> void {
 	using namespace Comm;
+	using namespace std::placeholders;
+
+	auto logLocalStep = [this](auto event, auto success, auto failure) {
+		return logStep(event, "process", success, failure);
+	};
 
 	switch (command.id) {
 	case Command::Id::EStop:
 		logger->warn("CommandHandler::process: received emergency stop request.");
-		stateMachine.process_event(CoreStateMachine::Event::EStop{arm});
+		logLocalStep(CoreStateMachine::Event::EStop{arm},
+		             "entered emergency stop state",
+		             "internal state machine refused to enter emergency stop.");
 		break;
 	case Command::Id::GoToPosition: {
-		auto objectiveName = std::any_cast<std::string>(command.parameters[0]);
-		assert(isKnownObjectiveId(objectiveName));
-		currentObjective = std::ref(objectiveManager.getObjective(fromString<Objective::Id>(objectiveName)));
+		currentObjective = extractObjective(command, objectiveManager);
 		auto point = currentObjective->nextPoint();
-		if (stateMachine.process_event(CoreStateMachine::Event::GoToPosition{arm, *point})) {
-			logger->info("CommandHandler::process: moving toward objective '{0}'", objectiveName);
-		}
+		auto name = toString(currentObjective->getId());
+		logLocalStep(CoreStateMachine::Event::GoToPosition{arm, *point},
+		             fmt::format("moving toward objective '{}'", name),
+		             fmt::format("internal state machine refused to move toward objective '{}'", name));
 	} break;
 	case Command::Id::Initialize:
-		if (stateMachine.process_event(CoreStateMachine::Event::Initialize{arm})) {
-			logger->info("CommandHandler::process: initializing arm");
-		}
+		logLocalStep(CoreStateMachine::Event::Initialize{arm},
+		             "initializing arm",
+		             "internal state machine refused to initialize the arm");
 		break;
 	case Command::Id::Unfold:
-		if (stateMachine.process_event(CoreStateMachine::Event::Unfold{arm})) {
-			logger->info("CommandHandler::process: unfolding the arm");
-		} else {
-			logger->warn("CommandHandler::process: unfolding rejected");
-		}
+		logLocalStep(CoreStateMachine::Event::Unfold{arm},
+		             "unfolding the arm",
+		             "internal state machine refused to unfold the arm");
 		break;
 	case Command::Id::QuitEStop:
-		if (stateMachine.process_event(CoreStateMachine::Event::QuitEStop{arm})) {
-			logger->info("CommandHandler::process: leaving emergency stop mode");
-		}
+		logLocalStep(CoreStateMachine::Event::QuitEStop{arm},
+		             "leaving emergency stop mode",
+		             "internal state machine refused to leave the emergency stop mode");
 		break;
 	default:
 		logger->warn("CommandHandler::process: ignoring command '{0}'", toString(command.id));
 	}
 }
 
-auto CommandHandler::onPositionReached(Hw::Actor &who, Hw::Coordinates point) -> void {
+auto CommandHandler::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 	using namespace boost::sml;
 
 	logger->debug("CommandHandler::onPositionReached: the arm reached a trajectory point.");
+
+	auto logLocalStep = [this](auto event, auto success, auto failure) {
+		return logStep(event, "onPositionReached", success, failure);
+	};
 
 	if (stateMachine.is("runningSequence"_s)) {
 		assert(currentObjective);
 		auto nextPoint = currentObjective->nextPoint();
 		if (nextPoint) {
-			logger->debug("CommandHandler::onPositionReached: moving towards a trajectory point.");
-			stateMachine.process_event(CoreStateMachine::Event::GoToPosition{arm, *nextPoint});
+			logLocalStep(CoreStateMachine::Event::GoToPosition{arm, *nextPoint},
+			             "moving towards next sequence point",
+			             "internal state machine refused to move towards next sequence point");
 		} else {
-			logger->debug("CommandHandler::onPositionReached: trajectory was finished");
-			stateMachine.process_event(CoreStateMachine::Event::SequenceFinished{});
+			logLocalStep(CoreStateMachine::Event::SequenceFinished{},
+			             "finishing movement sequence",
+			             "internal state machine did not accept sequence end event");
 		}
 	}
-	(void)who, (void)point;
 }
 
-auto CommandHandler::onHomeReached(Hw::Actor &who) -> void {
-	stateMachine.process_event(CoreStateMachine::Event::Unfolded{});
-	(void)who;
+auto CommandHandler::onHomeReached(Hw::Actor &) -> void {
+	auto logLocalStep = [this](auto event, auto success, auto failure) {
+		return logStep(event, "onHomeReached", success, failure);
+	};
+
+	logLocalStep(CoreStateMachine::Event::Unfolded{},
+	             "marking the arm as being at home position",
+	             "internal state machine did not accept unfolded event");
 }
 
-auto CommandHandler::onRetractionPointReached(Hw::Actor &who) -> void {
-	(void)who;
-	stateMachine.process_event(CoreStateMachine::Event::Retracted{});
+auto CommandHandler::onRetractionPointReached(Hw::Actor &) -> void {
+	auto logLocalStep = [this](auto event, auto success, auto failure) {
+		return logStep(event, "onHomeReached", success, failure);
+	};
+
+	logLocalStep(CoreStateMachine::Event::Retracted{},
+	             "marking the arm as being in the retracted",
+	             "internal state machine did not accept retracted event");
 }
 
-auto CommandHandler::onSteeringModeChanged(Hw::Actor &who, Hw::SteeringMode mode) -> void {
-	(void)who, (void)mode;
+auto CommandHandler::onSteeringModeChanged(Hw::Actor &, Hw::SteeringMode) -> void {
 }
 
-auto CommandHandler::onReconnectedDueToError(Hw::Actor &who) -> void {
-	(void)who;
+auto CommandHandler::onReconnectedDueToError(Hw::Actor &) -> void {
 }
 
-auto CommandHandler::onInitializationFinished(Hw::Actor &who) -> void {
-	(void)who;
-	if (stateMachine.process_event(CoreStateMachine::Event::Initialized{})) {
-		logger->info("CommandHandler::process: arm was initialized");
-		if (stateMachine.process_event(CoreStateMachine::Event::Retract{arm})) {
-			logger->info("CommandHandler::process: retracting the arm");
-		}
+auto CommandHandler::onInitializationFinished(Hw::Actor &) -> void {
+	auto logLocalStep = [this](auto event, auto success, auto failure) {
+		return logStep(event, "onInitializationFinished", success, failure);
+	};
+
+	auto acceptedInitialized = logLocalStep(CoreStateMachine::Event::Initialized{},
+	                                        "marking the arm as initialized",
+	                                        "internal state machine did not accept initialized event");
+
+	if (acceptedInitialized) {
+		acceptedInitialized = logLocalStep(CoreStateMachine::Event::Retract{arm},
+		                                   "retracting the arm",
+		                                   "internal state machine refused to retract the arm");
 	}
 }
 
