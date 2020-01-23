@@ -112,7 +112,7 @@ auto CommandHandler::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 
 	auto logStep = makeLoggedStepper("onPositionReached");
 
-	if (stateMachine.is("runningSequence"_s)) {
+	if (stateMachine.is(CoreStateMachine::runningSequence)) {
 		assert(currentObjective);
 		auto nextPoint = currentObjective->nextPoint();
 		if (nextPoint) {
