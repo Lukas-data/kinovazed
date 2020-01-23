@@ -1,7 +1,6 @@
 #include "control/Objective.h"
 
 #include "math/Matrix.h"
-#include "support/Constants.h"
 #include "support/EnumUtils.h"
 
 #include <nlohmann/json.hpp>
@@ -44,17 +43,17 @@ auto isKnownObjectiveId(std::string const &candidate) -> bool {
 	return found != cend(objectiveNames);
 }
 
-auto constexpr KeyIsAbsolute = "is_abs";
-auto constexpr KeyName = "name";
-auto constexpr KeyOrigin = "origin";
-auto constexpr KeySequence = "sequence";
+auto constexpr jsonKeyIsAbs = "is_abs";
+auto constexpr jsonKeyName = "name";
+auto constexpr jsonKeyOrigin = "origin";
+auto constexpr jsonKeySequence = "sequence";
 
 Objective::Objective(nlohmann::json const &json, Logger logger)
     : LoggingMixin{logger, "Objective"}
-    , id{fromString<Id>(json[KeyName].get<std::string>())}
-    , origin{json[KeyOrigin].get<Hw::Coordinates>()}
-    , sequence{json[KeySequence].get<std::vector<Hw::Coordinates>>()}
-    , absolute{json[KeyIsAbsolute].get<bool>()} {
+    , id{fromString<Id>(json[jsonKeyName].get<std::string>())}
+    , origin{json[jsonKeyOrigin].get<Hw::Coordinates>()}
+    , sequence{json[jsonKeySequence].get<std::vector<Hw::Coordinates>>()}
+    , absolute{json[jsonKeyIsAbs].get<bool>()} {
 	logInfo("<ctor>", "loaded objective '{0}'", toString(id));
 }
 
@@ -85,10 +84,10 @@ auto Objective::isAbsolute() const -> bool {
 
 auto to_json(nlohmann::json &output, Objective const &objective) -> void {
 	output = nlohmann::json{
-	    {KeyIsAbsolute, objective.absolute},
-	    {KeyName, toString(objective.id)},
-	    {KeyOrigin, objective.isAbsolute() ? objective.origin.getCoordinates() : Hw::Coordinates{}},
-	    {KeySequence, objective.sequence},
+	    {jsonKeyIsAbs, objective.absolute},
+	    {jsonKeyName, toString(objective.id)},
+	    {jsonKeyOrigin, objective.isAbsolute() ? objective.origin.getCoordinates() : Hw::Coordinates{}},
+	    {jsonKeySequence, objective.sequence},
 	};
 }
 

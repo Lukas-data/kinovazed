@@ -1,22 +1,12 @@
 #include "control/ObjectiveManager.h"
 
 #include "control/Objective.h"
-#include "support/Constants.h"
 #include "support/Logging.h"
-#include "support/Paths.h"
 
 #include <nlohmann/json.hpp>
-#include <spdlog/fmt/ostr.h>
 
 #include <algorithm>
-#include <array>
-#include <fstream>
 #include <iterator>
-#include <sstream>
-#include <stdexcept>
-#include <string>
-#include <type_traits>
-#include <vector>
 
 namespace KinovaZED::Control {
 
