@@ -23,6 +23,12 @@ auto extractObjective(Comm::Command command, ObjectiveManager const &manager) ->
 	return manager.getObjective(objectiveId);
 }
 
+auto extractMode(Comm::Command command) -> Hw::SteeringMode {
+	auto modeName = std::any_cast<std::string>(command.parameters[0]);
+	assert(isKnownSteeringMode(modeName));
+	return fromString<Hw::SteeringMode>(modeName);
+}
+
 } // namespace
 
 CommandHandler::CommandHandler(Comm::CommandInterface &interface,
@@ -51,6 +57,11 @@ auto CommandHandler::process(Comm::Command command) -> void {
 		             "entered emergency stop state",
 		             "internal state machine refused to enter emergency stop.");
 		break;
+	case Command::Id::QuitEStop:
+		logLocalStep(CoreStateMachine::Event::QuitEStop{arm},
+		             "leaving emergency stop mode",
+		             "internal state machine refused to leave the emergency stop mode");
+		break;
 	case Command::Id::GoToPosition: {
 		currentObjective = extractObjective(command, objectiveManager);
 		auto point = currentObjective->nextPoint();
@@ -69,11 +80,14 @@ auto CommandHandler::process(Comm::Command command) -> void {
 		             "unfolding the arm",
 		             "internal state machine refused to unfold the arm");
 		break;
-	case Command::Id::QuitEStop:
-		logLocalStep(CoreStateMachine::Event::QuitEStop{arm},
-		             "leaving emergency stop mode",
-		             "internal state machine refused to leave the emergency stop mode");
-		break;
+	case Command::Id::SetMode: {
+		auto mode = extractMode(command);
+		auto name = toString(mode);
+		logLocalStep(CoreStateMachine::Event::SetMode{arm, extractMode(command)},
+		             fmt::format("changing steering mode to '{}'", name),
+		             fmt::format("internal state machine refused to change mode to '{}'", name));
+
+	} break;
 	default:
 		logWarning("process", "ignoring command '{0}'", toString(command.id));
 	}
@@ -123,7 +137,15 @@ auto CommandHandler::onRetractionPointReached(Hw::Actor &) -> void {
 	             "internal state machine did not accept retracted event");
 }
 
-auto CommandHandler::onSteeringModeChanged(Hw::Actor &, Hw::SteeringMode) -> void {
+auto CommandHandler::onSteeringModeChanged(Hw::Actor &, Hw::SteeringMode mode) -> void {
+	auto logLocalStep = [this](auto event, auto success, auto failure) {
+		return logStep(event, "onSteeringModeChanged", success, failure);
+	};
+
+	logInfo("onSteeringModeChanged", "steering mode changed to '{}'", toString(mode));
+	logLocalStep(CoreStateMachine::Event::ModeSet{},
+	             "changed steering mode",
+	             "internal state machine did not accept steering mode change");
 }
 
 auto CommandHandler::onReconnectedDueToError(Hw::Actor &) -> void {

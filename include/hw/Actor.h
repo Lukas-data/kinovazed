@@ -2,6 +2,7 @@
 #define INCLUDE_HW_ACTOR_H_
 
 #include "hw/Coordinates.h"
+#include "support/ToString.h"
 
 #include <set>
 
@@ -19,6 +20,8 @@ enum struct SteeringMode {
 };
 
 auto isKnownSteeringMode(int candidate) -> bool;
+
+auto isKnownSteeringMode(std::string const &candidate) -> bool;
 
 struct Actor {
 
@@ -130,5 +133,15 @@ struct Actor {
 };
 
 } // namespace KinovaZED::Hw
+
+namespace KinovaZED {
+
+template<>
+auto toString(Hw::SteeringMode const &) -> std::string;
+
+template<>
+auto fromString(std::string const &) -> Hw::SteeringMode;
+
+} // namespace KinovaZED
 
 #endif
