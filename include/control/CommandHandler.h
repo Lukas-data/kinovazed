@@ -45,15 +45,15 @@ struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
 	boost::sml::sm<CoreStateMachine> stateMachine;
 
   private:
-	template<typename EventType>
-	auto logStep(EventType event, std::string function, std::string success, std::string failure) -> bool {
-		auto didAccept = stateMachine.process_event(event);
-		if (didAccept) {
-			logInfo(function, success);
-		} else {
-			logWarning(function, failure);
-		}
-		return didAccept;
+	auto makeLoggedStepper(std::string function) {
+		return [this, function = std::move(function)](auto event, std::string stepMessage, std::string failureMessage) {
+			logInfo(function, stepMessage);
+			auto didAccept = stateMachine.process_event(event);
+			if (!didAccept) {
+				logWarning(function, failureMessage);
+			}
+			return didAccept;
+		};
 	}
 
 	std::optional<Objective> currentObjective{};
