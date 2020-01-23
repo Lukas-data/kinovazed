@@ -137,7 +137,7 @@ auto KinovaArm::updateRetractionMode() -> void {
 
 		if (retractionMode == RetractionMode::RetractToStandby) {
 			wasHomed = false;
-			if (movementStatus == MovementStatus::Retracting) {
+			if (movementStatus == MovementStatus::Retracting || movementStatus == MovementStatus::Initializing) {
 				movementStatus.reset();
 				releaseJoystick();
 				fireRetractionPointReached();
@@ -210,6 +210,9 @@ auto KinovaArm::moveToHardwareHome() -> void {
 			if (movementStatus == MovementStatus::HomingToHardwareHome) {
 				movementStatus.reset();
 				fireHomeReached();
+			} else if (movementStatus == MovementStatus::Initializing) {
+				movementStatus.reset();
+				fireInitializationFinished();
 			}
 			break;
 		}
