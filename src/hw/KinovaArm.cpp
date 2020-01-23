@@ -257,7 +257,7 @@ auto KinovaArm::setSteeringMode(SteeringMode mode) -> bool {
 
 	auto guard = std::lock_guard{accessLock};
 
-	if ((steeringMode != mode || mode == SteeringMode::NoMode)) {
+	if ((steeringMode != mode && mode != SteeringMode::NoMode)) {
 		if (!canChangeMode()) {
 			return false;
 		}
@@ -281,6 +281,7 @@ auto KinovaArm::setSteeringMode(SteeringMode mode) -> bool {
 		steeringMode = mode;
 	} else if (mode == SteeringMode::NoMode) {
 		steeringMode = SteeringMode::Translation;
+		fireSteeringModeChanged(mode);
 	}
 
 	return true;

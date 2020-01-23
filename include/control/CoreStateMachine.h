@@ -135,6 +135,7 @@ struct CoreStateMachine : LoggingMixin {
 			"idle"_s + event<Event::SetMode>      / eventAction = "settingMode"_s,
 			"idle"_s + event<Event::GoToPosition> / eventAction = "runningSequence"_s,
 			"idle"_s + event<Event::Retract>      / eventAction = "retracting"_s,
+			"idle"_s + event<Event::Unfold>       / eventAction = "unfolding"_s,
 		    "idle"_s + event<Event::EStop>        / eventAction = "emergencyStopped"_s,
 			"idle"_s  + on_entry<_>               / logEntry("idle"),
 			"idle"_s  + on_exit<_>                / logExit("idle"),
@@ -148,7 +149,7 @@ struct CoreStateMachine : LoggingMixin {
 			"settingMode"_s  + on_exit<_>                               / logExit("settingMode"),
 
 			// [steering]
-			"steering"_s + event<Event::SetMode>                     = "settingMode"_s,
+			"steering"_s + event<Event::SetMode>       / eventAction = "settingMode"_s,
 			"steering"_s + event<Event::JoystickMoved> / eventAction = "steering"_s,
 			"steering"_s + event<Event::GoToPosition>  / eventAction = "runningSequence"_s,
 			"steering"_s + event<Event::Retract>       / eventAction = "retracting"_s,

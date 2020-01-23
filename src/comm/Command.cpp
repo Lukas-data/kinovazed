@@ -47,34 +47,59 @@ auto isKnownCommandId(std::string const &candidate) -> bool {
 	return found != cend(commandNames);
 }
 
-auto checkParameterCount(Command command) -> std::optional<Command> {
-	switch (command.id) {
+auto checkParameterCount(Command::Id id, std::vector<std::any> parameters) -> bool {
+	switch (id) {
 	case Command::Id::EStop:
 	case Command::Id::QuitEStop:
 	case Command::Id::Initialize:
 	case Command::Id::Unfold:
 	case Command::Id::NoMode:
-		if (!command.parameters.empty()) {
-			return std::nullopt;
+		if (!parameters.empty()) {
+			return false;
 		}
 		break;
 	case Command::Id::GoToPosition:
 	case Command::Id::SetMode:
-		if (command.parameters.size() != 1) {
-			return std::nullopt;
+		if (parameters.size() != 1) {
+			return false;
 		}
 		break;
 	case Command::Id::MoveJoystick:
-		if (command.parameters.size() != 3) {
-			return std::nullopt;
+		if (parameters.size() != 3) {
+			return false;
 		}
 		break;
 	default:
-		return std::nullopt;
+		return false;
 	}
 
-	return command;
-} // namespace KinovaZED::Comm
+	return true;
+}
+
+auto adjustParameterTypes(Command::Id id, std::vector<std::any> &parameters) -> bool {
+	switch (id) {
+	case Command::Id::EStop:
+	case Command::Id::QuitEStop:
+	case Command::Id::Initialize:
+	case Command::Id::Unfold:
+	case Command::Id::NoMode:
+	case Command::Id::GoToPosition:
+	case Command::Id::SetMode:
+		return true;
+	case Command::Id::MoveJoystick:
+		try {
+			transform(cbegin(parameters), cend(parameters), begin(parameters), [](auto raw) {
+				return stoi(std::any_cast<std::string>(raw));
+			});
+			return true;
+		} catch (std::exception const &) {
+			return false;
+		}
+		break;
+	default:
+		return false;
+	}
+}
 
 auto parseCommand(std::string const &data) -> std::optional<Command> {
 	auto dataStream = std::istringstream{data};
@@ -86,14 +111,23 @@ auto parseCommand(std::string const &data) -> std::optional<Command> {
 		return std::nullopt;
 	}
 
+	auto id = fromString<Command::Id>(name);
+
 	auto parameters = std::vector<std::any>{};
 	auto parameter = std::string{};
 	while (std::getline(dataStream, parameter, ':')) {
 		parameters.push_back(parameter);
 	}
 
-	auto command = Command{fromString<Command::Id>(name), parameters};
-	return checkParameterCount(command);
+	if (!checkParameterCount(id, parameters)) {
+		return std::nullopt;
+	}
+
+	if (!adjustParameterTypes(id, parameters)) {
+		return std::nullopt;
+	}
+
+	return Command{id, parameters};
 }
 
 } // namespace KinovaZED::Comm

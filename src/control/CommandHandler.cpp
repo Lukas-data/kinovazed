@@ -11,6 +11,7 @@
 #include <cassert>
 #include <functional>
 #include <memory>
+#include <tuple>
 
 namespace KinovaZED::Control {
 
@@ -27,6 +28,13 @@ auto extractMode(Comm::Command command) -> Hw::SteeringMode {
 	auto modeName = std::any_cast<std::string>(command.parameters[0]);
 	assert(isKnownSteeringMode(modeName));
 	return fromString<Hw::SteeringMode>(modeName);
+}
+
+auto extractJoystickPosition(Comm::Command command) -> std::tuple<int, int, int> {
+	auto x = std::any_cast<int>(command.parameters[0]);
+	auto y = std::any_cast<int>(command.parameters[1]);
+	auto z = std::any_cast<int>(command.parameters[2]);
+	return {x, y, z};
 }
 
 } // namespace
@@ -88,6 +96,12 @@ auto CommandHandler::process(Comm::Command command) -> void {
 		             fmt::format("internal state machine refused to change mode to '{}'", name));
 
 	} break;
+	case Command::Id::MoveJoystick: {
+		auto [x, y, z] = extractJoystickPosition(command);
+		logLocalStep(CoreStateMachine::Event::JoystickMoved{arm, x, y, z},
+		             fmt::format("moving joystick to '[{}, {}, {}]'", x, y, z),
+		             fmt::format("internal state machine refused to move joystick to '[{}, {}, {}]'", x, y, z));
+	} break;
 	default:
 		logWarning("process", "ignoring command '{0}'", toString(command.id));
 	}
@@ -143,7 +157,7 @@ auto CommandHandler::onSteeringModeChanged(Hw::Actor &, Hw::SteeringMode mode) -
 	};
 
 	logInfo("onSteeringModeChanged", "steering mode changed to '{}'", toString(mode));
-	logLocalStep(CoreStateMachine::Event::ModeSet{},
+	logLocalStep(CoreStateMachine::Event::ModeSet{mode},
 	             "changed steering mode",
 	             "internal state machine did not accept steering mode change");
 }
