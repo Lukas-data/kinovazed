@@ -3,7 +3,6 @@
 
 #include "hw/Actor.h"
 #include "hw/Coordinates.h"
-#include "hw/KinovaStatus.h"
 #include "support/Logging.h"
 
 #include "libkindrv/kindrv.h"
@@ -16,6 +15,7 @@
 #include <utility>
 
 namespace KinovaZED::Hw {
+
 
 struct KinovaArm : Actor {
 	explicit KinovaArm(Logger logger);
@@ -40,6 +40,17 @@ struct KinovaArm : Actor {
 	auto hasFailed() const -> bool;
 
   private:
+	enum struct RetractionMode {
+		NormalToReady,
+		ReadyToStandby,
+		ReadyToRetract,
+		RetractToStandby,
+		RetractToReady,
+		Normal,
+		NoInitToReady,
+		Error = 25000,
+	};
+
 	enum struct MovementStatus {
 		HomingToHardwareHome,
 		HomingToSoftwareHome,
