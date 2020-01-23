@@ -55,6 +55,7 @@ add_library("${PROJECT_NAME}Core"
   # Control
   "src/control/CommandHandler.cpp"
   "src/control/CoreStateMachine.cpp"
+  "src/control/HeartbeatGenerator.cpp"
   "src/control/Objective.cpp"
   "src/control/ObjectiveManager.cpp"
 
