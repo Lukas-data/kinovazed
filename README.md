@@ -24,15 +24,16 @@ __commands:__
 
 Commands have __n arguments__ and are always sent __from__ roboRIO __to__ kinovaZED.
 
-| issue:     | args:       |
-| ---------- | ----------- |
-| Initialize | -           |
-| NoMode     | -           |
-| SetMode    | \<mode name> |
-| Move       | \<js_X> : <js_Y> : <js_Z> |
-| GoTo       | \<objective> |
-| EStop      | -           |
-| QuitEStop  | -           |
+| issue:       | args:       |
+| ----------   | ----------- |
+| Initialize   | -           |
+| Unfold       | -           |
+| NoMode       | -           |
+| SetMode      | \<mode name> |
+| MoveJoystick | \<js_X> : <js_Y> : <js_Z> |
+| GoToPosition | \<objective name> |
+| EStop        | -           |
+| QuitEStop    | -           |
 
 __events:__
 
