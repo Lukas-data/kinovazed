@@ -23,11 +23,13 @@ struct CoreStateMachine {
 			auto operator()() const -> void;
 		};
 
+		struct Initialized {};
+
 		struct EStop : ActorEventBase<EStop> {
 			auto operator()() const -> void;
 		};
 
-		struct QuitESTop : ActorEventBase<QuitESTop> {
+		struct QuitEStop : ActorEventBase<QuitEStop> {
 			auto operator()() const -> void;
 		};
 
@@ -75,54 +77,60 @@ struct CoreStateMachine {
 
 		auto isSteeringMode = [](auto const &e) { return e.mode != Hw::SteeringMode::NoMode; };
 
+		auto eventAction = [](auto const &e) { e(); };
+
 		// clang-format off
 		return make_transition_table(
 		    // [poweredOff]
-		    *"poweredOff"_s + event<Event::Initialize> / [](auto const &e) { e(); } = "initialized"_s,
-		    "poweredOff"_s  + event<Event::EStop>      / [](auto const &e) { e(); }  = "emergencyStopped"_s,
+		    *"poweredOff"_s + event<Event::Initialize> / eventAction = "initializing"_s,
+		    "poweredOff"_s  + event<Event::EStop>      / eventAction = "emergencyStopped"_s,
 			
+		    // [poweredOff]
+		    "initializing"_s + event<Event::Initialized>               = "initialized"_s,
+		    "initializing"_s  + event<Event::EStop>      / eventAction = "emergencyStopped"_s,
+
 			// [initialized]
-			"initialized"_s + event<Event::Retract> / [](auto const &e) { e(); } = "retracting"_s,
-		    "initialized"_s + event<Event::EStop>   / [](auto const &e) { e(); } = "emergencyStopped"_s,
+			"initialized"_s + event<Event::Retract> / eventAction = "retracting"_s,
+		    "initialized"_s + event<Event::EStop>   / eventAction = "emergencyStopped"_s,
 
 			// [retracting]
-			"retracting"_s + event<Event::Retracted>                              = "retracted"_s,
-		    "retracting"_s + event<Event::EStop>     / [](auto const &e) { e(); } = "emergencyStopped"_s,
+			"retracting"_s + event<Event::Retracted>               = "retracted"_s,
+		    "retracting"_s + event<Event::EStop>     / eventAction = "emergencyStopped"_s,
 
 			// [retracted]
-			"retracted"_s + event<Event::Unfold> / [](auto const &e) { e(); } = "unfolding"_s,
-		    "retracted"_s + event<Event::EStop>  / [](auto const &e) { e(); } = "emergencyStopped"_s,
+			"retracted"_s + event<Event::Unfold> / eventAction = "unfolding"_s,
+		    "retracted"_s + event<Event::EStop>  / eventAction = "emergencyStopped"_s,
 
 			// [unfolded]
-			"unfolding"_s + event<Event::Unfolded>                              = "idle"_s,
-		    "unfolding"_s + event<Event::EStop>    / [](auto const &e) { e(); } = "emergencyStopped"_s,
+			"unfolding"_s + event<Event::Unfolded>               = "idle"_s,
+		    "unfolding"_s + event<Event::EStop>    / eventAction = "emergencyStopped"_s,
 
 			// [idle]
-			"idle"_s + event<Event::SetMode>      / [](auto const &e) { e(); } = "settingMode"_s,
-			"idle"_s + event<Event::GoToPosition> / [](auto const &e) { e(); } = "runningSequence"_s,
-			"idle"_s + event<Event::Retract>      / [](auto const &e) { e(); } = "retracting"_s,
-		    "idle"_s + event<Event::EStop>        / [](auto const &e) { e(); } = "emergencyStopped"_s,
+			"idle"_s + event<Event::SetMode>      / eventAction = "settingMode"_s,
+			"idle"_s + event<Event::GoToPosition> / eventAction = "runningSequence"_s,
+			"idle"_s + event<Event::Retract>      / eventAction = "retracting"_s,
+		    "idle"_s + event<Event::EStop>        / eventAction = "emergencyStopped"_s,
 
 			// [settingMode]
-			"settingMode"_s + event<Event::ModeSet> [ isSteeringMode ]                               = "steering"_s,
-			"settingMode"_s + event<Event::ModeSet> [ !isSteeringMode ]                              = "idle"_s,
-			"settingMode"_s + event<Event::Retract>                     / [](auto const &e) { e(); } = "retracting"_s,
-		    "settingMode"_s + event<Event::EStop>                       / [](auto const &e) { e(); } = "emergencyStopped"_s,
+			"settingMode"_s + event<Event::ModeSet> [ isSteeringMode ]                = "steering"_s,
+			"settingMode"_s + event<Event::ModeSet> [ !isSteeringMode ]               = "idle"_s,
+			"settingMode"_s + event<Event::Retract>                     / eventAction = "retracting"_s,
+		    "settingMode"_s + event<Event::EStop>                       / eventAction = "emergencyStopped"_s,
 
 			// [steering]
-			"steering"_s + event<Event::SetMode>                                    = "settingMode"_s,
-			"steering"_s + event<Event::JoystickMoved> / [](auto const &e) { e(); } = "steering"_s,
-			"steering"_s + event<Event::GoToPosition>  / [](auto const &e) { e(); } = "runningSequence"_s,
-			"steering"_s + event<Event::Retract>       / [](auto const &e) { e(); } = "retracting"_s,
-		    "steering"_s + event<Event::EStop>         / [](auto const &e) { e(); } = "emergencyStopped"_s,
+			"steering"_s + event<Event::SetMode>                     = "settingMode"_s,
+			"steering"_s + event<Event::JoystickMoved> / eventAction = "steering"_s,
+			"steering"_s + event<Event::GoToPosition>  / eventAction = "runningSequence"_s,
+			"steering"_s + event<Event::Retract>       / eventAction = "retracting"_s,
+		    "steering"_s + event<Event::EStop>         / eventAction = "emergencyStopped"_s,
 
 			// [runningSequence]
-			"runningSequence"_s + event<Event::GoToPosition>  / [](auto const &e) { e(); } = "runningSequence"_s,
-			"runningSequence"_s + event<Event::SequenceFinished>                           = "idle"_s,
-		    "runningSequence"_s + event<Event::EStop>         / [](auto const &e) { e(); } = "emergencyStopped"_s,
+			"runningSequence"_s + event<Event::GoToPosition>  / eventAction = "runningSequence"_s,
+			"runningSequence"_s + event<Event::SequenceFinished>            = "idle"_s,
+		    "runningSequence"_s + event<Event::EStop>         / eventAction = "emergencyStopped"_s,
 			
 		    // [emergencyStopped]
-		    "emergencyStopped"_s + event<Event::QuitESTop> = "poweredOff"_s);
+		    "emergencyStopped"_s + event<Event::QuitEStop> = "poweredOff"_s);
 		// clang-format on
 	}
 };

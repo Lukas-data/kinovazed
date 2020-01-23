@@ -42,6 +42,10 @@ struct Actor {
 		auto virtual onReconnectedDueToError(Actor &who) -> void {
 			(void)who;
 		}
+
+		auto virtual onInitializationFinished(Actor &who) -> void {
+			(void)who;
+		}
 	};
 
 	using EventSubscriberPtr = std::shared_ptr<EventSubscriber>;
@@ -65,6 +69,11 @@ struct Actor {
 	 * Release control over the actor
 	 */
 	auto virtual releaseControl() -> bool = 0;
+
+	/**
+	 * Initialize the actor for operation
+	 */
+	auto virtual initialize() -> void = 0;
 
 	/**
 	 * Stop all ongoing movements and erase all stored trajectories if any are present
@@ -113,6 +122,7 @@ struct Actor {
 	auto fireRetractionPointReached() -> void;
 	auto fireSteeringModeChanged(SteeringMode mode) -> void;
 	auto fireReconnectedDueToError() -> void;
+	auto fireInitializationFinished() -> void;
 
   private:
 	bool reconnectOnError{false};

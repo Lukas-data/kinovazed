@@ -50,6 +50,12 @@ auto Actor::fireReconnectedDueToError() -> void {
 	});
 }
 
+auto Actor::fireInitializationFinished() -> void {
+	for_each(begin(eventSubscribers), end(eventSubscribers), [this](auto subscriber) {
+		subscriber->onInitializationFinished(*this);
+	});
+}
+
 auto isKnownSteeringMode(int candidate) -> bool {
 	return candidate >= static_cast<int>(SteeringMode::NoMode) &&
 	    candidate < static_cast<int>(SteeringMode::END_OF_ENUM);

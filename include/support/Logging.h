@@ -2,6 +2,7 @@
 #define INCLUDE_SUPPORT_LOGGING_H_
 
 #include <spdlog/spdlog.h>
+#include <spdlog/fmt/ostr.h>
 
 #include <cstddef>
 #include <filesystem>

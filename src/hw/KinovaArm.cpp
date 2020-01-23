@@ -91,8 +91,6 @@ auto KinovaArm::takeControl() -> bool {
 		arm->start_api_ctrl();
 		hasControl = true;
 
-		initialize();
-
 		if (!hasFailed()) {
 			logInfo("takeControl", "gained control over the arm.");
 		}
@@ -117,6 +115,26 @@ auto KinovaArm::releaseControl() -> bool {
 		logError("releaseControl", "failed to release API control over the arm. reason: {0}", e.what());
 	}
 	return false;
+}
+
+auto KinovaArm::initialize() -> void {
+	auto guard = std::lock_guard{accessLock};
+
+	try {
+		auto retractionMode = readRetractionMode();
+		movementStatus = MovementStatus::Initializing;
+
+		if (retractionMode == RetractionMode::NoInitToReady) {
+			logInfo("initialize", "initializing the arm, this might take some time.");
+			pushButton(2);
+		} else {
+			logInfo("initialize", "the arm seems to be initialized already. going home instead");
+			moveToHardwareHome();
+		}
+
+	} catch (std::exception const &e) {
+		logError("initialize", "failed to initialize the arm. reason: {0}", e.what());
+	}
 }
 
 auto KinovaArm::stopMoving() -> bool {
@@ -191,6 +209,7 @@ auto KinovaArm::moveTo(Coordinates position) -> void {
 		float fingerPositions[3] = {.0f, .0f, .0f};
 		auto armPosition = static_cast<std::array<float, 6>>(position);
 		arm->set_target_cart(armPosition.data(), fingerPositions);
+		movementStatus = MovementStatus::MovingToPosition;
 		targetPosition = position;
 	} catch (std::exception const &e) {
 		logError("moveTo", "failed to move to desired position. reason: {0}", e.what());

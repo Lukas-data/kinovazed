@@ -8,24 +8,6 @@ using namespace std::chrono_literals;
 
 namespace KinovaZED::Hw {
 
-auto KinovaArm::initialize() -> void {
-	auto retractionMode = readRetractionMode();
-
-	if (retractionMode == RetractionMode::NoInitToReady) {
-		logInfo("initialize", "initializing the arm, this might take some time.");
-		pushButton(2);
-
-		while (retractionMode == RetractionMode::NoInitToReady) {
-			std::this_thread::sleep_for(10ms);
-			retractionMode = readRetractionMode();
-		}
-
-		releaseJoystick();
-	}
-
-	logInfo("initialize", "the arm seems to be initialized already");
-}
-
 auto KinovaArm::startUpdateLoop() -> void {
 	runUpdateLoop = true;
 	updateLoopHandle = std::async(std::launch::async, [this] {
@@ -97,8 +79,9 @@ auto KinovaArm::updatePosition() -> void {
 			return;
 		}
 
-		if (movementStatus == MovementStatus::MovingToPosition && currentPosition == targetPosition) {
+		if (movementStatus == MovementStatus::MovingToPosition && isInRange(*currentPosition, *targetPosition)) {
 			targetPosition.reset();
+			movementStatus.reset();
 			std::this_thread::sleep_for(10ms);
 			firePositionReached(*currentPosition);
 			return;
@@ -114,7 +97,7 @@ auto KinovaArm::readPosition() -> Coordinates {
 	auto [x, y, z] = rawPosition.position;
 	auto [pitch, yaw, roll] = rawPosition.rotation;
 
-	return {z, y, z, pitch, yaw, roll};
+	return {x, y, z, pitch, yaw, roll};
 }
 
 auto KinovaArm::updateRetractionMode() -> void {
@@ -127,18 +110,27 @@ auto KinovaArm::updateRetractionMode() -> void {
 
 		retractionMode = mode;
 		logDebug("<updateRetractionMode>", "reached retraction mode {0};", static_cast<int>(*retractionMode));
-		logDebug("<updateRetractionMode>", "movement status is {0};", static_cast<int>(*movementStatus));
+		if (movementStatus) {
+			logDebug("<updateRetractionMode>", "movement status is {0};", static_cast<int>(*movementStatus));
+		}
 
 		if (retractionMode == RetractionMode::ReadyToStandby) {
 			logDebug("<updateRetractionMode>", "ready to standby");
 			wasHomed = true;
 			if (movementStatus == MovementStatus::HomingToHardwareHome) {
+				movementStatus.reset();
 				releaseJoystick();
 				fireHomeReached();
 				return;
 			} else if (movementStatus == MovementStatus::HomingToSoftwareHome) {
+				movementStatus.reset();
 				releaseJoystick();
 				moveToSoftwareHome();
+				return;
+			} else if (movementStatus == MovementStatus::Initializing) {
+				movementStatus.reset();
+				releaseJoystick();
+				fireInitializationFinished();
 				return;
 			}
 		}
@@ -146,6 +138,7 @@ auto KinovaArm::updateRetractionMode() -> void {
 		if (retractionMode == RetractionMode::RetractToStandby) {
 			wasHomed = false;
 			if (movementStatus == MovementStatus::Retracting) {
+				movementStatus.reset();
 				releaseJoystick();
 				fireRetractionPointReached();
 				return;
@@ -240,6 +233,7 @@ auto KinovaArm::moveToSoftwareHome() -> void {
 
 auto KinovaArm::moveToRetractionPoint() -> void {
 	movementStatus = MovementStatus::Retracting;
+	retractionMode = readRetractionMode();
 
 	try {
 		switch (*retractionMode) {

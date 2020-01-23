@@ -76,6 +76,7 @@
         "cassert": "cpp",
         "csignal": "cpp",
         "future": "cpp",
-        "cfenv": "cpp"
+        "cfenv": "cpp",
+        "any": "cpp"
     },
 }

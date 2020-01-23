@@ -35,19 +35,27 @@ auto CommandHandler::process(Comm::Command command) -> void {
 		auto objectiveName = std::any_cast<std::string>(command.parameters[0]);
 		assert(isKnownObjectiveId(objectiveName));
 		currentObjective = std::ref(objectiveManager.getObjective(fromString<Objective::Id>(objectiveName)));
-		logger->info("CommandHandler::process: moving toward objective '{0}'", objectiveName);
 		auto point = currentObjective->nextPoint();
-		stateMachine.process_event(CoreStateMachine::Event::GoToPosition{arm, *point});
+		if (stateMachine.process_event(CoreStateMachine::Event::GoToPosition{arm, *point})) {
+			logger->info("CommandHandler::process: moving toward objective '{0}'", objectiveName);
+		}
 	} break;
 	case Command::Id::Initialize:
-		logger->info("CommandHandler::process: initializing arm");
-		stateMachine.process_event(CoreStateMachine::Event::Initialize{arm});
-		logger->info("CommandHandler::process: arm was initialized");
-		stateMachine.process_event(CoreStateMachine::Event::Retract{arm});
+		if (stateMachine.process_event(CoreStateMachine::Event::Initialize{arm})) {
+			logger->info("CommandHandler::process: initializing arm");
+		}
 		break;
 	case Command::Id::Unfold:
-		logger->info("CommandHandler::process: unfolding the arm");
-		stateMachine.process_event(CoreStateMachine::Event::Unfold{arm});
+		if (stateMachine.process_event(CoreStateMachine::Event::Unfold{arm})) {
+			logger->info("CommandHandler::process: unfolding the arm");
+		} else {
+			logger->warn("CommandHandler::process: unfolding rejected");
+		}
+		break;
+	case Command::Id::QuitEStop:
+		if (stateMachine.process_event(CoreStateMachine::Event::QuitEStop{arm})) {
+			logger->info("CommandHandler::process: leaving emergency stop mode");
+		}
 		break;
 	default:
 		logger->warn("CommandHandler::process: ignoring command '{0}'", toString(command.id));
@@ -89,6 +97,16 @@ auto CommandHandler::onSteeringModeChanged(Hw::Actor &who, Hw::SteeringMode mode
 
 auto CommandHandler::onReconnectedDueToError(Hw::Actor &who) -> void {
 	(void)who;
+}
+
+auto CommandHandler::onInitializationFinished(Hw::Actor &who) -> void {
+	(void)who;
+	if (stateMachine.process_event(CoreStateMachine::Event::Initialized{})) {
+		logger->info("CommandHandler::process: arm was initialized");
+		if (stateMachine.process_event(CoreStateMachine::Event::Retract{arm})) {
+			logger->info("CommandHandler::process: retracting the arm");
+		}
+	}
 }
 
 struct CommandHandlerCtorAccess : CommandHandler {

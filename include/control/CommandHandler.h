@@ -29,6 +29,7 @@ struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
 	auto onRetractionPointReached(Hw::Actor &who) -> void;
 	auto onSteeringModeChanged(Hw::Actor &who, Hw::SteeringMode mode) -> void;
 	auto onReconnectedDueToError(Hw::Actor &who) -> void;
+	auto onInitializationFinished(Hw::Actor &who) -> void;
 
   protected:
 	CommandHandler(Comm::CommandInterface &interface,

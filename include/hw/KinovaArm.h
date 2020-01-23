@@ -27,6 +27,7 @@ struct KinovaArm : Actor {
 
 	auto takeControl() -> bool;
 	auto releaseControl() -> bool;
+	auto initialize() -> void;
 
 	auto stopMoving() -> bool;
 	auto home() -> void;
@@ -44,6 +45,7 @@ struct KinovaArm : Actor {
 		HomingToSoftwareHome,
 		MovingToPosition,
 		Retracting,
+		Initializing,
 	};
 
 	enum struct RetractionStatus {
@@ -78,8 +80,6 @@ struct KinovaArm : Actor {
 		auto prefix = "KinovaArm::" + function + ": ";
 		logger->warn(prefix + format, std::forward<Args &&>(args)...);
 	}
-
-	auto initialize() -> void;
 
 	auto startUpdateLoop() -> void;
 	auto stopUpdateLoop() -> void;

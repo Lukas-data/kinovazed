@@ -67,6 +67,9 @@ struct Coordinates {
 	friend void to_json(nlohmann::json &j, Coordinates const &c);
 
 	constexpr static float epsilon = 0.00001f;
+	constexpr static float positionDelta = 0.05f;
+	constexpr static float rotationDelta = 0.25f;
+	constexpr static float velocityDelta = 0.000002f;
 
 	float x = 0.0f; // Kinova Left/Right(-)  0.8..-0.8
 	float y = 0.0f; // Kinova Front(-)/Back  -0.85..0.85
@@ -91,6 +94,15 @@ struct Coordinates {
 
 static auto isEqualFloat(float lhs, float rhs) {
 	return std::fabs(lhs - rhs) < Coordinates::epsilon;
+}
+
+inline auto isInRange(Coordinates const &lhs, Coordinates const &rhs) {
+	return std::fabs(lhs.x - rhs.x) < Coordinates::positionDelta &&
+	    std::fabs(lhs.y - rhs.y) < Coordinates::positionDelta &&
+	    std::fabs(lhs.z - rhs.z) < Coordinates::positionDelta &&
+	    std::fabs(lhs.pitch - rhs.pitch) < Coordinates::rotationDelta &&
+	    std::fabs(lhs.yaw - rhs.yaw) < Coordinates::rotationDelta &&
+	    std::fabs(lhs.roll - rhs.roll) < Coordinates::rotationDelta;
 }
 
 inline auto operator==(Coordinates const &lhs, Coordinates const &rhs) -> bool {

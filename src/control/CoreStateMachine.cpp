@@ -5,12 +5,17 @@
 namespace KinovaZED::Control {
 
 auto CoreStateMachine::Event::Initialize::operator()() const -> void {
-	actor.takeControl();
+	if (actor.takeControl()) {
+		actor.initialize();
+	}
 }
 
 auto CoreStateMachine::Event::EStop::operator()() const -> void {
 	actor.stopMoving();
 	actor.releaseControl();
+}
+
+auto CoreStateMachine::Event::QuitEStop::operator()() const -> void {
 }
 
 auto CoreStateMachine::Event::Retract::operator()() const -> void {
