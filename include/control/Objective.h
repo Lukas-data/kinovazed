@@ -17,7 +17,7 @@
 
 namespace KinovaZED::Control {
 
-struct Objective {
+struct Objective : LoggingMixin {
 
 	enum struct Id : std::uint8_t {
 		Bell,

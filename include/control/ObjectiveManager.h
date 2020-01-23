@@ -9,16 +9,15 @@
 
 namespace KinovaZED::Control {
 
-struct ObjectiveManager {
+struct ObjectiveManager : LoggingMixin {
 	ObjectiveManager(std::istream &in, Logger logger);
 
 	auto getObjective(Objective::Id id) const -> Objective const &;
 	auto getObjective(Objective::Id id) -> Objective &;
 
   private:
-	auto static loadObjectives(std::istream &in, Logger logger) -> std::vector<Objective>;
+	auto loadObjectives(std::istream &in) -> void;
 
-	Logger logger;
 	std::map<Objective::Id, Objective> objectives{};
 };
 

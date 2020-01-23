@@ -50,11 +50,12 @@ auto constexpr KeyOrigin = "origin";
 auto constexpr KeySequence = "sequence";
 
 Objective::Objective(nlohmann::json const &json, Logger logger)
-    : id{fromString<Id>(json[KeyName].get<std::string>())}
+    : LoggingMixin{logger, "Objective"}
+    , id{fromString<Id>(json[KeyName].get<std::string>())}
     , origin{json[KeyOrigin].get<Hw::Coordinates>()}
     , sequence{json[KeySequence].get<std::vector<Hw::Coordinates>>()}
     , absolute{json[KeyIsAbsolute].get<bool>()} {
-	logger->info("Objective::Objective: loaded objective '{0}'", toString(id));
+	logInfo("<ctor>", "loaded objective '{0}'", toString(id));
 }
 
 auto Objective::getOrigin() const -> Hw::Origin {

@@ -81,6 +81,10 @@ struct LoggingMixin {
 		logger->error(message, std::forward<ParameterTypes>(params)...);
 	}
 
+	auto getLogger() const -> Logger {
+		return logger;
+	}
+
   private:
 	Logger logger;
 	std::string className;

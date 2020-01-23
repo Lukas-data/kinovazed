@@ -21,11 +21,10 @@
 namespace KinovaZED::Control {
 
 ObjectiveManager::ObjectiveManager(std::istream &in, Logger logger)
-    : logger{logger} {
+    : LoggingMixin{logger, "ObjectiveManager"} {
 	if (in.peek() != std::remove_reference_t<decltype(in)>::traits_type::eof()) {
-		for (auto &objective : loadObjectives(in, logger)) {
-			objectives.emplace(objective.getId(), objective);
-		}
+		logInfo("<ctor>", "loading objectives");
+		loadObjectives(in);
 	}
 }
 
@@ -37,22 +36,20 @@ auto ObjectiveManager::getObjective(Objective::Id id) -> Objective & {
 	return objectives.at(id);
 }
 
-auto ObjectiveManager::loadObjectives(std::istream &in, Logger logger) -> std::vector<Objective> {
+auto ObjectiveManager::loadObjectives(std::istream &in) -> void {
 	auto json = nlohmann::json::parse(in);
 
 	if (!json.empty() && !json.is_array()) {
-		logger->error("ObjectiveManager::loadObjectives: expected an array as the rool element!");
-		return {};
+		logError("loadObjectives", "expected an array as the rool element!");
+		return;
 	}
 
-	auto objectives = std::vector<Objective>{};
-	objectives.reserve(json.size());
-
-	transform(cbegin(json), cend(json), back_inserter(objectives), [&](auto const &element) {
-		return Objective{element, logger};
+	for_each(cbegin(json), cend(json), [&](auto const &element) {
+		auto objective = Objective{element, getLogger()};
+		objectives.emplace(objective.getId(), objective);
 	});
 
-	return objectives;
+	logInfo("loadObjectives", "loaded {} objectives", objectives.size());
 }
 
 } // namespace KinovaZED::Control
