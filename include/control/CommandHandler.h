@@ -20,6 +20,7 @@ constexpr int numberOfJoystickMoveInputs = 3;
 namespace KinovaZED::Control {
 
 struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
+                        LoggingMixin,
                         Comm::CommandSubscriber,
                         Hw::Actor::EventSubscriber {
 
@@ -41,18 +42,16 @@ struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
 	Comm::CommandInterface &commandSource;
 	Hw::Actor &arm;
 	ObjectiveManager &objectiveManager;
-	Logger logger;
 	boost::sml::sm<CoreStateMachine> stateMachine;
 
   private:
 	template<typename EventType>
 	auto logStep(EventType event, std::string function, std::string success, std::string failure) -> bool {
-		auto baseFormat = "CommandHandler::" + function + ": ";
 		auto didAccept = stateMachine.process_event(event);
 		if (didAccept) {
-			logger->info(baseFormat + success);
+			logInfo(function, success);
 		} else {
-			logger->warn(baseFormat + failure);
+			logWarning(function, failure);
 		}
 		return didAccept;
 	}

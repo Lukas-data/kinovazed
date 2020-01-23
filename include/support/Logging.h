@@ -1,8 +1,8 @@
 #ifndef INCLUDE_SUPPORT_LOGGING_H_
 #define INCLUDE_SUPPORT_LOGGING_H_
 
-#include <spdlog/spdlog.h>
 #include <spdlog/fmt/ostr.h>
+#include <spdlog/spdlog.h>
 
 #include <cstddef>
 #include <filesystem>
@@ -49,6 +49,42 @@ struct LogConfiguration {
 };
 
 auto makeLogger(LogConfiguration config) -> Logger;
+
+struct LoggingMixin {
+	explicit LoggingMixin(Logger logger, std::string className)
+	    : logger{logger}
+	    , className{className} {
+	}
+
+  protected:
+	template<typename... ParameterTypes>
+	auto logDebug(std::string functionName, std::string format, ParameterTypes &&... params) -> void {
+		auto message = className + "::" + functionName + ": " + format;
+		logger->debug(message, std::forward<ParameterTypes>(params)...);
+	}
+
+	template<typename... ParameterTypes>
+	auto logInfo(std::string functionName, std::string format, ParameterTypes &&... params) -> void {
+		auto message = className + "::" + functionName + ": " + format;
+		logger->info(message, std::forward<ParameterTypes>(params)...);
+	}
+
+	template<typename... ParameterTypes>
+	auto logWarning(std::string functionName, std::string format, ParameterTypes &&... params) -> void {
+		auto message = className + "::" + functionName + ": " + format;
+		logger->warn(message, std::forward<ParameterTypes>(params)...);
+	}
+
+	template<typename... ParameterTypes>
+	auto logError(std::string functionName, std::string format, ParameterTypes &&... params) -> void {
+		auto message = className + "::" + functionName + ": " + format;
+		logger->error(message, std::forward<ParameterTypes>(params)...);
+	}
+
+  private:
+	Logger logger;
+	std::string className;
+};
 
 } // namespace KinovaZED
 

@@ -29,10 +29,10 @@ CommandHandler::CommandHandler(Comm::CommandInterface &interface,
                                Hw::Actor &actor,
                                ObjectiveManager &objectiveManager,
                                Logger logger)
-    : commandSource(interface)
+    : LoggingMixin{logger, "CommandHandler"}
+    , commandSource(interface)
     , arm{actor}
     , objectiveManager{objectiveManager}
-    , logger{logger}
     , stateMachine{} {
 }
 
@@ -46,7 +46,7 @@ auto CommandHandler::process(Comm::Command command) -> void {
 
 	switch (command.id) {
 	case Command::Id::EStop:
-		logger->warn("CommandHandler::process: received emergency stop request.");
+		logWarning("process", "received emergency stop request.");
 		logLocalStep(CoreStateMachine::Event::EStop{arm},
 		             "entered emergency stop state",
 		             "internal state machine refused to enter emergency stop.");
@@ -75,14 +75,14 @@ auto CommandHandler::process(Comm::Command command) -> void {
 		             "internal state machine refused to leave the emergency stop mode");
 		break;
 	default:
-		logger->warn("CommandHandler::process: ignoring command '{0}'", toString(command.id));
+		logWarning("process", "ignoring command '{0}'", toString(command.id));
 	}
 }
 
 auto CommandHandler::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 	using namespace boost::sml;
 
-	logger->debug("CommandHandler::onPositionReached: the arm reached a trajectory point.");
+	logDebug("onPositionReached", "the arm reached a trajectory point");
 
 	auto logLocalStep = [this](auto event, auto success, auto failure) {
 		return logStep(event, "onPositionReached", success, failure);
@@ -153,9 +153,9 @@ struct CommandHandlerCtorAccess : CommandHandler {
 
 	auto enableSubscriptions() -> void {
 		commandSource.subscribe(shared_from_this());
-		logger->debug("CommandHandler: subscribed to control commands");
+		logDebug("enableSubscriptions", "subscribed to control commands");
 		arm.subscribe(shared_from_this());
-		logger->debug("CommandHandler: subscribed to hardware events");
+		logDebug("enableSubscriptions", "subscribed to hardware events");
 	}
 };
 
