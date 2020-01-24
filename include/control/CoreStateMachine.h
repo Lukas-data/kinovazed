@@ -81,7 +81,6 @@ struct CoreStateMachine : LoggingMixin {
 
 	static auto constexpr poweredOff = boost::sml::state<struct PoweredOffStateTag>;
 	static auto constexpr initializing = boost::sml::state<struct InitializingStateTag>;
-	static auto constexpr initialized = boost::sml::state<struct InitializedStateTag>;
 	static auto constexpr retracting = boost::sml::state<struct RetractingStateTag>;
 	static auto constexpr retracted = boost::sml::state<struct RetractedStateTag>;
 	static auto constexpr unfolding = boost::sml::state<struct UnfoldingStateTag>;
@@ -90,7 +89,6 @@ struct CoreStateMachine : LoggingMixin {
 	static auto constexpr steering = boost::sml::state<struct SteeringStateTag>;
 	static auto constexpr runningSequence = boost::sml::state<struct RunningSequenceStateTag>;
 	static auto constexpr emergencyStopped = boost::sml::state<struct EmergencyStoppedStateTag>;
-
 
 	auto operator()() noexcept {
 		using namespace boost::sml;
@@ -117,16 +115,10 @@ struct CoreStateMachine : LoggingMixin {
 			poweredOff  + on_exit<_>               / logExit("poweredOff"),
 			
 			// [poweredOff]
-			initializing + event<Event::Initialized>               = initialized,
+			initializing + event<Event::Initialized>               = idle,
 			initializing + event<Event::EStop>       / eventAction = emergencyStopped,
 			initializing + on_entry<_>               / logEntry("initializing"),
 			initializing + on_exit<_>                / logExit("initializing"),
-
-			// [initialized]
-			initialized + event<Event::Retract> / eventAction = retracting,
-			initialized + event<Event::EStop>   / eventAction = emergencyStopped,
-			initialized + on_entry<_>           / logEntry("initialized"),
-			initialized + on_exit<_>            / logExit("initialized"),
 
 			// [retracting]
 			retracting + event<Event::Retracted>               = retracted,

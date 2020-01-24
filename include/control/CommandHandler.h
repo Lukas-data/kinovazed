@@ -60,6 +60,7 @@ struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
 	}
 
 	std::optional<Objective> currentObjective{};
+	bool isInitialized{};
 };
 
 auto makeCommandHandler(Comm::CommandInterface &interface,

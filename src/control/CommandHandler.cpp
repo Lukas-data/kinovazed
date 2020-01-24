@@ -47,9 +47,9 @@ auto CommandHandler::process(Comm::Command command) -> void {
 	switch (command.id) {
 	case Command::Id::EStop:
 		logWarning("process", "received emergency stop request.");
-		logStep(CoreStateMachine::Event::EStop{arm},
-		        "entered emergency stop state",
-		        "internal state machine refused to enter emergency stop.");
+		isInitialized = !logStep(CoreStateMachine::Event::EStop{arm},
+		                         "entered emergency stop state",
+		                         "internal state machine refused to enter emergency stop.");
 		break;
 	case Command::Id::QuitEStop:
 		logStep(CoreStateMachine::Event::QuitEStop{arm},
@@ -151,27 +151,20 @@ auto CommandHandler::onReconnectedDueToError(Hw::Actor &) -> void {
 auto CommandHandler::onInitializationFinished(Hw::Actor &) -> void {
 	auto logStep = makeLoggedStepper("onInitializationFinished");
 
-	auto acceptedInitialized = logStep(CoreStateMachine::Event::Initialized{},
-	                                   "marking the arm as initialized",
-	                                   "internal state machine did not accept initialized event");
-
-	if (acceptedInitialized) {
-		acceptedInitialized = logStep(CoreStateMachine::Event::Retract{arm},
-		                              "retracting the arm",
-		                              "internal state machine refused to retract the arm");
-	}
+	isInitialized = logStep(CoreStateMachine::Event::Initialized{},
+	                        "marking the arm as initialized",
+	                        "internal state machine did not accept initialized event");
 }
 
 auto CommandHandler::getSystemState() -> std::bitset<8> {
 	auto isConnected = !arm.hasFailed();
 	auto hasEmergencyStop = stateMachine.is(CoreStateMachine::emergencyStopped);
-	auto isInitialized = false;
 
 	auto state = std::bitset<8>{};
 
 	state.set(0, isConnected);
 	state.set(1, hasEmergencyStop);
-	state.set(3, isInitialized);
+	state.set(2, isInitialized);
 
 	return state;
 }
