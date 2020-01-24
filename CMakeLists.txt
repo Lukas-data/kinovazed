@@ -50,6 +50,8 @@ add_library("${PROJECT_NAME}Core"
   # Communication
   "src/comm/Command.cpp"
   "src/comm/CommandInterface.cpp"
+  "src/comm/Heartbeat.cpp"
+  "src/comm/Notification.cpp"
   "src/comm/TCPInterface.cpp"
 
   # Control

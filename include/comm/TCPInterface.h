@@ -2,6 +2,8 @@
 #define INCLUDE_TCP_CONTROL_INTERFACE_H_
 
 #include "comm/CommandInterface.h"
+#include "comm/Heartbeat.h"
+#include "comm/Notification.h"
 #include "support/Logging.h"
 
 #include <asio/error_code.hpp>
@@ -12,6 +14,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <optional>
+#include <queue>
 #include <string>
 
 namespace KinovaZED::Comm {
@@ -35,14 +38,18 @@ struct TCPInterface : CommandInterface, LoggingMixin {
 
   private:
 	auto doStart() -> void;
-
 	auto doStop() -> void;
+	auto doSend(Notification message) -> void override;
+	auto doSend(Heartbeat message) -> void override;
 
 	auto startAccepting() -> void;
 	auto handleAccept(asio::error_code error) -> void;
 
 	auto startReading() -> void;
 	auto processMessage(std::string message) -> void;
+
+	auto enqueueAndSend(std::string message) -> void;
+	auto startSending() -> void;
 
 	auto processReadError(asio::error_code error) -> void;
 
@@ -54,6 +61,8 @@ struct TCPInterface : CommandInterface, LoggingMixin {
 
 	asio::streambuf readBuffer{128};
 	std::string messageBuffer{};
+
+	std::queue<std::string> sendBuffer{};
 };
 
 } // namespace KinovaZED::Comm

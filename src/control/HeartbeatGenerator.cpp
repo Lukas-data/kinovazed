@@ -1,6 +1,7 @@
 #include "control/HeartbeatGenerator.h"
 
 #include "comm/CommandInterface.h"
+#include "comm/Heartbeat.h"
 #include "control/CommandHandler.h"
 #include "support/Logging.h"
 
@@ -50,7 +51,7 @@ auto HeartbeatGenerator::beat() -> void {
 		if (auto locked = controller.lock(); locked) {
 			auto state = locked->getSystemState();
 			logDebug("<beat::lambda>", "sending heartbeat: {}", state.to_ulong());
-			// sink.send(...)
+			sink.send(Comm::Heartbeat{state});
 		} else {
 			logError("<beat::lambda>", "failed to access core controller");
 		}

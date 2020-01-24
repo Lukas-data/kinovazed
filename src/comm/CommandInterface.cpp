@@ -2,6 +2,8 @@
 
 #include "comm/Command.h"
 #include "comm/CommandSubscriber.h"
+#include "comm/Heartbeat.h"
+#include "comm/Notification.h"
 
 #include <algorithm>
 #include <cassert>
@@ -31,6 +33,14 @@ auto CommandInterface::subscribe(SubscriberPointer subscriber) -> bool {
 auto CommandInterface::unsubscribe(SubscriberPointer subscriber) -> bool {
 	assert(subscriber);
 	return subscribers.erase(subscriber);
+}
+
+auto CommandInterface::send(Notification message) -> void {
+	doSend(message);
+}
+
+auto CommandInterface::send(Heartbeat message) -> void {
+	doSend(message);
 }
 
 auto CommandInterface::notifySubscribers(Command command) -> void {

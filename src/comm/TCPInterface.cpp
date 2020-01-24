@@ -1,5 +1,6 @@
 #include "comm/TCPInterface.h"
 
+#include "comm/Notification.h"
 #include "support/Logging.h"
 #include "support/StringUtils.h"
 
@@ -7,6 +8,8 @@
 #include <asio/io_context.hpp>
 #include <asio/ip/tcp.hpp>
 #include <asio/read_until.hpp>
+#include <asio/write.hpp>
+#include <spdlog/fmt/fmt.h>
 
 #include <algorithm>
 #include <cassert>
@@ -40,10 +43,20 @@ auto TCPInterface::doStart() -> void {
 	startAccepting();
 }
 
+auto TCPInterface::doSend(Notification message) -> void {
+	enqueueAndSend(toString(message));
+}
+
+auto TCPInterface::doSend(Heartbeat message) -> void {
+	enqueueAndSend(toString(message));
+}
+
 auto TCPInterface::doStop() -> void {
 	auto ignored = asio::error_code{};
 	if (remoteSocket && remoteSocket->is_open()) {
+		remoteSocket->cancel(ignored);
 		remoteSocket->close(ignored);
+		remoteSocket->shutdown(remoteSocket->shutdown_both, ignored);
 	}
 	acceptor.close(ignored);
 }
@@ -74,8 +87,7 @@ auto TCPInterface::handleAccept(asio::error_code error) -> void {
 auto TCPInterface::startReading() -> void {
 	using buffer_iterator = std::istream_iterator<char>;
 
-	/// CRLF
-	async_read_until(*remoteSocket, readBuffer, ';', [this](auto error, auto read) {
+	async_read_until(*remoteSocket, readBuffer, '\n', [this](auto error, auto read) {
 		if (error) {
 			processReadError(error);
 		} else if (read > 0) {
@@ -101,6 +113,40 @@ auto TCPInterface::processMessage(std::string message) -> void {
 	}
 
 	notifySubscribers(*command);
+}
+
+
+auto TCPInterface::enqueueAndSend(std::string message) -> void {
+	if (!remoteSocket || !remoteSocket->is_open()) {
+		logWarning("doSend", "no commander is connected. dropping outgoing message");
+		return;
+	}
+
+	networkContext.post([this, message = std::move(message)] {
+		sendBuffer.push(message + "\r\n");
+		if (sendBuffer.size() == 1) {
+			startSending();
+		}
+	});
+}
+
+auto TCPInterface::startSending() -> void {
+	if (remoteSocket) {
+		asio::async_write(*remoteSocket, asio::buffer(sendBuffer.front()), [this](auto error, auto written) {
+			sendBuffer.pop();
+			if (error) {
+				logError("<startSending::lambda>",
+				         "failed to send message to remote commander. code: {0}, reason: {1}",
+				         error.value(),
+				         error.message());
+				return;
+			}
+			logDebug("<startSending::lambda>", "sent {} bytes to remote commander", written);
+			if (!sendBuffer.empty()) {
+				startSending();
+			}
+		});
+	}
 }
 
 auto TCPInterface::processReadError(asio::error_code error) -> void {

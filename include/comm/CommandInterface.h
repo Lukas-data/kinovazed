@@ -2,6 +2,8 @@
 #define INCLUDE_COMM_COMMAND_INTERFACE_H_
 
 #include "comm/Command.h"
+#include "comm/Heartbeat.h"
+#include "comm/Notification.h"
 
 #include <functional>
 #include <memory>
@@ -44,6 +46,16 @@ struct CommandInterface {
 	 */
 	auto unsubscribe(SubscriberPointer subscriber) -> bool;
 
+	/**
+	 * Send a notification to the remote controller
+	 */
+	auto send(Notification message) -> void;
+
+	/**
+	 * Send a heartbeat to the remote controller
+	 */
+	auto send(Heartbeat message) -> void;
+
   protected:
 	/**
 	 * Concrete implementation of interface start
@@ -54,6 +66,16 @@ struct CommandInterface {
 	 * Concrete implementation of interface stop
 	 */
 	auto virtual doStop() -> void = 0;
+
+	/**
+	 * Concrete implementation of interface send
+	 */
+	auto virtual doSend(Notification message) -> void = 0;
+
+	/**
+	 * Concrete implementation of interface send
+	 */
+	auto virtual doSend(Heartbeat message) -> void = 0;
 
 	/**
 	 * Notify all known subscribers about an incoming command
