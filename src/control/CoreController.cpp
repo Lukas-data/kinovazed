@@ -145,9 +145,11 @@ auto CoreController::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 auto CoreController::onHomeReached(Hw::Actor &) -> void {
 	auto logStep = makeLoggedStepper("onHomeReached");
 
-	logStep(CoreStateMachine::Event::Unfolded{},
-	        "marking the arm as being at home position",
-	        "internal state machine did not accept unfolded event");
+	if (logStep(CoreStateMachine::Event::Unfolded{},
+	            "marking the arm as being at home position",
+	            "internal state machine did not accept unfolded event")) {
+		commandSource.send(Comm::Notification{Comm::Notification::Id::Unfolded});
+	}
 }
 
 auto CoreController::onRetractionPointReached(Hw::Actor &) -> void {

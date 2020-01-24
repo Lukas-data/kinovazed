@@ -12,6 +12,7 @@ struct Notification {
 		Initialized,
 		ModeSet,
 		SequenceDone,
+		Unfolded,
 
 		// End Marker
 		END_OF_ENUM

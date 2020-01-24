@@ -14,6 +14,7 @@ auto constexpr idNames = std::array{
     std::pair{Notification::Id::Initialized, "Initialized"},
     std::pair{Notification::Id::ModeSet, "ModeSet"},
     std::pair{Notification::Id::SequenceDone, "SequenceDone"},
+    std::pair{Notification::Id::Unfolded, "Unfolded"},
 };
 
 static_assert(enumNameMappingsAreUnique(idNames), "Duplicate entry in name map!");
