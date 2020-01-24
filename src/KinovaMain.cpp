@@ -1,62 +1,70 @@
+#include "comm/TCPInterface.h"
+#include "control/CoreController.h"
+#include "control/HeartbeatGenerator.h"
+#include "control/ObjectiveManager.h"
+#include "hw/KinovaArm.h"
+#include "support/LineCommandFactory.h"
+#include "support/Logging.h"
+#include "support/Paths.h"
+#include "support/Prefix.h"
 
-#include "spdlog/spdlog.h"
-#include "spdlog/sinks/stdout_color_sinks.h"
-#include "spdlog/sinks/rotating_file_sink.h"
-#include "CommandHandling.h"
-#include "Prefix.h"
+#include <asio/io_context.hpp>
 
 #include <chrono>
+#include <cstdlib>
 #include <exception>
-#include <memory>
+#include <fstream>
 #include <stdexcept>
 #include <thread>
-#include <string>
 
-namespace Constants {
-	auto constexpr LOG_FILE = "logs/log.txt";
-	auto constexpr LOGGER_NAME = "robolog";
-}
+auto constexpr DEFAULT_PORT = 51717;
 
-void setup_logger(std::string name) {
-	try {
-		auto console_sink { std::make_shared<spdlog::sinks::stdout_color_sink_st>() };
-		console_sink->set_level(spdlog::level::info);
+auto makeLogger() -> KinovaZED::Logger {
+	using namespace KinovaZED::Literals;
 
-		using namespace BytePrefix;
-		auto file_sink { std::make_shared<spdlog::sinks::rotating_file_sink_mt>(Constants::LOG_FILE, 50_M, 200, true) };
-		file_sink->set_level(spdlog::level::trace);
+	auto loggerConfig = KinovaZED::LogConfiguration{};
 
-		auto logger { std::make_shared<spdlog::logger>(name, spdlog::sinks_init_list { console_sink, file_sink }) };
-		logger->set_level(spdlog::level::trace);
-		spdlog::register_logger(logger);
-		spdlog::set_default_logger(logger);
-		spdlog::flush_on(spdlog::level::warn);
-	} catch (const spdlog::spdlog_ex &ex) {
-		spdlog::critical("Log initialization failed: {}", ex.what());
-	}
+	loggerConfig.loggerName = "kinovaZED";
+
+	loggerConfig.consoleConfiguration = KinovaZED::ConsoleLogConfiguration{
+	    KinovaZED::ConsoleStream::StandardOutput,
+	    KinovaZED::ColorPolicy::DoColor,
+	};
+
+	loggerConfig.fileConfiguration = KinovaZED::FileLogConfiguration{
+	    KinovaZED::DEFAULT_LOG_FILE,
+	    50_M,
+	    200,
+	    KinovaZED::RotationPolicy::DoRotateOnOpen,
+	};
+
+	return KinovaZED::makeLogger(loggerConfig);
 }
 
 int main() {
-	setup_logger(Constants::LOGGER_NAME);
-	spdlog::info("KinovaMain - Startup!");
-	CommandHandling<> commandHandler { };
-	while (true) {
-		try {
-			commandHandler.process();
-		} catch (std::runtime_error const &e) {
-			spdlog::critical("RuntimeError: {}", e.what());
-			return -1;
-		} catch (std::exception const &e) {
-			spdlog::critical("Exception: {}", e.what());
-			return -1;
-		} catch (...) {
-			spdlog::critical("UNKNOWN ERROR");
-			return -1;
-		}
-	}
 	using namespace std::chrono_literals;
-	std::this_thread::sleep_for(10s);
-	return -1;
 
+	auto logger = makeLogger();
+	logger->set_level(spdlog::level::debug);
+	logger->info("main: starting up");
+
+	auto arm = KinovaZED::Hw::KinovaArm{logger};
+
+	if (!arm.connect()) {
+		return EXIT_FAILURE;
+	}
+
+	arm.setShouldReconnectOnError(true);
+
+	auto ioContext = asio::io_context{};
+	auto interface = KinovaZED::Comm::TCPInterface{KinovaZED::lineCommandFactory, ioContext, DEFAULT_PORT, logger};
+	auto objectiveStream = std::ifstream{KinovaZED::DEFAULT_OBJ_FILE_JSON};
+	auto objectiveManager = KinovaZED::Control::ObjectiveManager{objectiveStream, logger};
+	auto controller = KinovaZED::Control::makeCoreController(interface, arm, objectiveManager, logger);
+	auto heart = KinovaZED::Control::HeartbeatGenerator{interface, controller, ioContext, logger};
+
+	interface.start();
+	heart.start();
+
+	ioContext.run();
 }
-

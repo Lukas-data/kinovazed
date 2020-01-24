@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+KINOVAZED_EXE=@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_BINDIR@/@PROJECT_NAME@
+KINOVAZED_LOG=${HOME}/.var/log
+STARTUP_LOG=/tmp/KinovaStartUp.log
+
+echo "kinovaZED executable path: ${KINOVAZED_EXE}" | tee ${STARTUP_LOG}
+echo "Give the OS some time to finish booting" | tee -a ${STARTUP_LOG}
+
+sleep 10
+
+echo "Creating logging folders if needed" | tee -a ${STARTUP_LOG}
+mkdir -p ${KINOVAZED_LOG}
+
+echo "Starting KinovaZED" | tee -a ${LASTLOG}
+
+until ${KINOVAZED_EXE}; do
+  echo "${KINOVAZED_EXE} crashed with exit code $?. Restarting in 2 seconds ..." | tee -a ${LASTLOG}
+  sleep 2
+done
