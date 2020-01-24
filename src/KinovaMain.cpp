@@ -17,6 +17,8 @@
 #include <stdexcept>
 #include <thread>
 
+auto constexpr DEFAULT_PORT = 51717;
+
 auto makeLogger() -> KinovaZED::Logger {
 	using namespace KinovaZED::Literals;
 
@@ -55,7 +57,7 @@ int main() {
 	arm.setShouldReconnectOnError(true);
 
 	auto ioContext = asio::io_context{};
-	auto interface = KinovaZED::Comm::TCPInterface{KinovaZED::lineCommandFactory, ioContext, 12345, logger};
+	auto interface = KinovaZED::Comm::TCPInterface{KinovaZED::lineCommandFactory, ioContext, DEFAULT_PORT, logger};
 	auto objectiveStream = std::ifstream{KinovaZED::DEFAULT_OBJ_FILE_JSON};
 	auto objectiveManager = KinovaZED::Control::ObjectiveManager{objectiveStream, logger};
 	auto commandHandler = KinovaZED::Control::makeCommandHandler(interface, arm, objectiveManager, logger);
