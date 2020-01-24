@@ -1,6 +1,7 @@
 #include "control/CommandHandler.h"
 
 #include "comm/CommandInterface.h"
+#include "comm/Notification.h"
 #include "control/ObjectiveManager.h"
 #include "hw/Actor.h"
 #include "hw/Coordinates.h"
@@ -122,7 +123,6 @@ auto CommandHandler::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 	assert(currentObjective);
 	auto nextPoint = currentObjective->nextPoint();
 
-
 	if (nextPoint) {
 		if (stateMachine.is(CoreStateMachine::runningSequence)) {
 			logStep(CoreStateMachine::Event::GoToPosition{arm, *nextPoint},
@@ -134,9 +134,11 @@ auto CommandHandler::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 			        "internal state machine refused to move towards next safety sequence point");
 		}
 	} else {
-		logStep(CoreStateMachine::Event::SequenceFinished{arm},
-		        "finishing movement sequence",
-		        "internal state machine did not accept sequence end event");
+		if (logStep(CoreStateMachine::Event::SequenceFinished{arm},
+		            "finishing movement sequence",
+		            "internal state machine did not accept sequence end event")) {
+			commandSource.send(Comm::Notification{Comm::Notification::Id::SequenceDone});
+		}
 	}
 }
 
@@ -160,9 +162,11 @@ auto CommandHandler::onSteeringModeChanged(Hw::Actor &, Hw::SteeringMode mode) -
 	auto logStep = makeLoggedStepper("onSteeringModeChanged");
 
 	logInfo("onSteeringModeChanged", "steering mode changed to '{}'", toString(mode));
-	logStep(CoreStateMachine::Event::ModeSet{mode},
-	        "changed steering mode",
-	        "internal state machine did not accept steering mode change");
+	if (logStep(CoreStateMachine::Event::ModeSet{mode},
+	            "changed steering mode",
+	            "internal state machine did not accept steering mode change")) {
+		commandSource.send(Comm::Notification{Comm::Notification::Id::ModeSet});
+	}
 }
 
 auto CommandHandler::onReconnectedDueToError(Hw::Actor &) -> void {
@@ -171,9 +175,11 @@ auto CommandHandler::onReconnectedDueToError(Hw::Actor &) -> void {
 auto CommandHandler::onInitializationFinished(Hw::Actor &) -> void {
 	auto logStep = makeLoggedStepper("onInitializationFinished");
 
-	isInitialized = logStep(CoreStateMachine::Event::Initialized{},
-	                        "marking the arm as initialized",
-	                        "internal state machine did not accept initialized event");
+	if ((isInitialized = logStep(CoreStateMachine::Event::Initialized{},
+	                             "marking the arm as initialized",
+	                             "internal state machine did not accept initialized event"))) {
+		commandSource.send(Comm::Notification{Comm::Notification::Id::Initialized});
+	}
 }
 
 auto CommandHandler::getSystemState() -> std::bitset<8> {
