@@ -9,14 +9,19 @@ The main purpose of the application is to translate, run and handle commands fro
 KinovaZED communicates with the main controller by a human readable protocol.
 The Messages are designed as follows:
 
-    <issue>:<arg 1>:<arg 2>:...:<arg n>;
+    <issue>:<arg 1>:<arg 2>:...:<arg n>\r\n
+
 
 Where the placeholders are defined as:
 
 - _issue_: the name of the issue
 - _args_ : issue specific arguments
 
-The structure is mainly given by separation of message content with a `:` (colon) and a `;` semicolon for message termination.
+The Protocol is strictly ASCII in content.
+
+1. all fields, even numbers are ASCII characters.
+2. field separation is `:`, (colon)
+3. message termination is `CRLF`, CR (carriage return) followed by a LF (linefeed), or `\r\n`
 
 The interface is designed with three categories of messages:
 
@@ -32,6 +37,7 @@ Commands have __n arguments__ and are always sent __from__ roboRIO __to__ kinova
 | SetMode      | \<mode name> |
 | MoveJoystick | \<js_X> : <js_Y> : <js_Z> |
 | GoToPosition | \<objective name> |
+| GoToSafe     | \<objective name> |
 | EStop        | -           |
 | QuitEStop    | -           |
 
