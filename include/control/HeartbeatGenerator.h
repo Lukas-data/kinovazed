@@ -2,7 +2,7 @@
 #define INCLUDE_CONTROL_HEARTBEAT_GENERATOR_H_
 
 #include "comm/CommandInterface.h"
-#include "control/CommandHandler.h"
+#include "control/CoreController.h"
 #include "support/Logging.h"
 
 #include <asio/io_context.hpp>
@@ -14,7 +14,7 @@ namespace KinovaZED::Control {
 
 struct HeartbeatGenerator : LoggingMixin {
 	HeartbeatGenerator(Comm::CommandInterface &sink,
-	                   std::weak_ptr<CommandHandler> controller,
+	                   std::weak_ptr<CoreController> controller,
 	                   asio::io_context &timerContext,
 	                   Logger logger);
 
@@ -27,7 +27,7 @@ struct HeartbeatGenerator : LoggingMixin {
 	auto beat() -> void;
 
 	Comm::CommandInterface &sink;
-	std::weak_ptr<CommandHandler> controller;
+	std::weak_ptr<CoreController> controller;
 	asio::io_context &timerContext;
 	asio::steady_timer timer{timerContext};
 };

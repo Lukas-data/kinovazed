@@ -20,7 +20,7 @@ constexpr int numberOfJoystickMoveInputs = 3;
 
 namespace KinovaZED::Control {
 
-struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
+struct CoreController : std::enable_shared_from_this<CoreController>,
                         LoggingMixin,
                         Comm::CommandSubscriber,
                         Hw::Actor::EventSubscriber {
@@ -37,7 +37,7 @@ struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
 	auto getSystemState() -> std::bitset<8>;
 
   protected:
-	CommandHandler(Comm::CommandInterface &interface,
+	CoreController(Comm::CommandInterface &interface,
 	               Hw::Actor &actor,
 	               ObjectiveManager &objectiveManager,
 	               Logger logger);
@@ -63,10 +63,10 @@ struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
 	bool isInitialized{};
 };
 
-auto makeCommandHandler(Comm::CommandInterface &interface,
+auto makeCoreController(Comm::CommandInterface &interface,
                         Hw::Actor &actor,
                         ObjectiveManager &objectiveManager,
-                        Logger logger) -> std::shared_ptr<CommandHandler>;
+                        Logger logger) -> std::shared_ptr<CoreController>;
 
 } // namespace KinovaZED::Control
 #endif

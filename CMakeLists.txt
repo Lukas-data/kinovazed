@@ -55,7 +55,7 @@ add_library("${PROJECT_NAME}Core"
   "src/comm/TCPInterface.cpp"
 
   # Control
-  "src/control/CommandHandler.cpp"
+  "src/control/CoreController.cpp"
   "src/control/CoreStateMachine.cpp"
   "src/control/HeartbeatGenerator.cpp"
   "src/control/Objective.cpp"

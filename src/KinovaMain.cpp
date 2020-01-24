@@ -1,5 +1,5 @@
 #include "comm/TCPInterface.h"
-#include "control/CommandHandler.h"
+#include "control/CoreController.h"
 #include "control/HeartbeatGenerator.h"
 #include "control/ObjectiveManager.h"
 #include "hw/KinovaArm.h"
@@ -60,8 +60,8 @@ int main() {
 	auto interface = KinovaZED::Comm::TCPInterface{KinovaZED::lineCommandFactory, ioContext, DEFAULT_PORT, logger};
 	auto objectiveStream = std::ifstream{KinovaZED::DEFAULT_OBJ_FILE_JSON};
 	auto objectiveManager = KinovaZED::Control::ObjectiveManager{objectiveStream, logger};
-	auto commandHandler = KinovaZED::Control::makeCommandHandler(interface, arm, objectiveManager, logger);
-	auto heart = KinovaZED::Control::HeartbeatGenerator{interface, commandHandler, ioContext, logger};
+	auto controller = KinovaZED::Control::makeCoreController(interface, arm, objectiveManager, logger);
+	auto heart = KinovaZED::Control::HeartbeatGenerator{interface, controller, ioContext, logger};
 
 	interface.start();
 	heart.start();

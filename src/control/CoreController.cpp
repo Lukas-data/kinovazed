@@ -1,4 +1,4 @@
-#include "control/CommandHandler.h"
+#include "control/CoreController.h"
 
 #include "comm/CommandInterface.h"
 #include "comm/Notification.h"
@@ -28,18 +28,18 @@ auto extractJoystickPosition(Comm::Command command) -> std::tuple<int, int, int>
 
 } // namespace
 
-CommandHandler::CommandHandler(Comm::CommandInterface &interface,
+CoreController::CoreController(Comm::CommandInterface &interface,
                                Hw::Actor &actor,
                                ObjectiveManager &objectiveManager,
                                Logger logger)
-    : LoggingMixin{logger, "CommandHandler"}
+    : LoggingMixin{logger, "CoreController"}
     , commandSource(interface)
     , arm{actor}
     , objectiveManager{objectiveManager}
     , stateMachine{CoreStateMachine{logger}} {
 }
 
-auto CommandHandler::process(Comm::Command command) -> void {
+auto CoreController::process(Comm::Command command) -> void {
 	using namespace Comm;
 	using namespace std::placeholders;
 
@@ -107,7 +107,7 @@ auto CommandHandler::process(Comm::Command command) -> void {
 	}
 }
 
-auto CommandHandler::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
+auto CoreController::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 	using namespace boost::sml;
 
 	logDebug("onPositionReached", "the arm reached a trajectory point");
@@ -142,7 +142,7 @@ auto CommandHandler::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 	}
 }
 
-auto CommandHandler::onHomeReached(Hw::Actor &) -> void {
+auto CoreController::onHomeReached(Hw::Actor &) -> void {
 	auto logStep = makeLoggedStepper("onHomeReached");
 
 	logStep(CoreStateMachine::Event::Unfolded{},
@@ -150,7 +150,7 @@ auto CommandHandler::onHomeReached(Hw::Actor &) -> void {
 	        "internal state machine did not accept unfolded event");
 }
 
-auto CommandHandler::onRetractionPointReached(Hw::Actor &) -> void {
+auto CoreController::onRetractionPointReached(Hw::Actor &) -> void {
 	auto logStep = makeLoggedStepper("onRetractionPointReached");
 
 	logStep(CoreStateMachine::Event::Retracted{},
@@ -158,7 +158,7 @@ auto CommandHandler::onRetractionPointReached(Hw::Actor &) -> void {
 	        "internal state machine did not accept retracted event");
 }
 
-auto CommandHandler::onSteeringModeChanged(Hw::Actor &, Hw::SteeringMode mode) -> void {
+auto CoreController::onSteeringModeChanged(Hw::Actor &, Hw::SteeringMode mode) -> void {
 	auto logStep = makeLoggedStepper("onSteeringModeChanged");
 
 	logInfo("onSteeringModeChanged", "steering mode changed to '{}'", toString(mode));
@@ -169,10 +169,10 @@ auto CommandHandler::onSteeringModeChanged(Hw::Actor &, Hw::SteeringMode mode) -
 	}
 }
 
-auto CommandHandler::onReconnectedDueToError(Hw::Actor &) -> void {
+auto CoreController::onReconnectedDueToError(Hw::Actor &) -> void {
 }
 
-auto CommandHandler::onInitializationFinished(Hw::Actor &) -> void {
+auto CoreController::onInitializationFinished(Hw::Actor &) -> void {
 	auto logStep = makeLoggedStepper("onInitializationFinished");
 
 	if ((isInitialized = logStep(CoreStateMachine::Event::Initialized{},
@@ -182,7 +182,7 @@ auto CommandHandler::onInitializationFinished(Hw::Actor &) -> void {
 	}
 }
 
-auto CommandHandler::getSystemState() -> std::bitset<8> {
+auto CoreController::getSystemState() -> std::bitset<8> {
 	auto state = std::bitset<8>{};
 
 	state.set(0, !arm.hasFailed());
@@ -193,10 +193,10 @@ auto CommandHandler::getSystemState() -> std::bitset<8> {
 	return state;
 }
 
-struct CommandHandlerCtorAccess : CommandHandler {
+struct CoreControllerCtorAccess : CoreController {
 	template<typename... Args>
-	CommandHandlerCtorAccess(Args &&... args)
-	    : CommandHandler(std::forward<Args>(args)...) {
+	CoreControllerCtorAccess(Args &&... args)
+	    : CoreController(std::forward<Args>(args)...) {
 	}
 
 	auto enableSubscriptions() -> void {
@@ -207,11 +207,11 @@ struct CommandHandlerCtorAccess : CommandHandler {
 	}
 };
 
-auto makeCommandHandler(Comm::CommandInterface &interface,
+auto makeCoreController(Comm::CommandInterface &interface,
                         Hw::Actor &actor,
                         ObjectiveManager &objectiveManager,
-                        Logger logger) -> std::shared_ptr<CommandHandler> {
-	auto handler = std::make_shared<CommandHandlerCtorAccess>(interface, actor, objectiveManager, logger);
+                        Logger logger) -> std::shared_ptr<CoreController> {
+	auto handler = std::make_shared<CoreControllerCtorAccess>(interface, actor, objectiveManager, logger);
 	handler->enableSubscriptions();
 	return handler;
 }

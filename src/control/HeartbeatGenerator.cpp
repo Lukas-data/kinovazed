@@ -2,7 +2,7 @@
 
 #include "comm/CommandInterface.h"
 #include "comm/Heartbeat.h"
-#include "control/CommandHandler.h"
+#include "control/CoreController.h"
 #include "support/Logging.h"
 
 #include <asio/error.hpp>
@@ -15,7 +15,7 @@
 namespace KinovaZED::Control {
 
 HeartbeatGenerator::HeartbeatGenerator(Comm::CommandInterface &sink,
-                                       std::weak_ptr<CommandHandler> controller,
+                                       std::weak_ptr<CoreController> controller,
                                        asio::io_context &timerContext,
                                        Logger logger)
     : LoggingMixin{logger, "HeartbeatGenerator"}
