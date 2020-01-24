@@ -50,6 +50,7 @@ Events have no arguments and are always sent __from__ kinovaZED __to__ roboRIO.
 | Initialized  |
 | ModeSet      |
 | SequenceDone |
+| Unfolded     |
 
 __heartbeat:__
 
@@ -63,7 +64,7 @@ Each bit reflects an important state.
 | 0 | is connected       |
 | 1 | has Emergency Stop |
 | 2 | is initialized     |
-| 3 | _unused_ |
+| 3 | isSafe |
 | 4 | _unused_ |
 | 5 | _unused_ |
 | 6 | _unused_ |
