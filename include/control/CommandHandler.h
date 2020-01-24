@@ -11,6 +11,7 @@
 
 #include <sml/sml.hpp>
 
+#include <bitset>
 #include <memory>
 #include <optional>
 #include <string>
@@ -32,6 +33,8 @@ struct CommandHandler : std::enable_shared_from_this<CommandHandler>,
 	auto onSteeringModeChanged(Hw::Actor &who, Hw::SteeringMode mode) -> void;
 	auto onReconnectedDueToError(Hw::Actor &who) -> void;
 	auto onInitializationFinished(Hw::Actor &who) -> void;
+
+	auto getSystemState() -> std::bitset<8>;
 
   protected:
 	CommandHandler(Comm::CommandInterface &interface,

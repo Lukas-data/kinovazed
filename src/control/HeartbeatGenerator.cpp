@@ -1,6 +1,7 @@
 #include "control/HeartbeatGenerator.h"
 
 #include "comm/CommandInterface.h"
+#include "control/CommandHandler.h"
 #include "support/Logging.h"
 
 #include <asio/error.hpp>
@@ -8,12 +9,17 @@
 #include <asio/steady_timer.hpp>
 
 #include <chrono>
+#include <memory>
 
 namespace KinovaZED::Control {
 
-HeartbeatGenerator::HeartbeatGenerator(Comm::CommandInterface &sink, asio::io_context &timerContext, Logger logger)
+HeartbeatGenerator::HeartbeatGenerator(Comm::CommandInterface &sink,
+                                       std::weak_ptr<CommandHandler> controller,
+                                       asio::io_context &timerContext,
+                                       Logger logger)
     : LoggingMixin{logger, "HeartbeatGenerator"}
     , sink{sink}
+    , controller{controller}
     , timerContext{timerContext} {
 }
 
@@ -41,8 +47,14 @@ auto HeartbeatGenerator::beat() -> void {
 			return;
 		}
 
-		logDebug("<beat::lambda>", "sending heartbeat");
-		// sink.send(...)
+		if (auto locked = controller.lock(); locked) {
+			auto state = locked->getSystemState();
+			logDebug("<beat::lambda>", "sending heartbeat: {}", state.to_ulong());
+			// sink.send(...)
+		} else {
+			logError("<beat::lambda>", "failed to access core controller");
+		}
+
 		beat();
 	});
 }

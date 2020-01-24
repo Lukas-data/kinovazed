@@ -59,7 +59,7 @@ int main() {
 	auto objectiveStream = std::ifstream{KinovaZED::DEFAULT_OBJ_FILE_JSON};
 	auto objectiveManager = KinovaZED::Control::ObjectiveManager{objectiveStream, logger};
 	auto commandHandler = KinovaZED::Control::makeCommandHandler(interface, arm, objectiveManager, logger);
-	auto heart = KinovaZED::Control::HeartbeatGenerator{interface, ioContext, logger};
+	auto heart = KinovaZED::Control::HeartbeatGenerator{interface, commandHandler, ioContext, logger};
 
 	interface.start();
 	heart.start();

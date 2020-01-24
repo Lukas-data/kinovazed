@@ -8,6 +8,7 @@
 #include <sml/sml.hpp>
 #include <spdlog/fmt/fmt.h>
 
+#include <bitset>
 #include <cassert>
 #include <functional>
 #include <memory>
@@ -159,6 +160,20 @@ auto CommandHandler::onInitializationFinished(Hw::Actor &) -> void {
 		                              "retracting the arm",
 		                              "internal state machine refused to retract the arm");
 	}
+}
+
+auto CommandHandler::getSystemState() -> std::bitset<8> {
+	auto isConnected = !arm.hasFailed();
+	auto hasEmergencyStop = stateMachine.is(CoreStateMachine::emergencyStopped);
+	auto isInitialized = false;
+
+	auto state = std::bitset<8>{};
+
+	state.set(0, isConnected);
+	state.set(1, hasEmergencyStop);
+	state.set(3, isInitialized);
+
+	return state;
 }
 
 struct CommandHandlerCtorAccess : CommandHandler {
