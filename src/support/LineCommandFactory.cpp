@@ -27,6 +27,7 @@ auto checkParameterCount(Comm::Command::Id id, std::vector<std::any> parameters)
 			return false;
 		}
 		break;
+	case Command::Id::GoToSafe:
 	case Command::Id::GoToPosition:
 	case Command::Id::SetMode:
 		if (parameters.size() != 1) {
@@ -55,6 +56,7 @@ auto adjustParameterTypes(Comm::Command::Id id, std::vector<std::any> &parameter
 	case Command::Id::Unfold:
 	case Command::Id::NoMode:
 		return true;
+	case Command::Id::GoToSafe:
 	case Command::Id::GoToPosition:
 		try {
 			auto objectiveName = std::any_cast<std::string>(parameters.at(0));

@@ -35,6 +35,11 @@ auto CoreStateMachine::Event::GoToPosition::operator()() const -> void {
 	actor.moveTo(position);
 }
 
+auto CoreStateMachine::Event::GoToSafe::operator()() const -> void {
+	actor.stopMoving();
+	actor.moveTo(position);
+}
+
 auto CoreStateMachine::Event::JoystickMoved::operator()() const -> void {
 	actor.setJoystick(x, y, z);
 }

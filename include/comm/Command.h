@@ -21,6 +21,7 @@ struct Command {
 		GoToPosition,
 		EStop,
 		QuitEStop,
+		GoToSafe,
 
 		// End Marker
 		END_OF_ENUM

@@ -58,6 +58,12 @@ struct CoreStateMachine : LoggingMixin {
 			Hw::Coordinates position;
 		};
 
+		struct GoToSafe : ActorEventBase<GoToSafe> {
+			auto operator()() const -> void;
+
+			Hw::Coordinates position;
+		};
+
 		struct ModeSet {
 			Hw::SteeringMode mode;
 		};
@@ -88,6 +94,8 @@ struct CoreStateMachine : LoggingMixin {
 	static auto constexpr settingMode = boost::sml::state<struct SettingModeStateTag>;
 	static auto constexpr steering = boost::sml::state<struct SteeringStateTag>;
 	static auto constexpr runningSequence = boost::sml::state<struct RunningSequenceStateTag>;
+	static auto constexpr runningSafeSequence = boost::sml::state<struct RunningSafeSequenceStateTag>;
+	static auto constexpr safe = boost::sml::state<struct SafeStateTag>;
 	static auto constexpr emergencyStopped = boost::sml::state<struct EmergencyStoppedStateTag>;
 
 	auto operator()() noexcept {
@@ -123,14 +131,14 @@ struct CoreStateMachine : LoggingMixin {
 			// [retracting]
 			retracting + event<Event::Retracted>               = retracted,
 			retracting + event<Event::EStop>     / eventAction = emergencyStopped,
-			retracting  + on_entry<_>            / logEntry("retracting"),
-			retracting  + on_exit<_>             / logExit("retracting"),
+			retracting + on_entry<_>             / logEntry("retracting"),
+			retracting + on_exit<_>              / logExit("retracting"),
 
 			// [retracted]
 			retracted + event<Event::Unfold> / eventAction = unfolding,
 			retracted + event<Event::EStop>  / eventAction = emergencyStopped,
-			retracted  + on_entry<_>         / logEntry("retracted"),
-			retracted  + on_exit<_>          / logExit("retracted"),
+			retracted + on_entry<_>          / logEntry("retracted"),
+			retracted + on_exit<_>           / logExit("retracted"),
 
 			// [unfolded]
 			unfolding + event<Event::Unfolded>               = idle,
@@ -141,6 +149,7 @@ struct CoreStateMachine : LoggingMixin {
 			// [idle]
 			idle + event<Event::SetMode>      / eventAction = settingMode,
 			idle + event<Event::GoToPosition> / eventAction = runningSequence,
+			idle + event<Event::GoToSafe>     / eventAction = runningSafeSequence,
 			idle + event<Event::Retract>      / eventAction = retracting,
 			idle + event<Event::Unfold>       / eventAction = unfolding,
 			idle + event<Event::EStop>        / eventAction = emergencyStopped,
@@ -170,7 +179,20 @@ struct CoreStateMachine : LoggingMixin {
 			runningSequence + event<Event::EStop>            / eventAction = emergencyStopped,
 			runningSequence + on_entry<_>                    / logEntry("runningSequence"),
 			runningSequence + on_exit<_>                     / logExit("runningSequence"),
-			
+
+			// [runningSafeSequence]
+			runningSafeSequence + event<Event::GoToSafe>         / eventAction = runningSafeSequence,
+			runningSafeSequence + event<Event::SequenceFinished> / eventAction = safe,
+			runningSafeSequence + event<Event::EStop>            / eventAction = emergencyStopped,
+			runningSafeSequence + on_entry<_>                    / logEntry("runningSafeSequence"),
+			runningSafeSequence + on_exit<_>                     / logExit("runningSafeSequence"),
+
+			// [safe]
+			safe + event<Event::EStop>  / eventAction = emergencyStopped,
+			safe + event<Event::Unfold> / eventAction = unfolding,
+			safe + on_entry<_>          / logEntry("safe"),
+			safe + on_exit<_>           / logExit("safe"),
+
 		    // [emergencyStopped]
 			emergencyStopped + event<Event::QuitEStop> = poweredOff,
 			emergencyStopped + on_entry<_>             / logEntry("emergencyStopped"),

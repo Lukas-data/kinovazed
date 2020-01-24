@@ -64,6 +64,14 @@ auto CommandHandler::process(Comm::Command command) -> void {
 		        fmt::format("moving toward objective '{}'", name),
 		        fmt::format("internal state machine refused to move toward objective '{}'", name));
 	} break;
+	case Command::Id::GoToSafe: {
+		currentObjective = objectiveManager.getObjective(std::any_cast<Objective::Id>(command.parameters[0]));
+		auto point = currentObjective->nextPoint();
+		auto name = toString(currentObjective->getId());
+		logStep(CoreStateMachine::Event::GoToSafe{arm, *point},
+		        fmt::format("moving toward safety objective '{}'", name),
+		        fmt::format("internal state machine refused to move toward safety objective '{}'", name));
+	} break;
 	case Command::Id::Initialize:
 		logStep(CoreStateMachine::Event::Initialize{arm},
 		        "initializing arm",
@@ -105,18 +113,30 @@ auto CommandHandler::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 
 	auto logStep = makeLoggedStepper("onPositionReached");
 
-	if (stateMachine.is(CoreStateMachine::runningSequence)) {
-		assert(currentObjective);
-		auto nextPoint = currentObjective->nextPoint();
-		if (nextPoint) {
+	if (!(stateMachine.is(CoreStateMachine::runningSequence) ||
+	      stateMachine.is(CoreStateMachine::runningSafeSequence))) {
+		logWarning("onPositionReached", "reached a trajectory point without an active sequence");
+		return;
+	}
+
+	assert(currentObjective);
+	auto nextPoint = currentObjective->nextPoint();
+
+
+	if (nextPoint) {
+		if (stateMachine.is(CoreStateMachine::runningSequence)) {
 			logStep(CoreStateMachine::Event::GoToPosition{arm, *nextPoint},
 			        "moving towards next sequence point",
 			        "internal state machine refused to move towards next sequence point");
 		} else {
-			logStep(CoreStateMachine::Event::SequenceFinished{arm},
-			        "finishing movement sequence",
-			        "internal state machine did not accept sequence end event");
+			logStep(CoreStateMachine::Event::GoToSafe{arm, *nextPoint},
+			        "moving towards next safety sequence point",
+			        "internal state machine refused to move towards next safety sequence point");
 		}
+	} else {
+		logStep(CoreStateMachine::Event::SequenceFinished{arm},
+		        "finishing movement sequence",
+		        "internal state machine did not accept sequence end event");
 	}
 }
 
@@ -157,14 +177,12 @@ auto CommandHandler::onInitializationFinished(Hw::Actor &) -> void {
 }
 
 auto CommandHandler::getSystemState() -> std::bitset<8> {
-	auto isConnected = !arm.hasFailed();
-	auto hasEmergencyStop = stateMachine.is(CoreStateMachine::emergencyStopped);
-
 	auto state = std::bitset<8>{};
 
-	state.set(0, isConnected);
-	state.set(1, hasEmergencyStop);
+	state.set(0, !arm.hasFailed());
+	state.set(1, stateMachine.is(CoreStateMachine::emergencyStopped));
 	state.set(2, isInitialized);
+	state.set(3, stateMachine.is(CoreStateMachine::safe));
 
 	return state;
 }
