@@ -74,6 +74,7 @@ auto TCPInterface::handleAccept(asio::error_code error) -> void {
 auto TCPInterface::startReading() -> void {
 	using buffer_iterator = std::istream_iterator<char>;
 
+	/// CRLF
 	async_read_until(*remoteSocket, readBuffer, ';', [this](auto error, auto read) {
 		if (error) {
 			processReadError(error);
