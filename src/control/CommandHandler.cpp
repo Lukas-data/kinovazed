@@ -112,7 +112,7 @@ auto CommandHandler::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 			        "moving towards next sequence point",
 			        "internal state machine refused to move towards next sequence point");
 		} else {
-			logStep(CoreStateMachine::Event::SequenceFinished{},
+			logStep(CoreStateMachine::Event::SequenceFinished{arm},
 			        "finishing movement sequence",
 			        "internal state machine did not accept sequence end event");
 		}

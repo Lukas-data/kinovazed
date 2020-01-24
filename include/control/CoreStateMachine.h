@@ -70,7 +70,9 @@ struct CoreStateMachine : LoggingMixin {
 			int z;
 		};
 
-		struct SequenceFinished {};
+		struct SequenceFinished : ActorEventBase<JoystickMoved> {
+			auto operator()() const -> void;
+		};
 	};
 
 	explicit CoreStateMachine(Logger logger)
@@ -172,7 +174,7 @@ struct CoreStateMachine : LoggingMixin {
 
 			// [runningSequence]
 			runningSequence + event<Event::GoToPosition>     / eventAction = runningSequence,
-			runningSequence + event<Event::SequenceFinished>               = idle,
+			runningSequence + event<Event::SequenceFinished> / eventAction = idle,
 			runningSequence + event<Event::EStop>            / eventAction = emergencyStopped,
 			runningSequence + on_entry<_>                    / logEntry("runningSequence"),
 			runningSequence + on_exit<_>                     / logExit("runningSequence"),

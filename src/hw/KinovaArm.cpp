@@ -145,6 +145,7 @@ auto KinovaArm::stopMoving() -> bool {
 
 	try {
 		arm->erase_trajectories();
+		std::this_thread::sleep_for(10ms);
 		logInfo("stopMoving", "erased all stored trajectories.");
 	} catch (std::exception const &e) {
 		logError("stopMoving", "failed to erase stored trajectories. reason: {0}", e.what());
@@ -161,8 +162,10 @@ auto KinovaArm::stopMoving() -> bool {
 	try {
 		arm->move_joystick_axis(joystickPosition);
 		logInfo("stopMoving", "successfully put the joystick into the neutral position.");
-		arm->release_joystick();
+		std::this_thread::sleep_for(10ms);
+		releaseJoystick();
 		logInfo("stopMoving", "successfully released the joystick.");
+		movementStatus.reset();
 		return true;
 	} catch (std::exception const &e) {
 		logError("stop moving", "failed to release the joystick in the neutral position. reason: {}", e.what());
