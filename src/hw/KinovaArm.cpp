@@ -260,30 +260,29 @@ auto KinovaArm::setSteeringMode(SteeringMode mode) -> bool {
 
 	auto guard = std::lock_guard{accessLock};
 
-	if ((steeringMode != mode && mode != SteeringMode::NoMode)) {
-		if (!canChangeMode()) {
-			return false;
-		}
+	if (mode != SteeringMode::NoMode && !canChangeMode()) {
+		logWarning("setSteeringMode",
+		           "rejected steering mode change. reason: not enough time elapsed since last change");
+		return false;
+	}
 
-		try {
-			if ((steeringMode != SteeringMode::Axis1 && steeringMode != SteeringMode::Axis2) &&
-			    (mode == SteeringMode::Axis1 || mode == SteeringMode::Axis2)) {
-				arm->set_control_ang();
-				lastSteeringModeChange = std::chrono::steady_clock::now();
-			}
-			if ((steeringMode != SteeringMode::Translation && steeringMode != SteeringMode::Rotation) &&
-			    (mode == SteeringMode::Translation || mode == SteeringMode::Rotation) && canChangeMode()) {
-				arm->set_control_cart();
-				lastSteeringModeChange = std::chrono::steady_clock::now();
-			}
-		} catch (std::exception const &e) {
-			logError("setSteeringMode", "failed to set steering mode. reason: {0}", e.what());
-			return false;
+	try {
+		if (mode == SteeringMode::Axis1 || mode == SteeringMode::Axis2) {
+			arm->set_control_ang();
+		} else {
+			arm->set_control_cart();
 		}
+	} catch (std::exception const &e) {
+		logError("setSteeringMode", "failed to set steering mode. reason: {0}", e.what());
+		return false;
+	}
 
-		steeringMode = mode;
-	} else if (mode == SteeringMode::NoMode) {
-		steeringMode = SteeringMode::Translation;
+	releaseJoystick();
+	steeringMode = mode;
+
+	if (mode != SteeringMode::NoMode) {
+		lastSteeringModeChange = std::chrono::steady_clock::now();
+	} else {
 		fireSteeringModeChanged(mode);
 	}
 
