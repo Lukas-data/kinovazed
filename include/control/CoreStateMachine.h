@@ -195,6 +195,7 @@ struct CoreStateMachine : LoggingMixin {
 
 		    // [emergencyStopped]
 			emergencyStopped + event<Event::QuitEStop> = poweredOff,
+			emergencyStopped + event<Event::EStop>     = emergencyStopped,
 			emergencyStopped + on_entry<_>             / logEntry("emergencyStopped"),
 			emergencyStopped + on_exit<_>              / logExit("emergencyStopped")
 		    // clang-format on
