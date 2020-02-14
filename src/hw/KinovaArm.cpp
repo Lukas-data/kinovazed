@@ -236,11 +236,11 @@ auto KinovaArm::setJoystick(int x, int y, int z) -> void {
 	rawPosition.s.wrist_fb = 0;
 	rawPosition.s.wrist_rot = 0;
 
-	if (steeringMode == SteeringMode::Translation || steeringMode == SteeringMode::Axis1) {
+	if (steeringMode == SteeringMode::Translation || steeringMode == SteeringMode::Axis1to3) {
 		rawPosition.s.trans_lr = speedX;
 		rawPosition.s.trans_fb = speedY;
 		rawPosition.s.trans_rot = speedZ;
-	} else if (steeringMode == SteeringMode::Rotation || steeringMode == SteeringMode::Axis2) {
+	} else if (steeringMode == SteeringMode::Rotation || steeringMode == SteeringMode::Axis4to6) {
 		rawPosition.s.wrist_lr = speedX;
 		rawPosition.s.wrist_fb = speedY;
 		rawPosition.s.wrist_rot = speedZ;
@@ -260,14 +260,14 @@ auto KinovaArm::setSteeringMode(SteeringMode mode) -> bool {
 
 	auto guard = std::lock_guard{accessLock};
 
-	if (mode != SteeringMode::NoMode && !canChangeMode()) {
+	if (mode != SteeringMode::NoMode && mode != SteeringMode::Freeze && !canChangeMode()) {
 		logWarning("setSteeringMode",
 		           "rejected steering mode change. reason: not enough time elapsed since last change");
 		return false;
 	}
 
 	try {
-		if (mode == SteeringMode::Axis1 || mode == SteeringMode::Axis2) {
+		if (mode == SteeringMode::Axis1to3 || mode == SteeringMode::Axis4to6) {
 			arm->set_control_ang();
 		} else {
 			arm->set_control_cart();
@@ -280,7 +280,7 @@ auto KinovaArm::setSteeringMode(SteeringMode mode) -> bool {
 	releaseJoystick();
 	steeringMode = mode;
 
-	if (mode != SteeringMode::NoMode) {
+	if (mode != SteeringMode::NoMode && mode != SteeringMode::Freeze) {
 		lastSteeringModeChange = std::chrono::steady_clock::now();
 	} else {
 		fireSteeringModeChanged(mode);

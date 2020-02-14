@@ -30,12 +30,7 @@ auto CoreStateMachine::Event::SetMode::operator()() const -> void {
 	actor.setSteeringMode(mode);
 }
 
-auto CoreStateMachine::Event::GoToPosition::operator()() const -> void {
-	actor.stopMoving();
-	actor.moveTo(position);
-}
-
-auto CoreStateMachine::Event::GoToSafe::operator()() const -> void {
+auto CoreStateMachine::Event::RunObjective::operator()() const -> void {
 	actor.stopMoving();
 	actor.moveTo(position);
 }

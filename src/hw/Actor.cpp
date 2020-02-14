@@ -12,8 +12,9 @@ auto constexpr modeNames = std::array{
     std::pair{SteeringMode::NoMode, "NoMode"},
     std::pair{SteeringMode::Translation, "Translation"},
     std::pair{SteeringMode::Rotation, "Rotation"},
-    std::pair{SteeringMode::Axis1, "Axis1"},
-    std::pair{SteeringMode::Axis2, "Axis2"},
+    std::pair{SteeringMode::Axis1to3, "Axis1to3"},
+    std::pair{SteeringMode::Axis4to6, "Axis4to6"},
+    std::pair{SteeringMode::Freeze, "Freeze"},
 };
 
 static_assert(enumNameMappingsAreUnique(modeNames), "Duplicate entry in name map!");

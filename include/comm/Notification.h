@@ -9,10 +9,10 @@ namespace KinovaZED::Comm {
 
 struct Notification {
 	enum struct Id {
-		Initialized,
 		ModeSet,
 		SequenceDone,
 		Unfolded,
+		Retracted,
 
 		// End Marker
 		END_OF_ENUM

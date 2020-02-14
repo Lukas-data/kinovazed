@@ -11,14 +11,14 @@
 namespace KinovaZED::Comm {
 
 auto constexpr idNames = std::array{
-    std::pair{Notification::Id::Initialized, "Initialized"},
     std::pair{Notification::Id::ModeSet, "ModeSet"},
     std::pair{Notification::Id::SequenceDone, "SequenceDone"},
     std::pair{Notification::Id::Unfolded, "Unfolded"},
+    std::pair{Notification::Id::Retracted, "Retracted"},
 };
 
 static_assert(enumNameMappingsAreUnique(idNames), "Duplicate entry in name map!");
-static_assert(enumNameMapHasAllEntries(idNames, Notification::Id::Initialized), "Missing entry in name map!");
+static_assert(enumNameMapHasAllEntries(idNames, Notification::Id::ModeSet), "Missing entry in name map!");
 
 Notification::Notification(Id id)
     : id{id} {

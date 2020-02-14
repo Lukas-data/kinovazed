@@ -52,13 +52,7 @@ struct CoreStateMachine : LoggingMixin {
 			Hw::SteeringMode mode;
 		};
 
-		struct GoToPosition : ActorEventBase<GoToPosition> {
-			auto operator()() const -> void;
-
-			Hw::Coordinates position;
-		};
-
-		struct GoToSafe : ActorEventBase<GoToSafe> {
+		struct RunObjective : ActorEventBase<RunObjective> {
 			auto operator()() const -> void;
 
 			Hw::Coordinates position;
@@ -94,7 +88,6 @@ struct CoreStateMachine : LoggingMixin {
 	static auto constexpr settingMode = boost::sml::state<struct SettingModeStateTag>;
 	static auto constexpr steering = boost::sml::state<struct SteeringStateTag>;
 	static auto constexpr runningSequence = boost::sml::state<struct RunningSequenceStateTag>;
-	static auto constexpr runningSafeSequence = boost::sml::state<struct RunningSafeSequenceStateTag>;
 	static auto constexpr safe = boost::sml::state<struct SafeStateTag>;
 	static auto constexpr emergencyStopped = boost::sml::state<struct EmergencyStoppedStateTag>;
 
@@ -102,7 +95,11 @@ struct CoreStateMachine : LoggingMixin {
 		using namespace boost::sml;
 		using boost::sml::on_exit;
 
-		auto isSteeringMode = [](auto const &e) { return e.mode != Hw::SteeringMode::NoMode; };
+		auto isFreezeMode = [](auto const &e) { return e.mode == Hw::SteeringMode::Freeze; };
+
+		auto isNoMode = [](auto const &e) { return e.mode == Hw::SteeringMode::NoMode; };
+
+		auto isSteeringMode = [&](auto const &e) { return !(isNoMode(e) || isFreezeMode(e)); };
 
 		auto eventAction = [](auto const &e) { e(); };
 
@@ -148,8 +145,7 @@ struct CoreStateMachine : LoggingMixin {
 
 			// [idle]
 			idle + event<Event::SetMode>      / eventAction = settingMode,
-			idle + event<Event::GoToPosition> / eventAction = runningSequence,
-			idle + event<Event::GoToSafe>     / eventAction = runningSafeSequence,
+			idle + event<Event::RunObjective> / eventAction = runningSequence,
 			idle + event<Event::Retract>      / eventAction = retracting,
 			idle + event<Event::Unfold>       / eventAction = unfolding,
 			idle + event<Event::EStop>        / eventAction = emergencyStopped,
@@ -158,7 +154,8 @@ struct CoreStateMachine : LoggingMixin {
 
 			// [settingMode]
 			settingMode + event<Event::ModeSet> [ isSteeringMode ]                = steering,
-			settingMode + event<Event::ModeSet> [ !isSteeringMode ]               = idle,
+			settingMode + event<Event::ModeSet> [ isNoMode ]                      = idle,
+			settingMode + event<Event::ModeSet> [ isFreezeMode ]                  = safe,
 			settingMode + event<Event::Retract>                     / eventAction = retracting,
 			settingMode + event<Event::EStop>                       / eventAction = emergencyStopped,
 			settingMode + on_entry<_>                               / logEntry("settingMode"),
@@ -167,31 +164,24 @@ struct CoreStateMachine : LoggingMixin {
 			// [steering]
 			steering + event<Event::SetMode>       / eventAction = settingMode,
 			steering + event<Event::JoystickMoved> / eventAction = steering,
-			steering + event<Event::GoToPosition>  / eventAction = runningSequence,
+			steering + event<Event::RunObjective>  / eventAction = runningSequence,
 			steering + event<Event::Retract>       / eventAction = retracting,
 			steering + event<Event::EStop>         / eventAction = emergencyStopped,
 			steering + on_entry<_>                 / logEntry("steering"),
 			steering + on_exit<_>                  / logExit("steering"),
 
 			// [runningSequence]
-			runningSequence + event<Event::GoToPosition>     / eventAction = runningSequence,
+			runningSequence + event<Event::RunObjective>     / eventAction = runningSequence,
 			runningSequence + event<Event::SequenceFinished> / eventAction = idle,
 			runningSequence + event<Event::EStop>            / eventAction = emergencyStopped,
 			runningSequence + on_entry<_>                    / logEntry("runningSequence"),
 			runningSequence + on_exit<_>                     / logExit("runningSequence"),
 
-			// [runningSafeSequence]
-			runningSafeSequence + event<Event::GoToSafe>         / eventAction = runningSafeSequence,
-			runningSafeSequence + event<Event::SequenceFinished> / eventAction = safe,
-			runningSafeSequence + event<Event::EStop>            / eventAction = emergencyStopped,
-			runningSafeSequence + on_entry<_>                    / logEntry("runningSafeSequence"),
-			runningSafeSequence + on_exit<_>                     / logExit("runningSafeSequence"),
-
 			// [safe]
-			safe + event<Event::EStop>  / eventAction = emergencyStopped,
-			safe + event<Event::Unfold> / eventAction = unfolding,
-			safe + on_entry<_>          / logEntry("safe"),
-			safe + on_exit<_>           / logExit("safe"),
+			safe + event<Event::EStop>   / eventAction = emergencyStopped,
+			safe + event<Event::SetMode> / eventAction = settingMode,
+			safe + on_entry<_>           / logEntry("safe"),
+			safe + on_exit<_>            / logExit("safe"),
 
 		    // [emergencyStopped]
 			emergencyStopped + event<Event::QuitEStop> = poweredOff,

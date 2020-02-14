@@ -61,7 +61,7 @@ auto CoreController::process(Comm::Command command) -> void {
 		currentObjective = objectiveManager.getObjective(std::any_cast<Objective::Id>(command.parameters[0]));
 		auto point = currentObjective->nextPoint();
 		auto name = toString(currentObjective->getId());
-		logStep(CoreStateMachine::Event::GoToPosition{arm, *point},
+		logStep(CoreStateMachine::Event::RunObjective{arm, *point},
 		        fmt::format("moving toward objective '{}'", name),
 		        fmt::format("internal state machine refused to move toward objective '{}'", name));
 	} break;
@@ -74,6 +74,11 @@ auto CoreController::process(Comm::Command command) -> void {
 		logStep(CoreStateMachine::Event::Unfold{arm},
 		        "unfolding the arm",
 		        "internal state machine refused to unfold the arm");
+		break;
+	case Command::Id::Retract:
+		logStep(CoreStateMachine::Event::Retract{arm},
+		        "retracting the arm",
+		        "internal state machine refused to retract the arm");
 		break;
 	case Command::Id::SetMode: {
 		auto mode = std::any_cast<Hw::SteeringMode>(command.parameters[0]);
@@ -101,8 +106,7 @@ auto CoreController::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 
 	auto logStep = makeLoggedStepper("onPositionReached");
 
-	if (!(stateMachine.is(CoreStateMachine::runningSequence) ||
-	      stateMachine.is(CoreStateMachine::runningSafeSequence))) {
+	if (!stateMachine.is(CoreStateMachine::runningSequence)) {
 		logWarning("onPositionReached", "reached a trajectory point without an active sequence");
 		return;
 	}
@@ -112,13 +116,9 @@ auto CoreController::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 
 	if (nextPoint) {
 		if (stateMachine.is(CoreStateMachine::runningSequence)) {
-			logStep(CoreStateMachine::Event::GoToPosition{arm, *nextPoint},
+			logStep(CoreStateMachine::Event::RunObjective{arm, *nextPoint},
 			        "moving towards next sequence point",
 			        "internal state machine refused to move towards next sequence point");
-		} else {
-			logStep(CoreStateMachine::Event::GoToSafe{arm, *nextPoint},
-			        "moving towards next safety sequence point",
-			        "internal state machine refused to move towards next safety sequence point");
 		}
 	} else {
 		if (logStep(CoreStateMachine::Event::SequenceFinished{arm},
@@ -145,6 +145,7 @@ auto CoreController::onRetractionPointReached(Hw::Actor &) -> void {
 	logStep(CoreStateMachine::Event::Retracted{},
 	        "marking the arm as being in the retracted",
 	        "internal state machine did not accept retracted event");
+	commandSource.send(Comm::Notification{Comm::Notification::Id::Retracted});
 }
 
 auto CoreController::onSteeringModeChanged(Hw::Actor &, Hw::SteeringMode mode) -> void {
@@ -167,7 +168,6 @@ auto CoreController::onInitializationFinished(Hw::Actor &) -> void {
 	if ((isInitialized = logStep(CoreStateMachine::Event::Initialized{},
 	                             "marking the arm as initialized",
 	                             "internal state machine did not accept initialized event"))) {
-		commandSource.send(Comm::Notification{Comm::Notification::Id::Initialized});
 	}
 }
 
