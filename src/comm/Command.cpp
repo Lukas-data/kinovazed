@@ -20,14 +20,13 @@ namespace KinovaZED::Comm {
 
 auto constexpr commandNames = std::array{
     std::pair{Command::Id::EStop, "EStop"},
-    std::pair{Command::Id::GoToPosition, "GoToPosition"},
+    std::pair{Command::Id::RunObjective, "RunObjective"},
     std::pair{Command::Id::Initialize, "Initialize"},
     std::pair{Command::Id::MoveJoystick, "MoveJoystick"},
-    std::pair{Command::Id::NoMode, "NoMode"},
     std::pair{Command::Id::QuitEStop, "QuitEStop"},
     std::pair{Command::Id::SetMode, "SetMode"},
     std::pair{Command::Id::Unfold, "Unfold"},
-    std::pair{Command::Id::GoToSafe, "GoToSafe"},
+    std::pair{Command::Id::Retract, "Retract"},
 };
 
 static_assert(enumNameMappingsAreUnique(commandNames), "Duplicate entry in name map!");

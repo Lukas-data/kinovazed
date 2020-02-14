@@ -22,13 +22,12 @@ auto checkParameterCount(Comm::Command::Id id, std::vector<std::any> parameters)
 	case Command::Id::QuitEStop:
 	case Command::Id::Initialize:
 	case Command::Id::Unfold:
-	case Command::Id::NoMode:
+	case Command::Id::Retract:
 		if (!parameters.empty()) {
 			return false;
 		}
 		break;
-	case Command::Id::GoToSafe:
-	case Command::Id::GoToPosition:
+	case Command::Id::RunObjective:
 	case Command::Id::SetMode:
 		if (parameters.size() != 1) {
 			return false;
@@ -54,10 +53,9 @@ auto adjustParameterTypes(Comm::Command::Id id, std::vector<std::any> &parameter
 	case Command::Id::QuitEStop:
 	case Command::Id::Initialize:
 	case Command::Id::Unfold:
-	case Command::Id::NoMode:
+	case Command::Id::Retract:
 		return true;
-	case Command::Id::GoToSafe:
-	case Command::Id::GoToPosition:
+	case Command::Id::RunObjective:
 		try {
 			auto objectiveName = std::any_cast<std::string>(parameters.at(0));
 			if (!Control::isKnownObjectiveId(objectiveName)) {

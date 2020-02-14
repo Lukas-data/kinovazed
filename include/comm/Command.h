@@ -15,13 +15,12 @@ struct Command {
 	enum struct Id : std::uint8_t {
 		Initialize,
 		Unfold,
+		Retract,
 		SetMode,
-		NoMode,
 		MoveJoystick,
-		GoToPosition,
+		RunObjective,
 		EStop,
 		QuitEStop,
-		GoToSafe,
 
 		// End Marker
 		END_OF_ENUM

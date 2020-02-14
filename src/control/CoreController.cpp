@@ -57,21 +57,13 @@ auto CoreController::process(Comm::Command command) -> void {
 		        "leaving emergency stop mode",
 		        "internal state machine refused to leave the emergency stop mode");
 		break;
-	case Command::Id::GoToPosition: {
+	case Command::Id::RunObjective: {
 		currentObjective = objectiveManager.getObjective(std::any_cast<Objective::Id>(command.parameters[0]));
 		auto point = currentObjective->nextPoint();
 		auto name = toString(currentObjective->getId());
 		logStep(CoreStateMachine::Event::GoToPosition{arm, *point},
 		        fmt::format("moving toward objective '{}'", name),
 		        fmt::format("internal state machine refused to move toward objective '{}'", name));
-	} break;
-	case Command::Id::GoToSafe: {
-		currentObjective = objectiveManager.getObjective(std::any_cast<Objective::Id>(command.parameters[0]));
-		auto point = currentObjective->nextPoint();
-		auto name = toString(currentObjective->getId());
-		logStep(CoreStateMachine::Event::GoToSafe{arm, *point},
-		        fmt::format("moving toward safety objective '{}'", name),
-		        fmt::format("internal state machine refused to move toward safety objective '{}'", name));
 	} break;
 	case Command::Id::Initialize:
 		logStep(CoreStateMachine::Event::Initialize{arm},
@@ -91,11 +83,6 @@ auto CoreController::process(Comm::Command command) -> void {
 		        fmt::format("internal state machine refused to change mode to '{}'", name));
 
 	} break;
-	case Command::Id::NoMode:
-		logStep(CoreStateMachine::Event::SetMode{arm, Hw::SteeringMode::NoMode},
-		        "changing into NoMode steering mode",
-		        "internal state machine refused to change into NoMode mode");
-		break;
 	case Command::Id::MoveJoystick: {
 		auto [x, y, z] = extractJoystickPosition(command);
 		logStep(CoreStateMachine::Event::JoystickMoved{arm, x, y, z},
