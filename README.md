@@ -63,11 +63,11 @@ Each bit reflects an important state.
 | 0 | isConnected |
 | 1 | hasEmergencyStop |
 | 2 | isInitialized |
-| 3 | isSafe   |
-| 4 | _unused_ |
-| 5 | _unused_ |
-| 6 | _unused_ |
-| 7 | _unused_ |
+| 3 | isFreezed   |
+| 4 | _unused_    |
+| 5 | _unused_    |
+| 6 | _unused_    |
+| 7 | _unused_    |
 
 # Modes
 
