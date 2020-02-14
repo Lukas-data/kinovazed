@@ -12,7 +12,7 @@ namespace KinovaZED::Comm {
 
 auto constexpr idNames = std::array{
     std::pair{Notification::Id::ModeSet, "ModeSet"},
-    std::pair{Notification::Id::SequenceDone, "SequenceDone"},
+    std::pair{Notification::Id::ObjectiveDone, "ObjectiveDone"},
     std::pair{Notification::Id::Unfolded, "Unfolded"},
     std::pair{Notification::Id::Retracted, "Retracted"},
 };

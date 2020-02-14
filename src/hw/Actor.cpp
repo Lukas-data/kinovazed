@@ -10,7 +10,7 @@ namespace KinovaZED::Hw {
 
 auto constexpr modeNames = std::array{
     std::pair{SteeringMode::NoMode, "NoMode"},
-    std::pair{SteeringMode::Translation, "Translation"},
+    std::pair{SteeringMode::XYZ, "XYZ"},
     std::pair{SteeringMode::Rotation, "Rotation"},
     std::pair{SteeringMode::Axis1to3, "Axis1to3"},
     std::pair{SteeringMode::Axis4to6, "Axis4to6"},

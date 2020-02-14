@@ -124,7 +124,7 @@ auto CoreController::onPositionReached(Hw::Actor &, Hw::Coordinates) -> void {
 		if (logStep(CoreStateMachine::Event::SequenceFinished{arm},
 		            "finishing movement sequence",
 		            "internal state machine did not accept sequence end event")) {
-			commandSource.send(Comm::Notification{Comm::Notification::Id::SequenceDone});
+			commandSource.send(Comm::Notification{Comm::Notification::Id::ObjectiveDone});
 		}
 	}
 }

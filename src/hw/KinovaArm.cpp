@@ -236,7 +236,7 @@ auto KinovaArm::setJoystick(int x, int y, int z) -> void {
 	rawPosition.s.wrist_fb = 0;
 	rawPosition.s.wrist_rot = 0;
 
-	if (steeringMode == SteeringMode::Translation || steeringMode == SteeringMode::Axis1to3) {
+	if (steeringMode == SteeringMode::XYZ || steeringMode == SteeringMode::Axis1to3) {
 		rawPosition.s.trans_lr = speedX;
 		rawPosition.s.trans_fb = speedY;
 		rawPosition.s.trans_rot = speedZ;

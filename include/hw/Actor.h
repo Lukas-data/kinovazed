@@ -10,7 +10,7 @@ namespace KinovaZED::Hw {
 
 enum struct SteeringMode {
 	NoMode,
-	Translation,
+	XYZ,
 	Rotation,
 	Axis1to3,
 	Axis4to6,

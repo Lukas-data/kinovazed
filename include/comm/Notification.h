@@ -10,7 +10,7 @@ namespace KinovaZED::Comm {
 struct Notification {
 	enum struct Id {
 		ModeSet,
-		SequenceDone,
+		ObjectiveDone,
 		Unfolded,
 		Retracted,
 
