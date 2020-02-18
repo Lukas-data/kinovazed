@@ -42,7 +42,7 @@
     ]
   },
   {
-    "name": "PlaceCup",
+    "name": "SuckDoor",
     "is_abs": true,
     "origin": {"X": -0.705, "Y": -0.028, "Z":  0.755, "pitch": -0.008, "yaw": -1.028, "roll":  1.608 },
     "sequence": [

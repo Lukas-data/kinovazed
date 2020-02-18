@@ -25,7 +25,7 @@ struct Objective : LoggingMixin {
 		Handle,
 		OpenDoor,
 		PullDoor,
-		PlaceCup,
+		SuckDoor,
 		Antenna,
 		AntennaPull,
 
