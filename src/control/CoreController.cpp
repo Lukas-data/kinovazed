@@ -59,6 +59,9 @@ auto CoreController::process(Comm::Command command) -> void {
 		break;
 	case Command::Id::RunObjective: {
 		currentObjective = objectiveManager.getObjective(std::any_cast<Objective::Id>(command.parameters[0]));
+		if (!currentObjective->isAbsolute()) {
+			currentObjective->setOrigin(arm.getPosition());
+		}
 		auto point = currentObjective->nextPoint();
 		auto name = toString(currentObjective->getId());
 		logStep(CoreStateMachine::Event::RunObjective{arm, *point},
