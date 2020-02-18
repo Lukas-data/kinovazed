@@ -293,4 +293,8 @@ auto KinovaArm::hasFailed() const -> bool {
 	return isInFailState;
 }
 
+auto KinovaArm::getPosition() const -> Coordinates {
+	return currentPosition.value_or(Coordinates{});
+}
+
 } // namespace KinovaZED::Hw

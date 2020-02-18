@@ -114,6 +114,11 @@ struct Actor {
 	 */
 	auto virtual hasFailed() const -> bool = 0;
 
+	/**
+	 * Get the current position of the actor
+	 */
+	auto virtual getPosition() const -> Coordinates = 0;
+
 	auto setShouldReconnectOnError(bool reconnect) -> void;
 	auto shouldReconnectOnError() -> bool;
 

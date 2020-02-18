@@ -1,6 +1,7 @@
 #ifndef INCLUDE_CONTROL_OBJECTIVE_H_
 #define INCLUDE_CONTROL_OBJECTIVE_H_
 
+#include "hw/Actor.h"
 #include "hw/Coordinates.h"
 #include "hw/Origin.h"
 #include "support/Logging.h"

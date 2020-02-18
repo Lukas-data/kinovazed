@@ -37,6 +37,8 @@ struct KinovaArm : Actor, LoggingMixin {
 
 	auto setSteeringMode(SteeringMode mode) -> bool;
 
+	auto getPosition() const -> Coordinates;
+
 	auto hasFailed() const -> bool;
 
   private:
