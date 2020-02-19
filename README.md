@@ -105,3 +105,13 @@ The Jaco Arm is connected to the raspberryPI by USB.
 The raspberryPI is connected to the main controller roboRIO by Ethernet TCP.
 
 # Installation
+
+* Clone the source code into ~/Code/kinovazed
+* Change the working directory into the new clone
+* Configure the build environment:
+    *  `mkdir build`
+    *  `cd build`
+    *  `cmake .. -DCMAKE_BUILD_TYPE=Release`
+    *  `cd ..`
+* Build the project: `cmake --build build --target all -- -j4`
+* Install the result: `sudo cmake --build build --target install`
