@@ -297,4 +297,8 @@ auto KinovaArm::getPosition() const -> Coordinates {
 	return currentPosition.value_or(Coordinates{});
 }
 
+auto KinovaArm::getSteeringMode() const -> std::optional<SteeringMode> {
+	return steeringMode;
+}
+
 } // namespace KinovaZED::Hw

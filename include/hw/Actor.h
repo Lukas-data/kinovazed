@@ -4,6 +4,7 @@
 #include "hw/Coordinates.h"
 #include "support/ToString.h"
 
+#include <optional>
 #include <set>
 
 namespace KinovaZED::Hw {
@@ -118,6 +119,11 @@ struct Actor {
 	 * Get the current position of the actor
 	 */
 	auto virtual getPosition() const -> Coordinates = 0;
+
+	/**
+	 * Get the current steering mode
+	 */
+	auto virtual getSteeringMode() const -> std::optional<SteeringMode> = 0;
 
 	auto setShouldReconnectOnError(bool reconnect) -> void;
 	auto shouldReconnectOnError() -> bool;

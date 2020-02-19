@@ -43,6 +43,11 @@ auto CoreController::process(Comm::Command command) -> void {
 	using namespace Comm;
 	using namespace std::placeholders;
 
+	auto currentSteeringMode = arm.getSteeringMode();
+	logInfo("process",
+	        "current steering mode of the arm is: ",
+	        currentSteeringMode ? toString(*currentSteeringMode) : "unknown");
+
 	auto logStep = makeLoggedStepper("process");
 
 	switch (command.id) {
