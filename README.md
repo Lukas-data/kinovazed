@@ -50,6 +50,8 @@ Events have no arguments and are always sent __from__ kinovaZED __to__ roboRIO.
 | ObjectiveDone |
 | Unfolded      |
 | Retracted     |
+| CmdAccepted   |
+| CmdRejected   |
 
 __heartbeat:__
 
