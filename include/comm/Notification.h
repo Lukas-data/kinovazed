@@ -13,9 +13,11 @@ struct Notification {
 		ObjectiveDone,
 		Unfolded,
 		Retracted,
+		Accepted,
+		Rejected,
 
 		// End Marker
-		END_OF_ENUM
+		END_OF_ENUM,
 	};
 
 	explicit Notification(Id id);

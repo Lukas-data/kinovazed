@@ -48,7 +48,13 @@ auto CoreController::process(Comm::Command command) -> void {
 	        "current steering mode of the arm is: ",
 	        currentSteeringMode ? toString(*currentSteeringMode) : "unknown");
 
-	auto logStep = makeLoggedStepper("process");
+	auto logStepper = makeLoggedStepper("process");
+	auto logStep = [logStepper, that = shared_from_this()](auto event, auto success, auto error) {
+		auto result = logStepper(event, success, error);
+		that->commandSource.send(
+		    Comm::Notification{result ? Comm::Notification::Id::Accepted : Comm::Notification::Id::Rejected});
+		return success;
+	};
 
 	switch (command.id) {
 	case Command::Id::EStop:
