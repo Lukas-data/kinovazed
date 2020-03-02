@@ -17,7 +17,7 @@ auto KinovaArm::startUpdateLoop() -> void {
 				if (arm) {
 					updatePosition();
 					updateRetractionMode();
-					if (lastSteeringModeChange) {
+					if (state->lastSteeringModeChange) {
 						updateSteeringMode();
 					}
 					checkCurrents();
@@ -39,9 +39,9 @@ auto KinovaArm::stopUpdateLoop() -> void {
 auto KinovaArm::checkCurrents() -> void {
 	try {
 		auto rawCurrents = arm->get_ang_current();
-		fullCurrent = std::accumulate(std::cbegin(rawCurrents.joints), std::cend(rawCurrents.joints), .0f);
+		state->fullCurrent = std::accumulate(std::cbegin(rawCurrents.joints), std::cend(rawCurrents.joints), .0f);
 
-		if (fullCurrent > 2) {
+		if (state->fullCurrent > 2) {
 			logDebug("checkCurrents",
 			         "({0}, {1}, {2}, {3}, {4}, {5})",
 			         rawCurrents.joints[0],
@@ -52,8 +52,8 @@ auto KinovaArm::checkCurrents() -> void {
 			         rawCurrents.joints[5]);
 		}
 
-		if (fullCurrent > 4.5f) {
-			logError("checkCurrents", "overcurrent detected. Shutting down the arm. current: {0}", fullCurrent);
+		if (state->fullCurrent > 4.5f) {
+			logError("checkCurrents", "overcurrent detected. Shutting down the arm. current: {0}", state->fullCurrent);
 			disconnect();
 		}
 	} catch (std::exception const &e) {
@@ -65,25 +65,26 @@ auto KinovaArm::updatePosition() -> void {
 	try {
 		auto position = readPosition();
 
-		if (position == currentPosition) {
+		if (position == state->currentPosition) {
 			return;
 		}
 
-		currentPosition = position;
+		state->currentPosition = position;
 
-		if (movementStatus == MovementStatus::HomingToSoftwareHome && currentPosition == homePosition) {
-			retractionStatus = RetractionStatus::Homed;
-			movementStatus.reset();
+		if (state->movementStatus == MovementStatus::HomingToSoftwareHome && state->currentPosition == homePosition) {
+			state->retractionStatus = RetractionStatus::Homed;
+			state->movementStatus.reset();
 			std::this_thread::sleep_for(10ms);
 			fireHomeReached();
 			return;
 		}
 
-		if (movementStatus == MovementStatus::MovingToPosition && isInRange(*currentPosition, *targetPosition)) {
-			targetPosition.reset();
-			movementStatus.reset();
+		if (state->movementStatus == MovementStatus::MovingToPosition &&
+		    isInRange(*state->currentPosition, *state->targetPosition)) {
+			state->targetPosition.reset();
+			state->movementStatus.reset();
 			std::this_thread::sleep_for(10ms);
-			firePositionReached(*currentPosition);
+			firePositionReached(*state->currentPosition);
 			return;
 		}
 	} catch (std::exception const &e) {
@@ -104,41 +105,42 @@ auto KinovaArm::updateRetractionMode() -> void {
 	try {
 		auto mode = readRetractionMode();
 
-		if (mode == retractionMode) {
+		if (mode == state->retractionMode) {
 			return;
 		}
 
-		retractionMode = mode;
-		logDebug("<updateRetractionMode>", "reached retraction mode {0};", static_cast<int>(*retractionMode));
-		if (movementStatus) {
-			logDebug("<updateRetractionMode>", "movement status is {0};", static_cast<int>(*movementStatus));
+		state->retractionMode = mode;
+		logDebug("<updateRetractionMode>", "reached retraction mode {0};", static_cast<int>(*state->retractionMode));
+		if (state->movementStatus) {
+			logDebug("<updateRetractionMode>", "movement status is {0};", static_cast<int>(*state->movementStatus));
 		}
 
-		if (retractionMode == RetractionMode::ReadyToStandby) {
+		if (state->retractionMode == RetractionMode::ReadyToStandby) {
 			logDebug("<updateRetractionMode>", "ready to standby");
-			wasHomed = true;
-			if (movementStatus == MovementStatus::HomingToHardwareHome) {
-				movementStatus.reset();
+			state->wasHomed = true;
+			if (state->movementStatus == MovementStatus::HomingToHardwareHome) {
+				state->movementStatus.reset();
 				releaseJoystick();
 				fireHomeReached();
 				return;
-			} else if (movementStatus == MovementStatus::HomingToSoftwareHome) {
-				movementStatus.reset();
+			} else if (state->movementStatus == MovementStatus::HomingToSoftwareHome) {
+				state->movementStatus.reset();
 				releaseJoystick();
 				moveToSoftwareHome();
 				return;
-			} else if (movementStatus == MovementStatus::Initializing) {
-				movementStatus.reset();
+			} else if (state->movementStatus == MovementStatus::Initializing) {
+				state->movementStatus.reset();
 				releaseJoystick();
 				fireInitializationFinished();
 				return;
 			}
 		}
 
-		if (retractionMode == RetractionMode::RetractToStandby) {
-			wasHomed = false;
-			if (movementStatus == MovementStatus::Retracting || movementStatus == MovementStatus::Initializing) {
-				movementStatus.reset();
+		if (state->retractionMode == RetractionMode::RetractToStandby) {
+			state->wasHomed = false;
+			if (state->movementStatus == MovementStatus::Retracting ||
+			    state->movementStatus == MovementStatus::Initializing) {
+				state->movementStatus.reset();
 				releaseJoystick();
 				fireRetractionPointReached();
 				return;
@@ -157,10 +159,10 @@ auto KinovaArm::readRetractionMode() -> RetractionMode {
 auto KinovaArm::updateSteeringMode() -> void {
 	using namespace std::chrono_literals;
 
-	if ((std::chrono::steady_clock::now() - *lastSteeringModeChange) >= 500ms) {
+	if ((std::chrono::steady_clock::now() - *state->lastSteeringModeChange) >= 500ms) {
 		logInfo("<updateSteeringMode>", "desired steering mode was reached.");
-		lastSteeringModeChange.reset();
-		fireSteeringModeChanged(*steeringMode);
+		state->lastSteeringModeChange.reset();
+		fireSteeringModeChanged(*state->steeringMode);
 	}
 }
 
@@ -174,7 +176,7 @@ auto KinovaArm::reconnectOnError() -> void {
 	}
 
 	if (connect()) {
-		if (hasControl) {
+		if (state->hasControl) {
 			takeControl();
 			stopMoving();
 		}
@@ -187,10 +189,10 @@ auto KinovaArm::reconnectOnError() -> void {
 auto KinovaArm::moveToHardwareHome() -> void {
 	logDebug("moveToHardwareHome",
 	         "trying to move to hardware home. retraction mode: {0}",
-	         static_cast<int>(*retractionMode));
+	         static_cast<int>(*state->retractionMode));
 
 	try {
-		switch (*retractionMode) {
+		switch (*state->retractionMode) {
 		case RetractionMode::RetractToReady:
 			pushButton(2);
 			releaseJoystick();
@@ -207,11 +209,11 @@ auto KinovaArm::moveToHardwareHome() -> void {
 			logError("moveToHardwareHome", "arm is in a failure state.");
 			break;
 		default:
-			if (movementStatus == MovementStatus::HomingToHardwareHome) {
-				movementStatus.reset();
+			if (state->movementStatus == MovementStatus::HomingToHardwareHome) {
+				state->movementStatus.reset();
 				fireHomeReached();
-			} else if (movementStatus == MovementStatus::Initializing) {
-				movementStatus.reset();
+			} else if (state->movementStatus == MovementStatus::Initializing) {
+				state->movementStatus.reset();
 				fireInitializationFinished();
 			}
 			break;
@@ -222,11 +224,11 @@ auto KinovaArm::moveToHardwareHome() -> void {
 }
 
 auto KinovaArm::moveToSoftwareHome() -> void {
-	if (currentPosition == homePosition) {
-		movementStatus.reset();
+	if (state->currentPosition == homePosition) {
+		state->movementStatus.reset();
 		fireHomeReached();
 		return;
-	} else if (wasHomed) {
+	} else if (state->wasHomed) {
 		moveTo(*homePosition);
 		return;
 	}
@@ -235,11 +237,11 @@ auto KinovaArm::moveToSoftwareHome() -> void {
 }
 
 auto KinovaArm::moveToRetractionPoint() -> void {
-	movementStatus = MovementStatus::Retracting;
-	retractionMode = readRetractionMode();
+	state->movementStatus = MovementStatus::Retracting;
+	state->retractionMode = readRetractionMode();
 
 	try {
-		switch (*retractionMode) {
+		switch (*state->retractionMode) {
 		case RetractionMode::ReadyToRetract:
 			pushButton(2);
 			releaseJoystick();
@@ -254,14 +256,14 @@ auto KinovaArm::moveToRetractionPoint() -> void {
 		case RetractionMode::NoInitToReady:
 			logError("moveToRetractionPoint",
 			         "cannot retract from current mode. mode: {0}",
-			         static_cast<int>(*retractionMode));
+			         static_cast<int>(*state->retractionMode));
 			break;
 		case RetractionMode::Error:
 			logError("moveToRetractionPoint", "arm is in a failure state.");
 			break;
 		default:
-			if (movementStatus == MovementStatus::Retracting) {
-				movementStatus.reset();
+			if (state->movementStatus == MovementStatus::Retracting) {
+				state->movementStatus.reset();
 				fireRetractionPointReached();
 			}
 			break;
@@ -273,7 +275,8 @@ auto KinovaArm::moveToRetractionPoint() -> void {
 
 auto KinovaArm::canChangeMode() -> bool {
 	using namespace std::chrono_literals;
-	return !lastSteeringModeChange || (std::chrono::steady_clock::now() - *lastSteeringModeChange) >= 500ms;
+	return !state->lastSteeringModeChange ||
+	    (std::chrono::steady_clock::now() - *state->lastSteeringModeChange) >= 500ms;
 }
 
 auto KinovaArm::pushButton(int index) -> void {

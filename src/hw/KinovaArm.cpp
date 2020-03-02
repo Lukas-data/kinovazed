@@ -28,17 +28,27 @@ constexpr auto joystickCalcFactor = 0.0025f;
 
 KinovaArm::KinovaArm(Logger logger)
     : LoggingMixin{logger, "KinovaArm"}
-    , homePosition{} {
+    , accessLock{}
+    , arm{}
+    , homePosition{}
+    , state{std::in_place}
+    , runUpdateLoop{}
+    , updateLoopHandle{} {
 }
 
 KinovaArm::KinovaArm(Coordinates homePosition, Logger logger)
     : LoggingMixin{logger, "KinovaArm"}
-    , homePosition{homePosition} {
+    , accessLock{}
+    , arm{}
+    , homePosition{homePosition}
+    , state{std::in_place}
+    , runUpdateLoop{}
+    , updateLoopHandle{} {
 }
 
 KinovaArm::~KinovaArm() {
 	stopUpdateLoop();
-	if (hasControl) {
+	if (state->hasControl) {
 		releaseControl();
 	}
 	disconnect();
@@ -50,19 +60,16 @@ auto KinovaArm::connect() -> bool {
 	try {
 		arm.emplace();
 		logInfo("connect", "successfully connected to arm.");
-		isInFailState = false;
-		currentPosition = readPosition();
-		retractionMode = readRetractionMode();
-		steeringMode.reset();
-		if (!runUpdateLoop) {
-			startUpdateLoop();
-		}
+		state = VolatileState{};
+		state->currentPosition = readPosition();
+		state->retractionMode = readRetractionMode();
+		startUpdateLoop();
 		return true;
 	} catch (std::exception const &e) {
 		logError("connect", "failed to connect to the arm. reason: {0}", e.what());
 	}
 
-	isInFailState = true;
+	state->isInFailState = true;
 	return false;
 }
 
@@ -70,7 +77,7 @@ auto KinovaArm::disconnect() -> void {
 	auto guard = std::lock_guard{accessLock};
 
 	try {
-		if (hasControl) {
+		if (state->hasControl) {
 			releaseControl();
 		}
 		if (arm) {
@@ -89,7 +96,7 @@ auto KinovaArm::takeControl() -> bool {
 
 	try {
 		arm->start_api_ctrl();
-		hasControl = true;
+		state->hasControl = true;
 
 		if (!hasFailed()) {
 			logInfo("takeControl", "gained control over the arm.");
@@ -109,7 +116,7 @@ auto KinovaArm::releaseControl() -> bool {
 	try {
 		arm->stop_api_ctrl();
 		logInfo("releaseControl", "released API control over the arm.");
-		hasControl = false;
+		state->hasControl = false;
 		return true;
 	} catch (std::exception const &e) {
 		logError("releaseControl", "failed to release API control over the arm. reason: {0}", e.what());
@@ -122,7 +129,7 @@ auto KinovaArm::initialize() -> void {
 
 	try {
 		auto retractionMode = readRetractionMode();
-		movementStatus = MovementStatus::Initializing;
+		state->movementStatus = MovementStatus::Initializing;
 
 		if (retractionMode == RetractionMode::NoInitToReady) {
 			logInfo("initialize", "initializing the arm, this might take some time.");
@@ -165,7 +172,7 @@ auto KinovaArm::stopMoving() -> bool {
 		std::this_thread::sleep_for(10ms);
 		releaseJoystick();
 		logInfo("stopMoving", "successfully released the joystick.");
-		movementStatus.reset();
+		state->movementStatus.reset();
 		return true;
 	} catch (std::exception const &e) {
 		logError("stop moving", "failed to release the joystick in the neutral position. reason: {}", e.what());
@@ -181,11 +188,11 @@ auto KinovaArm::home() -> void {
 
 	if (homePosition) {
 		logInfo("home", "moving towards software home.");
-		movementStatus = MovementStatus::HomingToSoftwareHome;
+		state->movementStatus = MovementStatus::HomingToSoftwareHome;
 		moveToSoftwareHome();
 	} else {
 		logInfo("home", "moving towards hardware home.");
-		movementStatus = MovementStatus::HomingToHardwareHome;
+		state->movementStatus = MovementStatus::HomingToHardwareHome;
 		moveToHardwareHome();
 	}
 }
@@ -204,16 +211,16 @@ auto KinovaArm::moveTo(Coordinates position) -> void {
 
 	auto guard = std::lock_guard{accessLock};
 
-	if (fullCurrent > 3.5) {
-		logWarning("moveTo", "high motor current detected, skipping movement. current: {0}", fullCurrent);
+	if (state->fullCurrent > 3.5) {
+		logWarning("moveTo", "high motor current detected, skipping movement. current: {0}", state->fullCurrent);
 	}
 
 	try {
 		float fingerPositions[3] = {.0f, .0f, .0f};
 		auto armPosition = static_cast<std::array<float, 6>>(position);
 		arm->set_target_cart(armPosition.data(), fingerPositions);
-		movementStatus = MovementStatus::MovingToPosition;
-		targetPosition = position;
+		state->movementStatus = MovementStatus::MovingToPosition;
+		state->targetPosition = position;
 	} catch (std::exception const &e) {
 		logError("moveTo", "failed to move to desired position. reason: {0}", e.what());
 	}
@@ -235,6 +242,8 @@ auto KinovaArm::setJoystick(int x, int y, int z) -> void {
 	rawPosition.s.wrist_lr = 0;
 	rawPosition.s.wrist_fb = 0;
 	rawPosition.s.wrist_rot = 0;
+
+	auto steeringMode = state->steeringMode;
 
 	if (steeringMode == SteeringMode::XYZ || steeringMode == SteeringMode::Axis1to3) {
 		rawPosition.s.trans_lr = speedX;
@@ -278,10 +287,10 @@ auto KinovaArm::setSteeringMode(SteeringMode mode) -> bool {
 	}
 
 	releaseJoystick();
-	steeringMode = mode;
+	state->steeringMode = mode;
 
 	if (mode != SteeringMode::NoMode && mode != SteeringMode::Freeze) {
-		lastSteeringModeChange = std::chrono::steady_clock::now();
+		state->lastSteeringModeChange = std::chrono::steady_clock::now();
 	} else {
 		fireSteeringModeChanged(mode);
 	}
@@ -290,15 +299,15 @@ auto KinovaArm::setSteeringMode(SteeringMode mode) -> bool {
 }
 
 auto KinovaArm::hasFailed() const -> bool {
-	return isInFailState;
+	return state->isInFailState;
 }
 
 auto KinovaArm::getPosition() const -> Coordinates {
-	return currentPosition.value_or(Coordinates{});
+	return state->currentPosition.value_or(Coordinates{});
 }
 
 auto KinovaArm::getSteeringMode() const -> std::optional<SteeringMode> {
-	return steeringMode;
+	return state->steeringMode;
 }
 
 } // namespace KinovaZED::Hw

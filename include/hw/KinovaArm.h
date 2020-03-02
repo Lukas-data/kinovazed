@@ -70,10 +70,29 @@ struct KinovaArm : Actor, LoggingMixin {
 		Homed,
 	};
 
+	struct VolatileState {
+		std::optional<Coordinates> currentPosition{};
+		std::optional<Coordinates> targetPosition{};
+
+		std::optional<RetractionMode> retractionMode{};
+
+		std::optional<SteeringMode> steeringMode{};
+		std::optional<std::chrono::steady_clock::time_point> lastSteeringModeChange{};
+
+		std::optional<MovementStatus> movementStatus;
+		std::optional<RetractionStatus> retractionStatus;
+
+		float fullCurrent{};
+
+		bool hasControl{};
+		bool wasHomed{};
+		bool isInFailState{};
+	};
+
 	template<typename... Args>
 	auto logError(std::string function, std::string format, Args &&... args) {
 		LoggingMixin::template logError(function, format, std::forward<Args>(args)...);
-		isInFailState = true;
+		state->isInFailState = true;
 	}
 
 	auto startUpdateLoop() -> void;
@@ -100,31 +119,13 @@ struct KinovaArm : Actor, LoggingMixin {
 	auto pushButton(int index) -> void;
 	auto releaseJoystick() -> void;
 
+	std::recursive_mutex accessLock;
+	std::optional<KinDrv::JacoArm> arm;
 	std::optional<Coordinates> const homePosition;
+	std::optional<VolatileState> state;
 
-	std::recursive_mutex accessLock{};
-
-	std::atomic_bool runUpdateLoop{};
-	std::future<void> updateLoopHandle{};
-
-	std::optional<KinDrv::JacoArm> arm{};
-
-	std::optional<Coordinates> currentPosition{};
-	std::optional<Coordinates> targetPosition{};
-
-	std::optional<RetractionMode> retractionMode{};
-
-	std::optional<SteeringMode> steeringMode{};
-	std::optional<std::chrono::steady_clock::time_point> lastSteeringModeChange{};
-
-	float fullCurrent{};
-
-	std::optional<MovementStatus> movementStatus;
-	std::optional<RetractionStatus> retractionStatus;
-
-	bool hasControl{};
-	bool wasHomed{};
-	bool isInFailState{};
+	std::atomic_bool runUpdateLoop;
+	std::future<void> updateLoopHandle;
 };
 
 } // namespace KinovaZED::Hw
