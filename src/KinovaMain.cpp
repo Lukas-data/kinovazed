@@ -18,6 +18,7 @@
 #include <thread>
 
 auto constexpr DEFAULT_PORT = 51717;
+auto constexpr MAXIMUM_RETRIES = 120;
 
 auto makeLogger() -> KinovaZED::Logger {
 	using namespace KinovaZED::Literals;
@@ -49,8 +50,14 @@ int main() {
 	logger->info("main: starting up");
 
 	auto arm = KinovaZED::Hw::KinovaArm{logger};
+	auto retry{0};
 
-	if (!arm.connect()) {
+	while (!arm.connect() && retry++ < MAXIMUM_RETRIES) {
+		std::this_thread::sleep_for(1s);
+	}
+
+	if (retry >= MAXIMUM_RETRIES) {
+		logger->error("main: arm did not connect in time.");
 		return EXIT_FAILURE;
 	}
 
