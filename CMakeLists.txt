@@ -156,6 +156,16 @@ install(FILES
   WORLD_READ
 )
 
+configure_file("${PROJECT_SOURCE_DIR}/support/systemd/kinovazed.service.in"
+  "${PROJECT_BINARY_DIR}/kinovazed.service"
+  @ONLY
+)
+
+install(FILES
+  "${PROJECT_BINARY_DIR}/kinovazed.service"
+  DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/systemd/user/"
+)
+
 install(FILES
   "${PROJECT_SOURCE_DIR}/support/objectives/Cybathlon.json"
   DESTINATION "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}"

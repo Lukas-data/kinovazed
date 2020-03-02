@@ -4,5 +4,8 @@
     "[cpp]": {
         "editor.formatOnSave": true
     },
-    "C_Cpp.autoAddFileAssociations": false
+    "C_Cpp.autoAddFileAssociations": false,
+    "files.associations": {
+        "kinovazed.service.in": "systemd-unit-file"
+    }
 }
