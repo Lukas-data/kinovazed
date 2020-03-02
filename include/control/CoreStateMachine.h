@@ -163,7 +163,7 @@ struct CoreStateMachine : LoggingMixin {
 
 			// [steering]
 			steering + event<Event::SetMode>       / eventAction = settingMode,
-			steering + event<Event::JoystickMoved> / eventAction = steering,
+			steering + event<Event::JoystickMoved> / eventAction,
 			steering + event<Event::RunObjective>  / eventAction = runningSequence,
 			steering + event<Event::Retract>       / eventAction = retracting,
 			steering + event<Event::EStop>         / eventAction = emergencyStopped,
