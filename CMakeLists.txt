@@ -65,6 +65,7 @@ add_library("${PROJECT_NAME}Core"
   "src/hw/Actor.cpp"
   "src/hw/Coordinates.cpp"
   "src/hw/KinovaArm.cpp"
+  "src/hw/KinovaArmActor.cpp"
   "src/hw/KinovaArmPrivate.cpp"
   "src/hw/Origin.cpp"
 

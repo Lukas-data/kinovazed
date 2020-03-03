@@ -4,6 +4,8 @@
 #include "support/ToString.h"
 
 #include <algorithm>
+#include <cassert>
+#include <future>
 #include <iterator>
 
 namespace KinovaZED::Hw {
@@ -30,6 +32,106 @@ auto isKnownSteeringMode(std::string const &candidate) -> bool {
 	auto found =
 	    std::find_if(cbegin(modeNames), cend(modeNames), [&](auto entry) { return entry.second == candidate; });
 	return found != cend(modeNames);
+}
+
+auto Actor::connect() -> bool {
+	auto token = std::promise<bool>{};
+	auto future = token.get_future();
+	doConnect(std::move(token));
+	return future.get();
+}
+
+auto Actor::disconnect() -> void {
+	auto token = std::promise<void>{};
+	auto future = token.get_future();
+	doDisconnect(std::move(token));
+	return future.get();
+}
+
+auto Actor::takeControl() -> bool {
+	auto token = std::promise<bool>{};
+	auto future = token.get_future();
+	doTakeControl(std::move(token));
+	return future.get();
+}
+
+auto Actor::releaseControl() -> bool {
+	auto token = std::promise<bool>{};
+	auto future = token.get_future();
+	doReleaseControl(std::move(token));
+	return future.get();
+}
+
+auto Actor::initialize() -> void {
+	auto token = std::promise<void>{};
+	auto future = token.get_future();
+	doInitialize(std::move(token));
+	return future.get();
+}
+
+auto Actor::stopMoving() -> bool {
+	auto token = std::promise<bool>{};
+	auto future = token.get_future();
+	doStopMoving(std::move(token));
+	return future.get();
+}
+
+auto Actor::home() -> void {
+	auto token = std::promise<void>{};
+	auto future = token.get_future();
+	doHome(std::move(token));
+	return future.get();
+}
+
+auto Actor::retract() -> void {
+	auto token = std::promise<void>{};
+	auto future = token.get_future();
+	doRetract(std::move(token));
+	return future.get();
+}
+
+auto Actor::moveTo(Coordinates position) -> void {
+	auto token = std::promise<void>{};
+	auto future = token.get_future();
+	doMoveTo(std::move(position), std::move(token));
+	return future.get();
+}
+
+auto Actor::setJoystick(int x, int y, int z) -> void {
+	auto token = std::promise<void>{};
+	auto future = token.get_future();
+	doSetJoystick(x, y, z, std::move(token));
+	return future.get();
+}
+
+auto Actor::setSteeringMode(SteeringMode mode) -> bool {
+	assert(isKnownSteeringMode(static_cast<int>(mode)));
+
+	auto token = std::promise<bool>{};
+	auto future = token.get_future();
+	doSetSteeringMode(mode, std::move(token));
+	return future.get();
+}
+
+auto Actor::hasFailed() const -> bool {
+	auto token = std::promise<bool>{};
+	auto future = token.get_future();
+	doHasFailed(std::move(token));
+	return future.get();
+}
+
+auto Actor::getPosition() const -> Coordinates {
+	auto token = std::promise<Coordinates>{};
+	auto future = token.get_future();
+	doGetPosition(std::move(token));
+	return future.get();
+}
+
+auto Actor::getSteeringMode() const -> std::optional<SteeringMode> {
+	auto token = std::promise<std::optional<SteeringMode>>{};
+	auto future = token.get_future();
+	doGetSteeringMode(std::move(token));
+	return future.get();
 }
 
 auto Actor::setShouldReconnectOnError(bool reconnect) -> void {

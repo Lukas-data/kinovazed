@@ -4,6 +4,8 @@
 #include "hw/Coordinates.h"
 #include "support/ToString.h"
 
+#include <atomic>
+#include <future>
 #include <optional>
 #include <set>
 
@@ -58,72 +60,72 @@ struct Actor {
 	/**
 	 * Connect to the actor
 	 */
-	auto virtual connect() -> bool = 0;
+	auto connect() -> bool;
 
 	/**
 	 * Disconnect from the actor
 	 */
-	auto virtual disconnect() -> void = 0;
+	auto disconnect() -> void;
 
 	/**
 	 * Take control over the actor
 	 */
-	auto virtual takeControl() -> bool = 0;
+	auto takeControl() -> bool;
 
 	/**
 	 * Release control over the actor
 	 */
-	auto virtual releaseControl() -> bool = 0;
+	auto releaseControl() -> bool;
 
 	/**
 	 * Initialize the actor for operation
 	 */
-	auto virtual initialize() -> void = 0;
+	auto initialize() -> void;
 
 	/**
 	 * Stop all ongoing movements and erase all stored trajectories if any are present
 	 */
-	auto virtual stopMoving() -> bool = 0;
+	auto stopMoving() -> bool;
 
 	/**
 	 * Move the arm into its home position
 	 */
-	auto virtual home() -> void = 0;
+	auto home() -> void;
 
 	/**
 	 * Retract the arm into its resting position
 	 */
-	auto virtual retract() -> void = 0;
+	auto retract() -> void;
 
 	/**
 	 * Move to the given position
 	 */
-	auto virtual moveTo(Coordinates position) -> void = 0;
+	auto moveTo(Coordinates position) -> void;
 
 	/**
 	 * Set the joystick input
 	 */
-	auto virtual setJoystick(int x, int y, int z) -> void = 0;
+	auto setJoystick(int x, int y, int z) -> void;
 
 	/**
 	 * Set the current steering mode
 	 */
-	auto virtual setSteeringMode(SteeringMode mode) -> bool = 0;
+	auto setSteeringMode(SteeringMode mode) -> bool;
 
 	/**
 	 * Check if the arm has failed
 	 */
-	auto virtual hasFailed() const -> bool = 0;
+	auto hasFailed() const -> bool;
 
 	/**
 	 * Get the current position of the actor
 	 */
-	auto virtual getPosition() const -> Coordinates = 0;
+	auto getPosition() const -> Coordinates;
 
 	/**
 	 * Get the current steering mode
 	 */
-	auto virtual getSteeringMode() const -> std::optional<SteeringMode> = 0;
+	auto getSteeringMode() const -> std::optional<SteeringMode>;
 
 	auto setShouldReconnectOnError(bool reconnect) -> void;
 	auto shouldReconnectOnError() -> bool;
@@ -140,7 +142,22 @@ struct Actor {
 	auto fireInitializationFinished() -> void;
 
   private:
-	bool reconnectOnError{false};
+	auto virtual doConnect(std::promise<bool> token) -> void = 0;
+	auto virtual doDisconnect(std::promise<void> token) -> void = 0;
+	auto virtual doTakeControl(std::promise<bool> token) -> void = 0;
+	auto virtual doReleaseControl(std::promise<bool> token) -> void = 0;
+	auto virtual doInitialize(std::promise<void> token) -> void = 0;
+	auto virtual doStopMoving(std::promise<bool> token) -> void = 0;
+	auto virtual doHome(std::promise<void> token) -> void = 0;
+	auto virtual doRetract(std::promise<void> token) -> void = 0;
+	auto virtual doMoveTo(Coordinates position, std::promise<void> token) -> void = 0;
+	auto virtual doSetJoystick(int x, int y, int z, std::promise<void> token) -> void = 0;
+	auto virtual doSetSteeringMode(SteeringMode mode, std::promise<bool> token) -> void = 0;
+	auto virtual doHasFailed(std::promise<bool> token) const -> void = 0;
+	auto virtual doGetPosition(std::promise<Coordinates> token) const -> void = 0;
+	auto virtual doGetSteeringMode(std::promise<std::optional<SteeringMode>> token) const -> void = 0;
+
+	std::atomic_bool reconnectOnError{false};
 	std::set<EventSubscriberPtr> eventSubscribers{};
 };
 
