@@ -39,6 +39,7 @@ auto KinovaArm::performStateUpdate() -> void {
 		updateSteeringMode();
 	}
 	checkCurrents();
+	checkMovement();
 	reconnectOnError();
 }
 
@@ -69,6 +70,18 @@ auto KinovaArm::checkCurrents() -> void {
 	} catch (std::exception const &e) {
 		logError("updateCurrents", "failed to read currents from arm. reason: {0}", e.what());
 	}
+}
+
+auto KinovaArm::checkMovement() -> void {
+	auto velocities = arm->get_ang_vel();
+	logDebug("checkMovement",
+	         "{} {} {} {} {} {}",
+	         velocities.joints[0],
+	         velocities.joints[1],
+	         velocities.joints[2],
+	         velocities.joints[3],
+	         velocities.joints[4],
+	         velocities.joints[5]);
 }
 
 auto KinovaArm::updatePosition() -> void {

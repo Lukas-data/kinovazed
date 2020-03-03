@@ -97,21 +97,17 @@ struct KinovaArm : Actor, LoggingMixin {
 
 	auto scheduleStateUpdate() -> void;
 	auto performStateUpdate() -> void;
-
 	auto stopUpdateLoop() -> void;
 
 	auto checkCurrents() -> void;
-
+	auto checkMovement() -> void;
 	auto updatePosition() -> void;
 	auto readPosition() -> Coordinates;
 	auto handlePosition(Coordinates newPosition) -> void;
-
 	auto updateRetractionMode() -> void;
 	auto readRetractionMode() -> RetractionMode;
 	auto handleRetractionMode(RetractionMode newMode) -> void;
-
 	auto updateSteeringMode() -> void;
-
 
 	auto reconnectOnError() -> void;
 
