@@ -31,8 +31,6 @@ auto KinovaArm::scheduleStateUpdate() -> void {
 }
 
 auto KinovaArm::performStateUpdate() -> void {
-	assert(arm);
-
 	updatePosition();
 	updateRetractionMode();
 	if (state->lastSteeringModeChange) {
@@ -73,15 +71,15 @@ auto KinovaArm::checkCurrents() -> void {
 }
 
 auto KinovaArm::checkMovement() -> void {
-	auto velocities = arm->get_ang_vel();
-	logDebug("checkMovement",
-	         "{} {} {} {} {} {}",
-	         velocities.joints[0],
-	         velocities.joints[1],
-	         velocities.joints[2],
-	         velocities.joints[3],
-	         velocities.joints[4],
-	         velocities.joints[5]);
+	// auto velocities = arm->get_ang_vel();
+	// logDebug("checkMovement",
+	//          "{} {} {} {} {} {}",
+	//          velocities.joints[0],
+	//          velocities.joints[1],
+	//          velocities.joints[2],
+	//          velocities.joints[3],
+	//          velocities.joints[4],
+	//          velocities.joints[5]);
 }
 
 auto KinovaArm::updatePosition() -> void {

@@ -13,7 +13,7 @@ namespace KinovaZED::Hw {
 constexpr auto joystickCalcFactor = 0.0025f;
 
 auto KinovaArm::doConnect(std::promise<bool> token) -> void {
-	asio::dispatch([this, token = std::move(token)]() mutable {
+	asio::dispatch(actionStrand, [this, token = std::move(token)]() mutable {
 		try {
 			arm.emplace();
 			logInfo("connect", "successfully connected to arm.");
@@ -29,7 +29,7 @@ auto KinovaArm::doConnect(std::promise<bool> token) -> void {
 }
 
 auto KinovaArm::doDisconnect(std::promise<void> token) -> void {
-	asio::dispatch([this, token = std::move(token)]() mutable {
+	asio::dispatch(actionStrand, [this, token = std::move(token)]() mutable {
 		try {
 			if (state->hasControl) {
 				releaseControl();
@@ -43,7 +43,7 @@ auto KinovaArm::doDisconnect(std::promise<void> token) -> void {
 }
 
 auto KinovaArm::doTakeControl(std::promise<bool> token) -> void {
-	asio::dispatch([this, token = std::move(token)]() mutable {
+	asio::dispatch(actionStrand, [this, token = std::move(token)]() mutable {
 		try {
 			arm->start_api_ctrl();
 			state->hasControl = true;
@@ -59,7 +59,7 @@ auto KinovaArm::doTakeControl(std::promise<bool> token) -> void {
 }
 
 auto KinovaArm::doReleaseControl(std::promise<bool> token) -> void {
-	asio::dispatch([this, token = std::move(token)]() mutable {
+	asio::dispatch(actionStrand, [this, token = std::move(token)]() mutable {
 		try {
 			arm->stop_api_ctrl();
 			logInfo("releaseControl", "released API control over the arm.");
@@ -73,7 +73,7 @@ auto KinovaArm::doReleaseControl(std::promise<bool> token) -> void {
 }
 
 auto KinovaArm::doInitialize(std::promise<void> token) -> void {
-	asio::dispatch([this, token = std::move(token)]() mutable {
+	asio::dispatch(actionStrand, [this, token = std::move(token)]() mutable {
 		try {
 			auto retractionMode = readRetractionMode();
 			state->movementStatus = MovementStatus::Initializing;
@@ -93,7 +93,7 @@ auto KinovaArm::doInitialize(std::promise<void> token) -> void {
 }
 
 auto KinovaArm::doStopMoving(std::promise<bool> token) -> void {
-	asio::dispatch([this, token = std::move(token)]() mutable {
+	asio::dispatch(actionStrand, [this, token = std::move(token)]() mutable {
 		try {
 			eraseTrajectories();
 			logInfo("stopMoving", "erased all stored trajectories.");
@@ -118,7 +118,7 @@ auto KinovaArm::doStopMoving(std::promise<bool> token) -> void {
 }
 
 auto KinovaArm::doHome(std::promise<void> token) -> void {
-	asio::dispatch([this, token = std::move(token)]() mutable {
+	asio::dispatch(actionStrand, [this, token = std::move(token)]() mutable {
 		if (homePosition) {
 			logInfo("home", "moving towards software home.");
 			state->movementStatus = MovementStatus::HomingToSoftwareHome;
@@ -133,14 +133,14 @@ auto KinovaArm::doHome(std::promise<void> token) -> void {
 }
 
 auto KinovaArm::doRetract(std::promise<void> token) -> void {
-	asio::dispatch([this, token = std::move(token)]() mutable {
+	asio::dispatch(actionStrand, [this, token = std::move(token)]() mutable {
 		moveToRetractionPoint();
 		token.set_value();
 	});
 }
 
 auto KinovaArm::doMoveTo(Coordinates position, std::promise<void> token) -> void {
-	asio::dispatch([this, position, token = std::move(token)]() mutable {
+	asio::dispatch(actionStrand, [this, position, token = std::move(token)]() mutable {
 		if (state->fullCurrent > 3.5) {
 			logWarning("moveTo", "high motor current detected, skipping movement. current: {0}", state->fullCurrent);
 		}
@@ -159,7 +159,7 @@ auto KinovaArm::doMoveTo(Coordinates position, std::promise<void> token) -> void
 }
 
 auto KinovaArm::doSetJoystick(int x, int y, int z, std::promise<void> token) -> void {
-	asio::dispatch([this, x, y, z, token = std::move(token)]() mutable {
+	asio::dispatch(actionStrand, [this, x, y, z, token = std::move(token)]() mutable {
 		auto speedX = -x * joystickCalcFactor;
 		auto speedY = -y * joystickCalcFactor;
 		auto speedZ = z * joystickCalcFactor;
@@ -196,7 +196,7 @@ auto KinovaArm::doSetJoystick(int x, int y, int z, std::promise<void> token) -> 
 }
 
 auto KinovaArm::doSetSteeringMode(SteeringMode mode, std::promise<bool> token) -> void {
-	asio::dispatch([this, mode, token = std::move(token)]() mutable {
+	asio::dispatch(actionStrand, [this, mode, token = std::move(token)]() mutable {
 		if (mode != SteeringMode::NoMode && mode != SteeringMode::Freeze && !canChangeMode()) {
 			logWarning("setSteeringMode",
 			           "rejected steering mode change. reason: not enough time elapsed since last change");
@@ -228,17 +228,17 @@ auto KinovaArm::doSetSteeringMode(SteeringMode mode, std::promise<bool> token) -
 }
 
 auto KinovaArm::doHasFailed(std::promise<bool> token) const -> void {
-	asio::dispatch([this, token = std::move(token)]() mutable { token.set_value(state->isInFailState); });
+	asio::dispatch(actionStrand, [this, token = std::move(token)]() mutable { token.set_value(state->isInFailState); });
 }
 
 auto KinovaArm::doGetPosition(std::promise<Coordinates> token) const -> void {
-	asio::dispatch([this, token = std::move(token)]() mutable {
+	asio::dispatch(actionStrand, [this, token = std::move(token)]() mutable {
 		token.set_value(state->currentPosition.value_or(Coordinates{}));
 	});
 }
 
 auto KinovaArm::doGetSteeringMode(std::promise<std::optional<SteeringMode>> token) const -> void {
-	asio::dispatch([this, token = std::move(token)]() mutable { token.set_value(state->steeringMode); });
+	asio::dispatch(actionStrand, [this, token = std::move(token)]() mutable { token.set_value(state->steeringMode); });
 }
 
 } // namespace KinovaZED::Hw
