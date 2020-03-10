@@ -45,7 +45,7 @@ auto CoreController::process(Comm::Command command) -> void {
 
 	auto currentSteeringMode = arm.getSteeringMode();
 	logInfo("process",
-	        "current steering mode of the arm is: ",
+	        "current steering mode of the arm is: {}",
 	        currentSteeringMode ? toString(*currentSteeringMode) : "unknown");
 
 	auto logStepper = makeLoggedStepper("process");
