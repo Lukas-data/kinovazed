@@ -90,15 +90,26 @@ currently supported are:
 
 current objectives:
 
-| modes    | description |
-| -------- | ----------- |
-| Current  | no movement / fictitious objective |
-| Home     | custom home position |
-| Handle   | end position near door Handle |
-| OpenDoor | operate door handle and pull a crack |
-| PullDoor | pull the door open and move into gap |
-| SuckDoor | bring suction cup into position | 
-| Antenna  | position to pull door into lock behind wheelchair |
+| objective | description |
+| --------- | ----------- |
+| Current   | no movement / fictitious objective |
+| Home      | custom home position |
+| Handle    | end position near door Handle |
+| OpenDoor  | operate door handle and pull a crack |
+| PullDoor  | pull the door open and move into gap |
+| SuckDoor  | bring suction cup into position | 
+| Antenna   | position to pull door into lock behind wheelchair |
+
+# Transitions
+
+Transitions are changing state of the KinovaZED software by sending a command.
+All valid transitions can be found in the the transition table of the state machine [here](https://iltserver.hsr.ch:9090/hsr-enhanced/kinovazed/blob/dev/include/control/CoreStateMachine.h).
+The following transitions can be requested by the commander before an event is received, such called __interrupt command__.
+
+| issued command | waiting for event | interrupt command |
+| -------------- | ----------------- | ----------------- |
+| RunObjective   | ObjectiveDone     | SetMode |
+| _any_          |                   |  EStop  |
 
 # Usage
 
