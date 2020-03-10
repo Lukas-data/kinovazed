@@ -203,7 +203,7 @@ auto KinovaArm::doSetSteeringMode(SteeringMode mode, std::promise<bool> token) -
 		if (mode != SteeringMode::NoMode && mode != SteeringMode::Freeze && !canChangeMode()) {
 			logWarning("setSteeringMode",
 			           "rejected steering mode change. reason: not enough time elapsed since last change");
-			return false;
+			token.set_value(false);
 		}
 
 		try {
@@ -214,7 +214,7 @@ auto KinovaArm::doSetSteeringMode(SteeringMode mode, std::promise<bool> token) -
 			}
 		} catch (std::exception const &e) {
 			logError("setSteeringMode", "failed to set steering mode. reason: {0}", e.what());
-			return false;
+			token.set_value(false);
 		}
 
 		releaseJoystick();
@@ -226,7 +226,7 @@ auto KinovaArm::doSetSteeringMode(SteeringMode mode, std::promise<bool> token) -
 			fireSteeringModeChanged(mode);
 		}
 
-		return true;
+		token.set_value(true);
 	});
 }
 
