@@ -173,7 +173,9 @@ auto CoreController::onSteeringModeChanged(Hw::Actor &, Hw::SteeringMode mode) -
 	}
 }
 
-auto CoreController::onReconnectedDueToError(Hw::Actor &) -> void {
+auto CoreController::onReconnectedDueToError(Hw::Actor &arm) -> void {
+	isInitialized = false;
+	stateMachine.process_event(CoreStateMachine::Event::EStop{arm});
 }
 
 auto CoreController::onInitializationFinished(Hw::Actor &) -> void {

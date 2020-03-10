@@ -198,11 +198,14 @@ auto KinovaArm::reconnectOnError() -> void {
 
 	auto hadControl = state->hasControl;
 
-	if (connect()) {
-		if (hadControl) {
-			takeControl();
-			stopMoving();
-		}
+	while (!connect()) {
+		logWarning("reconnectOnError", "Trying to reconnect after a critical error");
+		std::this_thread::sleep_for(50ms);
+	}
+
+	if (hadControl) {
+		takeControl();
+		stopMoving();
 	}
 
 	fireReconnectedDueToError();
