@@ -166,6 +166,9 @@ auto KinovaArm::handleRetractionMode(RetractionMode newMode) -> void {
 			releaseJoystick();
 			fireInitializationFinished();
 			return;
+		} else if (state->movementStatus == MovementStatus::HomeToRetract) {
+			releaseJoystick();
+			moveToRetractionPoint();
 		}
 	}
 
@@ -279,9 +282,11 @@ auto KinovaArm::moveToRetractionPoint() -> void {
 		case RetractionMode::NormalToReady:
 		case RetractionMode::Normal:
 		case RetractionMode::NoInitToReady:
-			logError("moveToRetractionPoint",
-			         "cannot retract from current mode. mode: {0}",
-			         static_cast<int>(*state->retractionMode));
+			logWarning("moveToRetractionPoint",
+			           "cannot retract from current mode. mode: {0}",
+			           static_cast<int>(*state->retractionMode));
+			state->movementStatus = MovementStatus::HomeToRetract;
+			pushButton(2);
 			break;
 		case RetractionMode::Error:
 			logError("moveToRetractionPoint", "arm is in a failure state.");

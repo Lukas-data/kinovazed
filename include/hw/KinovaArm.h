@@ -44,6 +44,7 @@ struct KinovaArm : Actor, LoggingMixin {
 		HomingToSoftwareHome,
 		MovingToPosition,
 		Retracting,
+		HomeToRetract,
 		Initializing,
 	};
 
