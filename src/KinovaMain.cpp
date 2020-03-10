@@ -9,6 +9,8 @@
 #include "support/Prefix.h"
 
 #include <asio/io_context.hpp>
+#include <asio/signal_set.hpp>
+#include <signal.h>
 
 #include <chrono>
 #include <cstdlib>
@@ -49,10 +51,10 @@ int main() {
 	logger->set_level(spdlog::level::debug);
 	logger->info("main: starting up");
 
-	auto arm = KinovaZED::Hw::KinovaArm{logger};
+	auto arm = std::make_unique<KinovaZED::Hw::KinovaArm>(logger);
 	auto retry{0};
 
-	while (!arm.connect() && retry++ < MAXIMUM_RETRIES) {
+	while (!arm->connect() && retry++ < MAXIMUM_RETRIES) {
 		std::this_thread::sleep_for(1s);
 	}
 
@@ -61,17 +63,27 @@ int main() {
 		return EXIT_FAILURE;
 	}
 
-	arm.setShouldReconnectOnError(true);
+	arm->setShouldReconnectOnError(true);
 
 	auto ioContext = asio::io_context{};
 	auto interface = KinovaZED::Comm::TCPInterface{KinovaZED::lineCommandFactory, ioContext, DEFAULT_PORT, logger};
 	auto objectiveStream = std::ifstream{KinovaZED::DEFAULT_OBJ_FILE_JSON};
 	auto objectiveManager = KinovaZED::Control::ObjectiveManager{objectiveStream, logger};
-	auto controller = KinovaZED::Control::makeCoreController(interface, arm, objectiveManager, logger);
+	auto controller = KinovaZED::Control::makeCoreController(interface, *arm, objectiveManager, logger);
 	auto heart = KinovaZED::Control::HeartbeatGenerator{interface, controller, ioContext, logger};
 
 	interface.start();
 	heart.start();
+
+	auto signals = asio::signal_set{ioContext, SIGINT, SIGTERM};
+	signals.async_wait([&](auto error, auto signal) {
+		logger->info("main: caught signal {}. terminating", signal);
+		if (error != asio::error::operation_aborted) {
+			interface.stop();
+			heart.stop();
+			arm.reset();
+		}
+	});
 
 	ioContext.run();
 }

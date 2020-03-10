@@ -34,6 +34,9 @@ auto KinovaArm::doDisconnect(std::promise<void> token) -> void {
 			if (state->hasControl) {
 				releaseControl();
 			}
+			stateUpdateTimer.cancel();
+			ioWorkGuard.reset();
+			ioContext.stop();
 			arm.reset();
 		} catch (std::exception const &e) {
 			logError("disconnect", "failed to close the connection to the arm. reason: {0}", e.what());

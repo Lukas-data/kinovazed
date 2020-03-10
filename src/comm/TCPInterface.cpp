@@ -71,11 +71,13 @@ auto TCPInterface::startAccepting() -> void {
 }
 
 auto TCPInterface::handleAccept(asio::error_code error) -> void {
-	if (error) {
+	if (error && error != asio::error::operation_aborted) {
 		logError("handleAccept",
 		         "an error occurred while trying to accept a connection! code: {0}, reason: {1}",
 		         error.value(),
 		         error.message());
+	} else if (error == asio::error::operation_aborted) {
+		logInfo("handleAccept", "shutting down connection acceptor.");
 	} else {
 		logInfo("handleAccept",
 		        "accepted a new connection from '{0}",

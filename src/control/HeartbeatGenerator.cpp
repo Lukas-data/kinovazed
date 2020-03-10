@@ -46,6 +46,9 @@ auto HeartbeatGenerator::beat() -> void {
 			logError(
 			    "<beat::lambda>", "error while executing timer. code: {}, reason: {}", error.value(), error.message());
 			return;
+		} else if (error == asio::error::operation_aborted) {
+			logInfo("<beat::lambda>", "stopping heartbeat");
+			return;
 		}
 
 		if (auto locked = controller.lock(); locked) {

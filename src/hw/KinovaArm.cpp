@@ -25,8 +25,6 @@ KinovaArm::KinovaArm(Coordinates homePosition, Logger logger)
 
 KinovaArm::~KinovaArm() {
 	disconnect();
-	ioWorkGuard.reset();
-	ioContext.stop();
 	ioRunner.get();
 }
 
