@@ -55,8 +55,8 @@ Events have no arguments and are always sent __from__ kinovaZED __to__ roboRIO.
 | Retracted       |
 | Freezed         |
 | Unfreezed       |
-| CmdAccepted     |
-| CmdRejected     |
+| Accepted        |
+| Rejected        |
 
 __command-event-mapping:__
 
@@ -71,10 +71,10 @@ A reoccurring _command_ is answered with its positive reply if still valid.
 | Freeze          | Freezed        |
 | Unfreeze        | Unfreezed      |
 | SetJoystickMode | JoystickModeSet|
-| MoveJoystick    | CmdAccepted    |
+| MoveJoystick    | Accepted       |
 | RunObjective    | ObjectiveDone  |
-| EStop           | CmdAccepted    |
-| QuitEStop       | CmdAccepted    |       
+| EStop           | Accepted       |
+| QuitEStop       | Accepted       |       
 
 __heartbeat:__
 
@@ -128,10 +128,10 @@ The following transitions can be requested by the commander before an event is r
 
 | issued command | waiting for event | interrupt command |
 | -------------- | ----------------- | ----------------- |
-| RunObjective   | ObjectiveDone     | SetMode |
-| _any_          |                   |  EStop  |
+| RunObjective   | ObjectiveDone     | SetMode           |
+| _any_          |                   |  EStop            |
 
-All unvalid transitions are answered with the _event_ __CmdRejected__.
+All unvalid transitions are answered with the _event_ __Rejected__.
 
 # Usage
 
