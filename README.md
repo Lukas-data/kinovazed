@@ -33,9 +33,9 @@ Commands have __n arguments__ and are always sent __from__ roboRIO __to__ kinova
 | --------------- | ----------- |
 | Initialize      | -           |
 | Unfold          | -           |
+| Retract         | -           |
 | Freeze          | -           |
 | Unfreeze        | -           |
-| Retract         | -           |
 | SetJoystickMode | \<mode name> |
 | MoveJoystick    | \<js_X> : <js_Y> : <js_Z> |
 | RunObjective    | \<objective name> |
@@ -45,8 +45,6 @@ Commands have __n arguments__ and are always sent __from__ roboRIO __to__ kinova
 __events:__
 
 Events have no arguments and are always sent __from__ kinovaZED __to__ roboRIO.
-Each _command_ has a positive reply _event_.
-A reoccurring _command_ is answered with its positive reply if still valid.
 
 | issue:          |
 | --------------- |
@@ -59,6 +57,24 @@ A reoccurring _command_ is answered with its positive reply if still valid.
 | Unfreezed       |
 | CmdAccepted     |
 | CmdRejected     |
+
+__command-event-mapping:__
+
+Each _command_ has a positive reply _event_.
+A reoccurring _command_ is answered with its positive reply if still valid.
+
+| command         | positive event |
+|---------------- | -------------- |
+| Initialize      | Initialized    |
+| Unfold          | Unfolded       |
+| Retract         | Retracted      |
+| Freeze          | Freezed        |
+| Unfreeze        | Unfreezed      |
+| SetJoystickMode | JoystickModeSet|
+| MoveJoystick    | CmdAccepted    |
+| RunObjectiv     | ObjectiveDone  |
+| EStop           | CmdAccepted    |
+| QuitEStop       | CmdAccepted    |       
 
 __heartbeat:__
 
@@ -114,6 +130,8 @@ The following transitions can be requested by the commander before an event is r
 | -------------- | ----------------- | ----------------- |
 | RunObjective   | ObjectiveDone     | SetMode |
 | _any_          |                   |  EStop  |
+
+All unvalid transitions are answered with the _event_ __CmdRejected__.
 
 # Usage
 
