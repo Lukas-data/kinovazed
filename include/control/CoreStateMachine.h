@@ -116,6 +116,7 @@ struct CoreStateMachine : LoggingMixin {
 			// [poweredOff]
 			*poweredOff + event<Event::Initialize> / eventAction = initializing,
 			poweredOff  + event<Event::EStop>      / eventAction = emergencyStopped,
+			poweredOff  + event<Event::QuitEStop>  / eventAction,
 			poweredOff  + on_entry<_>              / logEntry("poweredOff"),
 			poweredOff  + on_exit<_>               / logExit("poweredOff"),
 			
