@@ -9,12 +9,15 @@ namespace KinovaZED::Comm {
 
 struct Notification {
 	enum struct Id {
-		ModeSet,
+		JoystickModeSet,
 		ObjectiveDone,
 		Unfolded,
 		Retracted,
+		Freezed,
+		Unfreezed,
 		Accepted,
 		Rejected,
+		Initialized,
 
 		// End Marker
 		END_OF_ENUM,

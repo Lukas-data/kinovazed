@@ -169,7 +169,7 @@ auto CoreController::onSteeringModeChanged(Hw::Actor &, Hw::SteeringMode mode) -
 	if (logStep(CoreStateMachine::Event::ModeSet{mode},
 	            "changed steering mode",
 	            "internal state machine did not accept steering mode change")) {
-		commandSource.send(Comm::Notification{Comm::Notification::Id::ModeSet});
+		commandSource.send(Comm::Notification{Comm::Notification::Id::JoystickModeSet});
 	}
 }
 
