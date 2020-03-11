@@ -78,7 +78,7 @@ A reoccurring _command_ is answered with its positive reply if still valid.
 
 __heartbeat:__
 
-    Heartbeat:<bitset>;
+    Heartbeat:<bitset>\r\n
 
 Where the _bitset_ has 8bit and is transfered as an unsigned integer.
 Each bit reflects an important state.
@@ -129,7 +129,7 @@ The following transitions can be requested by the commander before an event is r
 | issued command | waiting for event | interrupt command |
 | -------------- | ----------------- | ----------------- |
 | RunObjective   | ObjectiveDone     | SetMode           |
-| _any_          |                   |  EStop            |
+| _any_          |                   | EStop             |
 
 All unvalid transitions are answered with the _event_ __Rejected__.
 
