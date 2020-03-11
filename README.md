@@ -72,7 +72,7 @@ A reoccurring _command_ is answered with its positive reply if still valid.
 | Unfreeze        | Unfreezed      |
 | SetJoystickMode | JoystickModeSet|
 | MoveJoystick    | CmdAccepted    |
-| RunObjectiv     | ObjectiveDone  |
+| RunObjective    | ObjectiveDone  |
 | EStop           | CmdAccepted    |
 | QuitEStop       | CmdAccepted    |       
 
