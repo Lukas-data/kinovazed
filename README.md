@@ -29,29 +29,36 @@ __commands:__
 
 Commands have __n arguments__ and are always sent __from__ roboRIO __to__ kinovaZED.
 
-| issue:       | args:       |
-| ----------   | ----------- |
-| Initialize   | -           |
-| Unfold       | -           |
-| Retract      | -           |
-| SetMode      | \<mode name> |
-| MoveJoystick | \<js_X> : <js_Y> : <js_Z> |
-| RunObjective | \<objective name> |
-| EStop        | -           |
-| QuitEStop    | -           |
+| issue:          | args:       |
+| --------------- | ----------- |
+| Initialize      | -           |
+| Unfold          | -           |
+| Freeze          | -           |
+| Unfreeze        | -           |
+| Retract         | -           |
+| SetJoystickMode | \<mode name> |
+| MoveJoystick    | \<js_X> : <js_Y> : <js_Z> |
+| RunObjective    | \<objective name> |
+| EStop           | -           |
+| QuitEStop       | -           |
 
 __events:__
 
 Events have no arguments and are always sent __from__ kinovaZED __to__ roboRIO.
+Each _command_ has a positive reply _event_.
+A reoccurring _command_ is answered with its positive reply if still valid.
 
-| issue:        |
-| ------------- |
-| ModeSet       |
-| ObjectiveDone |
-| Unfolded      |
-| Retracted     |
-| CmdAccepted   |
-| CmdRejected   |
+| issue:          |
+| --------------- |
+| Initialized     |
+| JoystickModeSet |
+| ObjectiveDone   |
+| Unfolded        |
+| Retracted       |
+| Freezed         |
+| Unfreezed       |
+| CmdAccepted     |
+| CmdRejected     |
 
 __heartbeat:__
 
@@ -66,12 +73,12 @@ Each bit reflects an important state.
 | 1 | hasEmergencyStop |
 | 2 | isInitialized |
 | 3 | isFreezed   |
-| 4 | _unused_    |
-| 5 | _unused_    |
-| 6 | _unused_    |
+| 4 | isIdle    |
+| 5 | isRunningObjective |
+| 6 | isInJoystickMode   |
 | 7 | _unused_    |
 
-# Modes
+# Joystick Modes
 
 currently supported are:
 
@@ -82,9 +89,6 @@ currently supported are:
 | Rotation | robot does rotate around TPC axes |
 | Axis1to3 | direct input for axis motors 1, 2 and 3 |
 | Axis4to6 | direct input for axis motors 4, 5 and 6 |
-| Freeze   | robot is initialized and freezed at a position* |
-
-\* Freeze can only be entered and exited at defined positions
 
 # Objectives
 
