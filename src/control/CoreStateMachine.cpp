@@ -26,7 +26,7 @@ auto CoreStateMachine::Event::Unfold::operator()() const -> void {
 	actor.home();
 }
 
-auto CoreStateMachine::Event::SetMode::operator()() const -> void {
+auto CoreStateMachine::Event::SetJoystickMode::operator()() const -> void {
 	actor.setSteeringMode(mode);
 }
 

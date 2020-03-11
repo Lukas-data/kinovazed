@@ -46,7 +46,7 @@ struct CoreStateMachine : LoggingMixin {
 
 		struct Unfolded {};
 
-		struct SetMode : ActorEventBase<SetMode> {
+		struct SetJoystickMode : ActorEventBase<SetJoystickMode> {
 			auto operator()() const -> void;
 
 			Hw::SteeringMode mode;
@@ -144,7 +144,7 @@ struct CoreStateMachine : LoggingMixin {
 			unfolding + on_exit<_>             / logExit("unfolding"),
 
 			// [idle]
-			idle + event<Event::SetMode>      / eventAction = settingMode,
+			idle + event<Event::SetJoystickMode>      / eventAction = settingMode,
 			idle + event<Event::RunObjective> / eventAction = runningSequence,
 			idle + event<Event::Retract>      / eventAction = retracting,
 			idle + event<Event::Unfold>       / eventAction = unfolding,
@@ -162,7 +162,7 @@ struct CoreStateMachine : LoggingMixin {
 			settingMode + on_exit<_>                                / logExit("settingMode"),
 
 			// [steering]
-			steering + event<Event::SetMode>       / eventAction = settingMode,
+			steering + event<Event::SetJoystickMode>       / eventAction = settingMode,
 			steering + event<Event::JoystickMoved> / eventAction,
 			steering + event<Event::RunObjective>  / eventAction = runningSequence,
 			steering + event<Event::Retract>       / eventAction = retracting,
@@ -179,7 +179,7 @@ struct CoreStateMachine : LoggingMixin {
 
 			// [safe]
 			safe + event<Event::EStop>   / eventAction = emergencyStopped,
-			safe + event<Event::SetMode> / eventAction = settingMode,
+			safe + event<Event::SetJoystickMode> / eventAction = settingMode,
 			safe + on_entry<_>           / logEntry("safe"),
 			safe + on_exit<_>            / logExit("safe"),
 

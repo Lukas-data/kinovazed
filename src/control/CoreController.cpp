@@ -94,10 +94,10 @@ auto CoreController::process(Comm::Command command) -> void {
 		        "retracting the arm",
 		        "internal state machine refused to retract the arm");
 		break;
-	case Command::Id::SetMode: {
+	case Command::Id::SetJoystickMode: {
 		auto mode = std::any_cast<Hw::SteeringMode>(command.parameters[0]);
 		auto name = toString(mode);
-		logStep(CoreStateMachine::Event::SetMode{arm, mode},
+		logStep(CoreStateMachine::Event::SetJoystickMode{arm, mode},
 		        fmt::format("changing steering mode to '{}'", name),
 		        fmt::format("internal state machine refused to change mode to '{}'", name));
 

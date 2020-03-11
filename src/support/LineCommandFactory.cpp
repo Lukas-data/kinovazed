@@ -23,12 +23,14 @@ auto checkParameterCount(Comm::Command::Id id, std::vector<std::any> parameters)
 	case Command::Id::Initialize:
 	case Command::Id::Unfold:
 	case Command::Id::Retract:
+	case Command::Id::Freeze:
+	case Command::Id::Unfreeze:
 		if (!parameters.empty()) {
 			return false;
 		}
 		break;
 	case Command::Id::RunObjective:
-	case Command::Id::SetMode:
+	case Command::Id::SetJoystickMode:
 		if (parameters.size() != 1) {
 			return false;
 		}
@@ -54,6 +56,8 @@ auto adjustParameterTypes(Comm::Command::Id id, std::vector<std::any> &parameter
 	case Command::Id::Initialize:
 	case Command::Id::Unfold:
 	case Command::Id::Retract:
+	case Command::Id::Freeze:
+	case Command::Id::Unfreeze:
 		return true;
 	case Command::Id::RunObjective:
 		try {
@@ -66,7 +70,7 @@ auto adjustParameterTypes(Comm::Command::Id id, std::vector<std::any> &parameter
 		} catch (std::exception const &) {
 			return false;
 		}
-	case Command::Id::SetMode:
+	case Command::Id::SetJoystickMode:
 		try {
 			auto modeName = std::any_cast<std::string>(parameters.at(0));
 			if (!Hw::isKnownSteeringMode(modeName)) {
