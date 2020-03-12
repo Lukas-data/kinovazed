@@ -225,6 +225,8 @@ auto KinovaArm::moveToHardwareHome() -> void {
 		switch (*state->retractionMode) {
 		case RetractionMode::RetractToReady:
 			pushButton(2);
+			// HACK: The arm does not realize we pressed the button if we don't wait longer than usual
+			std::this_thread::sleep_for(200ms);
 			releaseJoystick();
 			pushButton(2);
 			break;
@@ -274,8 +276,6 @@ auto KinovaArm::moveToRetractionPoint() -> void {
 		switch (*state->retractionMode) {
 		case RetractionMode::ReadyToRetract:
 			pushButton(2);
-			// HACK: The arm does not realize we pressed the button if we don't wait longer than usual
-			std::this_thread::sleep_for(200ms);
 			releaseJoystick();
 			pushButton(2);
 			break;
