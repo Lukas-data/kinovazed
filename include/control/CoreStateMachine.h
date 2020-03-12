@@ -119,86 +119,75 @@ struct CoreStateMachine : LoggingMixin {
 
 		// clang-format off
 		return make_transition_table(
-			// [poweredOff]
-		   *poweredOff + event<Event::Initialize>  / eventAction = initializing,
-			poweredOff + event<Event::EStop>      / eventAction = emergencyStopped,
-			poweredOff + event<Event::QuitEStop>  / eventAction,
-			poweredOff + on_entry<_>              / logEntry("poweredOff"),
-			poweredOff + on_exit<_>               / logExit("poweredOff"),
-			
-			// [poweredOff]
-			initializing + event<Event::Initialized>               = idle,
-			initializing + event<Event::EStop>       / eventAction = emergencyStopped,
-			// falsch gefahren nacht quit + init
-			initializing + on_entry<_>               / logEntry("initializing"),
-			initializing + on_exit<_>                / logExit("initializing"),
+		   *poweredOff       + event<Event::Initialize>                 / eventAction = initializing,
+			poweredOff       + event<Event::EStop>                      / eventAction = emergencyStopped,
+			poweredOff       + event<Event::QuitEStop>                  / eventAction,              
 
-			// [retracting]
-			retracting + event<Event::Retracted>               = retracted,
-			retracting + event<Event::EStop>     / eventAction = emergencyStopped,
-			retracting + on_entry<_>             / logEntry("retracting"),
-			retracting + on_exit<_>              / logExit("retracting"),
+			initializing     + event<Event::Initialized>                              = idle,
+			initializing     + event<Event::EStop>                      / eventAction = emergencyStopped,
 
-			// [retracted]
-			retracted + event<Event::Unfold> / eventAction = unfolding,
-			retracted + event<Event::EStop>  / eventAction = emergencyStopped,
-			retracted + on_entry<_>          / logEntry("retracted"),
-			retracted + on_exit<_>           / logExit("retracted"),
+			retracting       + event<Event::Retracted>                                = retracted,
+			retracting       + event<Event::EStop>                      / eventAction = emergencyStopped,
 
-			// [unfolded]
-			unfolding + event<Event::Unfolded>               = idle,
-			unfolding + event<Event::EStop>    / eventAction = emergencyStopped,
-			unfolding + on_entry<_>            / logEntry("unfolding"),
-			unfolding + on_exit<_>             / logExit("unfolding"),
+			retracted        + event<Event::Unfold>                     / eventAction = unfolding,
+			retracted        + event<Event::EStop>                      / eventAction = emergencyStopped,
 
-			// [idle]
-			idle + event<Event::SetJoystickMode> / eventAction = settingMode,
-			idle + event<Event::RunObjective>    / eventAction = runningSequence,
-			idle + event<Event::Retract>         / eventAction = retracting,
-			idle + event<Event::Initialize>      / eventAction = initializing,
-			idle + event<Event::Freeze>          / eventAction = frozen,
-			idle + event<Event::EStop>           / eventAction = emergencyStopped,
-			idle + on_entry<_>                   / logEntry("idle"),
-			idle + on_exit<_>                    / logExit("idle"),
+			unfolding        + event<Event::Unfolded>                                 = idle,
+			unfolding        + event<Event::EStop>                      / eventAction = emergencyStopped,
 
-			// [settingMode]
-			settingMode + event<Event::ModeSet> [ isSteeringMode ]               = steering,
-			settingMode + event<Event::ModeSet> [ isNoMode ]                     = idle,
-			settingMode + event<Event::Retract>                    / eventAction = retracting,
-			settingMode + event<Event::EStop>                      / eventAction = emergencyStopped,
-			settingMode + on_entry<_>                              / logEntry("settingMode"),
-			settingMode + on_exit<_>                               / logExit("settingMode"),
+			idle             + event<Event::SetJoystickMode>            / eventAction = settingMode,
+			idle             + event<Event::RunObjective>               / eventAction = runningSequence,
+			idle             + event<Event::Retract>                    / eventAction = retracting,
+			idle             + event<Event::Initialize>                 / eventAction = initializing,
+			idle             + event<Event::Freeze>                     / eventAction = frozen,
+			idle             + event<Event::EStop>                      / eventAction = emergencyStopped,
 
-			// [steering]
-			steering + event<Event::SetJoystickMode> / eventAction = settingMode,
-			steering + event<Event::JoystickMoved>   / eventAction,
-			steering + event<Event::RunObjective>    / eventAction = runningSequence,
-			steering + event<Event::Freeze>          / eventAction = frozen,
-			steering + event<Event::EStop>           / eventAction = emergencyStopped,
-			steering + on_entry<_>                   / logEntry("steering"),
-			steering + on_exit<_>                    / logExit("steering"),
+			settingMode      + event<Event::ModeSet> [isSteeringMode]                 = steering,
+			settingMode      + event<Event::ModeSet> [isNoMode]                       = idle,
+			settingMode      + event<Event::Retract>                    / eventAction = retracting,
+			settingMode      + event<Event::EStop>                      / eventAction = emergencyStopped,
 
-			// [runningSequence]
-			runningSequence + event<Event::RunObjective>     / eventAction = runningSequence,
-			runningSequence + event<Event::SequenceFinished> / eventAction = idle,
-			runningSequence + event<Event::SetJoystickMode>  / eventAction = settingMode,
-			runningSequence + event<Event::EStop>            / eventAction = emergencyStopped,
-			runningSequence + on_entry<_>                    / logEntry("runningSequence"),
-			runningSequence + on_exit<_>                     / logExit("runningSequence"),
+			steering         + event<Event::SetJoystickMode>            / eventAction = settingMode,
+			steering         + event<Event::JoystickMoved>              / eventAction,
+			steering         + event<Event::RunObjective>               / eventAction = runningSequence,
+			steering         + event<Event::Freeze>                     / eventAction = frozen,
+			steering         + event<Event::EStop>                      / eventAction = emergencyStopped,
 
-			// [safe]
-			frozen + event<Event::EStop> / eventAction = emergencyStopped,
-			frozen + event<Event::Thaw>  / eventAction = idle,
-			frozen + on_entry<_>         / logEntry("safe"),
-			frozen + on_exit<_>          / logExit("safe"),
+			runningSequence  + event<Event::RunObjective>               / eventAction = runningSequence,
+			runningSequence  + event<Event::SequenceFinished>           / eventAction = idle,
+			runningSequence  + event<Event::SetJoystickMode>            / eventAction = settingMode,
+			runningSequence  + event<Event::EStop>                      / eventAction = emergencyStopped,
 
-		    // [emergencyStopped]
-			emergencyStopped + event<Event::QuitEStop> = poweredOff,
-			emergencyStopped + event<Event::EStop>     = emergencyStopped,
-			emergencyStopped + on_entry<_>             / logEntry("emergencyStopped"),
-			emergencyStopped + on_exit<_>              / logExit("emergencyStopped")
-		    // clang-format on
+			frozen           + event<Event::EStop>                      / eventAction = emergencyStopped,
+			frozen           + event<Event::Thaw>                       / eventAction = idle,
+
+			emergencyStopped + event<Event::QuitEStop>                                = poweredOff,
+			emergencyStopped + event<Event::EStop>                                    = emergencyStopped,
+
+			poweredOff + on_entry<_>       / logEntry("poweredOff"),
+			poweredOff + on_exit<_>        / logExit("poweredOff"),
+			initializing + on_entry<_>     / logEntry("initializing"),
+			initializing + on_exit<_>      / logExit("initializing"),
+			retracting + on_entry<_>       / logEntry("retracting"),
+			retracting + on_exit<_>        / logExit("retracting"),
+			retracted + on_entry<_>        / logEntry("retracted"),
+			retracted + on_exit<_>         / logExit("retracted"),
+			unfolding + on_entry<_>        / logEntry("unfolding"),
+			unfolding + on_exit<_>         / logExit("unfolding"),
+			idle + on_entry<_>             / logEntry("idle"),
+			idle + on_exit<_>              / logExit("idle"),
+			settingMode + on_entry<_>      / logEntry("settingMode"),
+			settingMode + on_exit<_>       / logExit("settingMode"),
+			steering + on_entry<_>         / logEntry("steering"),
+			steering + on_exit<_>          / logExit("steering"),
+			runningSequence + on_entry<_>  / logEntry("runningSequence"),
+			runningSequence + on_exit<_>   / logExit("runningSequence"),
+			frozen + on_entry<_>           / logEntry("safe"),
+			frozen + on_exit<_>            / logExit("safe"),
+			emergencyStopped + on_entry<_> / logEntry("emergencyStopped"),
+			emergencyStopped + on_exit<_>  / logExit("emergencyStopped")
 		);
+		// clang-format on
 	}
 };
 
