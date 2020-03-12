@@ -6,13 +6,12 @@
 #include <algorithm>
 #include <cassert>
 #include <future>
+#include <iterator>
 #include <thread>
 
 using namespace std::chrono_literals;
 
 namespace KinovaZED::Hw {
-
-constexpr auto joystickCalcFactor = 0.0025f;
 
 KinovaArm::KinovaArm(std::optional<Coordinates> origin, Logger logger)
     : LoggingMixin{logger, "KinovaArm"}
@@ -72,15 +71,17 @@ auto KinovaArm::checkCurrents() -> void {
 }
 
 auto KinovaArm::checkMovement() -> void {
-	// auto velocities = arm->get_ang_vel();
-	// logDebug("checkMovement",
-	//          "{} {} {} {} {} {}",
-	//          velocities.joints[0],
-	//          velocities.joints[1],
-	//          velocities.joints[2],
-	//          velocities.joints[3],
-	//          velocities.joints[4],
-	//          velocities.joints[5]);
+	auto velocities = arm->get_ang_vel();
+	auto isStopped = std::all_of(
+	    std::cbegin(velocities.joints), std::cend(velocities.joints), [](auto velocity) { return velocity == 0.0; });
+
+	if (!isStopped) {
+		return;
+	}
+
+	if (state->movementStatus == MovementStatus::MovingToPosition && state->targetPosition) {
+		logWarning("checkMovement", "the arm stopped moving before reaching its target point!");
+	}
 }
 
 auto KinovaArm::updatePosition() -> void {
