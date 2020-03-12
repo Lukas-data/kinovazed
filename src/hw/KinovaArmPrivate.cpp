@@ -112,7 +112,7 @@ auto KinovaArm::handlePosition(Coordinates newPosition) -> void {
 		state->retractionStatus = RetractionStatus::Homed;
 		state->movementStatus.reset();
 		std::this_thread::sleep_for(10ms);
-		fireHomeReached();
+		asio::post(actionStrand, [this] { fireHomeReached(); });
 		return;
 	}
 
@@ -120,7 +120,7 @@ auto KinovaArm::handlePosition(Coordinates newPosition) -> void {
 		state->targetPosition.reset();
 		state->movementStatus.reset();
 		std::this_thread::sleep_for(10ms);
-		firePositionReached(newPosition);
+		asio::post(actionStrand, [this, newPosition] { firePositionReached(newPosition); });
 		return;
 	}
 }
@@ -156,7 +156,7 @@ auto KinovaArm::handleRetractionMode(RetractionMode newMode) -> void {
 		if (state->movementStatus == MovementStatus::HomingToHardwareHome) {
 			state->movementStatus.reset();
 			releaseJoystick();
-			fireHomeReached();
+			asio::post(actionStrand, [this] { fireHomeReached(); });
 			return;
 		} else if (state->movementStatus == MovementStatus::HomingToSoftwareHome) {
 			state->movementStatus.reset();
@@ -166,7 +166,7 @@ auto KinovaArm::handleRetractionMode(RetractionMode newMode) -> void {
 		} else if (state->movementStatus == MovementStatus::Initializing) {
 			state->movementStatus.reset();
 			releaseJoystick();
-			fireInitializationFinished();
+			asio::post(actionStrand, [this] { fireInitializationFinished(); });
 			return;
 		} else if (state->movementStatus == MovementStatus::HomeToRetract) {
 			releaseJoystick();
@@ -180,7 +180,7 @@ auto KinovaArm::handleRetractionMode(RetractionMode newMode) -> void {
 		    state->movementStatus == MovementStatus::Initializing) {
 			state->movementStatus.reset();
 			releaseJoystick();
-			fireRetractionPointReached();
+			asio::post(actionStrand, [this] { fireRetractionPointReached(); });
 			return;
 		}
 	}
@@ -192,7 +192,7 @@ auto KinovaArm::updateSteeringMode() -> void {
 	if ((std::chrono::steady_clock::now() - *state->lastSteeringModeChange) >= 500ms) {
 		logInfo("<updateSteeringMode>", "desired steering mode was reached.");
 		state->lastSteeringModeChange.reset();
-		fireSteeringModeChanged(*state->steeringMode);
+		asio::post(actionStrand, [this] { fireSteeringModeChanged(*state->steeringMode); });
 	}
 }
 
@@ -213,7 +213,7 @@ auto KinovaArm::reconnectOnError() -> void {
 		stopMoving();
 	}
 
-	fireReconnectedDueToError();
+	asio::post(actionStrand, [this] { fireReconnectedDueToError(); });
 }
 
 auto KinovaArm::moveToHardwareHome() -> void {
@@ -256,7 +256,7 @@ auto KinovaArm::moveToHardwareHome() -> void {
 auto KinovaArm::moveToSoftwareHome() -> void {
 	if (state->currentPosition == homePosition) {
 		state->movementStatus.reset();
-		fireHomeReached();
+		asio::post(actionStrand, [this] { fireHomeReached(); });
 		return;
 	} else if (state->wasHomed) {
 		moveTo(*homePosition);
@@ -298,7 +298,7 @@ auto KinovaArm::moveToRetractionPoint() -> void {
 		default:
 			if (state->movementStatus == MovementStatus::Retracting) {
 				state->movementStatus.reset();
-				fireRetractionPointReached();
+				asio::post(actionStrand, [this] { fireRetractionPointReached(); });
 			}
 			break;
 		}

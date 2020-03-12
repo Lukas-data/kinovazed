@@ -1,6 +1,7 @@
 #include "hw/KinovaArm.h"
 
 #include <asio/dispatch.hpp>
+#include <asio/post.hpp>
 
 #include <algorithm>
 #include <future>
@@ -223,7 +224,7 @@ auto KinovaArm::doSetSteeringMode(SteeringMode mode, std::promise<bool> token) -
 		if (mode != SteeringMode::NoMode) {
 			state->lastSteeringModeChange = std::chrono::steady_clock::now();
 		} else {
-			fireSteeringModeChanged(mode);
+			asio::post(actionStrand, [this, mode] { fireSteeringModeChanged(mode); });
 		}
 
 		token.set_value(true);
