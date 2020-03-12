@@ -105,7 +105,7 @@ struct CoreStateMachine : LoggingMixin {
 
 		auto isNoMode = [](auto const &e) { return e.mode == Hw::SteeringMode::NoMode; };
 
-		auto isSteeringMode = [&](auto const &e) { return isNoMode(e); };
+		auto isSteeringMode = [&](auto const &e) { return !isNoMode(e); };
 
 		auto eventAction = [](auto const &e) { e(); };
 
