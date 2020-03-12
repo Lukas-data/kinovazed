@@ -10,6 +10,13 @@ auto CoreStateMachine::Event::Initialize::operator()() const -> void {
 	}
 }
 
+auto CoreStateMachine::Event::Freeze::operator()() const -> void {
+	actor.stopMoving();
+}
+
+auto CoreStateMachine::Event::Thaw::operator()() const -> void {
+}
+
 auto CoreStateMachine::Event::EStop::operator()() const -> void {
 	actor.stopMoving();
 	actor.releaseControl();
@@ -27,6 +34,7 @@ auto CoreStateMachine::Event::Unfold::operator()() const -> void {
 }
 
 auto CoreStateMachine::Event::SetJoystickMode::operator()() const -> void {
+	actor.stopMoving();
 	actor.setSteeringMode(mode);
 }
 

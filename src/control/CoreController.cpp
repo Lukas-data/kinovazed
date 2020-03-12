@@ -75,7 +75,7 @@ auto CoreController::process(Comm::Command command) -> void {
 		}
 		auto point = currentObjective->nextPoint();
 		auto name = toString(currentObjective->getId());
-		logStep(CoreStateMachine::Event::RunObjective{arm, *point},
+		logStep(CoreStateMachine::Event ::RunObjective{arm, *point},
 		        fmt::format("moving toward objective '{}'", name),
 		        fmt::format("internal state machine refused to move toward objective '{}'", name));
 	} break;
@@ -108,6 +108,20 @@ auto CoreController::process(Comm::Command command) -> void {
 		        fmt::format("moving joystick to '[{}, {}, {}]'", x, y, z),
 		        fmt::format("internal state machine refused to move joystick to '[{}, {}, {}]'", x, y, z));
 	} break;
+	case Command::Id::Freeze:
+		if (logStep(CoreStateMachine::Event::Freeze{arm},
+		            "freezing the arm",
+		            "internal state machine refused to freeze the arm")) {
+			commandSource.send(Comm::Notification{Comm::Notification::Id::Freezed});
+		}
+		break;
+	case Command::Id::Unfreeze:
+		if (logStep(CoreStateMachine::Event::Thaw{arm},
+		            "thawing the arm",
+		            "internal state machine refused to thaw the arm")) {
+			commandSource.send(Comm::Notification{Comm::Notification::Id::Unfreezed});
+		}
+		break;
 	default:
 		logWarning("process", "ignoring command '{0}'", toString(command.id));
 	}
@@ -184,6 +198,7 @@ auto CoreController::onInitializationFinished(Hw::Actor &) -> void {
 	if ((isInitialized = logStep(CoreStateMachine::Event::Initialized{},
 	                             "marking the arm as initialized",
 	                             "internal state machine did not accept initialized event"))) {
+		commandSource.send(Comm::Notification{Comm::Notification::Id::Initialized});
 	}
 }
 
@@ -193,7 +208,10 @@ auto CoreController::getSystemState() -> std::bitset<8> {
 	state.set(0, !arm.hasFailed());
 	state.set(1, stateMachine.is(CoreStateMachine::emergencyStopped));
 	state.set(2, isInitialized);
-	state.set(3, stateMachine.is(CoreStateMachine::safe));
+	state.set(3, stateMachine.is(CoreStateMachine::frozen));
+	state.set(4, stateMachine.is(CoreStateMachine::idle));
+	state.set(5, stateMachine.is(CoreStateMachine::runningSequence));
+	state.set(6, stateMachine.is(CoreStateMachine::steering));
 
 	return state;
 }

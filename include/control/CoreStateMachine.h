@@ -26,6 +26,14 @@ struct CoreStateMachine : LoggingMixin {
 
 		struct Initialized {};
 
+		struct Freeze : ActorEventBase<Freeze> {
+			auto operator()() const -> void;
+		};
+
+		struct Thaw : ActorEventBase<Thaw> {
+			auto operator()() const -> void;
+		};
+
 		struct EStop : ActorEventBase<EStop> {
 			auto operator()() const -> void;
 		};
@@ -88,18 +96,16 @@ struct CoreStateMachine : LoggingMixin {
 	static auto constexpr settingMode = boost::sml::state<struct SettingModeStateTag>;
 	static auto constexpr steering = boost::sml::state<struct SteeringStateTag>;
 	static auto constexpr runningSequence = boost::sml::state<struct RunningSequenceStateTag>;
-	static auto constexpr safe = boost::sml::state<struct SafeStateTag>;
+	static auto constexpr frozen = boost::sml::state<struct FrozenStateTag>;
 	static auto constexpr emergencyStopped = boost::sml::state<struct EmergencyStoppedStateTag>;
 
 	auto operator()() noexcept {
 		using namespace boost::sml;
 		using boost::sml::on_exit;
 
-		auto isFreezeMode = [](auto const &e) { return e.mode == Hw::SteeringMode::Freeze; };
-
 		auto isNoMode = [](auto const &e) { return e.mode == Hw::SteeringMode::NoMode; };
 
-		auto isSteeringMode = [&](auto const &e) { return !(isNoMode(e) || isFreezeMode(e)); };
+		auto isSteeringMode = [&](auto const &e) { return isNoMode(e); };
 
 		auto eventAction = [](auto const &e) { e(); };
 
@@ -114,15 +120,16 @@ struct CoreStateMachine : LoggingMixin {
 		// clang-format off
 		return make_transition_table(
 			// [poweredOff]
-			*poweredOff + event<Event::Initialize> / eventAction = initializing,
-			poweredOff  + event<Event::EStop>      / eventAction = emergencyStopped,
-			poweredOff  + event<Event::QuitEStop>  / eventAction,
-			poweredOff  + on_entry<_>              / logEntry("poweredOff"),
-			poweredOff  + on_exit<_>               / logExit("poweredOff"),
+		   *poweredOff + event<Event::Initialize>  / eventAction = initializing,
+			poweredOff + event<Event::EStop>      / eventAction = emergencyStopped,
+			poweredOff + event<Event::QuitEStop>  / eventAction,
+			poweredOff + on_entry<_>              / logEntry("poweredOff"),
+			poweredOff + on_exit<_>               / logExit("poweredOff"),
 			
 			// [poweredOff]
 			initializing + event<Event::Initialized>               = idle,
 			initializing + event<Event::EStop>       / eventAction = emergencyStopped,
+			// falsch gefahren nacht quit + init
 			initializing + on_entry<_>               / logEntry("initializing"),
 			initializing + on_exit<_>                / logExit("initializing"),
 
@@ -145,44 +152,45 @@ struct CoreStateMachine : LoggingMixin {
 			unfolding + on_exit<_>             / logExit("unfolding"),
 
 			// [idle]
-			idle + event<Event::SetJoystickMode>      / eventAction = settingMode,
-			idle + event<Event::RunObjective> / eventAction = runningSequence,
-			idle + event<Event::Retract>      / eventAction = retracting,
-			idle + event<Event::Unfold>       / eventAction = unfolding,
-			idle + event<Event::EStop>        / eventAction = emergencyStopped,
-			idle + on_entry<_>                / logEntry("idle"),
-			idle + on_exit<_>                 / logExit("idle"),
+			idle + event<Event::SetJoystickMode> / eventAction = settingMode,
+			idle + event<Event::RunObjective>    / eventAction = runningSequence,
+			idle + event<Event::Retract>         / eventAction = retracting,
+			idle + event<Event::Initialize>      / eventAction = initializing,
+			idle + event<Event::Freeze>          / eventAction = frozen,
+			idle + event<Event::EStop>           / eventAction = emergencyStopped,
+			idle + on_entry<_>                   / logEntry("idle"),
+			idle + on_exit<_>                    / logExit("idle"),
 
 			// [settingMode]
-			settingMode + event<Event::ModeSet> [ isSteeringMode ]                = steering,
-			settingMode + event<Event::ModeSet> [ isNoMode ]                      = idle,
-			settingMode + event<Event::ModeSet> [ isFreezeMode ]                  = safe,
-			settingMode + event<Event::Retract>                     / eventAction = retracting,
-			settingMode + event<Event::EStop>                       / eventAction = emergencyStopped,
-			settingMode + on_entry<_>                               / logEntry("settingMode"),
-			settingMode + on_exit<_>                                / logExit("settingMode"),
+			settingMode + event<Event::ModeSet> [ isSteeringMode ]               = steering,
+			settingMode + event<Event::ModeSet> [ isNoMode ]                     = idle,
+			settingMode + event<Event::Retract>                    / eventAction = retracting,
+			settingMode + event<Event::EStop>                      / eventAction = emergencyStopped,
+			settingMode + on_entry<_>                              / logEntry("settingMode"),
+			settingMode + on_exit<_>                               / logExit("settingMode"),
 
 			// [steering]
-			steering + event<Event::SetJoystickMode>       / eventAction = settingMode,
-			steering + event<Event::JoystickMoved> / eventAction,
-			steering + event<Event::RunObjective>  / eventAction = runningSequence,
-			steering + event<Event::Retract>       / eventAction = retracting,
-			steering + event<Event::EStop>         / eventAction = emergencyStopped,
-			steering + on_entry<_>                 / logEntry("steering"),
-			steering + on_exit<_>                  / logExit("steering"),
+			steering + event<Event::SetJoystickMode> / eventAction = settingMode,
+			steering + event<Event::JoystickMoved>   / eventAction,
+			steering + event<Event::RunObjective>    / eventAction = runningSequence,
+			steering + event<Event::Freeze>          / eventAction = frozen,
+			steering + event<Event::EStop>           / eventAction = emergencyStopped,
+			steering + on_entry<_>                   / logEntry("steering"),
+			steering + on_exit<_>                    / logExit("steering"),
 
 			// [runningSequence]
 			runningSequence + event<Event::RunObjective>     / eventAction = runningSequence,
 			runningSequence + event<Event::SequenceFinished> / eventAction = idle,
+			runningSequence + event<Event::SetJoystickMode>  / eventAction = settingMode,
 			runningSequence + event<Event::EStop>            / eventAction = emergencyStopped,
 			runningSequence + on_entry<_>                    / logEntry("runningSequence"),
 			runningSequence + on_exit<_>                     / logExit("runningSequence"),
 
 			// [safe]
-			safe + event<Event::EStop>   / eventAction = emergencyStopped,
-			safe + event<Event::SetJoystickMode> / eventAction = settingMode,
-			safe + on_entry<_>           / logEntry("safe"),
-			safe + on_exit<_>            / logExit("safe"),
+			frozen + event<Event::EStop> / eventAction = emergencyStopped,
+			frozen + event<Event::Thaw>  / eventAction = idle,
+			frozen + on_entry<_>         / logEntry("safe"),
+			frozen + on_exit<_>          / logExit("safe"),
 
 		    // [emergencyStopped]
 			emergencyStopped + event<Event::QuitEStop> = poweredOff,

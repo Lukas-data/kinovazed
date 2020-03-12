@@ -200,7 +200,7 @@ auto KinovaArm::doSetJoystick(int x, int y, int z, std::promise<void> token) -> 
 
 auto KinovaArm::doSetSteeringMode(SteeringMode mode, std::promise<bool> token) -> void {
 	asio::dispatch(actionStrand, [this, mode, token = std::move(token)]() mutable {
-		if (mode != SteeringMode::NoMode && mode != SteeringMode::Freeze && !canChangeMode()) {
+		if (mode != SteeringMode::NoMode && !canChangeMode()) {
 			logWarning("setSteeringMode",
 			           "rejected steering mode change. reason: not enough time elapsed since last change");
 			token.set_value(false);
@@ -220,7 +220,7 @@ auto KinovaArm::doSetSteeringMode(SteeringMode mode, std::promise<bool> token) -
 		releaseJoystick();
 		state->steeringMode = mode;
 
-		if (mode != SteeringMode::NoMode && mode != SteeringMode::Freeze) {
+		if (mode != SteeringMode::NoMode) {
 			state->lastSteeringModeChange = std::chrono::steady_clock::now();
 		} else {
 			fireSteeringModeChanged(mode);

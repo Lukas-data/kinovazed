@@ -21,13 +21,13 @@ namespace KinovaZED::Control {
 struct Objective : LoggingMixin {
 
 	enum struct Id : std::uint8_t {
-		Bell,
+		Current,
+		Home,
 		Handle,
 		OpenDoor,
 		PullDoor,
 		SuckDoor,
 		Antenna,
-		AntennaPull,
 
 		// End Marker
 		END_OF_ENUM,

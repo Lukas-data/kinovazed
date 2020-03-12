@@ -18,20 +18,18 @@ namespace KinovaZED::Control {
 
 auto constexpr objectiveNames = std::array{
     // clang-format off
-
 	std::pair{Objective::Id::Antenna, "Antenna"},
-	std::pair{Objective::Id::AntennaPull, "AntennaPull"},
-	std::pair{Objective::Id::Bell, "Bell"},
+	std::pair{Objective::Id::Current, "Current"},
 	std::pair{Objective::Id::Handle, "Handle"},
+	std::pair{Objective::Id::Home, "Home"},
 	std::pair{Objective::Id::OpenDoor, "OpenDoor"},
-	std::pair{Objective::Id::SuckDoor, "SuckDoor"},
 	std::pair{Objective::Id::PullDoor, "PullDoor"},
-
+	std::pair{Objective::Id::SuckDoor, "SuckDoor"},
     // clang-format on
 };
 
 static_assert(enumNameMappingsAreUnique(objectiveNames), "Duplicate entry in name map!");
-static_assert(enumNameMapHasAllEntries(objectiveNames, Objective::Id::Bell), "Missing entry in name map!");
+static_assert(enumNameMapHasAllEntries(objectiveNames, Objective::Id::Current), "Missing entry in name map!");
 
 auto isKnownObjectiveId(int candidate) -> bool {
 	return candidate >= 0 && candidate < static_cast<int>(Objective::Id::END_OF_ENUM);

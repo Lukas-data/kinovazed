@@ -1,6 +1,7 @@
 #include "hw/KinovaArm.h"
 
 #include <asio/dispatch.hpp>
+#include <asio/post.hpp>
 
 #include <algorithm>
 #include <cassert>
@@ -239,17 +240,17 @@ auto KinovaArm::moveToHardwareHome() -> void {
 		default:
 			if (state->movementStatus == MovementStatus::HomingToHardwareHome) {
 				state->movementStatus.reset();
-				fireHomeReached();
+				asio::post(actionStrand, [this] { fireHomeReached(); });
 			} else if (state->movementStatus == MovementStatus::Initializing) {
 				state->movementStatus.reset();
-				fireInitializationFinished();
+				asio::post(actionStrand, [this] { fireInitializationFinished(); });
 			}
 			break;
 		}
 	} catch (std::exception const &e) {
 		logError("moveToHardwareHome", "failed to move to hardware home. reason: {0}", e.what());
 	}
-}
+} // namespace KinovaZED::Hw
 
 auto KinovaArm::moveToSoftwareHome() -> void {
 	if (state->currentPosition == homePosition) {

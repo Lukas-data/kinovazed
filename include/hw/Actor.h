@@ -17,7 +17,6 @@ enum struct SteeringMode {
 	Rotation,
 	Axis1to3,
 	Axis4to6,
-	Freeze,
 
 	// End Marker
 	END_OF_ENUM

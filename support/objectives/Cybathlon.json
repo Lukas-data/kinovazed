@@ -1,6 +1,14 @@
 [
   {
-    "name": "Bell",
+    "name": "Current",
+    "is_abs": false,
+    "origin": { "X":  0.000, "Y":  0.000, "Z":  0.000, "pitch":  0.000, "yaw":  0.000, "roll":  0.000 },
+    "sequence": [
+      { "X":  0.000, "Y":  0.000, "Z":  0.000, "pitch":  0.000, "yaw":  0.000, "roll":  0.000 }
+    ]
+  },
+  {
+    "name": "Home",
     "is_abs": true,
     "origin": { "X": -0.461, "Y": -0.267, "Z":  0.525, "pitch": -1.989, "yaw": -1.418, "roll":  2.632 },
     "sequence": [
@@ -57,14 +65,6 @@
     "sequence": [
       { "X":  0.000, "Y":  0.000, "Z":  0.000, "pitch":  0.000, "yaw":  0.000, "roll":  0.000 },
       { "X":  0.116, "Y":  0.046, "Z": -0.096, "pitch": -0.229, "yaw":  0.556, "roll": -0.163 }
-    ]
-  },
-  {
-    "name": "AntennaPull",
-    "is_abs": true,
-    "origin": {"X": -0.249, "Y":  0.173, "Z":  0.968, "pitch":  0.936, "yaw": -0.900, "roll":  2.146 },
-    "sequence": [
-      { "X":  0.000, "Y":  0.000, "Z":  0.000, "pitch":  0.000, "yaw":  0.000, "roll":  0.000 }
     ]
   }
 ]
