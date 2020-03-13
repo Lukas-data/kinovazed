@@ -212,6 +212,7 @@ auto CoreController::getSystemState() -> std::bitset<8> {
 	state.set(4, stateMachine.is(CoreStateMachine::idle));
 	state.set(5, stateMachine.is(CoreStateMachine::runningSequence));
 	state.set(6, stateMachine.is(CoreStateMachine::steering));
+	state.set(7, stateMachine.is(CoreStateMachine::retracted));
 
 	return state;
 }
