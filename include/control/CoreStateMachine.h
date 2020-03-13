@@ -119,7 +119,7 @@ struct CoreStateMachine : LoggingMixin {
 
 		// clang-format off
 		return make_transition_table(
-		   *poweredOff       + event<Event::Initialize>                 / eventAction = initializing,
+		    poweredOff       + event<Event::Initialize>                 / eventAction = initializing,
 			poweredOff       + event<Event::EStop>                      / eventAction = emergencyStopped,
 			poweredOff       + event<Event::QuitEStop>                  / eventAction,              
 
@@ -161,7 +161,7 @@ struct CoreStateMachine : LoggingMixin {
 			frozen           + event<Event::EStop>                      / eventAction = emergencyStopped,
 			frozen           + event<Event::Thaw>                       / eventAction = idle,
 
-			emergencyStopped + event<Event::QuitEStop>                                = poweredOff,
+		   *emergencyStopped + event<Event::QuitEStop>                                = poweredOff,
 			emergencyStopped + event<Event::EStop>                                    = emergencyStopped,
 
 			poweredOff + on_entry<_>       / logEntry("poweredOff"),
