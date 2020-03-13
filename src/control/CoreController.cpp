@@ -53,7 +53,7 @@ auto CoreController::process(Comm::Command command) -> void {
 		auto result = logStepper(event, success, error);
 		that->commandSource.send(
 		    Comm::Notification{result ? Comm::Notification::Id::Accepted : Comm::Notification::Id::Rejected});
-		return success;
+		return result;
 	};
 
 	switch (command.id) {
