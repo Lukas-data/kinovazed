@@ -92,7 +92,7 @@ Each bit reflects an important state.
 | 4 | isIdle    |
 | 5 | isRunningObjective |
 | 6 | isInJoystickMode   |
-| 7 | _unused_    |
+| 7 | isRetracted    |
 
 # Joystick Modes
 
