@@ -25,6 +25,7 @@ auto checkParameterCount(Comm::Command::Id id, std::vector<std::any> parameters)
 	case Command::Id::Retract:
 	case Command::Id::Freeze:
 	case Command::Id::Unfreeze:
+	case Command::Id::GetCurrentPosition:
 		if (!parameters.empty()) {
 			return false;
 		}
@@ -58,6 +59,7 @@ auto adjustParameterTypes(Comm::Command::Id id, std::vector<std::any> &parameter
 	case Command::Id::Retract:
 	case Command::Id::Freeze:
 	case Command::Id::Unfreeze:
+	case Command::Id::GetCurrentPosition:
 		return true;
 	case Command::Id::RunObjective:
 		try {

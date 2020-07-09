@@ -29,6 +29,7 @@ auto constexpr commandNames = std::array{
     std::pair{Command::Id::Retract, "Retract"},
     std::pair{Command::Id::Freeze, "Freeze"},
     std::pair{Command::Id::Unfreeze, "Unfreeze"},
+    std::pair{Command::Id::GetCurrentPosition, "GetCurrentPosition"},
 };
 
 static_assert(enumNameMappingsAreUnique(commandNames), "Duplicate entry in name map!");

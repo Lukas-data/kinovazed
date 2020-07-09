@@ -23,6 +23,7 @@ struct Command {
 		RunObjective,
 		EStop,
 		QuitEStop,
+		GetCurrentPosition,
 
 		// End Marker
 		END_OF_ENUM
