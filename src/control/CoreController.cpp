@@ -122,6 +122,18 @@ auto CoreController::process(Comm::Command command) -> void {
 			commandSource.send(Comm::Notification{Comm::Notification::Id::Unfreezed});
 		}
 		break;
+	case Command::Id::GetCurrentPosition: {
+		auto position = arm.getPosition();
+		auto [x, y, z, pitch, yaw, roll] = position;
+		logInfo("process",
+		        "Current arm position: x = {} | y = {} | z = {} | pitch = {} | yaw = {} | roll = {}",
+		        x,
+		        y,
+		        z,
+		        pitch,
+		        yaw,
+		        roll);
+	} break;
 	default:
 		logWarning("process", "ignoring command '{0}'", toString(command.id));
 	}
