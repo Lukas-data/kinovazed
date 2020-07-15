@@ -160,3 +160,32 @@ Stop: `systemctl --user stop kinovazed.service`
 Enable autostart: `systemctl --user enable kinovazed.service`
 
 Disable autostart: `systemctl --user disable kinovazed.service`
+
+# Change Objectives
+
+* open ssh: `ssh 192.168.77.2 -l kinova`
+* stop the service (command above) - if nothing helps use `killall -9 kinovaZED`
+* start the program with `kinovaZED`
+* connect with telnet from your local machine: `telnet 192.168.77.2 51717`
+* Initialize the arm, hit enter after every line: 
+```
+EStop
+QuitEStop
+Initialize
+```
+* Select the Objective you want to change: `SetActiveObjective:<Objective Name>`
+* Use the Kinova Joystick to move the arm to target position
+* read the Position relative to Objective origin: `GetObjectivePosition`
+* kinovaZED reports Position in ssh shell log output as JSON
+* If you want to determine an origin use the absolute position: `GetAbsolutePosition`
+* you can now copy the JSON line from the log into the Objectives file and save it at: `~/Code/kinovazed/support/objectives/Cybathlon.json`
+* install the project again (see above)
+* restart the program and reconnect with telnet
+* Initialize the arm, hit enter after every line: 
+```
+EStop
+QuitEStop
+Initialize
+RunObjective:<Objective Name>
+```
+* if you are satisfied with the changes commit and push the changes!
