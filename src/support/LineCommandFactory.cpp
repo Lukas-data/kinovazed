@@ -25,12 +25,14 @@ auto checkParameterCount(Comm::Command::Id id, std::vector<std::any> parameters)
 	case Command::Id::Retract:
 	case Command::Id::Freeze:
 	case Command::Id::Unfreeze:
-	case Command::Id::GetCurrentPosition:
+	case Command::Id::GetAbsolutePosition:
+	case Command::Id::GetObjectivePosition:
 		if (!parameters.empty()) {
 			return false;
 		}
 		break;
 	case Command::Id::RunObjective:
+	case Command::Id::SetActiveObjective:
 	case Command::Id::SetJoystickMode:
 		if (parameters.size() != 1) {
 			return false;
@@ -59,9 +61,11 @@ auto adjustParameterTypes(Comm::Command::Id id, std::vector<std::any> &parameter
 	case Command::Id::Retract:
 	case Command::Id::Freeze:
 	case Command::Id::Unfreeze:
-	case Command::Id::GetCurrentPosition:
+	case Command::Id::GetAbsolutePosition:
+	case Command::Id::GetObjectivePosition:
 		return true;
 	case Command::Id::RunObjective:
+	case Command::Id::SetActiveObjective:
 		try {
 			auto objectiveName = std::any_cast<std::string>(parameters.at(0));
 			if (!Control::isKnownObjectiveId(objectiveName)) {

@@ -23,7 +23,9 @@ struct Command {
 		RunObjective,
 		EStop,
 		QuitEStop,
-		GetCurrentPosition,
+		SetActiveObjective,
+		GetObjectivePosition,
+		GetAbsolutePosition,
 
 		// End Marker
 		END_OF_ENUM

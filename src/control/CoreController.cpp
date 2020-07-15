@@ -5,6 +5,7 @@
 #include "control/ObjectiveManager.h"
 #include "hw/Actor.h"
 #include "hw/Coordinates.h"
+#include "math/Matrix.h"
 
 #include <sml/sml.hpp>
 #include <spdlog/fmt/fmt.h>
@@ -122,17 +123,44 @@ auto CoreController::process(Comm::Command command) -> void {
 			commandSource.send(Comm::Notification{Comm::Notification::Id::Unfreezed});
 		}
 		break;
-	case Command::Id::GetCurrentPosition: {
+	case Command::Id::GetAbsolutePosition: {
 		auto position = arm.getPosition();
 		auto [x, y, z, pitch, yaw, roll] = position;
 		logInfo("process",
-		        "Current arm position: x = {} | y = {} | z = {} | pitch = {} | yaw = {} | roll = {}",
+		        "Current arm position (abs): {{ \"X\":  {}, \"Y\":  {}, \"Z\":  {}, \"pitch\":  {}, \"yaw\":  {}, "
+		        "\"roll\":  {} }}",
 		        x,
 		        y,
 		        z,
 		        pitch,
 		        yaw,
 		        roll);
+	} break;
+	case Command::Id::GetObjectivePosition: {
+		if (!currentObjective) {
+			logError("process", "Tried to get objective position without an active objective!");
+			break;
+		}
+		auto position = arm.getPosition();
+		auto origin = currentObjective->getOrigin();
+		auto transformationMatrix = origin.getInvertedTransformationMatrix();
+		auto transformedPosition = coordTransform(position, transformationMatrix);
+		auto [x, y, z, pitch, yaw, roll] = transformedPosition;
+		logInfo("process",
+		        "Current arm position (obj): {{ \"X\":  {}, \"Y\":  {}, \"Z\":  {}, \"pitch\":  {}, \"yaw\":  {}, "
+		        "\"roll\":  {} }}",
+		        x,
+		        y,
+		        z,
+		        pitch,
+		        yaw,
+		        roll);
+	} break;
+	case Command::Id::SetActiveObjective: {
+		currentObjective = objectiveManager.getObjective(std::any_cast<Objective::Id>(command.parameters[0]));
+		if (!currentObjective->isAbsolute()) {
+			currentObjective->setOrigin(arm.getPosition());
+		}
 	} break;
 	default:
 		logWarning("process", "ignoring command '{0}'", toString(command.id));
