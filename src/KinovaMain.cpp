@@ -48,7 +48,7 @@ int main() {
 	using namespace std::chrono_literals;
 
 	auto logger = makeLogger();
-	logger->set_level(spdlog::level::debug);
+	logger->set_level(spdlog::level::info);
 	logger->info("main: starting up");
 
 	auto arm = std::make_unique<KinovaZED::Hw::KinovaArm>(logger);
