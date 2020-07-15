@@ -151,7 +151,7 @@ The raspberryPI is connected to the main controller roboRIO by Ethernet TCP.
 * Build the project: `cmake --build build --target all -- -j4`
 * Install the result: `sudo cmake --build build --target install`
 
-# Enable Disable Autostart
+# Start Stop and Enable Disable Autostart of service
 
 Start: autamatically if service enabled, else: `systemctl --user start kinovazed.service`
 
@@ -163,7 +163,29 @@ Disable autostart: `systemctl --user disable kinovazed.service`
 
 # Change Objectives
 
+there are two recommended ways to connect to the raspberryPi
+
+## pre requisites Option 1
+* connect to the rasperryPi with an Ethernet cable
+* change your adapter settings to join the local network at 192.168.77.0/24
+* a shell with ssh (on windows you can use *cmd* or *Git Bash*)
 * open ssh: `ssh 192.168.77.2 -l kinova`
+* a shell with telnet (on windows you can use MobaXTerm)
+
+jump to chapter *Procedure* 
+
+## pre requisites Option 2 - Visual Studio Code with Remote Development plugin from Microsoft
+* start VS Code
+* hit Shift+Ctrl+P and enter `connect`
+* in the dialog box enter: `kinova@192.168.77.2`
+* when asked about the operating system choose *Linux*
+* enter the password
+* click on File -> open folder
+* navigate to `Code/kinovazed/`
+* enter passwort if asked
+* now open a Terminal and split it.
+
+## Procedure
 * stop the service (command above) - if nothing helps use `killall -9 kinovaZED`
 * start the program with `kinovaZED`
 * connect with telnet from your local machine: `telnet 192.168.77.2 51717`
@@ -179,6 +201,7 @@ Initialize
 * kinovaZED reports Position in ssh shell log output as JSON
 * If you want to determine an origin use the absolute position: `GetAbsolutePosition`
 * you can now copy the JSON line from the log into the Objectives file and save it at: `~/Code/kinovazed/support/objectives/Cybathlon.json`
+* quit the program here if not already done before with *ctrl+C*
 * install the project again (see above)
 * restart the program and reconnect with telnet
 * Initialize the arm, hit enter after every line: 
