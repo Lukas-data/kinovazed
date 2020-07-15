@@ -150,3 +150,10 @@ The raspberryPI is connected to the main controller roboRIO by Ethernet TCP.
     *  `cd ..`
 * Build the project: `cmake --build build --target all -- -j4`
 * Install the result: `sudo cmake --build build --target install`
+
+# Enable Disable Autostart
+
+Start: autamatically
+Stop: `systemctl --user stop kinovazed.service`
+Enable: `systemctl --user enable kinovazed.service`
+Disable: `systemctl --user disable kinovazed.service`
