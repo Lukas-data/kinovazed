@@ -153,7 +153,10 @@ The raspberryPI is connected to the main controller roboRIO by Ethernet TCP.
 
 # Enable Disable Autostart
 
-Start: autamatically
+Start: autamatically if service enabled, else: `systemctl --user start kinovazed.service`
+
 Stop: `systemctl --user stop kinovazed.service`
-Enable: `systemctl --user enable kinovazed.service`
-Disable: `systemctl --user disable kinovazed.service`
+
+Enable autostart: `systemctl --user enable kinovazed.service`
+
+Disable autostart: `systemctl --user disable kinovazed.service`
