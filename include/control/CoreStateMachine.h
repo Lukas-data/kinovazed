@@ -6,6 +6,8 @@
 
 #include <sml/sml.hpp>
 
+#include <utility>
+
 namespace KinovaZED::Control {
 
 struct CoreStateMachine : LoggingMixin {
@@ -71,6 +73,9 @@ struct CoreStateMachine : LoggingMixin {
 		};
 
 		struct JoystickMoved : ActorEventBase<JoystickMoved> {
+			auto constexpr static absoluteLimitX = 0.8;
+			auto constexpr static absoluteLimitY = 0.85;
+
 			auto operator()() const -> void;
 
 			int x;
