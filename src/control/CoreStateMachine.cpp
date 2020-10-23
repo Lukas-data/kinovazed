@@ -47,11 +47,12 @@ auto CoreStateMachine::Event::JoystickMoved::operator()() const -> void {
 	auto currentPosition = actor.getPosition();
 	auto boundedX = x, boundedY = y;
 
-	if ((x < 0 && currentPosition.x <= -absoluteLimitX) || (x > 0 && currentPosition.x >= absoluteLimitX)) {
+	// TODO: Refactor to Coordinates.h
+	if ((x > 0 && currentPosition.x <= (-absoluteLimitX + 0.01)) || (x < 0 && currentPosition.x >= (absoluteLimitX - 0.01))) {
 		boundedX = 0;
 	}
 
-	if ((y < 0 && currentPosition.y <= -absoluteLimitY) || (y > 0 && currentPosition.y >= absoluteLimitY)) {
+	if ((y > 0 && currentPosition.y <= (-absoluteLimitY + 0.01)) || (y < 0 && currentPosition.y >= (absoluteLimitY - 0.01))) {
 		boundedY = 0;
 	}
 
