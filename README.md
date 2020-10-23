@@ -178,6 +178,7 @@ jump to chapter *Procedure*
 * start VS Code
 * hit Shift+Ctrl+P and enter `connect`
 * in the dialog box enter: `kinova@192.168.77.2`
+* Or Wifi connection: `kinova@152.96.216.234`
 * when asked about the operating system choose *Linux*
 * enter the password
 * click on File -> open folder
