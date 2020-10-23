@@ -2,8 +2,6 @@
 
 #include "hw/Actor.h"
 
-#include <cmath>
-
 namespace KinovaZED::Control {
 
 auto CoreStateMachine::Event::Initialize::operator()() const -> void {
@@ -49,11 +47,11 @@ auto CoreStateMachine::Event::JoystickMoved::operator()() const -> void {
 	auto currentPosition = actor.getPosition();
 	auto boundedX = x, boundedY = y;
 
-	if ((x < 0 && std::abs(currentPosition.x) >= absoluteLimitX) || (x > 0 && currentPosition.x >= absoluteLimitX)) {
+	if ((x < 0 && currentPosition.x <= -absoluteLimitX) || (x > 0 && currentPosition.x >= absoluteLimitX)) {
 		boundedX = 0;
 	}
 
-	if ((y < 0 && std::abs(currentPosition.y) >= absoluteLimitY) || (y > 0 && currentPosition.y >= absoluteLimitY)) {
+	if ((y < 0 && currentPosition.y <= -absoluteLimitY) || (y > 0 && currentPosition.y >= absoluteLimitY)) {
 		boundedY = 0;
 	}
 
