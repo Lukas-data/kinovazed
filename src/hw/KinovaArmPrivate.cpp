@@ -94,7 +94,7 @@ auto KinovaArm::updatePosition() -> void {
 		handlePosition(position);
 		state->currentPosition = position;
 	} catch (std::exception const &e) {
-		logError("<updatePosition>", "failed to read position from arm. reason: {0}", e.what());
+		logWarning("<updatePosition>", "failed to read position from arm. reason: {0}", e.what());
 	}
 }
 
