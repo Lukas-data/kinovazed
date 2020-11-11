@@ -1,2 +1,0 @@
-/usr/bin/ar qc libpositionHandling.a  CMakeFiles/positionHandling.dir/PositionHandling.cpp.o
-/usr/bin/ranlib libpositionHandling.a

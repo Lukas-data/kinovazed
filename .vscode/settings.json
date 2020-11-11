@@ -1,0 +1,11 @@
+{
+    "cmake.cpptools.intelliSenseMode": "gcc-x64",
+    "cmake.cpptools.guessSourceFileConfigurations": true,
+    "[cpp]": {
+        "editor.formatOnSave": true
+    },
+    "C_Cpp.autoAddFileAssociations": false,
+    "files.associations": {
+        "kinovazed.service.in": "systemd-unit-file"
+    }
+}

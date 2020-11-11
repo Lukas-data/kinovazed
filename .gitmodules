@@ -1,0 +1,3 @@
+[submodule "thirdparty/libkindrv"]
+	path = thirdparty/libkindrv
+	url = https://iltserver.hsr.ch:9090/hsr-enhanced/libkindrv.git

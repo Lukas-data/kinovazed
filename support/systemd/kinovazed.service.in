@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the KinovaZED Control Application
+
+[Service]
+Type=simple
+User=kinova
+Restart=always
+ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/KinovaStartUp
+
+[Install]
+WantedBy=default.target
