@@ -160,6 +160,7 @@ Stop: `systemctl --user stop kinovazed.service`
 Enable autostart: `systemctl --user enable kinovazed.service`
 
 Disable autostart: `systemctl --user disable kinovazed.service`
+* Disable If connection problem between raspberryPi and kinovazed excists
 
 # Change Objectives
 
@@ -196,6 +197,7 @@ EStop
 QuitEStop
 Initialize
 ```
+* make sure that you are in `Code/kinovazed/`
 * Select the Objective you want to change: `SetActiveObjective:<Objective Name>`
 * Use the Kinova Joystick to move the arm to target position
 * read the Position relative to Objective origin: `GetObjectivePosition`
