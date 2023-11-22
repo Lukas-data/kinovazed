@@ -25,6 +25,8 @@ auto constexpr objectiveNames = std::array{
 	std::pair{Objective::Id::OpenDoor, "OpenDoor"},
 	std::pair{Objective::Id::PullDoor, "PullDoor"},
 	std::pair{Objective::Id::SuckDoor, "SuckDoor"},
+	std::pair{Objective::Id::FindBottle, "FindBottle"},
+	std::pair{Objective::Id::PlaceBottle, "PlaceBottle"},
     // clang-format on
 };
 

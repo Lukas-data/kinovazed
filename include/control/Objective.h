@@ -28,6 +28,8 @@ struct Objective : LoggingMixin {
 		PullDoor,
 		SuckDoor,
 		Antenna,
+		FindBottle,
+		PlaceBottle,
 
 		// End Marker
 		END_OF_ENUM,

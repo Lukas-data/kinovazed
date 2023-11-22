@@ -110,15 +110,17 @@ currently supported are:
 
 current objectives:
 
-| objective | description |
-| --------- | ----------- |
-| Current   | no movement / fictitious objective |
-| Home      | custom home position |
-| Handle    | end position near door Handle |
-| OpenDoor  | operate door handle and pull a crack |
-| PullDoor  | pull the door open and move into gap |
-| SuckDoor  | bring suction cup into position | 
-| Antenna   | position to pull door into lock behind wheelchair |
+| objective  | description |
+| ---------  | ----------- |
+| Current    | no movement / fictitious objective |
+| Home       | custom home position |
+| Handle     | end position near door Handle |
+| OpenDoor   | operate door handle and pull a crack |
+| PullDoor   | pull the door open and move into gap |
+| SuckDoor   | bring suction cup into position | 
+| Antenna    | position to pull door into lock behind wheelchair |
+| FindBottle | bring vacuum suction cup into position | 
+| PlaceBottle| preposition to place Bottle on Table |
 
 # Transitions
 
